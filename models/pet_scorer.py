@@ -380,7 +380,7 @@ class PetScorer:
         elif max_power >= 100:
             kill_bonus += 7   # 本系克制接近OHKO
 
-        # 本系高威力技能加分（STAB ×1.5 让斩杀线大幅降低）
+        # 本系高威力技能加分（STAB ×1.25 让斩杀线大幅降低）
         if attrs:
             stab_skills = [s for s in attack_skills if s.get("element") in attrs]
             if stab_skills:
@@ -395,8 +395,76 @@ class PetScorer:
         if zero_cost_skills:
             kill_bonus += 3
 
+        # ========== v4 改进: 威力边际递减 + 高费惩罚 ==========
+        # 边际递减: 0-80威力=100%, 81-120威力=60%, 121+=30%
+        if max_power <= 80:
+            power_base = max_power / 3
+        elif max_power <= 120:
+            power_base = 80/3 + (max_power-80)*0.6/3
+        else:
+            power_base = 80/3 + 40*0.6/3 + (max_power-120)*0.3/3
+
+        # 高费惩罚: >5费每超1费扣2分
+        high_cost_count = sum(1 for s in attack_skills if s.get("cost", 0) > 5)
+        cost_penalty = high_cost_count * 2
+
+        # 修正后的斩杀线奖励
+        kill_bonus = 0
+        if max_power >= 140:
+            kill_bonus += 12  # 140+威力奖励降低
+        elif max_power >= 120:
+            kill_bonus += 10
+        elif max_power >= 100:
+            kill_bonus += 7
+
+        # 本系奖励保持
+        if attrs:
+            stab_skills = [s for s in attack_skills if s.get("element") in attrs]
+            if stab_skills:
+                stab_max = max(s.get("power", 0) for s in stab_skills)
+                if stab_max >= 100:
+                    kill_bonus += 8
+                elif stab_max >= 80:
+                    kill_bonus += 5
+
+        # ========== v4 改进: 状态技能评分支持 ==========
+        status_skills = [s for s in all_skills if s.get("power", 0) == 0]
+        status_score = 0
+        for s in status_skills:
+            desc = s.get("desc", "")
+            # 印记(全队收益高)
+            for mark in ["湿润印记", "光合印记", "棘刺印记", "龙噬印记", "星陨印记", "中毒印记", "风起印记", "减速印记", "蓄电印记", "降灵印记", "攻击印记"]:
+                if mark in desc:
+                    status_score += 8
+                    break
+            # 减伤
+            if "减伤70%" in desc or "减伤80%" in desc:
+                status_score += 8
+            elif "减伤60%" in desc or "减伤50%" in desc:
+                status_score += 5
+            elif "减伤" in desc:
+                status_score += 4
+            # 强化增益
+            buff_match = re.search(r"(?:物攻|魔攻|双攻)\+(\d+)%", desc)
+            if buff_match:
+                status_score += min(int(buff_match.group(1)) / 12, 10)
+            if re.search(r"速度\+(\d+)%", desc):
+                status_score += 6
+            if "翻倍增益" in desc:
+                status_score += 6
+            # 控制
+            for kw in ["睡眠", "麻痹", "冰冻", "冻结", "眩晕", "混乱"]:
+                if kw in desc:
+                    status_score += 3
+                    break
+            # 迅捷/先手
+            if "迅捷" in desc:
+                status_score += 4
+
+        total = max(0, power_base - cost_penalty) + diversity_score + control_score + kill_bonus + status_score
+
         return {
-            "score": efficiency * 3 + diversity_score + control_score + kill_bonus,
+            "score": total,
             "avg_power": avg_power,
             "avg_cost": avg_cost,
             "efficiency": efficiency,

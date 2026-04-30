@@ -37,152 +37,168 @@ def _find_int(pattern, text, default=0):
 # 量化常量
 # ============================================================
 
-# --- 威力 ---
-POWER_PER_PT = 3.0
-MAX_POWER = 45
-EFF_BONUS_CAP = 10
+# === v6: 统一实战价值评估体系 ===
+# 核心设计原则: 从底层统一三类技能平衡，无事后校准
 
-# --- 费用机会成本(纯状态) ---
-COST_PENALTY = 3  # 每费扣3分
+# --- 1. 统一费用惩罚函数 (所有技能共用)
+# 原理: 能量是最宝贵的资源，费用越高风险越大
+# 1费=0, 2费=1, 3费=3, 4费=5, 5费=7, 6费+=每费+3
+def fee_penalty(c):
+    if c <= 0: return 0
+    if c <= 1: return 1
+    if c <= 2: return 3
+    if c <= 3: return 6
+    if c <= 4: return 10
+    if c <= 5: return 15
+    return 15 + (c - 5) * 6
 
-# --- 印记(已按全队总收益量化) ---
+# --- 2. 威力价值公式 (输出技能核心)
+POWER_COEFF = 2.5  # 每10威力基础分
+
+def power_value(power, cost):
+    if power <= 80:
+        base = power / 10 * POWER_COEFF
+    elif power <= 120:
+        base = 8 * POWER_COEFF + (power - 80) * 0.5 / 10 * POWER_COEFF
+    else:
+        base = 8 * POWER_COEFF + 40 * 0.5 / 10 * POWER_COEFF + (power - 120) * 0.25 / 10 * POWER_COEFF
+    cost_diff = abs(cost - 3)
+    eff_factor = max(0.30, 1.0 - cost_diff * 0.12)
+    return base * eff_factor
+
+MAX_POWER = 28
+
+# --- 3. 减伤价值公式 (防御技能核心)
+def defense_value(def_pct, cost):
+    base = def_pct / 2.3  # 70%减伤 = 30.4基础分
+    if cost <= 1:
+        coeff = 1.0
+    elif cost <= 2:
+        coeff = 0.85
+    elif cost <= 3:
+        coeff = 0.6
+    elif cost <= 4:
+        coeff = 0.4
+    else:
+        coeff = 0.2
+    return base * coeff
+
+# --- 4. 强化价值公式 (状态技能核心)
+def buff_value(atk_pct, spd_pct, def_pct):
+    return atk_pct / 10 * 3.5 + spd_pct / 10 * 2.0 + def_pct / 10 * 2.3
+
+# --- 印记基础分
 MARK = {
-    "湿润": 42,   # 全队耗能-1: 12次×1费=12费节省
-    "光合": 38,   # 每回合+1能: 8回合×1=8能生成
-    "棘刺": 24,   # 入场-6%HP: 4次×18HP=72伤
-    "龙噬": 24,   # 3费技能+40%攻: 4次×40=160伤
-    "星陨": 24,   # 被击反击: 3次×20伤=60
-    "降灵": 22,   # 入场-1能: 3次×1=3能损失
-    "风起": 20,   # 首动+20%威: 3次×20=60伤
-    "减速": 16,   # -10速度: 战术压制
-    "攻击": 16,   # +10%威力: 3次×10=30伤
-    "蓄电": 14,
-    "蓄势": 12,
-    "中毒印": 18,
+    "湿润": 48, "光合": 40, "龙噬": 32, "星陨": 12,
+    "风起": 28, "蓄电": 24, "蓄势": 20,
+    "中毒印": 28, "棘刺": 24, "降灵": 24, "减速": 20, "攻击": 20,
 }
-MARK_LAYER = 4  # 每额外层+4
+MARK_LAYER = 6
 
-# --- 减益(×0.6清除因子) ---
-DEBUFF_LAYER = {"冻结": 1, "灼烧": 1, "中毒": 2, "萌化": 2}
-DEBUFF_FLAT = {"寄生": 2, "眩晕": 5, "睡眠": 3, "麻痹": 3, "混乱": 2, "束缚": 2, "恐惧": 2}
+# --- 应对分
+COUNTER = {"打断应对": 14}
 
-# --- 应对 ---
-COUNTER = {"打断应对": 33, "应防": 10, "应态": 8, "应攻": 7, "应翻倍": 13, "应冻结": 10}
-
-# --- 先手/迅捷 ---
-SWIFT_ATTACK = 28
+# --- 先手/迅捷
+SWIFT_ATTACK = 24
 SWIFT_DEFENSE = 20
-PRIORITY = lambda n: 5 + n * 4
+PRIORITY = lambda n: 7 + n * 5
 
-# --- 特殊机制 ---
-MECH = {
-    "吸血50": 6, "吸血": 4,
-    "传动": 14, "迸发": 8, "奉献": 6,
-    "连击数++": 10, "连击数+": 6,
-    "3连击": 6, "2连击": 3,
-    "脱离": 10, "敌脱离": 12, "紧急脱离": 6, "返场": 8,
-    "攻+脱离": 6,     # 高温回火类: 攻击同时脱离(额外战术价值)
-    "防+脱离": 8,     # 泡沫幻影类: 防御同时脱离
-    "聒噪": 14,
-    "烧能量6+": 10, "烧能量": 6,
-    "回能4+": 7, "回能": 4,
-    "回血40+": 6, "回血": 3,
-    # 纯状态特殊效果
-    "技能复制": 8,
-    "清减益": 6,
-    "清增益": 9,
-    "下次减费": 6,
-    "偷能量": 6,
-    "随机强化": 7,
-    "敌加费": 8,
-    "天气": 18,
-    "翻倍减益": 12,
-    "翻倍增益": 12,
-    "交换技能": 12,
-    "转化增益": 12,
-    "交换HP": 8,
-    "交换增益减益": 8,
-    "继承增益": 8,
-    "被动减费": 8,
-    "冷却锁定": 6,
-    "全队回能": 8,
-    "变身": 10,
-    # PVP关键技能
-    "多系联动": 22,    # 折射: 根据携带技能获得18种效果之一
-    "速度威力": 11,    # 闪击: 速度越高威力越高
-    "迅捷链": 12,      # 疾风连袭: 重放迅捷技能
-    "相邻成长": 6,     # 联动装置: 相邻技能永久成长
+# --- 控制状态分
+DEBUFF_LAYER = {"中毒": 5, "萌化": 7, "冻结": 4, "灼烧": 3}  # 萌化永久不消→高; 灼烧换人即消→低
+CONTROL = {"眩晕": 18, "寄生": 12}
+
+# --- 成长
+GROWTH = {"power": 0.4, "combo": 4}
+
+# --- 条件折扣 & 防御惩罚
+COND_DISCOUNT = 0.5   # 若/额外/应对条件触发的强化，按50%期望值
+DEF_PENALTY_MULT = 1.0  # 防御费用惩罚倍率
+# 条件性强化检测模式
+_COND_RE = r'(?:若|如果|额外获得|本技能位于|应对.{0,10}(?:改为|获得))'
+
+# --- 反印记
+ANTI_MARK = {"焚烧烙印": 34, "食腐": 18, "焚毁": 16, "驱散通用": 14, "心灵洞悉": 18}
+
+# --- 惩罚
+PENALTY = {"自杀": -25, "蓄力": -18, "自伤": -5, "自减益": -4}
+
+# --- 特殊机制基础分 (传动=0，非正面机制)
+MECH_BASE = {
+    "传动": 0, "迸发": 12, "脱离": 10, "敌脱离": 14,
+    "聒噪": 14, "烧能量": 12, "回能": 10, "清减益": 10, "清增益": 10,
+    "天气": 20, "翻倍减益": 16, "交换技能": 12, "转化增益": 14,
+    "全队回能": 12, "变身": 12, "迅捷链": 14, "相邻成长": 10,
 }
-
-# --- 减伤 ---
-DEFENSE = {"减伤70+": 10, "减伤60": 8, "减伤": 7}
-
-# --- 成长 ---
-GROWTH = {"power": 0.25, "combo": 3, "cost6+": 14, "cost4+": 12, "cost3": 8, "cost1-2": 5}
-
-# --- 反印记 ---
-ANTI_MARK = {"焚烧烙印": 23, "食腐": 12, "焚毁": 10, "驱散通用": 8, "心灵洞悉": 10}
-
-# --- 惩罚 ---
-PENALTY = {"自杀": -35, "蓄力": -16, "自伤": -6, "自减益": -6}
-
-
 def score_skill(skill):
+    """v6: 统一实战价值评估 - 三类技能从底层平衡，无事后校准"""
     name = skill.get("name", "")
     desc = skill.get("desc", "")
     element = skill.get("element", "")
     power = skill.get("power", 0)
     cost = skill.get("cost", 0)
     full_text = f"{name} {desc}"
-    is_pure_status = (power == 0)
     tc = type_bonus.get(element, 1.0)
     pts = {}
 
-    # ========================
-    # 分组1: 属性相关维度
-    # ========================
-    type_dep = 0
+    final = 0
 
-    # 1a. 威力效率
-    if not is_pure_status:
-        base = min(power / POWER_PER_PT, MAX_POWER)
-        eff_cost = max(cost, 0.5)
-        eff = power / eff_cost
-        eff_bonus = min(max(0, (eff - 20) * 0.08), EFF_BONUS_CAP)
-        zero_bonus = 6 if cost == 0 else 0
-        pe = round(base + eff_bonus + zero_bonus, 1)
-        pts["威力效率"] = pe
-        type_dep += pe
+    # ========================
+    # 1. 核心价值计算
+    # ========================
 
-    # 1b. 先手/迅捷
+    # --- 1a. 输出技能: 威力核心 ---
+    if power > 0:
+        pv = min(power_value(power, cost), MAX_POWER)
+        pts["威力"] = round(pv, 1)
+        final += pv
+
+        # 0费攻击额外加分
+        if cost == 0:
+            pts["0费奖励"] = 3
+            final += 3
+
+    # --- 1b. 防御技能: 减伤核心 ---
+    if "减伤" in desc or "减少" in desc and ("伤害" in desc or "受到" in desc):
+        pct = _find_int(r"减伤(\d+)%", desc) or _find_int(r"减少(\d+)%", desc)
+        if pct > 0:
+            dv = defense_value(pct, cost)
+            pts[f"减伤{pct}%"] = round(dv, 1)
+            final += dv
+
+    # ========================
+    # 2. 通用附加效果 (所有技能共用)
+    # ========================
+
+    # 先手/迅捷
     if "迅捷" in desc:
-        v = SWIFT_ATTACK if not is_pure_status else SWIFT_DEFENSE
-        pts["迅捷(攻)" if not is_pure_status else "迅捷(防)"] = v
-        type_dep += v
+        if power > 0:
+            pts["迅捷(攻)"] = SWIFT_ATTACK
+            final += SWIFT_ATTACK
+        else:
+            pts["迅捷"] = SWIFT_DEFENSE
+            final += SWIFT_DEFENSE
     elif "先手" in desc:
-        n = _find_int(r"先手\+(\d+)", desc) or 1
-        v = PRIORITY(n)
-        pts[f"先手+{n}"] = v; type_dep += v
+        n = _find_int(r"先手\+(\d+)", desc)
+        if n > 0:
+            v = PRIORITY(n)
+            pts[f"先手+{n}"] = v
+            final += v
+        elif "先手-" in desc:
+            n = _find_int(r"先手-(\d+)", desc) or 1
+            v = -PRIORITY(n)
+            pts[f"先手-{n}"] = v
+            final += v
 
-    # 1c. 应对
-    for key in ["打断应对", "应防", "应态", "应攻", "应翻倍", "应冻结"]:
-        conds = {
-            "打断应对": lambda: "应对" in desc and "打断" in desc,
-            "应防": lambda: "应对防御" in desc,
-            "应态": lambda: "应对状态" in desc,
-            "应攻": lambda: "应对攻击" in desc,
-            "应翻倍": lambda: "应对" in desc and ("翻倍" in desc or "变为1.5倍" in desc or "变为2倍" in desc),
-            "应冻结": lambda: "应对" in desc and "冻结" in desc and ("翻倍" in desc or "额外" in desc),
-        }
-        if conds[key]():
-            pts[key] = COUNTER[key]; type_dep += COUNTER[key]
+    # 应对
+    conds = {
+        "打断应对": lambda: "应对" in desc and "打断" in desc,
+    }
+    for key, fn in conds.items():
+        if fn():
+            pts[key] = COUNTER[key]
+            final += COUNTER[key]
 
-    # ========================
-    # 分组2: 通用效果
-    # ========================
-    universal = 0
-
-    # 2a. 印记
+    # 印记
     mark_config = [
         ("湿润印记", MARK["湿润"], r"(\d+)层湿润"),
         ("棘刺印记", MARK["棘刺"], r"(\d+)层棘刺"),
@@ -195,250 +211,282 @@ def score_skill(skill):
         ("蓄电印记", MARK["蓄电"], r"(\d+)层蓄电"),
         ("蓄势印记", MARK["蓄势"], r"(\d+)层蓄势"),
     ]
-    found_mark = False
+    # 辅助: 检测印记是否仅在应对子句中 (条件折扣)
+    def _mark_cond(mk_name):
+        if "应对" in desc and mk_name not in desc.split("应对")[0]:
+            return True
+        return False
+
     for mk_name, base, pat in mark_config:
         if mk_name in desc:
             layers = max(1, _find_int(pat, desc))
             v = base + (layers - 1) * MARK_LAYER
-            pts[mk_name] = v; universal += v
-            found_mark = True; break
-
-    if not found_mark:
+            if _mark_cond(mk_name):
+                v = int(v * COND_DISCOUNT)
+                mk_name += "(条件)"
+            pts[mk_name] = v
+            final += v
+            break
+    else:
         if "星陨" in desc:
             layers = max(1, _find_int(r"(\d+)层星陨", desc))
             v = MARK["星陨"] + (layers - 1) * MARK_LAYER
-            pts["星陨印记"] = v; universal += v
+            if _mark_cond("星陨"):
+                v = int(v * COND_DISCOUNT)
+            pts["星陨印记"] = v
+            if _mark_cond("星陨"):
+                pts["星陨印记(条件)"] = pts.pop("星陨印记")
+            final += v
         elif "中毒印记" in desc or ("转化为印记" in desc and "中毒" in desc):
-            pts["中毒印记"] = MARK["中毒印"]; universal += MARK["中毒印"]
+            v = MARK["中毒印"]
+            if _mark_cond("中毒"):
+                v = int(v * COND_DISCOUNT)
+            pts["中毒印记"] = v
+            final += v
         elif "印记" in desc and "驱散" not in desc and "焚毁" not in name and "食腐" not in name:
             layers = _find_int(r"(\d+)层.{1,3}印记", desc)
             if layers > 0:
-                v = 14 + (layers - 1) * MARK_LAYER
-                pts["印记(通用)"] = v; universal += v
+                v = 10 + (layers - 1) * MARK_LAYER
+                pts["印记(通用)"] = v
+                final += v
 
-    # 2b. 印记驱散
-    if "焚烧烙印" in full_text: pts["驱散+转化"] = ANTI_MARK["焚烧烙印"]; universal += ANTI_MARK["焚烧烙印"]
-    elif "食腐" in full_text and "驱散" in desc: pts["驱散+回血"] = ANTI_MARK["食腐"]; universal += ANTI_MARK["食腐"]
-    elif "焚毁" in full_text: pts["驱散印记"] = ANTI_MARK["焚毁"]; universal += ANTI_MARK["焚毁"]
-    elif "心灵洞悉" in full_text: pts["印记反制"] = ANTI_MARK["心灵洞悉"]; universal += ANTI_MARK["心灵洞悉"]
-    elif "驱散" in desc and "印记" in desc: pts["驱散印记"] = ANTI_MARK["驱散通用"]; universal += ANTI_MARK["驱散通用"]
+    # 印记驱散
+    if "焚烧烙印" in full_text:
+        pts["驱散+转化"] = ANTI_MARK["焚烧烙印"]; final += ANTI_MARK["焚烧烙印"]
+    elif "食腐" in full_text and "驱散" in desc:
+        pts["驱散+回血"] = ANTI_MARK["食腐"]; final += ANTI_MARK["食腐"]
+    elif "焚毁" in full_text:
+        pts["驱散印记"] = ANTI_MARK["焚毁"]; final += ANTI_MARK["焚毁"]
+    elif "心灵洞悉" in full_text:
+        pts["印记反制"] = ANTI_MARK["心灵洞悉"]; final += ANTI_MARK["心灵洞悉"]
+    elif "驱散" in desc and "印记" in desc:
+        pts["驱散印记"] = ANTI_MARK["驱散通用"]; final += ANTI_MARK["驱散通用"]
 
-    # 2c. 减益
+    # 控制状态 (层式减益) — 萌化只计敌方/双方；中毒印记已含中毒不计重复
     for kw, per_layer in DEBUFF_LAYER.items():
         if kw in desc:
+            if kw == "萌化":
+                if "敌方" not in desc and "双方" not in desc:
+                    continue
+            if kw == "中毒" and ("中毒印记" in desc or "转化为印记" in desc):
+                continue  # 中毒印记已包含中毒效果，不重复计
             layers = max(1, _find_int(rf"(\d+)层{kw}", desc))
-            pts[kw] = layers * per_layer; universal += layers * per_layer
-    for kw, v in DEBUFF_FLAT.items():
-        if kw in desc: pts[kw] = v; universal += v
+            pts[f"{kw}({layers}层)"] = layers * per_layer
+            final += layers * per_layer
+    # 单次强控
+    for kw, v in CONTROL.items():
+        if kw in desc:
+            pts[kw] = v
+            final += v
 
-    # 2d. 通用增减益
-    CF = 0.6
+    # 敌方削弱
+    CF = 0.7  # 可清除系数
     if "敌方" in desc:
         if ("物防" in desc and "魔防" in desc) or "双防" in desc:
-            pts["敌双防-"] = int(6*CF); universal += int(6*CF)
+            pts["敌双防-"] = int(6 * CF); final += int(6 * CF)
         elif "物防" in desc or "魔防" in desc:
-            pts["敌单防-"] = int(4*CF); universal += int(4*CF)
+            pts["敌单防-"] = int(4 * CF); final += int(4 * CF)
         if ("物攻" in desc and "魔攻" in desc) or "双攻" in desc:
-            pts["敌双攻-"] = int(5*CF); universal += int(5*CF)
+            pts["敌双攻-"] = int(5 * CF); final += int(5 * CF)
         elif "物攻" in desc or "魔攻" in desc:
-            pts["敌单攻-"] = int(3*CF); universal += int(3*CF)
+            pts["敌单攻-"] = int(3 * CF); final += int(3 * CF)
         if "速度" in desc and "降低" in desc:
-            pts["敌速-"] = 4; universal += 4
+            pts["敌速-"] = 3; final += 3
+        if "技能能耗" in desc:
+            pts["敌加费"] = 6; final += 6
 
-    if "自己" in desc or "自身" in desc:
-        bv = 0
-        # 攻击增益
-        if "物攻" in desc or "魔攻" in desc or "双攻" in desc:
-            if _find_int(r"物攻\+(\d+)%", desc) >= 100 or _find_int(r"魔攻\+(\d+)%", desc) >= 100:
-                bv += 4
-            elif _find_int(r"双攻\+(\d+)%", desc) >= 50:
-                bv += 4
-            elif _find_int(r"物攻\+(\d+)%", desc) >= 50 or _find_int(r"魔攻\+(\d+)%", desc) >= 50:
-                bv += 2  # 单攻+50~99%
-        # 速度增益
-        if re.search(r"速度\+", desc): bv += 3
-        # 防御增益
-        if re.search(r"(?:物防|魔防|双防)\+", desc) and "-\d" not in desc:
-            bv += 3
-        if bv > 0: pts["自增益"] = bv; universal += bv
+    # 自身强化 — 条件折扣: buff仅出现在条件子句中才打折
+    def _is_cond(buff_re):
+        """buff是否仅在条件子句中出现(不在正常描述中)"""
+        before = desc
+        for mk in ['若', '如果', '应对', '额外获得', '本技能位于']:
+            if mk in before:
+                before = before.split(mk)[0]
+        return not re.search(buff_re, before)
 
-    # 2e. 特殊机制
-    # 速度威力(闪击类)
-    if not is_pure_status and re.search(r"速度.*越高.*威力|威力.*速度", desc):
-        pts["速度威力"] = MECH["速度威力"]; universal += MECH["速度威力"]
+    atk_pct = max(
+        _find_int(r"物攻\+(\d+)%", desc),
+        _find_int(r"魔攻\+(\d+)%", desc),
+        _find_int(r"双攻\+(\d+)%", desc),
+    )
+    spd_pct = _find_int(r"速度\+(\d+)%", desc) or _find_int(r"速度\+(\d+)[^%]", desc) or _find_int(r"速度永久\+(\d+)", desc)
+    spd_is_pct = bool(_find_int(r"速度\+(\d+)%", desc))
+    def_pct = max(
+        _find_int(r"物防\+(\d+)%", desc),
+        _find_int(r"魔防\+(\d+)%", desc),
+        _find_int(r"双防\+(\d+)%", desc),
+    )
+    has_double = "增益翻倍" in desc or "翻倍增益" in desc
+    cond_atk = atk_pct > 0 and _is_cond(r'[物魔双]攻\+')
+    cond_spd = spd_pct > 0 and _is_cond(r'速度\+|速度永久\+')
+    cond_def = def_pct > 0 and _is_cond(r'[物魔双]防\+')
+    if atk_pct > 0 or spd_pct > 0 or def_pct > 0 or has_double:
+        bv = buff_value(atk_pct, spd_pct, def_pct)
+        # 条件强化打折
+        if cond_atk:
+            bv -= atk_pct / 10 * 3.5 * (1 - COND_DISCOUNT)
+        if cond_spd:
+            bv -= spd_pct / 10 * 2.0 * (1 - COND_DISCOUNT)
+        if cond_def:
+            bv -= def_pct / 10 * 2.3 * (1 - COND_DISCOUNT)
+        if atk_pct > 0:
+            k = f"攻+{atk_pct}%" + ("(条件)" if cond_atk else "")
+            pts[k] = round(atk_pct / 10 * 3.5 * (COND_DISCOUNT if cond_atk else 1.0), 1)
+        if spd_pct > 0:
+            suffix = "%" if spd_is_pct else ""
+            k = f"速+{spd_pct}{suffix}" + ("(条件)" if cond_spd else "")
+            pts[k] = round(spd_pct / 10 * 2.0 * (COND_DISCOUNT if cond_spd else 1.0), 1)
+        if def_pct > 0:
+            k = f"防+{def_pct}%" + ("(条件)" if cond_def else "")
+            pts[k] = round(def_pct / 10 * 2.3 * (COND_DISCOUNT if cond_def else 1.0), 1)
+        # 攻+速协同: 同时加输出和先手 → 推队能力
+        if atk_pct > 0 and spd_pct > 0:
+            synergy = min(atk_pct, spd_pct) / 10 * 2.0
+            if cond_atk or cond_spd:
+                synergy *= COND_DISCOUNT
+            pts["攻速协同"] = round(synergy, 1)
+            bv += synergy
+        # 翻倍增益: 有自身buff→按buff值50%估算; 纯翻倍→保守估计12
+        if has_double:
+            if atk_pct == 0 and spd_pct == 0 and def_pct == 0:
+                double_val = 12
+            else:
+                double_val = (atk_pct / 10 * 3.5 + spd_pct / 10 * 2.0 + def_pct / 10 * 2.3) * 0.5
+            double_val = min(double_val, 20)
+            pts["翻倍增益"] = round(double_val, 1)
+            bv += double_val
+        final += bv
 
-    # 多系联动(折射类) - 攻击/状态都可能
-    if "携带其他系别技能" in desc:
-        pts["多系联动"] = MECH["多系联动"]; universal += MECH["多系联动"]
-
+    # 特殊机制
     if "吸血" in desc:
         pct = _find_int(r"吸血(\d+)%", desc)
-        pts["吸血"] = MECH["吸血50"] if pct >= 50 else MECH["吸血"]; universal += pts["吸血"]
-
+        v = 6 if pct >= 50 else 4
+        pts["吸血"] = v; final += v
     if "传动" in desc:
         layers = _find_int(r"传动(\d+)", desc) or 1
-        val = MECH["传动"] * layers
-        pts["传动"] = val; universal += val
-    for kw in ["迸发", "奉献"]:
-        if kw in desc: pts[kw] = MECH[kw]; universal += MECH[kw]
-
-    if "连击数" in desc:
-        n = _find_int(r"连击数\+(\d+)", desc) or _find_int(r"连击数.(\d+)", desc)
-        k = "连击数++" if n >= 3 else "连击数+"
-        pts["连击数+"] = MECH[k]; universal += MECH[k]
-
+        v = MECH_BASE["传动"] * layers
+        if v != 0:
+            pts["传动"] = v; final += v
+    if "迸发" in desc:
+        pts["迸发"] = MECH_BASE["迸发"]; final += MECH_BASE["迸发"]
+    if "萌化转移给敌方" in desc or ("转移" in desc and "萌化" in desc and "敌方" in desc):
+        pts["萌化转移"] = 10; final += 10
+    if "全技能能耗永久" in desc:
+        n = _find_int(r"全技能能耗永久-(\d+)", desc) or 1
+        pts["能耗永久-"] = n * 8; final += n * 8
+    if re.search(r"连击数\+|连击数永久|连击数翻倍", desc):
+        n = _find_int(r"连击数\+(\d+)", desc) or _find_int(r"连击数永久\+(\d+)", desc) or 1
+        n = min(n, 5)
+        pts["连击数+"] = n * GROWTH["combo"]; final += n * GROWTH["combo"]
     if "连击" in desc and "连击数" not in desc:
-        n = _find_int(r"(\d+)连击", desc)
-        if n >= 3: pts[f"{n}连击"] = MECH["3连击"]; universal += MECH["3连击"]
-        elif n >= 2: pts[f"{n}连击"] = MECH["2连击"]; universal += MECH["2连击"]
-
-    has_escape = False
+        n = _find_int(r"(\d+)连击", desc) or 2
+        pts[f"{n}连击"] = 3 if n >= 2 else 0; final += 3 if n >= 2 else 0
     if "脱离" in desc:
-        if "紧急" in desc: pts["紧急脱离"] = MECH["紧急脱离"]; universal += MECH["紧急脱离"]
-        elif "敌" in desc: pts["敌脱离"] = MECH["敌脱离"]; universal += MECH["敌脱离"]
-        else: pts["脱离"] = MECH["脱离"]; universal += MECH["脱离"]; has_escape = True
-
-    # 攻击+脱离/防御+脱离 combo
-    if has_escape and not is_pure_status:
-        pts["攻+脱离"] = MECH["攻+脱离"]; universal += MECH["攻+脱离"]
-    if has_escape and is_pure_status and "减伤" in desc:
-        pts["防+脱离"] = MECH["防+脱离"]; universal += MECH["防+脱离"]
-
-    if "返场" in desc: pts["返场"] = MECH["返场"]; universal += MECH["返场"]
-    if "聒噪" in desc or "全攻击技能能耗" in desc: pts["聒噪"] = MECH["聒噪"]; universal += MECH["聒噪"]
-
-    if "失去" in desc and "能量" in desc and "敌方" in desc:
-        e = _find_int(r"失去(\d+)能量", desc)
-        pts["烧能量"] = MECH["烧能量6+" if e >= 6 else "烧能量"]; universal += pts["烧能量"]
-
+        if "紧急" in desc:
+            pts["紧急脱离"] = 5; final += 5
+        elif "敌" in desc:
+            pts["敌脱离"] = MECH_BASE["敌脱离"]; final += MECH_BASE["敌脱离"]
+        else:
+            pts["脱离"] = MECH_BASE["脱离"]; final += MECH_BASE["脱离"]
+    if "聒噪" in desc or "全攻击技能能耗" in desc:
+        pts["聒噪"] = MECH_BASE["聒噪"]; final += MECH_BASE["聒噪"]
+    if ("失去" in desc or "偷取" in desc) and "能量" in desc and "敌方" in desc:
+        e = _find_int(r"(?:失去|偷取)(\d+)能量", desc)
+        v = 8 if e >= 6 else MECH_BASE["烧能量"]
+        pts["烧能量"] = v; final += v
     if "回复" in desc and "能量" in desc and "敌方" not in desc:
         e = _find_int(r"回复(\d+)能量", desc)
-        pts["回能"] = MECH["回能4+" if e >= 4 else "回能"]; universal += pts["回能"]
-
+        v = 6 if e >= 4 else MECH_BASE["回能"]
+        pts["回能"] = v; final += v
     if "回复" in desc and ("HP" in desc or "生命" in desc) and "敌方" not in desc and "吸血" not in desc:
-        pct = _find_int(r"回复(\d+)%", desc)
-        pts["回血"] = MECH["回血40+" if pct >= 40 else "回血"]; universal += pts["回血"]
+        pts["回血"] = 4; final += 4
+    if "清减益" in desc or ("驱散" in desc and "减益" in desc and "敌方" not in desc and "自己的减益" in desc):
+        pts["清减益"] = MECH_BASE["清减益"]; final += MECH_BASE["清减益"]
+    if "清增益" in desc or (re.search(r"驱散.*增益|清除.*增益", desc) and "驱散自己的减益" not in desc):
+        pts["清增益"] = MECH_BASE["清增益"]; final += MECH_BASE["清增益"]
+    if re.search(r"天气(?!系别)", desc) or "沙暴" in desc or "暴风雪" in desc or "雨天" in desc:
+        pts["天气"] = MECH_BASE["天气"]; final += MECH_BASE["天气"]
+    if re.search(r"减益的?层数翻倍|翻倍减益", desc):
+        pts["翻倍减益"] = MECH_BASE["翻倍减益"]; final += MECH_BASE["翻倍减益"]
+    if "交换技能" in desc:
+        pts["交换技能"] = MECH_BASE["交换技能"]; final += MECH_BASE["交换技能"]
+    if "转化增益" in desc:
+        pts["转化增益"] = MECH_BASE["转化增益"]; final += MECH_BASE["转化增益"]
+    if "释放" in desc and "迅捷" in desc and "连" in desc:
+        pts["迅捷链"] = MECH_BASE["迅捷链"]; final += MECH_BASE["迅捷链"]
 
-    # 2f. 减伤
-    if "减伤" in desc:
-        pct = _find_int(r"减伤(\d+)%", desc)
-        if pct >= 70: pts["减伤70%+"] = DEFENSE["减伤70+"]; universal += DEFENSE["减伤70+"]
-        elif pct >= 60: pts["减伤60%"] = DEFENSE["减伤60"]; universal += DEFENSE["减伤60"]
-        else: pts["减伤"] = DEFENSE["减伤"]; universal += DEFENSE["减伤"]
-
-    # 2g. 成长
+    # 成长类
     if "威力永久" in desc:
         pw = _find_int(r"威力永久\+(\d+)", desc) or _find_int(r"永久\+(\d+)", desc)
-        if pw > 0: pts["威力成长"] = int(pw*GROWTH["power"]); universal += int(pw*GROWTH["power"])
-    elif "威力永久翻倍" in desc: pts["威力翻倍成长"] = 14; universal += 14
+        if pw > 0:
+            # 条件性成长折扣 (如"每应对成功，威力永久+X")
+            before = desc
+            for mk in ['若', '如果', '应对', '额外获得', '本技能位于']:
+                if mk in before:
+                    before = before.split(mk)[0]
+            is_cond = not re.search(r'威力永久', before)
+            gv = pw * GROWTH["power"] * (COND_DISCOUNT if is_cond else 1.0)
+            k = "威力成长(条件)" if is_cond else "威力成长"
+            pts[k] = int(gv); final += int(gv)
+    elif power == 0 and "威力" in desc:
+        # 状态技能临时威力强化 (如"攻击技能威力+70")
+        tmp = _find_int(r"威力\+(\d+)", desc)
+        if tmp > 0:
+            v = min(tmp * 0.15, 10)
+            pts["威力强化"] = round(v, 1); final += v
+        pts["威力强化"] = round(v, 1); final += v
 
-    if "连击数永久" in desc:
-        cg = _find_int(r"连击数永久\+(\d+)", desc)
-        if cg > 0: pts["连击成长"] = cg * GROWTH["combo"]; universal += cg * GROWTH["combo"]
+    # 负面惩罚
+    if "消耗全部生命" in desc:
+        pts["自杀"] = PENALTY["自杀"]; final += PENALTY["自杀"]
+    # 自身获得负面属性 (非应对条件，确凿的自debuff)
+    for m in re.finditer(r'自己.{0,25}?([物魔双]攻|[物魔双]防|速度)[-−](\d+)', desc):
+        stat, val = m.group(1), int(m.group(2))
+        # 跳过应对句式: 这是应对失败的默认状态，已有应对风险扣分
+        if re.search(rf'{stat}[-−]{val}.*应对', desc):
+            continue
+        if '攻' in stat:
+            penalty = -round(val / 10 * 2.5, 1)
+        elif '防' in stat:
+            penalty = -round(val / 10 * 1.7, 1)
+        else:
+            penalty = -round(val / 10 * 2.0, 1)
+        pts[f"自{stat}-{val}"] = penalty
+        final += penalty
+    # 纯自萌化 (非敌方/双方) 是永久负面
+    if "自己获得萌化" in desc and "敌方" not in desc and "双方" not in desc:
+        pts["自萌化"] = -7; final += -7
 
-    if "能耗永久" in desc:
-        cr = _find_int(r"能耗永久-(\d+)", desc)
-        if cr >= 6: pts["能耗-6+"] = GROWTH["cost6+"]; universal += GROWTH["cost6+"]
-        elif cr >= 4: pts["能耗-4+"] = GROWTH["cost4+"]; universal += GROWTH["cost4+"]
-        elif cr >= 3: pts["能耗-3"] = GROWTH["cost3"]; universal += GROWTH["cost3"]
-        elif cr >= 1: pts["能耗-1~2"] = GROWTH["cost1-2"]; universal += GROWTH["cost1-2"]
+    if "蓄力" in desc:
+        pts["蓄力"] = PENALTY["蓄力"]; final += PENALTY["蓄力"]
+    if "对自己" in desc and "造成" in desc:
+        pts["自伤"] = PENALTY["自伤"]; final += PENALTY["自伤"]
+    # 应对失败风险: 自身有负面效果，仅应对成功才转为正面
+    if re.search(r'(?:获得|自己).{0,10}[-−]\d+%.{0,30}应对', desc):
+        pts["应对风险"] = -5; final += -5
 
-    # 2h. 纯状态技能特殊效果
-    if is_pure_status:
-        sp = 0
-        D = desc  # shorthand
-
-        # 技能复制/变换
-        if "随机变成" in D:
-            if "敌方" in D: sp += MECH["技能复制"]; pts["变敌方技能"] = MECH["技能复制"]
-            elif "己方" in D: sp += MECH["技能复制"]; pts["变队友技能"] = MECH["技能复制"]
-            else: sp += MECH["技能复制"]; pts["变技能"] = MECH["技能复制"]
-
-        # 偷取/回复能量
-        if "偷取" in D and "能量" in D: sp += MECH["偷能量"]; pts["偷能量"] = MECH["偷能量"]
-        if re.search(r"下次.*能耗", D): sp += MECH["下次减费"]; pts["下次减费"] = MECH["下次减费"]
-
-        # 敌方技能加费
-        if "敌方" in D and re.search(r"技能能耗\+", D): sp += MECH["敌加费"]; pts["敌加费"] = MECH["敌加费"]
-        if "敌方" in D and re.search(r"全技能能耗\+", D): sp += MECH["敌加费"]; pts["敌加费"] = MECH["敌加费"]
-
-        # 清除减益/增益
-        if re.search(r"驱散.*(?:减益|自己)", D): sp += MECH["清减益"]; pts["清减益"] = MECH["清减益"]
-        if re.search(r"驱散.*(?:增益|敌方|所有)", D): sp += MECH["清增益"]; pts["清增益"] = MECH["清增益"]
-
-        # 天气
-        if re.search(r"天气|沙暴|暴风雪|雨天", D): sp += MECH["天气"]; pts["天气"] = MECH["天气"]
-
-        # 翻倍减益/增益
-        if re.search(r"减益.*翻倍|层数翻倍", D): sp += MECH["翻倍减益"]; pts["翻倍减益"] = MECH["翻倍减益"]
-        if re.search(r"增益翻倍", D): sp += MECH["翻倍增益"]; pts["翻倍增益"] = MECH["翻倍增益"]
-
-        # 增益→中毒
-        if re.search(r"增益.*转化", D) and "中毒" in D: sp += MECH["转化增益"]; pts["转化增益"] = MECH["转化增益"]
-
-        # 交换类
-        if re.search(r"交换.*生命", D): sp += MECH["交换HP"]; pts["交换HP"] = MECH["交换HP"]
-        if re.search(r"交换.*增益", D): sp += MECH["交换增益减益"]; pts["交换增益减益"] = MECH["交换增益减益"]
-        if re.search(r"交换.*技能", D): sp += MECH["交换技能"]; pts["交换技能"] = MECH["交换技能"]
-
-        # 继承/传递
-        if re.search(r"继承.*增益", D): sp += MECH["继承增益"]; pts["继承增益"] = MECH["继承增益"]
-        if re.search(r"被动.*能耗|两侧技能能耗", D): sp += MECH["被动减费"]; pts["被动减费"] = MECH["被动减费"]
-
-        # 全队效果
-        if "场下" in D and "回复" in D: sp += MECH["全队回能"]; pts["全队回能"] = MECH["全队回能"]
-
-        # 技能威力调整 (力量吞噬/提气/漫反射等)
-        if re.search(r"技能威力[+-]", D) and "敌方" not in D:
-            sp += MECH["随机强化"]; pts["技能强化"] = MECH["随机强化"]
-        if re.search(r"威力\+[3-9]\d", D) and "敌方" not in D:
-            sp += MECH["随机强化"]; pts["技能强化"] = MECH["随机强化"]
-
-        # 下回合强化
-        if "下一次" in D and "威力" in D: sp += 5; pts["下回合强化"] = 5
-
-        # 冷却锁定
-        if "冷却" in D and "应对" in D: sp += MECH["冷却锁定"]; pts["冷却锁定"] = MECH["冷却锁定"]
-
-        # 疾风连袭: 迅捷链
-        if re.search(r"释放.*迅捷", D): sp += MECH["迅捷链"]; pts["迅捷链"] = MECH["迅捷链"]
-
-        # 联动装置: 相邻成长
-        if "两侧技能.*永久" in D: sp += MECH["相邻成长"]; pts["相邻成长"] = MECH["相邻成长"]
-
-        universal += sp
-
-    # 2i. 惩罚
-    penalty = 0
-    if "消耗全部生命" in desc: penalty += PENALTY["自杀"]; pts["自杀"] = PENALTY["自杀"]
-    if "蓄力" in desc: penalty += PENALTY["蓄力"]; pts["蓄力"] = PENALTY["蓄力"]
-    if "对自己" in desc and "造成" in desc: penalty += PENALTY["自伤"]; pts["自伤"] = PENALTY["自伤"]
-    if "降低" in desc and ("自己" in desc or "自身" in desc): penalty += PENALTY["自减益"]; pts["自减益"] = PENALTY["自减益"]
-    universal += penalty
+    # 属性系数修正 (攻击技能影响更大)
+    if power > 0:
+        pts["属性系数"] = round(tc, 2)
+        final = round(final * tc, 1)
 
     # ========================
-    # 最终计算
+    # 3. 费用惩罚 (仅非输出技能，防御技能惩罚更高)
     # ========================
-    if is_pure_status:
-        adj_tc = 0.85 + tc * 0.15
-        type_adj = type_dep * adj_tc
-        cost_penalty = cost * COST_PENALTY
-        final = type_adj + universal - cost_penalty
-        pts["费机会成本"] = -cost_penalty
-    else:
-        pw_portion = pts.get("威力效率", 0)
-        counter_portion = type_dep - pw_portion
-        counter_tc = 1.0 + (tc - 1.0) * 0.4
-        type_adj = pw_portion * tc + counter_portion * counter_tc
-        final = type_adj + universal
+    if power == 0:
+        penalty = fee_penalty(cost)
+        is_defense = "减伤" in desc or ("减少" in desc and "伤害" in desc)
+        if is_defense:
+            penalty = int(penalty * DEF_PENALTY_MULT)
+        if penalty > 0:
+            pts["费用惩罚"] = -penalty
+        final = max(0, final - penalty)
 
-    return final, {
+    return round(final, 1), {
         "name": name, "element": element, "category": skill.get("category", ""),
         "cost": cost, "power": power, "desc": desc,
-        "type_coef": tc, "type_dep": round(type_dep, 1),
-        "type_adj": round(type_adj, 1), "universal": round(universal, 1),
-        "final_score": round(final, 1), "points": pts,
-        "is_pure_status": is_pure_status,
+        "type_coef": tc,
+        "score": round(final, 1), "points": pts,
     }
 
 
@@ -454,9 +502,9 @@ def generate_rankings():
     results.sort(key=lambda x: -x[0])
     tiered = []
     for score, bd in results:
-        if score >= 55: tier = "S"
-        elif score >= 42: tier = "A"
-        elif score >= 28: tier = "B"
+        if score >= 32: tier = "S"
+        elif score >= 24: tier = "A"
+        elif score >= 14: tier = "B"
         else: tier = "C"
         tiered.append((tier, score, bd))
     return tiered, len(skill_map)
@@ -464,10 +512,10 @@ def generate_rankings():
 
 def print_rankings(tiered, total_count):
     lines = []
-    lines.append("=" * 130)
-    lines.append(f"技能评分 v3 — 等效伤害量化体系 (总计 {total_count} 个技能)")
-    lines.append("纯状态技能: 总分=效果价值-费机会成本(cost×3) | 印记按全队总收益量化")
-    lines.append("=" * 130)
+    lines.append("=" * 100)
+    lines.append(f"技能评分 v6 — 统一实战价值体系 (总计 {total_count} 个技能)")
+    lines.append("三类技能从底层平衡: 输出×威力边际递减 | 防御×费用效率 | 状态×效果综合")
+    lines.append("=" * 100)
     tc_counts = {"S": 0, "A": 0, "B": 0, "C": 0}
     prev_tier = None
     for rank, (tier, score, bd) in enumerate(tiered, 1):
@@ -477,12 +525,23 @@ def print_rankings(tiered, total_count):
         pts = bd["points"]
         pts_str = "; ".join(f"{k}={v}" for k, v in pts.items())
         pwr_str = str(bd["power"]) if bd["power"] > 0 else "—"
-        tc_str = f"属×{bd['type_coef']:.2f}" if bd['type_coef'] != 1.0 else ""
-        lines.append(f"{rank:<5} {tier:<3} {bd['name']:<16} {bd['element']:<4} {bd['category']:<4} "
-                     f"费{bd['cost']:<4} 威{pwr_str:<6} {score:>7.1f}  {tc_str}  {pts_str}")
-    lines.append(f"\n{'='*130}")
+        lines.append(f"{rank:<4} {tier:<3} {bd['name']:<12} {bd['element']:<4} {bd['category']:<4} "
+                     f"费{bd['cost']:<4} 威{pwr_str:<4} {score:>6.1f}  {pts_str}")
+    lines.append(f"\n{'='*100}")
     lines.append(f"层级分布: S={tc_counts['S']} A={tc_counts['A']} B={tc_counts['B']} C={tc_counts['C']}")
     return "\n".join(lines)
+
+
+def save_json(tiered):
+    json_data = [{
+        "rank": i+1, "tier": tier, "name": bd["name"], "element": bd["element"],
+        "category": bd["category"], "cost": bd["cost"], "power": bd["power"],
+        "score": round(score, 1), "type_coef": bd["type_coef"],
+        "is_pure_status": bd["power"] == 0,
+        "points": bd["points"], "desc": bd["desc"],
+    } for i, (tier, score, bd) in enumerate(tiered)]
+    with open(DATA_DIR / "all_skill_rankings.json", "w", encoding="utf-8") as f:
+        json.dump(json_data, f, ensure_ascii=False, indent=2)
 
 
 if __name__ == "__main__":
@@ -490,29 +549,8 @@ if __name__ == "__main__":
     output = print_rankings(tiered, total)
     (DATA_DIR / "all_skill_rankings.txt").write_text(output, encoding="utf-8")
     print(f"已保存 data/all_skill_rankings.txt")
-
-    json_data = [{
-        "rank": i+1, "tier": tier, "name": bd["name"], "element": bd["element"],
-        "category": bd["category"], "cost": bd["cost"], "power": bd["power"],
-        "score": round(score, 1), "type_coef": bd["type_coef"],
-        "type_dep": bd["type_dep"], "type_adj": bd["type_adj"],
-        "universal": bd["universal"], "is_pure_status": bd["is_pure_status"],
-        "points": bd["points"], "desc": bd["desc"],
-    } for i, (tier, score, bd) in enumerate(tiered)]
-
-    with open(DATA_DIR / "all_skill_rankings.json", "w", encoding="utf-8") as f:
-        json.dump(json_data, f, ensure_ascii=False, indent=2)
+    save_json(tiered)
     print(f"已保存 data/all_skill_rankings.json")
-
     tc_counts = {"S": 0, "A": 0, "B": 0, "C": 0}
     for tier, _, _ in tiered: tc_counts[tier] += 1
     print(f"\n层级分布: S={tc_counts['S']} A={tc_counts['A']} B={tc_counts['B']} C={tc_counts['C']}")
-
-    print("\n" + "=" * 110)
-    print("Top 30")
-    print("=" * 110)
-    for rank, (tier, score, bd) in enumerate(tiered[:30], 1):
-        pts = bd["points"]
-        pts_short = " | ".join(f"{k}:{v}" for k, v in pts.items())
-        print(f"{rank:>2}. [{tier}] {bd['name']:<14} {bd['element']}/{bd['category']} "
-              f"费{bd['cost']} 威{bd['power']} → {score:.1f} | {pts_short}")
