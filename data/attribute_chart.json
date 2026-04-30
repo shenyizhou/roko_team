@@ -1,1340 +1,669 @@
 {
-  "generatedAt": "2026-03-07T03:58:12.596Z",
-  "order": [
-    "water",
-    "fire",
-    "ice",
-    "mechanical",
-    "normal",
-    "fighting",
-    "poison",
-    "wing",
-    "cute",
-    "bug",
-    "ground",
-    "ghost",
-    "dragon",
-    "demon",
-    "light",
-    "electric",
-    "grass",
-    "fantasy"
-  ],
   "attributes": [
     {
-      "key": "water",
-      "nameCn": "水",
-      "nameEn": "Water",
-      "logoUrl": "https://game.gtimg.cn/images/rocom/web202504/index/part2/icon-type-2.png",
-      "battleMultiplier": {
-        "offense": {
-          "0.5": [
-            "grass",
-            "ice",
-            "dragon"
-          ],
-          "2.0": [
-            "fire",
-            "ground",
-            "mechanical"
-          ]
-        },
-        "defense": {
-          "0.5": [
-            "fire",
-            "mechanical"
-          ],
-          "2.0": [
-            "grass",
-            "electric"
-          ]
-        }
-      }
-    },
-    {
-      "key": "fire",
       "nameCn": "火",
-      "nameEn": "Fire",
-      "logoUrl": "https://game.gtimg.cn/images/rocom/web202504/index/part2/icon-type-3.png",
+      "key": "火",
       "battleMultiplier": {
         "offense": {
-          "0.5": [
-            "water",
-            "ground",
-            "dragon"
+          "2": [
+            "草",
+            "冰",
+            "虫",
+            "机械"
           ],
-          "2.0": [
-            "grass",
-            "ice",
-            "bug",
-            "mechanical"
-          ]
-        },
-        "defense": {
-          "0.5": [
-            "grass",
-            "ice",
-            "bug",
-            "mechanical",
-            "cute"
+          "1": [
+            "火",
+            "光",
+            "恶魔",
+            "幽灵",
+            "一般",
+            "电",
+            "毒",
+            "武",
+            "翼",
+            "萌",
+            "幻"
           ],
-          "2.0": [
-            "water",
-            "ground"
+          "0": [
+            "水",
+            "地",
+            "龙"
           ]
         }
+      },
+      "game_scores": {
+        "offense": 1,
+        "defense": 3,
+        "total": 4
       }
     },
     {
-      "key": "ice",
-      "nameCn": "冰",
-      "nameEn": "Ice",
-      "logoUrl": "https://game.gtimg.cn/images/rocom/web202504/index/part2/icon-type-7.png",
+      "nameCn": "水",
+      "key": "水",
       "battleMultiplier": {
         "offense": {
-          "0.5": [
-            "fire",
-            "ice",
-            "mechanical"
+          "2": [
+            "火",
+            "地",
+            "机械"
           ],
-          "2.0": [
-            "grass",
-            "ground",
-            "dragon",
-            "wing"
-          ]
-        },
-        "defense": {
-          "0.5": [
-            "water",
-            "light",
-            "ice"
+          "1": [
+            "水",
+            "光",
+            "恶魔",
+            "幽灵",
+            "一般",
+            "电",
+            "毒",
+            "虫",
+            "武",
+            "翼",
+            "萌",
+            "幻"
           ],
-          "2.0": [
-            "fire",
-            "ground",
-            "fighting",
-            "mechanical"
+          "0": [
+            "草",
+            "冰",
+            "龙"
           ]
         }
+      },
+      "game_scores": {
+        "offense": 0,
+        "defense": 0,
+        "total": 0
       }
     },
     {
-      "key": "mechanical",
-      "nameCn": "机械",
-      "nameEn": "Mechanical",
-      "logoUrl": "https://game.gtimg.cn/images/rocom/web202504/index/part2/icon-type-12.png",
-      "battleMultiplier": {
-        "offense": {
-          "0.5": [
-            "fire",
-            "water",
-            "electric",
-            "mechanical"
-          ],
-          "2.0": [
-            "ground",
-            "ice",
-            "cute"
-          ]
-        },
-        "defense": {
-          "0.5": [
-            "normal",
-            "poison",
-            "ice",
-            "wing",
-            "bug",
-            "cute",
-            "grass",
-            "mechanical",
-            "dragon",
-            "fantasy"
-          ],
-          "2.0": [
-            "fire",
-            "water",
-            "fighting"
-          ]
-        }
-      }
-    },
-    {
-      "key": "normal",
-      "nameCn": "普通",
-      "nameEn": "Normal",
-      "logoUrl": "https://game.gtimg.cn/images/rocom/web202504/index/part2/icon-type-16.png",
-      "battleMultiplier": {
-        "offense": {
-          "0.5": [
-            "ground",
-            "ghost",
-            "mechanical"
-          ],
-          "2.0": []
-        },
-        "defense": {
-          "0.5": [
-            "ghost"
-          ],
-          "2.0": [
-            "fighting"
-          ]
-        }
-      }
-    },
-    {
-      "key": "fighting",
-      "nameCn": "武",
-      "nameEn": "Fighting",
-      "logoUrl": "https://game.gtimg.cn/images/rocom/web202504/index/part2/icon-type-8.png",
-      "battleMultiplier": {
-        "offense": {
-          "0.5": [
-            "poison",
-            "bug",
-            "wing",
-            "cute",
-            "ghost",
-            "fantasy"
-          ],
-          "2.0": [
-            "normal",
-            "ground",
-            "ice",
-            "demon",
-            "mechanical"
-          ]
-        },
-        "defense": {
-          "0.5": [
-            "ground",
-            "bug",
-            "demon"
-          ],
-          "2.0": [
-            "cute",
-            "wing",
-            "fantasy"
-          ]
-        }
-      }
-    },
-    {
-      "key": "poison",
-      "nameCn": "毒",
-      "nameEn": "Poison",
-      "logoUrl": "https://game.gtimg.cn/images/rocom/web202504/index/part2/icon-type-5.png",
-      "battleMultiplier": {
-        "offense": {
-          "0.5": [
-            "ground",
-            "poison",
-            "ghost",
-            "mechanical"
-          ],
-          "2.0": [
-            "grass",
-            "cute"
-          ]
-        },
-        "defense": {
-          "0.5": [
-            "grass",
-            "poison",
-            "bug",
-            "fighting",
-            "cute"
-          ],
-          "2.0": [
-            "ground",
-            "fantasy",
-            "demon"
-          ]
-        }
-      }
-    },
-    {
-      "key": "wing",
-      "nameCn": "翼",
-      "nameEn": "Wing",
-      "logoUrl": "https://game.gtimg.cn/images/rocom/web202504/index/part2/icon-type-17.png",
-      "battleMultiplier": {
-        "offense": {
-          "0.5": [
-            "ground",
-            "dragon",
-            "electric",
-            "mechanical"
-          ],
-          "2.0": [
-            "grass",
-            "bug",
-            "fighting"
-          ]
-        },
-        "defense": {
-          "0.5": [
-            "grass",
-            "bug",
-            "fighting"
-          ],
-          "2.0": [
-            "electric",
-            "ice"
-          ]
-        }
-      }
-    },
-    {
-      "key": "cute",
-      "nameCn": "萌",
-      "nameEn": "Cute",
-      "logoUrl": "https://game.gtimg.cn/images/rocom/web202504/index/part2/icon-type-9.png",
-      "battleMultiplier": {
-        "offense": {
-          "0.5": [
-            "fire",
-            "poison",
-            "mechanical"
-          ],
-          "2.0": [
-            "dragon",
-            "fighting",
-            "demon"
-          ]
-        },
-        "defense": {
-          "0.5": [
-            "bug",
-            "fighting"
-          ],
-          "2.0": [
-            "demon",
-            "poison",
-            "mechanical"
-          ]
-        }
-      }
-    },
-    {
-      "key": "bug",
-      "nameCn": "虫",
-      "nameEn": "Bug",
-      "logoUrl": "https://game.gtimg.cn/images/rocom/web202504/index/part2/icon-type-15.png",
-      "battleMultiplier": {
-        "offense": {
-          "0.5": [
-            "fire",
-            "poison",
-            "fighting",
-            "wing",
-            "cute",
-            "ghost",
-            "mechanical"
-          ],
-          "2.0": [
-            "grass",
-            "fantasy",
-            "demon"
-          ]
-        },
-        "defense": {
-          "0.5": [
-            "grass",
-            "ice",
-            "cute",
-            "bug",
-            "mechanical"
-          ],
-          "2.0": [
-            "fire",
-            "wing",
-            "water",
-            "ground"
-          ]
-        }
-      }
-    },
-    {
-      "key": "ground",
-      "nameCn": "地面",
-      "nameEn": "Ground",
-      "logoUrl": "https://game.gtimg.cn/images/rocom/web202504/index/part2/icon-type-18.png",
-      "battleMultiplier": {
-        "offense": {
-          "0.5": [
-            "grass",
-            "fighting"
-          ],
-          "2.0": [
-            "fire",
-            "ice",
-            "electric",
-            "poison"
-          ]
-        },
-        "defense": {
-          "0.5": [
-            "normal",
-            "fire",
-            "electric",
-            "poison",
-            "wing"
-          ],
-          "2.0": [
-            "grass",
-            "water",
-            "ice",
-            "fighting",
-            "mechanical"
-          ]
-        }
-      }
-    },
-    {
-      "key": "ghost",
-      "nameCn": "幽灵",
-      "nameEn": "Ghost",
-      "logoUrl": "https://game.gtimg.cn/images/rocom/web202504/index/part2/icon-type-13.png",
-      "battleMultiplier": {
-        "offense": {
-          "0.5": [
-            "normal",
-            "demon"
-          ],
-          "2.0": [
-            "light",
-            "ghost",
-            "fantasy"
-          ]
-        },
-        "defense": {
-          "0.5": [
-            "normal",
-            "poison",
-            "bug",
-            "fighting"
-          ],
-          "2.0": [
-            "light",
-            "ghost",
-            "demon"
-          ]
-        }
-      }
-    },
-    {
-      "key": "dragon",
-      "nameCn": "龙",
-      "nameEn": "Dragon",
-      "logoUrl": "https://game.gtimg.cn/images/rocom/web202504/index/part2/icon-type-11.png",
-      "battleMultiplier": {
-        "offense": {
-          "0.5": [
-            "mechanical"
-          ],
-          "2.0": [
-            "dragon"
-          ]
-        },
-        "defense": {
-          "0.5": [
-            "grass",
-            "fire",
-            "water",
-            "electric",
-            "wing"
-          ],
-          "2.0": [
-            "ice",
-            "dragon",
-            "cute"
-          ]
-        }
-      }
-    },
-    {
-      "key": "demon",
-      "nameCn": "恶魔",
-      "nameEn": "Demon",
-      "logoUrl": "https://game.gtimg.cn/images/rocom/web202504/index/part2/icon-type-14.png",
-      "battleMultiplier": {
-        "offense": {
-          "0.5": [
-            "light",
-            "fighting",
-            "demon"
-          ],
-          "2.0": [
-            "poison",
-            "ghost",
-            "cute"
-          ]
-        },
-        "defense": {
-          "0.5": [
-            "ghost",
-            "demon"
-          ],
-          "2.0": [
-            "light",
-            "fighting",
-            "bug",
-            "cute"
-          ]
-        }
-      }
-    },
-    {
-      "key": "light",
-      "nameCn": "光",
-      "nameEn": "Light",
-      "logoUrl": "https://game.gtimg.cn/images/rocom/web202504/index/part2/icon-type-10.png",
-      "battleMultiplier": {
-        "offense": {
-          "0.5": [
-            "grass",
-            "ice"
-          ],
-          "2.0": [
-            "ghost",
-            "demon"
-          ]
-        },
-        "defense": {
-          "0.5": [
-            "fantasy",
-            "demon"
-          ],
-          "2.0": [
-            "grass",
-            "ghost"
-          ]
-        }
-      }
-    },
-    {
-      "key": "electric",
-      "nameCn": "电",
-      "nameEn": "Electric",
-      "logoUrl": "https://game.gtimg.cn/images/rocom/web202504/index/part2/icon-type-4.png",
-      "battleMultiplier": {
-        "offense": {
-          "0.5": [
-            "grass",
-            "ground",
-            "dragon",
-            "electric"
-          ],
-          "2.0": [
-            "water",
-            "wing"
-          ]
-        },
-        "defense": {
-          "0.5": [
-            "electric",
-            "wing",
-            "mechanical"
-          ],
-          "2.0": [
-            "ground"
-          ]
-        }
-      }
-    },
-    {
-      "key": "grass",
       "nameCn": "草",
-      "nameEn": "Grass",
-      "logoUrl": "https://game.gtimg.cn/images/rocom/web202504/index/part2/icon-type-1.png",
+      "key": "草",
       "battleMultiplier": {
         "offense": {
-          "0.5": [
-            "fire",
-            "dragon",
-            "poison",
-            "bug",
-            "wing",
-            "mechanical"
+          "2": [
+            "水",
+            "光",
+            "地"
           ],
-          "2.0": [
-            "water",
-            "ground"
-          ]
-        },
-        "defense": {
-          "0.5": [
-            "water",
-            "light",
-            "ground",
-            "electric"
+          "1": [
+            "草",
+            "恶魔",
+            "幽灵",
+            "一般",
+            "冰",
+            "电",
+            "武",
+            "萌",
+            "幻"
           ],
-          "2.0": [
-            "fire",
-            "ice",
-            "poison",
-            "bug",
-            "wing"
+          "0": [
+            "火",
+            "龙",
+            "毒",
+            "虫",
+            "翼",
+            "机械"
           ]
         }
+      },
+      "game_scores": {
+        "offense": -3,
+        "defense": -1,
+        "total": -4
       }
     },
     {
-      "key": "fantasy",
-      "nameCn": "幻",
-      "nameEn": "Fantasy",
-      "logoUrl": "https://game.gtimg.cn/images/rocom/web202504/index/part2/icon-type-6.png",
+      "nameCn": "光",
+      "key": "光",
       "battleMultiplier": {
         "offense": {
-          "0.5": [
-            "light",
-            "fantasy",
-            "mechanical"
+          "2": [
+            "恶魔",
+            "幽灵"
           ],
-          "2.0": [
-            "poison",
-            "fighting"
-          ]
-        },
-        "defense": {
-          "0.5": [
-            "fighting",
-            "fantasy"
+          "1": [
+            "火",
+            "水",
+            "光",
+            "一般",
+            "地",
+            "龙",
+            "电",
+            "毒",
+            "虫",
+            "武",
+            "翼",
+            "萌",
+            "机械",
+            "幻"
           ],
-          "2.0": [
-            "ghost",
-            "bug"
+          "0": [
+            "草",
+            "冰"
           ]
         }
-      }
-    }
-  ],
-  "matrix": {
-    "offense": {
-      "water": {
-        "water": 1,
-        "fire": 2,
-        "ice": 0.5,
-        "mechanical": 2,
-        "normal": 1,
-        "fighting": 1,
-        "poison": 1,
-        "wing": 1,
-        "cute": 1,
-        "bug": 1,
-        "ground": 2,
-        "ghost": 1,
-        "dragon": 0.5,
-        "demon": 1,
-        "light": 1,
-        "electric": 1,
-        "grass": 0.5,
-        "fantasy": 1
       },
-      "fire": {
-        "water": 0.5,
-        "fire": 1,
-        "ice": 2,
-        "mechanical": 2,
-        "normal": 1,
-        "fighting": 1,
-        "poison": 1,
-        "wing": 1,
-        "cute": 1,
-        "bug": 2,
-        "ground": 0.5,
-        "ghost": 1,
-        "dragon": 0.5,
-        "demon": 1,
-        "light": 1,
-        "electric": 1,
-        "grass": 2,
-        "fantasy": 1
-      },
-      "ice": {
-        "water": 1,
-        "fire": 0.5,
-        "ice": 0.5,
-        "mechanical": 0.5,
-        "normal": 1,
-        "fighting": 1,
-        "poison": 1,
-        "wing": 2,
-        "cute": 1,
-        "bug": 1,
-        "ground": 2,
-        "ghost": 1,
-        "dragon": 2,
-        "demon": 1,
-        "light": 1,
-        "electric": 1,
-        "grass": 2,
-        "fantasy": 1
-      },
-      "mechanical": {
-        "water": 0.5,
-        "fire": 0.5,
-        "ice": 2,
-        "mechanical": 0.5,
-        "normal": 1,
-        "fighting": 1,
-        "poison": 1,
-        "wing": 1,
-        "cute": 2,
-        "bug": 1,
-        "ground": 2,
-        "ghost": 1,
-        "dragon": 1,
-        "demon": 1,
-        "light": 1,
-        "electric": 0.5,
-        "grass": 1,
-        "fantasy": 1
-      },
-      "normal": {
-        "water": 1,
-        "fire": 1,
-        "ice": 1,
-        "mechanical": 0.5,
-        "normal": 1,
-        "fighting": 1,
-        "poison": 1,
-        "wing": 1,
-        "cute": 1,
-        "bug": 1,
-        "ground": 0.5,
-        "ghost": 0.5,
-        "dragon": 1,
-        "demon": 1,
-        "light": 1,
-        "electric": 1,
-        "grass": 1,
-        "fantasy": 1
-      },
-      "fighting": {
-        "water": 1,
-        "fire": 1,
-        "ice": 2,
-        "mechanical": 2,
-        "normal": 2,
-        "fighting": 1,
-        "poison": 0.5,
-        "wing": 0.5,
-        "cute": 0.5,
-        "bug": 0.5,
-        "ground": 2,
-        "ghost": 0.5,
-        "dragon": 1,
-        "demon": 2,
-        "light": 1,
-        "electric": 1,
-        "grass": 1,
-        "fantasy": 0.5
-      },
-      "poison": {
-        "water": 1,
-        "fire": 1,
-        "ice": 1,
-        "mechanical": 0.5,
-        "normal": 1,
-        "fighting": 1,
-        "poison": 0.5,
-        "wing": 1,
-        "cute": 2,
-        "bug": 1,
-        "ground": 0.5,
-        "ghost": 0.5,
-        "dragon": 1,
-        "demon": 1,
-        "light": 1,
-        "electric": 1,
-        "grass": 2,
-        "fantasy": 1
-      },
-      "wing": {
-        "water": 1,
-        "fire": 1,
-        "ice": 1,
-        "mechanical": 0.5,
-        "normal": 1,
-        "fighting": 2,
-        "poison": 1,
-        "wing": 1,
-        "cute": 1,
-        "bug": 2,
-        "ground": 0.5,
-        "ghost": 1,
-        "dragon": 0.5,
-        "demon": 1,
-        "light": 1,
-        "electric": 0.5,
-        "grass": 2,
-        "fantasy": 1
-      },
-      "cute": {
-        "water": 1,
-        "fire": 0.5,
-        "ice": 1,
-        "mechanical": 0.5,
-        "normal": 1,
-        "fighting": 2,
-        "poison": 0.5,
-        "wing": 1,
-        "cute": 1,
-        "bug": 1,
-        "ground": 1,
-        "ghost": 1,
-        "dragon": 2,
-        "demon": 2,
-        "light": 1,
-        "electric": 1,
-        "grass": 1,
-        "fantasy": 1
-      },
-      "bug": {
-        "water": 1,
-        "fire": 0.5,
-        "ice": 1,
-        "mechanical": 0.5,
-        "normal": 1,
-        "fighting": 0.5,
-        "poison": 0.5,
-        "wing": 0.5,
-        "cute": 0.5,
-        "bug": 1,
-        "ground": 1,
-        "ghost": 0.5,
-        "dragon": 1,
-        "demon": 2,
-        "light": 1,
-        "electric": 1,
-        "grass": 2,
-        "fantasy": 2
-      },
-      "ground": {
-        "water": 1,
-        "fire": 2,
-        "ice": 2,
-        "mechanical": 1,
-        "normal": 1,
-        "fighting": 0.5,
-        "poison": 2,
-        "wing": 1,
-        "cute": 1,
-        "bug": 1,
-        "ground": 1,
-        "ghost": 1,
-        "dragon": 1,
-        "demon": 1,
-        "light": 1,
-        "electric": 2,
-        "grass": 0.5,
-        "fantasy": 1
-      },
-      "ghost": {
-        "water": 1,
-        "fire": 1,
-        "ice": 1,
-        "mechanical": 1,
-        "normal": 0.5,
-        "fighting": 1,
-        "poison": 1,
-        "wing": 1,
-        "cute": 1,
-        "bug": 1,
-        "ground": 1,
-        "ghost": 2,
-        "dragon": 1,
-        "demon": 0.5,
-        "light": 2,
-        "electric": 1,
-        "grass": 1,
-        "fantasy": 2
-      },
-      "dragon": {
-        "water": 1,
-        "fire": 1,
-        "ice": 1,
-        "mechanical": 0.5,
-        "normal": 1,
-        "fighting": 1,
-        "poison": 1,
-        "wing": 1,
-        "cute": 1,
-        "bug": 1,
-        "ground": 1,
-        "ghost": 1,
-        "dragon": 2,
-        "demon": 1,
-        "light": 1,
-        "electric": 1,
-        "grass": 1,
-        "fantasy": 1
-      },
-      "demon": {
-        "water": 1,
-        "fire": 1,
-        "ice": 1,
-        "mechanical": 1,
-        "normal": 1,
-        "fighting": 0.5,
-        "poison": 2,
-        "wing": 1,
-        "cute": 2,
-        "bug": 1,
-        "ground": 1,
-        "ghost": 2,
-        "dragon": 1,
-        "demon": 0.5,
-        "light": 0.5,
-        "electric": 1,
-        "grass": 1,
-        "fantasy": 1
-      },
-      "light": {
-        "water": 1,
-        "fire": 1,
-        "ice": 0.5,
-        "mechanical": 1,
-        "normal": 1,
-        "fighting": 1,
-        "poison": 1,
-        "wing": 1,
-        "cute": 1,
-        "bug": 1,
-        "ground": 1,
-        "ghost": 2,
-        "dragon": 1,
-        "demon": 2,
-        "light": 1,
-        "electric": 1,
-        "grass": 0.5,
-        "fantasy": 1
-      },
-      "electric": {
-        "water": 2,
-        "fire": 1,
-        "ice": 1,
-        "mechanical": 1,
-        "normal": 1,
-        "fighting": 1,
-        "poison": 1,
-        "wing": 2,
-        "cute": 1,
-        "bug": 1,
-        "ground": 0.5,
-        "ghost": 1,
-        "dragon": 0.5,
-        "demon": 1,
-        "light": 1,
-        "electric": 0.5,
-        "grass": 0.5,
-        "fantasy": 1
-      },
-      "grass": {
-        "water": 2,
-        "fire": 0.5,
-        "ice": 1,
-        "mechanical": 0.5,
-        "normal": 1,
-        "fighting": 1,
-        "poison": 0.5,
-        "wing": 0.5,
-        "cute": 1,
-        "bug": 0.5,
-        "ground": 2,
-        "ghost": 1,
-        "dragon": 0.5,
-        "demon": 1,
-        "light": 1,
-        "electric": 1,
-        "grass": 1,
-        "fantasy": 1
-      },
-      "fantasy": {
-        "water": 1,
-        "fire": 1,
-        "ice": 1,
-        "mechanical": 0.5,
-        "normal": 1,
-        "fighting": 2,
-        "poison": 2,
-        "wing": 1,
-        "cute": 1,
-        "bug": 1,
-        "ground": 1,
-        "ghost": 1,
-        "dragon": 1,
-        "demon": 1,
-        "light": 0.5,
-        "electric": 1,
-        "grass": 1,
-        "fantasy": 0.5
+      "game_scores": {
+        "offense": 0,
+        "defense": 0,
+        "total": 0
       }
     },
-    "defense": {
-      "water": {
-        "water": 1,
-        "fire": 0.5,
-        "ice": 1,
-        "mechanical": 0.5,
-        "normal": 1,
-        "fighting": 1,
-        "poison": 1,
-        "wing": 1,
-        "cute": 1,
-        "bug": 1,
-        "ground": 1,
-        "ghost": 1,
-        "dragon": 1,
-        "demon": 1,
-        "light": 1,
-        "electric": 2,
-        "grass": 2,
-        "fantasy": 1
+    {
+      "nameCn": "恶魔",
+      "key": "恶魔",
+      "battleMultiplier": {
+        "offense": {
+          "2": [
+            "幽灵",
+            "毒",
+            "萌"
+          ],
+          "1": [
+            "火",
+            "水",
+            "草",
+            "一般",
+            "地",
+            "冰",
+            "龙",
+            "电",
+            "虫",
+            "翼",
+            "机械",
+            "幻"
+          ],
+          "0": [
+            "光",
+            "恶魔",
+            "武"
+          ]
+        }
       },
-      "fire": {
-        "water": 2,
-        "fire": 1,
-        "ice": 0.5,
-        "mechanical": 0.5,
-        "normal": 1,
-        "fighting": 1,
-        "poison": 1,
-        "wing": 1,
-        "cute": 0.5,
-        "bug": 0.5,
-        "ground": 2,
-        "ghost": 1,
-        "dragon": 1,
-        "demon": 1,
-        "light": 1,
-        "electric": 1,
-        "grass": 0.5,
-        "fantasy": 1
+      "game_scores": {
+        "offense": 0,
+        "defense": -2,
+        "total": -2
+      }
+    },
+    {
+      "nameCn": "幽灵",
+      "key": "幽灵",
+      "battleMultiplier": {
+        "offense": {
+          "2": [
+            "光",
+            "幽灵",
+            "幻"
+          ],
+          "1": [
+            "火",
+            "水",
+            "草",
+            "地",
+            "冰",
+            "龙",
+            "电",
+            "毒",
+            "虫",
+            "武",
+            "翼",
+            "萌",
+            "机械"
+          ],
+          "0": [
+            "恶魔",
+            "一般"
+          ]
+        }
       },
-      "ice": {
-        "water": 0.5,
-        "fire": 2,
-        "ice": 0.5,
-        "mechanical": 2,
-        "normal": 1,
-        "fighting": 2,
-        "poison": 1,
-        "wing": 1,
-        "cute": 1,
-        "bug": 1,
-        "ground": 2,
-        "ghost": 1,
-        "dragon": 1,
-        "demon": 1,
-        "light": 0.5,
-        "electric": 1,
-        "grass": 1,
-        "fantasy": 1
+      "game_scores": {
+        "offense": 1,
+        "defense": 1,
+        "total": 2
+      }
+    },
+    {
+      "nameCn": "一般",
+      "key": "一般",
+      "battleMultiplier": {
+        "offense": {
+          "2": [],
+          "1": [
+            "火",
+            "水",
+            "草",
+            "光",
+            "恶魔",
+            "一般",
+            "冰",
+            "龙",
+            "电",
+            "毒",
+            "虫",
+            "武",
+            "翼",
+            "萌",
+            "幻"
+          ],
+          "0": [
+            "幽灵",
+            "地",
+            "机械"
+          ]
+        }
       },
-      "mechanical": {
-        "water": 2,
-        "fire": 2,
-        "ice": 0.5,
-        "mechanical": 0.5,
-        "normal": 0.5,
-        "fighting": 2,
-        "poison": 0.5,
-        "wing": 0.5,
-        "cute": 0.5,
-        "bug": 0.5,
-        "ground": 1,
-        "ghost": 1,
-        "dragon": 0.5,
-        "demon": 1,
-        "light": 1,
-        "electric": 1,
-        "grass": 0.5,
-        "fantasy": 0.5
+      "game_scores": {
+        "offense": -3,
+        "defense": 0,
+        "total": -3
+      }
+    },
+    {
+      "nameCn": "地",
+      "key": "地",
+      "battleMultiplier": {
+        "offense": {
+          "2": [
+            "火",
+            "冰",
+            "电",
+            "毒"
+          ],
+          "1": [
+            "水",
+            "光",
+            "恶魔",
+            "幽灵",
+            "一般",
+            "地",
+            "龙",
+            "虫",
+            "翼",
+            "萌",
+            "机械",
+            "幻"
+          ],
+          "0": [
+            "草",
+            "武"
+          ]
+        }
       },
-      "normal": {
-        "water": 1,
-        "fire": 1,
-        "ice": 1,
-        "mechanical": 1,
-        "normal": 1,
-        "fighting": 2,
-        "poison": 1,
-        "wing": 1,
-        "cute": 1,
-        "bug": 1,
-        "ground": 1,
-        "ghost": 0.5,
-        "dragon": 1,
-        "demon": 1,
-        "light": 1,
-        "electric": 1,
-        "grass": 1,
-        "fantasy": 1
+      "game_scores": {
+        "offense": 2,
+        "defense": 0,
+        "total": 2
+      }
+    },
+    {
+      "nameCn": "冰",
+      "key": "冰",
+      "battleMultiplier": {
+        "offense": {
+          "2": [
+            "草",
+            "地",
+            "龙",
+            "翼"
+          ],
+          "1": [
+            "水",
+            "光",
+            "恶魔",
+            "幽灵",
+            "一般",
+            "电",
+            "毒",
+            "虫",
+            "武",
+            "萌",
+            "幻"
+          ],
+          "0": [
+            "火",
+            "冰",
+            "机械"
+          ]
+        }
       },
-      "fighting": {
-        "water": 1,
-        "fire": 1,
-        "ice": 1,
-        "mechanical": 1,
-        "normal": 1,
-        "fighting": 1,
-        "poison": 1,
-        "wing": 2,
-        "cute": 2,
-        "bug": 0.5,
-        "ground": 0.5,
-        "ghost": 1,
-        "dragon": 1,
-        "demon": 0.5,
-        "light": 1,
-        "electric": 1,
-        "grass": 1,
-        "fantasy": 2
+      "game_scores": {
+        "offense": 1,
+        "defense": -1,
+        "total": 0
+      }
+    },
+    {
+      "nameCn": "龙",
+      "key": "龙",
+      "battleMultiplier": {
+        "offense": {
+          "2": [
+            "龙"
+          ],
+          "1": [
+            "火",
+            "水",
+            "草",
+            "光",
+            "恶魔",
+            "幽灵",
+            "一般",
+            "地",
+            "冰",
+            "电",
+            "毒",
+            "虫",
+            "武",
+            "翼",
+            "萌",
+            "幻"
+          ],
+          "0": [
+            "机械"
+          ]
+        }
       },
-      "poison": {
-        "water": 1,
-        "fire": 1,
-        "ice": 1,
-        "mechanical": 1,
-        "normal": 1,
-        "fighting": 0.5,
-        "poison": 0.5,
-        "wing": 1,
-        "cute": 0.5,
-        "bug": 0.5,
-        "ground": 2,
-        "ghost": 1,
-        "dragon": 1,
-        "demon": 2,
-        "light": 1,
-        "electric": 1,
-        "grass": 0.5,
-        "fantasy": 2
+      "game_scores": {
+        "offense": 0,
+        "defense": 2,
+        "total": 2
+      }
+    },
+    {
+      "nameCn": "电",
+      "key": "电",
+      "battleMultiplier": {
+        "offense": {
+          "2": [
+            "水",
+            "翼"
+          ],
+          "1": [
+            "火",
+            "光",
+            "恶魔",
+            "幽灵",
+            "一般",
+            "冰",
+            "毒",
+            "虫",
+            "武",
+            "萌",
+            "机械",
+            "幻"
+          ],
+          "0": [
+            "草",
+            "地",
+            "龙",
+            "电"
+          ]
+        }
       },
-      "wing": {
-        "water": 1,
-        "fire": 1,
-        "ice": 2,
-        "mechanical": 1,
-        "normal": 1,
-        "fighting": 0.5,
-        "poison": 1,
-        "wing": 1,
-        "cute": 1,
-        "bug": 0.5,
-        "ground": 1,
-        "ghost": 1,
-        "dragon": 1,
-        "demon": 1,
-        "light": 1,
-        "electric": 2,
-        "grass": 0.5,
-        "fantasy": 1
+      "game_scores": {
+        "offense": -2,
+        "defense": 2,
+        "total": 0
+      }
+    },
+    {
+      "nameCn": "毒",
+      "key": "毒",
+      "battleMultiplier": {
+        "offense": {
+          "2": [
+            "草",
+            "萌"
+          ],
+          "1": [
+            "火",
+            "水",
+            "光",
+            "恶魔",
+            "一般",
+            "冰",
+            "龙",
+            "电",
+            "虫",
+            "武",
+            "翼",
+            "幻"
+          ],
+          "0": [
+            "幽灵",
+            "地",
+            "毒",
+            "机械"
+          ]
+        }
       },
-      "cute": {
-        "water": 1,
-        "fire": 1,
-        "ice": 1,
-        "mechanical": 2,
-        "normal": 1,
-        "fighting": 0.5,
-        "poison": 2,
-        "wing": 1,
-        "cute": 1,
-        "bug": 0.5,
-        "ground": 1,
-        "ghost": 1,
-        "dragon": 1,
-        "demon": 2,
-        "light": 1,
-        "electric": 1,
-        "grass": 1,
-        "fantasy": 1
+      "game_scores": {
+        "offense": -2,
+        "defense": 2,
+        "total": 0
+      }
+    },
+    {
+      "nameCn": "虫",
+      "key": "虫",
+      "battleMultiplier": {
+        "offense": {
+          "2": [
+            "草",
+            "恶魔",
+            "幻"
+          ],
+          "1": [
+            "水",
+            "光",
+            "一般",
+            "地",
+            "冰",
+            "龙",
+            "电",
+            "虫"
+          ],
+          "0": [
+            "火",
+            "幽灵",
+            "毒",
+            "武",
+            "翼",
+            "萌",
+            "机械"
+          ]
+        }
       },
-      "bug": {
-        "water": 2,
-        "fire": 2,
-        "ice": 0.5,
-        "mechanical": 0.5,
-        "normal": 1,
-        "fighting": 1,
-        "poison": 1,
-        "wing": 2,
-        "cute": 0.5,
-        "bug": 0.5,
-        "ground": 2,
-        "ghost": 1,
-        "dragon": 1,
-        "demon": 1,
-        "light": 1,
-        "electric": 1,
-        "grass": 0.5,
-        "fantasy": 1
+      "game_scores": {
+        "offense": -4,
+        "defense": 0,
+        "total": -4
+      }
+    },
+    {
+      "nameCn": "武",
+      "key": "武",
+      "battleMultiplier": {
+        "offense": {
+          "2": [
+            "恶魔",
+            "一般",
+            "地",
+            "冰",
+            "机械"
+          ],
+          "1": [
+            "火",
+            "水",
+            "草",
+            "光",
+            "龙",
+            "电",
+            "武"
+          ],
+          "0": [
+            "幽灵",
+            "毒",
+            "虫",
+            "翼",
+            "萌",
+            "幻"
+          ]
+        }
       },
-      "ground": {
-        "water": 2,
-        "fire": 0.5,
-        "ice": 2,
-        "mechanical": 2,
-        "normal": 0.5,
-        "fighting": 2,
-        "poison": 0.5,
-        "wing": 0.5,
-        "cute": 1,
-        "bug": 1,
-        "ground": 1,
-        "ghost": 1,
-        "dragon": 1,
-        "demon": 1,
-        "light": 1,
-        "electric": 0.5,
-        "grass": 2,
-        "fantasy": 1
+      "game_scores": {
+        "offense": -1,
+        "defense": 0,
+        "total": -1
+      }
+    },
+    {
+      "nameCn": "翼",
+      "key": "翼",
+      "battleMultiplier": {
+        "offense": {
+          "2": [
+            "草",
+            "虫",
+            "武"
+          ],
+          "1": [
+            "火",
+            "水",
+            "光",
+            "恶魔",
+            "幽灵",
+            "一般",
+            "冰",
+            "毒",
+            "翼",
+            "萌",
+            "幻"
+          ],
+          "0": [
+            "地",
+            "龙",
+            "电",
+            "机械"
+          ]
+        }
       },
-      "ghost": {
-        "water": 1,
-        "fire": 1,
-        "ice": 1,
-        "mechanical": 1,
-        "normal": 0.5,
-        "fighting": 0.5,
-        "poison": 0.5,
-        "wing": 1,
-        "cute": 1,
-        "bug": 0.5,
-        "ground": 1,
-        "ghost": 2,
-        "dragon": 1,
-        "demon": 2,
-        "light": 2,
-        "electric": 1,
-        "grass": 1,
-        "fantasy": 1
+      "game_scores": {
+        "offense": -1,
+        "defense": 1,
+        "total": 0
+      }
+    },
+    {
+      "nameCn": "萌",
+      "key": "萌",
+      "battleMultiplier": {
+        "offense": {
+          "2": [
+            "恶魔",
+            "龙",
+            "武"
+          ],
+          "1": [
+            "水",
+            "草",
+            "光",
+            "幽灵",
+            "一般",
+            "地",
+            "冰",
+            "电",
+            "虫",
+            "翼",
+            "萌",
+            "幻"
+          ],
+          "0": [
+            "火",
+            "毒",
+            "机械"
+          ]
+        }
       },
-      "dragon": {
-        "water": 0.5,
-        "fire": 0.5,
-        "ice": 2,
-        "mechanical": 1,
-        "normal": 1,
-        "fighting": 1,
-        "poison": 1,
-        "wing": 0.5,
-        "cute": 2,
-        "bug": 1,
-        "ground": 1,
-        "ghost": 1,
-        "dragon": 2,
-        "demon": 1,
-        "light": 1,
-        "electric": 0.5,
-        "grass": 0.5,
-        "fantasy": 1
+      "game_scores": {
+        "offense": 0,
+        "defense": -1,
+        "total": -1
+      }
+    },
+    {
+      "nameCn": "机械",
+      "key": "机械",
+      "battleMultiplier": {
+        "offense": {
+          "2": [
+            "地",
+            "冰",
+            "萌"
+          ],
+          "1": [
+            "草",
+            "光",
+            "恶魔",
+            "幽灵",
+            "一般",
+            "龙",
+            "毒",
+            "虫",
+            "武",
+            "翼",
+            "幻"
+          ],
+          "0": [
+            "火",
+            "水",
+            "电",
+            "机械"
+          ]
+        }
       },
-      "demon": {
-        "water": 1,
-        "fire": 1,
-        "ice": 1,
-        "mechanical": 1,
-        "normal": 1,
-        "fighting": 2,
-        "poison": 1,
-        "wing": 1,
-        "cute": 2,
-        "bug": 2,
-        "ground": 1,
-        "ghost": 0.5,
-        "dragon": 1,
-        "demon": 0.5,
-        "light": 2,
-        "electric": 1,
-        "grass": 1,
-        "fantasy": 1
+      "game_scores": {
+        "offense": -1,
+        "defense": 7,
+        "total": 6
+      }
+    },
+    {
+      "nameCn": "幻",
+      "key": "幻",
+      "battleMultiplier": {
+        "offense": {
+          "2": [
+            "毒",
+            "武"
+          ],
+          "1": [
+            "火",
+            "水",
+            "草",
+            "恶魔",
+            "幽灵",
+            "一般",
+            "地",
+            "冰",
+            "龙",
+            "电",
+            "虫",
+            "翼",
+            "萌"
+          ],
+          "0": [
+            "光",
+            "机械",
+            "幻"
+          ]
+        }
       },
-      "light": {
-        "water": 1,
-        "fire": 1,
-        "ice": 1,
-        "mechanical": 1,
-        "normal": 1,
-        "fighting": 1,
-        "poison": 1,
-        "wing": 1,
-        "cute": 1,
-        "bug": 1,
-        "ground": 1,
-        "ghost": 2,
-        "dragon": 1,
-        "demon": 0.5,
-        "light": 1,
-        "electric": 1,
-        "grass": 2,
-        "fantasy": 0.5
-      },
-      "electric": {
-        "water": 1,
-        "fire": 1,
-        "ice": 1,
-        "mechanical": 0.5,
-        "normal": 1,
-        "fighting": 1,
-        "poison": 1,
-        "wing": 0.5,
-        "cute": 1,
-        "bug": 1,
-        "ground": 2,
-        "ghost": 1,
-        "dragon": 1,
-        "demon": 1,
-        "light": 1,
-        "electric": 0.5,
-        "grass": 1,
-        "fantasy": 1
-      },
-      "grass": {
-        "water": 0.5,
-        "fire": 2,
-        "ice": 2,
-        "mechanical": 1,
-        "normal": 1,
-        "fighting": 1,
-        "poison": 2,
-        "wing": 2,
-        "cute": 1,
-        "bug": 2,
-        "ground": 0.5,
-        "ghost": 1,
-        "dragon": 1,
-        "demon": 1,
-        "light": 0.5,
-        "electric": 0.5,
-        "grass": 1,
-        "fantasy": 1
-      },
-      "fantasy": {
-        "water": 1,
-        "fire": 1,
-        "ice": 1,
-        "mechanical": 1,
-        "normal": 1,
-        "fighting": 0.5,
-        "poison": 1,
-        "wing": 1,
-        "cute": 1,
-        "bug": 2,
-        "ground": 1,
-        "ghost": 2,
-        "dragon": 1,
-        "demon": 1,
-        "light": 1,
-        "electric": 1,
-        "grass": 1,
-        "fantasy": 0.5
+      "game_scores": {
+        "offense": -1,
+        "defense": 0,
+        "total": -1
       }
     }
-  }
+  ]
 }

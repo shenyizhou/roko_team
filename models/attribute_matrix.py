@@ -1,11 +1,17 @@
 #!/usr/bin/env python3
 """
 属性联防矩阵计算
+基于洛克王国世界18属性体系（光系引入，石系并入地系）
+矩阵数据来自 洛克王国世界种族值.xlsx 属性tab
 """
 import json
 from pathlib import Path
 
 DATA_DIR = Path(__file__).parent.parent / "data"
+
+# 游戏18属性标准名
+GAME_ATTRS = ["火", "水", "草", "光", "恶魔", "幽灵", "一般", "地", "冰", "龙",
+              "电", "毒", "虫", "武", "翼", "萌", "机械", "幻"]
 
 
 class AttributeMatrix:
@@ -14,125 +20,132 @@ class AttributeMatrix:
             self.attr_data = json.load(f)
 
         self.attr_names = [a["nameCn"] for a in self.attr_data["attributes"]]
-        self.attr_key_to_name = {a["key"]: a["nameCn"] for a in self.attr_data["attributes"]}
 
-        # 宠物属性简称到标准名的映射
+        # 宠物数据属性名 → 游戏标准名
         self.short_to_full = {
             "幽": "幽灵",
             "恶": "恶魔",
-            "地": "地面",
-            "翼": "翼",  # 数据里就是"翼"
+            "普通": "一般",
+            "地": "地",
         }
         for name in self.attr_names:
-            self.short_to_full[name] = name  # 标准名直接映射
+            self.short_to_full[name] = name
 
-        # 构建倍率矩阵（按倍率分组的格式）
-        self.multipliers = {atk: {def_: 1.0 for def_ in self.attr_names} for atk in self.attr_names}
+        # 构建倍率矩阵
+        self.multipliers = {atk: {def_: 1.0 for def_ in self.attr_names}
+                           for atk in self.attr_names}
 
         for atk in self.attr_data["attributes"]:
             atk_name = atk["nameCn"]
             offense = atk["battleMultiplier"]["offense"]
-
-            # 处理不同倍率
             for mult_str, def_keys in offense.items():
-                mult = float(mult_str)
                 for def_key in def_keys:
-                    def_name = self.attr_key_to_name[def_key]
-                    self.multipliers[atk_name][def_name] = mult
+                    def_name = def_key  # key直接就是标准名
+                    self.multipliers[atk_name][def_name] = float(mult_str)
 
-        # 缓存每个属性的克制面和抵抗面
-        self._calc_type_scores()
+        # 使用游戏内置攻防评分
+        self.gamescores = {a["nameCn"]: a["game_scores"] for a in self.attr_data["attributes"]}
 
-    def _calc_type_scores(self):
-        """计算每个属性的攻防价值"""
-        self.type_offense_scores = {}  # 克制面数量
-        self.type_defense_scores = {}  # 抵抗面数量 - 弱点数量
+        # 缓存进攻/防守面统计
+        self.type_offense_count = {}
+        self.type_defense_data = {}
 
         for attr in self.attr_names:
-            # 进攻价值：克制的属性数量
-            offense = sum(1 for mult in self.multipliers[attr].values() if mult >= 2)
-            # 防守价值：抵抗的属性数量 - 被克制的属性数量
-            resist = sum(1 for a in self.attr_names if self.multipliers[a][attr] <= 0.5)
-            weak = sum(1 for a in self.attr_names if self.multipliers[a][attr] >= 2)
-            immune = sum(1 for a in self.attr_names if self.multipliers[a][attr] == 0)
+            # 进攻：统计克制面和不利面
+            off_weak = []   # 能克制的属性
+            off_resist = [] # 打不动的属性
+            for def_a in self.attr_names:
+                m = self.multipliers[attr][def_a]
+                if m >= 2: off_weak.append(def_a)
+                elif m == 0: off_resist.append(def_a)
+            self.type_offense_count[attr] = len(off_weak)
 
-            self.type_offense_scores[attr] = offense
-            self.type_defense_scores[attr] = {
-                "resist": resist,
-                "weak": weak,
-                "immune": immune,
-                "score": resist + 2 * immune - weak
+            # 防守：统计谁克制我、谁打我抵抗
+            def_weak = []    # 被谁克制 (2x)
+            def_resist = []  # 抵抗谁 (0x, 游戏统一归为抵抗)
+            for atk_a in self.attr_names:
+                m = self.multipliers[atk_a][attr]
+                if m >= 2: def_weak.append(atk_a)
+                elif m == 0: def_resist.append(atk_a)
+            self.type_defense_data[attr] = {
+                "weak_to": def_weak,
+                "resist_from": def_resist,
+                "weak_count": len(def_weak),
+                "resist_count": len(def_resist),
             }
 
     def _normalize_attr(self, attr: str) -> str:
-        """转换属性简称为标准名"""
         return self.short_to_full.get(attr, attr)
 
     def get_multiplier(self, atk_attr: str, def_attr: str) -> float:
-        """获取属性克制倍率"""
         atk = self._normalize_attr(atk_attr)
         def_ = self._normalize_attr(def_attr)
         return self.multipliers.get(atk, {}).get(def_, 1.0)
 
     def get_type_score(self, attrs: list[str]) -> dict:
-        """计算宠物属性的综合评分"""
-        total_offense = 0
-        total_resist = 0
-        total_weak = 0
-        total_immune = 0
+        """
+        计算宠物属性的综合评分。
+        双属性时进攻取各自最大覆盖，防守聚合计算（取较优抵抗）。
+        返回游戏内置攻/防评分，按比例缩放。
+        """
+        normalized = [self._normalize_attr(a) for a in attrs]
 
-        normalized_attrs = [self._normalize_attr(a) for a in attrs]
+        # 进攻：取各属性的最大克制面
+        offense = 0
+        for a in normalized:
+            if a in self.type_offense_count:
+                offense = max(offense, self.type_offense_count[a])
 
-        # 多属性时，进攻取最大克制
-        for attr in normalized_attrs:
-            if attr in self.type_offense_scores:
-                total_offense = max(total_offense, self.type_offense_scores[attr])
+        # 防守：联合覆盖（双属性取并集）
+        resisted = set()
+        weakened = set()
 
-        # 防守取联合覆盖（抵抗任意属性就算）
-        resisted_attrs = set()
-        weakened_attrs = set()
-        immuned_attrs = set()
+        for a in normalized:
+            d = self.type_defense_data.get(a, {})
+            for atk_a in d.get("resist_from", []):
+                resisted.add(atk_a)
+            for atk_a in d.get("weak_to", []):
+                weakened.add(atk_a)
 
-        for attr in normalized_attrs:
-            if attr in self.type_defense_scores:
-                for a in self.attr_names:
-                    mult = self.multipliers[a][attr]
-                    if mult == 0:
-                        immuned_attrs.add(a)
-                    elif mult <= 0.5:
-                        resisted_attrs.add(a)
-                    elif mult >= 2:
-                        weakened_attrs.add(a)
+        weak_count = len(weakened)
 
-        total_resist = len(resisted_attrs - immuned_attrs)
-        total_immune = len(immuned_attrs)
-        total_weak = len(weakened_attrs)
+        # 使用游戏内置评分作为基准（缩放）
+        # 游戏最优属性: 机械(攻-1,防7,总6)，最差: 虫(攻-4,防0,总-4)
+        # 双属性时取加权平均
+        game_off = sum(self.gamescores.get(a, {}).get("offense", 0) for a in normalized) / len(normalized)
+        game_def = sum(self.gamescores.get(a, {}).get("defense", 0) for a in normalized) / len(normalized)
+        game_total = sum(self.gamescores.get(a, {}).get("total", 0) for a in normalized) / len(normalized)
+
+        # 防守评分：抵抗数-弱点数（与游戏公式一致）
+        defense_score = len(resisted) - weak_count
 
         return {
-            "offense": total_offense,
-            "resist": total_resist,
-            "immune": total_immune,
-            "weak": total_weak,
-            "defense_score": total_resist + 2 * total_immune - total_weak
+            "offense": offense,
+            "resist": len(resisted),
+            "weak": weak_count,
+            "defense_score": defense_score,
+            "game_offense": game_off,
+            "game_defense": game_def,
+            "game_total": game_total,
         }
 
     def get_team_coverage(self, team_attrs: list[list[str]]) -> dict:
         """计算队伍整体属性覆盖"""
+        all_covered = set()
         all_resisted = set()
         all_weakened = set()
-        all_covered = set()  # 队伍宠物属性覆盖
 
         for attrs in team_attrs:
-            all_covered.update(attrs)
-            # 统计抵抗和弱点
-            for attr in attrs:
-                attr_norm = self._normalize_attr(attr)
-                for a in self.attr_names:
-                    mult = self.multipliers[a][attr_norm]
-                    if mult <= 0.5:
-                        all_resisted.add(a)
-                    elif mult >= 2:
-                        all_weakened.add(a)
+            for a in attrs:
+                all_covered.add(a)
+                a_norm = self._normalize_attr(a)
+                d = self.type_defense_data.get(a_norm, {})
+                for atk_a in d.get("resist_from", []):
+                    all_resisted.add(atk_a)
+                for atk_a in d.get("immune_from", []):
+                    all_resisted.add(atk_a)
+                for atk_a in d.get("weak_to", []):
+                    all_weakened.add(atk_a)
 
         return {
             "covered_attrs": len(all_covered),
@@ -146,11 +159,12 @@ class AttributeMatrix:
 
 if __name__ == "__main__":
     am = AttributeMatrix()
-    print("属性攻防价值排行:")
-    print("\n进攻价值（克制面数量）:")
-    for attr, score in sorted(am.type_offense_scores.items(), key=lambda x: -x[1]):
-        print(f"  {attr:4}: {score}")
-
-    print("\n防守价值（抵抗-弱点+2*免疫）:")
-    for attr, data in sorted(am.type_defense_scores.items(), key=lambda x: -x[1]["score"]):
-        print(f"  {attr:4}: 抵抗{data['resist']} - 弱点{data['weak']} + 免疫{data['immune']}*2 = {data['score']}")
+    print("洛克王国世界 18属性体系")
+    print("=" * 70)
+    print(f"{'属性':<6} {'克制数':>5} {'抵抗数':>5} {'弱点数':>5} {'游戏攻':>5} {'游戏防':>5} {'游戏总':>5}")
+    print("-" * 50)
+    for attr in am.attr_names:
+        off = am.type_offense_count[attr]
+        d = am.type_defense_data[attr]
+        gs = am.gamescores[attr]
+        print(f"{attr:<6} {off:>5} {d['resist_count']+d['immune_count']:>5} {d['weak_count']:>5} {gs['offense']:>5} {gs['defense']:>5} {gs['total']:>5}")

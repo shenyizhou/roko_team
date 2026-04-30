@@ -3,6 +3,7 @@
 队伍协同性分析器
 """
 import json
+import statistics
 from pathlib import Path
 from .attribute_matrix import AttributeMatrix
 from .pet_scorer import PetScorer
@@ -17,6 +18,30 @@ class TeamAnalyzer:
 
         self.attr_matrix = AttributeMatrix()
         self.pet_scorer = PetScorer()
+
+        # 属性简称到标准名的映射（洛克王国世界18属性体系）
+        self._short_attrs = {
+            "火": "火", "水": "水", "草": "草", "冰": "冰",
+            "电": "电", "普通": "一般", "武": "武", "毒": "毒",
+            "地": "地", "翼": "翼", "虫": "虫",
+            "幽": "幽灵", "恶": "恶魔", "龙": "龙", "幻": "幻",
+            "钢": "机械", "光": "光", "萌": "萌",
+        }
+
+    def _normalize_element(self, element: str) -> str:
+        """统一属性名，处理简称"""
+        return self._short_attrs.get(element, element)
+
+    def _count_team_element_skills(self, team_pets_except_idx: int) -> dict:
+        """统计队伍中其他宠物各属性攻击技能数量"""
+        counts = {}
+        for pet in team_pets_except_idx:
+            all_skills = pet["skills"].get("learnset", []) + pet["skills"].get("recommended", [])
+            for sk in all_skills:
+                if sk.get("power", 0) > 0:  # 只统计攻击技能
+                    elem = self._normalize_element(sk.get("element", ""))
+                    counts[elem] = counts.get(elem, 0) + 1
+        return counts
 
     def analyze_team(self, team_ids: list[str]) -> dict:
         """分析一个6宠队伍"""
@@ -48,10 +73,8 @@ class TeamAnalyzer:
             avg_costs.append(s["skill_data"]["avg_cost"])
             efficiencies.append(s["skill_data"]["efficiency"])
 
-        # 计算标准差（能量曲线平滑度）
-        import statistics
         cost_std = statistics.stdev(avg_costs) if len(avg_costs) > 1 else 0
-        energy_synergy = max(0, 100 - cost_std * 15)  # 标准差越小，协同性越好
+        energy_synergy = max(0, 100 - cost_std * 15)
 
         # 4. 生存梯队分析（前4只的抗打击能力）
         first_four_hp = sum(p["stats"]["hp"] * p["stats"]["def"] for p in team_pets[:4])
@@ -60,12 +83,67 @@ class TeamAnalyzer:
         # 5. 速度线分析
         speed_line = sorted([p["stats"]["spd"] for p in team_pets], reverse=True)
 
-        # 综合评分
+        # ========================================
+        # 6. 负面特性分析（新增）
+        # ========================================
+        debuff_penalty = 0
+        debuff_details = []
+
+        for i, ps in enumerate(pet_scores):
+            db = ps.get("debuff", {})
+            if db.get("has_debuff"):
+                pet = team_pets[i]
+                detail = {
+                    "name": ps["name"],
+                    "description": db["debuff_description"],
+                    "penalty": 0,
+                    "mitigation": "",
+                }
+
+                if db.get("hp_loss_on_entry"):
+                    # 入场扣血：等效生存能力打折
+                    hp_ratio = db.get("hp_loss_ratio", 0)
+                    loss_penalty = 50 * hp_ratio  # 50%扣血 = 25分惩罚
+                    detail["penalty"] = round(loss_penalty, 1)
+                    detail["mitigation"] = f"等效HP仅{int((1-hp_ratio)*100)}%"
+
+                elif db.get("energy_zero"):
+                    # 初始能量为0：检查队友是否有对应属性技能支持
+                    restore_elem = db.get("energy_restore_element", "")
+                    other_pets = [team_pets[j] for j in range(6) if j != i]
+                    elem_skills = self._count_team_element_skills(other_pets)
+
+                    support_count = elem_skills.get(restore_elem, 0)
+                    if support_count >= 4:
+                        # 队友有足够对应属性技能，惩罚减轻
+                        detail["penalty"] = 5
+                        detail["mitigation"] = f"队友有{support_count}个{restore_elem}系技能 → 可回能"
+                    elif support_count >= 2:
+                        detail["penalty"] = 10
+                        detail["mitigation"] = f"队友仅有{support_count}个{restore_elem}系技能 → 勉强回能"
+                    else:
+                        detail["penalty"] = 18
+                        detail["mitigation"] = f"队友缺乏{restore_elem}系技能({support_count}个) → 难以回能"
+
+                elif db.get("death_buff_enemy"):
+                    # 力竭给敌方增益：固定高风险惩罚
+                    detail["penalty"] = 15
+                    detail["mitigation"] = "被击败时敌方获得强化"
+
+                elif db.get("death_extra_loss"):
+                    detail["penalty"] = 8
+                    detail["mitigation"] = "被击败时额外损失魔力"
+
+                debuff_penalty += detail["penalty"]
+                debuff_details.append(detail)
+
+        # 综合评分（加入负面特性扣分）
         team_total = (
             avg_score * 0.4 +  # 平均个体质量
-            (coverage["coverage_score"] + 20) * 2 * 0.25 +  # 属性联防（加20避免负数）
+            (coverage["coverage_score"] + 20) * 2 * 0.25 +  # 属性联防
             energy_synergy * 0.2 +  # 能量协同
-            (first_four_hp / 20000 * 100) * 0.15  # 前4只抗打击能力
+            (first_four_hp / 20000 * 100) * 0.15 -  # 前4只抗打击能力
+            debuff_penalty * 0.3  # 负面特性扣分
         )
 
         return {
@@ -78,6 +156,7 @@ class TeamAnalyzer:
                     "attrs": p["attrs"],
                     "avg_cost": p["skill_data"]["avg_cost"],
                     "efficiency": p["skill_data"]["efficiency"],
+                    "debuff": p.get("debuff", {}),
                 }
                 for p in pet_scores
             ],
@@ -101,6 +180,10 @@ class TeamAnalyzer:
                 "first_four_hp_def_product": round(first_four_hp),
                 "first_four_total_speed": first_four_spd,
                 "speed_line": speed_line,
+            },
+            "debuff_analysis": {
+                "total_penalty": round(debuff_penalty, 1),
+                "details": debuff_details,
             }
         }
 
@@ -119,7 +202,28 @@ class TeamAnalyzer:
         print("\n【宠物列表】")
         for i, p in enumerate(result["pet_scores"], 1):
             attrs = "/".join(p["attrs"])
-            print(f"  {i}. {p['name']:<12} ({attrs:<10}) 评分: {p['total']:5.1f}  能耗: {p['avg_cost']:.1f}  效率: {p['efficiency']:.1f}")
+            debuff_warn = ""
+            if p.get("debuff", {}).get("has_debuff"):
+                debuff_warn = f"  ⚠ {p['debuff']['debuff_description']}"
+            print(f"  {i}. {p['name']:<12} ({attrs:<10}) 评分: {p['total']:5.1f}  能耗: {p['avg_cost']:.1f}  效率: {p['efficiency']:.1f}{debuff_warn}")
+
+            # 推荐技能
+            skills = self.pet_scorer.recommend_skills(p["id"])
+            if skills:
+                print(f"     推荐技能:", end="")
+                for j, sk in enumerate(skills):
+                    pwr_str = f"威力{sk['power']}" if sk['power'] > 0 else "—"
+                    print(f"\n       {j+1}. {sk['name']}({sk['element']}/{sk['category']}) 能耗{sk['cost']} {pwr_str}  {sk['desc'][:30]}", end="")
+                print()
+
+        # 负面特性警告
+        debuff = result.get("debuff_analysis", {})
+        if debuff.get("details"):
+            print("\n【负面特性分析】")
+            for d in debuff["details"]:
+                print(f"  ⚠ {d['name']}: {d['description']}")
+                print(f"     队伍扣分: -{d['penalty']:.1f} | {d['mitigation']}")
+            print(f"  负面特性总扣分: -{debuff['total_penalty']:.1f}")
 
         print("\n【属性联防分析】")
         cov = result["attribute_coverage"]
