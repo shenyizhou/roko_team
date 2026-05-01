@@ -24762,5 +24762,557 @@
       "power": 0,
       "desc": "自己回复30%生命。"
     }
+  ],
+  "棋契国王": [
+    {
+      "id": 36,
+      "source": "learnset",
+      "name": "魔法增效",
+      "element": "普通",
+      "category": "变化",
+      "cost": 0,
+      "power": 0,
+      "desc": "自己获得魔攻+70%。"
+    },
+    {
+      "id": 14,
+      "source": "learnset",
+      "name": "防御",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    },
+    {
+      "id": 329,
+      "source": "learnset",
+      "name": "寸拳",
+      "element": "武",
+      "category": "物理",
+      "cost": 0,
+      "power": 30,
+      "desc": "造成物伤，自己回复1能量。"
+    },
+    {
+      "id": 339,
+      "source": "learnset",
+      "name": "气波",
+      "element": "武",
+      "category": "魔法",
+      "cost": 0,
+      "power": 40,
+      "desc": "对敌方精灵造成魔法伤害。"
+    },
+    {
+      "id": 328,
+      "source": "learnset",
+      "name": "缠丝劲",
+      "element": "武",
+      "category": "物理",
+      "cost": 1,
+      "power": 25,
+      "desc": "造成物伤，2连击。"
+    },
+    {
+      "id": 30,
+      "source": "learnset",
+      "name": "力量增效",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得物攻+100%。"
+    },
+    {
+      "id": 194,
+      "source": "learnset",
+      "name": "跺地",
+      "element": "地",
+      "category": "物理",
+      "cost": 2,
+      "power": 80,
+      "desc": "对敌方精灵造成物理伤害。"
+    },
+    {
+      "id": 334,
+      "source": "learnset",
+      "name": "化劲",
+      "element": "武",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "获得全技能威力+40。"
+    },
+    {
+      "id": 35,
+      "source": "learnset",
+      "name": "猛烈撞击",
+      "element": "普通",
+      "category": "物理",
+      "cost": 1,
+      "power": 60,
+      "desc": "对敌方精灵造成物理伤害。"
+    },
+    {
+      "id": 346,
+      "source": "learnset",
+      "name": "影袭",
+      "element": "武",
+      "category": "物理",
+      "cost": 3,
+      "power": 100,
+      "desc": "对敌方精灵造成物理伤害。"
+    },
+    {
+      "id": 215,
+      "source": "learnset",
+      "name": "钧势",
+      "element": "地",
+      "category": "变化",
+      "cost": 3,
+      "power": 0,
+      "desc": "自己获得物防+140%和速度-30。"
+    },
+    {
+      "id": 206,
+      "source": "learnset",
+      "name": "石肤术",
+      "element": "地",
+      "category": "变化",
+      "cost": 3,
+      "power": 0,
+      "desc": "自己获得物防+160%和魔防-60%。"
+    },
+    {
+      "id": 213,
+      "source": "learnset",
+      "name": "陨石",
+      "element": "地",
+      "category": "魔法",
+      "cost": 3,
+      "power": 100,
+      "desc": "对敌方精灵造成魔法伤害。"
+    },
+    {
+      "id": 342,
+      "source": "learnset",
+      "name": "提气",
+      "element": "武",
+      "category": "变化",
+      "cost": 4,
+      "power": 0,
+      "desc": "获得全技能威力+40，若敌方本回合替换精灵，额外获得威力+50。"
+    },
+    {
+      "id": 3507,
+      "source": "learnset",
+      "name": "蓄势待发",
+      "element": "地",
+      "category": "变化",
+      "cost": 4,
+      "power": 0,
+      "desc": "自己获得1层蓄势印记。"
+    },
+    {
+      "id": 208,
+      "source": "learnset",
+      "name": "岩脉崩毁",
+      "element": "地",
+      "category": "物理",
+      "cost": 4,
+      "power": 120,
+      "desc": "造成物伤，本技能能耗固定为4。"
+    },
+    {
+      "id": 338,
+      "source": "learnset",
+      "name": "破绽",
+      "element": "武",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "敌方获得双防-50%，应对防御：自己额外获得物攻+50%。"
+    },
+    {
+      "id": 43,
+      "source": "stone",
+      "name": "迫近攻击",
+      "element": "普通",
+      "category": "物理",
+      "cost": 3,
+      "power": 80,
+      "desc": "造成物伤。每次使用后，本技能威力永久+40。"
+    },
+    {
+      "id": 6,
+      "source": "stone",
+      "name": "触底强击",
+      "element": "普通",
+      "category": "魔法",
+      "cost": 3,
+      "power": 60,
+      "desc": "造成魔伤，释放后若能量耗尽，本次攻击威力+100。"
+    },
+    {
+      "id": 27,
+      "source": "stone",
+      "name": "借用",
+      "element": "普通",
+      "category": "变化",
+      "cost": 0,
+      "power": 0,
+      "desc": "每回合随机变成己方队伍中其他精灵的技能。"
+    },
+    {
+      "id": 60,
+      "source": "stone",
+      "name": "先发制人",
+      "element": "普通",
+      "category": "物理",
+      "cost": 2,
+      "power": 55,
+      "desc": "造成物理伤害，先手+1。"
+    },
+    {
+      "id": 47,
+      "source": "stone",
+      "name": "热身运动",
+      "element": "普通",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "自己获得连击数+3。"
+    },
+    {
+      "id": 51,
+      "source": "stone",
+      "name": "晒太阳",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "驱散敌方所有增益。"
+    },
+    {
+      "id": 76,
+      "source": "stone",
+      "name": "有效预防",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤50%，应对攻击：下一次行动获得先手+1。"
+    },
+    {
+      "id": 70,
+      "source": "stone",
+      "name": "摇篮曲",
+      "element": "普通",
+      "category": "变化",
+      "cost": 5,
+      "power": 0,
+      "desc": "敌方获得全技能能耗+3，应对防御：额外造成打断，且敌方下回合获得眩晕。"
+    },
+    {
+      "id": 180,
+      "source": "stone",
+      "name": "漫反射",
+      "element": "光",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "每种系别中的至多一个技能，威力+35。"
+    },
+    {
+      "id": 183,
+      "source": "stone",
+      "name": "天光",
+      "element": "光",
+      "category": "魔法",
+      "cost": 3,
+      "power": 95,
+      "desc": "造成魔伤，本技能系别始终和天气系别相同。"
+    },
+    {
+      "id": 184,
+      "source": "stone",
+      "name": "透射",
+      "element": "光",
+      "category": "物理",
+      "cost": 1,
+      "power": 60,
+      "desc": "对敌方精灵造成物理伤害。"
+    },
+    {
+      "id": 172,
+      "source": "stone",
+      "name": "放晴",
+      "element": "光",
+      "category": "变化",
+      "cost": 0,
+      "power": 0,
+      "desc": "光系技能威力永久+40%，应对防御：改为永久+80%。"
+    },
+    {
+      "id": 203,
+      "source": "stone",
+      "name": "抛石",
+      "element": "地",
+      "category": "物理",
+      "cost": 30,
+      "power": 140,
+      "desc": "造成物伤，回合结束时，本技能能耗永久-5。"
+    },
+    {
+      "id": 198,
+      "source": "stone",
+      "name": "鸣沙陷阱",
+      "element": "地",
+      "category": "物理",
+      "cost": 4,
+      "power": 60,
+      "desc": "造成物伤，物防比敌方越高，本次技能威力越高。"
+    },
+    {
+      "id": 340,
+      "source": "stone",
+      "name": "气沉丹田",
+      "element": "武",
+      "category": "变化",
+      "cost": 10,
+      "power": 0,
+      "desc": "自己回复60%生命，获得物攻+130%，每次应对后本技能能耗-3，使用后能耗重置。"
+    },
+    {
+      "id": 343,
+      "source": "stone",
+      "name": "听桥",
+      "element": "武",
+      "category": "变化",
+      "cost": 4,
+      "power": 0,
+      "desc": "减伤60%，应对攻击：对敌方造成伤害，威力与被应对技能相等。"
+    },
+    {
+      "id": 345,
+      "source": "stone",
+      "name": "一拳",
+      "element": "武",
+      "category": "物理",
+      "cost": 5,
+      "power": 140,
+      "desc": "对敌方精灵造成物理伤害。"
+    },
+    {
+      "id": 330,
+      "source": "stone",
+      "name": "叠势",
+      "element": "武",
+      "category": "魔法",
+      "cost": 3,
+      "power": 25,
+      "desc": "造成魔伤，2连击，每成功应对1次，本技能连击数永久+2。"
+    },
+    {
+      "id": 348,
+      "source": "stone",
+      "name": "预备势",
+      "element": "武",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得物攻+80%，应对防御：额外使敌方获得物防-80%。"
+    },
+    {
+      "id": 332,
+      "source": "stone",
+      "name": "防御反击",
+      "element": "武",
+      "category": "变化",
+      "cost": 3,
+      "power": 0,
+      "desc": "减伤80%，应对攻击：获得全技能威力+40。"
+    },
+    {
+      "id": 449,
+      "source": "legacy",
+      "name": "超维投射",
+      "element": "幻",
+      "category": "变化",
+      "cost": 4,
+      "power": 0,
+      "desc": "敌方获得4层星陨。"
+    },
+    {
+      "id": 445,
+      "source": "legacy",
+      "name": "啮合传递",
+      "element": "机械",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
+    },
+    {
+      "id": 426,
+      "source": "legacy",
+      "name": "贪婪",
+      "element": "恶",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "获得100%吸血。"
+    },
+    {
+      "id": 400,
+      "source": "legacy",
+      "name": "灵媒",
+      "element": "幽",
+      "category": "魔法",
+      "cost": 3,
+      "power": 100,
+      "desc": "对敌方精灵造成魔法伤害。"
+    },
+    {
+      "id": 856,
+      "source": "legacy",
+      "name": "甜心续航",
+      "element": "萌",
+      "category": "变化",
+      "cost": 3,
+      "power": 0,
+      "desc": "自己和敌方获得萌化：回复40%生命和4能量。"
+    },
+    {
+      "id": 366,
+      "source": "legacy",
+      "name": "羽化加速",
+      "element": "翼",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "自己获得技能威力+20，迅捷。"
+    },
+    {
+      "id": 333,
+      "source": "legacy",
+      "name": "贯手",
+      "element": "武",
+      "category": "魔法",
+      "cost": 2,
+      "power": 80,
+      "desc": "对敌方精灵造成魔法伤害。"
+    },
+    {
+      "id": 316,
+      "source": "legacy",
+      "name": "假寐",
+      "element": "虫",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "自己回复2能量，获得1次奉献：能耗-2。"
+    },
+    {
+      "id": 286,
+      "source": "legacy",
+      "name": "毒孢子",
+      "element": "毒",
+      "category": "变化",
+      "cost": 3,
+      "power": 0,
+      "desc": "敌方获得5层中毒。"
+    },
+    {
+      "id": 277,
+      "source": "legacy",
+      "name": "麻痹",
+      "element": "电",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "敌方先手-1，应对防御：额外使敌方获得攻击-70%。"
+    },
+    {
+      "id": 257,
+      "source": "legacy",
+      "name": "升龙咆哮",
+      "element": "龙",
+      "category": "魔法",
+      "cost": 3,
+      "power": 200,
+      "desc": "蓄力，对敌方造成魔法伤害。"
+    },
+    {
+      "id": 232,
+      "source": "legacy",
+      "name": "霜降",
+      "element": "冰",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "敌方获得4层冻结效果。"
+    },
+    {
+      "id": 210,
+      "source": "legacy",
+      "name": "扬沙",
+      "element": "地",
+      "category": "物理",
+      "cost": 1,
+      "power": 60,
+      "desc": "对敌方精灵造成物理伤害。"
+    },
+    {
+      "id": 177,
+      "source": "legacy",
+      "name": "虹光冲击",
+      "element": "光",
+      "category": "魔法",
+      "cost": 3,
+      "power": 100,
+      "desc": "对敌方精灵造成魔法伤害。"
+    },
+    {
+      "id": 169,
+      "source": "legacy",
+      "name": "蓄水",
+      "element": "水",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "下次使用的技能能耗-6。"
+    },
+    {
+      "id": 142,
+      "source": "legacy",
+      "name": "引燃",
+      "element": "火",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "敌方获得10层灼烧效果。"
+    },
+    {
+      "id": 105,
+      "source": "legacy",
+      "name": "徒长",
+      "element": "草",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "自己回复10能量。"
+    },
+    {
+      "id": 63,
+      "source": "legacy",
+      "name": "休息回复",
+      "element": "普通",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "自己回复30%生命。"
+    }
   ]
 }

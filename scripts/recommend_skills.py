@@ -233,9 +233,9 @@ def score_reliable_power(skill, pet_atk, pet_matk):
         elif power >= 100:
             bonus += 3
 
-        # 物理技能在当前物攻环境附加值（精灵本身是物攻手）
-        if category == "物理" and pet_atk > pet_matk:
-            bonus += 3
+        # 均衡型：不根据精灵种族值偏向，只看技能本身的稳定输出能力
+        if category == "物理":
+            bonus += 1  # 当前物攻环境小幅加成，所有精灵都能受益
 
     return bonus
 

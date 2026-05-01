@@ -25,6 +25,23 @@ def _load_chart():
 def _norm(a):
     return _SHORT_MAP.get(a, a)
 
+IV = 10  # 个体值 (7~10，取10)
+
+def base_to_actual(base_stat, nature_mod=0.0, is_hp=False):
+    """
+    生命: (1.7*(种族 + 3*个体) + 70) × (1 + 性格修正) + 100
+    其他: (1.1*(种族 + 3*个体) + 10) × (1 + 性格修正) + 50
+    计算细则：系数×种族部分先四舍五入，整体算完再四舍五入一次
+    """
+    if is_hp:
+        step1 = round(1.7 * (base_stat + 3 * IV))  # 第一次四舍五入
+        raw = (step1 + 70) * (1 + nature_mod) + 100
+        return round(raw)  # 第二次四舍五入
+    else:
+        step1 = round(1.1 * (base_stat + 3 * IV))  # 第一次四舍五入
+        raw = (step1 + 10) * (1 + nature_mod) + 50
+        return round(raw)  # 第二次四舍五入
+
 # 攻击属性热门度分级
 _HOT_T1 = {"一般", "翼", "水", "地", "机械", "火"}
 _HOT_T2 = {"光", "恶魔", "冰", "电", "武"}
@@ -34,10 +51,10 @@ def _atk_weight(atk_type):
     if atk_type in _HOT_T2: return 1.5
     return 1.0
 
-def calc_combat_score(attrs, stats):
+def calc_combat_score(attrs, stats, rec_skills=None):
     """
     属性×种族值 综合战斗能力评分：攻击能力 + 防御能力 + 速度线
-    取代旧版的 calc_attr_score (纯属性) + stats_score (总种族/20)
+    攻击分基于伤害公式：技能威力 × 对应攻击力 × 本系加成
     返回 (total, breakdown)
     """
     if not attrs:
@@ -113,41 +130,74 @@ def calc_combat_score(attrs, stats):
     mdef = stats.get("mdef", 80)
     spd = stats.get("spd", 80)
 
-    # 1. 攻击能力: 攻击种族 + 属性打击面
-    best_atk = max(atk, matk)
-    second_atk = min(atk, matk)
-    atk_stat = best_atk * 0.3 + second_atk * 0.08
+    # 计算实际速度值（默认+20%性格修正，对应高速输出手）
+    actual_spd = base_to_actual(spd, 0.2)
+
+    # 1. 攻击能力: 取最强单技能伤害 = (实际攻击 ÷ 目标防御) × 威力 × 本系
+    # 只看最强输出技能的能力，不是所有技能的总和
+    actual_atk = base_to_actual(atk, 0.2)
+    actual_matk = base_to_actual(matk, 0.2)
+    TARGET_DEF = 200  # 标准目标防御值
+    SCALE = 0.35  # 缩放到与防御分同量级
+
+    phys_best = 0.0
+    spec_best = 0.0
+    if rec_skills:
+        for sk in rec_skills:
+            power = sk.get("power", 0) if isinstance(sk, dict) else 0
+            if power <= 0:
+                continue
+            category = sk.get("category", "") if isinstance(sk, dict) else ""
+            element = sk.get("element", "普通") if isinstance(sk, dict) else "普通"
+            stab = 1.5 if element in attrs else 1.0
+            # 伤害 = 实际攻击 ÷ 标准防御 × 威力 × 本系
+            damage = (actual_atk if "物理" in category else actual_matk) / TARGET_DEF * power * stab
+            if "物理" in category:
+                phys_best = max(phys_best, damage)
+            else:
+                spec_best = max(spec_best, damage)
+
+    phys_atk_score = round(phys_best * SCALE, 1)
+    spec_atk_score = round(spec_best * SCALE, 1)
+    # 取物攻和特攻中更高的，代表精灵的最高输出能力
+    atk_stat = max(phys_atk_score, spec_atk_score)
     atk_type_bonus = type_offense * 0.45
     attack_score = round(atk_stat + atk_type_bonus, 1)
 
-    # 2. 防御能力: 耐久种族 + 属性联防面
-    bulk_stat = (hp + def_ + mdef) / 6
+    # 2. 防御能力: 基于伤害公式，拆分为物防/特防分
+    # 伤害 ∝ 攻击÷防御，能承受的总伤害 ∝ HP×防御
+    # 物攻环境主导 (65%物理，35%特殊)
+    scale = 180  # 缩放系数，控制防御分与攻击分(40-70)的量级
+    phys_bulk = hp * def_ / scale   # 标准化物理耐久（伤害公式：atk/def × 常数）
+    spec_bulk = hp * mdef / scale   # 标准化特殊耐久
+    phys_def_score = round(phys_bulk * 0.65, 1)  # 物防分：物攻环境权重高
+    spec_def_score = round(spec_bulk * 0.35, 1)  # 特防分：魔攻环境权重低
     type_def_bonus = type_defense * 0.6
-    defense_score = round(bulk_stat + type_def_bonus, 1)
+    defense_score = round(phys_def_score + spec_def_score + type_def_bonus, 1)
 
-    # 3. 速度线 (0~30)
-    if spd >= 135:
-        speed_score = 30
-    elif spd >= 125:
-        speed_score = 26
-    elif spd >= 115:
-        speed_score = 22
-    elif spd >= 105:
-        speed_score = 18
-    elif spd >= 97:
-        speed_score = 14
-    elif spd >= 85:
-        speed_score = 10
-    elif spd >= 75:
-        speed_score = 7
+    # 3. 速度分：连续量化计算 - 低于100基础为0，超过后抛物线增长
+    # 公式：speed_score = max(spd - 98, 0) ^ 1.5 * 0.32
+    if spd >= 100:
+        speed_score = round(pow(max(spd - 98, 0), 1.5) * 0.32, 1)
+        speed_line = spd
     else:
-        speed_score = 4
+        speed_score = 0
+        speed_line = 0
 
+    # 无权重：直接相加，一视同仁
     total = round(attack_score + defense_score + speed_score, 1)
     return total, {
         "attack": attack_score,
+        "phys_atk": round(phys_atk_score, 1),
+        "spec_atk": round(spec_atk_score, 1),
+        "type_atk": round(atk_type_bonus, 1),
         "defense": defense_score,
+        "phys_def": phys_def_score,
+        "spec_def": spec_def_score,
+        "type_def": round(type_def_bonus, 1),
         "speed": speed_score,
+        "speed_line": speed_line,
+        "actual_spd": actual_spd,
     }
 
 
@@ -475,13 +525,13 @@ def score_trait(trait_name, desc):
         v = -12
         pts["高魔力惩罚"] = v; score += v
 
-    # 技能位限制（圣剑系列）
-    if "仅可以使用1号位技能" in desc and "3号" not in desc:
-        v = -18
-        pts["单技能位限制"] = v; score += v
-    if "仅可使用1号和3号位技能" in desc:
-        v = -8
-        pts["双技能位限制"] = v; score += v
+    # 技能位限制（圣剑系列）- 暂不扣分
+    # if "仅可以使用1号位技能" in desc and "3号" not in desc:
+    #     v = -18
+    #     pts["单技能位限制"] = v; score += v
+    # if "仅可使用1号和3号位技能" in desc:
+    #     v = -8
+    #     pts["双技能位限制"] = v; score += v
 
     return round(score, 1), pts
 
@@ -489,7 +539,7 @@ def score_trait(trait_name, desc):
 def score_pet(pet_name, pet_data, learnset_skills, rec_skills, skill_scores, boss_bonus=0):
     """
     精灵综合评分 = 推荐技能总分 + 特性分
-    boss_bonus: 首领化加分（种族提升 + 特性改善）
+    boss_bonus: 首领化加成（先提升种族值，再计算战斗能力）
     """
     # 技能分 (推荐配置)
     skill_total = 0
@@ -504,12 +554,28 @@ def score_pet(pet_name, pet_data, learnset_skills, rec_skills, skill_scores, bos
 
     # 属性×种族 综合战斗能力评分: 攻击能力 + 防御能力 + 速度线
     attrs = pet_data.get("attrs", [])
-    stats = pet_data.get("stats", {})
-    attr_bonus, attr_detail = calc_combat_score(attrs, stats)
+    stats = dict(pet_data.get("stats", {}))  # copy to avoid modifying original
+
+    # 特性对种族的直接影响：先于 combat_score 计算生效
+    # 失去一半生命 → 有效HP减半（防御力折半）
+    trait_desc = trait.get("desc", "")
+    if "失去自己一半" in trait_desc or "失去一半" in trait_desc:
+        stats['hp'] = stats['hp'] // 2
+
+    # 首领化：先按比例提升种族值（boss_bonus 换算为种族提升百分比）
+    # boss_bonus 每 10 分 ≈ 种族值整体提升约 10%
+    if boss_bonus > 0:
+        race_boost = 1 + (boss_bonus / 100)  # 20分 ≈ +20% 种族
+        for k in stats:
+            if k != 'total':
+                stats[k] = int(stats[k] * race_boost)
+
+    attr_bonus, attr_detail = calc_combat_score(attrs, stats, rec_skills)
 
     # 权重: 特性得分暂置0（仅保留负面惩罚），属性种族合并为战斗能力
     trait_positive = max(trait_score, 0)
-    total = round(skill_total + (trait_score - trait_positive) * 4 + attr_bonus + boss_bonus, 1)
+    # 首领化不再重复加分（已通过种族提升体现在战斗能力中）
+    total = round(skill_total + (trait_score - trait_positive) * 4 + attr_bonus, 1)
 
     return total, {
         "skill_score": round(skill_total, 1),
@@ -581,6 +647,19 @@ def main():
     # Sort by score
     ranked = sorted(pet_scores.values(), key=lambda x: -x["score"])
 
+    # 去重：棋家族的黑子和白子完全一样，只保留一个（白子）
+    seen = set()
+    unique_ranked = []
+    for p in ranked:
+        name = p["name"]
+        # 提取基础名称（去掉"（白子）"或"（黑子）"后缀）
+        base_name = name.replace("（白子）", "").replace("（黑子）", "")
+        if base_name in seen:
+            continue
+        seen.add(base_name)
+        unique_ranked.append(p)
+    ranked = unique_ranked
+
     # Save rankings
     with open(DATA_DIR / "all_pet_rankings.json", "w") as f:
         json.dump(ranked, f, ensure_ascii=False, indent=2)
@@ -589,9 +668,26 @@ def main():
     print("=" * 90)
     print("精灵综合排名 (技能 + 战斗能力[攻防速])")
     print("=" * 90)
+    def _format_combat(cd, combat_score, actual_spd):
+        parts = []
+        pa = cd.get('phys_atk', cd.get('attack', 0))
+        sa = cd.get('spec_atk', 0)
+        if pa > 0 and sa > 0:
+            parts.append(f"物攻{pa:.0f}/特攻{sa:.0f}")
+        elif pa > 0:
+            parts.append(f"物攻{pa:.0f}")
+        elif sa > 0:
+            parts.append(f"特攻{sa:.0f}")
+        pd = cd.get('phys_def', 0)
+        sd = cd.get('spec_def', 0)
+        parts.append(f"物防{pd:.0f}/特防{sd:.0f}")
+        parts.append(f"速{cd.get('speed',0):.0f}/{actual_spd}")
+        return f"{combat_score} ({' '.join(parts)})"
+
     for i, p in enumerate(ranked[:30], 1):
         cd = p.get('combat_detail', {})
-        combat_str = f"{p['combat_score']} (攻{cd.get('attack',0):.0f}/防{cd.get('defense',0):.0f}/速{cd.get('speed',0):.0f})"
+        actual_spd = cd.get('actual_spd', 0)
+        combat_str = _format_combat(cd, p['combat_score'], actual_spd)
         boss_str = f" 首领化+{p['boss_bonus']:.0f}" if p.get('boss_bonus', 0) > 0 else ""
         trait_str = f" 负面={p['trait_score']:.0f}" if p['trait_score'] < 0 else ""
         sk_names = " · ".join(p.get("recommended_skills", [])[:4])
@@ -858,7 +954,8 @@ def main():
     lines.append("=" * 100)
     for i, p in enumerate(ranked, 1):
         cd = p.get('combat_detail', {})
-        combat_str = f"{p['combat_score']} (攻{cd.get('attack',0):.0f}/防{cd.get('defense',0):.0f}/速{cd.get('speed',0):.0f})"
+        actual_spd = cd.get('actual_spd', 0)
+        combat_str = _format_combat(cd, p['combat_score'], actual_spd)
         boss_str = f" 首领化+{p['boss_bonus']:.0f}" if p.get('boss_bonus', 0) > 0 else ""
         trait_str = f" 负面={p['trait_score']:.0f}" if p['trait_score'] < 0 else ""
         sk_names = " · ".join(p.get("recommended_skills", [])[:4])

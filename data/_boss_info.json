@@ -37,42 +37,42 @@
   },
   "棋棋（白子）": {
     "bonus": 0,
-    "remove": false
+    "remove": true
   },
   "棋棋（黑子）": {
     "bonus": 0,
-    "remove": false
+    "remove": true
   },
   "棋骑士（白子）": {
-    "bonus": 20.1,
-    "remove": false
+    "bonus": 0,
+    "remove": true
   },
   "棋骑士（黑子）": {
-    "bonus": 20.1,
-    "remove": false
+    "bonus": 0,
+    "remove": true
   },
   "棋齐垒（白子）": {
-    "bonus": 40.7,
-    "remove": false
+    "bonus": 0,
+    "remove": true
   },
   "棋齐垒（黑子）": {
-    "bonus": 40.7,
-    "remove": false
+    "bonus": 0,
+    "remove": true
   },
   "棋祈督（白子）": {
-    "bonus": 29.9,
-    "remove": false
+    "bonus": 0,
+    "remove": true
   },
   "棋祈督（黑子）": {
-    "bonus": 29.9,
-    "remove": false
+    "bonus": 0,
+    "remove": true
   },
   "棋绮后（白子）": {
-    "bonus": 23.6,
-    "remove": false
+    "bonus": 0,
+    "remove": true
   },
   "棋绮后（黑子）": {
-    "bonus": 23.6,
-    "remove": false
+    "bonus": 0,
+    "remove": true
   }
 }
