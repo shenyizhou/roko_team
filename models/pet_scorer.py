@@ -27,16 +27,21 @@ class PetScorer:
             "speed_bonus": 0.10,# 速度线奖励
         }
 
-    # 种族值→实际值公式（50级）
-    STAT_LEVEL = 50
+    IV = 60  # 个体值
 
     @staticmethod
     def _base_to_hp(base_hp: int) -> int:
-        return int(2 * base_hp * PetScorer.STAT_LEVEL / 100) + PetScorer.STAT_LEVEL + 10
+        """HP实际值 = 1.7 × 种族 + 105（从Excel等效血量反推）"""
+        return int(base_hp * 1.7 + 105)
 
     @staticmethod
-    def _base_to_stat(base_stat: int, nature_mult: float = 1.0) -> int:
-        return int(int(2 * base_stat * PetScorer.STAT_LEVEL / 100 + 5) * nature_mult)
+    def _base_to_stat(base_stat: int, nature_mod: float = 0.0) -> int:
+        """
+        实际属性值 = (1.1 × 种族 + 个体值×0.55 + 10) × (1 + 性格修正)
+        性格修正: 高速输出手=0.2, 其他=0
+        """
+        raw = 1.1 * base_stat + PetScorer.IV * 0.55 + 10
+        return int(raw * (1 + nature_mod))
 
     def _determine_attack_type(self, pet_skills: dict, stats: dict = None) -> str:
         """根据技能池和种族值判断是物攻手还是特攻手"""
@@ -75,39 +80,39 @@ class PetScorer:
 
     def _apply_nature(self, stats: dict, role: str, atk_type: str) -> dict:
         """
-        根据定位和攻击类型应用性格加成，返回实际50级数值
-        肉盾:  平和(+HP-mAtk)或沉默(+HP-Atk)
-        高速:  开朗(+Spd-mAtk)或胆小(+Spd-Atk)
-        中速:  固执(+Atk-mAtk)或聪明(+mAtk-Atk)
+        根据定位和攻击类型应用性格加成，返回实际数值
+        速度公式: (1.1×种族 + IV×0.55 + 10) × (1 + 性格修正)
+        其他属性: (1.1×种族 + IV×0.55 + 10) × 性格倍率
+        高速输出手(开朗/胆小): 速度+20%, 非主攻-10%
+        中速输出手(固执/聪明): 主攻+10%, 非主攻-10%
+        肉盾(沉默/平和):     HP+10%, 非主攻-10%
         """
-        hp_mult, atk_mult, matk_mult, def_mult, mdef_mult, spd_mult = 1.0, 1.0, 1.0, 1.0, 1.0, 1.0
+        hp_mult, atk_mult, matk_mult = 1.0, 1.0, 1.0
+        spd_mod = 0.0  # 速度性格修正
 
         if role == "wall":
-            # 肉盾加HP，减非主攻属性
-            hp_mult = 1.1
+            hp_mult = 1.1  # 沉默/平和: +HP
             if atk_type == "physical":
-                matk_mult = 0.9  # 沉默: +HP -mAtk
+                matk_mult = 0.9  # 沉默: -魔攻
             else:
-                atk_mult = 0.9   # 平和: +HP -Atk
+                atk_mult = 0.9   # 平和: -物攻
         elif role == "sweeper":
             spd = stats["spd"]
             if spd >= 115:
-                # 高速输出手: 开朗/胆小 +Spd
-                spd_mult = 1.1
+                spd_mod = 0.2  # 开朗/胆小: +20%速度
                 if atk_type == "physical":
-                    matk_mult = 0.9  # 开朗: +Spd -mAtk
+                    matk_mult = 0.9  # 开朗: -魔攻
                 else:
-                    atk_mult = 0.9   # 胆小: +Spd -Atk
+                    atk_mult = 0.9   # 胆小: -物攻
             else:
-                # 中速输出手: 固执/聪明 +Atk
                 if atk_type == "physical":
-                    atk_mult = 1.1   # 固执: +Atk -mAtk
-                    matk_mult = 0.9
+                    atk_mult = 1.1   # 固执: +物攻
+                    matk_mult = 0.9  # -魔攻
                 else:
-                    matk_mult = 1.1  # 聪明: +mAtk -Atk
-                    atk_mult = 0.9
+                    matk_mult = 1.1  # 聪明: +魔攻
+                    atk_mult = 0.9   # -物攻
         else:
-            # balanced: 默认中速输出手性格
+            # balanced: 默认中速输出手
             if atk_type == "physical":
                 atk_mult = 1.1
                 matk_mult = 0.9
@@ -116,12 +121,12 @@ class PetScorer:
                 atk_mult = 0.9
 
         return {
-            "hp": self._base_to_hp(stats["hp"]),
-            "atk": self._base_to_stat(stats["atk"], atk_mult),
-            "matk": self._base_to_stat(stats["matk"], matk_mult),
-            "def": self._base_to_stat(stats["def"], def_mult),
-            "mdef": self._base_to_stat(stats["mdef"], mdef_mult),
-            "spd": self._base_to_stat(stats["spd"], spd_mult),
+            "hp": int(self._base_to_hp(stats["hp"]) * hp_mult),
+            "atk": int(self._base_to_stat(stats["atk"]) * atk_mult),
+            "matk": int(self._base_to_stat(stats["matk"]) * matk_mult),
+            "def": self._base_to_stat(stats["def"]),
+            "mdef": self._base_to_stat(stats["mdef"]),
+            "spd": self._base_to_stat(stats["spd"], spd_mod),
         }
 
     def calc_stats_score(self, stats: dict, role: str = "balanced", atk_type: str = "physical") -> float:
@@ -151,26 +156,27 @@ class PetScorer:
             # 均衡
             weighted = useful_atk * 0.35 + spd * 0.35 + bulk * 0.30
 
-        return weighted * 0.65  # 缩放到0-150范围供归一化
+        return weighted * 0.40  # 缩放到0-150范围供归一化
 
-    def calc_speed_bonus(self, spd: int) -> float:
-        """速度线阶梯奖励：基于计算器速度线（每5种族差=6~7实际速度）"""
-        if spd >= 150: return 100
-        if spd >= 145: return 95
-        if spd >= 135: return 88
-        if spd >= 130: return 80
-        if spd >= 125: return 72
-        if spd >= 120: return 64
-        if spd >= 115: return 56
-        if spd >= 110: return 48
-        if spd >= 105: return 40
-        if spd >= 100: return 33
-        if spd >= 95: return 26
-        if spd >= 90: return 20
-        if spd >= 85: return 14
-        if spd >= 80: return 9
-        if spd >= 70: return 5
-        if spd >= 60: return 2
+    def calc_speed_bonus(self, base_spd: int) -> float:
+        """速度线阶梯奖励：基于实际速度值（不含性格/技能/特性加成）"""
+        raw_spd = self._base_to_stat(base_spd)
+        if raw_spd >= 220: return 100
+        if raw_spd >= 215: return 95
+        if raw_spd >= 210: return 88
+        if raw_spd >= 205: return 80
+        if raw_spd >= 200: return 72
+        if raw_spd >= 195: return 64
+        if raw_spd >= 190: return 56
+        if raw_spd >= 185: return 48
+        if raw_spd >= 180: return 40
+        if raw_spd >= 175: return 33
+        if raw_spd >= 170: return 26
+        if raw_spd >= 165: return 20
+        if raw_spd >= 160: return 14
+        if raw_spd >= 155: return 9
+        if raw_spd >= 150: return 5
+        if raw_spd >= 145: return 2
         return 0
 
     def calc_type_score(self, attrs: list[str]) -> float:

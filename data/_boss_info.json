@@ -1,0 +1,78 @@
+{
+  "鸭吉吉": {
+    "bonus": 0,
+    "remove": true
+  },
+  "千棘盔": {
+    "bonus": 0,
+    "remove": true
+  },
+  "岚鸟": {
+    "bonus": 0,
+    "remove": true
+  },
+  "圣剑-X": {
+    "bonus": 8.0,
+    "remove": false
+  },
+  "鸭吉吉（起来鸭）": {
+    "bonus": 19.1,
+    "remove": false
+  },
+  "岚鸟（本来的样子）": {
+    "bonus": 1.9,
+    "remove": false
+  },
+  "千棘盔（磨损的样子）": {
+    "bonus": 0.7,
+    "remove": false
+  },
+  "圣剑骑士": {
+    "bonus": 0,
+    "remove": true
+  },
+  "圣剑侍从": {
+    "bonus": 0,
+    "remove": true
+  },
+  "棋棋（白子）": {
+    "bonus": 0,
+    "remove": false
+  },
+  "棋棋（黑子）": {
+    "bonus": 0,
+    "remove": false
+  },
+  "棋骑士（白子）": {
+    "bonus": 20.1,
+    "remove": false
+  },
+  "棋骑士（黑子）": {
+    "bonus": 20.1,
+    "remove": false
+  },
+  "棋齐垒（白子）": {
+    "bonus": 40.7,
+    "remove": false
+  },
+  "棋齐垒（黑子）": {
+    "bonus": 40.7,
+    "remove": false
+  },
+  "棋祈督（白子）": {
+    "bonus": 29.9,
+    "remove": false
+  },
+  "棋祈督（黑子）": {
+    "bonus": 29.9,
+    "remove": false
+  },
+  "棋绮后（白子）": {
+    "bonus": 23.6,
+    "remove": false
+  },
+  "棋绮后（黑子）": {
+    "bonus": 23.6,
+    "remove": false
+  }
+}

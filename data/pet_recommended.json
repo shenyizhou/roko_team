@@ -125,48 +125,6 @@
       "desc": "减伤50%，应对攻击：下一次行动获得先手+1。"
     }
   ],
-  "龙鱼": [
-    {
-      "id": 260,
-      "source": "stone",
-      "name": "超导",
-      "element": "电",
-      "category": "魔法",
-      "cost": 3,
-      "power": 95,
-      "desc": "造成魔伤，迸发：本技能能耗-1。"
-    },
-    {
-      "id": 155,
-      "source": "learnset",
-      "name": "打湿",
-      "element": "水",
-      "category": "变化",
-      "cost": 4,
-      "power": 0,
-      "desc": "自己获得1层湿润印记。"
-    },
-    {
-      "id": 255,
-      "source": "learnset",
-      "name": "龙吟",
-      "element": "龙",
-      "category": "变化",
-      "cost": 3,
-      "power": 0,
-      "desc": "蓄力，自己获得双攻+100%和速度+60。"
-    },
-    {
-      "id": 14,
-      "source": "stone",
-      "name": "防御",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "减伤70%，应对攻击。"
-    }
-  ],
   "尖嘴狐仙": [
     {
       "id": 445,
@@ -209,6 +167,174 @@
       "desc": "减伤70%，应对攻击：敌方获得4层灼烧。"
     }
   ],
+  "龙鱼": [
+    {
+      "id": 260,
+      "source": "stone",
+      "name": "超导",
+      "element": "电",
+      "category": "魔法",
+      "cost": 3,
+      "power": 95,
+      "desc": "造成魔伤，迸发：本技能能耗-1。"
+    },
+    {
+      "id": 155,
+      "source": "learnset",
+      "name": "打湿",
+      "element": "水",
+      "category": "变化",
+      "cost": 4,
+      "power": 0,
+      "desc": "自己获得1层湿润印记。"
+    },
+    {
+      "id": 255,
+      "source": "learnset",
+      "name": "龙吟",
+      "element": "龙",
+      "category": "变化",
+      "cost": 3,
+      "power": 0,
+      "desc": "蓄力，自己获得双攻+100%和速度+60。"
+    },
+    {
+      "id": 14,
+      "source": "stone",
+      "name": "防御",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    }
+  ],
+  "帅帅魔偶": [
+    {
+      "id": 85,
+      "source": "stone",
+      "name": "芳香诱引",
+      "element": "草",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得连击数+3，应对防御：额外造成打断，且敌方下回合获得眩晕。"
+    },
+    {
+      "id": 445,
+      "source": "legacy",
+      "name": "啮合传递",
+      "element": "机械",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
+    },
+    {
+      "id": 61,
+      "source": "learnset",
+      "name": "消毒法",
+      "element": "普通",
+      "category": "魔法",
+      "cost": 4,
+      "power": 105,
+      "desc": "造成魔伤，驱散敌方5层增益。"
+    },
+    {
+      "id": 107,
+      "source": "stone",
+      "name": "纤维化",
+      "element": "草",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，应对攻击：自己获得物防+40%。"
+    }
+  ],
+  "卡拉波斯": [
+    {
+      "id": 445,
+      "source": "legacy",
+      "name": "啮合传递",
+      "element": "机械",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
+    },
+    {
+      "id": 61,
+      "source": "learnset",
+      "name": "消毒法",
+      "element": "普通",
+      "category": "魔法",
+      "cost": 4,
+      "power": 105,
+      "desc": "造成魔伤，驱散敌方5层增益。"
+    },
+    {
+      "id": 390,
+      "source": "stone",
+      "name": "嘲弄",
+      "element": "幽",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "自己获得魔攻+70%，若敌方本回合替换精灵，自己获得速度+70。"
+    },
+    {
+      "id": 76,
+      "source": "stone",
+      "name": "有效预防",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤50%，应对攻击：下一次行动获得先手+1。"
+    }
+  ],
+  "上岸蛙": [
+    {
+      "id": 190,
+      "source": "stone",
+      "name": "地刺",
+      "element": "地",
+      "category": "物理",
+      "cost": 3,
+      "power": 95,
+      "desc": "造成物伤，应对状态：额外打断被应对技能。"
+    },
+    {
+      "id": 54,
+      "source": "learnset",
+      "name": "偷袭",
+      "element": "普通",
+      "category": "物理",
+      "cost": 3,
+      "power": 85,
+      "desc": "造成物伤，应对状态：本次技能威力变为3倍。"
+    },
+    {
+      "id": 30,
+      "source": "learnset",
+      "name": "力量增效",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得物攻+100%。"
+    },
+    {
+      "id": 14,
+      "source": "learnset",
+      "name": "防御",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    }
+  ],
   "黑羽夫人": [
     {
       "id": 323,
@@ -249,6 +375,48 @@
       "cost": 1,
       "power": 0,
       "desc": "自己获得物攻+100%。"
+    }
+  ],
+  "卷胡巨獭": [
+    {
+      "id": 59,
+      "source": "stone",
+      "name": "吓退",
+      "element": "普通",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，应对攻击：敌方脱离。"
+    },
+    {
+      "id": 323,
+      "source": "legacy",
+      "name": "掩护",
+      "element": "虫",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
+    },
+    {
+      "id": 81,
+      "source": "stone",
+      "name": "阻断",
+      "element": "普通",
+      "category": "魔法",
+      "cost": 2,
+      "power": 70,
+      "desc": "造成魔伤，应对状态：额外打断被应对技能。"
+    },
+    {
+      "id": 177,
+      "source": "legacy",
+      "name": "虹光冲击",
+      "element": "光",
+      "category": "魔法",
+      "cost": 3,
+      "power": 100,
+      "desc": "对敌方精灵造成魔法伤害。"
     }
   ],
   "影狸": [
@@ -335,48 +503,6 @@
       "desc": "对敌方精灵造成物理伤害。"
     }
   ],
-  "卷胡巨獭": [
-    {
-      "id": 59,
-      "source": "stone",
-      "name": "吓退",
-      "element": "普通",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "减伤70%，应对攻击：敌方脱离。"
-    },
-    {
-      "id": 323,
-      "source": "legacy",
-      "name": "掩护",
-      "element": "虫",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
-    },
-    {
-      "id": 81,
-      "source": "stone",
-      "name": "阻断",
-      "element": "普通",
-      "category": "魔法",
-      "cost": 2,
-      "power": 70,
-      "desc": "造成魔伤，应对状态：额外打断被应对技能。"
-    },
-    {
-      "id": 177,
-      "source": "legacy",
-      "name": "虹光冲击",
-      "element": "光",
-      "category": "魔法",
-      "cost": 3,
-      "power": 100,
-      "desc": "对敌方精灵造成魔法伤害。"
-    }
-  ],
   "绒光优优": [
     {
       "id": 445,
@@ -417,1098 +543,6 @@
       "cost": 3,
       "power": 95,
       "desc": "造成魔伤，本技能系别始终和天气系别相同。"
-    }
-  ],
-  "古卷匣魔像": [
-    {
-      "id": 323,
-      "source": "legacy",
-      "name": "掩护",
-      "element": "虫",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
-    },
-    {
-      "id": 39,
-      "source": "learnset",
-      "name": "能量刃",
-      "element": "普通",
-      "category": "物理",
-      "cost": 3,
-      "power": 70,
-      "desc": "造成物伤，每应对成功1次，本技能威力永久+90。"
-    },
-    {
-      "id": 30,
-      "source": "learnset",
-      "name": "力量增效",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "自己获得物攻+100%。"
-    },
-    {
-      "id": 349,
-      "source": "stone",
-      "name": "斩断",
-      "element": "武",
-      "category": "物理",
-      "cost": 2,
-      "power": 70,
-      "desc": "造成物伤，应对状态：额外打断被应对技能。"
-    }
-  ],
-  "嗜波螺": [
-    {
-      "id": 323,
-      "source": "legacy",
-      "name": "掩护",
-      "element": "虫",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
-    },
-    {
-      "id": 191,
-      "source": "learnset",
-      "name": "地陷",
-      "element": "地",
-      "category": "物理",
-      "cost": 5,
-      "power": 70,
-      "desc": "造成物伤，自己获得物防+60%，应对状态：本次技能威力翻倍，且物防额外+60%。"
-    },
-    {
-      "id": 160,
-      "source": "stone",
-      "name": "水光冲击",
-      "element": "水",
-      "category": "魔法",
-      "cost": 5,
-      "power": 140,
-      "desc": "对敌方精灵造成魔法伤害。"
-    },
-    {
-      "id": 177,
-      "source": "legacy",
-      "name": "虹光冲击",
-      "element": "光",
-      "category": "魔法",
-      "cost": 3,
-      "power": 100,
-      "desc": "对敌方精灵造成魔法伤害。"
-    }
-  ],
-  "瞌睡王": [
-    {
-      "id": 54,
-      "source": "learnset",
-      "name": "偷袭",
-      "element": "普通",
-      "category": "物理",
-      "cost": 3,
-      "power": 85,
-      "desc": "造成物伤，应对状态：本次技能威力变为3倍。"
-    },
-    {
-      "id": 217,
-      "source": "stone",
-      "name": "冰雹",
-      "element": "冰",
-      "category": "物理",
-      "cost": 4,
-      "power": 100,
-      "desc": "造成物伤，应对状态：额外使敌方获得全技能能耗+3。"
-    },
-    {
-      "id": 349,
-      "source": "learnset",
-      "name": "斩断",
-      "element": "武",
-      "category": "物理",
-      "cost": 2,
-      "power": 70,
-      "desc": "造成物伤，应对状态：额外打断被应对技能。"
-    },
-    {
-      "id": 76,
-      "source": "stone",
-      "name": "有效预防",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "减伤50%，应对攻击：下一次行动获得先手+1。"
-    }
-  ],
-  "九幽菇": [
-    {
-      "id": 85,
-      "source": "learnset",
-      "name": "芳香诱引",
-      "element": "草",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "自己获得连击数+3，应对防御：额外造成打断，且敌方下回合获得眩晕。"
-    },
-    {
-      "id": 445,
-      "source": "legacy",
-      "name": "啮合传递",
-      "element": "机械",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
-    },
-    {
-      "id": 104,
-      "source": "learnset",
-      "name": "藤绞",
-      "element": "草",
-      "category": "物理",
-      "cost": 4,
-      "power": 80,
-      "desc": "造成物伤，自己回复5能量。"
-    },
-    {
-      "id": 14,
-      "source": "learnset",
-      "name": "防御",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "减伤70%，应对攻击。"
-    }
-  ],
-  "炽心勇狮": [
-    {
-      "id": 323,
-      "source": "legacy",
-      "name": "掩护",
-      "element": "虫",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
-    },
-    {
-      "id": 614,
-      "source": "stone",
-      "name": "阳火增辉",
-      "element": "火",
-      "category": "魔法",
-      "cost": 3,
-      "power": 75,
-      "desc": "造成魔伤，每次击败敌方，本技能威力永久翻倍。"
-    },
-    {
-      "id": 81,
-      "source": "stone",
-      "name": "阻断",
-      "element": "普通",
-      "category": "魔法",
-      "cost": 2,
-      "power": 70,
-      "desc": "造成魔伤，应对状态：额外打断被应对技能。"
-    },
-    {
-      "id": 130,
-      "source": "learnset",
-      "name": "怒火",
-      "element": "火",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "自己获得双攻+130%和双防-40%。"
-    }
-  ],
-  "翼龙": [
-    {
-      "id": 54,
-      "source": "stone",
-      "name": "偷袭",
-      "element": "普通",
-      "category": "物理",
-      "cost": 3,
-      "power": 85,
-      "desc": "造成物伤，应对状态：本次技能威力变为3倍。"
-    },
-    {
-      "id": 255,
-      "source": "learnset",
-      "name": "龙吟",
-      "element": "龙",
-      "category": "变化",
-      "cost": 3,
-      "power": 0,
-      "desc": "蓄力，自己获得双攻+100%和速度+60。"
-    },
-    {
-      "id": 368,
-      "source": "learnset",
-      "name": "羽刃",
-      "element": "翼",
-      "category": "物理",
-      "cost": 2,
-      "power": 70,
-      "desc": "造成物伤，应对状态：回合结束使敌方紧急脱离。"
-    },
-    {
-      "id": 14,
-      "source": "stone",
-      "name": "防御",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "减伤70%，应对攻击。"
-    }
-  ],
-  "燃薪虫": [
-    {
-      "id": 323,
-      "source": "legacy",
-      "name": "掩护",
-      "element": "虫",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
-    },
-    {
-      "id": 144,
-      "source": "learnset",
-      "name": "灼伤",
-      "element": "火",
-      "category": "物理",
-      "cost": 4,
-      "power": 120,
-      "desc": "对敌方精灵造成物理伤害。"
-    },
-    {
-      "id": 30,
-      "source": "stone",
-      "name": "力量增效",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "自己获得物攻+100%。"
-    },
-    {
-      "id": 45,
-      "source": "stone",
-      "name": "倾泻",
-      "element": "普通",
-      "category": "魔法",
-      "cost": 3,
-      "power": 60,
-      "desc": "造成魔伤，若本次攻击未被防御技能应对，则驱散双方所有印记。"
-    }
-  ],
-  "武者鸡": [
-    {
-      "id": 336,
-      "source": "learnset",
-      "name": "截拳",
-      "element": "武",
-      "category": "物理",
-      "cost": 3,
-      "power": 85,
-      "desc": "造成物伤，应对状态：额外造成打断，回复该技能能耗的能量。"
-    },
-    {
-      "id": 145,
-      "source": "learnset",
-      "name": "焚烧烙印",
-      "element": "火",
-      "category": "变化",
-      "cost": 3,
-      "power": 0,
-      "desc": "驱散双方所有印记，每驱散1层，敌方获得5层灼烧。"
-    },
-    {
-      "id": 30,
-      "source": "learnset",
-      "name": "力量增效",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "自己获得物攻+100%。"
-    },
-    {
-      "id": 14,
-      "source": "stone",
-      "name": "防御",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "减伤70%，应对攻击。"
-    }
-  ],
-  "蒲公英娃娃": [
-    {
-      "id": 371,
-      "source": "learnset",
-      "name": "爆米花爆破",
-      "element": "萌",
-      "category": "物理",
-      "cost": 5,
-      "power": 140,
-      "desc": "对敌方精灵造成物理伤害。"
-    },
-    {
-      "id": 45,
-      "source": "learnset",
-      "name": "倾泻",
-      "element": "普通",
-      "category": "魔法",
-      "cost": 3,
-      "power": 60,
-      "desc": "造成魔伤，若本次攻击未被防御技能应对，则驱散双方所有印记。"
-    },
-    {
-      "id": 87,
-      "source": "learnset",
-      "name": "丰饶",
-      "element": "草",
-      "category": "变化",
-      "cost": 3,
-      "power": 0,
-      "desc": "自己获得物攻和魔攻+130%。"
-    },
-    {
-      "id": 14,
-      "source": "stone",
-      "name": "防御",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "减伤70%，应对攻击。"
-    }
-  ],
-  "熔岩布丁": [
-    {
-      "id": 323,
-      "source": "legacy",
-      "name": "掩护",
-      "element": "虫",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
-    },
-    {
-      "id": 124,
-      "source": "learnset",
-      "name": "火焰切割",
-      "element": "火",
-      "category": "物理",
-      "cost": 3,
-      "power": 100,
-      "desc": "对敌方精灵造成物理伤害。"
-    },
-    {
-      "id": 81,
-      "source": "stone",
-      "name": "阻断",
-      "element": "普通",
-      "category": "魔法",
-      "cost": 2,
-      "power": 70,
-      "desc": "造成魔伤，应对状态：额外打断被应对技能。"
-    },
-    {
-      "id": 30,
-      "source": "stone",
-      "name": "力量增效",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "自己获得物攻+100%。"
-    }
-  ],
-  "白发路路": [
-    {
-      "id": 85,
-      "source": "stone",
-      "name": "芳香诱引",
-      "element": "草",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "自己获得连击数+3，应对防御：额外造成打断，且敌方下回合获得眩晕。"
-    },
-    {
-      "id": 445,
-      "source": "legacy",
-      "name": "啮合传递",
-      "element": "机械",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
-    },
-    {
-      "id": 107,
-      "source": "stone",
-      "name": "纤维化",
-      "element": "草",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "减伤70%，应对攻击：自己获得物防+40%。"
-    },
-    {
-      "id": 91,
-      "source": "learnset",
-      "name": "光能聚集",
-      "element": "草",
-      "category": "魔法",
-      "cost": 7,
-      "power": 100,
-      "desc": "造成魔伤，每次使用其他草系技能后，本技能威力永久+60。"
-    }
-  ],
-  "卡洛儿": [
-    {
-      "id": 323,
-      "source": "legacy",
-      "name": "掩护",
-      "element": "虫",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
-    },
-    {
-      "id": 155,
-      "source": "learnset",
-      "name": "打湿",
-      "element": "水",
-      "category": "变化",
-      "cost": 4,
-      "power": 0,
-      "desc": "自己获得1层湿润印记。"
-    },
-    {
-      "id": 30,
-      "source": "stone",
-      "name": "力量增效",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "自己获得物攻+100%。"
-    },
-    {
-      "id": 166,
-      "source": "learnset",
-      "name": "水刃",
-      "element": "水",
-      "category": "物理",
-      "cost": 4,
-      "power": 115,
-      "desc": "造成物伤，应对状态：本技能能耗永久-4。"
-    }
-  ],
-  "秩序鱿墨": [
-    {
-      "id": 59,
-      "source": "stone",
-      "name": "吓退",
-      "element": "普通",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "减伤70%，应对攻击：敌方脱离。"
-    },
-    {
-      "id": 54,
-      "source": "stone",
-      "name": "偷袭",
-      "element": "普通",
-      "category": "物理",
-      "cost": 3,
-      "power": 85,
-      "desc": "造成物伤，应对状态：本次技能威力变为3倍。"
-    },
-    {
-      "id": 390,
-      "source": "stone",
-      "name": "嘲弄",
-      "element": "幽",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "自己获得魔攻+70%，若敌方本回合替换精灵，自己获得速度+70。"
-    },
-    {
-      "id": 397,
-      "source": "stone",
-      "name": "惊吓盒子",
-      "element": "幽",
-      "category": "物理",
-      "cost": 3,
-      "power": 85,
-      "desc": "造成物伤，应对状态：使敌方失去6能量。"
-    }
-  ],
-  "獠牙猪": [
-    {
-      "id": 190,
-      "source": "learnset",
-      "name": "地刺",
-      "element": "地",
-      "category": "物理",
-      "cost": 3,
-      "power": 95,
-      "desc": "造成物伤，应对状态：额外打断被应对技能。"
-    },
-    {
-      "id": 217,
-      "source": "learnset",
-      "name": "冰雹",
-      "element": "冰",
-      "category": "物理",
-      "cost": 4,
-      "power": 100,
-      "desc": "造成物伤，应对状态：额外使敌方获得全技能能耗+3。"
-    },
-    {
-      "id": 397,
-      "source": "stone",
-      "name": "惊吓盒子",
-      "element": "幽",
-      "category": "物理",
-      "cost": 3,
-      "power": 85,
-      "desc": "造成物伤，应对状态：使敌方失去6能量。"
-    },
-    {
-      "id": 14,
-      "source": "learnset",
-      "name": "防御",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "减伤70%，应对攻击。"
-    }
-  ],
-  "波多西": [
-    {
-      "id": 190,
-      "source": "learnset",
-      "name": "地刺",
-      "element": "地",
-      "category": "物理",
-      "cost": 3,
-      "power": 95,
-      "desc": "造成物伤，应对状态：额外打断被应对技能。"
-    },
-    {
-      "id": 59,
-      "source": "stone",
-      "name": "吓退",
-      "element": "普通",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "减伤70%，应对攻击：敌方脱离。"
-    },
-    {
-      "id": 445,
-      "source": "learnset",
-      "name": "啮合传递",
-      "element": "机械",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
-    },
-    {
-      "id": 60,
-      "source": "learnset",
-      "name": "先发制人",
-      "element": "普通",
-      "category": "物理",
-      "cost": 2,
-      "power": 55,
-      "desc": "造成物理伤害，先手+1。"
-    }
-  ],
-  "迷迷箱怪": [
-    {
-      "id": 59,
-      "source": "stone",
-      "name": "吓退",
-      "element": "普通",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "减伤70%，应对攻击：敌方脱离。"
-    },
-    {
-      "id": 54,
-      "source": "stone",
-      "name": "偷袭",
-      "element": "普通",
-      "category": "物理",
-      "cost": 3,
-      "power": 85,
-      "desc": "造成物伤，应对状态：本次技能威力变为3倍。"
-    },
-    {
-      "id": 445,
-      "source": "learnset",
-      "name": "啮合传递",
-      "element": "机械",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
-    },
-    {
-      "id": 177,
-      "source": "legacy",
-      "name": "虹光冲击",
-      "element": "光",
-      "category": "魔法",
-      "cost": 3,
-      "power": 100,
-      "desc": "对敌方精灵造成魔法伤害。"
-    }
-  ],
-  "暮星辰": [
-    {
-      "id": 390,
-      "source": "stone",
-      "name": "嘲弄",
-      "element": "幽",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "自己获得魔攻+70%，若敌方本回合替换精灵，自己获得速度+70。"
-    },
-    {
-      "id": 45,
-      "source": "stone",
-      "name": "倾泻",
-      "element": "普通",
-      "category": "魔法",
-      "cost": 3,
-      "power": 60,
-      "desc": "造成魔伤，若本次攻击未被防御技能应对，则驱散双方所有印记。"
-    },
-    {
-      "id": 14,
-      "source": "stone",
-      "name": "防御",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "减伤70%，应对攻击。"
-    },
-    {
-      "id": 451,
-      "source": "learnset",
-      "name": "错乱",
-      "element": "幻",
-      "category": "魔法",
-      "cost": 2,
-      "power": 60,
-      "desc": "造成魔伤，应对状态：敌方获得3层星陨。"
-    }
-  ],
-  "食尘短绒": [
-    {
-      "id": 190,
-      "source": "stone",
-      "name": "地刺",
-      "element": "地",
-      "category": "物理",
-      "cost": 3,
-      "power": 95,
-      "desc": "造成物伤，应对状态：额外打断被应对技能。"
-    },
-    {
-      "id": 323,
-      "source": "stone",
-      "name": "掩护",
-      "element": "虫",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
-    },
-    {
-      "id": 45,
-      "source": "stone",
-      "name": "倾泻",
-      "element": "普通",
-      "category": "魔法",
-      "cost": 3,
-      "power": 60,
-      "desc": "造成魔伤，若本次攻击未被防御技能应对，则驱散双方所有印记。"
-    },
-    {
-      "id": 304,
-      "source": "learnset",
-      "name": "翅刃",
-      "element": "虫",
-      "category": "物理",
-      "cost": 4,
-      "power": 90,
-      "desc": "造成物伤，驱散敌方所有印记，应对状态：改为偷取印记。"
-    }
-  ],
-  "帅帅魔偶": [
-    {
-      "id": 85,
-      "source": "stone",
-      "name": "芳香诱引",
-      "element": "草",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "自己获得连击数+3，应对防御：额外造成打断，且敌方下回合获得眩晕。"
-    },
-    {
-      "id": 445,
-      "source": "legacy",
-      "name": "啮合传递",
-      "element": "机械",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
-    },
-    {
-      "id": 61,
-      "source": "learnset",
-      "name": "消毒法",
-      "element": "普通",
-      "category": "魔法",
-      "cost": 4,
-      "power": 105,
-      "desc": "造成魔伤，驱散敌方5层增益。"
-    },
-    {
-      "id": 107,
-      "source": "stone",
-      "name": "纤维化",
-      "element": "草",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "减伤70%，应对攻击：自己获得物防+40%。"
-    }
-  ],
-  "鳗尾兽": [
-    {
-      "id": 59,
-      "source": "stone",
-      "name": "吓退",
-      "element": "普通",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "减伤70%，应对攻击：敌方脱离。"
-    },
-    {
-      "id": 323,
-      "source": "legacy",
-      "name": "掩护",
-      "element": "虫",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
-    },
-    {
-      "id": 190,
-      "source": "learnset",
-      "name": "地刺",
-      "element": "地",
-      "category": "物理",
-      "cost": 3,
-      "power": 95,
-      "desc": "造成物伤，应对状态：额外打断被应对技能。"
-    },
-    {
-      "id": 177,
-      "source": "legacy",
-      "name": "虹光冲击",
-      "element": "光",
-      "category": "魔法",
-      "cost": 3,
-      "power": 100,
-      "desc": "对敌方精灵造成魔法伤害。"
-    }
-  ],
-  "针叶巡林": [
-    {
-      "id": 190,
-      "source": "stone",
-      "name": "地刺",
-      "element": "地",
-      "category": "物理",
-      "cost": 3,
-      "power": 95,
-      "desc": "造成物伤，应对状态：额外打断被应对技能。"
-    },
-    {
-      "id": 336,
-      "source": "stone",
-      "name": "截拳",
-      "element": "武",
-      "category": "物理",
-      "cost": 3,
-      "power": 85,
-      "desc": "造成物伤，应对状态：额外造成打断，回复该技能能耗的能量。"
-    },
-    {
-      "id": 54,
-      "source": "stone",
-      "name": "偷袭",
-      "element": "普通",
-      "category": "物理",
-      "cost": 3,
-      "power": 85,
-      "desc": "造成物伤，应对状态：本次技能威力变为3倍。"
-    },
-    {
-      "id": 14,
-      "source": "learnset",
-      "name": "防御",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "减伤70%，应对攻击。"
-    }
-  ],
-  "卡拉波斯": [
-    {
-      "id": 445,
-      "source": "legacy",
-      "name": "啮合传递",
-      "element": "机械",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
-    },
-    {
-      "id": 61,
-      "source": "learnset",
-      "name": "消毒法",
-      "element": "普通",
-      "category": "魔法",
-      "cost": 4,
-      "power": 105,
-      "desc": "造成魔伤，驱散敌方5层增益。"
-    },
-    {
-      "id": 390,
-      "source": "stone",
-      "name": "嘲弄",
-      "element": "幽",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "自己获得魔攻+70%，若敌方本回合替换精灵，自己获得速度+70。"
-    },
-    {
-      "id": 76,
-      "source": "stone",
-      "name": "有效预防",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "减伤50%，应对攻击：下一次行动获得先手+1。"
-    }
-  ],
-  "海豹船长": [
-    {
-      "id": 323,
-      "source": "legacy",
-      "name": "掩护",
-      "element": "虫",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
-    },
-    {
-      "id": 349,
-      "source": "learnset",
-      "name": "斩断",
-      "element": "武",
-      "category": "物理",
-      "cost": 2,
-      "power": 70,
-      "desc": "造成物伤，应对状态：额外打断被应对技能。"
-    },
-    {
-      "id": 60,
-      "source": "learnset",
-      "name": "先发制人",
-      "element": "普通",
-      "category": "物理",
-      "cost": 2,
-      "power": 55,
-      "desc": "造成物理伤害，先手+1。"
-    },
-    {
-      "id": 30,
-      "source": "learnset",
-      "name": "力量增效",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "自己获得物攻+100%。"
-    }
-  ],
-  "锤头鹳": [
-    {
-      "id": 445,
-      "source": "legacy",
-      "name": "啮合传递",
-      "element": "机械",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
-    },
-    {
-      "id": 177,
-      "source": "legacy",
-      "name": "虹光冲击",
-      "element": "光",
-      "category": "魔法",
-      "cost": 3,
-      "power": 100,
-      "desc": "对敌方精灵造成魔法伤害。"
-    },
-    {
-      "id": 364,
-      "source": "learnset",
-      "name": "翼击",
-      "element": "翼",
-      "category": "魔法",
-      "cost": 3,
-      "power": 50,
-      "desc": "造成魔伤，迅捷。"
-    },
-    {
-      "id": 14,
-      "source": "stone",
-      "name": "防御",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "减伤70%，应对攻击。"
-    }
-  ],
-  "卷毛鸭": [
-    {
-      "id": 54,
-      "source": "stone",
-      "name": "偷袭",
-      "element": "普通",
-      "category": "物理",
-      "cost": 3,
-      "power": 85,
-      "desc": "造成物伤，应对状态：本次技能威力变为3倍。"
-    },
-    {
-      "id": 349,
-      "source": "stone",
-      "name": "斩断",
-      "element": "武",
-      "category": "物理",
-      "cost": 2,
-      "power": 70,
-      "desc": "造成物伤，应对状态：额外打断被应对技能。"
-    },
-    {
-      "id": 30,
-      "source": "learnset",
-      "name": "力量增效",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "自己获得物攻+100%。"
-    },
-    {
-      "id": 76,
-      "source": "stone",
-      "name": "有效预防",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "减伤50%，应对攻击：下一次行动获得先手+1。"
-    }
-  ],
-  "上岸蛙": [
-    {
-      "id": 190,
-      "source": "stone",
-      "name": "地刺",
-      "element": "地",
-      "category": "物理",
-      "cost": 3,
-      "power": 95,
-      "desc": "造成物伤，应对状态：额外打断被应对技能。"
-    },
-    {
-      "id": 54,
-      "source": "learnset",
-      "name": "偷袭",
-      "element": "普通",
-      "category": "物理",
-      "cost": 3,
-      "power": 85,
-      "desc": "造成物伤，应对状态：本次技能威力变为3倍。"
-    },
-    {
-      "id": 30,
-      "source": "learnset",
-      "name": "力量增效",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "自己获得物攻+100%。"
-    },
-    {
-      "id": 14,
-      "source": "learnset",
-      "name": "防御",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "减伤70%，应对攻击。"
     }
   ],
   "立方人": [
@@ -1553,133 +587,17 @@
       "desc": "减伤50%，应对攻击：下一次行动获得先手+1。"
     }
   ],
-  "画间沉铁兽": [
+  "白发路路": [
     {
-      "id": 336,
-      "source": "learnset",
-      "name": "截拳",
-      "element": "武",
-      "category": "物理",
-      "cost": 3,
-      "power": 85,
-      "desc": "造成物伤，应对状态：额外造成打断，回复该技能能耗的能量。"
-    },
-    {
-      "id": 39,
+      "id": 85,
       "source": "stone",
-      "name": "能量刃",
-      "element": "普通",
-      "category": "物理",
-      "cost": 3,
-      "power": 70,
-      "desc": "造成物伤，每应对成功1次，本技能威力永久+90。"
-    },
-    {
-      "id": 397,
-      "source": "stone",
-      "name": "惊吓盒子",
-      "element": "幽",
-      "category": "物理",
-      "cost": 3,
-      "power": 85,
-      "desc": "造成物伤，应对状态：使敌方失去6能量。"
-    },
-    {
-      "id": 76,
-      "source": "stone",
-      "name": "有效预防",
-      "element": "普通",
+      "name": "芳香诱引",
+      "element": "草",
       "category": "变化",
       "cost": 1,
       "power": 0,
-      "desc": "减伤50%，应对攻击：下一次行动获得先手+1。"
-    }
-  ],
-  "芋香巨角蛛": [
-    {
-      "id": 390,
-      "source": "stone",
-      "name": "嘲弄",
-      "element": "幽",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "自己获得魔攻+70%，若敌方本回合替换精灵，自己获得速度+70。"
+      "desc": "自己获得连击数+3，应对防御：额外造成打断，且敌方下回合获得眩晕。"
     },
-    {
-      "id": 397,
-      "source": "stone",
-      "name": "惊吓盒子",
-      "element": "幽",
-      "category": "物理",
-      "cost": 3,
-      "power": 85,
-      "desc": "造成物伤，应对状态：使敌方失去6能量。"
-    },
-    {
-      "id": 294,
-      "source": "stone",
-      "name": "感染病",
-      "element": "毒",
-      "category": "魔法",
-      "cost": 4,
-      "power": 85,
-      "desc": "造成魔伤，若击败敌方则将中毒转化为印记。"
-    },
-    {
-      "id": 14,
-      "source": "stone",
-      "name": "防御",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "减伤70%，应对攻击。"
-    }
-  ],
-  "邪眼巨魔": [
-    {
-      "id": 61,
-      "source": "learnset",
-      "name": "消毒法",
-      "element": "普通",
-      "category": "魔法",
-      "cost": 4,
-      "power": 105,
-      "desc": "造成魔伤，驱散敌方5层增益。"
-    },
-    {
-      "id": 412,
-      "source": "stone",
-      "name": "跌落",
-      "element": "恶",
-      "category": "物理",
-      "cost": 3,
-      "power": 120,
-      "desc": "造成大量物伤，自己获得物攻-50%，应对状态：改为获得物攻+50%。"
-    },
-    {
-      "id": 52,
-      "source": "stone",
-      "name": "嗜痛",
-      "element": "普通",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "减伤70%，应对攻击：期间自己每次受到伤害，获得双攻+20%。"
-    },
-    {
-      "id": 177,
-      "source": "legacy",
-      "name": "虹光冲击",
-      "element": "光",
-      "category": "魔法",
-      "cost": 3,
-      "power": 100,
-      "desc": "对敌方精灵造成魔法伤害。"
-    }
-  ],
-  "绒仙子": [
     {
       "id": 445,
       "source": "legacy",
@@ -1691,202 +609,24 @@
       "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
     },
     {
-      "id": 30,
-      "source": "learnset",
-      "name": "力量增效",
-      "element": "普通",
+      "id": 107,
+      "source": "stone",
+      "name": "纤维化",
+      "element": "草",
       "category": "变化",
-      "cost": 1,
+      "cost": 2,
       "power": 0,
-      "desc": "自己获得物攻+100%。"
+      "desc": "减伤70%，应对攻击：自己获得物防+40%。"
     },
     {
-      "id": 177,
+      "id": 91,
       "source": "learnset",
-      "name": "虹光冲击",
-      "element": "光",
+      "name": "光能聚集",
+      "element": "草",
       "category": "魔法",
-      "cost": 3,
+      "cost": 7,
       "power": 100,
-      "desc": "对敌方精灵造成魔法伤害。"
-    },
-    {
-      "id": 14,
-      "source": "stone",
-      "name": "防御",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "减伤70%，应对攻击。"
-    }
-  ],
-  "利灯鱼": [
-    {
-      "id": 155,
-      "source": "stone",
-      "name": "打湿",
-      "element": "水",
-      "category": "变化",
-      "cost": 4,
-      "power": 0,
-      "desc": "自己获得1层湿润印记。"
-    },
-    {
-      "id": 412,
-      "source": "stone",
-      "name": "跌落",
-      "element": "恶",
-      "category": "物理",
-      "cost": 3,
-      "power": 120,
-      "desc": "造成大量物伤，自己获得物攻-50%，应对状态：改为获得物攻+50%。"
-    },
-    {
-      "id": 45,
-      "source": "learnset",
-      "name": "倾泻",
-      "element": "普通",
-      "category": "魔法",
-      "cost": 3,
-      "power": 60,
-      "desc": "造成魔伤，若本次攻击未被防御技能应对，则驱散双方所有印记。"
-    },
-    {
-      "id": 14,
-      "source": "stone",
-      "name": "防御",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "减伤70%，应对攻击。"
-    }
-  ],
-  "噼啪鸟": [
-    {
-      "id": 53,
-      "source": "learnset",
-      "name": "天旋地转",
-      "element": "普通",
-      "category": "物理",
-      "cost": 3,
-      "power": 55,
-      "desc": "造成物理伤害，先手+1，迸发：本次技能威力+30。"
-    },
-    {
-      "id": 266,
-      "source": "learnset",
-      "name": "电弧",
-      "element": "电",
-      "category": "物理",
-      "cost": 3,
-      "power": 80,
-      "desc": "造成物伤，迸发：本次技能威力+40。"
-    },
-    {
-      "id": 445,
-      "source": "stone",
-      "name": "啮合传递",
-      "element": "机械",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
-    },
-    {
-      "id": 14,
-      "source": "stone",
-      "name": "防御",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "减伤70%，应对攻击。"
-    }
-  ],
-  "巨噬针鼹": [
-    {
-      "id": 190,
-      "source": "stone",
-      "name": "地刺",
-      "element": "地",
-      "category": "物理",
-      "cost": 3,
-      "power": 95,
-      "desc": "造成物伤，应对状态：额外打断被应对技能。"
-    },
-    {
-      "id": 54,
-      "source": "learnset",
-      "name": "偷袭",
-      "element": "普通",
-      "category": "物理",
-      "cost": 3,
-      "power": 85,
-      "desc": "造成物伤，应对状态：本次技能威力变为3倍。"
-    },
-    {
-      "id": 76,
-      "source": "stone",
-      "name": "有效预防",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "减伤50%，应对攻击：下一次行动获得先手+1。"
-    },
-    {
-      "id": 30,
-      "source": "learnset",
-      "name": "力量增效",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "自己获得物攻+100%。"
-    }
-  ],
-  "幻影灵菇": [
-    {
-      "id": 59,
-      "source": "stone",
-      "name": "吓退",
-      "element": "普通",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "减伤70%，应对攻击：敌方脱离。"
-    },
-    {
-      "id": 323,
-      "source": "legacy",
-      "name": "掩护",
-      "element": "虫",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
-    },
-    {
-      "id": 397,
-      "source": "learnset",
-      "name": "惊吓盒子",
-      "element": "幽",
-      "category": "物理",
-      "cost": 3,
-      "power": 85,
-      "desc": "造成物伤，应对状态：使敌方失去6能量。"
-    },
-    {
-      "id": 390,
-      "source": "learnset",
-      "name": "嘲弄",
-      "element": "幽",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "自己获得魔攻+70%，若敌方本回合替换精灵，自己获得速度+70。"
+      "desc": "造成魔伤，每次使用其他草系技能后，本技能威力永久+60。"
     }
   ],
   "里拉鳐": [
@@ -1931,52 +671,10 @@
       "desc": "减伤60%，应对攻击：自己获得1层湿润印记。"
     }
   ],
-  "咔咔鸟": [
-    {
-      "id": 360,
-      "source": "stone",
-      "name": "龙卷风",
-      "element": "翼",
-      "category": "物理",
-      "cost": 5,
-      "power": 60,
-      "desc": "造成物伤，迅捷，应对状态：本次技能威力变为1.5倍。"
-    },
-    {
-      "id": 194,
-      "source": "legacy",
-      "name": "跺地",
-      "element": "地",
-      "category": "物理",
-      "cost": 2,
-      "power": 80,
-      "desc": "对敌方精灵造成物理伤害。"
-    },
-    {
-      "id": 14,
-      "source": "learnset",
-      "name": "防御",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "减伤70%，应对攻击。"
-    },
-    {
-      "id": 36,
-      "source": "learnset",
-      "name": "魔法增效",
-      "element": "普通",
-      "category": "变化",
-      "cost": 0,
-      "power": 0,
-      "desc": "自己获得魔攻+70%。"
-    }
-  ],
-  "魔草巫灵": [
+  "九幽菇": [
     {
       "id": 85,
-      "source": "stone",
+      "source": "learnset",
       "name": "芳香诱引",
       "element": "草",
       "category": "变化",
@@ -1995,27 +693,27 @@
       "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
     },
     {
-      "id": 52,
-      "source": "stone",
-      "name": "嗜痛",
-      "element": "普通",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "减伤70%，应对攻击：期间自己每次受到伤害，获得双攻+20%。"
+      "id": 104,
+      "source": "learnset",
+      "name": "藤绞",
+      "element": "草",
+      "category": "物理",
+      "cost": 4,
+      "power": 80,
+      "desc": "造成物伤，自己回复5能量。"
     },
     {
-      "id": 461,
+      "id": 14,
       "source": "learnset",
-      "name": "坍缩",
-      "element": "幻",
-      "category": "魔法",
-      "cost": 3,
-      "power": 85,
-      "desc": "造成魔伤，若击败敌方，自己获得魔攻+50%。"
+      "name": "防御",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
     }
   ],
-  "小皮球": [
+  "鳗尾兽": [
     {
       "id": 59,
       "source": "stone",
@@ -2027,79 +725,37 @@
       "desc": "减伤70%，应对攻击：敌方脱离。"
     },
     {
-      "id": 445,
+      "id": 323,
       "source": "legacy",
-      "name": "啮合传递",
-      "element": "机械",
+      "name": "掩护",
+      "element": "虫",
       "category": "变化",
-      "cost": 1,
+      "cost": 2,
       "power": 0,
-      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
+      "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
     },
     {
-      "id": 260,
+      "id": 190,
       "source": "learnset",
-      "name": "超导",
-      "element": "电",
-      "category": "魔法",
+      "name": "地刺",
+      "element": "地",
+      "category": "物理",
       "cost": 3,
       "power": 95,
-      "desc": "造成魔伤，迸发：本技能能耗-1。"
+      "desc": "造成物伤，应对状态：额外打断被应对技能。"
     },
     {
-      "id": 183,
-      "source": "stone",
-      "name": "天光",
+      "id": 177,
+      "source": "legacy",
+      "name": "虹光冲击",
       "element": "光",
       "category": "魔法",
       "cost": 3,
-      "power": 95,
-      "desc": "造成魔伤，本技能系别始终和天气系别相同。"
+      "power": 100,
+      "desc": "对敌方精灵造成魔法伤害。"
     }
   ],
-  "兽花蕾": [
-    {
-      "id": 85,
-      "source": "learnset",
-      "name": "芳香诱引",
-      "element": "草",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "自己获得连击数+3，应对防御：额外造成打断，且敌方下回合获得眩晕。"
-    },
-    {
-      "id": 43,
-      "source": "learnset",
-      "name": "迫近攻击",
-      "element": "普通",
-      "category": "物理",
-      "cost": 3,
-      "power": 80,
-      "desc": "造成物伤。每次使用后，本技能威力永久+40。"
-    },
-    {
-      "id": 445,
-      "source": "legacy",
-      "name": "啮合传递",
-      "element": "机械",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
-    },
-    {
-      "id": 14,
-      "source": "stone",
-      "name": "防御",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "减伤70%，应对攻击。"
-    }
-  ],
-  "电企鹅": [
+  "燃薪虫": [
     {
       "id": 323,
       "source": "legacy",
@@ -2111,34 +767,34 @@
       "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
     },
     {
-      "id": 81,
-      "source": "stone",
-      "name": "阻断",
-      "element": "普通",
-      "category": "魔法",
-      "cost": 2,
-      "power": 70,
-      "desc": "造成魔伤，应对状态：额外打断被应对技能。"
-    },
-    {
-      "id": 276,
+      "id": 144,
       "source": "learnset",
-      "name": "落雷",
-      "element": "电",
-      "category": "魔法",
+      "name": "灼伤",
+      "element": "火",
+      "category": "物理",
       "cost": 4,
-      "power": 100,
-      "desc": "造成魔伤，每次入场，本技能威力永久+20。"
+      "power": 120,
+      "desc": "对敌方精灵造成物理伤害。"
     },
     {
-      "id": 36,
+      "id": 30,
       "source": "stone",
-      "name": "魔法增效",
+      "name": "力量增效",
       "element": "普通",
       "category": "变化",
-      "cost": 0,
+      "cost": 1,
       "power": 0,
-      "desc": "自己获得魔攻+70%。"
+      "desc": "自己获得物攻+100%。"
+    },
+    {
+      "id": 45,
+      "source": "stone",
+      "name": "倾泻",
+      "element": "普通",
+      "category": "魔法",
+      "cost": 3,
+      "power": 60,
+      "desc": "造成魔伤，若本次攻击未被防御技能应对，则驱散双方所有印记。"
     }
   ],
   "超能阿布": [
@@ -2183,91 +839,7 @@
       "desc": "减伤70%，应对攻击。"
     }
   ],
-  "帕帕斯卡": [
-    {
-      "id": 266,
-      "source": "stone",
-      "name": "电弧",
-      "element": "电",
-      "category": "物理",
-      "cost": 3,
-      "power": 80,
-      "desc": "造成物伤，迸发：本次技能威力+40。"
-    },
-    {
-      "id": 54,
-      "source": "learnset",
-      "name": "偷袭",
-      "element": "普通",
-      "category": "物理",
-      "cost": 3,
-      "power": 85,
-      "desc": "造成物伤，应对状态：本次技能威力变为3倍。"
-    },
-    {
-      "id": 360,
-      "source": "stone",
-      "name": "龙卷风",
-      "element": "翼",
-      "category": "物理",
-      "cost": 5,
-      "power": 60,
-      "desc": "造成物伤，迅捷，应对状态：本次技能威力变为1.5倍。"
-    },
-    {
-      "id": 14,
-      "source": "stone",
-      "name": "防御",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "减伤70%，应对攻击。"
-    }
-  ],
-  "罗隐": [
-    {
-      "id": 190,
-      "source": "learnset",
-      "name": "地刺",
-      "element": "地",
-      "category": "物理",
-      "cost": 3,
-      "power": 95,
-      "desc": "造成物伤，应对状态：额外打断被应对技能。"
-    },
-    {
-      "id": 124,
-      "source": "stone",
-      "name": "火焰切割",
-      "element": "火",
-      "category": "物理",
-      "cost": 3,
-      "power": 100,
-      "desc": "对敌方精灵造成物理伤害。"
-    },
-    {
-      "id": 60,
-      "source": "learnset",
-      "name": "先发制人",
-      "element": "普通",
-      "category": "物理",
-      "cost": 2,
-      "power": 55,
-      "desc": "造成物理伤害，先手+1。"
-    },
-    {
-      "id": 76,
-      "source": "stone",
-      "name": "有效预防",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "减伤50%，应对攻击：下一次行动获得先手+1。"
-    }
-  ],
-  "落陨星兔": [
+  "迷迷箱怪": [
     {
       "id": 59,
       "source": "stone",
@@ -2279,8 +851,18 @@
       "desc": "减伤70%，应对攻击：敌方脱离。"
     },
     {
+      "id": 54,
+      "source": "stone",
+      "name": "偷袭",
+      "element": "普通",
+      "category": "物理",
+      "cost": 3,
+      "power": 85,
+      "desc": "造成物伤，应对状态：本次技能威力变为3倍。"
+    },
+    {
       "id": 445,
-      "source": "legacy",
+      "source": "learnset",
       "name": "啮合传递",
       "element": "机械",
       "category": "变化",
@@ -2289,204 +871,46 @@
       "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
     },
     {
-      "id": 390,
-      "source": "learnset",
-      "name": "嘲弄",
-      "element": "幽",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "自己获得魔攻+70%，若敌方本回合替换精灵，自己获得速度+70。"
-    },
-    {
-      "id": 461,
-      "source": "learnset",
-      "name": "坍缩",
-      "element": "幻",
-      "category": "魔法",
-      "cost": 3,
-      "power": 85,
-      "desc": "造成魔伤，若击败敌方，自己获得魔攻+50%。"
-    }
-  ],
-  "圣羽翼王": [
-    {
-      "id": 81,
-      "source": "stone",
-      "name": "阻断",
-      "element": "普通",
-      "category": "魔法",
-      "cost": 2,
-      "power": 70,
-      "desc": "造成魔伤，应对状态：额外打断被应对技能。"
-    },
-    {
-      "id": 30,
-      "source": "learnset",
-      "name": "力量增效",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "自己获得物攻+100%。"
-    },
-    {
-      "id": 76,
-      "source": "stone",
-      "name": "有效预防",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "减伤50%，应对攻击：下一次行动获得先手+1。"
-    },
-    {
-      "id": 183,
-      "source": "stone",
-      "name": "天光",
+      "id": 177,
+      "source": "legacy",
+      "name": "虹光冲击",
       "element": "光",
-      "category": "魔法",
-      "cost": 3,
-      "power": 95,
-      "desc": "造成魔伤，本技能系别始终和天气系别相同。"
-    }
-  ],
-  "花影羚羊": [
-    {
-      "id": 85,
-      "source": "stone",
-      "name": "芳香诱引",
-      "element": "草",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "自己获得连击数+3，应对防御：额外造成打断，且敌方下回合获得眩晕。"
-    },
-    {
-      "id": 445,
-      "source": "legacy",
-      "name": "啮合传递",
-      "element": "机械",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
-    },
-    {
-      "id": 388,
-      "source": "stone",
-      "name": "报复",
-      "element": "幽",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "减伤60%，应对攻击：敌方失去3能量。"
-    },
-    {
-      "id": 416,
-      "source": "learnset",
-      "name": "极限撕裂",
-      "element": "恶",
-      "category": "物理",
-      "cost": 4,
-      "power": 140,
-      "desc": "造成物伤，若生命高于50%，使用后自己获得双攻-50%。"
-    }
-  ],
-  "恶魔红钻": [
-    {
-      "id": 54,
-      "source": "stone",
-      "name": "偷袭",
-      "element": "普通",
-      "category": "物理",
-      "cost": 3,
-      "power": 85,
-      "desc": "造成物伤，应对状态：本次技能威力变为3倍。"
-    },
-    {
-      "id": 412,
-      "source": "stone",
-      "name": "跌落",
-      "element": "恶",
-      "category": "物理",
-      "cost": 3,
-      "power": 120,
-      "desc": "造成大量物伤，自己获得物攻-50%，应对状态：改为获得物攻+50%。"
-    },
-    {
-      "id": 349,
-      "source": "stone",
-      "name": "斩断",
-      "element": "武",
-      "category": "物理",
-      "cost": 2,
-      "power": 70,
-      "desc": "造成物伤，应对状态：额外打断被应对技能。"
-    },
-    {
-      "id": 14,
-      "source": "learnset",
-      "name": "防御",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "减伤70%，应对攻击。"
-    }
-  ],
-  "巨灵石": [
-    {
-      "id": 59,
-      "source": "stone",
-      "name": "吓退",
-      "element": "普通",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "减伤70%，应对攻击：敌方脱离。"
-    },
-    {
-      "id": 445,
-      "source": "legacy",
-      "name": "啮合传递",
-      "element": "机械",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
-    },
-    {
-      "id": 390,
-      "source": "learnset",
-      "name": "嘲弄",
-      "element": "幽",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "自己获得魔攻+70%，若敌方本回合替换精灵，自己获得速度+70。"
-    },
-    {
-      "id": 213,
-      "source": "learnset",
-      "name": "陨石",
-      "element": "地",
       "category": "魔法",
       "cost": 3,
       "power": 100,
       "desc": "对敌方精灵造成魔法伤害。"
     }
   ],
-  "泥吼牙": [
+  "巨噬针鼹": [
     {
       "id": 190,
-      "source": "learnset",
+      "source": "stone",
       "name": "地刺",
       "element": "地",
       "category": "物理",
       "cost": 3,
       "power": 95,
       "desc": "造成物伤，应对状态：额外打断被应对技能。"
+    },
+    {
+      "id": 54,
+      "source": "learnset",
+      "name": "偷袭",
+      "element": "普通",
+      "category": "物理",
+      "cost": 3,
+      "power": 85,
+      "desc": "造成物伤，应对状态：本次技能威力变为3倍。"
+    },
+    {
+      "id": 76,
+      "source": "stone",
+      "name": "有效预防",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤50%，应对攻击：下一次行动获得先手+1。"
     },
     {
       "id": 30,
@@ -2497,6 +921,28 @@
       "cost": 1,
       "power": 0,
       "desc": "自己获得物攻+100%。"
+    }
+  ],
+  "食尘短绒": [
+    {
+      "id": 190,
+      "source": "stone",
+      "name": "地刺",
+      "element": "地",
+      "category": "物理",
+      "cost": 3,
+      "power": 95,
+      "desc": "造成物伤，应对状态：额外打断被应对技能。"
+    },
+    {
+      "id": 323,
+      "source": "stone",
+      "name": "掩护",
+      "element": "虫",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
     },
     {
       "id": 45,
@@ -2509,14 +955,224 @@
       "desc": "造成魔伤，若本次攻击未被防御技能应对，则驱散双方所有印记。"
     },
     {
-      "id": 76,
+      "id": 304,
+      "source": "learnset",
+      "name": "翅刃",
+      "element": "虫",
+      "category": "物理",
+      "cost": 4,
+      "power": 90,
+      "desc": "造成物伤，驱散敌方所有印记，应对状态：改为偷取印记。"
+    }
+  ],
+  "炽心勇狮": [
+    {
+      "id": 323,
+      "source": "legacy",
+      "name": "掩护",
+      "element": "虫",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
+    },
+    {
+      "id": 614,
       "source": "stone",
-      "name": "有效预防",
+      "name": "阳火增辉",
+      "element": "火",
+      "category": "魔法",
+      "cost": 3,
+      "power": 75,
+      "desc": "造成魔伤，每次击败敌方，本技能威力永久翻倍。"
+    },
+    {
+      "id": 81,
+      "source": "stone",
+      "name": "阻断",
+      "element": "普通",
+      "category": "魔法",
+      "cost": 2,
+      "power": 70,
+      "desc": "造成魔伤，应对状态：额外打断被应对技能。"
+    },
+    {
+      "id": 130,
+      "source": "learnset",
+      "name": "怒火",
+      "element": "火",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得双攻+130%和双防-40%。"
+    }
+  ],
+  "古卷匣魔像": [
+    {
+      "id": 323,
+      "source": "legacy",
+      "name": "掩护",
+      "element": "虫",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
+    },
+    {
+      "id": 39,
+      "source": "learnset",
+      "name": "能量刃",
+      "element": "普通",
+      "category": "物理",
+      "cost": 3,
+      "power": 70,
+      "desc": "造成物伤，每应对成功1次，本技能威力永久+90。"
+    },
+    {
+      "id": 30,
+      "source": "learnset",
+      "name": "力量增效",
       "element": "普通",
       "category": "变化",
       "cost": 1,
       "power": 0,
-      "desc": "减伤50%，应对攻击：下一次行动获得先手+1。"
+      "desc": "自己获得物攻+100%。"
+    },
+    {
+      "id": 349,
+      "source": "stone",
+      "name": "斩断",
+      "element": "武",
+      "category": "物理",
+      "cost": 2,
+      "power": 70,
+      "desc": "造成物伤，应对状态：额外打断被应对技能。"
+    }
+  ],
+  "高脚鹬": [
+    {
+      "id": 59,
+      "source": "stone",
+      "name": "吓退",
+      "element": "普通",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，应对攻击：敌方脱离。"
+    },
+    {
+      "id": 445,
+      "source": "legacy",
+      "name": "啮合传递",
+      "element": "机械",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
+    },
+    {
+      "id": 154,
+      "source": "stone",
+      "name": "润泽",
+      "element": "水",
+      "category": "变化",
+      "cost": 7,
+      "power": 0,
+      "desc": "自己获得魔攻+190%。"
+    },
+    {
+      "id": 45,
+      "source": "stone",
+      "name": "倾泻",
+      "element": "普通",
+      "category": "魔法",
+      "cost": 3,
+      "power": 60,
+      "desc": "造成魔伤，若本次攻击未被防御技能应对，则驱散双方所有印记。"
+    }
+  ],
+  "波多西": [
+    {
+      "id": 190,
+      "source": "learnset",
+      "name": "地刺",
+      "element": "地",
+      "category": "物理",
+      "cost": 3,
+      "power": 95,
+      "desc": "造成物伤，应对状态：额外打断被应对技能。"
+    },
+    {
+      "id": 59,
+      "source": "stone",
+      "name": "吓退",
+      "element": "普通",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，应对攻击：敌方脱离。"
+    },
+    {
+      "id": 445,
+      "source": "learnset",
+      "name": "啮合传递",
+      "element": "机械",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
+    },
+    {
+      "id": 60,
+      "source": "learnset",
+      "name": "先发制人",
+      "element": "普通",
+      "category": "物理",
+      "cost": 2,
+      "power": 55,
+      "desc": "造成物理伤害，先手+1。"
+    }
+  ],
+  "嗜波螺": [
+    {
+      "id": 323,
+      "source": "legacy",
+      "name": "掩护",
+      "element": "虫",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
+    },
+    {
+      "id": 191,
+      "source": "learnset",
+      "name": "地陷",
+      "element": "地",
+      "category": "物理",
+      "cost": 5,
+      "power": 70,
+      "desc": "造成物伤，自己获得物防+60%，应对状态：本次技能威力翻倍，且物防额外+60%。"
+    },
+    {
+      "id": 160,
+      "source": "stone",
+      "name": "水光冲击",
+      "element": "水",
+      "category": "魔法",
+      "cost": 5,
+      "power": 140,
+      "desc": "对敌方精灵造成魔法伤害。"
+    },
+    {
+      "id": 177,
+      "source": "legacy",
+      "name": "虹光冲击",
+      "element": "光",
+      "category": "魔法",
+      "cost": 3,
+      "power": 100,
+      "desc": "对敌方精灵造成魔法伤害。"
     }
   ],
   "怒目怂猫": [
@@ -2603,760 +1259,46 @@
       "desc": "减伤70%，应对攻击。"
     }
   ],
-  "厉毒修萝": [
+  "熔岩布丁": [
     {
-      "id": 54,
-      "source": "stone",
-      "name": "偷袭",
-      "element": "普通",
-      "category": "物理",
-      "cost": 3,
-      "power": 85,
-      "desc": "造成物伤，应对状态：本次技能威力变为3倍。"
-    },
-    {
-      "id": 412,
-      "source": "learnset",
-      "name": "跌落",
-      "element": "恶",
-      "category": "物理",
-      "cost": 3,
-      "power": 120,
-      "desc": "造成大量物伤，自己获得物攻-50%，应对状态：改为获得物攻+50%。"
-    },
-    {
-      "id": 294,
-      "source": "learnset",
-      "name": "感染病",
-      "element": "毒",
-      "category": "魔法",
-      "cost": 4,
-      "power": 85,
-      "desc": "造成魔伤，若击败敌方则将中毒转化为印记。"
-    },
-    {
-      "id": 14,
-      "source": "stone",
-      "name": "防御",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "减伤70%，应对攻击。"
-    }
-  ],
-  "魔眷鸟": [
-    {
-      "id": 360,
-      "source": "learnset",
-      "name": "龙卷风",
-      "element": "翼",
-      "category": "物理",
-      "cost": 5,
-      "power": 60,
-      "desc": "造成物伤，迅捷，应对状态：本次技能威力变为1.5倍。"
-    },
-    {
-      "id": 194,
+      "id": 323,
       "source": "legacy",
-      "name": "跺地",
-      "element": "地",
-      "category": "物理",
+      "name": "掩护",
+      "element": "虫",
+      "category": "变化",
       "cost": 2,
-      "power": 80,
+      "power": 0,
+      "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
+    },
+    {
+      "id": 124,
+      "source": "learnset",
+      "name": "火焰切割",
+      "element": "火",
+      "category": "物理",
+      "cost": 3,
+      "power": 100,
       "desc": "对敌方精灵造成物理伤害。"
     },
     {
-      "id": 45,
+      "id": 81,
       "source": "stone",
-      "name": "倾泻",
+      "name": "阻断",
       "element": "普通",
       "category": "魔法",
-      "cost": 3,
-      "power": 60,
-      "desc": "造成魔伤，若本次攻击未被防御技能应对，则驱散双方所有印记。"
-    },
-    {
-      "id": 14,
-      "source": "learnset",
-      "name": "防御",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "减伤70%，应对攻击。"
-    }
-  ],
-  "叮叮恶魔": [
-    {
-      "id": 54,
-      "source": "stone",
-      "name": "偷袭",
-      "element": "普通",
-      "category": "物理",
-      "cost": 3,
-      "power": 85,
-      "desc": "造成物伤，应对状态：本次技能威力变为3倍。"
-    },
-    {
-      "id": 397,
-      "source": "stone",
-      "name": "惊吓盒子",
-      "element": "幽",
-      "category": "物理",
-      "cost": 3,
-      "power": 85,
-      "desc": "造成物伤，应对状态：使敌方失去6能量。"
-    },
-    {
-      "id": 424,
-      "source": "stone",
-      "name": "撕裂",
-      "element": "恶",
-      "category": "物理",
-      "cost": 3,
-      "power": 85,
-      "desc": "造成物伤，应对状态：本次攻击吸血100%。"
-    },
-    {
-      "id": 14,
-      "source": "learnset",
-      "name": "防御",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "减伤70%，应对攻击。"
-    }
-  ],
-  "窃光蚊": [
-    {
-      "id": 412,
-      "source": "learnset",
-      "name": "跌落",
-      "element": "恶",
-      "category": "物理",
-      "cost": 3,
-      "power": 120,
-      "desc": "造成大量物伤，自己获得物攻-50%，应对状态：改为获得物攻+50%。"
-    },
-    {
-      "id": 30,
-      "source": "stone",
-      "name": "力量增效",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "自己获得物攻+100%。"
-    },
-    {
-      "id": 45,
-      "source": "stone",
-      "name": "倾泻",
-      "element": "普通",
-      "category": "魔法",
-      "cost": 3,
-      "power": 60,
-      "desc": "造成魔伤，若本次攻击未被防御技能应对，则驱散双方所有印记。"
-    },
-    {
-      "id": 14,
-      "source": "stone",
-      "name": "防御",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "减伤70%，应对攻击。"
-    }
-  ],
-  "雪巨人": [
-    {
-      "id": 323,
-      "source": "legacy",
-      "name": "掩护",
-      "element": "虫",
-      "category": "变化",
       "cost": 2,
-      "power": 0,
-      "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
-    },
-    {
-      "id": 54,
-      "source": "stone",
-      "name": "偷袭",
-      "element": "普通",
-      "category": "物理",
-      "cost": 3,
-      "power": 85,
-      "desc": "造成物伤，应对状态：本次技能威力变为3倍。"
-    },
-    {
-      "id": 217,
-      "source": "learnset",
-      "name": "冰雹",
-      "element": "冰",
-      "category": "物理",
-      "cost": 4,
-      "power": 100,
-      "desc": "造成物伤，应对状态：额外使敌方获得全技能能耗+3。"
-    },
-    {
-      "id": 397,
-      "source": "stone",
-      "name": "惊吓盒子",
-      "element": "幽",
-      "category": "物理",
-      "cost": 3,
-      "power": 85,
-      "desc": "造成物伤，应对状态：使敌方失去6能量。"
-    }
-  ],
-  "古啦多": [
-    {
-      "id": 59,
-      "source": "stone",
-      "name": "吓退",
-      "element": "普通",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "减伤70%，应对攻击：敌方脱离。"
-    },
-    {
-      "id": 213,
-      "source": "learnset",
-      "name": "陨石",
-      "element": "地",
-      "category": "魔法",
-      "cost": 3,
-      "power": 100,
-      "desc": "对敌方精灵造成魔法伤害。"
-    },
-    {
-      "id": 45,
-      "source": "stone",
-      "name": "倾泻",
-      "element": "普通",
-      "category": "魔法",
-      "cost": 3,
-      "power": 60,
-      "desc": "造成魔伤，若本次攻击未被防御技能应对，则驱散双方所有印记。"
-    },
-    {
-      "id": 294,
-      "source": "stone",
-      "name": "感染病",
-      "element": "毒",
-      "category": "魔法",
-      "cost": 4,
-      "power": 85,
-      "desc": "造成魔伤，若击败敌方则将中毒转化为印记。"
-    }
-  ],
-  "疾光千兽": [
-    {
-      "id": 54,
-      "source": "learnset",
-      "name": "偷袭",
-      "element": "普通",
-      "category": "物理",
-      "cost": 3,
-      "power": 85,
-      "desc": "造成物伤，应对状态：本次技能威力变为3倍。"
-    },
-    {
-      "id": 327,
-      "source": "stone",
-      "name": "崩拳",
-      "element": "武",
-      "category": "物理",
-      "cost": 2,
-      "power": 60,
-      "desc": "造成物伤，应对状态：自己获得物攻+100%。"
-    },
-    {
-      "id": 30,
-      "source": "learnset",
-      "name": "力量增效",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "自己获得物攻+100%。"
-    },
-    {
-      "id": 14,
-      "source": "learnset",
-      "name": "防御",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "减伤70%，应对攻击。"
-    }
-  ],
-  "月牙雪熊": [
-    {
-      "id": 59,
-      "source": "stone",
-      "name": "吓退",
-      "element": "普通",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "减伤70%，应对攻击：敌方脱离。"
-    },
-    {
-      "id": 323,
-      "source": "legacy",
-      "name": "掩护",
-      "element": "虫",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
-    },
-    {
-      "id": 54,
-      "source": "stone",
-      "name": "偷袭",
-      "element": "普通",
-      "category": "物理",
-      "cost": 3,
-      "power": 85,
-      "desc": "造成物伤，应对状态：本次技能威力变为3倍。"
-    },
-    {
-      "id": 217,
-      "source": "learnset",
-      "name": "冰雹",
-      "element": "冰",
-      "category": "物理",
-      "cost": 4,
-      "power": 100,
-      "desc": "造成物伤，应对状态：额外使敌方获得全技能能耗+3。"
-    }
-  ],
-  "雅丹鬃": [
-    {
-      "id": 614,
-      "source": "learnset",
-      "name": "阳火增辉",
-      "element": "火",
-      "category": "魔法",
-      "cost": 3,
-      "power": 75,
-      "desc": "造成魔伤，每次击败敌方，本技能威力永久翻倍。"
-    },
-    {
-      "id": 61,
-      "source": "stone",
-      "name": "消毒法",
-      "element": "普通",
-      "category": "魔法",
-      "cost": 4,
-      "power": 105,
-      "desc": "造成魔伤，驱散敌方5层增益。"
-    },
-    {
-      "id": 145,
-      "source": "learnset",
-      "name": "焚烧烙印",
-      "element": "火",
-      "category": "变化",
-      "cost": 3,
-      "power": 0,
-      "desc": "驱散双方所有印记，每驱散1层，敌方获得5层灼烧。"
-    },
-    {
-      "id": 14,
-      "source": "learnset",
-      "name": "防御",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "减伤70%，应对攻击。"
-    }
-  ],
-  "红绒十字": [
-    {
-      "id": 145,
-      "source": "learnset",
-      "name": "焚烧烙印",
-      "element": "火",
-      "category": "变化",
-      "cost": 3,
-      "power": 0,
-      "desc": "驱散双方所有印记，每驱散1层，敌方获得5层灼烧。"
-    },
-    {
-      "id": 613,
-      "source": "stone",
-      "name": "除厄",
-      "element": "火",
-      "category": "魔法",
-      "cost": 2,
-      "power": 60,
-      "desc": "造成魔伤，驱散自己的减益。"
-    },
-    {
-      "id": 122,
-      "source": "stone",
-      "name": "火焰护盾",
-      "element": "火",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "减伤70%，应对攻击：敌方获得4层灼烧。"
-    },
-    {
-      "id": 36,
-      "source": "stone",
-      "name": "魔法增效",
-      "element": "普通",
-      "category": "变化",
-      "cost": 0,
-      "power": 0,
-      "desc": "自己获得魔攻+70%。"
-    }
-  ],
-  "声波缇塔": [
-    {
-      "id": 190,
-      "source": "stone",
-      "name": "地刺",
-      "element": "地",
-      "category": "物理",
-      "cost": 3,
-      "power": 95,
-      "desc": "造成物伤，应对状态：额外打断被应对技能。"
-    },
-    {
-      "id": 54,
-      "source": "stone",
-      "name": "偷袭",
-      "element": "普通",
-      "category": "物理",
-      "cost": 3,
-      "power": 85,
-      "desc": "造成物伤，应对状态：本次技能威力变为3倍。"
-    },
-    {
-      "id": 445,
-      "source": "learnset",
-      "name": "啮合传递",
-      "element": "机械",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
-    },
-    {
-      "id": 76,
-      "source": "stone",
-      "name": "有效预防",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "减伤50%，应对攻击：下一次行动获得先手+1。"
-    }
-  ],
-  "公平鸽": [
-    {
-      "id": 53,
-      "source": "learnset",
-      "name": "天旋地转",
-      "element": "普通",
-      "category": "物理",
-      "cost": 3,
-      "power": 55,
-      "desc": "造成物理伤害，先手+1，迸发：本次技能威力+30。"
-    },
-    {
-      "id": 445,
-      "source": "legacy",
-      "name": "啮合传递",
-      "element": "机械",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
-    },
-    {
-      "id": 52,
-      "source": "stone",
-      "name": "嗜痛",
-      "element": "普通",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "减伤70%，应对攻击：期间自己每次受到伤害，获得双攻+20%。"
-    },
-    {
-      "id": 340,
-      "source": "stone",
-      "name": "气沉丹田",
-      "element": "武",
-      "category": "变化",
-      "cost": 10,
-      "power": 0,
-      "desc": "自己回复60%生命，获得物攻+130%，每次应对后本技能能耗-3，使用后能耗重置。"
-    }
-  ],
-  "记忆石": [
-    {
-      "id": 54,
-      "source": "stone",
-      "name": "偷袭",
-      "element": "普通",
-      "category": "物理",
-      "cost": 3,
-      "power": 85,
-      "desc": "造成物伤，应对状态：本次技能威力变为3倍。"
-    },
-    {
-      "id": 191,
-      "source": "learnset",
-      "name": "地陷",
-      "element": "地",
-      "category": "物理",
-      "cost": 5,
       "power": 70,
-      "desc": "造成物伤，自己获得物防+60%，应对状态：本次技能威力翻倍，且物防额外+60%。"
-    },
-    {
-      "id": 174,
-      "source": "stone",
-      "name": "光刃",
-      "element": "光",
-      "category": "物理",
-      "cost": 4,
-      "power": 120,
-      "desc": "对敌方精灵造成物理伤害。"
-    },
-    {
-      "id": 14,
-      "source": "learnset",
-      "name": "防御",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "减伤70%，应对攻击。"
-    }
-  ],
-  "菊花梨": [
-    {
-      "id": 397,
-      "source": "stone",
-      "name": "惊吓盒子",
-      "element": "幽",
-      "category": "物理",
-      "cost": 3,
-      "power": 85,
-      "desc": "造成物伤，应对状态：使敌方失去6能量。"
-    },
-    {
-      "id": 45,
-      "source": "stone",
-      "name": "倾泻",
-      "element": "普通",
-      "category": "魔法",
-      "cost": 3,
-      "power": 60,
-      "desc": "造成魔伤，若本次攻击未被防御技能应对，则驱散双方所有印记。"
-    },
-    {
-      "id": 104,
-      "source": "stone",
-      "name": "藤绞",
-      "element": "草",
-      "category": "物理",
-      "cost": 4,
-      "power": 80,
-      "desc": "造成物伤，自己回复5能量。"
-    },
-    {
-      "id": 14,
-      "source": "learnset",
-      "name": "防御",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "减伤70%，应对攻击。"
-    }
-  ],
-  "花衣蝶": [
-    {
-      "id": 85,
-      "source": "learnset",
-      "name": "芳香诱引",
-      "element": "草",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "自己获得连击数+3，应对防御：额外造成打断，且敌方下回合获得眩晕。"
-    },
-    {
-      "id": 445,
-      "source": "legacy",
-      "name": "啮合传递",
-      "element": "机械",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
-    },
-    {
-      "id": 177,
-      "source": "legacy",
-      "name": "虹光冲击",
-      "element": "光",
-      "category": "魔法",
-      "cost": 3,
-      "power": 100,
-      "desc": "对敌方精灵造成魔法伤害。"
-    },
-    {
-      "id": 14,
-      "source": "learnset",
-      "name": "防御",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "减伤70%，应对攻击。"
-    }
-  ],
-  "琉璃水母": [
-    {
-      "id": 59,
-      "source": "stone",
-      "name": "吓退",
-      "element": "普通",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "减伤70%，应对攻击：敌方脱离。"
-    },
-    {
-      "id": 323,
-      "source": "legacy",
-      "name": "掩护",
-      "element": "虫",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
-    },
-    {
-      "id": 154,
-      "source": "stone",
-      "name": "润泽",
-      "element": "水",
-      "category": "变化",
-      "cost": 7,
-      "power": 0,
-      "desc": "自己获得魔攻+190%。"
-    },
-    {
-      "id": 290,
-      "source": "learnset",
-      "name": "毒液渗透",
-      "element": "毒",
-      "category": "魔法",
-      "cost": 5,
-      "power": 120,
-      "desc": "造成魔伤，每拥有1层中毒效果，本技能能耗-1，赋予1层中毒。"
-    }
-  ],
-  "流浪鼠": [
-    {
-      "id": 59,
-      "source": "stone",
-      "name": "吓退",
-      "element": "普通",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "减伤70%，应对攻击：敌方脱离。"
-    },
-    {
-      "id": 323,
-      "source": "legacy",
-      "name": "掩护",
-      "element": "虫",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
-    },
-    {
-      "id": 213,
-      "source": "learnset",
-      "name": "陨石",
-      "element": "地",
-      "category": "魔法",
-      "cost": 3,
-      "power": 100,
-      "desc": "对敌方精灵造成魔法伤害。"
-    },
-    {
-      "id": 45,
-      "source": "stone",
-      "name": "倾泻",
-      "element": "普通",
-      "category": "魔法",
-      "cost": 3,
-      "power": 60,
-      "desc": "造成魔伤，若本次攻击未被防御技能应对，则驱散双方所有印记。"
-    }
-  ],
-  "朔夜伊芙": [
-    {
-      "id": 445,
-      "source": "legacy",
-      "name": "啮合传递",
-      "element": "机械",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
+      "desc": "造成魔伤，应对状态：额外打断被应对技能。"
     },
     {
       "id": 30,
-      "source": "learnset",
+      "source": "stone",
       "name": "力量增效",
       "element": "普通",
       "category": "变化",
       "cost": 1,
       "power": 0,
       "desc": "自己获得物攻+100%。"
-    },
-    {
-      "id": 76,
-      "source": "stone",
-      "name": "有效预防",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "减伤50%，应对攻击：下一次行动获得先手+1。"
-    },
-    {
-      "id": 408,
-      "source": "learnset",
-      "name": "蝙蝠",
-      "element": "恶",
-      "category": "物理",
-      "cost": 2,
-      "power": 60,
-      "desc": "造成物伤，吸血100%。"
     }
   ],
   "权杖-V": [
@@ -3401,7 +1343,49 @@
       "desc": "减伤50%，应对攻击：下一次行动获得先手+1。"
     }
   ],
-  "高脚鹬": [
+  "魔草巫灵": [
+    {
+      "id": 85,
+      "source": "stone",
+      "name": "芳香诱引",
+      "element": "草",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得连击数+3，应对防御：额外造成打断，且敌方下回合获得眩晕。"
+    },
+    {
+      "id": 445,
+      "source": "legacy",
+      "name": "啮合传递",
+      "element": "机械",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
+    },
+    {
+      "id": 52,
+      "source": "stone",
+      "name": "嗜痛",
+      "element": "普通",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，应对攻击：期间自己每次受到伤害，获得双攻+20%。"
+    },
+    {
+      "id": 461,
+      "source": "learnset",
+      "name": "坍缩",
+      "element": "幻",
+      "category": "魔法",
+      "cost": 3,
+      "power": 85,
+      "desc": "造成魔伤，若击败敌方，自己获得魔攻+50%。"
+    }
+  ],
+  "小皮球": [
     {
       "id": 59,
       "source": "stone",
@@ -3422,70 +1406,6 @@
       "power": 0,
       "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
     },
-    {
-      "id": 154,
-      "source": "stone",
-      "name": "润泽",
-      "element": "水",
-      "category": "变化",
-      "cost": 7,
-      "power": 0,
-      "desc": "自己获得魔攻+190%。"
-    },
-    {
-      "id": 45,
-      "source": "stone",
-      "name": "倾泻",
-      "element": "普通",
-      "category": "魔法",
-      "cost": 3,
-      "power": 60,
-      "desc": "造成魔伤，若本次攻击未被防御技能应对，则驱散双方所有印记。"
-    }
-  ],
-  "荆棘电环": [
-    {
-      "id": 266,
-      "source": "learnset",
-      "name": "电弧",
-      "element": "电",
-      "category": "物理",
-      "cost": 3,
-      "power": 80,
-      "desc": "造成物伤，迸发：本次技能威力+40。"
-    },
-    {
-      "id": 397,
-      "source": "stone",
-      "name": "惊吓盒子",
-      "element": "幽",
-      "category": "物理",
-      "cost": 3,
-      "power": 85,
-      "desc": "造成物伤，应对状态：使敌方失去6能量。"
-    },
-    {
-      "id": 45,
-      "source": "stone",
-      "name": "倾泻",
-      "element": "普通",
-      "category": "魔法",
-      "cost": 3,
-      "power": 60,
-      "desc": "造成魔伤，若本次攻击未被防御技能应对，则驱散双方所有印记。"
-    },
-    {
-      "id": 14,
-      "source": "learnset",
-      "name": "防御",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "减伤70%，应对攻击。"
-    }
-  ],
-  "酷拉": [
     {
       "id": 260,
       "source": "learnset",
@@ -3497,247 +1417,101 @@
       "desc": "造成魔伤，迸发：本技能能耗-1。"
     },
     {
-      "id": 81,
-      "source": "learnset",
-      "name": "阻断",
-      "element": "普通",
-      "category": "魔法",
-      "cost": 2,
-      "power": 70,
-      "desc": "造成魔伤，应对状态：额外打断被应对技能。"
-    },
-    {
-      "id": 30,
+      "id": 183,
       "source": "stone",
-      "name": "力量增效",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "自己获得物攻+100%。"
-    },
-    {
-      "id": 14,
-      "source": "learnset",
-      "name": "防御",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "减伤70%，应对攻击。"
-    }
-  ],
-  "电球咩咩": [
-    {
-      "id": 59,
-      "source": "stone",
-      "name": "吓退",
-      "element": "普通",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "减伤70%，应对攻击：敌方脱离。"
-    },
-    {
-      "id": 323,
-      "source": "legacy",
-      "name": "掩护",
-      "element": "虫",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
-    },
-    {
-      "id": 54,
-      "source": "stone",
-      "name": "偷袭",
-      "element": "普通",
-      "category": "物理",
-      "cost": 3,
-      "power": 85,
-      "desc": "造成物伤，应对状态：本次技能威力变为3倍。"
-    },
-    {
-      "id": 276,
-      "source": "learnset",
-      "name": "落雷",
-      "element": "电",
-      "category": "魔法",
-      "cost": 4,
-      "power": 100,
-      "desc": "造成魔伤，每次入场，本技能威力永久+20。"
-    }
-  ],
-  "格斗小六": [
-    {
-      "id": 445,
-      "source": "legacy",
-      "name": "啮合传递",
-      "element": "机械",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
-    },
-    {
-      "id": 255,
-      "source": "stone",
-      "name": "龙吟",
-      "element": "龙",
-      "category": "变化",
-      "cost": 3,
-      "power": 0,
-      "desc": "蓄力，自己获得双攻+100%和速度+60。"
-    },
-    {
-      "id": 15,
-      "source": "learnset",
-      "name": "飞踢",
-      "element": "普通",
-      "category": "物理",
-      "cost": 3,
-      "power": 100,
-      "desc": "对敌方精灵造成物理伤害。"
-    },
-    {
-      "id": 14,
-      "source": "learnset",
-      "name": "防御",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "减伤70%，应对攻击。"
-    }
-  ],
-  "烈火守护": [
-    {
-      "id": 54,
-      "source": "learnset",
-      "name": "偷袭",
-      "element": "普通",
-      "category": "物理",
-      "cost": 3,
-      "power": 85,
-      "desc": "造成物伤，应对状态：本次技能威力变为3倍。"
-    },
-    {
-      "id": 424,
-      "source": "stone",
-      "name": "撕裂",
-      "element": "恶",
-      "category": "物理",
-      "cost": 3,
-      "power": 85,
-      "desc": "造成物伤，应对状态：本次攻击吸血100%。"
-    },
-    {
-      "id": 125,
-      "source": "learnset",
-      "name": "火云车",
-      "element": "火",
-      "category": "物理",
-      "cost": 5,
-      "power": 140,
-      "desc": "对敌方精灵造成物理伤害。"
-    },
-    {
-      "id": 76,
-      "source": "stone",
-      "name": "有效预防",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "减伤50%，应对攻击：下一次行动获得先手+1。"
-    }
-  ],
-  "铠甲虫": [
-    {
-      "id": 323,
-      "source": "learnset",
-      "name": "掩护",
-      "element": "虫",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
-    },
-    {
-      "id": 59,
-      "source": "learnset",
-      "name": "吓退",
-      "element": "普通",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "减伤70%，应对攻击：敌方脱离。"
-    },
-    {
-      "id": 304,
-      "source": "learnset",
-      "name": "翅刃",
-      "element": "虫",
-      "category": "物理",
-      "cost": 4,
-      "power": 90,
-      "desc": "造成物伤，驱散敌方所有印记，应对状态：改为偷取印记。"
-    },
-    {
-      "id": 30,
-      "source": "stone",
-      "name": "力量增效",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "自己获得物攻+100%。"
-    }
-  ],
-  "怖哭菇": [
-    {
-      "id": 59,
-      "source": "stone",
-      "name": "吓退",
-      "element": "普通",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "减伤70%，应对攻击：敌方脱离。"
-    },
-    {
-      "id": 323,
-      "source": "legacy",
-      "name": "掩护",
-      "element": "虫",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
-    },
-    {
-      "id": 60,
-      "source": "stone",
-      "name": "先发制人",
-      "element": "普通",
-      "category": "物理",
-      "cost": 2,
-      "power": 55,
-      "desc": "造成物理伤害，先手+1。"
-    },
-    {
-      "id": 177,
-      "source": "legacy",
-      "name": "虹光冲击",
+      "name": "天光",
       "element": "光",
       "category": "魔法",
       "cost": 3,
-      "power": 100,
-      "desc": "对敌方精灵造成魔法伤害。"
+      "power": 95,
+      "desc": "造成魔伤，本技能系别始终和天气系别相同。"
     }
   ],
-  "圆号鱼": [
+  "幻影灵菇": [
+    {
+      "id": 59,
+      "source": "stone",
+      "name": "吓退",
+      "element": "普通",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，应对攻击：敌方脱离。"
+    },
+    {
+      "id": 323,
+      "source": "legacy",
+      "name": "掩护",
+      "element": "虫",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
+    },
+    {
+      "id": 397,
+      "source": "learnset",
+      "name": "惊吓盒子",
+      "element": "幽",
+      "category": "物理",
+      "cost": 3,
+      "power": 85,
+      "desc": "造成物伤，应对状态：使敌方失去6能量。"
+    },
+    {
+      "id": 390,
+      "source": "learnset",
+      "name": "嘲弄",
+      "element": "幽",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "自己获得魔攻+70%，若敌方本回合替换精灵，自己获得速度+70。"
+    }
+  ],
+  "星光狮": [
+    {
+      "id": 36,
+      "source": "learnset",
+      "name": "魔法增效",
+      "element": "普通",
+      "category": "变化",
+      "cost": 0,
+      "power": 0,
+      "desc": "自己获得魔攻+70%。"
+    },
+    {
+      "id": 260,
+      "source": "learnset",
+      "name": "超导",
+      "element": "电",
+      "category": "魔法",
+      "cost": 3,
+      "power": 95,
+      "desc": "造成魔伤，迸发：本技能能耗-1。"
+    },
+    {
+      "id": 14,
+      "source": "learnset",
+      "name": "防御",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    },
+    {
+      "id": 183,
+      "source": "learnset",
+      "name": "天光",
+      "element": "光",
+      "category": "魔法",
+      "cost": 3,
+      "power": 95,
+      "desc": "造成魔伤，本技能系别始终和天气系别相同。"
+    }
+  ],
+  "千棘盔（磨损的样子）": [
     {
       "id": 151,
       "source": "learnset",
@@ -3760,7 +1534,7 @@
     },
     {
       "id": 155,
-      "source": "learnset",
+      "source": "stone",
       "name": "打湿",
       "element": "水",
       "category": "变化",
@@ -3769,17 +1543,17 @@
       "desc": "自己获得1层湿润印记。"
     },
     {
-      "id": 165,
+      "id": 294,
       "source": "learnset",
-      "name": "水炮",
-      "element": "水",
+      "name": "感染病",
+      "element": "毒",
       "category": "魔法",
-      "cost": 5,
-      "power": 110,
-      "desc": "造成魔伤，每次使用后，本技能能耗永久-1。"
+      "cost": 4,
+      "power": 85,
+      "desc": "造成魔伤，若击败敌方则将中毒转化为印记。"
     }
   ],
-  "格斗小八": [
+  "秩序鱿墨": [
     {
       "id": 59,
       "source": "stone",
@@ -3801,164 +1575,6 @@
       "desc": "造成物伤，应对状态：本次技能威力变为3倍。"
     },
     {
-      "id": 349,
-      "source": "learnset",
-      "name": "斩断",
-      "element": "武",
-      "category": "物理",
-      "cost": 2,
-      "power": 70,
-      "desc": "造成物伤，应对状态：额外打断被应对技能。"
-    },
-    {
-      "id": 371,
-      "source": "stone",
-      "name": "爆米花爆破",
-      "element": "萌",
-      "category": "物理",
-      "cost": 5,
-      "power": 140,
-      "desc": "对敌方精灵造成物理伤害。"
-    }
-  ],
-  "深蓝鲸": [
-    {
-      "id": 323,
-      "source": "legacy",
-      "name": "掩护",
-      "element": "虫",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
-    },
-    {
-      "id": 146,
-      "source": "learnset",
-      "name": "潮汐",
-      "element": "水",
-      "category": "变化",
-      "cost": 4,
-      "power": 0,
-      "desc": "减伤60%，应对攻击：自己获得1层湿润印记。"
-    },
-    {
-      "id": 152,
-      "source": "learnset",
-      "name": "气泡",
-      "element": "水",
-      "category": "魔法",
-      "cost": 3,
-      "power": 100,
-      "desc": "对敌方精灵造成魔法伤害。"
-    },
-    {
-      "id": 177,
-      "source": "legacy",
-      "name": "虹光冲击",
-      "element": "光",
-      "category": "魔法",
-      "cost": 3,
-      "power": 100,
-      "desc": "对敌方精灵造成魔法伤害。"
-    }
-  ],
-  "裘卡": [
-    {
-      "id": 266,
-      "source": "stone",
-      "name": "电弧",
-      "element": "电",
-      "category": "物理",
-      "cost": 3,
-      "power": 80,
-      "desc": "造成物伤，迸发：本次技能威力+40。"
-    },
-    {
-      "id": 327,
-      "source": "stone",
-      "name": "崩拳",
-      "element": "武",
-      "category": "物理",
-      "cost": 2,
-      "power": 60,
-      "desc": "造成物伤，应对状态：自己获得物攻+100%。"
-    },
-    {
-      "id": 294,
-      "source": "learnset",
-      "name": "感染病",
-      "element": "毒",
-      "category": "魔法",
-      "cost": 4,
-      "power": 85,
-      "desc": "造成魔伤，若击败敌方则将中毒转化为印记。"
-    },
-    {
-      "id": 14,
-      "source": "learnset",
-      "name": "防御",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "减伤70%，应对攻击。"
-    }
-  ],
-  "蹦床松鼠": [
-    {
-      "id": 59,
-      "source": "learnset",
-      "name": "吓退",
-      "element": "普通",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "减伤70%，应对攻击：敌方脱离。"
-    },
-    {
-      "id": 323,
-      "source": "legacy",
-      "name": "掩护",
-      "element": "虫",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
-    },
-    {
-      "id": 346,
-      "source": "stone",
-      "name": "影袭",
-      "element": "武",
-      "category": "物理",
-      "cost": 3,
-      "power": 100,
-      "desc": "对敌方精灵造成物理伤害。"
-    },
-    {
-      "id": 177,
-      "source": "legacy",
-      "name": "虹光冲击",
-      "element": "光",
-      "category": "魔法",
-      "cost": 3,
-      "power": 100,
-      "desc": "对敌方精灵造成魔法伤害。"
-    }
-  ],
-  "雪灵": [
-    {
-      "id": 445,
-      "source": "legacy",
-      "name": "啮合传递",
-      "element": "机械",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
-    },
-    {
       "id": 390,
       "source": "stone",
       "name": "嘲弄",
@@ -3969,36 +1585,68 @@
       "desc": "自己获得魔攻+70%，若敌方本回合替换精灵，自己获得速度+70。"
     },
     {
-      "id": 238,
-      "source": "learnset",
-      "name": "雪替身",
-      "element": "冰",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "减伤70%，应对攻击：回复能量，回复值等于被应对技能能耗的2倍。"
-    },
-    {
-      "id": 460,
+      "id": 397,
       "source": "stone",
-      "name": "四维降解",
-      "element": "幻",
-      "category": "魔法",
-      "cost": 7,
-      "power": 100,
-      "desc": "造成魔伤，敌方每有1层印记，本技能能耗-1。"
+      "name": "惊吓盒子",
+      "element": "幽",
+      "category": "物理",
+      "cost": 3,
+      "power": 85,
+      "desc": "造成物伤，应对状态：使敌方失去6能量。"
     }
   ],
-  "陨星虫": [
+  "海枝枝": [
     {
-      "id": 323,
+      "id": 390,
       "source": "learnset",
-      "name": "掩护",
-      "element": "虫",
+      "name": "嘲弄",
+      "element": "幽",
       "category": "变化",
       "cost": 2,
       "power": 0,
-      "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
+      "desc": "自己获得魔攻+70%，若敌方本回合替换精灵，自己获得速度+70。"
+    },
+    {
+      "id": 155,
+      "source": "learnset",
+      "name": "打湿",
+      "element": "水",
+      "category": "变化",
+      "cost": 4,
+      "power": 0,
+      "desc": "自己获得1层湿润印记。"
+    },
+    {
+      "id": 154,
+      "source": "learnset",
+      "name": "润泽",
+      "element": "水",
+      "category": "变化",
+      "cost": 7,
+      "power": 0,
+      "desc": "自己获得魔攻+190%。"
+    },
+    {
+      "id": 167,
+      "source": "learnset",
+      "name": "天洪",
+      "element": "水",
+      "category": "魔法",
+      "cost": 7,
+      "power": 140,
+      "desc": "造成魔伤，应对状态：本技能能耗永久-6。"
+    }
+  ],
+  "学院呱呱": [
+    {
+      "id": 190,
+      "source": "stone",
+      "name": "地刺",
+      "element": "地",
+      "category": "物理",
+      "cost": 3,
+      "power": 95,
+      "desc": "造成物伤，应对状态：额外打断被应对技能。"
     },
     {
       "id": 53,
@@ -4011,24 +1659,150 @@
       "desc": "造成物理伤害，先手+1，迸发：本次技能威力+30。"
     },
     {
-      "id": 213,
+      "id": 336,
       "source": "stone",
-      "name": "陨石",
-      "element": "地",
-      "category": "魔法",
-      "cost": 3,
-      "power": 100,
-      "desc": "对敌方精灵造成魔法伤害。"
-    },
-    {
-      "id": 461,
-      "source": "stone",
-      "name": "坍缩",
-      "element": "幻",
-      "category": "魔法",
+      "name": "截拳",
+      "element": "武",
+      "category": "物理",
       "cost": 3,
       "power": 85,
-      "desc": "造成魔伤，若击败敌方，自己获得魔攻+50%。"
+      "desc": "造成物伤，应对状态：额外造成打断，回复该技能能耗的能量。"
+    },
+    {
+      "id": 412,
+      "source": "stone",
+      "name": "跌落",
+      "element": "恶",
+      "category": "物理",
+      "cost": 3,
+      "power": 120,
+      "desc": "造成大量物伤，自己获得物攻-50%，应对状态：改为获得物攻+50%。"
+    }
+  ],
+  "卡洛儿": [
+    {
+      "id": 323,
+      "source": "legacy",
+      "name": "掩护",
+      "element": "虫",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
+    },
+    {
+      "id": 155,
+      "source": "learnset",
+      "name": "打湿",
+      "element": "水",
+      "category": "变化",
+      "cost": 4,
+      "power": 0,
+      "desc": "自己获得1层湿润印记。"
+    },
+    {
+      "id": 30,
+      "source": "stone",
+      "name": "力量增效",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得物攻+100%。"
+    },
+    {
+      "id": 166,
+      "source": "learnset",
+      "name": "水刃",
+      "element": "水",
+      "category": "物理",
+      "cost": 4,
+      "power": 115,
+      "desc": "造成物伤，应对状态：本技能能耗永久-4。"
+    }
+  ],
+  "声波缇塔": [
+    {
+      "id": 190,
+      "source": "stone",
+      "name": "地刺",
+      "element": "地",
+      "category": "物理",
+      "cost": 3,
+      "power": 95,
+      "desc": "造成物伤，应对状态：额外打断被应对技能。"
+    },
+    {
+      "id": 54,
+      "source": "stone",
+      "name": "偷袭",
+      "element": "普通",
+      "category": "物理",
+      "cost": 3,
+      "power": 85,
+      "desc": "造成物伤，应对状态：本次技能威力变为3倍。"
+    },
+    {
+      "id": 445,
+      "source": "learnset",
+      "name": "啮合传递",
+      "element": "机械",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
+    },
+    {
+      "id": 76,
+      "source": "stone",
+      "name": "有效预防",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤50%，应对攻击：下一次行动获得先手+1。"
+    }
+  ],
+  "鸭吉吉（起来鸭）": [
+    {
+      "id": 59,
+      "source": "learnset",
+      "name": "吓退",
+      "element": "普通",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，应对攻击：敌方脱离。"
+    },
+    {
+      "id": 445,
+      "source": "legacy",
+      "name": "啮合传递",
+      "element": "机械",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
+    },
+    {
+      "id": 30,
+      "source": "learnset",
+      "name": "力量增效",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得物攻+100%。"
+    },
+    {
+      "id": 50,
+      "source": "learnset",
+      "name": "扫尾",
+      "element": "普通",
+      "category": "物理",
+      "cost": 2,
+      "power": 80,
+      "desc": "对敌方精灵造成物理伤害。"
     }
   ],
   "嘟嘟锅": [
@@ -4073,7 +1847,2033 @@
       "desc": "造成魔伤，每拥有1层中毒效果，本技能能耗-1，赋予1层中毒。"
     }
   ],
-  "斑枭": [
+  "梦悠悠": [
+    {
+      "id": 14,
+      "source": "learnset",
+      "name": "防御",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    },
+    {
+      "id": 36,
+      "source": "learnset",
+      "name": "魔法增效",
+      "element": "普通",
+      "category": "变化",
+      "cost": 0,
+      "power": 0,
+      "desc": "自己获得魔攻+70%。"
+    },
+    {
+      "id": 403,
+      "source": "learnset",
+      "name": "幽灵爆发",
+      "element": "幽",
+      "category": "魔法",
+      "cost": 5,
+      "power": 140,
+      "desc": "对敌方精灵造成魔法伤害。"
+    },
+    {
+      "id": 396,
+      "source": "learnset",
+      "name": "降灵",
+      "element": "幽",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "敌方获得1层降灵印记。"
+    }
+  ],
+  "棋绮后（黑子）": [
+    {
+      "id": 43,
+      "source": "stone",
+      "name": "迫近攻击",
+      "element": "普通",
+      "category": "物理",
+      "cost": 3,
+      "power": 80,
+      "desc": "造成物伤。每次使用后，本技能威力永久+40。"
+    },
+    {
+      "id": 445,
+      "source": "legacy",
+      "name": "啮合传递",
+      "element": "机械",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
+    },
+    {
+      "id": 213,
+      "source": "learnset",
+      "name": "陨石",
+      "element": "地",
+      "category": "魔法",
+      "cost": 3,
+      "power": 100,
+      "desc": "对敌方精灵造成魔法伤害。"
+    },
+    {
+      "id": 76,
+      "source": "stone",
+      "name": "有效预防",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤50%，应对攻击：下一次行动获得先手+1。"
+    }
+  ],
+  "武者鸡": [
+    {
+      "id": 336,
+      "source": "learnset",
+      "name": "截拳",
+      "element": "武",
+      "category": "物理",
+      "cost": 3,
+      "power": 85,
+      "desc": "造成物伤，应对状态：额外造成打断，回复该技能能耗的能量。"
+    },
+    {
+      "id": 145,
+      "source": "learnset",
+      "name": "焚烧烙印",
+      "element": "火",
+      "category": "变化",
+      "cost": 3,
+      "power": 0,
+      "desc": "驱散双方所有印记，每驱散1层，敌方获得5层灼烧。"
+    },
+    {
+      "id": 30,
+      "source": "learnset",
+      "name": "力量增效",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得物攻+100%。"
+    },
+    {
+      "id": 14,
+      "source": "stone",
+      "name": "防御",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    }
+  ],
+  "獠牙猪": [
+    {
+      "id": 190,
+      "source": "learnset",
+      "name": "地刺",
+      "element": "地",
+      "category": "物理",
+      "cost": 3,
+      "power": 95,
+      "desc": "造成物伤，应对状态：额外打断被应对技能。"
+    },
+    {
+      "id": 217,
+      "source": "learnset",
+      "name": "冰雹",
+      "element": "冰",
+      "category": "物理",
+      "cost": 4,
+      "power": 100,
+      "desc": "造成物伤，应对状态：额外使敌方获得全技能能耗+3。"
+    },
+    {
+      "id": 397,
+      "source": "stone",
+      "name": "惊吓盒子",
+      "element": "幽",
+      "category": "物理",
+      "cost": 3,
+      "power": 85,
+      "desc": "造成物伤，应对状态：使敌方失去6能量。"
+    },
+    {
+      "id": 14,
+      "source": "learnset",
+      "name": "防御",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    }
+  ],
+  "针叶巡林": [
+    {
+      "id": 190,
+      "source": "stone",
+      "name": "地刺",
+      "element": "地",
+      "category": "物理",
+      "cost": 3,
+      "power": 95,
+      "desc": "造成物伤，应对状态：额外打断被应对技能。"
+    },
+    {
+      "id": 336,
+      "source": "stone",
+      "name": "截拳",
+      "element": "武",
+      "category": "物理",
+      "cost": 3,
+      "power": 85,
+      "desc": "造成物伤，应对状态：额外造成打断，回复该技能能耗的能量。"
+    },
+    {
+      "id": 54,
+      "source": "stone",
+      "name": "偷袭",
+      "element": "普通",
+      "category": "物理",
+      "cost": 3,
+      "power": 85,
+      "desc": "造成物伤，应对状态：本次技能威力变为3倍。"
+    },
+    {
+      "id": 14,
+      "source": "learnset",
+      "name": "防御",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    }
+  ],
+  "芋香巨角蛛": [
+    {
+      "id": 390,
+      "source": "stone",
+      "name": "嘲弄",
+      "element": "幽",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "自己获得魔攻+70%，若敌方本回合替换精灵，自己获得速度+70。"
+    },
+    {
+      "id": 397,
+      "source": "stone",
+      "name": "惊吓盒子",
+      "element": "幽",
+      "category": "物理",
+      "cost": 3,
+      "power": 85,
+      "desc": "造成物伤，应对状态：使敌方失去6能量。"
+    },
+    {
+      "id": 294,
+      "source": "stone",
+      "name": "感染病",
+      "element": "毒",
+      "category": "魔法",
+      "cost": 4,
+      "power": 85,
+      "desc": "造成魔伤，若击败敌方则将中毒转化为印记。"
+    },
+    {
+      "id": 14,
+      "source": "stone",
+      "name": "防御",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    }
+  ],
+  "流浪鼠": [
+    {
+      "id": 59,
+      "source": "stone",
+      "name": "吓退",
+      "element": "普通",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，应对攻击：敌方脱离。"
+    },
+    {
+      "id": 323,
+      "source": "legacy",
+      "name": "掩护",
+      "element": "虫",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
+    },
+    {
+      "id": 213,
+      "source": "learnset",
+      "name": "陨石",
+      "element": "地",
+      "category": "魔法",
+      "cost": 3,
+      "power": 100,
+      "desc": "对敌方精灵造成魔法伤害。"
+    },
+    {
+      "id": 45,
+      "source": "stone",
+      "name": "倾泻",
+      "element": "普通",
+      "category": "魔法",
+      "cost": 3,
+      "power": 60,
+      "desc": "造成魔伤，若本次攻击未被防御技能应对，则驱散双方所有印记。"
+    }
+  ],
+  "锤头鹳": [
+    {
+      "id": 445,
+      "source": "legacy",
+      "name": "啮合传递",
+      "element": "机械",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
+    },
+    {
+      "id": 177,
+      "source": "legacy",
+      "name": "虹光冲击",
+      "element": "光",
+      "category": "魔法",
+      "cost": 3,
+      "power": 100,
+      "desc": "对敌方精灵造成魔法伤害。"
+    },
+    {
+      "id": 364,
+      "source": "learnset",
+      "name": "翼击",
+      "element": "翼",
+      "category": "魔法",
+      "cost": 3,
+      "power": 50,
+      "desc": "造成魔伤，迅捷。"
+    },
+    {
+      "id": 14,
+      "source": "stone",
+      "name": "防御",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    }
+  ],
+  "水泡壳": [
+    {
+      "id": 36,
+      "source": "learnset",
+      "name": "魔法增效",
+      "element": "普通",
+      "category": "变化",
+      "cost": 0,
+      "power": 0,
+      "desc": "自己获得魔攻+70%。"
+    },
+    {
+      "id": 20,
+      "source": "learnset",
+      "name": "后发制人",
+      "element": "普通",
+      "category": "物理",
+      "cost": 3,
+      "power": 140,
+      "desc": "造成物理伤害，先手-1。"
+    },
+    {
+      "id": 165,
+      "source": "learnset",
+      "name": "水炮",
+      "element": "水",
+      "category": "魔法",
+      "cost": 5,
+      "power": 110,
+      "desc": "造成魔伤，每次使用后，本技能能耗永久-1。"
+    },
+    {
+      "id": 151,
+      "source": "learnset",
+      "name": "泡沫幻影",
+      "element": "水",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，应对攻击：自己脱离。"
+    }
+  ],
+  "电企鹅": [
+    {
+      "id": 323,
+      "source": "legacy",
+      "name": "掩护",
+      "element": "虫",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
+    },
+    {
+      "id": 81,
+      "source": "stone",
+      "name": "阻断",
+      "element": "普通",
+      "category": "魔法",
+      "cost": 2,
+      "power": 70,
+      "desc": "造成魔伤，应对状态：额外打断被应对技能。"
+    },
+    {
+      "id": 276,
+      "source": "learnset",
+      "name": "落雷",
+      "element": "电",
+      "category": "魔法",
+      "cost": 4,
+      "power": 100,
+      "desc": "造成魔伤，每次入场，本技能威力永久+20。"
+    },
+    {
+      "id": 36,
+      "source": "stone",
+      "name": "魔法增效",
+      "element": "普通",
+      "category": "变化",
+      "cost": 0,
+      "power": 0,
+      "desc": "自己获得魔攻+70%。"
+    }
+  ],
+  "雪巨人": [
+    {
+      "id": 323,
+      "source": "legacy",
+      "name": "掩护",
+      "element": "虫",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
+    },
+    {
+      "id": 54,
+      "source": "stone",
+      "name": "偷袭",
+      "element": "普通",
+      "category": "物理",
+      "cost": 3,
+      "power": 85,
+      "desc": "造成物伤，应对状态：本次技能威力变为3倍。"
+    },
+    {
+      "id": 217,
+      "source": "learnset",
+      "name": "冰雹",
+      "element": "冰",
+      "category": "物理",
+      "cost": 4,
+      "power": 100,
+      "desc": "造成物伤，应对状态：额外使敌方获得全技能能耗+3。"
+    },
+    {
+      "id": 397,
+      "source": "stone",
+      "name": "惊吓盒子",
+      "element": "幽",
+      "category": "物理",
+      "cost": 3,
+      "power": 85,
+      "desc": "造成物伤，应对状态：使敌方失去6能量。"
+    }
+  ],
+  "翼龙": [
+    {
+      "id": 54,
+      "source": "stone",
+      "name": "偷袭",
+      "element": "普通",
+      "category": "物理",
+      "cost": 3,
+      "power": 85,
+      "desc": "造成物伤，应对状态：本次技能威力变为3倍。"
+    },
+    {
+      "id": 255,
+      "source": "learnset",
+      "name": "龙吟",
+      "element": "龙",
+      "category": "变化",
+      "cost": 3,
+      "power": 0,
+      "desc": "蓄力，自己获得双攻+100%和速度+60。"
+    },
+    {
+      "id": 368,
+      "source": "learnset",
+      "name": "羽刃",
+      "element": "翼",
+      "category": "物理",
+      "cost": 2,
+      "power": 70,
+      "desc": "造成物伤，应对状态：回合结束使敌方紧急脱离。"
+    },
+    {
+      "id": 14,
+      "source": "stone",
+      "name": "防御",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    }
+  ],
+  "帕帕斯卡": [
+    {
+      "id": 266,
+      "source": "stone",
+      "name": "电弧",
+      "element": "电",
+      "category": "物理",
+      "cost": 3,
+      "power": 80,
+      "desc": "造成物伤，迸发：本次技能威力+40。"
+    },
+    {
+      "id": 54,
+      "source": "learnset",
+      "name": "偷袭",
+      "element": "普通",
+      "category": "物理",
+      "cost": 3,
+      "power": 85,
+      "desc": "造成物伤，应对状态：本次技能威力变为3倍。"
+    },
+    {
+      "id": 360,
+      "source": "stone",
+      "name": "龙卷风",
+      "element": "翼",
+      "category": "物理",
+      "cost": 5,
+      "power": 60,
+      "desc": "造成物伤，迅捷，应对状态：本次技能威力变为1.5倍。"
+    },
+    {
+      "id": 14,
+      "source": "stone",
+      "name": "防御",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    }
+  ],
+  "巨灵石": [
+    {
+      "id": 59,
+      "source": "stone",
+      "name": "吓退",
+      "element": "普通",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，应对攻击：敌方脱离。"
+    },
+    {
+      "id": 445,
+      "source": "legacy",
+      "name": "啮合传递",
+      "element": "机械",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
+    },
+    {
+      "id": 390,
+      "source": "learnset",
+      "name": "嘲弄",
+      "element": "幽",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "自己获得魔攻+70%，若敌方本回合替换精灵，自己获得速度+70。"
+    },
+    {
+      "id": 213,
+      "source": "learnset",
+      "name": "陨石",
+      "element": "地",
+      "category": "魔法",
+      "cost": 3,
+      "power": 100,
+      "desc": "对敌方精灵造成魔法伤害。"
+    }
+  ],
+  "圣羽翼王": [
+    {
+      "id": 81,
+      "source": "stone",
+      "name": "阻断",
+      "element": "普通",
+      "category": "魔法",
+      "cost": 2,
+      "power": 70,
+      "desc": "造成魔伤，应对状态：额外打断被应对技能。"
+    },
+    {
+      "id": 30,
+      "source": "learnset",
+      "name": "力量增效",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得物攻+100%。"
+    },
+    {
+      "id": 76,
+      "source": "stone",
+      "name": "有效预防",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤50%，应对攻击：下一次行动获得先手+1。"
+    },
+    {
+      "id": 183,
+      "source": "stone",
+      "name": "天光",
+      "element": "光",
+      "category": "魔法",
+      "cost": 3,
+      "power": 95,
+      "desc": "造成魔伤，本技能系别始终和天气系别相同。"
+    }
+  ],
+  "落陨星兔": [
+    {
+      "id": 59,
+      "source": "stone",
+      "name": "吓退",
+      "element": "普通",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，应对攻击：敌方脱离。"
+    },
+    {
+      "id": 445,
+      "source": "legacy",
+      "name": "啮合传递",
+      "element": "机械",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
+    },
+    {
+      "id": 390,
+      "source": "learnset",
+      "name": "嘲弄",
+      "element": "幽",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "自己获得魔攻+70%，若敌方本回合替换精灵，自己获得速度+70。"
+    },
+    {
+      "id": 461,
+      "source": "learnset",
+      "name": "坍缩",
+      "element": "幻",
+      "category": "魔法",
+      "cost": 3,
+      "power": 85,
+      "desc": "造成魔伤，若击败敌方，自己获得魔攻+50%。"
+    }
+  ],
+  "绒仙子": [
+    {
+      "id": 445,
+      "source": "legacy",
+      "name": "啮合传递",
+      "element": "机械",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
+    },
+    {
+      "id": 30,
+      "source": "learnset",
+      "name": "力量增效",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得物攻+100%。"
+    },
+    {
+      "id": 177,
+      "source": "learnset",
+      "name": "虹光冲击",
+      "element": "光",
+      "category": "魔法",
+      "cost": 3,
+      "power": 100,
+      "desc": "对敌方精灵造成魔法伤害。"
+    },
+    {
+      "id": 14,
+      "source": "stone",
+      "name": "防御",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    }
+  ],
+  "公平鸽": [
+    {
+      "id": 53,
+      "source": "learnset",
+      "name": "天旋地转",
+      "element": "普通",
+      "category": "物理",
+      "cost": 3,
+      "power": 55,
+      "desc": "造成物理伤害，先手+1，迸发：本次技能威力+30。"
+    },
+    {
+      "id": 445,
+      "source": "legacy",
+      "name": "啮合传递",
+      "element": "机械",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
+    },
+    {
+      "id": 52,
+      "source": "stone",
+      "name": "嗜痛",
+      "element": "普通",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，应对攻击：期间自己每次受到伤害，获得双攻+20%。"
+    },
+    {
+      "id": 340,
+      "source": "stone",
+      "name": "气沉丹田",
+      "element": "武",
+      "category": "变化",
+      "cost": 10,
+      "power": 0,
+      "desc": "自己回复60%生命，获得物攻+130%，每次应对后本技能能耗-3，使用后能耗重置。"
+    }
+  ],
+  "蒲公英娃娃": [
+    {
+      "id": 371,
+      "source": "learnset",
+      "name": "爆米花爆破",
+      "element": "萌",
+      "category": "物理",
+      "cost": 5,
+      "power": 140,
+      "desc": "对敌方精灵造成物理伤害。"
+    },
+    {
+      "id": 45,
+      "source": "learnset",
+      "name": "倾泻",
+      "element": "普通",
+      "category": "魔法",
+      "cost": 3,
+      "power": 60,
+      "desc": "造成魔伤，若本次攻击未被防御技能应对，则驱散双方所有印记。"
+    },
+    {
+      "id": 87,
+      "source": "learnset",
+      "name": "丰饶",
+      "element": "草",
+      "category": "变化",
+      "cost": 3,
+      "power": 0,
+      "desc": "自己获得物攻和魔攻+130%。"
+    },
+    {
+      "id": 14,
+      "source": "stone",
+      "name": "防御",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    }
+  ],
+  "暮星辰": [
+    {
+      "id": 390,
+      "source": "stone",
+      "name": "嘲弄",
+      "element": "幽",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "自己获得魔攻+70%，若敌方本回合替换精灵，自己获得速度+70。"
+    },
+    {
+      "id": 45,
+      "source": "stone",
+      "name": "倾泻",
+      "element": "普通",
+      "category": "魔法",
+      "cost": 3,
+      "power": 60,
+      "desc": "造成魔伤，若本次攻击未被防御技能应对，则驱散双方所有印记。"
+    },
+    {
+      "id": 14,
+      "source": "stone",
+      "name": "防御",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    },
+    {
+      "id": 451,
+      "source": "learnset",
+      "name": "错乱",
+      "element": "幻",
+      "category": "魔法",
+      "cost": 2,
+      "power": 60,
+      "desc": "造成魔伤，应对状态：敌方获得3层星陨。"
+    }
+  ],
+  "电球咩咩": [
+    {
+      "id": 59,
+      "source": "stone",
+      "name": "吓退",
+      "element": "普通",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，应对攻击：敌方脱离。"
+    },
+    {
+      "id": 323,
+      "source": "legacy",
+      "name": "掩护",
+      "element": "虫",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
+    },
+    {
+      "id": 54,
+      "source": "stone",
+      "name": "偷袭",
+      "element": "普通",
+      "category": "物理",
+      "cost": 3,
+      "power": 85,
+      "desc": "造成物伤，应对状态：本次技能威力变为3倍。"
+    },
+    {
+      "id": 276,
+      "source": "learnset",
+      "name": "落雷",
+      "element": "电",
+      "category": "魔法",
+      "cost": 4,
+      "power": 100,
+      "desc": "造成魔伤，每次入场，本技能威力永久+20。"
+    }
+  ],
+  "朔夜伊芙": [
+    {
+      "id": 445,
+      "source": "legacy",
+      "name": "啮合传递",
+      "element": "机械",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
+    },
+    {
+      "id": 30,
+      "source": "learnset",
+      "name": "力量增效",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得物攻+100%。"
+    },
+    {
+      "id": 76,
+      "source": "stone",
+      "name": "有效预防",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤50%，应对攻击：下一次行动获得先手+1。"
+    },
+    {
+      "id": 408,
+      "source": "learnset",
+      "name": "蝙蝠",
+      "element": "恶",
+      "category": "物理",
+      "cost": 2,
+      "power": 60,
+      "desc": "造成物伤，吸血100%。"
+    }
+  ],
+  "雅丹鬃": [
+    {
+      "id": 614,
+      "source": "learnset",
+      "name": "阳火增辉",
+      "element": "火",
+      "category": "魔法",
+      "cost": 3,
+      "power": 75,
+      "desc": "造成魔伤，每次击败敌方，本技能威力永久翻倍。"
+    },
+    {
+      "id": 61,
+      "source": "stone",
+      "name": "消毒法",
+      "element": "普通",
+      "category": "魔法",
+      "cost": 4,
+      "power": 105,
+      "desc": "造成魔伤，驱散敌方5层增益。"
+    },
+    {
+      "id": 145,
+      "source": "learnset",
+      "name": "焚烧烙印",
+      "element": "火",
+      "category": "变化",
+      "cost": 3,
+      "power": 0,
+      "desc": "驱散双方所有印记，每驱散1层，敌方获得5层灼烧。"
+    },
+    {
+      "id": 14,
+      "source": "learnset",
+      "name": "防御",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    }
+  ],
+  "瞌睡王": [
+    {
+      "id": 54,
+      "source": "learnset",
+      "name": "偷袭",
+      "element": "普通",
+      "category": "物理",
+      "cost": 3,
+      "power": 85,
+      "desc": "造成物伤，应对状态：本次技能威力变为3倍。"
+    },
+    {
+      "id": 217,
+      "source": "stone",
+      "name": "冰雹",
+      "element": "冰",
+      "category": "物理",
+      "cost": 4,
+      "power": 100,
+      "desc": "造成物伤，应对状态：额外使敌方获得全技能能耗+3。"
+    },
+    {
+      "id": 349,
+      "source": "learnset",
+      "name": "斩断",
+      "element": "武",
+      "category": "物理",
+      "cost": 2,
+      "power": 70,
+      "desc": "造成物伤，应对状态：额外打断被应对技能。"
+    },
+    {
+      "id": 76,
+      "source": "stone",
+      "name": "有效预防",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤50%，应对攻击：下一次行动获得先手+1。"
+    }
+  ],
+  "疾光千兽": [
+    {
+      "id": 54,
+      "source": "learnset",
+      "name": "偷袭",
+      "element": "普通",
+      "category": "物理",
+      "cost": 3,
+      "power": 85,
+      "desc": "造成物伤，应对状态：本次技能威力变为3倍。"
+    },
+    {
+      "id": 327,
+      "source": "stone",
+      "name": "崩拳",
+      "element": "武",
+      "category": "物理",
+      "cost": 2,
+      "power": 60,
+      "desc": "造成物伤，应对状态：自己获得物攻+100%。"
+    },
+    {
+      "id": 30,
+      "source": "learnset",
+      "name": "力量增效",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得物攻+100%。"
+    },
+    {
+      "id": 14,
+      "source": "learnset",
+      "name": "防御",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    }
+  ],
+  "海豹船长": [
+    {
+      "id": 323,
+      "source": "legacy",
+      "name": "掩护",
+      "element": "虫",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
+    },
+    {
+      "id": 349,
+      "source": "learnset",
+      "name": "斩断",
+      "element": "武",
+      "category": "物理",
+      "cost": 2,
+      "power": 70,
+      "desc": "造成物伤，应对状态：额外打断被应对技能。"
+    },
+    {
+      "id": 60,
+      "source": "learnset",
+      "name": "先发制人",
+      "element": "普通",
+      "category": "物理",
+      "cost": 2,
+      "power": 55,
+      "desc": "造成物理伤害，先手+1。"
+    },
+    {
+      "id": 30,
+      "source": "learnset",
+      "name": "力量增效",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得物攻+100%。"
+    }
+  ],
+  "卷毛鸭": [
+    {
+      "id": 54,
+      "source": "stone",
+      "name": "偷袭",
+      "element": "普通",
+      "category": "物理",
+      "cost": 3,
+      "power": 85,
+      "desc": "造成物伤，应对状态：本次技能威力变为3倍。"
+    },
+    {
+      "id": 349,
+      "source": "stone",
+      "name": "斩断",
+      "element": "武",
+      "category": "物理",
+      "cost": 2,
+      "power": 70,
+      "desc": "造成物伤，应对状态：额外打断被应对技能。"
+    },
+    {
+      "id": 30,
+      "source": "learnset",
+      "name": "力量增效",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得物攻+100%。"
+    },
+    {
+      "id": 76,
+      "source": "stone",
+      "name": "有效预防",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤50%，应对攻击：下一次行动获得先手+1。"
+    }
+  ],
+  "噼啪鸟": [
+    {
+      "id": 53,
+      "source": "learnset",
+      "name": "天旋地转",
+      "element": "普通",
+      "category": "物理",
+      "cost": 3,
+      "power": 55,
+      "desc": "造成物理伤害，先手+1，迸发：本次技能威力+30。"
+    },
+    {
+      "id": 266,
+      "source": "learnset",
+      "name": "电弧",
+      "element": "电",
+      "category": "物理",
+      "cost": 3,
+      "power": 80,
+      "desc": "造成物伤，迸发：本次技能威力+40。"
+    },
+    {
+      "id": 445,
+      "source": "stone",
+      "name": "啮合传递",
+      "element": "机械",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
+    },
+    {
+      "id": 14,
+      "source": "stone",
+      "name": "防御",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    }
+  ],
+  "兽花蕾": [
+    {
+      "id": 85,
+      "source": "learnset",
+      "name": "芳香诱引",
+      "element": "草",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得连击数+3，应对防御：额外造成打断，且敌方下回合获得眩晕。"
+    },
+    {
+      "id": 43,
+      "source": "learnset",
+      "name": "迫近攻击",
+      "element": "普通",
+      "category": "物理",
+      "cost": 3,
+      "power": 80,
+      "desc": "造成物伤。每次使用后，本技能威力永久+40。"
+    },
+    {
+      "id": 445,
+      "source": "legacy",
+      "name": "啮合传递",
+      "element": "机械",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
+    },
+    {
+      "id": 14,
+      "source": "stone",
+      "name": "防御",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    }
+  ],
+  "蹦蹦花": [
+    {
+      "id": 14,
+      "source": "learnset",
+      "name": "防御",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    },
+    {
+      "id": 109,
+      "source": "learnset",
+      "name": "叶绿光束",
+      "element": "草",
+      "category": "魔法",
+      "cost": 4,
+      "power": 120,
+      "desc": "对敌方精灵造成魔法伤害。"
+    },
+    {
+      "id": 290,
+      "source": "learnset",
+      "name": "毒液渗透",
+      "element": "毒",
+      "category": "魔法",
+      "cost": 5,
+      "power": 120,
+      "desc": "造成魔伤，每拥有1层中毒效果，本技能能耗-1，赋予1层中毒。"
+    },
+    {
+      "id": 85,
+      "source": "learnset",
+      "name": "芳香诱引",
+      "element": "草",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得连击数+3，应对防御：额外造成打断，且敌方下回合获得眩晕。"
+    }
+  ],
+  "花影羚羊": [
+    {
+      "id": 85,
+      "source": "stone",
+      "name": "芳香诱引",
+      "element": "草",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得连击数+3，应对防御：额外造成打断，且敌方下回合获得眩晕。"
+    },
+    {
+      "id": 445,
+      "source": "legacy",
+      "name": "啮合传递",
+      "element": "机械",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
+    },
+    {
+      "id": 388,
+      "source": "stone",
+      "name": "报复",
+      "element": "幽",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤60%，应对攻击：敌方失去3能量。"
+    },
+    {
+      "id": 416,
+      "source": "learnset",
+      "name": "极限撕裂",
+      "element": "恶",
+      "category": "物理",
+      "cost": 4,
+      "power": 140,
+      "desc": "造成物伤，若生命高于50%，使用后自己获得双攻-50%。"
+    }
+  ],
+  "怖哭菇": [
+    {
+      "id": 59,
+      "source": "stone",
+      "name": "吓退",
+      "element": "普通",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，应对攻击：敌方脱离。"
+    },
+    {
+      "id": 323,
+      "source": "legacy",
+      "name": "掩护",
+      "element": "虫",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
+    },
+    {
+      "id": 60,
+      "source": "stone",
+      "name": "先发制人",
+      "element": "普通",
+      "category": "物理",
+      "cost": 2,
+      "power": 55,
+      "desc": "造成物理伤害，先手+1。"
+    },
+    {
+      "id": 177,
+      "source": "legacy",
+      "name": "虹光冲击",
+      "element": "光",
+      "category": "魔法",
+      "cost": 3,
+      "power": 100,
+      "desc": "对敌方精灵造成魔法伤害。"
+    }
+  ],
+  "圣代甜甜": [
+    {
+      "id": 14,
+      "source": "learnset",
+      "name": "防御",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    },
+    {
+      "id": 36,
+      "source": "learnset",
+      "name": "魔法增效",
+      "element": "普通",
+      "category": "变化",
+      "cost": 0,
+      "power": 0,
+      "desc": "自己获得魔攻+70%。"
+    },
+    {
+      "id": 30,
+      "source": "learnset",
+      "name": "力量增效",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得物攻+100%。"
+    },
+    {
+      "id": 217,
+      "source": "learnset",
+      "name": "冰雹",
+      "element": "冰",
+      "category": "物理",
+      "cost": 4,
+      "power": 100,
+      "desc": "造成物伤，应对状态：额外使敌方获得全技能能耗+3。"
+    }
+  ],
+  "泥吼牙": [
+    {
+      "id": 190,
+      "source": "learnset",
+      "name": "地刺",
+      "element": "地",
+      "category": "物理",
+      "cost": 3,
+      "power": 95,
+      "desc": "造成物伤，应对状态：额外打断被应对技能。"
+    },
+    {
+      "id": 30,
+      "source": "learnset",
+      "name": "力量增效",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得物攻+100%。"
+    },
+    {
+      "id": 45,
+      "source": "stone",
+      "name": "倾泻",
+      "element": "普通",
+      "category": "魔法",
+      "cost": 3,
+      "power": 60,
+      "desc": "造成魔伤，若本次攻击未被防御技能应对，则驱散双方所有印记。"
+    },
+    {
+      "id": 76,
+      "source": "stone",
+      "name": "有效预防",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤50%，应对攻击：下一次行动获得先手+1。"
+    }
+  ],
+  "琉璃水母": [
+    {
+      "id": 59,
+      "source": "stone",
+      "name": "吓退",
+      "element": "普通",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，应对攻击：敌方脱离。"
+    },
+    {
+      "id": 323,
+      "source": "legacy",
+      "name": "掩护",
+      "element": "虫",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
+    },
+    {
+      "id": 154,
+      "source": "stone",
+      "name": "润泽",
+      "element": "水",
+      "category": "变化",
+      "cost": 7,
+      "power": 0,
+      "desc": "自己获得魔攻+190%。"
+    },
+    {
+      "id": 290,
+      "source": "learnset",
+      "name": "毒液渗透",
+      "element": "毒",
+      "category": "魔法",
+      "cost": 5,
+      "power": 120,
+      "desc": "造成魔伤，每拥有1层中毒效果，本技能能耗-1，赋予1层中毒。"
+    }
+  ],
+  "菊花梨": [
+    {
+      "id": 397,
+      "source": "stone",
+      "name": "惊吓盒子",
+      "element": "幽",
+      "category": "物理",
+      "cost": 3,
+      "power": 85,
+      "desc": "造成物伤，应对状态：使敌方失去6能量。"
+    },
+    {
+      "id": 45,
+      "source": "stone",
+      "name": "倾泻",
+      "element": "普通",
+      "category": "魔法",
+      "cost": 3,
+      "power": 60,
+      "desc": "造成魔伤，若本次攻击未被防御技能应对，则驱散双方所有印记。"
+    },
+    {
+      "id": 104,
+      "source": "stone",
+      "name": "藤绞",
+      "element": "草",
+      "category": "物理",
+      "cost": 4,
+      "power": 80,
+      "desc": "造成物伤，自己回复5能量。"
+    },
+    {
+      "id": 14,
+      "source": "learnset",
+      "name": "防御",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    }
+  ],
+  "遁地鼠": [
+    {
+      "id": 60,
+      "source": "learnset",
+      "name": "先发制人",
+      "element": "普通",
+      "category": "物理",
+      "cost": 2,
+      "power": 55,
+      "desc": "造成物理伤害，先手+1。"
+    },
+    {
+      "id": 14,
+      "source": "learnset",
+      "name": "防御",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    },
+    {
+      "id": 208,
+      "source": "learnset",
+      "name": "岩脉崩毁",
+      "element": "地",
+      "category": "物理",
+      "cost": 4,
+      "power": 120,
+      "desc": "造成物伤，本技能能耗固定为4。"
+    },
+    {
+      "id": 190,
+      "source": "learnset",
+      "name": "地刺",
+      "element": "地",
+      "category": "物理",
+      "cost": 3,
+      "power": 95,
+      "desc": "造成物伤，应对状态：额外打断被应对技能。"
+    }
+  ],
+  "雪灵": [
+    {
+      "id": 445,
+      "source": "legacy",
+      "name": "啮合传递",
+      "element": "机械",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
+    },
+    {
+      "id": 390,
+      "source": "stone",
+      "name": "嘲弄",
+      "element": "幽",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "自己获得魔攻+70%，若敌方本回合替换精灵，自己获得速度+70。"
+    },
+    {
+      "id": 238,
+      "source": "learnset",
+      "name": "雪替身",
+      "element": "冰",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，应对攻击：回复能量，回复值等于被应对技能能耗的2倍。"
+    },
+    {
+      "id": 460,
+      "source": "stone",
+      "name": "四维降解",
+      "element": "幻",
+      "category": "魔法",
+      "cost": 7,
+      "power": 100,
+      "desc": "造成魔伤，敌方每有1层印记，本技能能耗-1。"
+    }
+  ],
+  "古啦多": [
+    {
+      "id": 59,
+      "source": "stone",
+      "name": "吓退",
+      "element": "普通",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，应对攻击：敌方脱离。"
+    },
+    {
+      "id": 213,
+      "source": "learnset",
+      "name": "陨石",
+      "element": "地",
+      "category": "魔法",
+      "cost": 3,
+      "power": 100,
+      "desc": "对敌方精灵造成魔法伤害。"
+    },
+    {
+      "id": 45,
+      "source": "stone",
+      "name": "倾泻",
+      "element": "普通",
+      "category": "魔法",
+      "cost": 3,
+      "power": 60,
+      "desc": "造成魔伤，若本次攻击未被防御技能应对，则驱散双方所有印记。"
+    },
+    {
+      "id": 294,
+      "source": "stone",
+      "name": "感染病",
+      "element": "毒",
+      "category": "魔法",
+      "cost": 4,
+      "power": 85,
+      "desc": "造成魔伤，若击败敌方则将中毒转化为印记。"
+    }
+  ],
+  "月牙雪熊": [
+    {
+      "id": 59,
+      "source": "stone",
+      "name": "吓退",
+      "element": "普通",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，应对攻击：敌方脱离。"
+    },
+    {
+      "id": 323,
+      "source": "legacy",
+      "name": "掩护",
+      "element": "虫",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
+    },
+    {
+      "id": 54,
+      "source": "stone",
+      "name": "偷袭",
+      "element": "普通",
+      "category": "物理",
+      "cost": 3,
+      "power": 85,
+      "desc": "造成物伤，应对状态：本次技能威力变为3倍。"
+    },
+    {
+      "id": 217,
+      "source": "learnset",
+      "name": "冰雹",
+      "element": "冰",
+      "category": "物理",
+      "cost": 4,
+      "power": 100,
+      "desc": "造成物伤，应对状态：额外使敌方获得全技能能耗+3。"
+    }
+  ],
+  "棋祈督（白子）": [
+    {
+      "id": 43,
+      "source": "stone",
+      "name": "迫近攻击",
+      "element": "普通",
+      "category": "物理",
+      "cost": 3,
+      "power": 80,
+      "desc": "造成物伤。每次使用后，本技能威力永久+40。"
+    },
+    {
+      "id": 213,
+      "source": "learnset",
+      "name": "陨石",
+      "element": "地",
+      "category": "魔法",
+      "cost": 3,
+      "power": 100,
+      "desc": "对敌方精灵造成魔法伤害。"
+    },
+    {
+      "id": 445,
+      "source": "legacy",
+      "name": "啮合传递",
+      "element": "机械",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
+    },
+    {
+      "id": 76,
+      "source": "stone",
+      "name": "有效预防",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤50%，应对攻击：下一次行动获得先手+1。"
+    }
+  ],
+  "棋祈督（黑子）": [
+    {
+      "id": 43,
+      "source": "stone",
+      "name": "迫近攻击",
+      "element": "普通",
+      "category": "物理",
+      "cost": 3,
+      "power": 80,
+      "desc": "造成物伤。每次使用后，本技能威力永久+40。"
+    },
+    {
+      "id": 213,
+      "source": "learnset",
+      "name": "陨石",
+      "element": "地",
+      "category": "魔法",
+      "cost": 3,
+      "power": 100,
+      "desc": "对敌方精灵造成魔法伤害。"
+    },
+    {
+      "id": 445,
+      "source": "legacy",
+      "name": "啮合传递",
+      "element": "机械",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
+    },
+    {
+      "id": 76,
+      "source": "stone",
+      "name": "有效预防",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤50%，应对攻击：下一次行动获得先手+1。"
+    }
+  ],
+  "棋齐垒（白子）": [
+    {
+      "id": 43,
+      "source": "stone",
+      "name": "迫近攻击",
+      "element": "普通",
+      "category": "物理",
+      "cost": 3,
+      "power": 80,
+      "desc": "造成物伤。每次使用后，本技能威力永久+40。"
+    },
+    {
+      "id": 208,
+      "source": "learnset",
+      "name": "岩脉崩毁",
+      "element": "地",
+      "category": "物理",
+      "cost": 4,
+      "power": 120,
+      "desc": "造成物伤，本技能能耗固定为4。"
+    },
+    {
+      "id": 445,
+      "source": "legacy",
+      "name": "啮合传递",
+      "element": "机械",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
+    },
+    {
+      "id": 76,
+      "source": "stone",
+      "name": "有效预防",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤50%，应对攻击：下一次行动获得先手+1。"
+    }
+  ],
+  "棋齐垒（黑子）": [
+    {
+      "id": 43,
+      "source": "stone",
+      "name": "迫近攻击",
+      "element": "普通",
+      "category": "物理",
+      "cost": 3,
+      "power": 80,
+      "desc": "造成物伤。每次使用后，本技能威力永久+40。"
+    },
+    {
+      "id": 208,
+      "source": "learnset",
+      "name": "岩脉崩毁",
+      "element": "地",
+      "category": "物理",
+      "cost": 4,
+      "power": 120,
+      "desc": "造成物伤，本技能能耗固定为4。"
+    },
+    {
+      "id": 445,
+      "source": "legacy",
+      "name": "啮合传递",
+      "element": "机械",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
+    },
+    {
+      "id": 76,
+      "source": "stone",
+      "name": "有效预防",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤50%，应对攻击：下一次行动获得先手+1。"
+    }
+  ],
+  "画间沉铁兽": [
+    {
+      "id": 336,
+      "source": "learnset",
+      "name": "截拳",
+      "element": "武",
+      "category": "物理",
+      "cost": 3,
+      "power": 85,
+      "desc": "造成物伤，应对状态：额外造成打断，回复该技能能耗的能量。"
+    },
+    {
+      "id": 39,
+      "source": "stone",
+      "name": "能量刃",
+      "element": "普通",
+      "category": "物理",
+      "cost": 3,
+      "power": 70,
+      "desc": "造成物伤，每应对成功1次，本技能威力永久+90。"
+    },
+    {
+      "id": 397,
+      "source": "stone",
+      "name": "惊吓盒子",
+      "element": "幽",
+      "category": "物理",
+      "cost": 3,
+      "power": 85,
+      "desc": "造成物伤，应对状态：使敌方失去6能量。"
+    },
+    {
+      "id": 76,
+      "source": "stone",
+      "name": "有效预防",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤50%，应对攻击：下一次行动获得先手+1。"
+    }
+  ],
+  "棋绮后（白子）": [
+    {
+      "id": 43,
+      "source": "stone",
+      "name": "迫近攻击",
+      "element": "普通",
+      "category": "物理",
+      "cost": 3,
+      "power": 80,
+      "desc": "造成物伤。每次使用后，本技能威力永久+40。"
+    },
+    {
+      "id": 445,
+      "source": "legacy",
+      "name": "啮合传递",
+      "element": "机械",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
+    },
+    {
+      "id": 213,
+      "source": "learnset",
+      "name": "陨石",
+      "element": "地",
+      "category": "魔法",
+      "cost": 3,
+      "power": 100,
+      "desc": "对敌方精灵造成魔法伤害。"
+    },
+    {
+      "id": 76,
+      "source": "stone",
+      "name": "有效预防",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤50%，应对攻击：下一次行动获得先手+1。"
+    }
+  ],
+  "荆棘电环": [
+    {
+      "id": 266,
+      "source": "learnset",
+      "name": "电弧",
+      "element": "电",
+      "category": "物理",
+      "cost": 3,
+      "power": 80,
+      "desc": "造成物伤，迸发：本次技能威力+40。"
+    },
+    {
+      "id": 397,
+      "source": "stone",
+      "name": "惊吓盒子",
+      "element": "幽",
+      "category": "物理",
+      "cost": 3,
+      "power": 85,
+      "desc": "造成物伤，应对状态：使敌方失去6能量。"
+    },
+    {
+      "id": 45,
+      "source": "stone",
+      "name": "倾泻",
+      "element": "普通",
+      "category": "魔法",
+      "cost": 3,
+      "power": 60,
+      "desc": "造成魔伤，若本次攻击未被防御技能应对，则驱散双方所有印记。"
+    },
+    {
+      "id": 14,
+      "source": "learnset",
+      "name": "防御",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    }
+  ],
+  "罗隐": [
+    {
+      "id": 190,
+      "source": "learnset",
+      "name": "地刺",
+      "element": "地",
+      "category": "物理",
+      "cost": 3,
+      "power": 95,
+      "desc": "造成物伤，应对状态：额外打断被应对技能。"
+    },
+    {
+      "id": 124,
+      "source": "stone",
+      "name": "火焰切割",
+      "element": "火",
+      "category": "物理",
+      "cost": 3,
+      "power": 100,
+      "desc": "对敌方精灵造成物理伤害。"
+    },
+    {
+      "id": 60,
+      "source": "learnset",
+      "name": "先发制人",
+      "element": "普通",
+      "category": "物理",
+      "cost": 2,
+      "power": 55,
+      "desc": "造成物理伤害，先手+1。"
+    },
+    {
+      "id": 76,
+      "source": "stone",
+      "name": "有效预防",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤50%，应对攻击：下一次行动获得先手+1。"
+    }
+  ],
+  "利灯鱼": [
+    {
+      "id": 155,
+      "source": "stone",
+      "name": "打湿",
+      "element": "水",
+      "category": "变化",
+      "cost": 4,
+      "power": 0,
+      "desc": "自己获得1层湿润印记。"
+    },
     {
       "id": 412,
       "source": "stone",
@@ -4085,14 +3885,718 @@
       "desc": "造成大量物伤，自己获得物攻-50%，应对状态：改为获得物攻+50%。"
     },
     {
-      "id": 397,
+      "id": 45,
+      "source": "learnset",
+      "name": "倾泻",
+      "element": "普通",
+      "category": "魔法",
+      "cost": 3,
+      "power": 60,
+      "desc": "造成魔伤，若本次攻击未被防御技能应对，则驱散双方所有印记。"
+    },
+    {
+      "id": 14,
       "source": "stone",
-      "name": "惊吓盒子",
-      "element": "幽",
+      "name": "防御",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    }
+  ],
+  "恶魔红钻": [
+    {
+      "id": 54,
+      "source": "stone",
+      "name": "偷袭",
+      "element": "普通",
       "category": "物理",
       "cost": 3,
       "power": 85,
-      "desc": "造成物伤，应对状态：使敌方失去6能量。"
+      "desc": "造成物伤，应对状态：本次技能威力变为3倍。"
+    },
+    {
+      "id": 412,
+      "source": "stone",
+      "name": "跌落",
+      "element": "恶",
+      "category": "物理",
+      "cost": 3,
+      "power": 120,
+      "desc": "造成大量物伤，自己获得物攻-50%，应对状态：改为获得物攻+50%。"
+    },
+    {
+      "id": 349,
+      "source": "stone",
+      "name": "斩断",
+      "element": "武",
+      "category": "物理",
+      "cost": 2,
+      "power": 70,
+      "desc": "造成物伤，应对状态：额外打断被应对技能。"
+    },
+    {
+      "id": 14,
+      "source": "learnset",
+      "name": "防御",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    }
+  ],
+  "记忆石": [
+    {
+      "id": 54,
+      "source": "stone",
+      "name": "偷袭",
+      "element": "普通",
+      "category": "物理",
+      "cost": 3,
+      "power": 85,
+      "desc": "造成物伤，应对状态：本次技能威力变为3倍。"
+    },
+    {
+      "id": 191,
+      "source": "learnset",
+      "name": "地陷",
+      "element": "地",
+      "category": "物理",
+      "cost": 5,
+      "power": 70,
+      "desc": "造成物伤，自己获得物防+60%，应对状态：本次技能威力翻倍，且物防额外+60%。"
+    },
+    {
+      "id": 174,
+      "source": "stone",
+      "name": "光刃",
+      "element": "光",
+      "category": "物理",
+      "cost": 4,
+      "power": 120,
+      "desc": "对敌方精灵造成物理伤害。"
+    },
+    {
+      "id": 14,
+      "source": "learnset",
+      "name": "防御",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    }
+  ],
+  "化蝶": [
+    {
+      "id": 323,
+      "source": "learnset",
+      "name": "掩护",
+      "element": "虫",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
+    },
+    {
+      "id": 306,
+      "source": "learnset",
+      "name": "虫蛊",
+      "element": "虫",
+      "category": "魔法",
+      "cost": 3,
+      "power": 100,
+      "desc": "对敌方精灵造成魔法伤害。"
+    },
+    {
+      "id": 371,
+      "source": "learnset",
+      "name": "爆米花爆破",
+      "element": "萌",
+      "category": "物理",
+      "cost": 5,
+      "power": 140,
+      "desc": "对敌方精灵造成物理伤害。"
+    },
+    {
+      "id": 10,
+      "source": "learnset",
+      "name": "打鼾",
+      "element": "普通",
+      "category": "魔法",
+      "cost": 6,
+      "power": 150,
+      "desc": "对敌方精灵造成魔法伤害。"
+    }
+  ],
+  "晶石蜗": [
+    {
+      "id": 36,
+      "source": "learnset",
+      "name": "魔法增效",
+      "element": "普通",
+      "category": "变化",
+      "cost": 0,
+      "power": 0,
+      "desc": "自己获得魔攻+70%。"
+    },
+    {
+      "id": 187,
+      "source": "learnset",
+      "name": "壁垒",
+      "element": "地",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤90%，应对攻击：防御技能冷却-1。"
+    },
+    {
+      "id": 182,
+      "source": "learnset",
+      "name": "闪光冲击",
+      "element": "光",
+      "category": "物理",
+      "cost": 3,
+      "power": 100,
+      "desc": "对敌方精灵造成物理伤害。"
+    },
+    {
+      "id": 190,
+      "source": "learnset",
+      "name": "地刺",
+      "element": "地",
+      "category": "物理",
+      "cost": 3,
+      "power": 95,
+      "desc": "造成物伤，应对状态：额外打断被应对技能。"
+    }
+  ],
+  "酷拉": [
+    {
+      "id": 260,
+      "source": "learnset",
+      "name": "超导",
+      "element": "电",
+      "category": "魔法",
+      "cost": 3,
+      "power": 95,
+      "desc": "造成魔伤，迸发：本技能能耗-1。"
+    },
+    {
+      "id": 81,
+      "source": "learnset",
+      "name": "阻断",
+      "element": "普通",
+      "category": "魔法",
+      "cost": 2,
+      "power": 70,
+      "desc": "造成魔伤，应对状态：额外打断被应对技能。"
+    },
+    {
+      "id": 30,
+      "source": "stone",
+      "name": "力量增效",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得物攻+100%。"
+    },
+    {
+      "id": 14,
+      "source": "learnset",
+      "name": "防御",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    }
+  ],
+  "乌拉塔": [
+    {
+      "id": 410,
+      "source": "learnset",
+      "name": "诋毁",
+      "element": "恶",
+      "category": "物理",
+      "cost": 2,
+      "power": 80,
+      "desc": "对敌方精灵造成物理伤害。"
+    },
+    {
+      "id": 11,
+      "source": "learnset",
+      "name": "当头棒喝",
+      "element": "普通",
+      "category": "物理",
+      "cost": 3,
+      "power": 80,
+      "desc": "造成物伤，若敌方本回合替换精灵，本次技能威力+150。"
+    },
+    {
+      "id": 30,
+      "source": "learnset",
+      "name": "力量增效",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得物攻+100%。"
+    },
+    {
+      "id": 240,
+      "source": "learnset",
+      "name": "冰晶坠",
+      "element": "冰",
+      "category": "物理",
+      "cost": 4,
+      "power": 90,
+      "desc": "造成物伤，敌方获得全技能能耗+1。"
+    }
+  ],
+  "石冠王蜥": [
+    {
+      "id": 211,
+      "source": "learnset",
+      "name": "硬化",
+      "element": "地",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤90%，若上次使用攻击技则本技能能耗-2，应对攻击。"
+    },
+    {
+      "id": 213,
+      "source": "learnset",
+      "name": "陨石",
+      "element": "地",
+      "category": "魔法",
+      "cost": 3,
+      "power": 100,
+      "desc": "对敌方精灵造成魔法伤害。"
+    },
+    {
+      "id": 5,
+      "source": "learnset",
+      "name": "冲撞",
+      "element": "普通",
+      "category": "物理",
+      "cost": 7,
+      "power": 120,
+      "desc": "造成物伤，回合结束时，本技能能耗永久-1。"
+    },
+    {
+      "id": 191,
+      "source": "learnset",
+      "name": "地陷",
+      "element": "地",
+      "category": "物理",
+      "cost": 5,
+      "power": 70,
+      "desc": "造成物伤，自己获得物防+60%，应对状态：本次技能威力翻倍，且物防额外+60%。"
+    }
+  ],
+  "棋骑士（白子）": [
+    {
+      "id": 43,
+      "source": "stone",
+      "name": "迫近攻击",
+      "element": "普通",
+      "category": "物理",
+      "cost": 3,
+      "power": 80,
+      "desc": "造成物伤。每次使用后，本技能威力永久+40。"
+    },
+    {
+      "id": 445,
+      "source": "legacy",
+      "name": "啮合传递",
+      "element": "机械",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
+    },
+    {
+      "id": 208,
+      "source": "learnset",
+      "name": "岩脉崩毁",
+      "element": "地",
+      "category": "物理",
+      "cost": 4,
+      "power": 120,
+      "desc": "造成物伤，本技能能耗固定为4。"
+    },
+    {
+      "id": 76,
+      "source": "stone",
+      "name": "有效预防",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤50%，应对攻击：下一次行动获得先手+1。"
+    }
+  ],
+  "棋骑士（黑子）": [
+    {
+      "id": 43,
+      "source": "stone",
+      "name": "迫近攻击",
+      "element": "普通",
+      "category": "物理",
+      "cost": 3,
+      "power": 80,
+      "desc": "造成物伤。每次使用后，本技能威力永久+40。"
+    },
+    {
+      "id": 445,
+      "source": "legacy",
+      "name": "啮合传递",
+      "element": "机械",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
+    },
+    {
+      "id": 208,
+      "source": "learnset",
+      "name": "岩脉崩毁",
+      "element": "地",
+      "category": "物理",
+      "cost": 4,
+      "power": 120,
+      "desc": "造成物伤，本技能能耗固定为4。"
+    },
+    {
+      "id": 76,
+      "source": "stone",
+      "name": "有效预防",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤50%，应对攻击：下一次行动获得先手+1。"
+    }
+  ],
+  "裘卡": [
+    {
+      "id": 266,
+      "source": "stone",
+      "name": "电弧",
+      "element": "电",
+      "category": "物理",
+      "cost": 3,
+      "power": 80,
+      "desc": "造成物伤，迸发：本次技能威力+40。"
+    },
+    {
+      "id": 327,
+      "source": "stone",
+      "name": "崩拳",
+      "element": "武",
+      "category": "物理",
+      "cost": 2,
+      "power": 60,
+      "desc": "造成物伤，应对状态：自己获得物攻+100%。"
+    },
+    {
+      "id": 294,
+      "source": "learnset",
+      "name": "感染病",
+      "element": "毒",
+      "category": "魔法",
+      "cost": 4,
+      "power": 85,
+      "desc": "造成魔伤，若击败敌方则将中毒转化为印记。"
+    },
+    {
+      "id": 14,
+      "source": "learnset",
+      "name": "防御",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    }
+  ],
+  "咔咔鸟": [
+    {
+      "id": 360,
+      "source": "stone",
+      "name": "龙卷风",
+      "element": "翼",
+      "category": "物理",
+      "cost": 5,
+      "power": 60,
+      "desc": "造成物伤，迅捷，应对状态：本次技能威力变为1.5倍。"
+    },
+    {
+      "id": 194,
+      "source": "legacy",
+      "name": "跺地",
+      "element": "地",
+      "category": "物理",
+      "cost": 2,
+      "power": 80,
+      "desc": "对敌方精灵造成物理伤害。"
+    },
+    {
+      "id": 14,
+      "source": "learnset",
+      "name": "防御",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    },
+    {
+      "id": 36,
+      "source": "learnset",
+      "name": "魔法增效",
+      "element": "普通",
+      "category": "变化",
+      "cost": 0,
+      "power": 0,
+      "desc": "自己获得魔攻+70%。"
+    }
+  ],
+  "圆号鱼": [
+    {
+      "id": 151,
+      "source": "learnset",
+      "name": "泡沫幻影",
+      "element": "水",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，应对攻击：自己脱离。"
+    },
+    {
+      "id": 445,
+      "source": "legacy",
+      "name": "啮合传递",
+      "element": "机械",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
+    },
+    {
+      "id": 155,
+      "source": "learnset",
+      "name": "打湿",
+      "element": "水",
+      "category": "变化",
+      "cost": 4,
+      "power": 0,
+      "desc": "自己获得1层湿润印记。"
+    },
+    {
+      "id": 165,
+      "source": "learnset",
+      "name": "水炮",
+      "element": "水",
+      "category": "魔法",
+      "cost": 5,
+      "power": 110,
+      "desc": "造成魔伤，每次使用后，本技能能耗永久-1。"
+    }
+  ],
+  "厉毒修萝": [
+    {
+      "id": 54,
+      "source": "stone",
+      "name": "偷袭",
+      "element": "普通",
+      "category": "物理",
+      "cost": 3,
+      "power": 85,
+      "desc": "造成物伤，应对状态：本次技能威力变为3倍。"
+    },
+    {
+      "id": 412,
+      "source": "learnset",
+      "name": "跌落",
+      "element": "恶",
+      "category": "物理",
+      "cost": 3,
+      "power": 120,
+      "desc": "造成大量物伤，自己获得物攻-50%，应对状态：改为获得物攻+50%。"
+    },
+    {
+      "id": 294,
+      "source": "learnset",
+      "name": "感染病",
+      "element": "毒",
+      "category": "魔法",
+      "cost": 4,
+      "power": 85,
+      "desc": "造成魔伤，若击败敌方则将中毒转化为印记。"
+    },
+    {
+      "id": 14,
+      "source": "stone",
+      "name": "防御",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    }
+  ],
+  "格斗小六": [
+    {
+      "id": 445,
+      "source": "legacy",
+      "name": "啮合传递",
+      "element": "机械",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
+    },
+    {
+      "id": 255,
+      "source": "stone",
+      "name": "龙吟",
+      "element": "龙",
+      "category": "变化",
+      "cost": 3,
+      "power": 0,
+      "desc": "蓄力，自己获得双攻+100%和速度+60。"
+    },
+    {
+      "id": 15,
+      "source": "learnset",
+      "name": "飞踢",
+      "element": "普通",
+      "category": "物理",
+      "cost": 3,
+      "power": 100,
+      "desc": "对敌方精灵造成物理伤害。"
+    },
+    {
+      "id": 14,
+      "source": "learnset",
+      "name": "防御",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    }
+  ],
+  "岚鸟（本来的样子）": [
+    {
+      "id": 30,
+      "source": "learnset",
+      "name": "力量增效",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得物攻+100%。"
+    },
+    {
+      "id": 60,
+      "source": "learnset",
+      "name": "先发制人",
+      "element": "普通",
+      "category": "物理",
+      "cost": 2,
+      "power": 55,
+      "desc": "造成物理伤害，先手+1。"
+    },
+    {
+      "id": 14,
+      "source": "learnset",
+      "name": "防御",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    },
+    {
+      "id": 360,
+      "source": "learnset",
+      "name": "龙卷风",
+      "element": "翼",
+      "category": "物理",
+      "cost": 5,
+      "power": 60,
+      "desc": "造成物伤，迅捷，应对状态：本次技能威力变为1.5倍。"
+    }
+  ],
+  "红绒十字": [
+    {
+      "id": 145,
+      "source": "learnset",
+      "name": "焚烧烙印",
+      "element": "火",
+      "category": "变化",
+      "cost": 3,
+      "power": 0,
+      "desc": "驱散双方所有印记，每驱散1层，敌方获得5层灼烧。"
+    },
+    {
+      "id": 613,
+      "source": "stone",
+      "name": "除厄",
+      "element": "火",
+      "category": "魔法",
+      "cost": 2,
+      "power": 60,
+      "desc": "造成魔伤，驱散自己的减益。"
+    },
+    {
+      "id": 122,
+      "source": "stone",
+      "name": "火焰护盾",
+      "element": "火",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，应对攻击：敌方获得4层灼烧。"
+    },
+    {
+      "id": 36,
+      "source": "stone",
+      "name": "魔法增效",
+      "element": "普通",
+      "category": "变化",
+      "cost": 0,
+      "power": 0,
+      "desc": "自己获得魔攻+70%。"
+    }
+  ],
+  "魔眷鸟": [
+    {
+      "id": 360,
+      "source": "learnset",
+      "name": "龙卷风",
+      "element": "翼",
+      "category": "物理",
+      "cost": 5,
+      "power": 60,
+      "desc": "造成物伤，迅捷，应对状态：本次技能威力变为1.5倍。"
+    },
+    {
+      "id": 194,
+      "source": "legacy",
+      "name": "跺地",
+      "element": "地",
+      "category": "物理",
+      "cost": 2,
+      "power": 80,
+      "desc": "对敌方精灵造成物理伤害。"
     },
     {
       "id": 45,
@@ -4157,6 +4661,510 @@
       "desc": "减伤70%，应对攻击。"
     }
   ],
+  "春花兔": [
+    {
+      "id": 85,
+      "source": "learnset",
+      "name": "芳香诱引",
+      "element": "草",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得连击数+3，应对防御：额外造成打断，且敌方下回合获得眩晕。"
+    },
+    {
+      "id": 445,
+      "source": "legacy",
+      "name": "啮合传递",
+      "element": "机械",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
+    },
+    {
+      "id": 45,
+      "source": "stone",
+      "name": "倾泻",
+      "element": "普通",
+      "category": "魔法",
+      "cost": 3,
+      "power": 60,
+      "desc": "造成魔伤，若本次攻击未被防御技能应对，则驱散双方所有印记。"
+    },
+    {
+      "id": 14,
+      "source": "learnset",
+      "name": "防御",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    }
+  ],
+  "叮叮恶魔": [
+    {
+      "id": 54,
+      "source": "stone",
+      "name": "偷袭",
+      "element": "普通",
+      "category": "物理",
+      "cost": 3,
+      "power": 85,
+      "desc": "造成物伤，应对状态：本次技能威力变为3倍。"
+    },
+    {
+      "id": 397,
+      "source": "stone",
+      "name": "惊吓盒子",
+      "element": "幽",
+      "category": "物理",
+      "cost": 3,
+      "power": 85,
+      "desc": "造成物伤，应对状态：使敌方失去6能量。"
+    },
+    {
+      "id": 424,
+      "source": "stone",
+      "name": "撕裂",
+      "element": "恶",
+      "category": "物理",
+      "cost": 3,
+      "power": 85,
+      "desc": "造成物伤，应对状态：本次攻击吸血100%。"
+    },
+    {
+      "id": 14,
+      "source": "learnset",
+      "name": "防御",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    }
+  ],
+  "花衣蝶": [
+    {
+      "id": 85,
+      "source": "learnset",
+      "name": "芳香诱引",
+      "element": "草",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得连击数+3，应对防御：额外造成打断，且敌方下回合获得眩晕。"
+    },
+    {
+      "id": 445,
+      "source": "legacy",
+      "name": "啮合传递",
+      "element": "机械",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
+    },
+    {
+      "id": 177,
+      "source": "legacy",
+      "name": "虹光冲击",
+      "element": "光",
+      "category": "魔法",
+      "cost": 3,
+      "power": 100,
+      "desc": "对敌方精灵造成魔法伤害。"
+    },
+    {
+      "id": 14,
+      "source": "learnset",
+      "name": "防御",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    }
+  ],
+  "深蓝鲸": [
+    {
+      "id": 323,
+      "source": "legacy",
+      "name": "掩护",
+      "element": "虫",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
+    },
+    {
+      "id": 146,
+      "source": "learnset",
+      "name": "潮汐",
+      "element": "水",
+      "category": "变化",
+      "cost": 4,
+      "power": 0,
+      "desc": "减伤60%，应对攻击：自己获得1层湿润印记。"
+    },
+    {
+      "id": 152,
+      "source": "learnset",
+      "name": "气泡",
+      "element": "水",
+      "category": "魔法",
+      "cost": 3,
+      "power": 100,
+      "desc": "对敌方精灵造成魔法伤害。"
+    },
+    {
+      "id": 177,
+      "source": "legacy",
+      "name": "虹光冲击",
+      "element": "光",
+      "category": "魔法",
+      "cost": 3,
+      "power": 100,
+      "desc": "对敌方精灵造成魔法伤害。"
+    }
+  ],
+  "蹦床松鼠": [
+    {
+      "id": 59,
+      "source": "learnset",
+      "name": "吓退",
+      "element": "普通",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，应对攻击：敌方脱离。"
+    },
+    {
+      "id": 323,
+      "source": "legacy",
+      "name": "掩护",
+      "element": "虫",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
+    },
+    {
+      "id": 346,
+      "source": "stone",
+      "name": "影袭",
+      "element": "武",
+      "category": "物理",
+      "cost": 3,
+      "power": 100,
+      "desc": "对敌方精灵造成物理伤害。"
+    },
+    {
+      "id": 177,
+      "source": "legacy",
+      "name": "虹光冲击",
+      "element": "光",
+      "category": "魔法",
+      "cost": 3,
+      "power": 100,
+      "desc": "对敌方精灵造成魔法伤害。"
+    }
+  ],
+  "窃光蚊": [
+    {
+      "id": 412,
+      "source": "learnset",
+      "name": "跌落",
+      "element": "恶",
+      "category": "物理",
+      "cost": 3,
+      "power": 120,
+      "desc": "造成大量物伤，自己获得物攻-50%，应对状态：改为获得物攻+50%。"
+    },
+    {
+      "id": 30,
+      "source": "stone",
+      "name": "力量增效",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得物攻+100%。"
+    },
+    {
+      "id": 45,
+      "source": "stone",
+      "name": "倾泻",
+      "element": "普通",
+      "category": "魔法",
+      "cost": 3,
+      "power": 60,
+      "desc": "造成魔伤，若本次攻击未被防御技能应对，则驱散双方所有印记。"
+    },
+    {
+      "id": 14,
+      "source": "stone",
+      "name": "防御",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    }
+  ],
+  "邪眼巨魔": [
+    {
+      "id": 61,
+      "source": "learnset",
+      "name": "消毒法",
+      "element": "普通",
+      "category": "魔法",
+      "cost": 4,
+      "power": 105,
+      "desc": "造成魔伤，驱散敌方5层增益。"
+    },
+    {
+      "id": 412,
+      "source": "stone",
+      "name": "跌落",
+      "element": "恶",
+      "category": "物理",
+      "cost": 3,
+      "power": 120,
+      "desc": "造成大量物伤，自己获得物攻-50%，应对状态：改为获得物攻+50%。"
+    },
+    {
+      "id": 52,
+      "source": "stone",
+      "name": "嗜痛",
+      "element": "普通",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，应对攻击：期间自己每次受到伤害，获得双攻+20%。"
+    },
+    {
+      "id": 177,
+      "source": "legacy",
+      "name": "虹光冲击",
+      "element": "光",
+      "category": "魔法",
+      "cost": 3,
+      "power": 100,
+      "desc": "对敌方精灵造成魔法伤害。"
+    }
+  ],
+  "铠甲虫": [
+    {
+      "id": 323,
+      "source": "learnset",
+      "name": "掩护",
+      "element": "虫",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
+    },
+    {
+      "id": 59,
+      "source": "learnset",
+      "name": "吓退",
+      "element": "普通",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，应对攻击：敌方脱离。"
+    },
+    {
+      "id": 304,
+      "source": "learnset",
+      "name": "翅刃",
+      "element": "虫",
+      "category": "物理",
+      "cost": 4,
+      "power": 90,
+      "desc": "造成物伤，驱散敌方所有印记，应对状态：改为偷取印记。"
+    },
+    {
+      "id": 30,
+      "source": "stone",
+      "name": "力量增效",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得物攻+100%。"
+    }
+  ],
+  "陨星虫": [
+    {
+      "id": 323,
+      "source": "learnset",
+      "name": "掩护",
+      "element": "虫",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
+    },
+    {
+      "id": 53,
+      "source": "stone",
+      "name": "天旋地转",
+      "element": "普通",
+      "category": "物理",
+      "cost": 3,
+      "power": 55,
+      "desc": "造成物理伤害，先手+1，迸发：本次技能威力+30。"
+    },
+    {
+      "id": 213,
+      "source": "stone",
+      "name": "陨石",
+      "element": "地",
+      "category": "魔法",
+      "cost": 3,
+      "power": 100,
+      "desc": "对敌方精灵造成魔法伤害。"
+    },
+    {
+      "id": 461,
+      "source": "stone",
+      "name": "坍缩",
+      "element": "幻",
+      "category": "魔法",
+      "cost": 3,
+      "power": 85,
+      "desc": "造成魔伤，若击败敌方，自己获得魔攻+50%。"
+    }
+  ],
+  "格斗小八": [
+    {
+      "id": 59,
+      "source": "stone",
+      "name": "吓退",
+      "element": "普通",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，应对攻击：敌方脱离。"
+    },
+    {
+      "id": 54,
+      "source": "stone",
+      "name": "偷袭",
+      "element": "普通",
+      "category": "物理",
+      "cost": 3,
+      "power": 85,
+      "desc": "造成物伤，应对状态：本次技能威力变为3倍。"
+    },
+    {
+      "id": 349,
+      "source": "learnset",
+      "name": "斩断",
+      "element": "武",
+      "category": "物理",
+      "cost": 2,
+      "power": 70,
+      "desc": "造成物伤，应对状态：额外打断被应对技能。"
+    },
+    {
+      "id": 371,
+      "source": "stone",
+      "name": "爆米花爆破",
+      "element": "萌",
+      "category": "物理",
+      "cost": 5,
+      "power": 140,
+      "desc": "对敌方精灵造成物理伤害。"
+    }
+  ],
+  "幽冥眼": [
+    {
+      "id": 64,
+      "source": "learnset",
+      "name": "许愿星",
+      "element": "普通",
+      "category": "魔法",
+      "cost": 3,
+      "power": 100,
+      "desc": "对敌方精灵造成魔法伤害。"
+    },
+    {
+      "id": 403,
+      "source": "learnset",
+      "name": "幽灵爆发",
+      "element": "幽",
+      "category": "魔法",
+      "cost": 5,
+      "power": 140,
+      "desc": "对敌方精灵造成魔法伤害。"
+    },
+    {
+      "id": 388,
+      "source": "learnset",
+      "name": "报复",
+      "element": "幽",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤60%，应对攻击：敌方失去3能量。"
+    },
+    {
+      "id": 390,
+      "source": "learnset",
+      "name": "嘲弄",
+      "element": "幽",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "自己获得魔攻+70%，若敌方本回合替换精灵，自己获得速度+70。"
+    }
+  ],
+  "烈火守护": [
+    {
+      "id": 54,
+      "source": "learnset",
+      "name": "偷袭",
+      "element": "普通",
+      "category": "物理",
+      "cost": 3,
+      "power": 85,
+      "desc": "造成物伤，应对状态：本次技能威力变为3倍。"
+    },
+    {
+      "id": 424,
+      "source": "stone",
+      "name": "撕裂",
+      "element": "恶",
+      "category": "物理",
+      "cost": 3,
+      "power": 85,
+      "desc": "造成物伤，应对状态：本次攻击吸血100%。"
+    },
+    {
+      "id": 125,
+      "source": "learnset",
+      "name": "火云车",
+      "element": "火",
+      "category": "物理",
+      "cost": 5,
+      "power": 140,
+      "desc": "对敌方精灵造成物理伤害。"
+    },
+    {
+      "id": 76,
+      "source": "stone",
+      "name": "有效预防",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤50%，应对攻击：下一次行动获得先手+1。"
+    }
+  ],
   "伊贝粉粉": [
     {
       "id": 323,
@@ -4199,26 +5207,26 @@
       "desc": "自己获得1层光合印记。"
     }
   ],
-  "春花兔": [
+  "斑枭": [
     {
-      "id": 85,
-      "source": "learnset",
-      "name": "芳香诱引",
-      "element": "草",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "自己获得连击数+3，应对防御：额外造成打断，且敌方下回合获得眩晕。"
+      "id": 412,
+      "source": "stone",
+      "name": "跌落",
+      "element": "恶",
+      "category": "物理",
+      "cost": 3,
+      "power": 120,
+      "desc": "造成大量物伤，自己获得物攻-50%，应对状态：改为获得物攻+50%。"
     },
     {
-      "id": 445,
-      "source": "legacy",
-      "name": "啮合传递",
-      "element": "机械",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
+      "id": 397,
+      "source": "stone",
+      "name": "惊吓盒子",
+      "element": "幽",
+      "category": "物理",
+      "cost": 3,
+      "power": 85,
+      "desc": "造成物伤，应对状态：使敌方失去6能量。"
     },
     {
       "id": 45,
@@ -4239,6 +5247,90 @@
       "cost": 1,
       "power": 0,
       "desc": "减伤70%，应对攻击。"
+    }
+  ],
+  "卡瓦重": [
+    {
+      "id": 30,
+      "source": "learnset",
+      "name": "力量增效",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得物攻+100%。"
+    },
+    {
+      "id": 87,
+      "source": "learnset",
+      "name": "丰饶",
+      "element": "草",
+      "category": "变化",
+      "cost": 3,
+      "power": 0,
+      "desc": "自己获得物攻和魔攻+130%。"
+    },
+    {
+      "id": 53,
+      "source": "learnset",
+      "name": "天旋地转",
+      "element": "普通",
+      "category": "物理",
+      "cost": 3,
+      "power": 55,
+      "desc": "造成物理伤害，先手+1，迸发：本次技能威力+30。"
+    },
+    {
+      "id": 217,
+      "source": "learnset",
+      "name": "冰雹",
+      "element": "冰",
+      "category": "物理",
+      "cost": 4,
+      "power": 100,
+      "desc": "造成物伤，应对状态：额外使敌方获得全技能能耗+3。"
+    }
+  ],
+  "圣剑-X": [
+    {
+      "id": 5002,
+      "source": "learnset",
+      "name": "防御",
+      "element": "普通",
+      "category": "防御",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    },
+    {
+      "id": 5005,
+      "source": "learnset",
+      "name": "啮合传递",
+      "element": "机械",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "速度+80；1或3号位时额外物攻+60%，传动1。"
+    },
+    {
+      "id": 5006,
+      "source": "learnset",
+      "name": "先发制人",
+      "element": "普通",
+      "category": "物理",
+      "cost": 2,
+      "power": 55,
+      "desc": "造成物理伤害，先手+1。"
+    },
+    {
+      "id": 5016,
+      "source": "learnset",
+      "name": "齿轮切开",
+      "element": "机械",
+      "category": "物理",
+      "cost": 5,
+      "power": 130,
+      "desc": "1或3号位时能耗-2，传动1。"
     }
   ],
   "多灵主": [
@@ -4283,88 +5375,46 @@
       "desc": "造成物伤，应对状态：本次攻击吸血100%。"
     }
   ],
-  "格兰球": [
+  "寒音蛇": [
     {
-      "id": 91,
+      "id": 286,
       "source": "learnset",
-      "name": "光能聚集",
-      "element": "草",
-      "category": "魔法",
-      "cost": 7,
-      "power": 100,
-      "desc": "造成魔伤，每次使用其他草系技能后，本技能威力永久+60。"
-    },
-    {
-      "id": 45,
-      "source": "learnset",
-      "name": "倾泻",
-      "element": "普通",
-      "category": "魔法",
+      "name": "毒孢子",
+      "element": "毒",
+      "category": "变化",
       "cost": 3,
-      "power": 60,
-      "desc": "造成魔伤，若本次攻击未被防御技能应对，则驱散双方所有印记。"
+      "power": 0,
+      "desc": "敌方获得5层中毒。"
     },
     {
-      "id": 400,
-      "source": "legacy",
-      "name": "灵媒",
-      "element": "幽",
-      "category": "魔法",
+      "id": 373,
+      "source": "learnset",
+      "name": "超级糖果",
+      "element": "萌",
+      "category": "物理",
       "cost": 3,
       "power": 100,
-      "desc": "对敌方精灵造成魔法伤害。"
+      "desc": "造成物伤，自己获得萌化：本次技能威力+60。"
     },
     {
-      "id": 14,
-      "source": "stone",
-      "name": "防御",
+      "id": 30,
+      "source": "learnset",
+      "name": "力量增效",
       "element": "普通",
       "category": "变化",
       "cost": 1,
       "power": 0,
-      "desc": "减伤70%，应对攻击。"
-    }
-  ],
-  "学院呱呱": [
-    {
-      "id": 190,
-      "source": "stone",
-      "name": "地刺",
-      "element": "地",
-      "category": "物理",
-      "cost": 3,
-      "power": 95,
-      "desc": "造成物伤，应对状态：额外打断被应对技能。"
+      "desc": "自己获得物攻+100%。"
     },
     {
-      "id": 53,
-      "source": "stone",
-      "name": "天旋地转",
-      "element": "普通",
-      "category": "物理",
-      "cost": 3,
-      "power": 55,
-      "desc": "造成物理伤害，先手+1，迸发：本次技能威力+30。"
-    },
-    {
-      "id": 336,
-      "source": "stone",
-      "name": "截拳",
-      "element": "武",
-      "category": "物理",
-      "cost": 3,
-      "power": 85,
-      "desc": "造成物伤，应对状态：额外造成打断，回复该技能能耗的能量。"
-    },
-    {
-      "id": 412,
-      "source": "stone",
-      "name": "跌落",
-      "element": "恶",
-      "category": "物理",
-      "cost": 3,
+      "id": 290,
+      "source": "learnset",
+      "name": "毒液渗透",
+      "element": "毒",
+      "category": "魔法",
+      "cost": 5,
       "power": 120,
-      "desc": "造成大量物伤，自己获得物攻-50%，应对状态：改为获得物攻+50%。"
+      "desc": "造成魔伤，每拥有1层中毒效果，本技能能耗-1，赋予1层中毒。"
     }
   ],
   "冰钻布鲁斯": [
@@ -4409,6 +5459,132 @@
       "desc": "减伤50%，应对攻击：下一次行动获得先手+1。"
     }
   ],
+  "皇家狮鹫": [
+    {
+      "id": 367,
+      "source": "learnset",
+      "name": "飞羽",
+      "element": "翼",
+      "category": "变化",
+      "cost": 0,
+      "power": 0,
+      "desc": "迅捷，驱散敌方一种增益。"
+    },
+    {
+      "id": 351,
+      "source": "learnset",
+      "name": "乘风",
+      "element": "翼",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "自己获得速度+120。"
+    },
+    {
+      "id": 14,
+      "source": "learnset",
+      "name": "防御",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    },
+    {
+      "id": 368,
+      "source": "learnset",
+      "name": "羽刃",
+      "element": "翼",
+      "category": "物理",
+      "cost": 2,
+      "power": 70,
+      "desc": "造成物伤，应对状态：回合结束使敌方紧急脱离。"
+    }
+  ],
+  "月亮砣": [
+    {
+      "id": 14,
+      "source": "learnset",
+      "name": "防御",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    },
+    {
+      "id": 371,
+      "source": "learnset",
+      "name": "爆米花爆破",
+      "element": "萌",
+      "category": "物理",
+      "cost": 5,
+      "power": 140,
+      "desc": "对敌方精灵造成物理伤害。"
+    },
+    {
+      "id": 68,
+      "source": "learnset",
+      "name": "压扁",
+      "element": "普通",
+      "category": "物理",
+      "cost": 5,
+      "power": 140,
+      "desc": "对敌方精灵造成物理伤害。"
+    },
+    {
+      "id": 290,
+      "source": "learnset",
+      "name": "毒液渗透",
+      "element": "毒",
+      "category": "魔法",
+      "cost": 5,
+      "power": 120,
+      "desc": "造成魔伤，每拥有1层中毒效果，本技能能耗-1，赋予1层中毒。"
+    }
+  ],
+  "格兰球": [
+    {
+      "id": 91,
+      "source": "learnset",
+      "name": "光能聚集",
+      "element": "草",
+      "category": "魔法",
+      "cost": 7,
+      "power": 100,
+      "desc": "造成魔伤，每次使用其他草系技能后，本技能威力永久+60。"
+    },
+    {
+      "id": 45,
+      "source": "learnset",
+      "name": "倾泻",
+      "element": "普通",
+      "category": "魔法",
+      "cost": 3,
+      "power": 60,
+      "desc": "造成魔伤，若本次攻击未被防御技能应对，则驱散双方所有印记。"
+    },
+    {
+      "id": 400,
+      "source": "legacy",
+      "name": "灵媒",
+      "element": "幽",
+      "category": "魔法",
+      "cost": 3,
+      "power": 100,
+      "desc": "对敌方精灵造成魔法伤害。"
+    },
+    {
+      "id": 14,
+      "source": "stone",
+      "name": "防御",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    }
+  ],
   "龙息帕尔": [
     {
       "id": 424,
@@ -4451,16 +5627,16 @@
       "desc": "减伤50%，应对攻击：下一次行动获得先手+1。"
     }
   ],
-  "鸭吉吉（起来鸭）": [
+  "棋棋（白子）": [
     {
-      "id": 59,
-      "source": "learnset",
-      "name": "吓退",
+      "id": 43,
+      "source": "stone",
+      "name": "迫近攻击",
       "element": "普通",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "减伤70%，应对攻击：敌方脱离。"
+      "category": "物理",
+      "cost": 3,
+      "power": 80,
+      "desc": "造成物伤。每次使用后，本技能威力永久+40。"
     },
     {
       "id": 445,
@@ -4473,24 +5649,108 @@
       "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
     },
     {
-      "id": 30,
+      "id": 208,
       "source": "learnset",
-      "name": "力量增效",
+      "name": "岩脉崩毁",
+      "element": "地",
+      "category": "物理",
+      "cost": 4,
+      "power": 120,
+      "desc": "造成物伤，本技能能耗固定为4。"
+    },
+    {
+      "id": 76,
+      "source": "stone",
+      "name": "有效预防",
       "element": "普通",
       "category": "变化",
       "cost": 1,
       "power": 0,
-      "desc": "自己获得物攻+100%。"
-    },
+      "desc": "减伤50%，应对攻击：下一次行动获得先手+1。"
+    }
+  ],
+  "棋棋（黑子）": [
     {
-      "id": 50,
-      "source": "learnset",
-      "name": "扫尾",
+      "id": 43,
+      "source": "stone",
+      "name": "迫近攻击",
       "element": "普通",
       "category": "物理",
-      "cost": 2,
+      "cost": 3,
       "power": 80,
-      "desc": "对敌方精灵造成物理伤害。"
+      "desc": "造成物伤。每次使用后，本技能威力永久+40。"
+    },
+    {
+      "id": 445,
+      "source": "legacy",
+      "name": "啮合传递",
+      "element": "机械",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
+    },
+    {
+      "id": 208,
+      "source": "learnset",
+      "name": "岩脉崩毁",
+      "element": "地",
+      "category": "物理",
+      "cost": 4,
+      "power": 120,
+      "desc": "造成物伤，本技能能耗固定为4。"
+    },
+    {
+      "id": 76,
+      "source": "stone",
+      "name": "有效预防",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤50%，应对攻击：下一次行动获得先手+1。"
+    }
+  ],
+  "风滚暮虫": [
+    {
+      "id": 14,
+      "source": "learnset",
+      "name": "防御",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    },
+    {
+      "id": 70,
+      "source": "learnset",
+      "name": "摇篮曲",
+      "element": "普通",
+      "category": "变化",
+      "cost": 5,
+      "power": 0,
+      "desc": "敌方获得全技能能耗+3，应对防御：额外造成打断，且敌方下回合获得眩晕。"
+    },
+    {
+      "id": 74,
+      "source": "learnset",
+      "name": "音波弹",
+      "element": "普通",
+      "category": "魔法",
+      "cost": 1,
+      "power": 60,
+      "desc": "造成魔伤，1连击。"
+    },
+    {
+      "id": 306,
+      "source": "learnset",
+      "name": "虫蛊",
+      "element": "虫",
+      "category": "魔法",
+      "cost": 3,
+      "power": 100,
+      "desc": "对敌方精灵造成魔法伤害。"
     }
   ],
   "水泡壳（蜕皮时的样子）": [
@@ -4871,48 +6131,6 @@
       "desc": "减伤70%，应对攻击。"
     }
   ],
-  "千棘盔（磨损的样子）": [
-    {
-      "id": 151,
-      "source": "learnset",
-      "name": "泡沫幻影",
-      "element": "水",
-      "category": "变化",
-      "cost": 2,
-      "power": 0,
-      "desc": "减伤70%，应对攻击：自己脱离。"
-    },
-    {
-      "id": 445,
-      "source": "legacy",
-      "name": "啮合传递",
-      "element": "机械",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
-    },
-    {
-      "id": 155,
-      "source": "stone",
-      "name": "打湿",
-      "element": "水",
-      "category": "变化",
-      "cost": 4,
-      "power": 0,
-      "desc": "自己获得1层湿润印记。"
-    },
-    {
-      "id": 294,
-      "source": "learnset",
-      "name": "感染病",
-      "element": "毒",
-      "category": "魔法",
-      "cost": 4,
-      "power": 85,
-      "desc": "造成魔伤，若击败敌方则将中毒转化为印记。"
-    }
-  ],
   "星光狮（月光能量的样子）": [
     {
       "id": 260,
@@ -5037,48 +6255,6 @@
       "cost": 0,
       "power": 0,
       "desc": "迅捷，驱散敌方一种增益。"
-    }
-  ],
-  "棋绮后（黑子）": [
-    {
-      "id": 43,
-      "source": "stone",
-      "name": "迫近攻击",
-      "element": "普通",
-      "category": "物理",
-      "cost": 3,
-      "power": 80,
-      "desc": "造成物伤。每次使用后，本技能威力永久+40。"
-    },
-    {
-      "id": 445,
-      "source": "legacy",
-      "name": "啮合传递",
-      "element": "机械",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "自己获得速度+80，本技能位于1号位或3号位时额外获得物攻+100%。传动1。"
-    },
-    {
-      "id": 213,
-      "source": "learnset",
-      "name": "陨石",
-      "element": "地",
-      "category": "魔法",
-      "cost": 3,
-      "power": 100,
-      "desc": "对敌方精灵造成魔法伤害。"
-    },
-    {
-      "id": 76,
-      "source": "stone",
-      "name": "有效预防",
-      "element": "普通",
-      "category": "变化",
-      "cost": 1,
-      "power": 0,
-      "desc": "减伤50%，应对攻击：下一次行动获得先手+1。"
     }
   ],
   "寒音蛇（本命年的样子）": [
@@ -5331,6 +6507,216 @@
       "cost": 1,
       "power": 0,
       "desc": "减伤70%，应对攻击。"
+    }
+  ],
+  "鸭吉吉": [
+    {
+      "id": 30,
+      "source": "learnset",
+      "name": "力量增效",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得物攻+100%。"
+    },
+    {
+      "id": 50,
+      "source": "learnset",
+      "name": "扫尾",
+      "element": "普通",
+      "category": "物理",
+      "cost": 2,
+      "power": 80,
+      "desc": "对敌方精灵造成物理伤害。"
+    },
+    {
+      "id": 59,
+      "source": "learnset",
+      "name": "吓退",
+      "element": "普通",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，应对攻击：敌方脱离。"
+    },
+    {
+      "id": 29,
+      "source": "learnset",
+      "name": "快速移动",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得速度+70，应对防御：改为速度+140。"
+    }
+  ],
+  "千棘盔": [
+    {
+      "id": 64,
+      "source": "learnset",
+      "name": "许愿星",
+      "element": "普通",
+      "category": "魔法",
+      "cost": 3,
+      "power": 100,
+      "desc": "对敌方精灵造成魔法伤害。"
+    },
+    {
+      "id": 301,
+      "source": "learnset",
+      "name": "疫病吐息",
+      "element": "毒",
+      "category": "变化",
+      "cost": 3,
+      "power": 0,
+      "desc": "敌方获得1层中毒印记。"
+    },
+    {
+      "id": 151,
+      "source": "learnset",
+      "name": "泡沫幻影",
+      "element": "水",
+      "category": "变化",
+      "cost": 2,
+      "power": 0,
+      "desc": "减伤70%，应对攻击：自己脱离。"
+    },
+    {
+      "id": 294,
+      "source": "learnset",
+      "name": "感染病",
+      "element": "毒",
+      "category": "魔法",
+      "cost": 4,
+      "power": 85,
+      "desc": "造成魔伤，若击败敌方则将中毒转化为印记。"
+    }
+  ],
+  "岚鸟": [
+    {
+      "id": 30,
+      "source": "learnset",
+      "name": "力量增效",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得物攻+100%。"
+    },
+    {
+      "id": 60,
+      "source": "learnset",
+      "name": "先发制人",
+      "element": "普通",
+      "category": "物理",
+      "cost": 2,
+      "power": 55,
+      "desc": "造成物理伤害，先手+1。"
+    },
+    {
+      "id": 14,
+      "source": "learnset",
+      "name": "防御",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    },
+    {
+      "id": 360,
+      "source": "learnset",
+      "name": "龙卷风",
+      "element": "翼",
+      "category": "物理",
+      "cost": 5,
+      "power": 60,
+      "desc": "造成物伤，迅捷，应对状态：本次技能威力变为1.5倍。"
+    }
+  ],
+  "圣剑侍从": [
+    {
+      "id": 5002,
+      "source": "learnset",
+      "name": "防御",
+      "element": "普通",
+      "category": "防御",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    },
+    {
+      "id": 5005,
+      "source": "learnset",
+      "name": "啮合传递",
+      "element": "机械",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "速度+80；1或3号位时额外物攻+60%，传动1。"
+    },
+    {
+      "id": 5006,
+      "source": "learnset",
+      "name": "先发制人",
+      "element": "普通",
+      "category": "物理",
+      "cost": 2,
+      "power": 55,
+      "desc": "造成物理伤害，先手+1。"
+    },
+    {
+      "id": 5016,
+      "source": "learnset",
+      "name": "齿轮切开",
+      "element": "机械",
+      "category": "物理",
+      "cost": 5,
+      "power": 130,
+      "desc": "1或3号位时能耗-2，传动1。"
+    }
+  ],
+  "圣剑骑士": [
+    {
+      "id": 5002,
+      "source": "learnset",
+      "name": "防御",
+      "element": "普通",
+      "category": "防御",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    },
+    {
+      "id": 5005,
+      "source": "learnset",
+      "name": "啮合传递",
+      "element": "机械",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "速度+80；1或3号位时额外物攻+60%，传动1。"
+    },
+    {
+      "id": 5006,
+      "source": "learnset",
+      "name": "先发制人",
+      "element": "普通",
+      "category": "物理",
+      "cost": 2,
+      "power": 55,
+      "desc": "造成物理伤害，先手+1。"
+    },
+    {
+      "id": 5016,
+      "source": "learnset",
+      "name": "齿轮切开",
+      "element": "机械",
+      "category": "物理",
+      "cost": 5,
+      "power": 130,
+      "desc": "1或3号位时能耗-2，传动1。"
     }
   ]
 }

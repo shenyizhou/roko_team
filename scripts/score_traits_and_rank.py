@@ -11,6 +11,117 @@ from itertools import combinations
 
 DATA_DIR = Path(__file__).parent.parent / "data"
 
+# ===== 属性综合评分 =====
+_ATTR_CHART = None
+_SHORT_MAP = {"幽": "幽灵", "恶": "恶魔", "普通": "一般"}
+
+def _load_chart():
+    global _ATTR_CHART
+    if _ATTR_CHART is None:
+        with open(DATA_DIR / "attribute_chart.json") as f:
+            _ATTR_CHART = json.load(f)
+    return _ATTR_CHART
+
+def _norm(a):
+    return _SHORT_MAP.get(a, a)
+
+# 攻击属性热门度分级
+_HOT_T1 = {"一般", "翼", "水", "地", "机械", "火"}
+_HOT_T2 = {"光", "恶魔", "冰", "电", "武"}
+
+def _atk_weight(atk_type):
+    if atk_type in _HOT_T1: return 2.0
+    if atk_type in _HOT_T2: return 1.5
+    return 1.0
+
+def calc_attr_score(attrs):
+    """
+    属性综合评分：联防面 + 打击面 + 属性协同
+    取代旧版 len(attrs) * 50 的简单计数
+    返回 (total, breakdown)
+    """
+    if not attrs:
+        return 0
+
+    chart = _load_chart()
+    normalized = [_norm(a) for a in attrs]
+
+    # 构建 atk_type -> {def_type: multiplier}
+    atk_vs = {}
+    for e in chart["attributes"]:
+        atk_n = e["nameCn"]
+        atk_vs[atk_n] = {}
+        for ms, targets in e["battleMultiplier"]["offense"].items():
+            for t in targets:
+                atk_vs[atk_n][t] = float(ms)
+
+    # === 1. 联防面 (0~55) ===
+    defense_raw = 15.0  # 基线
+    for atk_t in atk_vs:
+        best_m = 2.0
+        for def_t in normalized:
+            m = atk_vs[atk_t].get(def_t, 1.0)
+            best_m = min(best_m, m)
+
+        w = _atk_weight(atk_t)
+        if best_m == 0:
+            defense_raw += 5.5 * w
+        elif best_m <= 0.5:
+            defense_raw += 2.8 * w
+        elif best_m >= 2.0:
+            defense_raw -= 4.0 * w
+
+    defense_score = max(defense_raw * 0.75, 0)
+    # === 2. 打击面 (0~45) ===
+    stab_se = set()
+    stab_immune = set()
+    for atk_t in normalized:
+        for def_t, m in atk_vs.get(atk_t, {}).items():
+            if m >= 2:
+                stab_se.add(def_t)
+            elif m == 0:
+                stab_immune.add(def_t)
+
+    can_hit = 18 - len(stab_immune)
+    offense_score = max(can_hit * 1.6 + len(stab_se) * 1.2 - len(stab_immune) * 2.0 + 3, 0)
+
+    # === 3. 属性协同 (0~25) ===
+    if len(normalized) == 2:
+        t1, t2 = normalized
+        weak = {}
+        resist = {}
+        for t in [t1, t2]:
+            wset = set()
+            rset = set()
+            for atk_t in atk_vs:
+                m = atk_vs[atk_t].get(t, 1.0)
+                if m >= 2:
+                    wset.add(atk_t)
+                elif m <= 0.5:
+                    rset.add(atk_t)
+            weak[t] = wset
+            resist[t] = rset
+
+        covered = set()
+        dup = set()
+        for w in weak[t1]:
+            if w in resist[t2]: covered.add(w)
+            elif w in weak[t2]: dup.add(w)
+        for w in weak[t2]:
+            if w in resist[t1]: covered.add(w)
+            elif w in weak[t1]: dup.add(w)
+
+        synergy = len(covered) * 5.5 - len(dup) * 4.0
+    else:
+        synergy = 3  # 单属性无协同也不扣分
+
+    total = defense_score * 0.45 + offense_score * 0.33 + synergy * 0.22
+    return round(total, 1), {
+        "defense": round(defense_score, 1),
+        "offense": round(offense_score, 1),
+        "synergy": round(synergy, 1),
+    }
+
 
 def _find_int(pattern, text, default=0):
     m = re.search(pattern, text)
@@ -336,12 +447,21 @@ def score_trait(trait_name, desc):
         v = -12
         pts["高魔力惩罚"] = v; score += v
 
+    # 技能位限制（圣剑系列）
+    if "仅可以使用1号位技能" in desc and "3号" not in desc:
+        v = -18
+        pts["单技能位限制"] = v; score += v
+    if "仅可使用1号和3号位技能" in desc:
+        v = -8
+        pts["双技能位限制"] = v; score += v
+
     return round(score, 1), pts
 
 
-def score_pet(pet_name, pet_data, learnset_skills, rec_skills, skill_scores):
+def score_pet(pet_name, pet_data, learnset_skills, rec_skills, skill_scores, boss_bonus=0):
     """
     精灵综合评分 = 推荐技能总分 + 特性分
+    boss_bonus: 首领化加分（种族提升 + 特性改善）
     """
     # 技能分 (推荐配置)
     skill_total = 0
@@ -354,9 +474,9 @@ def score_pet(pet_name, pet_data, learnset_skills, rec_skills, skill_scores):
     trait = pet_data.get("trait", {})
     trait_score, trait_pts = score_trait(trait.get("name", ""), trait.get("desc", ""))
 
-    # 属性优势分: 联防+打击面，每属性50分
+    # 属性综合评分: 联防面 + 打击面 + 属性协同
     attrs = pet_data.get("attrs", [])
-    attr_bonus = len(attrs) * 50
+    attr_bonus, attr_detail = calc_attr_score(attrs)
 
     # 种族值分: 每20点种族值≈1分
     stats = pet_data.get("stats", {})
@@ -364,14 +484,16 @@ def score_pet(pet_name, pet_data, learnset_skills, rec_skills, skill_scores):
     stats_score = round(total_stats / 20, 1)
 
     # 权重: 特性(×4) > 种族(×4) ≈ 属性 > 技能
-    total = round(skill_total + trait_score * 4 + attr_bonus + stats_score * 4, 1)
+    total = round(skill_total + trait_score * 4 + attr_bonus + stats_score * 4 + boss_bonus, 1)
 
     return total, {
         "skill_score": round(skill_total, 1),
         "trait_score": trait_score,
         "trait_pts": trait_pts,
         "attr_bonus": attr_bonus,
+        "attr_detail": attr_detail,
         "stats_score": stats_score,
+        "boss_bonus": boss_bonus,
         "trait_name": trait.get("name", ""),
         "trait_desc": trait.get("desc", ""),
         "attrs": attrs,
@@ -392,14 +514,27 @@ def main():
 
     skill_scores = {s['name']: s['score'] for s in rankings}
 
+    # Load boss info for 首领化 bonuses
+    boss_info = {}
+    try:
+        with open(DATA_DIR / "_boss_info.json") as f:
+            boss_info = json.load(f)
+    except Exception:
+        pass
+    # Build set of pets to remove (intermediate/boss duplicates)
+    removed_pets = {n for n, bi in boss_info.items() if bi.get('remove')}
+
     # Score all pets
     pet_scores = {}
     for name, pet in pets.items():
+        if name in removed_pets:
+            continue
         if name not in learnsets:
             continue
+        bb = boss_info.get(name, {}).get('bonus', 0)
         score, meta = score_pet(
             name, pet, learnsets.get(name, []),
-            recommended.get(name, []), skill_scores
+            recommended.get(name, []), skill_scores, bb
         )
         rec_skills = [sk["name"] for sk in recommended.get(name, [])]
         pet_scores[name] = {
@@ -414,7 +549,9 @@ def main():
             "trait_pts": meta["trait_pts"],
             "skill_score": meta["skill_score"],
             "attr_bonus": meta["attr_bonus"],
+            "attr_detail": meta["attr_detail"],
             "stats_score": meta["stats_score"],
+            "boss_bonus": meta["boss_bonus"],
             "recommended_skills": rec_skills,
         }
 
@@ -430,9 +567,14 @@ def main():
     print("精灵综合排名 (技能+特性+属性+种族值)")
     print("=" * 90)
     for i, p in enumerate(ranked[:30], 1):
+        trait_x4 = round(p['trait_score'] * 4, 1)
+        stats_x4 = round(p['stats_score'] * 4, 1)
+        ad = p.get('attr_detail', {})
+        attr_str = f"{p['attr_bonus']} (防{ad.get('defense',0):.0f}/攻{ad.get('offense',0):.0f}/协{ad.get('synergy',0):.0f})"
+        boss_str = f" 首领化+{p['boss_bonus']:.0f}" if p.get('boss_bonus', 0) > 0 else ""
         print(f"{i:>2}. {p['name']:<12} {p['score']:>6.1f}  "
-              f"(技能={p['skill_score']:.0f} 特性={p['trait_score']:.0f} "
-              f"属性={p['attr_bonus']} 种族={p['stats_score']:.0f}) "
+              f"(技能={p['skill_score']:.0f} 特性×4={trait_x4:.0f} "
+              f"属性={attr_str} 种族×4={stats_x4:.0f}{boss_str}) "
               f"【{p['trait_name']}】")
 
     # === 最优队伍组建 (体系协同版) ===
@@ -516,6 +658,13 @@ def main():
                 penalty -= 12
 
         total = base_score + synergy_bonus + penalty
+
+        # 首领化：一队只能触发一次，只计最高加分
+        boss_bonuses = [pet_scores.get(m, {}).get('boss_bonus', 0) for m in members]
+        max_boss = max(boss_bonuses) if boss_bonuses else 0
+        # base_score 已包含全部首领化加分，减去多余的只保留最高
+        excess_boss = sum(boss_bonuses) - max_boss
+        total -= excess_boss
 
         return total, {
             "base": base_score, "synergy": synergy_bonus, "penalty": penalty,
@@ -686,10 +835,14 @@ def main():
     lines.append("精灵综合排名 (技能评分 + 特性评分 + 属性分 + 种族值分)")
     lines.append("=" * 100)
     for i, p in enumerate(ranked, 1):
+        trait_x4 = round(p['trait_score'] * 4, 1)
+        stats_x4 = round(p['stats_score'] * 4, 1)
+        ad = p.get('attr_detail', {})
+        attr_str = f"{p['attr_bonus']} (防{ad.get('defense',0):.0f}/攻{ad.get('offense',0):.0f}/协{ad.get('synergy',0):.0f})"
         lines.append(
             f"{i:>3}. {p['name']:<14} {p['score']:>6.1f}  "
-            f"技能={p['skill_score']:.0f} 特性={p['trait_score']:.0f} "
-            f"属性={p['attr_bonus']} 种族={p['stats_score']:.0f}  "
+            f"技能={p['skill_score']:.0f} 特性×4={trait_x4:.0f} "
+            f"属性={attr_str} 种族×4={stats_x4:.0f}  "
             f"【{p['trait_name']}】{p['trait_desc'][:50]}"
         )
     (DATA_DIR / "all_pet_rankings.txt").write_text("\n".join(lines), encoding="utf-8")

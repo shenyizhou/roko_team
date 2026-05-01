@@ -2,7 +2,7 @@
   {
     "id": "寂灭骨龙",
     "name": "寂灭骨龙",
-    "score": 482.4,
+    "score": 433.3,
     "attrs": [
       "龙",
       "幽"
@@ -22,20 +22,26 @@
     "trait_pts": {
       "复活": 45
     },
-    "skill_score": 105.2,
-    "attr_bonus": 100,
+    "skill_score": 116.5,
+    "attr_bonus": 39.6,
+    "attr_detail": {
+      "defense": 69.0,
+      "offense": 25.8,
+      "synergy": 0.0
+    },
     "stats_score": 24.3,
+    "boss_bonus": 0,
     "recommended_skills": [
-      "坟场搏击",
-      "龙威",
-      "虚化",
-      "先发制人"
+      "吓退",
+      "电弧",
+      "偷袭",
+      "隼鳞"
     ]
   },
   {
     "id": "闪电鳗鱼",
     "name": "闪电鳗鱼",
-    "score": 435.1,
+    "score": 382.9,
     "attrs": [
       "电",
       "水"
@@ -57,20 +63,26 @@
       "携带能耗-": 10.0,
       "迸发能耗-": 6
     },
-    "skill_score": 109.9,
-    "attr_bonus": 100,
+    "skill_score": 131.0,
+    "attr_bonus": 26.7,
+    "attr_detail": {
+      "defense": 42.2,
+      "offense": 19.8,
+      "synergy": 5.5
+    },
     "stats_score": 32.3,
+    "boss_bonus": 0,
     "recommended_skills": [
-      "防御",
-      "电弧",
-      "水光冲击",
-      "泡沫幻影"
+      "掩护",
+      "消毒法",
+      "潮汐",
+      "雷暴"
     ]
   },
   {
     "id": "贝古斯",
     "name": "贝古斯",
-    "score": 425.4,
+    "score": 370.3,
     "attrs": [
       "机械",
       "火"
@@ -90,54 +102,26 @@
     "trait_pts": {
       "灼烧层": 18.0
     },
-    "skill_score": 125.4,
-    "attr_bonus": 100,
+    "skill_score": 138.0,
+    "attr_bonus": 32.3,
+    "attr_detail": {
+      "defense": 60.9,
+      "offense": 17.4,
+      "synergy": -4.0
+    },
     "stats_score": 32.0,
+    "boss_bonus": 0,
     "recommended_skills": [
+      "燃尽",
+      "啮合传递",
       "焚烧烙印",
-      "防御",
-      "倾泻",
-      "烈焰风暴"
-    ]
-  },
-  {
-    "id": "龙鱼",
-    "name": "龙鱼",
-    "score": 418.6,
-    "attrs": [
-      "水",
-      "龙"
-    ],
-    "stats": {
-      "total": 667,
-      "hp": 75,
-      "atk": 116,
-      "matk": 123,
-      "def": 112,
-      "mdef": 116,
-      "spd": 125
-    },
-    "trait_name": "洄游",
-    "trait_desc": "每次进入蓄力状态，获得全技能能耗永久-1。",
-    "trait_score": 14.0,
-    "trait_pts": {
-      "全技能能耗-": 6.0,
-      "蓄力能耗-": 8
-    },
-    "skill_score": 129.0,
-    "attr_bonus": 100,
-    "stats_score": 33.4,
-    "recommended_skills": [
-      "打湿",
-      "龙吟",
-      "润泽",
-      "水刃"
+      "有效预防"
     ]
   },
   {
     "id": "尖嘴狐仙",
     "name": "尖嘴狐仙",
-    "score": 414.7,
+    "score": 358.7,
     "attrs": [
       "火",
       "冰"
@@ -158,20 +142,182 @@
       "灼烧层": 12.0,
       "冻结层": 8.0
     },
-    "skill_score": 118.7,
-    "attr_bonus": 100,
+    "skill_score": 134.1,
+    "attr_bonus": 28.6,
+    "attr_detail": {
+      "defense": 46.5,
+      "offense": 18.6,
+      "synergy": 7.0
+    },
     "stats_score": 29.0,
+    "boss_bonus": 0,
     "recommended_skills": [
-      "炎枪",
+      "啮合传递",
       "焚烧烙印",
-      "火焰护盾",
-      "暴风雪"
+      "除厄",
+      "火焰护盾"
+    ]
+  },
+  {
+    "id": "龙鱼",
+    "name": "龙鱼",
+    "score": 358.1,
+    "attrs": [
+      "水",
+      "龙"
+    ],
+    "stats": {
+      "total": 667,
+      "hp": 75,
+      "atk": 116,
+      "matk": 123,
+      "def": 112,
+      "mdef": 116,
+      "spd": 125
+    },
+    "trait_name": "洄游",
+    "trait_desc": "每次进入蓄力状态，获得全技能能耗永久-1。",
+    "trait_score": 14.0,
+    "trait_pts": {
+      "全技能能耗-": 6.0,
+      "蓄力能耗-": 8
+    },
+    "skill_score": 134.2,
+    "attr_bonus": 34.3,
+    "attr_detail": {
+      "defense": 54.6,
+      "offense": 22.2,
+      "synergy": 11.0
+    },
+    "stats_score": 33.4,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "超导",
+      "打湿",
+      "龙吟",
+      "防御"
+    ]
+  },
+  {
+    "id": "帅帅魔偶",
+    "name": "帅帅魔偶",
+    "score": 351.9,
+    "attrs": [
+      "幻"
+    ],
+    "stats": {
+      "total": 605,
+      "hp": 111,
+      "atk": 91,
+      "matk": 96,
+      "def": 83,
+      "mdef": 119,
+      "spd": 105
+    },
+    "trait_name": "盲从",
+    "trait_desc": "可以携带多个随机技能类技能（包括借用，复写，取念），非幻系技能能耗-2。",
+    "trait_score": 18.0,
+    "trait_pts": {
+      "技能能耗-": 8.0,
+      "携带能耗-": 10.0
+    },
+    "skill_score": 143.7,
+    "attr_bonus": 15.4,
+    "attr_detail": {
+      "defense": 15.6,
+      "offense": 23.4,
+      "synergy": 3
+    },
+    "stats_score": 30.2,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "芳香诱引",
+      "啮合传递",
+      "消毒法",
+      "纤维化"
+    ]
+  },
+  {
+    "id": "卡拉波斯",
+    "name": "卡拉波斯",
+    "score": 349.5,
+    "attrs": [
+      "恶"
+    ],
+    "stats": {
+      "total": 542,
+      "hp": 123,
+      "atk": 134,
+      "matk": 50,
+      "def": 75,
+      "mdef": 60,
+      "spd": 100
+    },
+    "trait_name": "悬一线",
+    "trait_desc": "首次受到致命伤害时，保留1生命值，眩晕敌方一回合。",
+    "trait_score": 22,
+    "trait_pts": {
+      "免死": 22
+    },
+    "skill_score": 141.4,
+    "attr_bonus": 11.7,
+    "attr_detail": {
+      "defense": 6.6,
+      "offense": 24.6,
+      "synergy": 3
+    },
+    "stats_score": 27.1,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "啮合传递",
+      "消毒法",
+      "嘲弄",
+      "有效预防"
+    ]
+  },
+  {
+    "id": "上岸蛙",
+    "name": "上岸蛙",
+    "score": 348.6,
+    "attrs": [
+      "幻"
+    ],
+    "stats": {
+      "total": 554,
+      "hp": 114,
+      "atk": 106,
+      "matk": 44,
+      "def": 101,
+      "mdef": 69,
+      "spd": 120
+    },
+    "trait_name": "张弛有度",
+    "trait_desc": "周末时自己获得双攻+40%，其他时间获得双防+40%。",
+    "trait_score": 23.2,
+    "trait_pts": {
+      "攻+%": 14.0,
+      "防+%": 9.2
+    },
+    "skill_score": 129.6,
+    "attr_bonus": 15.4,
+    "attr_detail": {
+      "defense": 15.6,
+      "offense": 23.4,
+      "synergy": 3
+    },
+    "stats_score": 27.7,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "地刺",
+      "偷袭",
+      "力量增效",
+      "防御"
     ]
   },
   {
     "id": "黑羽夫人",
     "name": "黑羽夫人",
-    "score": 410.7,
+    "score": 347.3,
     "attrs": [
       "翼",
       "恶"
@@ -193,20 +339,65 @@
       "离场增益": 5,
       "继承": 8
     },
-    "skill_score": 116.3,
-    "attr_bonus": 100,
+    "skill_score": 129.7,
+    "attr_bonus": 23.2,
+    "attr_detail": {
+      "defense": 36.0,
+      "offense": 13.8,
+      "synergy": 11.0
+    },
     "stats_score": 32.6,
+    "boss_bonus": 0,
     "recommended_skills": [
-      "防御",
-      "力量增效",
+      "掩护",
       "先发制人",
-      "翼击"
+      "龙卷风",
+      "力量增效"
+    ]
+  },
+  {
+    "id": "卷胡巨獭",
+    "name": "卷胡巨獭",
+    "score": 347.2,
+    "attrs": [
+      "普通",
+      "水"
+    ],
+    "stats": {
+      "total": 595,
+      "hp": 121,
+      "atk": 96,
+      "matk": 96,
+      "def": 101,
+      "mdef": 101,
+      "spd": 80
+    },
+    "trait_name": "保守派",
+    "trait_desc": "总技能能耗小于4时，自己获得双防+80%。",
+    "trait_score": 18.4,
+    "trait_pts": {
+      "防+%": 18.4
+    },
+    "skill_score": 135.5,
+    "attr_bonus": 18.9,
+    "attr_detail": {
+      "defense": 31.9,
+      "offense": 13.8,
+      "synergy": 0.0
+    },
+    "stats_score": 29.8,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "吓退",
+      "掩护",
+      "阻断",
+      "虹光冲击"
     ]
   },
   {
     "id": "影狸",
     "name": "影狸",
-    "score": 408.1,
+    "score": 343.3,
     "attrs": [
       "幽",
       "毒"
@@ -228,20 +419,26 @@
       "入场效果": 3,
       "离场增益": 5
     },
-    "skill_score": 108.9,
-    "attr_bonus": 100,
+    "skill_score": 122.7,
+    "attr_bonus": 21.4,
+    "attr_detail": {
+      "defense": 37.7,
+      "offense": 16.2,
+      "synergy": -4.0
+    },
     "stats_score": 30.8,
+    "boss_bonus": 0,
     "recommended_skills": [
-      "力量增效",
-      "毒液渗透",
-      "疫病吐息",
-      "惊吓盒子"
+      "嘲弄",
+      "惊吓盒子",
+      "感染病",
+      "防御"
     ]
   },
   {
     "id": "游蛇魔使",
     "name": "游蛇魔使",
-    "score": 404.5,
+    "score": 342.1,
     "attrs": [
       "水",
       "武"
@@ -262,120 +459,26 @@
       "技能能耗-": 11.0,
       "应对触发": 3
     },
-    "skill_score": 122.5,
-    "attr_bonus": 100,
+    "skill_score": 137.1,
+    "attr_bonus": 23.0,
+    "attr_detail": {
+      "defense": 46.3,
+      "offense": 6.6,
+      "synergy": 0.0
+    },
     "stats_score": 31.5,
+    "boss_bonus": 0,
     "recommended_skills": [
-      "力量增效",
-      "防御",
-      "水幕冲击",
-      "打湿"
-    ]
-  },
-  {
-    "id": "卷胡巨獭",
-    "name": "卷胡巨獭",
-    "score": 400.3,
-    "attrs": [
-      "普通",
-      "水"
-    ],
-    "stats": {
-      "total": 595,
-      "hp": 121,
-      "atk": 96,
-      "matk": 96,
-      "def": 101,
-      "mdef": 101,
-      "spd": 80
-    },
-    "trait_name": "保守派",
-    "trait_desc": "总技能能耗小于4时，自己获得双防+80%。",
-    "trait_score": 18.4,
-    "trait_pts": {
-      "防+%": 18.4
-    },
-    "skill_score": 107.5,
-    "attr_bonus": 100,
-    "stats_score": 29.8,
-    "recommended_skills": [
-      "水泡盾",
-      "鼓劲",
-      "有效预防",
-      "水炮"
-    ]
-  },
-  {
-    "id": "星光狮",
-    "name": "星光狮",
-    "score": 399.3,
-    "attrs": [
-      "电",
-      "光"
-    ],
-    "stats": {
-      "total": 617,
-      "hp": 80,
-      "atk": 95,
-      "matk": 107,
-      "def": 90,
-      "mdef": 120,
-      "spd": 125
-    },
-    "trait_name": "电流刺激",
-    "trait_desc": "携带的攻击技能获得迸发：威力+40。",
-    "trait_score": 14.0,
-    "trait_pts": {
-      "威力+": 8.0,
-      "迸发威力": 6.0
-    },
-    "skill_score": 119.7,
-    "attr_bonus": 100,
-    "stats_score": 30.9,
-    "recommended_skills": [
-      "魔法增效",
-      "超导",
-      "防御",
-      "加大功率"
-    ]
-  },
-  {
-    "id": "鸭吉吉",
-    "name": "鸭吉吉",
-    "score": 394.5,
-    "attrs": [
-      "普通"
-    ],
-    "stats": {
-      "total": 708,
-      "hp": 117,
-      "atk": 88,
-      "matk": 192,
-      "def": 88,
-      "mdef": 123,
-      "spd": 100
-    },
-    "trait_name": "“国王”的威严",
-    "trait_desc": "自身种族值大幅增加，自己携带的能耗等于1的技能，威力+50%。",
-    "trait_score": 22.0,
-    "trait_pts": {
-      "威力+": 10.0,
-      "种族值+": 12
-    },
-    "skill_score": 114.9,
-    "attr_bonus": 50,
-    "stats_score": 35.4,
-    "recommended_skills": [
-      "力量增效",
-      "防御",
-      "吓退",
-      "见招拆招"
+      "泡沫幻影",
+      "啮合传递",
+      "打湿",
+      "水幕冲击"
     ]
   },
   {
     "id": "绒光优优",
     "name": "绒光优优",
-    "score": 393.4,
+    "score": 341.7,
     "attrs": [
       "地",
       "光"
@@ -396,20 +499,450 @@
       "速+": 10.0,
       "脱离": 8
     },
-    "skill_score": 100.6,
-    "attr_bonus": 100,
+    "skill_score": 116.3,
+    "attr_bonus": 32.6,
+    "attr_detail": {
+      "defense": 53.6,
+      "offense": 28.2,
+      "synergy": -4.0
+    },
     "stats_score": 30.2,
+    "boss_bonus": 0,
     "recommended_skills": [
-      "防御",
-      "热砂",
+      "啮合传递",
       "硬化",
+      "音爆",
       "天光"
+    ]
+  },
+  {
+    "id": "立方人",
+    "name": "立方人",
+    "score": 340.8,
+    "attrs": [
+      "机械"
+    ],
+    "stats": {
+      "total": 605,
+      "hp": 103,
+      "atk": 135,
+      "matk": 54,
+      "def": 127,
+      "mdef": 101,
+      "spd": 85
+    },
+    "trait_name": "盲拧",
+    "trait_desc": "回合开始时，技能顺序打乱，4号位的技能能耗-4。",
+    "trait_score": 16.0,
+    "trait_pts": {
+      "技能能耗-": 16.0
+    },
+    "skill_score": 125.7,
+    "attr_bonus": 30.3,
+    "attr_detail": {
+      "defense": 50.4,
+      "offense": 21.0,
+      "synergy": 3
+    },
+    "stats_score": 30.2,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "电弧",
+      "啮合传递",
+      "先发制人",
+      "有效预防"
+    ]
+  },
+  {
+    "id": "白发路路",
+    "name": "白发路路",
+    "score": 337.4,
+    "attrs": [
+      "草",
+      "萌"
+    ],
+    "stats": {
+      "total": 633,
+      "hp": 86,
+      "atk": 100,
+      "matk": 107,
+      "def": 113,
+      "mdef": 132,
+      "spd": 95
+    },
+    "trait_name": "营养液泡",
+    "trait_desc": "获得增益时，额外获得层数+2。",
+    "trait_score": 10,
+    "trait_pts": {
+      "增益翻倍": 10
+    },
+    "skill_score": 143.6,
+    "attr_bonus": 27.4,
+    "attr_detail": {
+      "defense": 47.4,
+      "offense": 17.4,
+      "synergy": 1.5
+    },
+    "stats_score": 31.6,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "芳香诱引",
+      "啮合传递",
+      "纤维化",
+      "光能聚集"
+    ]
+  },
+  {
+    "id": "里拉鳐",
+    "name": "里拉鳐",
+    "score": 336.5,
+    "attrs": [
+      "水"
+    ],
+    "stats": {
+      "total": 644,
+      "hp": 118,
+      "atk": 82,
+      "matk": 89,
+      "def": 103,
+      "mdef": 147,
+      "spd": 105
+    },
+    "trait_name": "吟游之弦",
+    "trait_desc": "赋予的印记不会替换其他印记，而是同时生效。",
+    "trait_score": 10,
+    "trait_pts": {
+      "印记共存": 10
+    },
+    "skill_score": 149.8,
+    "attr_bonus": 17.9,
+    "attr_detail": {
+      "defense": 20.2,
+      "offense": 24.6,
+      "synergy": 3
+    },
+    "stats_score": 32.2,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "啮合传递",
+      "消毒法",
+      "打湿",
+      "潮汐"
+    ]
+  },
+  {
+    "id": "九幽菇",
+    "name": "九幽菇",
+    "score": 333.0,
+    "attrs": [
+      "地",
+      "草"
+    ],
+    "stats": {
+      "total": 627,
+      "hp": 149,
+      "atk": 102,
+      "matk": 95,
+      "def": 116,
+      "mdef": 95,
+      "spd": 70
+    },
+    "trait_name": "多人宿舍",
+    "trait_desc": "自己的能量可以超过能量上限。",
+    "trait_score": 8,
+    "trait_pts": {
+      "上限突破": 8
+    },
+    "skill_score": 138.7,
+    "attr_bonus": 36.7,
+    "attr_detail": {
+      "defense": 64.5,
+      "offense": 11.4,
+      "synergy": 18.0
+    },
+    "stats_score": 31.4,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "芳香诱引",
+      "啮合传递",
+      "藤绞",
+      "防御"
+    ]
+  },
+  {
+    "id": "鳗尾兽",
+    "name": "鳗尾兽",
+    "score": 331.4,
+    "attrs": [
+      "地",
+      "草"
+    ],
+    "stats": {
+      "total": 788,
+      "hp": 290,
+      "atk": 91,
+      "matk": 91,
+      "def": 138,
+      "mdef": 113,
+      "spd": 65
+    },
+    "trait_name": "铃兰晚钟",
+    "trait_desc": "首次入场时，失去自己一半的当前生命。",
+    "trait_score": -3,
+    "trait_pts": {
+      "入场效果": 3,
+      "自伤": -6
+    },
+    "skill_score": 149.1,
+    "attr_bonus": 36.7,
+    "attr_detail": {
+      "defense": 64.5,
+      "offense": 11.4,
+      "synergy": 18.0
+    },
+    "stats_score": 39.4,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "吓退",
+      "掩护",
+      "地刺",
+      "虹光冲击"
+    ]
+  },
+  {
+    "id": "燃薪虫",
+    "name": "燃薪虫",
+    "score": 331.3,
+    "attrs": [
+      "火",
+      "草"
+    ],
+    "stats": {
+      "total": 579,
+      "hp": 135,
+      "atk": 120,
+      "matk": 48,
+      "def": 103,
+      "mdef": 73,
+      "spd": 100
+    },
+    "trait_name": "煤渣草",
+    "trait_desc": "在场时，所有灼烧的衰减变为增长。",
+    "trait_score": 12,
+    "trait_pts": {
+      "灼烧逆转": 12
+    },
+    "skill_score": 129.0,
+    "attr_bonus": 38.7,
+    "attr_detail": {
+      "defense": 66.9,
+      "offense": 11.4,
+      "synergy": 22.0
+    },
+    "stats_score": 28.9,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "掩护",
+      "灼伤",
+      "力量增效",
+      "倾泻"
+    ]
+  },
+  {
+    "id": "超能阿布",
+    "name": "超能阿布",
+    "score": 331.1,
+    "attrs": [
+      "龙"
+    ],
+    "stats": {
+      "total": 720,
+      "hp": 122,
+      "atk": 145,
+      "matk": 145,
+      "def": 104,
+      "mdef": 104,
+      "spd": 100
+    },
+    "trait_name": "超聚能",
+    "trait_desc": "蓄力时，【聚能】变为【积蓄】。",
+    "trait_score": 8,
+    "trait_pts": {
+      "蓄力转化": 8
+    },
+    "skill_score": 128.6,
+    "attr_bonus": 26.5,
+    "attr_detail": {
+      "defense": 35.8,
+      "offense": 29.4,
+      "synergy": 3
+    },
+    "stats_score": 36.0,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "啮合传递",
+      "龙吟",
+      "火焰切割",
+      "防御"
+    ]
+  },
+  {
+    "id": "迷迷箱怪",
+    "name": "迷迷箱怪",
+    "score": 328.8,
+    "attrs": [
+      "机械",
+      "幻"
+    ],
+    "stats": {
+      "total": 782,
+      "hp": 138,
+      "atk": 129,
+      "matk": 129,
+      "def": 153,
+      "mdef": 153,
+      "spd": 80
+    },
+    "trait_name": "虚假宝箱",
+    "trait_desc": "自己力竭时，敌方获得攻防+20%。",
+    "trait_score": 0,
+    "trait_pts": {},
+    "skill_score": 131.7,
+    "attr_bonus": 40.7,
+    "attr_detail": {
+      "defense": 73.1,
+      "offense": 16.2,
+      "synergy": 11.0
+    },
+    "stats_score": 39.1,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "吓退",
+      "偷袭",
+      "啮合传递",
+      "虹光冲击"
+    ]
+  },
+  {
+    "id": "巨噬针鼹",
+    "name": "巨噬针鼹",
+    "score": 328.5,
+    "attrs": [
+      "普通"
+    ],
+    "stats": {
+      "total": 562,
+      "hp": 158,
+      "atk": 93,
+      "matk": 41,
+      "def": 117,
+      "mdef": 68,
+      "spd": 85
+    },
+    "trait_name": "壮胆",
+    "trait_desc": "队伍存在虫系精灵，自己获得双攻+50%。",
+    "trait_score": 17.5,
+    "trait_pts": {
+      "攻+%": 17.5
+    },
+    "skill_score": 133.6,
+    "attr_bonus": 12.5,
+    "attr_detail": {
+      "defense": 10.9,
+      "offense": 21.0,
+      "synergy": 3
+    },
+    "stats_score": 28.1,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "地刺",
+      "偷袭",
+      "有效预防",
+      "力量增效"
+    ]
+  },
+  {
+    "id": "食尘短绒",
+    "name": "食尘短绒",
+    "score": 327.6,
+    "attrs": [
+      "虫",
+      "地"
+    ],
+    "stats": {
+      "total": 576,
+      "hp": 109,
+      "atk": 105,
+      "matk": 37,
+      "def": 113,
+      "mdef": 97,
+      "spd": 115
+    },
+    "trait_name": "特殊清洁场景",
+    "trait_desc": "回合结束时偷取敌方1层印记。",
+    "trait_score": 10,
+    "trait_pts": {
+      "偷印记": 10
+    },
+    "skill_score": 138.3,
+    "attr_bonus": 34.1,
+    "attr_detail": {
+      "defense": 56.6,
+      "offense": 11.4,
+      "synergy": 22.0
+    },
+    "stats_score": 28.8,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "地刺",
+      "掩护",
+      "倾泻",
+      "翅刃"
+    ]
+  },
+  {
+    "id": "炽心勇狮",
+    "name": "炽心勇狮",
+    "score": 326.7,
+    "attrs": [
+      "火",
+      "武"
+    ],
+    "stats": {
+      "total": 597,
+      "hp": 137,
+      "atk": 51,
+      "matk": 111,
+      "def": 88,
+      "mdef": 130,
+      "spd": 80
+    },
+    "trait_name": "圣火骑士",
+    "trait_desc": "应对成功后，下次攻击威力翻倍。",
+    "trait_score": 10,
+    "trait_pts": {
+      "应对威力翻倍": 10
+    },
+    "skill_score": 138.5,
+    "attr_bonus": 28.6,
+    "attr_detail": {
+      "defense": 52.5,
+      "offense": 7.8,
+      "synergy": 11.0
+    },
+    "stats_score": 29.9,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "掩护",
+      "阳火增辉",
+      "阻断",
+      "怒火"
     ]
   },
   {
     "id": "古卷匣魔像",
     "name": "古卷匣魔像",
-    "score": 392.2,
+    "score": 323.2,
     "attrs": [
       "普通",
       "武"
@@ -430,53 +963,104 @@
       "防+%": 6.3,
       "入场效果": 3
     },
-    "skill_score": 125.0,
-    "attr_bonus": 100,
+    "skill_score": 137.8,
+    "attr_bonus": 18.2,
+    "attr_detail": {
+      "defense": 33.9,
+      "offense": 9.0,
+      "synergy": 0.0
+    },
     "stats_score": 32.5,
+    "boss_bonus": 0,
     "recommended_skills": [
-      "魔法增效",
-      "防御",
+      "掩护",
+      "能量刃",
       "力量增效",
-      "能量刃"
+      "斩断"
     ]
   },
   {
-    "id": "海枝枝",
-    "name": "海枝枝",
-    "score": 391.4,
+    "id": "高脚鹬",
+    "name": "高脚鹬",
+    "score": 323.1,
     "attrs": [
-      "水",
-      "幽"
+      "翼"
     ],
     "stats": {
-      "total": 603,
-      "hp": 90,
-      "atk": 53,
-      "matk": 135,
-      "def": 92,
-      "mdef": 113,
-      "spd": 120
+      "total": 534,
+      "hp": 94,
+      "atk": 63,
+      "matk": 63,
+      "def": 112,
+      "mdef": 87,
+      "spd": 115
     },
-    "trait_name": "珊瑚骨",
-    "trait_desc": "敌方精灵离场时，自身获得全技能能耗-3。（不可被驱散）。",
-    "trait_score": 9.9,
+    "trait_name": "起飞加速",
+    "trait_desc": "本场战斗首次使用的技能获得迅捷。",
+    "trait_score": 14,
     "trait_pts": {
-      "全技能能耗-": 9.9
+      "迅捷": 14
     },
-    "skill_score": 131.4,
-    "attr_bonus": 100,
-    "stats_score": 30.1,
+    "skill_score": 145.2,
+    "attr_bonus": 15.1,
+    "attr_detail": {
+      "defense": 16.7,
+      "offense": 21.0,
+      "synergy": 3
+    },
+    "stats_score": 26.7,
+    "boss_bonus": 0,
     "recommended_skills": [
-      "嘲弄",
-      "打湿",
+      "吓退",
+      "啮合传递",
       "润泽",
-      "水波术"
+      "倾泻"
+    ]
+  },
+  {
+    "id": "波多西",
+    "name": "波多西",
+    "score": 322.2,
+    "attrs": [
+      "机械",
+      "地"
+    ],
+    "stats": {
+      "total": 573,
+      "hp": 106,
+      "atk": 122,
+      "matk": 43,
+      "def": 136,
+      "mdef": 116,
+      "spd": 50
+    },
+    "trait_name": "定向精炼",
+    "trait_desc": "己方精灵每使用1次防御技能，自己入场时机械系和地面系技能威力+10%。",
+    "trait_score": 4.1,
+    "trait_pts": {
+      "威力+": 1.1,
+      "入场效果": 3
+    },
+    "skill_score": 150.7,
+    "attr_bonus": 40.7,
+    "attr_detail": {
+      "defense": 70.9,
+      "offense": 17.4,
+      "synergy": 14.0
+    },
+    "stats_score": 28.6,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "地刺",
+      "吓退",
+      "啮合传递",
+      "先发制人"
     ]
   },
   {
     "id": "嗜波螺",
     "name": "嗜波螺",
-    "score": 389.0,
+    "score": 320.8,
     "attrs": [
       "地",
       "水"
@@ -498,54 +1082,797 @@
       "携带能耗-": 2.8,
       "系别加成": 6
     },
-    "skill_score": 118.2,
-    "attr_bonus": 100,
+    "skill_score": 117.1,
+    "attr_bonus": 32.9,
+    "attr_detail": {
+      "defense": 51.6,
+      "offense": 24.6,
+      "synergy": 7.0
+    },
     "stats_score": 31.7,
+    "boss_bonus": 0,
     "recommended_skills": [
-      "硬化",
-      "气泡",
-      "水泡盾",
-      "地陷"
+      "掩护",
+      "地陷",
+      "水光冲击",
+      "虹光冲击"
     ]
   },
   {
-    "id": "瞌睡王",
-    "name": "瞌睡王",
-    "score": 387.0,
+    "id": "怒目怂猫",
+    "name": "怒目怂猫",
+    "score": 320.2,
     "attrs": [
-      "普通",
       "武"
     ],
     "stats": {
-      "total": 685,
-      "hp": 144,
-      "atk": 157,
-      "matk": 64,
-      "def": 135,
-      "mdef": 110,
-      "spd": 75
+      "total": 651,
+      "hp": 92,
+      "atk": 132,
+      "matk": 126,
+      "def": 111,
+      "mdef": 95,
+      "spd": 95
     },
-    "trait_name": "慢热型",
-    "trait_desc": "初始能量为0，入场前己方精灵每成功应对1次，回复5能量。",
-    "trait_score": 7.1,
+    "trait_name": "威慑",
+    "trait_desc": "打断敌方时，被打断的技能进入2回合冷却。",
+    "trait_score": 10,
     "trait_pts": {
-      "回能": 4.1,
+      "打断冷却": 10
+    },
+    "skill_score": 136.2,
+    "attr_bonus": 14.0,
+    "attr_detail": {
+      "defense": 17.8,
+      "offense": 16.2,
+      "synergy": 3
+    },
+    "stats_score": 32.5,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "地刺",
+      "截拳",
+      "偷袭",
+      "有效预防"
+    ]
+  },
+  {
+    "id": "火焰猿",
+    "name": "火焰猿",
+    "score": 319.7,
+    "attrs": [
+      "火"
+    ],
+    "stats": {
+      "total": 715,
+      "hp": 167,
+      "atk": 162,
+      "matk": 72,
+      "def": 143,
+      "mdef": 111,
+      "spd": 60
+    },
+    "trait_name": "散热",
+    "trait_desc": "初始能量为0，入场前己方精灵每放1次火系技能，回复3能量。",
+    "trait_score": 5.5,
+    "trait_pts": {
+      "回能": 2.5,
       "入场效果": 3
     },
-    "skill_score": 121.8,
-    "attr_bonus": 100,
-    "stats_score": 34.2,
+    "skill_score": 133.6,
+    "attr_bonus": 20.9,
+    "attr_detail": {
+      "defense": 26.1,
+      "offense": 25.8,
+      "synergy": 3
+    },
+    "stats_score": 35.8,
+    "boss_bonus": 0,
     "recommended_skills": [
+      "地刺",
+      "偷袭",
+      "焚烧烙印",
+      "防御"
+    ]
+  },
+  {
+    "id": "熔岩布丁",
+    "name": "熔岩布丁",
+    "score": 319.4,
+    "attrs": [
+      "水",
+      "火"
+    ],
+    "stats": {
+      "total": 564,
+      "hp": 128,
+      "atk": 87,
+      "matk": 33,
+      "def": 112,
+      "mdef": 84,
+      "spd": 120
+    },
+    "trait_name": "美拉德反应",
+    "trait_desc": "离场后，更换入场的精灵获得双攻+20%且免疫灼烧。",
+    "trait_score": 11.9,
+    "trait_pts": {
+      "攻+%": 3.9,
+      "入场效果": 3,
+      "离场增益": 5
+    },
+    "skill_score": 130.0,
+    "attr_bonus": 29.0,
+    "attr_detail": {
+      "defense": 46.3,
+      "offense": 21.0,
+      "synergy": 5.5
+    },
+    "stats_score": 28.2,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "掩护",
+      "火焰切割",
+      "阻断",
+      "力量增效"
+    ]
+  },
+  {
+    "id": "权杖-V",
+    "name": "权杖-V",
+    "score": 318.9,
+    "attrs": [
+      "机械"
+    ],
+    "stats": {
+      "total": 652,
+      "hp": 103,
+      "atk": 105,
+      "matk": 97,
+      "def": 136,
+      "mdef": 136,
+      "spd": 75
+    },
+    "trait_name": "机械变式",
+    "trait_desc": "自己携带的技能每回合位置变化时，该技能能耗-1。",
+    "trait_score": 5.0,
+    "trait_pts": {
+      "技能能耗-": 2.2,
+      "携带能耗-": 2.8
+    },
+    "skill_score": 138.2,
+    "attr_bonus": 30.3,
+    "attr_detail": {
+      "defense": 50.4,
+      "offense": 21.0,
+      "synergy": 3
+    },
+    "stats_score": 32.6,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "啮合传递",
+      "冰晶坠",
+      "嘲弄",
+      "有效预防"
+    ]
+  },
+  {
+    "id": "魔草巫灵",
+    "name": "魔草巫灵",
+    "score": 318.0,
+    "attrs": [
+      "草",
+      "幻"
+    ],
+    "stats": {
+      "total": 592,
+      "hp": 99,
+      "atk": 43,
+      "matk": 112,
+      "def": 109,
+      "mdef": 139,
+      "spd": 90
+    },
+    "trait_name": "木桶戏法",
+    "trait_desc": "离场后，更换入场的精灵以木桶状态登场。",
+    "trait_score": 8,
+    "trait_pts": {
+      "入场效果": 3,
+      "离场增益": 5
+    },
+    "skill_score": 144.2,
+    "attr_bonus": 23.4,
+    "attr_detail": {
+      "defense": 47.4,
+      "offense": 9.0,
+      "synergy": -4.0
+    },
+    "stats_score": 29.6,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "芳香诱引",
+      "啮合传递",
+      "嗜痛",
+      "坍缩"
+    ]
+  },
+  {
+    "id": "小皮球",
+    "name": "小皮球",
+    "score": 318.0,
+    "attrs": [
+      "电",
+      "幻"
+    ],
+    "stats": {
+      "total": 618,
+      "hp": 116,
+      "atk": 68,
+      "matk": 127,
+      "def": 71,
+      "mdef": 126,
+      "spd": 110
+    },
+    "trait_name": "星地善良",
+    "trait_desc": "回合结束时，若场上的己方精灵能量等于0，自己立即替换此精灵。",
+    "trait_score": 8,
+    "trait_pts": {
+      "自动替换": 8
+    },
+    "skill_score": 138.7,
+    "attr_bonus": 23.7,
+    "attr_detail": {
+      "defense": 44.2,
+      "offense": 11.4,
+      "synergy": 0.0
+    },
+    "stats_score": 30.9,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "吓退",
+      "啮合传递",
+      "超导",
+      "天光"
+    ]
+  },
+  {
+    "id": "幻影灵菇",
+    "name": "幻影灵菇",
+    "score": 317.7,
+    "attrs": [
+      "幽",
+      "草"
+    ],
+    "stats": {
+      "total": 621,
+      "hp": 111,
+      "atk": 98,
+      "matk": 98,
+      "def": 103,
+      "mdef": 136,
+      "spd": 75
+    },
+    "trait_name": "毒蘑菇",
+    "trait_desc": "回合结束时，偷取敌方场上所有精灵1能量。",
+    "trait_score": 2.0,
+    "trait_pts": {
+      "偷能量": 2.0
+    },
+    "skill_score": 150.4,
+    "attr_bonus": 34.9,
+    "attr_detail": {
+      "defense": 62.8,
+      "offense": 9.0,
+      "synergy": 16.5
+    },
+    "stats_score": 31.1,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "吓退",
+      "掩护",
+      "惊吓盒子",
+      "嘲弄"
+    ]
+  },
+  {
+    "id": "星光狮",
+    "name": "星光狮",
+    "score": 316.3,
+    "attrs": [
+      "电",
+      "光"
+    ],
+    "stats": {
+      "total": 617,
+      "hp": 80,
+      "atk": 95,
+      "matk": 107,
+      "def": 90,
+      "mdef": 120,
+      "spd": 125
+    },
+    "trait_name": "电流刺激",
+    "trait_desc": "携带的攻击技能获得迸发：威力+40。",
+    "trait_score": 14.0,
+    "trait_pts": {
+      "威力+": 8.0,
+      "迸发威力": 6.0
+    },
+    "skill_score": 110.6,
+    "attr_bonus": 26.1,
+    "attr_detail": {
+      "defense": 44.2,
+      "offense": 18.6,
+      "synergy": 0.0
+    },
+    "stats_score": 30.9,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "魔法增效",
+      "超导",
       "防御",
+      "天光"
+    ]
+  },
+  {
+    "id": "千棘盔（磨损的样子）",
+    "name": "千棘盔（磨损的样子）",
+    "score": 315.9,
+    "attrs": [
+      "水",
+      "毒"
+    ],
+    "stats": {
+      "total": 554,
+      "hp": 117,
+      "atk": 41,
+      "matk": 100,
+      "def": 74,
+      "mdef": 117,
+      "spd": 105
+    },
+    "trait_name": "溶解扩散",
+    "trait_desc": "每携带1个毒系技能进入战斗，水系技能使敌方获得1层中毒。",
+    "trait_score": 8.2,
+    "trait_pts": {
+      "中毒层": 2.2,
+      "系别加成": 6
+    },
+    "skill_score": 143.5,
+    "attr_bonus": 28.1,
+    "attr_detail": {
+      "defense": 50.4,
+      "offense": 12.6,
+      "synergy": 5.5
+    },
+    "stats_score": 27.7,
+    "boss_bonus": 0.7,
+    "recommended_skills": [
+      "泡沫幻影",
+      "啮合传递",
+      "打湿",
+      "感染病"
+    ]
+  },
+  {
+    "id": "秩序鱿墨",
+    "name": "秩序鱿墨",
+    "score": 315.5,
+    "attrs": [
+      "幽",
+      "萌"
+    ],
+    "stats": {
+      "total": 604,
+      "hp": 78,
+      "atk": 120,
+      "matk": 39,
+      "def": 124,
+      "mdef": 113,
+      "spd": 130
+    },
+    "trait_name": "绝对秩序",
+    "trait_desc": "受到非敌方系别的技能攻击时伤害-50%。",
+    "trait_score": 10,
+    "trait_pts": {
+      "减伤": 10
+    },
+    "skill_score": 134.2,
+    "attr_bonus": 20.5,
+    "attr_detail": {
+      "defense": 29.4,
+      "offense": 21.0,
+      "synergy": 1.5
+    },
+    "stats_score": 30.2,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "吓退",
+      "偷袭",
+      "嘲弄",
+      "惊吓盒子"
+    ]
+  },
+  {
+    "id": "海枝枝",
+    "name": "海枝枝",
+    "score": 314.3,
+    "attrs": [
+      "水",
+      "幽"
+    ],
+    "stats": {
+      "total": 603,
+      "hp": 90,
+      "atk": 53,
+      "matk": 135,
+      "def": 92,
+      "mdef": 113,
+      "spd": 120
+    },
+    "trait_name": "珊瑚骨",
+    "trait_desc": "敌方精灵离场时，自身获得全技能能耗-3。（不可被驱散）。",
+    "trait_score": 9.9,
+    "trait_pts": {
+      "全技能能耗-": 9.9
+    },
+    "skill_score": 124.7,
+    "attr_bonus": 29.6,
+    "attr_detail": {
+      "defense": 50.4,
+      "offense": 21.0,
+      "synergy": 0.0
+    },
+    "stats_score": 30.1,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "嘲弄",
+      "打湿",
+      "润泽",
+      "天洪"
+    ]
+  },
+  {
+    "id": "学院呱呱",
+    "name": "学院呱呱",
+    "score": 311.6,
+    "attrs": [
+      "武"
+    ],
+    "stats": {
+      "total": 766,
+      "hp": 162,
+      "atk": 137,
+      "matk": 137,
+      "def": 115,
+      "mdef": 115,
+      "spd": 100
+    },
+    "trait_name": "留学生",
+    "trait_desc": "自己全技能能耗+2，可以学习全部攻击技能。",
+    "trait_score": 0,
+    "trait_pts": {},
+    "skill_score": 144.4,
+    "attr_bonus": 14.0,
+    "attr_detail": {
+      "defense": 17.8,
+      "offense": 16.2,
+      "synergy": 3
+    },
+    "stats_score": 38.3,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "地刺",
+      "天旋地转",
+      "截拳",
+      "跌落"
+    ]
+  },
+  {
+    "id": "卡洛儿",
+    "name": "卡洛儿",
+    "score": 310.1,
+    "attrs": [
+      "水",
+      "萌"
+    ],
+    "stats": {
+      "total": 619,
+      "hp": 114,
+      "atk": 102,
+      "matk": 107,
+      "def": 82,
+      "mdef": 124,
+      "spd": 90
+    },
+    "trait_name": "守护者",
+    "trait_desc": "己方其他精灵每有1层萌化，自己入场时全技能能耗-1。",
+    "trait_score": 6.3,
+    "trait_pts": {
+      "全技能能耗-": 3.3,
+      "入场效果": 3
+    },
+    "skill_score": 137.2,
+    "attr_bonus": 24.1,
+    "attr_detail": {
+      "defense": 38.1,
+      "offense": 17.4,
+      "synergy": 5.5
+    },
+    "stats_score": 30.9,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "掩护",
+      "打湿",
       "力量增效",
-      "气沉丹田",
-      "斩断"
+      "水刃"
+    ]
+  },
+  {
+    "id": "棋祈督（白子）",
+    "name": "棋祈督（白子）",
+    "score": 309.9,
+    "attrs": [
+      "武",
+      "地"
+    ],
+    "stats": {
+      "total": 547,
+      "hp": 126,
+      "atk": 87,
+      "matk": 87,
+      "def": 90,
+      "mdef": 72,
+      "spd": 85
+    },
+    "trait_name": "好象坏象",
+    "trait_desc": "自身以状态技能应对1次后，回满状态，变身为【棋绮后】。变身后，基础种族值与特性变为棋绮后，但不改变已携带的技能。变身前获得的攻防提升效果在变身后依然保留。变身之前，棋绮后的特性可被正常触发，其效果将在变身后生效。",
+    "trait_score": 0,
+    "trait_pts": {},
+    "skill_score": 135.8,
+    "attr_bonus": 34.6,
+    "attr_detail": {
+      "defense": 64.9,
+      "offense": 12.6,
+      "synergy": 5.5
+    },
+    "stats_score": 27.4,
+    "boss_bonus": 29.9,
+    "recommended_skills": [
+      "迫近攻击",
+      "陨石",
+      "啮合传递",
+      "有效预防"
+    ]
+  },
+  {
+    "id": "棋祈督（黑子）",
+    "name": "棋祈督（黑子）",
+    "score": 309.9,
+    "attrs": [
+      "武",
+      "地"
+    ],
+    "stats": {
+      "total": 547,
+      "hp": 126,
+      "atk": 87,
+      "matk": 87,
+      "def": 90,
+      "mdef": 72,
+      "spd": 85
+    },
+    "trait_name": "好象坏象",
+    "trait_desc": "自身以状态技能应对1次后，回满状态，变身为【棋绮后】。变身后，基础种族值与特性变为棋绮后，但不改变已携带的技能。变身前获得的攻防提升效果在变身后依然保留。变身之前，棋绮后的特性可被正常触发，其效果将在变身后生效。",
+    "trait_score": 0,
+    "trait_pts": {},
+    "skill_score": 135.8,
+    "attr_bonus": 34.6,
+    "attr_detail": {
+      "defense": 64.9,
+      "offense": 12.6,
+      "synergy": 5.5
+    },
+    "stats_score": 27.4,
+    "boss_bonus": 29.9,
+    "recommended_skills": [
+      "迫近攻击",
+      "陨石",
+      "啮合传递",
+      "有效预防"
+    ]
+  },
+  {
+    "id": "声波缇塔",
+    "name": "声波缇塔",
+    "score": 309.3,
+    "attrs": [
+      "机械"
+    ],
+    "stats": {
+      "total": 568,
+      "hp": 92,
+      "atk": 124,
+      "matk": 48,
+      "def": 122,
+      "mdef": 92,
+      "spd": 90
+    },
+    "trait_name": "向心力",
+    "trait_desc": "1号和2号位技能获得传动1和威力+30。",
+    "trait_score": 6.0,
+    "trait_pts": {
+      "威力+": 6.0
+    },
+    "skill_score": 141.4,
+    "attr_bonus": 30.3,
+    "attr_detail": {
+      "defense": 50.4,
+      "offense": 21.0,
+      "synergy": 3
+    },
+    "stats_score": 28.4,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "地刺",
+      "偷袭",
+      "啮合传递",
+      "有效预防"
+    ]
+  },
+  {
+    "id": "鸭吉吉（起来鸭）",
+    "name": "鸭吉吉（起来鸭）",
+    "score": 309.2,
+    "attrs": [
+      "普通"
+    ],
+    "stats": {
+      "total": 512,
+      "hp": 117,
+      "atk": 43,
+      "matk": 104,
+      "def": 62,
+      "mdef": 86,
+      "spd": 100
+    },
+    "trait_name": "挺起胸脯",
+    "trait_desc": "自己携带的能耗等于1的技能，威力+50%。",
+    "trait_score": 10.0,
+    "trait_pts": {
+      "威力+": 10.0
+    },
+    "skill_score": 135.2,
+    "attr_bonus": 12.5,
+    "attr_detail": {
+      "defense": 10.9,
+      "offense": 21.0,
+      "synergy": 3
+    },
+    "stats_score": 25.6,
+    "boss_bonus": 19.1,
+    "recommended_skills": [
+      "吓退",
+      "啮合传递",
+      "力量增效",
+      "扫尾"
+    ]
+  },
+  {
+    "id": "嘟嘟锅",
+    "name": "嘟嘟锅",
+    "score": 308.7,
+    "attrs": [
+      "毒"
+    ],
+    "stats": {
+      "total": 573,
+      "hp": 137,
+      "atk": 36,
+      "matk": 102,
+      "def": 89,
+      "mdef": 104,
+      "spd": 105
+    },
+    "trait_name": "复方汤剂",
+    "trait_desc": "回合结束时，中毒效果触发次数+1。",
+    "trait_score": 8.0,
+    "trait_pts": {
+      "中毒触发+": 8.0
+    },
+    "skill_score": 145.9,
+    "attr_bonus": 16.4,
+    "attr_detail": {
+      "defense": 20.4,
+      "offense": 19.8,
+      "synergy": 3
+    },
+    "stats_score": 28.6,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "吓退",
+      "啮合传递",
+      "焚烧烙印",
+      "毒液渗透"
+    ]
+  },
+  {
+    "id": "棋齐垒（白子）",
+    "name": "棋齐垒（白子）",
+    "score": 308.1,
+    "attrs": [
+      "武",
+      "地"
+    ],
+    "stats": {
+      "total": 489,
+      "hp": 89,
+      "atk": 94,
+      "matk": 38,
+      "def": 116,
+      "mdef": 77,
+      "spd": 75
+    },
+    "trait_name": "保卫",
+    "trait_desc": "自身以防御技能应对2次后，回满状态，变身为【棋绮后】。变身后，基础种族值与特性变为棋绮后，但不改变已携带的技能。变身前获得的攻防提升效果在变身后依然保留。变身之前，棋绮后的特性可被正常触发，其效果将在变身后生效。",
+    "trait_score": 0,
+    "trait_pts": {},
+    "skill_score": 135.2,
+    "attr_bonus": 34.6,
+    "attr_detail": {
+      "defense": 64.9,
+      "offense": 12.6,
+      "synergy": 5.5
+    },
+    "stats_score": 24.4,
+    "boss_bonus": 40.7,
+    "recommended_skills": [
+      "迫近攻击",
+      "岩脉崩毁",
+      "啮合传递",
+      "有效预防"
+    ]
+  },
+  {
+    "id": "棋齐垒（黑子）",
+    "name": "棋齐垒（黑子）",
+    "score": 308.1,
+    "attrs": [
+      "武",
+      "地"
+    ],
+    "stats": {
+      "total": 489,
+      "hp": 89,
+      "atk": 94,
+      "matk": 38,
+      "def": 116,
+      "mdef": 77,
+      "spd": 75
+    },
+    "trait_name": "保卫",
+    "trait_desc": "自身以防御技能应对2次后，回满状态，变身为【棋绮后】。变身后，基础种族值与特性变为棋绮后，但不改变已携带的技能。变身前获得的攻防提升效果在变身后依然保留。变身之前，棋绮后的特性可被正常触发，其效果将在变身后生效。",
+    "trait_score": 0,
+    "trait_pts": {},
+    "skill_score": 135.2,
+    "attr_bonus": 34.6,
+    "attr_detail": {
+      "defense": 64.9,
+      "offense": 12.6,
+      "synergy": 5.5
+    },
+    "stats_score": 24.4,
+    "boss_bonus": 40.7,
+    "recommended_skills": [
+      "迫近攻击",
+      "岩脉崩毁",
+      "啮合传递",
+      "有效预防"
     ]
   },
   {
     "id": "梦悠悠",
     "name": "梦悠悠",
-    "score": 381.6,
+    "score": 307.8,
     "attrs": [
       "幽",
       "光"
@@ -569,8 +1896,14 @@
       "离场惩罚": 6
     },
     "skill_score": 96.8,
-    "attr_bonus": 100,
+    "attr_bonus": 26.2,
+    "attr_detail": {
+      "defense": 41.2,
+      "offense": 22.2,
+      "synergy": 1.5
+    },
     "stats_score": 28.9,
+    "boss_bonus": 0,
     "recommended_skills": [
       "防御",
       "魔法增效",
@@ -579,141 +1912,87 @@
     ]
   },
   {
-    "id": "九幽菇",
-    "name": "九幽菇",
-    "score": 381.5,
+    "id": "棋绮后（白子）",
+    "name": "棋绮后（白子）",
+    "score": 307.6,
     "attrs": [
-      "地",
-      "草"
+      "武",
+      "地"
     ],
     "stats": {
-      "total": 627,
-      "hp": 149,
-      "atk": 102,
-      "matk": 95,
-      "def": 116,
-      "mdef": 95,
-      "spd": 70
+      "total": 508,
+      "hp": 93,
+      "atk": 84,
+      "matk": 84,
+      "def": 82,
+      "mdef": 75,
+      "spd": 90
     },
-    "trait_name": "多人宿舍",
-    "trait_desc": "自己的能量可以超过能量上限。",
-    "trait_score": 8,
+    "trait_name": "渗透",
+    "trait_desc": "己方精灵每使用1次武系或地系技能，自己入场时获得攻防+5%。",
+    "trait_score": 3,
     "trait_pts": {
-      "上限突破": 8
+      "入场效果": 3
     },
-    "skill_score": 123.9,
-    "attr_bonus": 100,
-    "stats_score": 31.4,
+    "skill_score": 135.8,
+    "attr_bonus": 34.6,
+    "attr_detail": {
+      "defense": 64.9,
+      "offense": 12.6,
+      "synergy": 5.5
+    },
+    "stats_score": 25.4,
+    "boss_bonus": 23.6,
     "recommended_skills": [
-      "防御",
+      "迫近攻击",
+      "啮合传递",
       "陨石",
-      "藤绞",
-      "芳香诱引"
+      "有效预防"
     ]
   },
   {
-    "id": "炽心勇狮",
-    "name": "炽心勇狮",
-    "score": 380.7,
+    "id": "棋绮后（黑子）",
+    "name": "棋绮后（黑子）",
+    "score": 307.6,
     "attrs": [
-      "火",
-      "武"
+      "武",
+      "地"
     ],
     "stats": {
-      "total": 597,
-      "hp": 137,
-      "atk": 51,
-      "matk": 111,
-      "def": 88,
-      "mdef": 130,
-      "spd": 80
+      "total": 508,
+      "hp": 93,
+      "atk": 84,
+      "matk": 84,
+      "def": 82,
+      "mdef": 75,
+      "spd": 90
     },
-    "trait_name": "圣火骑士",
-    "trait_desc": "应对成功后，下次攻击威力翻倍。",
-    "trait_score": 10,
+    "trait_name": "渗透",
+    "trait_desc": "己方精灵每使用1次武系或地系技能，自己入场时获得攻防+5%。",
+    "trait_score": 3,
     "trait_pts": {
-      "应对威力翻倍": 10
+      "入场效果": 3
     },
-    "skill_score": 121.1,
-    "attr_bonus": 100,
-    "stats_score": 29.9,
+    "skill_score": 135.8,
+    "attr_bonus": 34.6,
+    "attr_detail": {
+      "defense": 64.9,
+      "offense": 12.6,
+      "synergy": 5.5
+    },
+    "stats_score": 25.4,
+    "boss_bonus": 23.6,
     "recommended_skills": [
-      "防御",
-      "魔法增效",
-      "怒火",
-      "焚毁"
-    ]
-  },
-  {
-    "id": "翼龙",
-    "name": "翼龙",
-    "score": 379.0,
-    "attrs": [
-      "龙",
-      "翼"
-    ],
-    "stats": {
-      "total": 513,
-      "hp": 83,
-      "atk": 114,
-      "matk": 31,
-      "def": 91,
-      "mdef": 79,
-      "spd": 115
-    },
-    "trait_name": "暴食",
-    "trait_desc": "携带的龙系技能获得迅捷。",
-    "trait_score": 14,
-    "trait_pts": {
-      "迅捷": 14
-    },
-    "skill_score": 120.6,
-    "attr_bonus": 100,
-    "stats_score": 25.6,
-    "recommended_skills": [
-      "力量增效",
-      "龙吟",
-      "龙威",
-      "羽刃"
-    ]
-  },
-  {
-    "id": "燃薪虫",
-    "name": "燃薪虫",
-    "score": 377.3,
-    "attrs": [
-      "火",
-      "草"
-    ],
-    "stats": {
-      "total": 579,
-      "hp": 135,
-      "atk": 120,
-      "matk": 48,
-      "def": 103,
-      "mdef": 73,
-      "spd": 100
-    },
-    "trait_name": "煤渣草",
-    "trait_desc": "在场时，所有灼烧的衰减变为增长。",
-    "trait_score": 12,
-    "trait_pts": {
-      "灼烧逆转": 12
-    },
-    "skill_score": 113.7,
-    "attr_bonus": 100,
-    "stats_score": 28.9,
-    "recommended_skills": [
-      "高温回火",
-      "火焰护盾",
-      "纤维化",
-      "藤绞"
+      "迫近攻击",
+      "啮合传递",
+      "陨石",
+      "有效预防"
     ]
   },
   {
     "id": "武者鸡",
     "name": "武者鸡",
-    "score": 376.6,
+    "score": 307.4,
     "attrs": [
       "火",
       "武"
@@ -734,188 +2013,26 @@
       "全技能威力+": 2.8,
       "应对触发": 4
     },
-    "skill_score": 133.4,
-    "attr_bonus": 100,
+    "skill_score": 135.6,
+    "attr_bonus": 28.6,
+    "attr_detail": {
+      "defense": 52.5,
+      "offense": 7.8,
+      "synergy": 11.0
+    },
     "stats_score": 29.0,
+    "boss_bonus": 0,
     "recommended_skills": [
-      "力量增效",
+      "截拳",
       "焚烧烙印",
-      "火焰切割",
-      "截拳"
-    ]
-  },
-  {
-    "id": "蒲公英娃娃",
-    "name": "蒲公英娃娃",
-    "score": 375.3,
-    "attrs": [
-      "草",
-      "萌"
-    ],
-    "stats": {
-      "total": 642,
-      "hp": 111,
-      "atk": 123,
-      "matk": 117,
-      "def": 129,
-      "mdef": 97,
-      "spd": 65
-    },
-    "trait_name": "勇敢",
-    "trait_desc": "自身携带的能耗大于3的技能，威力+40%。",
-    "trait_score": 8.0,
-    "trait_pts": {
-      "威力+": 8.0
-    },
-    "skill_score": 114.9,
-    "attr_bonus": 100,
-    "stats_score": 32.1,
-    "recommended_skills": [
-      "倾泻",
-      "丰饶",
-      "光能聚集",
-      "爆米花爆破"
-    ]
-  },
-  {
-    "id": "熔岩布丁",
-    "name": "熔岩布丁",
-    "score": 374.9,
-    "attrs": [
-      "水",
-      "火"
-    ],
-    "stats": {
-      "total": 564,
-      "hp": 128,
-      "atk": 87,
-      "matk": 33,
-      "def": 112,
-      "mdef": 84,
-      "spd": 120
-    },
-    "trait_name": "美拉德反应",
-    "trait_desc": "离场后，更换入场的精灵获得双攻+20%且免疫灼烧。",
-    "trait_score": 11.9,
-    "trait_pts": {
-      "攻+%": 3.9,
-      "入场效果": 3,
-      "离场增益": 5
-    },
-    "skill_score": 114.5,
-    "attr_bonus": 100,
-    "stats_score": 28.2,
-    "recommended_skills": [
-      "泡沫幻影",
-      "水刃",
-      "怒火",
-      "火焰切割"
-    ]
-  },
-  {
-    "id": "白发路路",
-    "name": "白发路路",
-    "score": 374.7,
-    "attrs": [
-      "草",
-      "萌"
-    ],
-    "stats": {
-      "total": 633,
-      "hp": 86,
-      "atk": 100,
-      "matk": 107,
-      "def": 113,
-      "mdef": 132,
-      "spd": 95
-    },
-    "trait_name": "营养液泡",
-    "trait_desc": "获得增益时，额外获得层数+2。",
-    "trait_score": 10,
-    "trait_pts": {
-      "增益翻倍": 10
-    },
-    "skill_score": 108.3,
-    "attr_bonus": 100,
-    "stats_score": 31.6,
-    "recommended_skills": [
-      "防御",
-      "击鼓传花",
-      "光合作用",
-      "光能聚集"
-    ]
-  },
-  {
-    "id": "卡洛儿",
-    "name": "卡洛儿",
-    "score": 372.5,
-    "attrs": [
-      "水",
-      "萌"
-    ],
-    "stats": {
-      "total": 619,
-      "hp": 114,
-      "atk": 102,
-      "matk": 107,
-      "def": 82,
-      "mdef": 124,
-      "spd": 90
-    },
-    "trait_name": "守护者",
-    "trait_desc": "己方其他精灵每有1层萌化，自己入场时全技能能耗-1。",
-    "trait_score": 6.3,
-    "trait_pts": {
-      "全技能能耗-": 3.3,
-      "入场效果": 3
-    },
-    "skill_score": 123.7,
-    "attr_bonus": 100,
-    "stats_score": 30.9,
-    "recommended_skills": [
-      "泡沫幻影",
-      "魔法增效",
-      "打湿",
-      "水刃"
-    ]
-  },
-  {
-    "id": "秩序鱿墨",
-    "name": "秩序鱿墨",
-    "score": 372.4,
-    "attrs": [
-      "幽",
-      "萌"
-    ],
-    "stats": {
-      "total": 604,
-      "hp": 78,
-      "atk": 120,
-      "matk": 39,
-      "def": 124,
-      "mdef": 113,
-      "spd": 130
-    },
-    "trait_name": "绝对秩序",
-    "trait_desc": "受到非敌方系别的技能攻击时伤害-50%。",
-    "trait_score": 10,
-    "trait_pts": {
-      "减伤": 10
-    },
-    "skill_score": 111.6,
-    "attr_bonus": 100,
-    "stats_score": 30.2,
-    "recommended_skills": [
-      "能量刃",
-      "虚化",
-      "坟场搏击",
-      "降灵"
+      "力量增效",
+      "防御"
     ]
   },
   {
     "id": "獠牙猪",
     "name": "獠牙猪",
-    "score": 371.9,
+    "score": 306.0,
     "attrs": [
       "冰",
       "地"
@@ -936,285 +2053,26 @@
       "威力+": 1.1,
       "系别加成": 6
     },
-    "skill_score": 127.9,
-    "attr_bonus": 100,
+    "skill_score": 127.0,
+    "attr_bonus": 35.0,
+    "attr_detail": {
+      "defense": 56.4,
+      "offense": 23.4,
+      "synergy": 8.5
+    },
     "stats_score": 28.9,
+    "boss_bonus": 0,
     "recommended_skills": [
-      "力量增效",
-      "防御",
       "地刺",
-      "滚雪球"
-    ]
-  },
-  {
-    "id": "波多西",
-    "name": "波多西",
-    "score": 371.3,
-    "attrs": [
-      "机械",
-      "地"
-    ],
-    "stats": {
-      "total": 573,
-      "hp": 106,
-      "atk": 122,
-      "matk": 43,
-      "def": 136,
-      "mdef": 116,
-      "spd": 50
-    },
-    "trait_name": "定向精炼",
-    "trait_desc": "己方精灵每使用1次防御技能，自己入场时机械系和地面系技能威力+10%。",
-    "trait_score": 4.1,
-    "trait_pts": {
-      "威力+": 1.1,
-      "入场效果": 3
-    },
-    "skill_score": 140.5,
-    "attr_bonus": 100,
-    "stats_score": 28.6,
-    "recommended_skills": [
-      "先发制人",
-      "啮合传递",
-      "壁垒",
-      "地刺"
-    ]
-  },
-  {
-    "id": "迷迷箱怪",
-    "name": "迷迷箱怪",
-    "score": 370.9,
-    "attrs": [
-      "机械",
-      "幻"
-    ],
-    "stats": {
-      "total": 782,
-      "hp": 138,
-      "atk": 129,
-      "matk": 129,
-      "def": 153,
-      "mdef": 153,
-      "spd": 80
-    },
-    "trait_name": "虚假宝箱",
-    "trait_desc": "自己力竭时，敌方获得攻防+20%。",
-    "trait_score": 0,
-    "trait_pts": {},
-    "skill_score": 114.5,
-    "attr_bonus": 100,
-    "stats_score": 39.1,
-    "recommended_skills": [
-      "啮合传递",
-      "防御",
-      "冥想",
-      "错乱"
-    ]
-  },
-  {
-    "id": "暮星辰",
-    "name": "暮星辰",
-    "score": 370.1,
-    "attrs": [
-      "幻",
-      "翼"
-    ],
-    "stats": {
-      "total": 574,
-      "hp": 87,
-      "atk": 41,
-      "matk": 123,
-      "def": 86,
-      "mdef": 112,
-      "spd": 125
-    },
-    "trait_name": "守望星",
-    "trait_desc": "触发星陨时仅消耗一半层数，仍造成满层伤害。",
-    "trait_score": 12,
-    "trait_pts": {
-      "星陨效率": 12
-    },
-    "skill_score": 107.3,
-    "attr_bonus": 100,
-    "stats_score": 28.7,
-    "recommended_skills": [
-      "魔法增效",
-      "乘风",
-      "坍缩",
-      "翼击"
-    ]
-  },
-  {
-    "id": "食尘短绒",
-    "name": "食尘短绒",
-    "score": 367.7,
-    "attrs": [
-      "虫",
-      "地"
-    ],
-    "stats": {
-      "total": 576,
-      "hp": 109,
-      "atk": 105,
-      "matk": 37,
-      "def": 113,
-      "mdef": 97,
-      "spd": 115
-    },
-    "trait_name": "特殊清洁场景",
-    "trait_desc": "回合结束时偷取敌方1层印记。",
-    "trait_score": 10,
-    "trait_pts": {
-      "偷印记": 10
-    },
-    "skill_score": 112.5,
-    "attr_bonus": 100,
-    "stats_score": 28.8,
-    "recommended_skills": [
-      "防御",
-      "壁垒",
-      "石锁",
-      "翅刃"
-    ]
-  },
-  {
-    "id": "棋绮后",
-    "name": "棋绮后",
-    "score": 365.5,
-    "attrs": [
-      "武",
-      "地"
-    ],
-    "stats": {
-      "total": 748,
-      "hp": 108,
-      "atk": 150,
-      "matk": 150,
-      "def": 130,
-      "mdef": 120,
-      "spd": 90
-    },
-    "trait_name": "御驾亲征",
-    "trait_desc": "棋契陛下大幅提升种族值，力竭时扣除4点魔力值。",
-    "trait_score": 0,
-    "trait_pts": {
-      "种族值+": 12,
-      "高魔力惩罚": -12
-    },
-    "skill_score": 115.9,
-    "attr_bonus": 100,
-    "stats_score": 37.4,
-    "recommended_skills": [
-      "魔法增效",
-      "防御",
-      "力量增效",
-      "岩脉崩毁"
-    ]
-  },
-  {
-    "id": "化蝶",
-    "name": "化蝶",
-    "score": 364.5,
-    "attrs": [
-      "虫",
-      "萌"
-    ],
-    "stats": {
-      "total": 362,
-      "hp": 55,
-      "atk": 46,
-      "matk": 44,
-      "def": 62,
-      "mdef": 65,
-      "spd": 90
-    },
-    "trait_name": "化茧",
-    "trait_desc": "受到致命伤害时，获得1层萌化，并免疫此次伤害。此特性最多触发两次，如果在最低形态受到致命伤害，将被直接击败。",
-    "trait_score": 22,
-    "trait_pts": {
-      "免死": 22
-    },
-    "skill_score": 104.1,
-    "attr_bonus": 100,
-    "stats_score": 18.1,
-    "recommended_skills": [
-      "防御",
-      "掩护",
-      "食腐",
-      "爆米花爆破"
-    ]
-  },
-  {
-    "id": "帅帅魔偶",
-    "name": "帅帅魔偶",
-    "score": 364.0,
-    "attrs": [
-      "幻"
-    ],
-    "stats": {
-      "total": 605,
-      "hp": 111,
-      "atk": 91,
-      "matk": 96,
-      "def": 83,
-      "mdef": 119,
-      "spd": 105
-    },
-    "trait_name": "盲从",
-    "trait_desc": "可以携带多个随机技能类技能（包括借用，复写，取念），非幻系技能能耗-2。",
-    "trait_score": 18.0,
-    "trait_pts": {
-      "技能能耗-": 8.0,
-      "携带能耗-": 10.0
-    },
-    "skill_score": 121.2,
-    "attr_bonus": 50,
-    "stats_score": 30.2,
-    "recommended_skills": [
-      "防御",
-      "消毒法",
-      "丰饶",
-      "魔法增效"
-    ]
-  },
-  {
-    "id": "鳗尾兽",
-    "name": "鳗尾兽",
-    "score": 363.2,
-    "attrs": [
-      "地",
-      "草"
-    ],
-    "stats": {
-      "total": 788,
-      "hp": 290,
-      "atk": 91,
-      "matk": 91,
-      "def": 138,
-      "mdef": 113,
-      "spd": 65
-    },
-    "trait_name": "铃兰晚钟",
-    "trait_desc": "首次入场时，失去自己一半的当前生命。",
-    "trait_score": -3,
-    "trait_pts": {
-      "入场效果": 3,
-      "自伤": -6
-    },
-    "skill_score": 117.6,
-    "attr_bonus": 100,
-    "stats_score": 39.4,
-    "recommended_skills": [
-      "防御",
-      "践踏",
-      "地刺",
-      "抽枝"
+      "冰雹",
+      "惊吓盒子",
+      "防御"
     ]
   },
   {
     "id": "针叶巡林",
     "name": "针叶巡林",
-    "score": 362.8,
+    "score": 305.9,
     "attrs": [
       "草",
       "武"
@@ -1234,317 +2092,26 @@
     "trait_pts": {
       "先手+": 6
     },
-    "skill_score": 112.0,
-    "attr_bonus": 100,
+    "skill_score": 132.2,
+    "attr_bonus": 22.9,
+    "attr_detail": {
+      "defense": 44.4,
+      "offense": 7.8,
+      "synergy": 1.5
+    },
     "stats_score": 31.7,
+    "boss_bonus": 0,
     "recommended_skills": [
-      "力量增效",
-      "藤绞",
-      "防御",
-      "先发制人"
-    ]
-  },
-  {
-    "id": "卡拉波斯",
-    "name": "卡拉波斯",
-    "score": 362.6,
-    "attrs": [
-      "恶"
-    ],
-    "stats": {
-      "total": 542,
-      "hp": 123,
-      "atk": 134,
-      "matk": 50,
-      "def": 75,
-      "mdef": 60,
-      "spd": 100
-    },
-    "trait_name": "悬一线",
-    "trait_desc": "首次受到致命伤害时，保留1生命值，眩晕敌方一回合。",
-    "trait_score": 22,
-    "trait_pts": {
-      "免死": 22
-    },
-    "skill_score": 116.2,
-    "attr_bonus": 50,
-    "stats_score": 27.1,
-    "recommended_skills": [
-      "棘刺",
-      "天旋地转",
-      "防御",
-      "消毒法"
-    ]
-  },
-  {
-    "id": "海豹船长",
-    "name": "海豹船长",
-    "score": 362.4,
-    "attrs": [
-      "武",
-      "水"
-    ],
-    "stats": {
-      "total": 600,
-      "hp": 90,
-      "atk": 113,
-      "matk": 109,
-      "def": 111,
-      "mdef": 77,
-      "spd": 100
-    },
-    "trait_name": "身经百练",
-    "trait_desc": "己方精灵每应对1次，自己入场时水系和武系技能威力+20%。",
-    "trait_score": 5.2,
-    "trait_pts": {
-      "威力+": 2.2,
-      "入场效果": 3
-    },
-    "skill_score": 121.6,
-    "attr_bonus": 100,
-    "stats_score": 30.0,
-    "recommended_skills": [
-      "魔法增效",
-      "水泡盾",
-      "力量增效",
-      "斩断"
-    ]
-  },
-  {
-    "id": "千棘盔",
-    "name": "千棘盔",
-    "score": 361.2,
-    "attrs": [
-      "水",
-      "毒"
-    ],
-    "stats": {
-      "total": 562,
-      "hp": 118,
-      "atk": 32,
-      "matk": 85,
-      "def": 94,
-      "mdef": 133,
-      "spd": 100
-    },
-    "trait_name": "溶解腐蚀",
-    "trait_desc": "每携带1个毒系技能进入战斗，水系技能使敌方获得2层中毒。",
-    "trait_score": 10.4,
-    "trait_pts": {
-      "中毒层": 4.4,
-      "系别加成": 6
-    },
-    "skill_score": 107.2,
-    "attr_bonus": 100,
-    "stats_score": 28.1,
-    "recommended_skills": [
-      "许愿星",
-      "疫病吐息",
-      "泡沫幻影",
-      "感染病"
-    ]
-  },
-  {
-    "id": "蹦蹦花",
-    "name": "蹦蹦花",
-    "score": 361.1,
-    "attrs": [
-      "草",
-      "毒"
-    ],
-    "stats": {
-      "total": 540,
-      "hp": 100,
-      "atk": 87,
-      "matk": 90,
-      "def": 73,
-      "mdef": 105,
-      "spd": 85
-    },
-    "trait_name": "高浓生物碱",
-    "trait_desc": "使用技能时，敌方获得2层中毒。",
-    "trait_score": 8.0,
-    "trait_pts": {
-      "中毒层": 8.0
-    },
-    "skill_score": 121.1,
-    "attr_bonus": 100,
-    "stats_score": 27.0,
-    "recommended_skills": [
-      "防御",
-      "蜡质膜",
-      "毒液渗透",
-      "芳香诱引"
-    ]
-  },
-  {
-    "id": "锤头鹳",
-    "name": "锤头鹳",
-    "score": 359.9,
-    "attrs": [
-      "翼",
-      "水"
-    ],
-    "stats": {
-      "total": 511,
-      "hp": 111,
-      "atk": 67,
-      "matk": 65,
-      "def": 91,
-      "mdef": 72,
-      "spd": 105
-    },
-    "trait_name": "快锤",
-    "trait_desc": "携带的能耗小于3的技能，获得迅捷。",
-    "trait_score": 14,
-    "trait_pts": {
-      "迅捷": 14
-    },
-    "skill_score": 101.5,
-    "attr_bonus": 100,
-    "stats_score": 25.6,
-    "recommended_skills": [
-      "魔法增效",
-      "羽翼庇护",
-      "风起",
-      "翼击"
-    ]
-  },
-  {
-    "id": "卷毛鸭",
-    "name": "卷毛鸭",
-    "score": 359.7,
-    "attrs": [
-      "草",
-      "武"
-    ],
-    "stats": {
-      "total": 504,
-      "hp": 116,
-      "atk": 98,
-      "matk": 29,
-      "def": 83,
-      "mdef": 63,
-      "spd": 115
-    },
-    "trait_name": "得寸进尺",
-    "trait_desc": "天气为雨天，或处于其他水系环境中时，获得双攻+100%。",
-    "trait_score": 12.2,
-    "trait_pts": {
-      "攻+%": 12.2
-    },
-    "skill_score": 110.1,
-    "attr_bonus": 100,
-    "stats_score": 25.2,
-    "recommended_skills": [
-      "崩拳",
-      "力量增效",
-      "藤绞",
-      "先发制人"
-    ]
-  },
-  {
-    "id": "上岸蛙",
-    "name": "上岸蛙",
-    "score": 359.2,
-    "attrs": [
-      "幻"
-    ],
-    "stats": {
-      "total": 554,
-      "hp": 114,
-      "atk": 106,
-      "matk": 44,
-      "def": 101,
-      "mdef": 69,
-      "spd": 120
-    },
-    "trait_name": "张弛有度",
-    "trait_desc": "周末时自己获得双攻+40%，其他时间获得双防+40%。",
-    "trait_score": 23.2,
-    "trait_pts": {
-      "攻+%": 14.0,
-      "防+%": 9.2
-    },
-    "skill_score": 105.6,
-    "attr_bonus": 50,
-    "stats_score": 27.7,
-    "recommended_skills": [
-      "力量增效",
-      "防御",
-      "空间压迫",
-      "二律背反"
-    ]
-  },
-  {
-    "id": "立方人",
-    "name": "立方人",
-    "score": 358.3,
-    "attrs": [
-      "机械"
-    ],
-    "stats": {
-      "total": 605,
-      "hp": 103,
-      "atk": 135,
-      "matk": 54,
-      "def": 127,
-      "mdef": 101,
-      "spd": 85
-    },
-    "trait_name": "盲拧",
-    "trait_desc": "回合开始时，技能顺序打乱，4号位的技能能耗-4。",
-    "trait_score": 16.0,
-    "trait_pts": {
-      "技能能耗-": 16.0
-    },
-    "skill_score": 123.5,
-    "attr_bonus": 50,
-    "stats_score": 30.2,
-    "recommended_skills": [
-      "防御",
-      "啮合传递",
-      "齿轮扭矩",
-      "力量增效"
-    ]
-  },
-  {
-    "id": "画间沉铁兽",
-    "name": "画间沉铁兽",
-    "score": 355.7,
-    "attrs": [
-      "普通",
-      "武"
-    ],
-    "stats": {
-      "total": 608,
-      "hp": 100,
-      "atk": 160,
-      "matk": 67,
-      "def": 100,
-      "mdef": 76,
-      "spd": 105
-    },
-    "trait_name": "变形活画",
-    "trait_desc": "攻击时，敌方每有1层增益，本次技能威力+10%。",
-    "trait_score": 2.0,
-    "trait_pts": {
-      "威力+": 2.0
-    },
-    "skill_score": 126.1,
-    "attr_bonus": 100,
-    "stats_score": 30.4,
-    "recommended_skills": [
-      "魔法增效",
-      "防御",
-      "力量增效",
-      "截拳"
+      "地刺",
+      "截拳",
+      "偷袭",
+      "防御"
     ]
   },
   {
     "id": "芋香巨角蛛",
     "name": "芋香巨角蛛",
-    "score": 354.5,
+    "score": 305.7,
     "attrs": [
       "虫",
       "毒"
@@ -1564,53 +2131,103 @@
     "trait_pts": {
       "中毒层": 16.0
     },
-    "skill_score": 89.3,
-    "attr_bonus": 100,
+    "skill_score": 122.7,
+    "attr_bonus": 17.8,
+    "attr_detail": {
+      "defense": 33.9,
+      "offense": 7.8,
+      "synergy": 0.0
+    },
     "stats_score": 25.3,
+    "boss_bonus": 0,
     "recommended_skills": [
-      "以毒攻毒",
-      "啃咬",
-      "力量增效",
-      "毒液渗透"
+      "嘲弄",
+      "惊吓盒子",
+      "感染病",
+      "防御"
     ]
   },
   {
-    "id": "邪眼巨魔",
-    "name": "邪眼巨魔",
-    "score": 353.8,
+    "id": "流浪鼠",
+    "name": "流浪鼠",
+    "score": 304.4,
     "attrs": [
-      "恶",
-      "虫"
+      "地"
     ],
     "stats": {
-      "total": 586,
-      "hp": 102,
-      "atk": 85,
-      "matk": 88,
-      "def": 108,
-      "mdef": 108,
-      "spd": 95
+      "total": 563,
+      "hp": 90,
+      "atk": 46,
+      "matk": 116,
+      "def": 84,
+      "mdef": 112,
+      "spd": 115
     },
-    "trait_name": "暗流",
-    "trait_desc": "和下一只入场的精灵交换血量百分比。",
-    "trait_score": 3,
+    "trait_name": "奔波命",
+    "trait_desc": "使用防御技能后，回合结束时脱离。",
+    "trait_score": 8,
     "trait_pts": {
-      "入场效果": 3
+      "脱离": 8
     },
-    "skill_score": 124.6,
-    "attr_bonus": 100,
-    "stats_score": 29.3,
+    "skill_score": 139.6,
+    "attr_bonus": 20.4,
+    "attr_detail": {
+      "defense": 22.3,
+      "offense": 29.4,
+      "synergy": 3
+    },
+    "stats_score": 28.1,
+    "boss_bonus": 0,
     "recommended_skills": [
-      "防御",
-      "风墙",
-      "迫近攻击",
-      "消毒法"
+      "吓退",
+      "掩护",
+      "陨石",
+      "倾泻"
+    ]
+  },
+  {
+    "id": "锤头鹳",
+    "name": "锤头鹳",
+    "score": 303.9,
+    "attrs": [
+      "翼",
+      "水"
+    ],
+    "stats": {
+      "total": 511,
+      "hp": 111,
+      "atk": 67,
+      "matk": 65,
+      "def": 91,
+      "mdef": 72,
+      "spd": 105
+    },
+    "trait_name": "快锤",
+    "trait_desc": "携带的能耗小于3的技能，获得迅捷。",
+    "trait_score": 14,
+    "trait_pts": {
+      "迅捷": 14
+    },
+    "skill_score": 122.5,
+    "attr_bonus": 23.0,
+    "attr_detail": {
+      "defense": 37.7,
+      "offense": 17.4,
+      "synergy": 1.5
+    },
+    "stats_score": 25.6,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "啮合传递",
+      "虹光冲击",
+      "翼击",
+      "防御"
     ]
   },
   {
     "id": "水泡壳",
     "name": "水泡壳",
-    "score": 353.6,
+    "score": 303.7,
     "attrs": [
       "水"
     ],
@@ -1630,378 +2247,26 @@
       "技能能耗-": 8.0,
       "携带能耗-": 10.0
     },
-    "skill_score": 116.0,
-    "attr_bonus": 50,
+    "skill_score": 98.2,
+    "attr_bonus": 17.9,
+    "attr_detail": {
+      "defense": 20.2,
+      "offense": 24.6,
+      "synergy": 3
+    },
     "stats_score": 28.9,
+    "boss_bonus": 0,
     "recommended_skills": [
       "魔法增效",
-      "水泡盾",
+      "后发制人",
       "水炮",
       "泡沫幻影"
     ]
   },
   {
-    "id": "绒仙子",
-    "name": "绒仙子",
-    "score": 352.8,
-    "attrs": [
-      "光",
-      "虫"
-    ],
-    "stats": {
-      "total": 569,
-      "hp": 96,
-      "atk": 71,
-      "matk": 73,
-      "def": 81,
-      "mdef": 133,
-      "spd": 115
-    },
-    "trait_name": "绒粉星光",
-    "trait_desc": "攻击时，若敌方血脉是非本系的系别血脉，技能威力+100%。",
-    "trait_score": 11.0,
-    "trait_pts": {
-      "威力+": 11.0
-    },
-    "skill_score": 95.2,
-    "attr_bonus": 100,
-    "stats_score": 28.4,
-    "recommended_skills": [
-      "镜像反射",
-      "啃咬",
-      "力量增效",
-      "虹光冲击"
-    ]
-  },
-  {
-    "id": "乌拉塔",
-    "name": "乌拉塔",
-    "score": 352.4,
-    "attrs": [
-      "恶",
-      "冰"
-    ],
-    "stats": {
-      "total": 622,
-      "hp": 160,
-      "atk": 158,
-      "matk": 91,
-      "def": 106,
-      "mdef": 57,
-      "spd": 50
-    },
-    "trait_name": "恶魔的晚宴",
-    "trait_desc": "主动击败敌方精灵时，自己获得双攻+50%。",
-    "trait_score": 6.1,
-    "trait_pts": {
-      "攻+%": 6.1
-    },
-    "skill_score": 103.6,
-    "attr_bonus": 100,
-    "stats_score": 31.1,
-    "recommended_skills": [
-      "力量增效",
-      "恶意逃离",
-      "冰晶坠",
-      "暗突袭"
-    ]
-  },
-  {
-    "id": "利灯鱼",
-    "name": "利灯鱼",
-    "score": 351.0,
-    "attrs": [
-      "水",
-      "电"
-    ],
-    "stats": {
-      "total": 626,
-      "hp": 128,
-      "atk": 68,
-      "matk": 138,
-      "def": 71,
-      "mdef": 116,
-      "spd": 105
-    },
-    "trait_name": "对流",
-    "trait_desc": "自己的能耗增加变为能耗降低；能耗降低变为能耗增加。",
-    "trait_score": 0,
-    "trait_pts": {},
-    "skill_score": 125.8,
-    "attr_bonus": 100,
-    "stats_score": 31.3,
-    "recommended_skills": [
-      "超导",
-      "加大功率",
-      "润泽",
-      "倾泻"
-    ]
-  },
-  {
-    "id": "噼啪鸟",
-    "name": "噼啪鸟",
-    "score": 349.9,
-    "attrs": [
-      "电",
-      "翼"
-    ],
-    "stats": {
-      "total": 618,
-      "hp": 78,
-      "atk": 116,
-      "matk": 109,
-      "def": 85,
-      "mdef": 85,
-      "spd": 145
-    },
-    "trait_name": "连续负荷",
-    "trait_desc": "自己技能的迸发效果延长1回合。",
-    "trait_score": 0,
-    "trait_pts": {},
-    "skill_score": 126.3,
-    "attr_bonus": 100,
-    "stats_score": 30.9,
-    "recommended_skills": [
-      "魔法增效",
-      "电弧",
-      "天旋地转",
-      "翼击"
-    ]
-  },
-  {
-    "id": "巨噬针鼹",
-    "name": "巨噬针鼹",
-    "score": 348.8,
-    "attrs": [
-      "普通"
-    ],
-    "stats": {
-      "total": 562,
-      "hp": 158,
-      "atk": 93,
-      "matk": 41,
-      "def": 117,
-      "mdef": 68,
-      "spd": 85
-    },
-    "trait_name": "壮胆",
-    "trait_desc": "队伍存在虫系精灵，自己获得双攻+50%。",
-    "trait_score": 17.5,
-    "trait_pts": {
-      "攻+%": 17.5
-    },
-    "skill_score": 116.4,
-    "attr_bonus": 50,
-    "stats_score": 28.1,
-    "recommended_skills": [
-      "力量增效",
-      "防御",
-      "摇篮曲",
-      "阻断"
-    ]
-  },
-  {
-    "id": "幻影灵菇",
-    "name": "幻影灵菇",
-    "score": 347.9,
-    "attrs": [
-      "幽",
-      "草"
-    ],
-    "stats": {
-      "total": 621,
-      "hp": 111,
-      "atk": 98,
-      "matk": 98,
-      "def": 103,
-      "mdef": 136,
-      "spd": 75
-    },
-    "trait_name": "毒蘑菇",
-    "trait_desc": "回合结束时，偷取敌方场上所有精灵1能量。",
-    "trait_score": 2.0,
-    "trait_pts": {
-      "偷能量": 2.0
-    },
-    "skill_score": 115.5,
-    "attr_bonus": 100,
-    "stats_score": 31.1,
-    "recommended_skills": [
-      "嘲弄",
-      "降灵",
-      "报复",
-      "藤绞"
-    ]
-  },
-  {
-    "id": "里拉鳐",
-    "name": "里拉鳐",
-    "score": 347.8,
-    "attrs": [
-      "水"
-    ],
-    "stats": {
-      "total": 644,
-      "hp": 118,
-      "atk": 82,
-      "matk": 89,
-      "def": 103,
-      "mdef": 147,
-      "spd": 105
-    },
-    "trait_name": "吟游之弦",
-    "trait_desc": "赋予的印记不会替换其他印记，而是同时生效。",
-    "trait_score": 10,
-    "trait_pts": {
-      "印记共存": 10
-    },
-    "skill_score": 129.0,
-    "attr_bonus": 50,
-    "stats_score": 32.2,
-    "recommended_skills": [
-      "潮汐",
-      "消毒法",
-      "棘刺",
-      "打湿"
-    ]
-  },
-  {
-    "id": "咔咔鸟",
-    "name": "咔咔鸟",
-    "score": 347.3,
-    "attrs": [
-      "翼",
-      "普通"
-    ],
-    "stats": {
-      "total": 631,
-      "hp": 97,
-      "atk": 114,
-      "matk": 110,
-      "def": 101,
-      "mdef": 89,
-      "spd": 120
-    },
-    "trait_name": "咔咔冲刺",
-    "trait_desc": "若先于敌方行动，行动后获得连击数+1。",
-    "trait_score": 4,
-    "trait_pts": {
-      "连击数+": 4
-    },
-    "skill_score": 104.9,
-    "attr_bonus": 100,
-    "stats_score": 31.6,
-    "recommended_skills": [
-      "防御",
-      "魔法增效",
-      "翼击",
-      "追打"
-    ]
-  },
-  {
-    "id": "魔草巫灵",
-    "name": "魔草巫灵",
-    "score": 347.0,
-    "attrs": [
-      "草",
-      "幻"
-    ],
-    "stats": {
-      "total": 592,
-      "hp": 99,
-      "atk": 43,
-      "matk": 112,
-      "def": 109,
-      "mdef": 139,
-      "spd": 90
-    },
-    "trait_name": "木桶戏法",
-    "trait_desc": "离场后，更换入场的精灵以木桶状态登场。",
-    "trait_score": 8,
-    "trait_pts": {
-      "入场效果": 3,
-      "离场增益": 5
-    },
-    "skill_score": 96.6,
-    "attr_bonus": 100,
-    "stats_score": 29.6,
-    "recommended_skills": [
-      "魔法增效",
-      "酶浓度调整",
-      "先发制人",
-      "坍缩"
-    ]
-  },
-  {
-    "id": "小皮球",
-    "name": "小皮球",
-    "score": 346.7,
-    "attrs": [
-      "电",
-      "幻"
-    ],
-    "stats": {
-      "total": 618,
-      "hp": 116,
-      "atk": 68,
-      "matk": 127,
-      "def": 71,
-      "mdef": 126,
-      "spd": 110
-    },
-    "trait_name": "星地善良",
-    "trait_desc": "回合结束时，若场上的己方精灵能量等于0，自己立即替换此精灵。",
-    "trait_score": 8,
-    "trait_pts": {
-      "自动替换": 8
-    },
-    "skill_score": 91.1,
-    "attr_bonus": 100,
-    "stats_score": 30.9,
-    "recommended_skills": [
-      "超导",
-      "电磁偏转",
-      "魔法增效",
-      "超维投射"
-    ]
-  },
-  {
-    "id": "兽花蕾",
-    "name": "兽花蕾",
-    "score": 346.1,
-    "attrs": [
-      "光",
-      "草"
-    ],
-    "stats": {
-      "total": 513,
-      "hp": 70,
-      "atk": 79,
-      "matk": 82,
-      "def": 70,
-      "mdef": 97,
-      "spd": 115
-    },
-    "trait_name": "稀兽花宝",
-    "trait_desc": "根据自己的血脉，入场时获得不同效果。",
-    "trait_score": 3,
-    "trait_pts": {
-      "入场效果": 3
-    },
-    "skill_score": 131.7,
-    "attr_bonus": 100,
-    "stats_score": 25.6,
-    "recommended_skills": [
-      "魔法增效",
-      "镜像反射",
-      "迫近攻击",
-      "芳香诱引"
-    ]
-  },
-  {
     "id": "电企鹅",
     "name": "电企鹅",
-    "score": 346.1,
+    "score": 303.4,
     "attrs": [
       "冰",
       "电"
@@ -2022,52 +2287,104 @@
       "敌能耗+": 3.0,
       "迸发能耗-": 6
     },
-    "skill_score": 93.7,
-    "attr_bonus": 100,
+    "skill_score": 124.7,
+    "attr_bonus": 26.3,
+    "attr_detail": {
+      "defense": 48.6,
+      "offense": 12.6,
+      "synergy": 1.5
+    },
     "stats_score": 29.1,
+    "boss_bonus": 0,
     "recommended_skills": [
-      "防御",
-      "增程电池",
+      "掩护",
+      "阻断",
       "落雷",
-      "极寒领域"
+      "魔法增效"
     ]
   },
   {
-    "id": "超能阿布",
-    "name": "超能阿布",
-    "score": 346.1,
+    "id": "雪巨人",
+    "name": "雪巨人",
+    "score": 303.4,
     "attrs": [
-      "龙"
+      "冰"
     ],
     "stats": {
-      "total": 720,
-      "hp": 122,
-      "atk": 145,
-      "matk": 145,
-      "def": 104,
+      "total": 718,
+      "hp": 162,
+      "atk": 174,
+      "matk": 79,
+      "def": 139,
       "mdef": 104,
-      "spd": 100
+      "spd": 60
     },
-    "trait_name": "超聚能",
-    "trait_desc": "蓄力时，【聚能】变为【积蓄】。",
-    "trait_score": 8,
+    "trait_name": "打雪仗",
+    "trait_desc": "初始能量为0，入场前己方精灵每放1次冰系技能，回复3能量。",
+    "trait_score": 5.5,
     "trait_pts": {
-      "蓄力转化": 8
+      "回能": 2.5,
+      "入场效果": 3
     },
-    "skill_score": 120.1,
-    "attr_bonus": 50,
-    "stats_score": 36.0,
+    "skill_score": 124.4,
+    "attr_bonus": 13.4,
+    "attr_detail": {
+      "defense": 9.4,
+      "offense": 25.8,
+      "synergy": 3
+    },
+    "stats_score": 35.9,
+    "boss_bonus": 0,
     "recommended_skills": [
-      "防御",
-      "先发制人",
-      "力量增效",
-      "龙吟"
+      "掩护",
+      "偷袭",
+      "冰雹",
+      "惊吓盒子"
+    ]
+  },
+  {
+    "id": "翼龙",
+    "name": "翼龙",
+    "score": 302.7,
+    "attrs": [
+      "龙",
+      "翼"
+    ],
+    "stats": {
+      "total": 513,
+      "hp": 83,
+      "atk": 114,
+      "matk": 31,
+      "def": 91,
+      "mdef": 79,
+      "spd": 115
+    },
+    "trait_name": "暴食",
+    "trait_desc": "携带的龙系技能获得迅捷。",
+    "trait_score": 14,
+    "trait_pts": {
+      "迅捷": 14
+    },
+    "skill_score": 113.2,
+    "attr_bonus": 31.1,
+    "attr_detail": {
+      "defense": 52.1,
+      "offense": 22.2,
+      "synergy": 1.5
+    },
+    "stats_score": 25.6,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "偷袭",
+      "龙吟",
+      "羽刃",
+      "防御"
     ]
   },
   {
     "id": "帕帕斯卡",
     "name": "帕帕斯卡",
-    "score": 344.0,
+    "score": 302.7,
     "attrs": [
       "机械",
       "翼"
@@ -2087,82 +2404,63 @@
     "trait_pts": {
       "迅捷": 14
     },
-    "skill_score": 93.6,
-    "attr_bonus": 100,
+    "skill_score": 111.2,
+    "attr_bonus": 41.1,
+    "attr_detail": {
+      "defense": 73.1,
+      "offense": 17.4,
+      "synergy": 11.0
+    },
     "stats_score": 23.6,
+    "boss_bonus": 0,
     "recommended_skills": [
-      "齿轮扭矩",
-      "加固",
-      "风起",
-      "倾泻"
+      "电弧",
+      "偷袭",
+      "龙卷风",
+      "防御"
     ]
   },
   {
-    "id": "罗隐",
-    "name": "罗隐",
-    "score": 342.9,
+    "id": "巨灵石",
+    "name": "巨灵石",
+    "score": 300.8,
     "attrs": [
       "地",
-      "恶"
-    ],
-    "stats": {
-      "total": 601,
-      "hp": 107,
-      "atk": 159,
-      "matk": 78,
-      "def": 112,
-      "mdef": 70,
-      "spd": 75
-    },
-    "trait_name": "石头大餐",
-    "trait_desc": "能量不足时，消耗5%生命，代替1能量。",
-    "trait_score": 0,
-    "trait_pts": {},
-    "skill_score": 122.5,
-    "attr_bonus": 100,
-    "stats_score": 30.1,
-    "recommended_skills": [
-      "力量增效",
-      "先发制人",
-      "暗突袭",
-      "地刺"
-    ]
-  },
-  {
-    "id": "落陨星兔",
-    "name": "落陨星兔",
-    "score": 342.0,
-    "attrs": [
-      "幻",
       "幽"
     ],
     "stats": {
-      "total": 637,
-      "hp": 93,
-      "atk": 61,
-      "matk": 125,
-      "def": 87,
-      "mdef": 141,
-      "spd": 130
+      "total": 584,
+      "hp": 95,
+      "atk": 99,
+      "matk": 99,
+      "def": 126,
+      "mdef": 70,
+      "spd": 95
     },
-    "trait_name": "陨落",
-    "trait_desc": "在场时，双方回合结束时触发的效果，触发次数-1。",
+    "trait_name": "石天平",
+    "trait_desc": "若使用技能能耗高于敌方，回合结束敌方失去能耗之差的能量。",
     "trait_score": 0,
     "trait_pts": {},
-    "skill_score": 114.4,
-    "attr_bonus": 100,
-    "stats_score": 31.9,
+    "skill_score": 148.8,
+    "attr_bonus": 35.2,
+    "attr_detail": {
+      "defense": 56.6,
+      "offense": 25.8,
+      "synergy": 5.5
+    },
+    "stats_score": 29.2,
+    "boss_bonus": 0,
     "recommended_skills": [
-      "防御",
-      "坍缩",
+      "吓退",
+      "啮合传递",
       "嘲弄",
-      "降灵"
+      "陨石"
     ]
   },
   {
     "id": "圣羽翼王",
     "name": "圣羽翼王",
-    "score": 339.9,
+    "score": 300.6,
     "attrs": [
       "翼"
     ],
@@ -2182,51 +2480,678 @@
       "迅捷": 14,
       "额外魔力损失": -6
     },
-    "skill_score": 120.7,
-    "attr_bonus": 50,
+    "skill_score": 116.3,
+    "attr_bonus": 15.1,
+    "attr_detail": {
+      "defense": 16.7,
+      "offense": 21.0,
+      "synergy": 3
+    },
     "stats_score": 34.3,
+    "boss_bonus": 0,
     "recommended_skills": [
-      "魔法增效",
-      "防御",
+      "阻断",
       "力量增效",
-      "翼击"
+      "有效预防",
+      "天光"
     ]
   },
   {
-    "id": "晶石蜗",
-    "name": "晶石蜗",
-    "score": 339.6,
+    "id": "落陨星兔",
+    "name": "落陨星兔",
+    "score": 300.2,
+    "attrs": [
+      "幻",
+      "幽"
+    ],
+    "stats": {
+      "total": 637,
+      "hp": 93,
+      "atk": 61,
+      "matk": 125,
+      "def": 87,
+      "mdef": 141,
+      "spd": 130
+    },
+    "trait_name": "陨落",
+    "trait_desc": "在场时，双方回合结束时触发的效果，触发次数-1。",
+    "trait_score": 0,
+    "trait_pts": {},
+    "skill_score": 150.0,
+    "attr_bonus": 22.6,
+    "attr_detail": {
+      "defense": 35.1,
+      "offense": 19.8,
+      "synergy": 1.5
+    },
+    "stats_score": 31.9,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "吓退",
+      "啮合传递",
+      "嘲弄",
+      "坍缩"
+    ]
+  },
+  {
+    "id": "绒仙子",
+    "name": "绒仙子",
+    "score": 299.8,
     "attrs": [
       "光",
+      "虫"
+    ],
+    "stats": {
+      "total": 569,
+      "hp": 96,
+      "atk": 71,
+      "matk": 73,
+      "def": 81,
+      "mdef": 133,
+      "spd": 115
+    },
+    "trait_name": "绒粉星光",
+    "trait_desc": "攻击时，若敌方血脉是非本系的系别血脉，技能威力+100%。",
+    "trait_score": 11.0,
+    "trait_pts": {
+      "威力+": 11.0
+    },
+    "skill_score": 125.3,
+    "attr_bonus": 16.9,
+    "attr_detail": {
+      "defense": 31.9,
+      "offense": 4.2,
+      "synergy": 5.5
+    },
+    "stats_score": 28.4,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "啮合传递",
+      "力量增效",
+      "虹光冲击",
+      "防御"
+    ]
+  },
+  {
+    "id": "公平鸽",
+    "name": "公平鸽",
+    "score": 299.6,
+    "attrs": [
+      "普通"
+    ],
+    "stats": {
+      "total": 649,
+      "hp": 113,
+      "atk": 93,
+      "matk": 93,
+      "def": 125,
+      "mdef": 125,
+      "spd": 100
+    },
+    "trait_name": "衡量",
+    "trait_desc": "入场时，复制敌方的增益。在场时，若敌方获得增益自己也会获得。",
+    "trait_score": 3,
+    "trait_pts": {
+      "入场效果": 3
+    },
+    "skill_score": 145.1,
+    "attr_bonus": 12.5,
+    "attr_detail": {
+      "defense": 10.9,
+      "offense": 21.0,
+      "synergy": 3
+    },
+    "stats_score": 32.5,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "天旋地转",
+      "啮合传递",
+      "嗜痛",
+      "气沉丹田"
+    ]
+  },
+  {
+    "id": "蒲公英娃娃",
+    "name": "蒲公英娃娃",
+    "score": 299.4,
+    "attrs": [
+      "草",
+      "萌"
+    ],
+    "stats": {
+      "total": 642,
+      "hp": 111,
+      "atk": 123,
+      "matk": 117,
+      "def": 129,
+      "mdef": 97,
+      "spd": 65
+    },
+    "trait_name": "勇敢",
+    "trait_desc": "自身携带的能耗大于3的技能，威力+40%。",
+    "trait_score": 8.0,
+    "trait_pts": {
+      "威力+": 8.0
+    },
+    "skill_score": 111.6,
+    "attr_bonus": 27.4,
+    "attr_detail": {
+      "defense": 47.4,
+      "offense": 17.4,
+      "synergy": 1.5
+    },
+    "stats_score": 32.1,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "爆米花爆破",
+      "倾泻",
+      "丰饶",
+      "防御"
+    ]
+  },
+  {
+    "id": "棋骑士（白子）",
+    "name": "棋骑士（白子）",
+    "score": 298.3,
+    "attrs": [
+      "武",
       "地"
     ],
     "stats": {
-      "total": 570,
-      "hp": 93,
-      "atk": 96,
-      "matk": 101,
-      "def": 124,
-      "mdef": 91,
-      "spd": 65
+      "total": 543,
+      "hp": 90,
+      "atk": 126,
+      "matk": 45,
+      "def": 88,
+      "mdef": 69,
+      "spd": 125
     },
-    "trait_name": "完全偏振",
-    "trait_desc": "抵抗自己携带技能系别的攻击伤害。",
+    "trait_name": "腾挪",
+    "trait_desc": "自身以攻击技能应对1次后，回满状态，变身为【棋绮后】。变身后，基础种族值与特性变为棋绮后，但不改变已携带的技能。变身前获得的攻防提升效果在变身后依然保留。变身之前，棋绮后的特性可被正常触发，其效果将在变身后生效。",
     "trait_score": 0,
     "trait_pts": {},
-    "skill_score": 125.6,
-    "attr_bonus": 100,
-    "stats_score": 28.5,
+    "skill_score": 135.2,
+    "attr_bonus": 34.6,
+    "attr_detail": {
+      "defense": 64.9,
+      "offense": 12.6,
+      "synergy": 5.5
+    },
+    "stats_score": 27.1,
+    "boss_bonus": 20.1,
     "recommended_skills": [
-      "魔法增效",
-      "壁垒",
-      "闪光冲击",
-      "地刺"
+      "迫近攻击",
+      "啮合传递",
+      "岩脉崩毁",
+      "有效预防"
+    ]
+  },
+  {
+    "id": "棋骑士（黑子）",
+    "name": "棋骑士（黑子）",
+    "score": 298.3,
+    "attrs": [
+      "武",
+      "地"
+    ],
+    "stats": {
+      "total": 543,
+      "hp": 90,
+      "atk": 126,
+      "matk": 45,
+      "def": 88,
+      "mdef": 69,
+      "spd": 125
+    },
+    "trait_name": "腾挪",
+    "trait_desc": "自身以攻击技能应对1次后，回满状态，变身为【棋绮后】。变身后，基础种族值与特性变为棋绮后，但不改变已携带的技能。变身前获得的攻防提升效果在变身后依然保留。变身之前，棋绮后的特性可被正常触发，其效果将在变身后生效。",
+    "trait_score": 0,
+    "trait_pts": {},
+    "skill_score": 135.2,
+    "attr_bonus": 34.6,
+    "attr_detail": {
+      "defense": 64.9,
+      "offense": 12.6,
+      "synergy": 5.5
+    },
+    "stats_score": 27.1,
+    "boss_bonus": 20.1,
+    "recommended_skills": [
+      "迫近攻击",
+      "啮合传递",
+      "岩脉崩毁",
+      "有效预防"
+    ]
+  },
+  {
+    "id": "暮星辰",
+    "name": "暮星辰",
+    "score": 297.5,
+    "attrs": [
+      "幻",
+      "翼"
+    ],
+    "stats": {
+      "total": 574,
+      "hp": 87,
+      "atk": 41,
+      "matk": 123,
+      "def": 86,
+      "mdef": 112,
+      "spd": 125
+    },
+    "trait_name": "守望星",
+    "trait_desc": "触发星陨时仅消耗一半层数，仍造成满层伤害。",
+    "trait_score": 12,
+    "trait_pts": {
+      "星陨效率": 12
+    },
+    "skill_score": 115.1,
+    "attr_bonus": 19.6,
+    "attr_detail": {
+      "defense": 29.8,
+      "offense": 15.0,
+      "synergy": 5.5
+    },
+    "stats_score": 28.7,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "嘲弄",
+      "倾泻",
+      "防御",
+      "错乱"
+    ]
+  },
+  {
+    "id": "电球咩咩",
+    "name": "电球咩咩",
+    "score": 297.2,
+    "attrs": [
+      "电"
+    ],
+    "stats": {
+      "total": 553,
+      "hp": 78,
+      "atk": 82,
+      "matk": 82,
+      "def": 91,
+      "mdef": 95,
+      "spd": 125
+    },
+    "trait_name": "快充",
+    "trait_desc": "离场时回复10能量。",
+    "trait_score": 8.2,
+    "trait_pts": {
+      "回能": 8.2
+    },
+    "skill_score": 134.2,
+    "attr_bonus": 19.8,
+    "attr_detail": {
+      "defense": 27.9,
+      "offense": 19.8,
+      "synergy": 3
+    },
+    "stats_score": 27.6,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "吓退",
+      "掩护",
+      "偷袭",
+      "落雷"
+    ]
+  },
+  {
+    "id": "朔夜伊芙",
+    "name": "朔夜伊芙",
+    "score": 296.5,
+    "attrs": [
+      "恶"
+    ],
+    "stats": {
+      "total": 624,
+      "hp": 100,
+      "atk": 115,
+      "matk": 105,
+      "def": 104,
+      "mdef": 85,
+      "spd": 115
+    },
+    "trait_name": "嫁祸",
+    "trait_desc": "自己每失去25%生命，连击数+2。",
+    "trait_score": 8,
+    "trait_pts": {
+      "连击数+": 8
+    },
+    "skill_score": 128.0,
+    "attr_bonus": 11.7,
+    "attr_detail": {
+      "defense": 6.6,
+      "offense": 24.6,
+      "synergy": 3
+    },
+    "stats_score": 31.2,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "啮合传递",
+      "力量增效",
+      "有效预防",
+      "蝙蝠"
+    ]
+  },
+  {
+    "id": "雅丹鬃",
+    "name": "雅丹鬃",
+    "score": 296.1,
+    "attrs": [
+      "火"
+    ],
+    "stats": {
+      "total": 510,
+      "hp": 83,
+      "atk": 49,
+      "matk": 113,
+      "def": 62,
+      "mdef": 78,
+      "spd": 125
+    },
+    "trait_name": "天通地明",
+    "trait_desc": "攻击时，若敌方血脉是污染血脉，技能威力+100%。",
+    "trait_score": 11.0,
+    "trait_pts": {
+      "威力+": 11.0
+    },
+    "skill_score": 129.2,
+    "attr_bonus": 20.9,
+    "attr_detail": {
+      "defense": 26.1,
+      "offense": 25.8,
+      "synergy": 3
+    },
+    "stats_score": 25.5,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "阳火增辉",
+      "消毒法",
+      "焚烧烙印",
+      "防御"
+    ]
+  },
+  {
+    "id": "瞌睡王",
+    "name": "瞌睡王",
+    "score": 294.9,
+    "attrs": [
+      "普通",
+      "武"
+    ],
+    "stats": {
+      "total": 685,
+      "hp": 144,
+      "atk": 157,
+      "matk": 64,
+      "def": 135,
+      "mdef": 110,
+      "spd": 75
+    },
+    "trait_name": "慢热型",
+    "trait_desc": "初始能量为0，入场前己方精灵每成功应对1次，回复5能量。",
+    "trait_score": 7.1,
+    "trait_pts": {
+      "回能": 4.1,
+      "入场效果": 3
+    },
+    "skill_score": 111.5,
+    "attr_bonus": 18.2,
+    "attr_detail": {
+      "defense": 33.9,
+      "offense": 9.0,
+      "synergy": 0.0
+    },
+    "stats_score": 34.2,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "偷袭",
+      "冰雹",
+      "斩断",
+      "有效预防"
+    ]
+  },
+  {
+    "id": "疾光千兽",
+    "name": "疾光千兽",
+    "score": 294.7,
+    "attrs": [
+      "光"
+    ],
+    "stats": {
+      "total": 612,
+      "hp": 104,
+      "atk": 146,
+      "matk": 67,
+      "def": 112,
+      "mdef": 73,
+      "spd": 110
+    },
+    "trait_name": "月光审判",
+    "trait_desc": "攻击时，若敌方血脉是首领血脉，技能威力+100%。",
+    "trait_score": 11.0,
+    "trait_pts": {
+      "威力+": 11.0
+    },
+    "skill_score": 111.7,
+    "attr_bonus": 16.6,
+    "attr_detail": {
+      "defense": 15.6,
+      "offense": 27.0,
+      "synergy": 3
+    },
+    "stats_score": 30.6,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "偷袭",
+      "崩拳",
+      "力量增效",
+      "防御"
+    ]
+  },
+  {
+    "id": "海豹船长",
+    "name": "海豹船长",
+    "score": 290.2,
+    "attrs": [
+      "武",
+      "水"
+    ],
+    "stats": {
+      "total": 600,
+      "hp": 90,
+      "atk": 113,
+      "matk": 109,
+      "def": 111,
+      "mdef": 77,
+      "spd": 100
+    },
+    "trait_name": "身经百练",
+    "trait_desc": "己方精灵每应对1次，自己入场时水系和武系技能威力+20%。",
+    "trait_score": 5.2,
+    "trait_pts": {
+      "威力+": 2.2,
+      "入场效果": 3
+    },
+    "skill_score": 126.4,
+    "attr_bonus": 23.0,
+    "attr_detail": {
+      "defense": 46.3,
+      "offense": 6.6,
+      "synergy": 0.0
+    },
+    "stats_score": 30.0,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "掩护",
+      "斩断",
+      "先发制人",
+      "力量增效"
+    ]
+  },
+  {
+    "id": "卷毛鸭",
+    "name": "卷毛鸭",
+    "score": 289.6,
+    "attrs": [
+      "草",
+      "武"
+    ],
+    "stats": {
+      "total": 504,
+      "hp": 116,
+      "atk": 98,
+      "matk": 29,
+      "def": 83,
+      "mdef": 63,
+      "spd": 115
+    },
+    "trait_name": "得寸进尺",
+    "trait_desc": "天气为雨天，或处于其他水系环境中时，获得双攻+100%。",
+    "trait_score": 12.2,
+    "trait_pts": {
+      "攻+%": 12.2
+    },
+    "skill_score": 117.1,
+    "attr_bonus": 22.9,
+    "attr_detail": {
+      "defense": 44.4,
+      "offense": 7.8,
+      "synergy": 1.5
+    },
+    "stats_score": 25.2,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "偷袭",
+      "斩断",
+      "力量增效",
+      "有效预防"
+    ]
+  },
+  {
+    "id": "噼啪鸟",
+    "name": "噼啪鸟",
+    "score": 288.5,
+    "attrs": [
+      "电",
+      "翼"
+    ],
+    "stats": {
+      "total": 618,
+      "hp": 78,
+      "atk": 116,
+      "matk": 109,
+      "def": 85,
+      "mdef": 85,
+      "spd": 145
+    },
+    "trait_name": "连续负荷",
+    "trait_desc": "自己技能的迸发效果延长1回合。",
+    "trait_score": 0,
+    "trait_pts": {},
+    "skill_score": 135.4,
+    "attr_bonus": 29.5,
+    "attr_detail": {
+      "defense": 48.4,
+      "offense": 19.8,
+      "synergy": 5.5
+    },
+    "stats_score": 30.9,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "天旋地转",
+      "电弧",
+      "啮合传递",
+      "防御"
+    ]
+  },
+  {
+    "id": "兽花蕾",
+    "name": "兽花蕾",
+    "score": 287.9,
+    "attrs": [
+      "光",
+      "草"
+    ],
+    "stats": {
+      "total": 513,
+      "hp": 70,
+      "atk": 79,
+      "matk": 82,
+      "def": 70,
+      "mdef": 97,
+      "spd": 115
+    },
+    "trait_name": "稀兽花宝",
+    "trait_desc": "根据自己的血脉，入场时获得不同效果。",
+    "trait_score": 3,
+    "trait_pts": {
+      "入场效果": 3
+    },
+    "skill_score": 147.8,
+    "attr_bonus": 25.7,
+    "attr_detail": {
+      "defense": 50.4,
+      "offense": 9.0,
+      "synergy": 0.0
+    },
+    "stats_score": 25.6,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "芳香诱引",
+      "迫近攻击",
+      "啮合传递",
+      "防御"
+    ]
+  },
+  {
+    "id": "蹦蹦花",
+    "name": "蹦蹦花",
+    "score": 287.9,
+    "attrs": [
+      "草",
+      "毒"
+    ],
+    "stats": {
+      "total": 540,
+      "hp": 100,
+      "atk": 87,
+      "matk": 90,
+      "def": 73,
+      "mdef": 105,
+      "spd": 85
+    },
+    "trait_name": "高浓生物碱",
+    "trait_desc": "使用技能时，敌方获得2层中毒。",
+    "trait_score": 8.0,
+    "trait_pts": {
+      "中毒层": 8.0
+    },
+    "skill_score": 113.0,
+    "attr_bonus": 34.9,
+    "attr_detail": {
+      "defense": 62.8,
+      "offense": 9.0,
+      "synergy": 16.5
+    },
+    "stats_score": 27.0,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "防御",
+      "叶绿光束",
+      "毒液渗透",
+      "芳香诱引"
     ]
   },
   {
     "id": "花影羚羊",
     "name": "花影羚羊",
-    "score": 338.2,
+    "score": 287.2,
     "attrs": [
       "幽",
       "恶"
@@ -2246,20 +3171,516 @@
     "trait_pts": {
       "偷能量": 4.0
     },
-    "skill_score": 105.8,
-    "attr_bonus": 100,
+    "skill_score": 125.2,
+    "attr_bonus": 29.6,
+    "attr_detail": {
+      "defense": 39.8,
+      "offense": 23.4,
+      "synergy": 18.0
+    },
     "stats_score": 29.1,
+    "boss_bonus": 0,
     "recommended_skills": [
+      "芳香诱引",
+      "啮合传递",
+      "报复",
+      "极限撕裂"
+    ]
+  },
+  {
+    "id": "怖哭菇",
+    "name": "怖哭菇",
+    "score": 286.8,
+    "attrs": [
+      "幻"
+    ],
+    "stats": {
+      "total": 466,
+      "hp": 124,
+      "atk": 63,
+      "matk": 69,
+      "def": 50,
+      "mdef": 100,
+      "spd": 60
+    },
+    "trait_name": "吸积盘",
+    "trait_desc": "回合结束时，敌方获得2层星陨印记。",
+    "trait_score": 12.0,
+    "trait_pts": {
+      "星陨印记": 12.0
+    },
+    "skill_score": 130.2,
+    "attr_bonus": 15.4,
+    "attr_detail": {
+      "defense": 15.6,
+      "offense": 23.4,
+      "synergy": 3
+    },
+    "stats_score": 23.3,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "吓退",
+      "掩护",
+      "先发制人",
+      "虹光冲击"
+    ]
+  },
+  {
+    "id": "圣代甜甜",
+    "name": "圣代甜甜",
+    "score": 285.7,
+    "attrs": [
+      "冰"
+    ],
+    "stats": {
+      "total": 612,
+      "hp": 119,
+      "atk": 112,
+      "matk": 119,
+      "def": 70,
+      "mdef": 92,
+      "spd": 100
+    },
+    "trait_name": "加个雪球",
+    "trait_desc": "使敌方获得冻结时，也会使其获得2层冻结。",
+    "trait_score": 8.0,
+    "trait_pts": {
+      "冻结层": 8.0
+    },
+    "skill_score": 117.9,
+    "attr_bonus": 13.4,
+    "attr_detail": {
+      "defense": 9.4,
+      "offense": 25.8,
+      "synergy": 3
+    },
+    "stats_score": 30.6,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "防御",
+      "魔法增效",
       "力量增效",
-      "虚假破产",
-      "降灵",
-      "坟场搏击"
+      "冰雹"
+    ]
+  },
+  {
+    "id": "泥吼牙",
+    "name": "泥吼牙",
+    "score": 284.8,
+    "attrs": [
+      "地",
+      "翼"
+    ],
+    "stats": {
+      "total": 569,
+      "hp": 124,
+      "atk": 112,
+      "matk": 41,
+      "def": 109,
+      "mdef": 88,
+      "spd": 95
+    },
+    "trait_name": "无差别过滤",
+    "trait_desc": "在场时，所有精灵连击数固定为2。",
+    "trait_score": 0,
+    "trait_pts": {},
+    "skill_score": 137.0,
+    "attr_bonus": 34.2,
+    "attr_detail": {
+      "defense": 56.2,
+      "offense": 18.6,
+      "synergy": 12.5
+    },
+    "stats_score": 28.4,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "地刺",
+      "力量增效",
+      "倾泻",
+      "有效预防"
+    ]
+  },
+  {
+    "id": "琉璃水母",
+    "name": "琉璃水母",
+    "score": 284.6,
+    "attrs": [
+      "水",
+      "毒"
+    ],
+    "stats": {
+      "total": 580,
+      "hp": 134,
+      "atk": 37,
+      "matk": 85,
+      "def": 93,
+      "mdef": 136,
+      "spd": 95
+    },
+    "trait_name": "扩散侵蚀",
+    "trait_desc": "使用水系技能后，敌方获得中毒，获得层数等于中毒印记层数的2倍。",
+    "trait_score": 0,
+    "trait_pts": {},
+    "skill_score": 140.5,
+    "attr_bonus": 28.1,
+    "attr_detail": {
+      "defense": 50.4,
+      "offense": 12.6,
+      "synergy": 5.5
+    },
+    "stats_score": 29.0,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "吓退",
+      "掩护",
+      "润泽",
+      "毒液渗透"
+    ]
+  },
+  {
+    "id": "菊花梨",
+    "name": "菊花梨",
+    "score": 284.3,
+    "attrs": [
+      "萌"
+    ],
+    "stats": {
+      "total": 523,
+      "hp": 106,
+      "atk": 49,
+      "matk": 116,
+      "def": 77,
+      "mdef": 115,
+      "spd": 60
+    },
+    "trait_name": "无忧无虑",
+    "trait_desc": "可获得的萌化层数不受限制。",
+    "trait_score": 14,
+    "trait_pts": {
+      "萌化增强": 6,
+      "上限突破": 8
+    },
+    "skill_score": 111.5,
+    "attr_bonus": 12.4,
+    "attr_detail": {
+      "defense": 8.1,
+      "offense": 24.6,
+      "synergy": 3
+    },
+    "stats_score": 26.1,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "惊吓盒子",
+      "倾泻",
+      "藤绞",
+      "防御"
+    ]
+  },
+  {
+    "id": "遁地鼠",
+    "name": "遁地鼠",
+    "score": 283.3,
+    "attrs": [
+      "地"
+    ],
+    "stats": {
+      "total": 553,
+      "hp": 99,
+      "atk": 118,
+      "matk": 38,
+      "def": 102,
+      "mdef": 96,
+      "spd": 100
+    },
+    "trait_name": "警惕",
+    "trait_desc": "回合结束时，若自己能量为0则脱离。",
+    "trait_score": 8,
+    "trait_pts": {
+      "脱离": 8
+    },
+    "skill_score": 120.5,
+    "attr_bonus": 20.4,
+    "attr_detail": {
+      "defense": 22.3,
+      "offense": 29.4,
+      "synergy": 3
+    },
+    "stats_score": 27.6,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "先发制人",
+      "防御",
+      "岩脉崩毁",
+      "地刺"
+    ]
+  },
+  {
+    "id": "雪灵",
+    "name": "雪灵",
+    "score": 283.2,
+    "attrs": [
+      "冰"
+    ],
+    "stats": {
+      "total": 643,
+      "hp": 94,
+      "atk": 112,
+      "matk": 112,
+      "def": 105,
+      "mdef": 105,
+      "spd": 115
+    },
+    "trait_name": "冰封",
+    "trait_desc": "自身在场时，敌方全技能能耗+1。",
+    "trait_score": 3.0,
+    "trait_pts": {
+      "敌能耗+": 3.0
+    },
+    "skill_score": 129.4,
+    "attr_bonus": 13.4,
+    "attr_detail": {
+      "defense": 9.4,
+      "offense": 25.8,
+      "synergy": 3
+    },
+    "stats_score": 32.1,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "啮合传递",
+      "嘲弄",
+      "雪替身",
+      "四维降解"
+    ]
+  },
+  {
+    "id": "古啦多",
+    "name": "古啦多",
+    "score": 282.5,
+    "attrs": [
+      "毒",
+      "地"
+    ],
+    "stats": {
+      "total": 591,
+      "hp": 79,
+      "atk": 88,
+      "matk": 88,
+      "def": 136,
+      "mdef": 110,
+      "spd": 90
+    },
+    "trait_name": "毒牙",
+    "trait_desc": "使敌方获得中毒时，也会使其获得魔攻和魔防-40%。",
+    "trait_score": 0,
+    "trait_pts": {},
+    "skill_score": 126.7,
+    "attr_bonus": 37.4,
+    "attr_detail": {
+      "defense": 64.9,
+      "offense": 17.4,
+      "synergy": 11.0
+    },
+    "stats_score": 29.6,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "吓退",
+      "陨石",
+      "倾泻",
+      "感染病"
+    ]
+  },
+  {
+    "id": "月牙雪熊",
+    "name": "月牙雪熊",
+    "score": 281.9,
+    "attrs": [
+      "冰",
+      "幻"
+    ],
+    "stats": {
+      "total": 586,
+      "hp": 126,
+      "atk": 97,
+      "matk": 39,
+      "def": 141,
+      "mdef": 103,
+      "spd": 80
+    },
+    "trait_name": "月牙雪糕",
+    "trait_desc": "使用攻击技能时，敌方每层冻结视为1层额外星陨印记。",
+    "trait_score": 0,
+    "trait_pts": {},
+    "skill_score": 137.6,
+    "attr_bonus": 27.1,
+    "attr_detail": {
+      "defense": 42.2,
+      "offense": 21.0,
+      "synergy": 5.5
+    },
+    "stats_score": 29.3,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "吓退",
+      "掩护",
+      "偷袭",
+      "冰雹"
+    ]
+  },
+  {
+    "id": "画间沉铁兽",
+    "name": "画间沉铁兽",
+    "score": 279.5,
+    "attrs": [
+      "普通",
+      "武"
+    ],
+    "stats": {
+      "total": 608,
+      "hp": 100,
+      "atk": 160,
+      "matk": 67,
+      "def": 100,
+      "mdef": 76,
+      "spd": 105
+    },
+    "trait_name": "变形活画",
+    "trait_desc": "攻击时，敌方每有1层增益，本次技能威力+10%。",
+    "trait_score": 2.0,
+    "trait_pts": {
+      "威力+": 2.0
+    },
+    "skill_score": 131.7,
+    "attr_bonus": 18.2,
+    "attr_detail": {
+      "defense": 33.9,
+      "offense": 9.0,
+      "synergy": 0.0
+    },
+    "stats_score": 30.4,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "截拳",
+      "能量刃",
+      "惊吓盒子",
+      "有效预防"
+    ]
+  },
+  {
+    "id": "荆棘电环",
+    "name": "荆棘电环",
+    "score": 276.8,
+    "attrs": [
+      "电"
+    ],
+    "stats": {
+      "total": 557,
+      "hp": 106,
+      "atk": 81,
+      "matk": 81,
+      "def": 85,
+      "mdef": 84,
+      "spd": 120
+    },
+    "trait_name": "防过载保护",
+    "trait_desc": "每次行动后脱离。",
+    "trait_score": 8,
+    "trait_pts": {
+      "脱离": 8
+    },
+    "skill_score": 113.4,
+    "attr_bonus": 19.8,
+    "attr_detail": {
+      "defense": 27.9,
+      "offense": 19.8,
+      "synergy": 3
+    },
+    "stats_score": 27.9,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "电弧",
+      "惊吓盒子",
+      "倾泻",
+      "防御"
+    ]
+  },
+  {
+    "id": "罗隐",
+    "name": "罗隐",
+    "score": 274.0,
+    "attrs": [
+      "地",
+      "恶"
+    ],
+    "stats": {
+      "total": 601,
+      "hp": 107,
+      "atk": 159,
+      "matk": 78,
+      "def": 112,
+      "mdef": 70,
+      "spd": 75
+    },
+    "trait_name": "石头大餐",
+    "trait_desc": "能量不足时，消耗5%生命，代替1能量。",
+    "trait_score": 0,
+    "trait_pts": {},
+    "skill_score": 122.9,
+    "attr_bonus": 30.7,
+    "attr_detail": {
+      "defense": 52.1,
+      "offense": 24.6,
+      "synergy": -4.0
+    },
+    "stats_score": 30.1,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "地刺",
+      "火焰切割",
+      "先发制人",
+      "有效预防"
+    ]
+  },
+  {
+    "id": "利灯鱼",
+    "name": "利灯鱼",
+    "score": 273.9,
+    "attrs": [
+      "水",
+      "电"
+    ],
+    "stats": {
+      "total": 626,
+      "hp": 128,
+      "atk": 68,
+      "matk": 138,
+      "def": 71,
+      "mdef": 116,
+      "spd": 105
+    },
+    "trait_name": "对流",
+    "trait_desc": "自己的能耗增加变为能耗降低；能耗降低变为能耗增加。",
+    "trait_score": 0,
+    "trait_pts": {},
+    "skill_score": 122.0,
+    "attr_bonus": 26.7,
+    "attr_detail": {
+      "defense": 42.2,
+      "offense": 19.8,
+      "synergy": 5.5
+    },
+    "stats_score": 31.3,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "打湿",
+      "跌落",
+      "倾泻",
+      "防御"
     ]
   },
   {
     "id": "恶魔红钻",
     "name": "恶魔红钻",
-    "score": 337.2,
+    "score": 273.8,
     "attrs": [
       "虫",
       "恶"
@@ -2279,147 +3700,368 @@
     "trait_pts": {
       "奉献": 4.2
     },
-    "skill_score": 87.2,
-    "attr_bonus": 100,
+    "skill_score": 106.1,
+    "attr_bonus": 17.7,
+    "attr_detail": {
+      "defense": 31.9,
+      "offense": 6.6,
+      "synergy": 5.5
+    },
     "stats_score": 33.3,
+    "boss_bonus": 0,
     "recommended_skills": [
-      "蝙蝠",
-      "防御",
-      "虫击",
-      "等价交换"
+      "偷袭",
+      "跌落",
+      "斩断",
+      "防御"
     ]
   },
   {
-    "id": "巨灵石",
-    "name": "巨灵石",
-    "score": 336.6,
+    "id": "记忆石",
+    "name": "记忆石",
+    "score": 273.1,
     "attrs": [
-      "地",
-      "幽"
+      "地"
     ],
     "stats": {
-      "total": 584,
-      "hp": 95,
-      "atk": 99,
-      "matk": 99,
-      "def": 126,
-      "mdef": 70,
-      "spd": 95
+      "total": 607,
+      "hp": 112,
+      "atk": 108,
+      "matk": 97,
+      "def": 141,
+      "mdef": 79,
+      "spd": 70
     },
-    "trait_name": "石天平",
-    "trait_desc": "若使用技能能耗高于敌方，回合结束敌方失去能耗之差的能量。",
-    "trait_score": 0,
-    "trait_pts": {},
-    "skill_score": 119.8,
-    "attr_bonus": 100,
-    "stats_score": 29.2,
+    "trait_name": "不移",
+    "trait_desc": "携带的无额外效果的攻击技能，威力+30%。",
+    "trait_score": 6.0,
+    "trait_pts": {
+      "威力+": 6.0
+    },
+    "skill_score": 107.1,
+    "attr_bonus": 20.4,
+    "attr_detail": {
+      "defense": 22.3,
+      "offense": 29.4,
+      "synergy": 3
+    },
+    "stats_score": 30.4,
+    "boss_bonus": 0,
     "recommended_skills": [
-      "防御",
-      "嘲弄",
-      "不动如山",
-      "陨石"
+      "偷袭",
+      "地陷",
+      "光刃",
+      "防御"
     ]
   },
   {
-    "id": "泥吼牙",
-    "name": "泥吼牙",
-    "score": 335.6,
+    "id": "化蝶",
+    "name": "化蝶",
+    "score": 272.8,
     "attrs": [
-      "地",
-      "翼"
+      "虫",
+      "萌"
     ],
     "stats": {
-      "total": 569,
-      "hp": 124,
-      "atk": 112,
-      "matk": 41,
-      "def": 109,
-      "mdef": 88,
-      "spd": 95
+      "total": 362,
+      "hp": 55,
+      "atk": 46,
+      "matk": 44,
+      "def": 62,
+      "mdef": 65,
+      "spd": 90
     },
-    "trait_name": "无差别过滤",
-    "trait_desc": "在场时，所有精灵连击数固定为2。",
+    "trait_name": "化茧",
+    "trait_desc": "受到致命伤害时，获得1层萌化，并免疫此次伤害。此特性最多触发两次，如果在最低形态受到致命伤害，将被直接击败。",
+    "trait_score": 22,
+    "trait_pts": {
+      "免死": 22
+    },
+    "skill_score": 96.7,
+    "attr_bonus": 15.7,
+    "attr_detail": {
+      "defense": 25.7,
+      "offense": 12.6,
+      "synergy": 0.0
+    },
+    "stats_score": 18.1,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "掩护",
+      "虫蛊",
+      "爆米花爆破",
+      "打鼾"
+    ]
+  },
+  {
+    "id": "晶石蜗",
+    "name": "晶石蜗",
+    "score": 272.2,
+    "attrs": [
+      "光",
+      "地"
+    ],
+    "stats": {
+      "total": 570,
+      "hp": 93,
+      "atk": 96,
+      "matk": 101,
+      "def": 124,
+      "mdef": 91,
+      "spd": 65
+    },
+    "trait_name": "完全偏振",
+    "trait_desc": "抵抗自己携带技能系别的攻击伤害。",
     "trait_score": 0,
     "trait_pts": {},
-    "skill_score": 122.0,
-    "attr_bonus": 100,
-    "stats_score": 28.4,
+    "skill_score": 125.6,
+    "attr_bonus": 32.6,
+    "attr_detail": {
+      "defense": 53.6,
+      "offense": 28.2,
+      "synergy": -4.0
+    },
+    "stats_score": 28.5,
+    "boss_bonus": 0,
     "recommended_skills": [
-      "力量增效",
-      "乘风",
-      "羽刃",
+      "魔法增效",
+      "壁垒",
+      "闪光冲击",
       "地刺"
     ]
   },
   {
-    "id": "怒目怂猫",
-    "name": "怒目怂猫",
-    "score": 334.5,
+    "id": "酷拉",
+    "name": "酷拉",
+    "score": 271.8,
     "attrs": [
-      "武"
+      "电"
     ],
     "stats": {
-      "total": 651,
-      "hp": 92,
-      "atk": 132,
-      "matk": 126,
-      "def": 111,
-      "mdef": 95,
-      "spd": 95
+      "total": 583,
+      "hp": 83,
+      "atk": 100,
+      "matk": 100,
+      "def": 78,
+      "mdef": 97,
+      "spd": 125
     },
-    "trait_name": "威慑",
-    "trait_desc": "打断敌方时，被打断的技能进入2回合冷却。",
-    "trait_score": 10,
+    "trait_name": "噼啪！",
+    "trait_desc": "入场后首次行动，所选技能使用次数+1。",
+    "trait_score": 3,
     "trait_pts": {
-      "打断冷却": 10
+      "入场效果": 3
     },
-    "skill_score": 114.5,
-    "attr_bonus": 50,
-    "stats_score": 32.5,
+    "skill_score": 123.6,
+    "attr_bonus": 19.8,
+    "attr_detail": {
+      "defense": 27.9,
+      "offense": 19.8,
+      "synergy": 3
+    },
+    "stats_score": 29.1,
+    "boss_bonus": 0,
     "recommended_skills": [
-      "防御",
-      "加固",
-      "摇篮曲",
-      "截拳"
+      "超导",
+      "阻断",
+      "力量增效",
+      "防御"
     ]
   },
   {
-    "id": "火焰猿",
-    "name": "火焰猿",
-    "score": 333.3,
+    "id": "乌拉塔",
+    "name": "乌拉塔",
+    "score": 271.0,
     "attrs": [
-      "火"
+      "恶",
+      "冰"
     ],
     "stats": {
-      "total": 715,
-      "hp": 167,
-      "atk": 162,
-      "matk": 72,
-      "def": 143,
-      "mdef": 111,
-      "spd": 60
+      "total": 622,
+      "hp": 160,
+      "atk": 158,
+      "matk": 91,
+      "def": 106,
+      "mdef": 57,
+      "spd": 50
     },
-    "trait_name": "散热",
-    "trait_desc": "初始能量为0，入场前己方精灵每放1次火系技能，回复3能量。",
-    "trait_score": 5.5,
+    "trait_name": "恶魔的晚宴",
+    "trait_desc": "主动击败敌方精灵时，自己获得双攻+50%。",
+    "trait_score": 6.1,
     "trait_pts": {
-      "回能": 2.5,
-      "入场效果": 3
+      "攻+%": 6.1
     },
-    "skill_score": 118.1,
-    "attr_bonus": 50,
-    "stats_score": 35.8,
+    "skill_score": 98.8,
+    "attr_bonus": 23.4,
+    "attr_detail": {
+      "defense": 37.7,
+      "offense": 18.6,
+      "synergy": 1.5
+    },
+    "stats_score": 31.1,
+    "boss_bonus": 0,
     "recommended_skills": [
+      "诋毁",
+      "当头棒喝",
       "力量增效",
+      "冰晶坠"
+    ]
+  },
+  {
+    "id": "石冠王蜥",
+    "name": "石冠王蜥",
+    "score": 270.9,
+    "attrs": [
+      "地"
+    ],
+    "stats": {
+      "total": 572,
+      "hp": 113,
+      "atk": 90,
+      "matk": 89,
+      "def": 106,
+      "mdef": 74,
+      "spd": 100
+    },
+    "trait_name": "刺肤",
+    "trait_desc": "每受到1次攻击，对攻击自己的精灵造成50威力物理伤害。",
+    "trait_score": 7.5,
+    "trait_pts": {
+      "反伤": 7.5
+    },
+    "skill_score": 106.1,
+    "attr_bonus": 20.4,
+    "attr_detail": {
+      "defense": 22.3,
+      "offense": 29.4,
+      "synergy": 3
+    },
+    "stats_score": 28.6,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "硬化",
+      "陨石",
+      "冲撞",
+      "地陷"
+    ]
+  },
+  {
+    "id": "裘卡",
+    "name": "裘卡",
+    "score": 270.2,
+    "attrs": [
+      "毒"
+    ],
+    "stats": {
+      "total": 520,
+      "hp": 73,
+      "atk": 93,
+      "matk": 83,
+      "def": 65,
+      "mdef": 81,
+      "spd": 125
+    },
+    "trait_name": "蚀刻",
+    "trait_desc": "回合结束时，敌方每2层中毒转化为1层中毒印记。",
+    "trait_score": 10,
+    "trait_pts": {
+      "毒转印记": 10
+    },
+    "skill_score": 109.8,
+    "attr_bonus": 16.4,
+    "attr_detail": {
+      "defense": 20.4,
+      "offense": 19.8,
+      "synergy": 3
+    },
+    "stats_score": 26.0,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "电弧",
+      "崩拳",
+      "感染病",
+      "防御"
+    ]
+  },
+  {
+    "id": "咔咔鸟",
+    "name": "咔咔鸟",
+    "score": 269.2,
+    "attrs": [
+      "翼",
+      "普通"
+    ],
+    "stats": {
+      "total": 631,
+      "hp": 97,
+      "atk": 114,
+      "matk": 110,
+      "def": 101,
+      "mdef": 89,
+      "spd": 120
+    },
+    "trait_name": "咔咔冲刺",
+    "trait_desc": "若先于敌方行动，行动后获得连击数+1。",
+    "trait_score": 4,
+    "trait_pts": {
+      "连击数+": 4
+    },
+    "skill_score": 106.4,
+    "attr_bonus": 20.4,
+    "attr_detail": {
+      "defense": 29.8,
+      "offense": 17.4,
+      "synergy": 5.5
+    },
+    "stats_score": 31.6,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "龙卷风",
+      "跺地",
       "防御",
-      "焚烧烙印",
-      "持续高温"
+      "魔法增效"
+    ]
+  },
+  {
+    "id": "圆号鱼",
+    "name": "圆号鱼",
+    "score": 268.8,
+    "attrs": [
+      "水"
+    ],
+    "stats": {
+      "total": 575,
+      "hp": 136,
+      "atk": 34,
+      "matk": 95,
+      "def": 95,
+      "mdef": 110,
+      "spd": 105
+    },
+    "trait_name": "泛音列",
+    "trait_desc": "使用状态技能后，敌方获得【聒噪】技能的效果，持续3回合。",
+    "trait_score": 0,
+    "trait_pts": {},
+    "skill_score": 135.7,
+    "attr_bonus": 17.9,
+    "attr_detail": {
+      "defense": 20.2,
+      "offense": 24.6,
+      "synergy": 3
+    },
+    "stats_score": 28.8,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "泡沫幻影",
+      "啮合传递",
+      "打湿",
+      "水炮"
     ]
   },
   {
     "id": "厉毒修萝",
     "name": "厉毒修萝",
-    "score": 333.2,
+    "score": 268.2,
     "attrs": [
       "毒",
       "恶"
@@ -2440,20 +4082,137 @@
       "中毒层": 4.0,
       "连击数+": 4
     },
-    "skill_score": 102.0,
-    "attr_bonus": 100,
+    "skill_score": 108.5,
+    "attr_bonus": 28.5,
+    "attr_detail": {
+      "defense": 44.2,
+      "offense": 11.4,
+      "synergy": 22.0
+    },
     "stats_score": 24.8,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "偷袭",
+      "跌落",
+      "感染病",
+      "防御"
+    ]
+  },
+  {
+    "id": "格斗小六",
+    "name": "格斗小六",
+    "score": 267.9,
+    "attrs": [
+      "武"
+    ],
+    "stats": {
+      "total": 639,
+      "hp": 76,
+      "atk": 144,
+      "matk": 63,
+      "def": 118,
+      "mdef": 88,
+      "spd": 150
+    },
+    "trait_name": "马步",
+    "trait_desc": "状态技能应对成功时，获得10点能量。",
+    "trait_score": 0,
+    "trait_pts": {},
+    "skill_score": 126.3,
+    "attr_bonus": 14.0,
+    "attr_detail": {
+      "defense": 17.8,
+      "offense": 16.2,
+      "synergy": 3
+    },
+    "stats_score": 31.9,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "啮合传递",
+      "龙吟",
+      "飞踢",
+      "防御"
+    ]
+  },
+  {
+    "id": "岚鸟（本来的样子）",
+    "name": "岚鸟（本来的样子）",
+    "score": 267.9,
+    "attrs": [
+      "翼"
+    ],
+    "stats": {
+      "total": 570,
+      "hp": 90,
+      "atk": 128,
+      "matk": 55,
+      "def": 108,
+      "mdef": 74,
+      "spd": 115
+    },
+    "trait_name": "顺风",
+    "trait_desc": "若先于敌方攻击，本次技能威力+50%。",
+    "trait_score": 5.5,
+    "trait_pts": {
+      "威力+": 5.5
+    },
+    "skill_score": 114.9,
+    "attr_bonus": 15.1,
+    "attr_detail": {
+      "defense": 16.7,
+      "offense": 21.0,
+      "synergy": 3
+    },
+    "stats_score": 28.5,
+    "boss_bonus": 1.9,
     "recommended_skills": [
       "力量增效",
-      "见招拆招",
-      "感染病",
-      "跌落"
+      "先发制人",
+      "防御",
+      "龙卷风"
+    ]
+  },
+  {
+    "id": "红绒十字",
+    "name": "红绒十字",
+    "score": 267.7,
+    "attrs": [
+      "火",
+      "萌"
+    ],
+    "stats": {
+      "total": 598,
+      "hp": 112,
+      "atk": 47,
+      "matk": 122,
+      "def": 100,
+      "mdef": 127,
+      "spd": 90
+    },
+    "trait_name": "仁心",
+    "trait_desc": "敌方受到灼烧伤害时，自己回复等量生命。",
+    "trait_score": 0,
+    "trait_pts": {},
+    "skill_score": 120.8,
+    "attr_bonus": 27.3,
+    "attr_detail": {
+      "defense": 44.2,
+      "offense": 18.6,
+      "synergy": 5.5
+    },
+    "stats_score": 29.9,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "焚烧烙印",
+      "除厄",
+      "火焰护盾",
+      "魔法增效"
     ]
   },
   {
     "id": "魔眷鸟",
     "name": "魔眷鸟",
-    "score": 331.2,
+    "score": 266.2,
     "attrs": [
       "萌",
       "翼"
@@ -2473,20 +4232,101 @@
     "trait_pts": {
       "连击数+": 8
     },
-    "skill_score": 88.8,
-    "attr_bonus": 100,
+    "skill_score": 106.9,
+    "attr_bonus": 16.9,
+    "attr_detail": {
+      "defense": 25.7,
+      "offense": 16.2,
+      "synergy": 0.0
+    },
     "stats_score": 27.6,
+    "boss_bonus": 0,
     "recommended_skills": [
-      "防御",
-      "生日蛋糕",
-      "风起",
-      "龙卷风"
+      "龙卷风",
+      "跺地",
+      "倾泻",
+      "防御"
+    ]
+  },
+  {
+    "id": "夜枭",
+    "name": "夜枭",
+    "score": 266.2,
+    "attrs": [
+      "幽"
+    ],
+    "stats": {
+      "total": 464,
+      "hp": 117,
+      "atk": 10,
+      "matk": 61,
+      "def": 90,
+      "mdef": 106,
+      "spd": 80
+    },
+    "trait_name": "搜刮",
+    "trait_desc": "敌方每使用1次【聚能】技能或更换精灵，自己入场时获得魔攻+20%。",
+    "trait_score": 6.9,
+    "trait_pts": {
+      "攻+%": 3.9,
+      "入场效果": 3
+    },
+    "skill_score": 126.0,
+    "attr_bonus": 19.8,
+    "attr_detail": {
+      "defense": 21.9,
+      "offense": 28.2,
+      "synergy": 3
+    },
+    "stats_score": 23.2,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "阳火增辉",
+      "跌落",
+      "嘲弄",
+      "防御"
+    ]
+  },
+  {
+    "id": "春花兔",
+    "name": "春花兔",
+    "score": 265.5,
+    "attrs": [
+      "草"
+    ],
+    "stats": {
+      "total": 557,
+      "hp": 79,
+      "atk": 85,
+      "matk": 95,
+      "def": 103,
+      "mdef": 90,
+      "spd": 105
+    },
+    "trait_name": "系统发育",
+    "trait_desc": "获得能量或生命时，会将等量的能量或生命随机分配给场下的精灵。",
+    "trait_score": 0,
+    "trait_pts": {},
+    "skill_score": 140.8,
+    "attr_bonus": 13.1,
+    "attr_detail": {
+      "defense": 17.6,
+      "offense": 13.8,
+      "synergy": 3
+    },
+    "stats_score": 27.9,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "芳香诱引",
+      "啮合传递",
+      "倾泻",
+      "防御"
     ]
   },
   {
     "id": "叮叮恶魔",
     "name": "叮叮恶魔",
-    "score": 330.0,
+    "score": 265.4,
     "attrs": [
       "恶",
       "翼"
@@ -2507,534 +4347,26 @@
       "吸血": 3.3,
       "入场效果": 3
     },
-    "skill_score": 97.6,
-    "attr_bonus": 100,
+    "skill_score": 109.8,
+    "attr_bonus": 23.2,
+    "attr_detail": {
+      "defense": 36.0,
+      "offense": 13.8,
+      "synergy": 11.0
+    },
     "stats_score": 26.8,
+    "boss_bonus": 0,
     "recommended_skills": [
-      "乘风",
-      "防御",
-      "暗突袭",
-      "龙卷风"
-    ]
-  },
-  {
-    "id": "窃光蚊",
-    "name": "窃光蚊",
-    "score": 329.4,
-    "attrs": [
-      "恶",
-      "光"
-    ],
-    "stats": {
-      "total": 592,
-      "hp": 93,
-      "atk": 104,
-      "matk": 104,
-      "def": 63,
-      "mdef": 113,
-      "spd": 115
-    },
-    "trait_name": "血型吸引",
-    "trait_desc": "敌方每携带1种系别的技能，自己攻击时威力+10。",
-    "trait_score": 1.1,
-    "trait_pts": {
-      "威力+": 1.1
-    },
-    "skill_score": 106.6,
-    "attr_bonus": 100,
-    "stats_score": 29.6,
-    "recommended_skills": [
-      "魔法增效",
-      "先发制人",
-      "过曝",
-      "跌落"
-    ]
-  },
-  {
-    "id": "雪巨人",
-    "name": "雪巨人",
-    "score": 327.3,
-    "attrs": [
-      "冰"
-    ],
-    "stats": {
-      "total": 718,
-      "hp": 162,
-      "atk": 174,
-      "matk": 79,
-      "def": 139,
-      "mdef": 104,
-      "spd": 60
-    },
-    "trait_name": "打雪仗",
-    "trait_desc": "初始能量为0，入场前己方精灵每放1次冰系技能，回复3能量。",
-    "trait_score": 5.5,
-    "trait_pts": {
-      "回能": 2.5,
-      "入场效果": 3
-    },
-    "skill_score": 111.7,
-    "attr_bonus": 50,
-    "stats_score": 35.9,
-    "recommended_skills": [
-      "先发制人",
-      "雪替身",
-      "冰雹",
-      "冰蛋壳"
-    ]
-  },
-  {
-    "id": "古啦多",
-    "name": "古啦多",
-    "score": 326.0,
-    "attrs": [
-      "毒",
-      "地"
-    ],
-    "stats": {
-      "total": 591,
-      "hp": 79,
-      "atk": 88,
-      "matk": 88,
-      "def": 136,
-      "mdef": 110,
-      "spd": 90
-    },
-    "trait_name": "毒牙",
-    "trait_desc": "使敌方获得中毒时，也会使其获得魔攻和魔防-40%。",
-    "trait_score": 0,
-    "trait_pts": {},
-    "skill_score": 107.6,
-    "attr_bonus": 100,
-    "stats_score": 29.6,
-    "recommended_skills": [
-      "以毒攻毒",
-      "防御",
-      "壁垒",
-      "地陷"
-    ]
-  },
-  {
-    "id": "疾光千兽",
-    "name": "疾光千兽",
-    "score": 325.0,
-    "attrs": [
-      "光"
-    ],
-    "stats": {
-      "total": 612,
-      "hp": 104,
-      "atk": 146,
-      "matk": 67,
-      "def": 112,
-      "mdef": 73,
-      "spd": 110
-    },
-    "trait_name": "月光审判",
-    "trait_desc": "攻击时，若敌方血脉是首领血脉，技能威力+100%。",
-    "trait_score": 11.0,
-    "trait_pts": {
-      "威力+": 11.0
-    },
-    "skill_score": 108.6,
-    "attr_bonus": 50,
-    "stats_score": 30.6,
-    "recommended_skills": [
-      "力量增效",
-      "防御",
-      "光刃",
-      "偷袭"
-    ]
-  },
-  {
-    "id": "卡瓦重",
-    "name": "卡瓦重",
-    "score": 324.7,
-    "attrs": [
-      "草",
-      "冰"
-    ],
-    "stats": {
-      "total": 446,
-      "hp": 77,
-      "atk": 68,
-      "matk": 14,
-      "def": 79,
-      "mdef": 73,
-      "spd": 135
-    },
-    "trait_name": "诈死",
-    "trait_desc": "自己力竭时，少损失1点魔力值。",
-    "trait_score": 0,
-    "trait_pts": {},
-    "skill_score": 135.5,
-    "attr_bonus": 100,
-    "stats_score": 22.3,
-    "recommended_skills": [
-      "力量增效",
-      "丰饶",
-      "天旋地转",
-      "冰雹"
-    ]
-  },
-  {
-    "id": "月牙雪熊",
-    "name": "月牙雪熊",
-    "score": 324.0,
-    "attrs": [
-      "冰",
-      "幻"
-    ],
-    "stats": {
-      "total": 586,
-      "hp": 126,
-      "atk": 97,
-      "matk": 39,
-      "def": 141,
-      "mdef": 103,
-      "spd": 80
-    },
-    "trait_name": "月牙雪糕",
-    "trait_desc": "使用攻击技能时，敌方每层冻结视为1层额外星陨印记。",
-    "trait_score": 0,
-    "trait_pts": {},
-    "skill_score": 106.8,
-    "attr_bonus": 100,
-    "stats_score": 29.3,
-    "recommended_skills": [
-      "防御",
-      "冥想",
-      "空间压迫",
-      "冰雹"
-    ]
-  },
-  {
-    "id": "寒音蛇",
-    "name": "寒音蛇",
-    "score": 323.8,
-    "attrs": [
-      "萌",
-      "毒"
-    ],
-    "stats": {
-      "total": 558,
-      "hp": 106,
-      "atk": 79,
-      "matk": 79,
-      "def": 80,
-      "mdef": 114,
-      "spd": 100
-    },
-    "trait_name": "拨浪鼓",
-    "trait_desc": "己方精灵每使用1次状态技能，自己入场时毒系和萌系技能威力+10。",
-    "trait_score": 4.1,
-    "trait_pts": {
-      "威力+": 1.1,
-      "入场效果": 3
-    },
-    "skill_score": 95.8,
-    "attr_bonus": 100,
-    "stats_score": 27.9,
-    "recommended_skills": [
-      "毒孢子",
-      "力量增效",
-      "撒娇",
-      "毒液渗透"
-    ]
-  },
-  {
-    "id": "雅丹鬃",
-    "name": "雅丹鬃",
-    "score": 323.3,
-    "attrs": [
-      "火"
-    ],
-    "stats": {
-      "total": 510,
-      "hp": 83,
-      "atk": 49,
-      "matk": 113,
-      "def": 62,
-      "mdef": 78,
-      "spd": 125
-    },
-    "trait_name": "天通地明",
-    "trait_desc": "攻击时，若敌方血脉是污染血脉，技能威力+100%。",
-    "trait_score": 11.0,
-    "trait_pts": {
-      "威力+": 11.0
-    },
-    "skill_score": 127.3,
-    "attr_bonus": 50,
-    "stats_score": 25.5,
-    "recommended_skills": [
-      "魔法增效",
-      "防御",
-      "阳火增辉",
-      "焚烧烙印"
-    ]
-  },
-  {
-    "id": "红绒十字",
-    "name": "红绒十字",
-    "score": 321.6,
-    "attrs": [
-      "火",
-      "萌"
-    ],
-    "stats": {
-      "total": 598,
-      "hp": 112,
-      "atk": 47,
-      "matk": 122,
-      "def": 100,
-      "mdef": 127,
-      "spd": 90
-    },
-    "trait_name": "仁心",
-    "trait_desc": "敌方受到灼烧伤害时，自己回复等量生命。",
-    "trait_score": 0,
-    "trait_pts": {},
-    "skill_score": 102.0,
-    "attr_bonus": 100,
-    "stats_score": 29.9,
-    "recommended_skills": [
-      "引燃",
-      "防御",
-      "焚烧烙印",
-      "破罐破摔"
-    ]
-  },
-  {
-    "id": "声波缇塔",
-    "name": "声波缇塔",
-    "score": 319.8,
-    "attrs": [
-      "机械"
-    ],
-    "stats": {
-      "total": 568,
-      "hp": 92,
-      "atk": 124,
-      "matk": 48,
-      "def": 122,
-      "mdef": 92,
-      "spd": 90
-    },
-    "trait_name": "向心力",
-    "trait_desc": "1号和2号位技能获得传动1和威力+30。",
-    "trait_score": 6.0,
-    "trait_pts": {
-      "威力+": 6.0
-    },
-    "skill_score": 132.2,
-    "attr_bonus": 50,
-    "stats_score": 28.4,
-    "recommended_skills": [
-      "防御",
-      "啮合传递",
-      "力量增效",
-      "阻断"
-    ]
-  },
-  {
-    "id": "公平鸽",
-    "name": "公平鸽",
-    "score": 319.0,
-    "attrs": [
-      "普通"
-    ],
-    "stats": {
-      "total": 649,
-      "hp": 113,
-      "atk": 93,
-      "matk": 93,
-      "def": 125,
-      "mdef": 125,
-      "spd": 100
-    },
-    "trait_name": "衡量",
-    "trait_desc": "入场时，复制敌方的增益。在场时，若敌方获得增益自己也会获得。",
-    "trait_score": 3,
-    "trait_pts": {
-      "入场效果": 3
-    },
-    "skill_score": 127.0,
-    "attr_bonus": 50,
-    "stats_score": 32.5,
-    "recommended_skills": [
-      "天旋地转",
-      "防反",
-      "力量增效",
-      "摇篮曲"
-    ]
-  },
-  {
-    "id": "记忆石",
-    "name": "记忆石",
-    "score": 317.6,
-    "attrs": [
-      "地"
-    ],
-    "stats": {
-      "total": 607,
-      "hp": 112,
-      "atk": 108,
-      "matk": 97,
-      "def": 141,
-      "mdef": 79,
-      "spd": 70
-    },
-    "trait_name": "不移",
-    "trait_desc": "携带的无额外效果的攻击技能，威力+30%。",
-    "trait_score": 6.0,
-    "trait_pts": {
-      "威力+": 6.0
-    },
-    "skill_score": 122.0,
-    "attr_bonus": 50,
-    "stats_score": 30.4,
-    "recommended_skills": [
-      "魔法增效",
-      "防御",
-      "力量增效",
-      "地陷"
-    ]
-  },
-  {
-    "id": "菊花梨",
-    "name": "菊花梨",
-    "score": 315.3,
-    "attrs": [
-      "萌"
-    ],
-    "stats": {
-      "total": 523,
-      "hp": 106,
-      "atk": 49,
-      "matk": 116,
-      "def": 77,
-      "mdef": 115,
-      "spd": 60
-    },
-    "trait_name": "无忧无虑",
-    "trait_desc": "可获得的萌化层数不受限制。",
-    "trait_score": 14,
-    "trait_pts": {
-      "萌化增强": 6,
-      "上限突破": 8
-    },
-    "skill_score": 104.9,
-    "attr_bonus": 50,
-    "stats_score": 26.1,
-    "recommended_skills": [
-      "魔法增效",
-      "防御",
-      "击鼓传花",
-      "阻断"
-    ]
-  },
-  {
-    "id": "风滚暮虫",
-    "name": "风滚暮虫",
-    "score": 314.6,
-    "attrs": [
-      "普通",
-      "虫"
-    ],
-    "stats": {
-      "total": 542,
-      "hp": 93,
-      "atk": 24,
-      "matk": 109,
-      "def": 105,
-      "mdef": 91,
-      "spd": 120
-    },
-    "trait_name": "共鸣",
-    "trait_desc": "自己携带的【虫鸣】技能威力+20。",
-    "trait_score": 4.0,
-    "trait_pts": {
-      "威力+": 4.0
-    },
-    "skill_score": 90.2,
-    "attr_bonus": 100,
-    "stats_score": 27.1,
-    "recommended_skills": [
-      "聒噪",
-      "防御",
-      "摇篮曲",
-      "追打"
-    ]
-  },
-  {
-    "id": "圣代甜甜",
-    "name": "圣代甜甜",
-    "score": 314.6,
-    "attrs": [
-      "冰"
-    ],
-    "stats": {
-      "total": 612,
-      "hp": 119,
-      "atk": 112,
-      "matk": 119,
-      "def": 70,
-      "mdef": 92,
-      "spd": 100
-    },
-    "trait_name": "加个雪球",
-    "trait_desc": "使敌方获得冻结时，也会使其获得2层冻结。",
-    "trait_score": 8.0,
-    "trait_pts": {
-      "冻结层": 8.0
-    },
-    "skill_score": 110.2,
-    "attr_bonus": 50,
-    "stats_score": 30.6,
-    "recommended_skills": [
-      "防御",
-      "魔法增效",
-      "力量增效",
-      "极寒领域"
-    ]
-  },
-  {
-    "id": "石冠王蜥",
-    "name": "石冠王蜥",
-    "score": 313.9,
-    "attrs": [
-      "地"
-    ],
-    "stats": {
-      "total": 572,
-      "hp": 113,
-      "atk": 90,
-      "matk": 89,
-      "def": 106,
-      "mdef": 74,
-      "spd": 100
-    },
-    "trait_name": "刺肤",
-    "trait_desc": "每受到1次攻击，对攻击自己的精灵造成50威力物理伤害。",
-    "trait_score": 7.5,
-    "trait_pts": {
-      "反伤": 7.5
-    },
-    "skill_score": 119.5,
-    "attr_bonus": 50,
-    "stats_score": 28.6,
-    "recommended_skills": [
-      "防御",
-      "硬化",
-      "石锁",
-      "地陷"
+      "偷袭",
+      "惊吓盒子",
+      "撕裂",
+      "防御"
     ]
   },
   {
     "id": "花衣蝶",
     "name": "花衣蝶",
-    "score": 312.8,
+    "score": 262.8,
     "attrs": [
       "虫",
       "草"
@@ -3054,401 +4386,402 @@
     "trait_pts": {
       "奉献": 0.8
     },
-    "skill_score": 102.0,
-    "attr_bonus": 100,
+    "skill_score": 134.3,
+    "attr_bonus": 17.7,
+    "attr_detail": {
+      "defense": 38.4,
+      "offense": 6.6,
+      "synergy": -8.0
+    },
     "stats_score": 26.9,
+    "boss_bonus": 0,
     "recommended_skills": [
-      "防御",
-      "啃咬",
-      "花炮",
-      "芳香诱引"
+      "芳香诱引",
+      "啮合传递",
+      "虹光冲击",
+      "防御"
     ]
   },
   {
-    "id": "琉璃水母",
-    "name": "琉璃水母",
-    "score": 312.6,
+    "id": "深蓝鲸",
+    "name": "深蓝鲸",
+    "score": 260.9,
     "attrs": [
-      "水",
-      "毒"
+      "水"
     ],
     "stats": {
-      "total": 580,
-      "hp": 134,
-      "atk": 37,
-      "matk": 85,
-      "def": 93,
-      "mdef": 136,
-      "spd": 95
+      "total": 588,
+      "hp": 129,
+      "atk": 40,
+      "matk": 115,
+      "def": 119,
+      "mdef": 135,
+      "spd": 50
     },
-    "trait_name": "扩散侵蚀",
-    "trait_desc": "使用水系技能后，敌方获得中毒，获得层数等于中毒印记层数的2倍。",
+    "trait_name": "倾轧",
+    "trait_desc": "携带的技能受能耗变化效果的影响翻倍。",
     "trait_score": 0,
     "trait_pts": {},
-    "skill_score": 96.6,
-    "attr_bonus": 100,
-    "stats_score": 29.0,
+    "skill_score": 125.4,
+    "attr_bonus": 17.9,
+    "attr_detail": {
+      "defense": 20.2,
+      "offense": 24.6,
+      "synergy": 3
+    },
+    "stats_score": 29.4,
+    "boss_bonus": 0,
     "recommended_skills": [
-      "以毒攻毒",
-      "泡沫幻影",
-      "疫病吐息",
-      "毒液渗透"
+      "掩护",
+      "潮汐",
+      "气泡",
+      "虹光冲击"
     ]
   },
   {
-    "id": "流浪鼠",
-    "name": "流浪鼠",
-    "score": 312.1,
+    "id": "蹦床松鼠",
+    "name": "蹦床松鼠",
+    "score": 259.2,
     "attrs": [
-      "地"
+      "普通"
     ],
     "stats": {
-      "total": 563,
-      "hp": 90,
-      "atk": 46,
-      "matk": 116,
-      "def": 84,
-      "mdef": 112,
-      "spd": 115
+      "total": 555,
+      "hp": 114,
+      "atk": 84,
+      "matk": 79,
+      "def": 111,
+      "mdef": 87,
+      "spd": 80
     },
-    "trait_name": "奔波命",
-    "trait_desc": "使用防御技能后，回合结束时脱离。",
-    "trait_score": 8,
+    "trait_name": "囤积",
+    "trait_desc": "自身每有1能量，获得双防+10%。",
+    "trait_score": 2.3,
     "trait_pts": {
-      "脱离": 8
+      "防+%": 2.3
     },
-    "skill_score": 117.7,
-    "attr_bonus": 50,
-    "stats_score": 28.1,
+    "skill_score": 126.3,
+    "attr_bonus": 12.5,
+    "attr_detail": {
+      "defense": 10.9,
+      "offense": 21.0,
+      "synergy": 3
+    },
+    "stats_score": 27.8,
+    "boss_bonus": 0,
     "recommended_skills": [
-      "魔法增效",
-      "硬化",
-      "壁垒",
-      "陨石"
+      "吓退",
+      "掩护",
+      "影袭",
+      "虹光冲击"
     ]
   },
   {
-    "id": "岚鸟",
-    "name": "岚鸟",
-    "score": 311.0,
+    "id": "窃光蚊",
+    "name": "窃光蚊",
+    "score": 258.7,
     "attrs": [
-      "翼"
+      "恶",
+      "光"
     ],
     "stats": {
       "total": 592,
-      "hp": 90,
-      "atk": 142,
-      "matk": 63,
-      "def": 108,
-      "mdef": 74,
+      "hp": 93,
+      "atk": 104,
+      "matk": 104,
+      "def": 63,
+      "mdef": 113,
       "spd": 115
     },
-    "trait_name": "破空",
-    "trait_desc": "若先于敌方攻击，本次技能威力+75%。",
-    "trait_score": 8.2,
+    "trait_name": "血型吸引",
+    "trait_desc": "敌方每携带1种系别的技能，自己攻击时威力+10。",
+    "trait_score": 1.1,
     "trait_pts": {
-      "威力+": 8.2
+      "威力+": 1.1
     },
-    "skill_score": 109.8,
-    "attr_bonus": 50,
+    "skill_score": 117.0,
+    "attr_bonus": 18.9,
+    "attr_detail": {
+      "defense": 25.7,
+      "offense": 18.6,
+      "synergy": 5.5
+    },
     "stats_score": 29.6,
+    "boss_bonus": 0,
     "recommended_skills": [
+      "跌落",
       "力量增效",
-      "防御",
-      "风起",
-      "龙卷风"
+      "倾泻",
+      "防御"
     ]
   },
   {
-    "id": "朔夜伊芙",
-    "name": "朔夜伊芙",
-    "score": 310.0,
+    "id": "邪眼巨魔",
+    "name": "邪眼巨魔",
+    "score": 258.0,
     "attrs": [
-      "恶"
+      "恶",
+      "虫"
     ],
     "stats": {
-      "total": 624,
-      "hp": 100,
-      "atk": 115,
-      "matk": 105,
-      "def": 104,
-      "mdef": 85,
-      "spd": 115
+      "total": 586,
+      "hp": 102,
+      "atk": 85,
+      "matk": 88,
+      "def": 108,
+      "mdef": 108,
+      "spd": 95
     },
-    "trait_name": "嫁祸",
-    "trait_desc": "自己每失去25%生命，连击数+2。",
-    "trait_score": 8,
-    "trait_pts": {
-      "连击数+": 8
-    },
-    "skill_score": 103.2,
-    "attr_bonus": 50,
-    "stats_score": 31.2,
-    "recommended_skills": [
-      "防御",
-      "力量增效",
-      "蝙蝠",
-      "恶意逃离"
-    ]
-  },
-  {
-    "id": "权杖-V",
-    "name": "权杖-V",
-    "score": 309.9,
-    "attrs": [
-      "机械"
-    ],
-    "stats": {
-      "total": 652,
-      "hp": 103,
-      "atk": 105,
-      "matk": 97,
-      "def": 136,
-      "mdef": 136,
-      "spd": 75
-    },
-    "trait_name": "机械变式",
-    "trait_desc": "自己携带的技能每回合位置变化时，该技能能耗-1。",
-    "trait_score": 5.0,
-    "trait_pts": {
-      "技能能耗-": 2.2,
-      "携带能耗-": 2.8
-    },
-    "skill_score": 109.5,
-    "attr_bonus": 50,
-    "stats_score": 32.6,
-    "recommended_skills": [
-      "防御",
-      "磁暴",
-      "啮合传递",
-      "棘刺"
-    ]
-  },
-  {
-    "id": "高脚鹬",
-    "name": "高脚鹬",
-    "score": 309.4,
-    "attrs": [
-      "翼"
-    ],
-    "stats": {
-      "total": 534,
-      "hp": 94,
-      "atk": 63,
-      "matk": 63,
-      "def": 112,
-      "mdef": 87,
-      "spd": 115
-    },
-    "trait_name": "起飞加速",
-    "trait_desc": "本场战斗首次使用的技能获得迅捷。",
-    "trait_score": 14,
-    "trait_pts": {
-      "迅捷": 14
-    },
-    "skill_score": 96.6,
-    "attr_bonus": 50,
-    "stats_score": 26.7,
-    "recommended_skills": [
-      "防御",
-      "翼击",
-      "乘风",
-      "风起"
-    ]
-  },
-  {
-    "id": "月亮砣",
-    "name": "月亮砣",
-    "score": 307.9,
-    "attrs": [
-      "毒",
-      "萌"
-    ],
-    "stats": {
-      "total": 609,
-      "hp": 125,
-      "atk": 98,
-      "matk": 100,
-      "def": 81,
-      "mdef": 100,
-      "spd": 105
-    },
-    "trait_name": "耐活王",
-    "trait_desc": "敌方受到中毒效果伤害时，自己回复等量生命。",
-    "trait_score": 0,
-    "trait_pts": {},
-    "skill_score": 86.3,
-    "attr_bonus": 100,
-    "stats_score": 30.4,
-    "recommended_skills": [
-      "生日蛋糕",
-      "防御",
-      "疫病吐息",
-      "毒液渗透"
-    ]
-  },
-  {
-    "id": "荆棘电环",
-    "name": "荆棘电环",
-    "score": 302.0,
-    "attrs": [
-      "电"
-    ],
-    "stats": {
-      "total": 557,
-      "hp": 106,
-      "atk": 81,
-      "matk": 81,
-      "def": 85,
-      "mdef": 84,
-      "spd": 120
-    },
-    "trait_name": "防过载保护",
-    "trait_desc": "每次行动后脱离。",
-    "trait_score": 8,
-    "trait_pts": {
-      "脱离": 8
-    },
-    "skill_score": 108.4,
-    "attr_bonus": 50,
-    "stats_score": 27.9,
-    "recommended_skills": [
-      "防御",
-      "增程电池",
-      "加大功率",
-      "阻断"
-    ]
-  },
-  {
-    "id": "遁地鼠",
-    "name": "遁地鼠",
-    "score": 297.5,
-    "attrs": [
-      "地"
-    ],
-    "stats": {
-      "total": 553,
-      "hp": 99,
-      "atk": 118,
-      "matk": 38,
-      "def": 102,
-      "mdef": 96,
-      "spd": 100
-    },
-    "trait_name": "警惕",
-    "trait_desc": "回合结束时，若自己能量为0则脱离。",
-    "trait_score": 8,
-    "trait_pts": {
-      "脱离": 8
-    },
-    "skill_score": 105.1,
-    "attr_bonus": 50,
-    "stats_score": 27.6,
-    "recommended_skills": [
-      "先发制人",
-      "防御",
-      "地刺",
-      "蓄势待发"
-    ]
-  },
-  {
-    "id": "酷拉",
-    "name": "酷拉",
-    "score": 296.5,
-    "attrs": [
-      "电"
-    ],
-    "stats": {
-      "total": 583,
-      "hp": 83,
-      "atk": 100,
-      "matk": 100,
-      "def": 78,
-      "mdef": 97,
-      "spd": 125
-    },
-    "trait_name": "噼啪！",
-    "trait_desc": "入场后首次行动，所选技能使用次数+1。",
+    "trait_name": "暗流",
+    "trait_desc": "和下一只入场的精灵交换血量百分比。",
     "trait_score": 3,
     "trait_pts": {
       "入场效果": 3
     },
-    "skill_score": 118.1,
-    "attr_bonus": 50,
-    "stats_score": 29.1,
+    "skill_score": 111.1,
+    "attr_bonus": 17.7,
+    "attr_detail": {
+      "defense": 31.9,
+      "offense": 6.6,
+      "synergy": 5.5
+    },
+    "stats_score": 29.3,
+    "boss_bonus": 0,
     "recommended_skills": [
-      "防御",
-      "魔法增效",
-      "超导",
-      "阻断"
+      "消毒法",
+      "跌落",
+      "嗜痛",
+      "虹光冲击"
     ]
   },
   {
-    "id": "电球咩咩",
-    "name": "电球咩咩",
-    "score": 295.8,
+    "id": "铠甲虫",
+    "name": "铠甲虫",
+    "score": 258.0,
     "attrs": [
-      "电"
+      "虫"
     ],
     "stats": {
-      "total": 553,
-      "hp": 78,
-      "atk": 82,
-      "matk": 82,
-      "def": 91,
-      "mdef": 95,
-      "spd": 125
+      "total": 522,
+      "hp": 122,
+      "atk": 88,
+      "matk": 39,
+      "def": 121,
+      "mdef": 77,
+      "spd": 75
     },
-    "trait_name": "快充",
-    "trait_desc": "离场时回复10能量。",
-    "trait_score": 8.2,
+    "trait_name": "坚韧铠甲",
+    "trait_desc": "每受到1次攻击伤害，己方队伍获得1次随机奉献。",
+    "trait_score": 0.8,
     "trait_pts": {
-      "回能": 8.2
+      "奉献": 0.8
     },
-    "skill_score": 102.6,
-    "attr_bonus": 50,
-    "stats_score": 27.6,
+    "skill_score": 142.1,
+    "attr_bonus": 8.3,
+    "attr_detail": {
+      "defense": 9.6,
+      "offense": 10.2,
+      "synergy": 3
+    },
+    "stats_score": 26.1,
+    "boss_bonus": 0,
     "recommended_skills": [
-      "防御",
-      "加固",
-      "先发制人",
-      "闪击折返"
+      "掩护",
+      "吓退",
+      "翅刃",
+      "力量增效"
     ]
   },
   {
-    "id": "格斗小六",
-    "name": "格斗小六",
-    "score": 295.4,
+    "id": "陨星虫",
+    "name": "陨星虫",
+    "score": 256.7,
+    "attrs": [
+      "虫"
+    ],
+    "stats": {
+      "total": 509,
+      "hp": 81,
+      "atk": 78,
+      "matk": 78,
+      "def": 76,
+      "mdef": 96,
+      "spd": 100
+    },
+    "trait_name": "契约的形状",
+    "trait_desc": "根据捕捉所用的咕噜球，入场时获得不同效果。普通咕噜球：全属性提升5%；高级咕噜球：全属性提升10%；国王球：全属性提升15%。",
+    "trait_score": 3,
+    "trait_pts": {
+      "入场效果": 3
+    },
+    "skill_score": 134.8,
+    "attr_bonus": 8.3,
+    "attr_detail": {
+      "defense": 9.6,
+      "offense": 10.2,
+      "synergy": 3
+    },
+    "stats_score": 25.4,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "掩护",
+      "天旋地转",
+      "陨石",
+      "坍缩"
+    ]
+  },
+  {
+    "id": "格斗小八",
+    "name": "格斗小八",
+    "score": 255.4,
     "attrs": [
       "武"
     ],
     "stats": {
-      "total": 639,
-      "hp": 76,
-      "atk": 144,
-      "matk": 63,
-      "def": 118,
-      "mdef": 88,
-      "spd": 150
+      "total": 575,
+      "hp": 136,
+      "atk": 135,
+      "matk": 50,
+      "def": 104,
+      "mdef": 84,
+      "spd": 66
     },
-    "trait_name": "马步",
-    "trait_desc": "状态技能应对成功时，获得10点能量。",
+    "trait_name": "受身",
+    "trait_desc": "入场时，若敌方本回合换宠，全属性提升100%。",
+    "trait_score": 3,
+    "trait_pts": {
+      "入场效果": 3
+    },
+    "skill_score": 114.2,
+    "attr_bonus": 14.0,
+    "attr_detail": {
+      "defense": 17.8,
+      "offense": 16.2,
+      "synergy": 3
+    },
+    "stats_score": 28.8,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "吓退",
+      "偷袭",
+      "斩断",
+      "爆米花爆破"
+    ]
+  },
+  {
+    "id": "棋棋（白子）",
+    "name": "棋棋（白子）",
+    "score": 253.4,
+    "attrs": [
+      "武",
+      "地"
+    ],
+    "stats": {
+      "total": 418,
+      "hp": 66,
+      "atk": 97,
+      "matk": 35,
+      "def": 67,
+      "mdef": 53,
+      "spd": 100
+    },
+    "trait_name": "腾挪",
+    "trait_desc": "自身以攻击技能应对1次后，回满状态，变身为【棋绮后】。变身后，基础种族值与特性变为棋绮后，但不改变已携带的技能。变身前获得的攻防提升效果在变身后依然保留。变身之前，棋绮后的特性可被正常触发，其效果将在变身后生效。",
     "trait_score": 0,
     "trait_pts": {},
-    "skill_score": 117.8,
-    "attr_bonus": 50,
-    "stats_score": 31.9,
+    "skill_score": 135.2,
+    "attr_bonus": 34.6,
+    "attr_detail": {
+      "defense": 64.9,
+      "offense": 12.6,
+      "synergy": 5.5
+    },
+    "stats_score": 20.9,
+    "boss_bonus": 0,
     "recommended_skills": [
-      "防御",
-      "力量增效",
-      "气沉丹田",
-      "飞踢"
+      "迫近攻击",
+      "啮合传递",
+      "岩脉崩毁",
+      "有效预防"
+    ]
+  },
+  {
+    "id": "棋棋（黑子）",
+    "name": "棋棋（黑子）",
+    "score": 253.4,
+    "attrs": [
+      "武",
+      "地"
+    ],
+    "stats": {
+      "total": 418,
+      "hp": 66,
+      "atk": 97,
+      "matk": 35,
+      "def": 67,
+      "mdef": 53,
+      "spd": 100
+    },
+    "trait_name": "腾挪",
+    "trait_desc": "自身以攻击技能应对1次后，回满状态，变身为【棋绮后】。变身后，基础种族值与特性变为棋绮后，但不改变已携带的技能。变身前获得的攻防提升效果在变身后依然保留。变身之前，棋绮后的特性可被正常触发，其效果将在变身后生效。",
+    "trait_score": 0,
+    "trait_pts": {},
+    "skill_score": 135.2,
+    "attr_bonus": 34.6,
+    "attr_detail": {
+      "defense": 64.9,
+      "offense": 12.6,
+      "synergy": 5.5
+    },
+    "stats_score": 20.9,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "迫近攻击",
+      "啮合传递",
+      "岩脉崩毁",
+      "有效预防"
+    ]
+  },
+  {
+    "id": "幽冥眼",
+    "name": "幽冥眼",
+    "score": 252.2,
+    "attrs": [
+      "幽"
+    ],
+    "stats": {
+      "total": 610,
+      "hp": 92,
+      "atk": 50,
+      "matk": 120,
+      "def": 98,
+      "mdef": 135,
+      "spd": 115
+    },
+    "trait_name": "惊吓",
+    "trait_desc": "能量等于0的精灵无法对自己造成伤害。",
+    "trait_score": 0,
+    "trait_pts": {},
+    "skill_score": 110.4,
+    "attr_bonus": 19.8,
+    "attr_detail": {
+      "defense": 21.9,
+      "offense": 28.2,
+      "synergy": 3
+    },
+    "stats_score": 30.5,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "许愿星",
+      "幽灵爆发",
+      "报复",
+      "嘲弄"
     ]
   },
   {
     "id": "烈火守护",
     "name": "烈火守护",
-    "score": 292.9,
+    "score": 251.3,
     "attrs": [
       "火"
     ],
@@ -3469,399 +4802,26 @@
       "全技能威力+": 1.4,
       "入场效果": 3
     },
-    "skill_score": 120.1,
-    "attr_bonus": 50,
+    "skill_score": 107.6,
+    "attr_bonus": 20.9,
+    "attr_detail": {
+      "defense": 26.1,
+      "offense": 25.8,
+      "synergy": 3
+    },
     "stats_score": 25.2,
+    "boss_bonus": 0,
     "recommended_skills": [
-      "防御",
-      "力量增效",
-      "怒火",
-      "偷袭"
-    ]
-  },
-  {
-    "id": "铠甲虫",
-    "name": "铠甲虫",
-    "score": 292.7,
-    "attrs": [
-      "虫"
-    ],
-    "stats": {
-      "total": 522,
-      "hp": 122,
-      "atk": 88,
-      "matk": 39,
-      "def": 121,
-      "mdef": 77,
-      "spd": 75
-    },
-    "trait_name": "坚韧铠甲",
-    "trait_desc": "每受到1次攻击伤害，己方队伍获得1次随机奉献。",
-    "trait_score": 0.8,
-    "trait_pts": {
-      "奉献": 0.8
-    },
-    "skill_score": 135.1,
-    "attr_bonus": 50,
-    "stats_score": 26.1,
-    "recommended_skills": [
-      "防御",
-      "掩护",
-      "吓退",
-      "翅刃"
-    ]
-  },
-  {
-    "id": "怖哭菇",
-    "name": "怖哭菇",
-    "score": 292.0,
-    "attrs": [
-      "幻"
-    ],
-    "stats": {
-      "total": 466,
-      "hp": 124,
-      "atk": 63,
-      "matk": 69,
-      "def": 50,
-      "mdef": 100,
-      "spd": 60
-    },
-    "trait_name": "吸积盘",
-    "trait_desc": "回合结束时，敌方获得2层星陨印记。",
-    "trait_score": 12.0,
-    "trait_pts": {
-      "星陨印记": 12.0
-    },
-    "skill_score": 100.8,
-    "attr_bonus": 50,
-    "stats_score": 23.3,
-    "recommended_skills": [
-      "有效预防",
-      "嗜痛",
-      "当头棒喝",
-      "四维降解"
-    ]
-  },
-  {
-    "id": "圆号鱼",
-    "name": "圆号鱼",
-    "score": 291.7,
-    "attrs": [
-      "水"
-    ],
-    "stats": {
-      "total": 575,
-      "hp": 136,
-      "atk": 34,
-      "matk": 95,
-      "def": 95,
-      "mdef": 110,
-      "spd": 105
-    },
-    "trait_name": "泛音列",
-    "trait_desc": "使用状态技能后，敌方获得【聒噪】技能的效果，持续3回合。",
-    "trait_score": 0,
-    "trait_pts": {},
-    "skill_score": 126.5,
-    "attr_bonus": 50,
-    "stats_score": 28.8,
-    "recommended_skills": [
-      "打湿",
-      "泡沫幻影",
-      "水炮",
-      "润泽"
-    ]
-  },
-  {
-    "id": "格斗小八",
-    "name": "格斗小八",
-    "score": 289.1,
-    "attrs": [
-      "武"
-    ],
-    "stats": {
-      "total": 575,
-      "hp": 136,
-      "atk": 135,
-      "matk": 50,
-      "def": 104,
-      "mdef": 84,
-      "spd": 66
-    },
-    "trait_name": "受身",
-    "trait_desc": "入场时，若敌方本回合换宠，全属性提升100%。",
-    "trait_score": 3,
-    "trait_pts": {
-      "入场效果": 3
-    },
-    "skill_score": 111.9,
-    "attr_bonus": 50,
-    "stats_score": 28.8,
-    "recommended_skills": [
-      "防御",
-      "先发制人",
-      "气沉丹田",
-      "斩断"
-    ]
-  },
-  {
-    "id": "深蓝鲸",
-    "name": "深蓝鲸",
-    "score": 288.9,
-    "attrs": [
-      "水"
-    ],
-    "stats": {
-      "total": 588,
-      "hp": 129,
-      "atk": 40,
-      "matk": 115,
-      "def": 119,
-      "mdef": 135,
-      "spd": 50
-    },
-    "trait_name": "倾轧",
-    "trait_desc": "携带的技能受能耗变化效果的影响翻倍。",
-    "trait_score": 0,
-    "trait_pts": {},
-    "skill_score": 121.3,
-    "attr_bonus": 50,
-    "stats_score": 29.4,
-    "recommended_skills": [
-      "魔法增效",
-      "水泡盾",
-      "水波术",
-      "潮汐"
-    ]
-  },
-  {
-    "id": "裘卡",
-    "name": "裘卡",
-    "score": 288.4,
-    "attrs": [
-      "毒"
-    ],
-    "stats": {
-      "total": 520,
-      "hp": 73,
-      "atk": 93,
-      "matk": 83,
-      "def": 65,
-      "mdef": 81,
-      "spd": 125
-    },
-    "trait_name": "蚀刻",
-    "trait_desc": "回合结束时，敌方每2层中毒转化为1层中毒印记。",
-    "trait_score": 10,
-    "trait_pts": {
-      "毒转印记": 10
-    },
-    "skill_score": 94.4,
-    "attr_bonus": 50,
-    "stats_score": 26.0,
-    "recommended_skills": [
-      "防御",
-      "以毒攻毒",
-      "疫病吐息",
-      "感染病"
-    ]
-  },
-  {
-    "id": "蹦床松鼠",
-    "name": "蹦床松鼠",
-    "score": 287.4,
-    "attrs": [
-      "普通"
-    ],
-    "stats": {
-      "total": 555,
-      "hp": 114,
-      "atk": 84,
-      "matk": 79,
-      "def": 111,
-      "mdef": 87,
-      "spd": 80
-    },
-    "trait_name": "囤积",
-    "trait_desc": "自身每有1能量，获得双防+10%。",
-    "trait_score": 2.3,
-    "trait_pts": {
-      "防+%": 2.3
-    },
-    "skill_score": 117.0,
-    "attr_bonus": 50,
-    "stats_score": 27.8,
-    "recommended_skills": [
-      "防御",
-      "防反",
-      "蓄能轰击",
-      "吓退"
-    ]
-  },
-  {
-    "id": "雪灵",
-    "name": "雪灵",
-    "score": 287.2,
-    "attrs": [
-      "冰"
-    ],
-    "stats": {
-      "total": 643,
-      "hp": 94,
-      "atk": 112,
-      "matk": 112,
-      "def": 105,
-      "mdef": 105,
-      "spd": 115
-    },
-    "trait_name": "冰封",
-    "trait_desc": "自身在场时，敌方全技能能耗+1。",
-    "trait_score": 3.0,
-    "trait_pts": {
-      "敌能耗+": 3.0
-    },
-    "skill_score": 96.8,
-    "attr_bonus": 50,
-    "stats_score": 32.1,
-    "recommended_skills": [
-      "防御",
-      "丢冰块",
-      "雪替身",
-      "速冻"
-    ]
-  },
-  {
-    "id": "陨星虫",
-    "name": "陨星虫",
-    "score": 286.3,
-    "attrs": [
-      "虫"
-    ],
-    "stats": {
-      "total": 509,
-      "hp": 81,
-      "atk": 78,
-      "matk": 78,
-      "def": 76,
-      "mdef": 96,
-      "spd": 100
-    },
-    "trait_name": "契约的形状",
-    "trait_desc": "根据捕捉所用的咕噜球，入场时获得不同效果。普通咕噜球：全属性提升5%；高级咕噜球：全属性提升10%；国王球：全属性提升15%。",
-    "trait_score": 3,
-    "trait_pts": {
-      "入场效果": 3
-    },
-    "skill_score": 122.7,
-    "attr_bonus": 50,
-    "stats_score": 25.4,
-    "recommended_skills": [
-      "掩护",
-      "食腐",
-      "先发制人",
-      "吓退"
-    ]
-  },
-  {
-    "id": "嘟嘟锅",
-    "name": "嘟嘟锅",
-    "score": 286.2,
-    "attrs": [
-      "毒"
-    ],
-    "stats": {
-      "total": 573,
-      "hp": 137,
-      "atk": 36,
-      "matk": 102,
-      "def": 89,
-      "mdef": 104,
-      "spd": 105
-    },
-    "trait_name": "复方汤剂",
-    "trait_desc": "回合结束时，中毒效果触发次数+1。",
-    "trait_score": 8.0,
-    "trait_pts": {
-      "中毒触发+": 8.0
-    },
-    "skill_score": 89.8,
-    "attr_bonus": 50,
-    "stats_score": 28.6,
-    "recommended_skills": [
-      "防御",
-      "以毒攻毒",
-      "疫病吐息",
-      "毒液渗透"
-    ]
-  },
-  {
-    "id": "斑枭",
-    "name": "斑枭",
-    "score": 286.2,
-    "attrs": [
-      "翼"
-    ],
-    "stats": {
-      "total": 617,
-      "hp": 89,
-      "atk": 112,
-      "matk": 112,
-      "def": 89,
-      "mdef": 100,
-      "spd": 115
-    },
-    "trait_name": "逐魂鸟",
-    "trait_desc": "能耗小于等于1的攻击技能，无法对自己造成伤害。",
-    "trait_score": 0,
-    "trait_pts": {},
-    "skill_score": 112.6,
-    "attr_bonus": 50,
-    "stats_score": 30.9,
-    "recommended_skills": [
-      "防御",
-      "力量增效",
-      "飞羽",
-      "羽刃"
-    ]
-  },
-  {
-    "id": "夜枭",
-    "name": "夜枭",
-    "score": 285.2,
-    "attrs": [
-      "幽"
-    ],
-    "stats": {
-      "total": 464,
-      "hp": 117,
-      "atk": 10,
-      "matk": 61,
-      "def": 90,
-      "mdef": 106,
-      "spd": 80
-    },
-    "trait_name": "搜刮",
-    "trait_desc": "敌方每使用1次【聚能】技能或更换精灵，自己入场时获得魔攻+20%。",
-    "trait_score": 6.9,
-    "trait_pts": {
-      "攻+%": 3.9,
-      "入场效果": 3
-    },
-    "skill_score": 114.8,
-    "attr_bonus": 50,
-    "stats_score": 23.2,
-    "recommended_skills": [
-      "防御",
-      "嘲弄",
-      "降灵",
-      "惊吓盒子"
+      "偷袭",
+      "撕裂",
+      "火云车",
+      "有效预防"
     ]
   },
   {
     "id": "伊贝粉粉",
     "name": "伊贝粉粉",
-    "score": 284.7,
+    "score": 251.1,
     "attrs": [
       "草"
     ],
@@ -3881,112 +4841,137 @@
       "回能": 1.5,
       "回血": 0.4
     },
-    "skill_score": 113.9,
-    "attr_bonus": 50,
+    "skill_score": 117.2,
+    "attr_bonus": 13.1,
+    "attr_detail": {
+      "defense": 17.6,
+      "offense": 13.8,
+      "synergy": 3
+    },
     "stats_score": 28.3,
+    "boss_bonus": 0,
     "recommended_skills": [
+      "掩护",
+      "爆米花爆破",
       "先发制人",
-      "光合作用",
-      "纤维化",
-      "光能聚集"
+      "光合作用"
     ]
   },
   {
-    "id": "春花兔",
-    "name": "春花兔",
-    "score": 277.0,
-    "attrs": [
-      "草"
-    ],
-    "stats": {
-      "total": 557,
-      "hp": 79,
-      "atk": 85,
-      "matk": 95,
-      "def": 103,
-      "mdef": 90,
-      "spd": 105
-    },
-    "trait_name": "系统发育",
-    "trait_desc": "获得能量或生命时，会将等量的能量或生命随机分配给场下的精灵。",
-    "trait_score": 0,
-    "trait_pts": {},
-    "skill_score": 115.4,
-    "attr_bonus": 50,
-    "stats_score": 27.9,
-    "recommended_skills": [
-      "防御",
-      "重击",
-      "抽枝",
-      "芳香诱引"
-    ]
-  },
-  {
-    "id": "幽冥眼",
-    "name": "幽冥眼",
-    "score": 276.4,
-    "attrs": [
-      "幽"
-    ],
-    "stats": {
-      "total": 610,
-      "hp": 92,
-      "atk": 50,
-      "matk": 120,
-      "def": 98,
-      "mdef": 135,
-      "spd": 115
-    },
-    "trait_name": "惊吓",
-    "trait_desc": "能量等于0的精灵无法对自己造成伤害。",
-    "trait_score": 0,
-    "trait_pts": {},
-    "skill_score": 104.4,
-    "attr_bonus": 50,
-    "stats_score": 30.5,
-    "recommended_skills": [
-      "鬼火",
-      "报复",
-      "嘲弄",
-      "降灵"
-    ]
-  },
-  {
-    "id": "皇家狮鹫",
-    "name": "皇家狮鹫",
-    "score": 274.8,
+    "id": "斑枭",
+    "name": "斑枭",
+    "score": 250.3,
     "attrs": [
       "翼"
     ],
     "stats": {
-      "total": 554,
-      "hp": 103,
-      "atk": 110,
-      "matk": 53,
-      "def": 103,
-      "mdef": 60,
-      "spd": 125
+      "total": 617,
+      "hp": 89,
+      "atk": 112,
+      "matk": 112,
+      "def": 89,
+      "mdef": 100,
+      "spd": 115
     },
-    "trait_name": "乘风连击",
-    "trait_desc": "自己使用翼系技能后，获得连击数+1。",
-    "trait_score": 4,
-    "trait_pts": {
-      "连击数+": 4
+    "trait_name": "逐魂鸟",
+    "trait_desc": "能耗小于等于1的攻击技能，无法对自己造成伤害。",
+    "trait_score": 0,
+    "trait_pts": {},
+    "skill_score": 111.6,
+    "attr_bonus": 15.1,
+    "attr_detail": {
+      "defense": 16.7,
+      "offense": 21.0,
+      "synergy": 3
     },
-    "skill_score": 98.0,
-    "attr_bonus": 50,
-    "stats_score": 27.7,
+    "stats_score": 30.9,
+    "boss_bonus": 0,
     "recommended_skills": [
-      "飞羽",
-      "乘风",
+      "跌落",
+      "惊吓盒子",
+      "倾泻",
+      "防御"
+    ]
+  },
+  {
+    "id": "卡瓦重",
+    "name": "卡瓦重",
+    "score": 248.9,
+    "attrs": [
+      "草",
+      "冰"
+    ],
+    "stats": {
+      "total": 446,
+      "hp": 77,
+      "atk": 68,
+      "matk": 14,
+      "def": 79,
+      "mdef": 73,
+      "spd": 135
+    },
+    "trait_name": "诈死",
+    "trait_desc": "自己力竭时，少损失1点魔力值。",
+    "trait_score": 0,
+    "trait_pts": {},
+    "skill_score": 135.5,
+    "attr_bonus": 24.2,
+    "attr_detail": {
+      "defense": 40.3,
+      "offense": 13.8,
+      "synergy": 7.0
+    },
+    "stats_score": 22.3,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "力量增效",
+      "丰饶",
+      "天旋地转",
+      "冰雹"
+    ]
+  },
+  {
+    "id": "圣剑-X",
+    "name": "圣剑-X",
+    "score": 248.5,
+    "attrs": [
+      "机械"
+    ],
+    "stats": {
+      "total": 868,
+      "hp": 174,
+      "atk": 144,
+      "matk": 139,
+      "def": 173,
+      "mdef": 173,
+      "spd": 65
+    },
+    "trait_name": "正位宝剑",
+    "trait_desc": "仅可以使用1号位技能。",
+    "trait_score": -18,
+    "trait_pts": {
+      "单技能位限制": -18
+    },
+    "skill_score": 108.6,
+    "attr_bonus": 30.3,
+    "attr_detail": {
+      "defense": 50.4,
+      "offense": 21.0,
+      "synergy": 3
+    },
+    "stats_score": 43.4,
+    "boss_bonus": 8.0,
+    "recommended_skills": [
       "防御",
-      "羽刃"
+      "啮合传递",
+      "先发制人",
+      "齿轮切开"
     ]
   },
   {
     "id": "多灵主",
     "name": "多灵主",
-    "score": 268.6,
+    "score": 242.0,
     "attrs": [
       "幽"
     ],
@@ -4006,82 +4991,66 @@
       "入场效果": 3,
       "继承": 8
     },
-    "skill_score": 122.2,
-    "attr_bonus": 50,
+    "skill_score": 125.8,
+    "attr_bonus": 19.8,
+    "attr_detail": {
+      "defense": 21.9,
+      "offense": 28.2,
+      "synergy": 3
+    },
     "stats_score": 13.1,
+    "boss_bonus": 0,
     "recommended_skills": [
       "消毒法",
-      "润泽",
-      "降灵",
-      "嘲弄"
+      "嘲弄",
+      "惊吓盒子",
+      "撕裂"
     ]
   },
   {
-    "id": "格兰球",
-    "name": "格兰球",
-    "score": 267.4,
+    "id": "寒音蛇",
+    "name": "寒音蛇",
+    "score": 240.9,
     "attrs": [
-      "草"
+      "萌",
+      "毒"
     ],
     "stats": {
-      "total": 536,
-      "hp": 108,
-      "atk": 52,
-      "matk": 124,
+      "total": 558,
+      "hp": 106,
+      "atk": 79,
+      "matk": 79,
       "def": 80,
-      "mdef": 112,
-      "spd": 60
-    },
-    "trait_name": "生长",
-    "trait_desc": "回合结束时，回复12%生命。",
-    "trait_score": 1.0,
-    "trait_pts": {
-      "回血": 1.0
-    },
-    "skill_score": 106.2,
-    "attr_bonus": 50,
-    "stats_score": 26.8,
-    "recommended_skills": [
-      "倾泻",
-      "花炮",
-      "光能聚集",
-      "阻断"
-    ]
-  },
-  {
-    "id": "学院呱呱",
-    "name": "学院呱呱",
-    "score": 266.1,
-    "attrs": [
-      "武"
-    ],
-    "stats": {
-      "total": 766,
-      "hp": 162,
-      "atk": 137,
-      "matk": 137,
-      "def": 115,
-      "mdef": 115,
+      "mdef": 114,
       "spd": 100
     },
-    "trait_name": "留学生",
-    "trait_desc": "自己全技能能耗+2，可以学习全部攻击技能。",
-    "trait_score": 0,
-    "trait_pts": {},
-    "skill_score": 62.9,
-    "attr_bonus": 50,
-    "stats_score": 38.3,
+    "trait_name": "拨浪鼓",
+    "trait_desc": "己方精灵每使用1次状态技能，自己入场时毒系和萌系技能威力+10。",
+    "trait_score": 4.1,
+    "trait_pts": {
+      "威力+": 1.1,
+      "入场效果": 3
+    },
+    "skill_score": 92.8,
+    "attr_bonus": 20.1,
+    "attr_detail": {
+      "defense": 29.4,
+      "offense": 19.8,
+      "synergy": 1.5
+    },
+    "stats_score": 27.9,
+    "boss_bonus": 0,
     "recommended_skills": [
-      "防御",
-      "落星",
-      "寸拳",
-      "气波"
+      "毒孢子",
+      "超级糖果",
+      "力量增效",
+      "毒液渗透"
     ]
   },
   {
     "id": "冰钻布鲁斯",
     "name": "冰钻布鲁斯",
-    "score": 265.4,
+    "score": 240.9,
     "attrs": [
       "冰"
     ],
@@ -4100,20 +5069,139 @@
     "trait_pts": {
       "威力+": 2.0
     },
-    "skill_score": 109.0,
-    "attr_bonus": 50,
+    "skill_score": 121.1,
+    "attr_bonus": 13.4,
+    "attr_detail": {
+      "defense": 9.4,
+      "offense": 25.8,
+      "synergy": 3
+    },
     "stats_score": 24.6,
+    "boss_bonus": 0,
     "recommended_skills": [
-      "先发制人",
-      "防御",
+      "暴风雪",
       "力量增效",
-      "滚雪球"
+      "倾泻",
+      "有效预防"
+    ]
+  },
+  {
+    "id": "皇家狮鹫",
+    "name": "皇家狮鹫",
+    "score": 239.9,
+    "attrs": [
+      "翼"
+    ],
+    "stats": {
+      "total": 554,
+      "hp": 103,
+      "atk": 110,
+      "matk": 53,
+      "def": 103,
+      "mdef": 60,
+      "spd": 125
+    },
+    "trait_name": "乘风连击",
+    "trait_desc": "自己使用翼系技能后，获得连击数+1。",
+    "trait_score": 4,
+    "trait_pts": {
+      "连击数+": 4
+    },
+    "skill_score": 98.0,
+    "attr_bonus": 15.1,
+    "attr_detail": {
+      "defense": 16.7,
+      "offense": 21.0,
+      "synergy": 3
+    },
+    "stats_score": 27.7,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "飞羽",
+      "乘风",
+      "防御",
+      "羽刃"
+    ]
+  },
+  {
+    "id": "月亮砣",
+    "name": "月亮砣",
+    "score": 233.6,
+    "attrs": [
+      "毒",
+      "萌"
+    ],
+    "stats": {
+      "total": 609,
+      "hp": 125,
+      "atk": 98,
+      "matk": 100,
+      "def": 81,
+      "mdef": 100,
+      "spd": 105
+    },
+    "trait_name": "耐活王",
+    "trait_desc": "敌方受到中毒效果伤害时，自己回复等量生命。",
+    "trait_score": 0,
+    "trait_pts": {},
+    "skill_score": 91.9,
+    "attr_bonus": 20.1,
+    "attr_detail": {
+      "defense": 29.4,
+      "offense": 19.8,
+      "synergy": 1.5
+    },
+    "stats_score": 30.4,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "防御",
+      "爆米花爆破",
+      "压扁",
+      "毒液渗透"
+    ]
+  },
+  {
+    "id": "格兰球",
+    "name": "格兰球",
+    "score": 233.1,
+    "attrs": [
+      "草"
+    ],
+    "stats": {
+      "total": 536,
+      "hp": 108,
+      "atk": 52,
+      "matk": 124,
+      "def": 80,
+      "mdef": 112,
+      "spd": 60
+    },
+    "trait_name": "生长",
+    "trait_desc": "回合结束时，回复12%生命。",
+    "trait_score": 1.0,
+    "trait_pts": {
+      "回血": 1.0
+    },
+    "skill_score": 108.8,
+    "attr_bonus": 13.1,
+    "attr_detail": {
+      "defense": 17.6,
+      "offense": 13.8,
+      "synergy": 3
+    },
+    "stats_score": 26.8,
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "光能聚集",
+      "倾泻",
+      "灵媒",
+      "防御"
     ]
   },
   {
     "id": "龙息帕尔",
     "name": "龙息帕尔",
-    "score": 258.9,
+    "score": 231.1,
     "attrs": [
       "恶"
     ],
@@ -4132,14 +5220,59 @@
     "trait_pts": {
       "额外魔力损失": -6
     },
-    "skill_score": 106.5,
-    "attr_bonus": 50,
+    "skill_score": 117.0,
+    "attr_bonus": 11.7,
+    "attr_detail": {
+      "defense": 6.6,
+      "offense": 24.6,
+      "synergy": 3
+    },
     "stats_score": 31.6,
+    "boss_bonus": 0,
     "recommended_skills": [
-      "力量增效",
+      "撕裂",
+      "火云车",
+      "龙吟",
+      "有效预防"
+    ]
+  },
+  {
+    "id": "风滚暮虫",
+    "name": "风滚暮虫",
+    "score": 222.6,
+    "attrs": [
+      "普通",
+      "虫"
+    ],
+    "stats": {
+      "total": 542,
+      "hp": 93,
+      "atk": 24,
+      "matk": 109,
+      "def": 105,
+      "mdef": 91,
+      "spd": 120
+    },
+    "trait_name": "共鸣",
+    "trait_desc": "自己携带的【虫鸣】技能威力+20。",
+    "trait_score": 4.0,
+    "trait_pts": {
+      "威力+": 4.0
+    },
+    "skill_score": 83.3,
+    "attr_bonus": 14.9,
+    "attr_detail": {
+      "defense": 25.7,
+      "offense": 6.6,
+      "synergy": 5.5
+    },
+    "stats_score": 27.1,
+    "boss_bonus": 0,
+    "recommended_skills": [
       "防御",
-      "先发制人",
-      "暗突袭"
+      "摇篮曲",
+      "音波弹",
+      "虫蛊"
     ]
   }
 ]
