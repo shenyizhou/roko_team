@@ -7,6 +7,9 @@ import statistics
 from pathlib import Path
 from .attribute_matrix import AttributeMatrix
 from .pet_scorer import PetScorer
+from .role_classifier import RoleClassifier
+from .system_detector import SystemDetector
+from .build_analyzer import BuildAnalyzer
 
 DATA_DIR = Path(__file__).parent.parent / "data"
 
@@ -18,6 +21,9 @@ class TeamAnalyzer:
 
         self.attr_matrix = AttributeMatrix()
         self.pet_scorer = PetScorer()
+        self.role_classifier = RoleClassifier()
+        self.system_detector = SystemDetector()
+        self.build_analyzer = BuildAnalyzer()
 
         # 属性简称到标准名的映射（洛克王国世界18属性体系）
         self._short_attrs = {
@@ -48,14 +54,27 @@ class TeamAnalyzer:
         if len(team_ids) != 6:
             return {"error": f"队伍需要6只宠物，当前有{len(team_ids)}只"}
 
-        # 获取每只宠物的数据
+        # 获取每只宠物的数据（支持按名称模糊匹配）
         team_pets = []
+        resolved_ids = []
         for pet_id in team_ids:
             pet = self.pets.get(pet_id)
             if not pet:
-                return {"error": f"宠物不存在: {pet_id}"}
+                # 尝试按名称匹配
+                found = False
+                for pid, p in self.pets.items():
+                    pname = p.get("name", "")
+                    if pname.startswith(pet_id) or pet_id in pname:
+                        pet = p
+                        pet_id = pid
+                        found = True
+                        break
+                if not found:
+                    return {"error": f"宠物不存在: {pet_id}"}
             pet["id"] = pet_id
             team_pets.append(pet)
+            resolved_ids.append(pet_id)
+        team_ids = resolved_ids
 
         # 1. 队伍综合评分
         pet_scores = [self.pet_scorer.score_pet(pet_id) for pet_id in team_ids]
@@ -137,8 +156,8 @@ class TeamAnalyzer:
                 debuff_penalty += detail["penalty"]
                 debuff_details.append(detail)
 
-        # 综合评分（加入负面特性扣分）
-        team_total = (
+        # 原评分
+        original_total = (
             avg_score * 0.4 +  # 平均个体质量
             (coverage["coverage_score"] + 20) * 2 * 0.25 +  # 属性联防
             energy_synergy * 0.2 +  # 能量协同
@@ -146,8 +165,28 @@ class TeamAnalyzer:
             debuff_penalty * 0.3  # 负面特性扣分
         )
 
+        # 新增：体系和角色分析
+        system_result = self.system_detector.detect(team_ids)
+
+        # 新增：构筑深度分析
+        build_result = self.build_analyzer.full_analysis(team_ids)
+
+        # 新的综合评分
+        role_score = system_result["role_config"]["reasonable_score"]
+        system_score = system_result["best_system"]["score"] if system_result["best_system"] else 0
+        build_score = build_result["build_quality_score"]
+
+        # 按新评分公式
+        new_total = (
+            original_total * 0.4 +
+            role_score * 0.15 +
+            system_score * 0.15 +
+            build_score * 0.3  # 构筑质量权重最高
+        )
+
         return {
-            "team_score": round(team_total, 1),
+            "team_score": round(new_total, 1),
+            "original_score": round(original_total, 1),
             "pet_scores": [
                 {
                     "id": p["id"],
@@ -184,7 +223,13 @@ class TeamAnalyzer:
             "debuff_analysis": {
                 "total_penalty": round(debuff_penalty, 1),
                 "details": debuff_details,
-            }
+            },
+            "system_analysis": system_result,
+            "build_analysis": build_result,
+            "role_breakdown": {
+                pet_id: self.role_classifier.classify(pet_id)
+                for pet_id in team_ids
+            },
         }
 
     def print_team_report(self, team_ids: list[str]):
@@ -247,6 +292,68 @@ class TeamAnalyzer:
         surv = result["survival_analysis"]
         print(f"  前4只抗打击指数: {surv['first_four_hp_def_product']}")
         print(f"  速度线: {surv['speed_line']}")
+
+        # 角色配置分析
+        print("\n【角色配置分析】")
+        role_names = {"cleaner": "清场手", "starter": "首发", "support": "辅助", "finisher": "扫尾"}
+        for r_key, r_name in role_names.items():
+            count = result["system_analysis"]["role_config"]["counts"].get(r_key, 0)
+            check = "✓" if count >= 1 else ""
+            print(f"  {r_name}: {count}只 {check}")
+        print(f"  配置合理性: {result['system_analysis']['role_config']['reasonable_score']}/100")
+
+        # 体系识别结果
+        print("\n【体系识别结果】")
+        if result["system_analysis"]["systems"]:
+            for i, sys in enumerate(result["system_analysis"]["systems"], 1):
+                status = "完整体系 ✓" if sys["is_complete"] else "不完整"
+                print(f"  {i}. {sys['name']} - 完成度 {sys['score']}% ({status})")
+                if sys["details"]:
+                    detail_str = ", ".join([f"{k}: {v}" for k, v in sys["details"].items()])
+                    print(f"     详情: {detail_str}")
+        else:
+            print("  未检测到明确体系")
+
+        # 首领化冲突检测
+        print("\n【首领化分析】")
+        lc = result["system_analysis"]["leader_conflict"]
+        if lc["dependent_pets"]:
+            pet_str = ", ".join(lc["dependent_pets"])
+            warn = "  ⚠ 冲突!" if lc["has_conflict"] else ""
+            print(f"  依赖首领化精灵: {pet_str} ({lc['count']}只){warn}")
+            if lc["has_conflict"]:
+                print(f"  警告: 首领化只能用一次，建议只保留1个核心首领化精灵")
+        else:
+            print("  无首领化依赖")
+
+        # 构筑深度分析
+        build = result.get("build_analysis", {})
+        if build:
+            print(f"\n【构筑风格】: {build['build_style']['primary_style']}")
+
+            print("\n【PVP热门精灵应对】")
+            hot_cov = build.get("hot_pet_coverage", {})
+            print(f"  {hot_cov.get('summary', '无数据')}")
+
+            # 显示高危热门
+            red_threats = hot_cov.get("red_threats", [])
+            if red_threats:
+                print(f"  【无应对手段的热门精灵】")
+                for t in red_threats[:8]:
+                    print(f"    🔴 {t['name']}(速度{t['speed']}) {t['attrs']}")
+                if len(red_threats) > 8:
+                    print(f"    ... 还有{len(red_threats)-8}只")
+
+            # 显示勉强应对的
+            yellow_threats = hot_cov.get("yellow_threats", [])
+            if yellow_threats:
+                print(f"  【仅1只可应对的热门精灵】")
+                for t in yellow_threats[:5]:
+                    print(f"    🟡 {t['name']}(速度{t['speed']}) -> {t['counter_pets']}")
+                if len(yellow_threats) > 5:
+                    print(f"    ... 还有{len(yellow_threats)-5}只")
+
+            print(f"\n【构筑综合评分】: {build['build_quality_score']}/100")
 
         print("\n" + "=" * 70)
         return result

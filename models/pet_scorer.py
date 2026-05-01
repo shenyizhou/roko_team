@@ -27,28 +27,131 @@ class PetScorer:
             "speed_bonus": 0.10,# 速度线奖励
         }
 
-    def calc_stats_score(self, stats: dict) -> float:
-        """
-        基于实际对战公式的种族值评分:
-        - 实际属性 ≈ 1.1×种族 + 常数 (双攻/双防/速度), HP ≈ 1.7×种族 + 常数
-        - 生存力 = HP × 防御 (乘积: 伤害∝攻/防, 承受次数=HP/(攻/防)=HP×防/攻)
-        - 速度决定先手权: 92极速=118满速=148无速 → 速度价值约3倍于其他属性
-        """
+    # 种族值→实际值公式（50级）
+    STAT_LEVEL = 50
+
+    @staticmethod
+    def _base_to_hp(base_hp: int) -> int:
+        return int(2 * base_hp * PetScorer.STAT_LEVEL / 100) + PetScorer.STAT_LEVEL + 10
+
+    @staticmethod
+    def _base_to_stat(base_stat: int, nature_mult: float = 1.0) -> int:
+        return int(int(2 * base_stat * PetScorer.STAT_LEVEL / 100 + 5) * nature_mult)
+
+    def _determine_attack_type(self, pet_skills: dict, stats: dict = None) -> str:
+        """根据技能池和种族值判断是物攻手还是特攻手"""
+        physical = 0
+        special = 0
+        for sk in pet_skills.get("learnset", []) + pet_skills.get("recommended", []):
+            if sk.get("power", 0) > 0:
+                cat = sk.get("category", "")
+                if cat == "物理":
+                    physical += 1
+                elif cat == "魔法":
+                    special += 1
+        # 技能数相同时用种族值判断
+        if physical == special and stats:
+            return "physical" if stats.get("atk", 0) >= stats.get("matk", 0) else "special"
+        return "physical" if physical >= special else "special"
+
+    def detect_role(self, stats: dict) -> str:
+        """根据种族值分布推断精灵定位"""
         useful_atk = max(stats["atk"], stats["matk"])
         avg_def = (stats["def"] + stats["mdef"]) / 2
+        spd = stats["spd"]
+        hp = stats["hp"]
 
-        # 攻击力: 每点攻 ≈ 1.1实际攻击
-        atk_val = useful_atk
+        # 联防手: 血厚防高、速度不高
+        if hp >= 80 and (hp + avg_def >= 160) and spd < 100:
+            return "wall"
+        # 输出手: 速度快、攻击高、不太肉
+        if spd >= 95 and useful_atk >= 110:
+            return "sweeper"
+        # 高速脆皮
+        if spd >= 110 and hp + avg_def < 170:
+            return "sweeper"
 
-        # 生存力: HP × 平均防御 (乘积=有效承伤次数)
-        # 缩放到和其他维度可比 (除以200)
-        bulk = stats["hp"] * avg_def / 200
+        return "balanced"
 
-        # 速度: 公式证明极速≈+40实际速度，先手=潜在一回合击杀
-        spd_val = stats["spd"] * 3.0
+    def _apply_nature(self, stats: dict, role: str, atk_type: str) -> dict:
+        """
+        根据定位和攻击类型应用性格加成，返回实际50级数值
+        肉盾:  平和(+HP-mAtk)或沉默(+HP-Atk)
+        高速:  开朗(+Spd-mAtk)或胆小(+Spd-Atk)
+        中速:  固执(+Atk-mAtk)或聪明(+mAtk-Atk)
+        """
+        hp_mult, atk_mult, matk_mult, def_mult, mdef_mult, spd_mult = 1.0, 1.0, 1.0, 1.0, 1.0, 1.0
 
-        weighted = atk_val * 0.25 + bulk * 0.25 + spd_val * 0.50
-        return weighted * 0.50  # 缩放到0-150范围供归一化
+        if role == "wall":
+            # 肉盾加HP，减非主攻属性
+            hp_mult = 1.1
+            if atk_type == "physical":
+                matk_mult = 0.9  # 沉默: +HP -mAtk
+            else:
+                atk_mult = 0.9   # 平和: +HP -Atk
+        elif role == "sweeper":
+            spd = stats["spd"]
+            if spd >= 115:
+                # 高速输出手: 开朗/胆小 +Spd
+                spd_mult = 1.1
+                if atk_type == "physical":
+                    matk_mult = 0.9  # 开朗: +Spd -mAtk
+                else:
+                    atk_mult = 0.9   # 胆小: +Spd -Atk
+            else:
+                # 中速输出手: 固执/聪明 +Atk
+                if atk_type == "physical":
+                    atk_mult = 1.1   # 固执: +Atk -mAtk
+                    matk_mult = 0.9
+                else:
+                    matk_mult = 1.1  # 聪明: +mAtk -Atk
+                    atk_mult = 0.9
+        else:
+            # balanced: 默认中速输出手性格
+            if atk_type == "physical":
+                atk_mult = 1.1
+                matk_mult = 0.9
+            else:
+                matk_mult = 1.1
+                atk_mult = 0.9
+
+        return {
+            "hp": self._base_to_hp(stats["hp"]),
+            "atk": self._base_to_stat(stats["atk"], atk_mult),
+            "matk": self._base_to_stat(stats["matk"], matk_mult),
+            "def": self._base_to_stat(stats["def"], def_mult),
+            "mdef": self._base_to_stat(stats["mdef"], mdef_mult),
+            "spd": self._base_to_stat(stats["spd"], spd_mult),
+        }
+
+    def calc_stats_score(self, stats: dict, role: str = "balanced", atk_type: str = "physical") -> float:
+        """
+        基于定位、性格和实际数值的种族值评分:
+        - 联防手: 物防耐久为主（环境物攻主导），攻击次要，速度不重要
+        - 输出手: 攻击+速度优先，HP容错率次要
+        """
+        actual = self._apply_nature(stats, role, atk_type)
+
+        useful_atk = actual["atk"] if atk_type == "physical" else actual["matk"]
+        spd = actual["spd"]
+
+        # 有效物防耐久（环境物攻主导，物防权重>特防）
+        # 除以200使量纲和atk/spd可比（HP×def/200 ≈ 50~100, atk ≈ 90~140）
+        phys_bulk = actual["hp"] * actual["def"] / 200
+        spec_bulk = actual["hp"] * actual["mdef"] / 200
+        bulk = phys_bulk * 0.7 + spec_bulk * 0.3
+
+        if role == "wall":
+            # 联防手: 耐久优先
+            weighted = bulk * 0.55 + useful_atk * 0.30 + spd * 0.15
+        elif role == "sweeper":
+            # 输出手: 攻击+速度共80%
+            weighted = useful_atk * 0.40 + spd * 0.40 + bulk * 0.20
+        else:
+            # 均衡
+            weighted = useful_atk * 0.35 + spd * 0.35 + bulk * 0.30
+
+        return weighted * 0.65  # 缩放到0-150范围供归一化
 
     def calc_speed_bonus(self, spd: int) -> float:
         """速度线阶梯奖励：基于计算器速度线（每5种族差=6~7实际速度）"""
@@ -71,10 +174,48 @@ class PetScorer:
         return 0
 
     def calc_type_score(self, attrs: list[str]) -> float:
-        """计算属性价值评分"""
+        """计算属性价值评分，联防端加权热门输出属性"""
         type_data = self.attr_matrix.get_type_score(attrs)
-        # 进攻 + 防守评分，防守权重更高
-        return type_data["offense"] * 0.3 + type_data["defense_score"] * 0.7
+
+        # 热门输出属性（天梯主流精灵携带的技能属性）
+        HOT_ATK_TYPES = {"一般", "翼", "水", "地", "机械", "火", "光", "恶魔", "冰", "电", "武"}
+
+        # 用 attribute_matrix 的倍率数据计算加权防守
+        normalized = [self.attr_matrix._normalize_attr(a) for a in attrs]
+
+        hot_resisted = 0
+        cold_resisted = 0
+        hot_weak = 0
+        cold_weak = 0
+
+        for atk_a in self.attr_matrix.attr_names:
+            # 计算该攻击属性对本宠物的实际倍率
+            best_mult = 1.0
+            for def_a in normalized:
+                mult = self.attr_matrix.multipliers.get(atk_a, {}).get(def_a, 1.0)
+                best_mult = min(best_mult, mult)  # 取最优（最低倍率）
+
+            is_hot = atk_a in HOT_ATK_TYPES
+            if best_mult == 0:  # 免疫/抵抗
+                if is_hot:
+                    hot_resisted += 1
+                else:
+                    cold_resisted += 1
+            elif best_mult >= 2:  # 被克制
+                if is_hot:
+                    hot_weak += 1
+                else:
+                    cold_weak += 1
+
+        # 加权防守分: 抵抗热门=大加分, 热门弱点多=大扣分
+        weighted_defense = hot_resisted * 5 + cold_resisted * 1 - hot_weak * 4 - cold_weak * 1
+
+        # 进攻: 保持原有逻辑 (克制面数量)
+        offense = type_data["offense"]
+
+        # 缩放到0-10范围 (供后续 /10*100 归一化)
+        raw = offense * 0.5 + max(weighted_defense, -10) * 0.25
+        return max(raw, 0)
 
     # 负面特性关键词及惩罚值
     DEBUFF_PATTERNS = [
@@ -574,14 +715,111 @@ class PetScorer:
             for item in picked[:top_n]
         ]
 
+    def _get_nature_name(self, role: str, atk_type: str, spd: int) -> str:
+        """获取推荐性格名称"""
+        if role == "wall":
+            return "沉默 (+HP -魔攻)" if atk_type == "physical" else "平和 (+HP -物攻)"
+        elif role == "sweeper":
+            if spd >= 115:
+                return "开朗 (+速度 -魔攻)" if atk_type == "physical" else "胆小 (+速度 -物攻)"
+            else:
+                return "固执 (+物攻 -魔攻)" if atk_type == "physical" else "聪明 (+魔攻 -物攻)"
+        else:
+            # balanced: 默认中速输出手性格
+            return "固执 (+物攻 -魔攻)" if atk_type == "physical" else "聪明 (+魔攻 -物攻)"
+
+    def _compute_capabilities(self, pet: dict, actual_stats: dict, atk_type: str) -> dict:
+        """计算精灵的进攻/防御/速度面板能力"""
+        skills = pet.get("skills", {})
+        all_skills = skills.get("learnset", []) + skills.get("recommended", [])
+        trait_desc = pet.get("trait", {}).get("desc", "")
+        pet_name = pet.get("name", "")
+
+        # === 进攻能力 ===
+        atk_stat = actual_stats["atk"] if atk_type == "physical" else actual_stats["matk"]
+        # 找威力最高的攻击技能
+        best_skill = None
+        best_power = 0
+        for sk in all_skills:
+            pwr = sk.get("power", 0)
+            cat = sk.get("category", "")
+            # 优先同类型技能，其次看威力
+            if pwr > 0:
+                type_match = (cat == "物理" and atk_type == "physical") or (cat == "魔法" and atk_type == "special")
+                if type_match and pwr > best_power:
+                    best_power = pwr
+                    best_skill = sk
+        # 补位：如果没同类型技能，取最高威力
+        if not best_skill:
+            for sk in all_skills:
+                if sk.get("power", 0) > best_power:
+                    best_power = sk.get("power", 0)
+                    best_skill = sk
+
+        # === 防御能力 ===
+        phys_def = actual_stats["def"]
+        spec_def = actual_stats["mdef"]
+        hp = actual_stats["hp"]
+
+        # === 速度能力 ===
+        base_spd = actual_stats["spd"]
+        spd_bonus = 0
+        spd_source = []
+
+        # 技能加速
+        skill_names = {sk.get("name", "") for sk in all_skills}
+        if "啮合传递" in skill_names:
+            spd_bonus += 80
+            spd_source.append("啮合传递 +80")
+        if "折射" in skill_names:
+            spd_bonus += 50
+            spd_source.append("折射 +50")
+
+        # 特性加速（触发一次）
+        if pet_name == "黑猫巫师":
+            spd_bonus += 50
+            spd_source.append("特性触发1次 +50")
+        if pet_name == "绒光优优":
+            spd_bonus += 50
+            spd_source.append("特性触发1次 +50")
+
+        return {
+            "offense": {
+                "atk_stat": atk_stat,
+                "atk_type": atk_type,
+                "best_skill_name": best_skill["name"] if best_skill else "—",
+                "best_skill_power": best_power,
+                "best_skill_element": best_skill.get("element", "") if best_skill else "",
+                "effective_damage": atk_stat * best_power if best_skill else 0,
+            },
+            "defense": {
+                "hp": hp,
+                "phys_def": phys_def,
+                "spec_def": spec_def,
+                "phys_bulk": round(hp * phys_def / 200, 1),
+                "spec_bulk": round(hp * spec_def / 200, 1),
+            },
+            "speed": {
+                "base": base_spd,
+                "bonus": spd_bonus,
+                "total": base_spd + spd_bonus,
+                "sources": spd_source,
+            },
+        }
+
     def score_pet(self, pet_id: str) -> dict:
         """计算单只宠物的综合评分"""
         pet = self.pets.get(pet_id)
         if not pet:
             return {"error": "Pet not found"}
 
+        # 定位和攻击类型
+        role = self.detect_role(pet["stats"])
+        atk_type = self._determine_attack_type(pet.get("skills", {}), pet.get("stats"))
+        actual_stats = self._apply_nature(pet["stats"], role, atk_type)
+
         # 各项评分
-        stats_raw = self.calc_stats_score(pet["stats"])
+        stats_raw = self.calc_stats_score(pet["stats"], role, atk_type)
         type_raw = self.calc_type_score(pet["attrs"])
         feature_raw = self.calc_feature_score(pet["trait"])
         skill_data = self.calc_skill_score(pet["skills"], pet["attrs"])
@@ -589,10 +827,10 @@ class PetScorer:
         # 归一化到0-100
         stats_score = min(stats_raw / 150 * 100, 100)
         type_score = min(type_raw / 10 * 100, 100)
-        feature_score = min(feature_raw / 100 * 100, 100)  # 上限100，S层可达60+
-        skill_score = min(skill_data["score"] / 2.0, 100)  # 原始分0-200，/2得0-100
+        feature_score = min(feature_raw / 100 * 100, 100)
+        skill_score = min(skill_data["score"] / 2.0, 100)
 
-        # 综合评分（加入速度线奖励）
+        # 综合评分
         speed_bonus = self.calc_speed_bonus(pet["stats"]["spd"])
         total_score = (
             stats_score * self.weights["stats"] +
@@ -603,13 +841,20 @@ class PetScorer:
         )
 
         debuff_info = self.get_debuff_info(pet["trait"])
+        nature_name = self._get_nature_name(role, atk_type, pet["stats"]["spd"])
+        capabilities = self._compute_capabilities(pet, actual_stats, atk_type)
 
         return {
             "id": pet_id,
             "name": pet["name"],
+            "role": role,
+            "atk_type": atk_type,
+            "nature": nature_name,
+            "capabilities": capabilities,
             "attrs": pet["attrs"],
             "stats": pet["stats"],
             "trait": pet["trait"],
+            "actual_stats": {k: v for k, v in actual_stats.items()},
             "debuff": debuff_info,
             "scores": {
                 "total": round(total_score, 1),

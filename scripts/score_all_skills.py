@@ -26,7 +26,20 @@ from models.attribute_matrix import AttributeMatrix
 
 DATA_DIR = Path(__file__).parent.parent / "data"
 am = AttributeMatrix()
-type_bonus = {a: round(1.0 + am.gamescores[a]['offense'] * 0.15, 2) for a in am.attr_names}
+# v7优化: 压缩属性系数区间，避免极端属性的技能评分过低
+# 原公式: 1.0 + offense * 0.15 → 范围[0.4, 1.3]，差距3.25倍
+# 新公式: 压缩到[0.65, 1.2]范围，差距1.85倍
+def calc_type_bonus(offense_score):
+    # 基础分偏移 + 系数压缩
+    base = 1.0 + offense_score * 0.10  # 系数从0.15降到0.10
+    # 对低分属性额外补偿
+    if offense_score <= -3:  # 虫/草/一般
+        base += 0.15
+    elif offense_score <= -2:  # 电/毒
+        base += 0.1
+    return round(base, 2)
+
+type_bonus = {a: calc_type_bonus(am.gamescores[a]['offense']) for a in am.attr_names}
 
 def _find_int(pattern, text, default=0):
     m = re.search(pattern, text)
@@ -41,16 +54,17 @@ def _find_int(pattern, text, default=0):
 # 核心设计原则: 从底层统一三类技能平衡，无事后校准
 
 # --- 1. 统一费用惩罚函数 (所有技能共用)
-# 原理: 能量是最宝贵的资源，费用越高风险越大
-# 1费=0, 2费=1, 3费=3, 4费=5, 5费=7, 6费+=每费+3
+# v7优化: 减缓高费惩罚增长速度，避免技能归零
+# 再优化: 6-7费每费+2, 8费以上每费+1，避免高费技能完全废掉
 def fee_penalty(c):
     if c <= 0: return 0
     if c <= 1: return 1
     if c <= 2: return 3
     if c <= 3: return 6
-    if c <= 4: return 10
-    if c <= 5: return 15
-    return 15 + (c - 5) * 6
+    if c <= 4: return 9
+    if c <= 5: return 12
+    if c <= 7: return 12 + (c - 5) * 2  # 每费+2(原3)
+    return 16 + (c - 7) * 1  # 7费以上每费+1(原2)
 
 # --- 2. 威力价值公式 (输出技能核心)
 POWER_COEFF = 2.5  # 每10威力基础分
@@ -61,16 +75,19 @@ def power_value(power, cost):
     elif power <= 120:
         base = 8 * POWER_COEFF + (power - 80) * 0.5 / 10 * POWER_COEFF
     else:
-        base = 8 * POWER_COEFF + 40 * 0.5 / 10 * POWER_COEFF + (power - 120) * 0.25 / 10 * POWER_COEFF
+        # v7优化: 威力超过120后，边际衰减从0.25调整为0.35，让高威力技能有区分度
+        base = 8 * POWER_COEFF + 40 * 0.5 / 10 * POWER_COEFF + (power - 120) * 0.35 / 10 * POWER_COEFF
     cost_diff = abs(cost - 3)
     eff_factor = max(0.30, 1.0 - cost_diff * 0.12)
     return base * eff_factor
 
-MAX_POWER = 28
+# v7优化: 提升威力上限，让高威力大招有区分度
+MAX_POWER = 35
 
 # --- 3. 减伤价值公式 (防御技能核心)
 def defense_value(def_pct, cost):
-    base = def_pct / 2.3  # 70%减伤 = 30.4基础分
+    # v7优化: 减伤基础分从2.3调到2.5，避免防御技能S级过多
+    base = def_pct / 2.5  # 70%减伤 = 28基础分 (原30.4)
     if cost <= 1:
         coeff = 1.0
     elif cost <= 2:
@@ -84,8 +101,19 @@ def defense_value(def_pct, cost):
     return base * coeff
 
 # --- 4. 强化价值公式 (状态技能核心)
+# v7优化: 增加强化边际效益递减
+# 原理: 从0%→100%是质变，但100%→200%边际效益明显降低
+def _buff_diminish(pct, base_value):
+    """强化边际递减函数: 100%以内1.0倍，100-130%0.6倍，130%以上0.35倍"""
+    if pct <= 100:
+        return pct / 10 * base_value
+    elif pct <= 130:
+        return 100 / 10 * base_value + (pct - 100) / 10 * base_value * 0.6
+    else:
+        return 100 / 10 * base_value + 30 / 10 * base_value * 0.6 + (pct - 130) / 10 * base_value * 0.35
+
 def buff_value(atk_pct, spd_pct, def_pct):
-    return atk_pct / 10 * 3.5 + spd_pct / 10 * 2.0 + def_pct / 10 * 2.3
+    return _buff_diminish(atk_pct, 3.5) + _buff_diminish(spd_pct, 2.0) + _buff_diminish(def_pct, 2.3)
 
 # --- 印记基础分
 MARK = {
@@ -98,21 +126,40 @@ MARK_LAYER = 6
 # --- 应对分
 COUNTER = {"打断应对": 14}
 
-# --- 先手/迅捷
-SWIFT_ATTACK = 24
-SWIFT_DEFENSE = 20
+# --- 先手
 PRIORITY = lambda n: 7 + n * 5
 
 # --- 控制状态分
-DEBUFF_LAYER = {"中毒": 5, "萌化": 7, "冻结": 4, "灼烧": 3}  # 萌化永久不消→高; 灼烧换人即消→低
+# v7优化: 灼烧降低到每层2分（可换人清除，实际收益有限）
+DEBUFF_LAYER = {"中毒": 5, "萌化": 7, "冻结": 4, "灼烧": 2}
 CONTROL = {"眩晕": 18, "寄生": 12}
 
 # --- 成长
 GROWTH = {"power": 0.4, "combo": 4}
 
 # --- 条件折扣 & 防御惩罚
-COND_DISCOUNT = 0.5   # 若/额外/应对条件触发的强化，按50%期望值
 DEF_PENALTY_MULT = 1.0  # 防御费用惩罚倍率
+# v7优化: 应对成功率按类型分级，不是统一50%
+# 应对攻击 = 高概率，对面每回合都用攻击 (70-80%)
+# 应对打断 = 中概率，只有特定技能能打断 (60%)
+# 应对状态 = 低概率，需要预判对面用状态 (40%)
+def cond_discount(desc, cost, power=0):
+    """根据应对类型计算成功率折扣"""
+    # 先判断应对什么类型
+    if "应对状态" in desc:
+        base = 0.4  # 应对状态成功率最低
+    elif "应对攻击" in desc:
+        base = 0.8  # 应对攻击成功率最高
+    elif "应对" in desc and ("打断" in desc or "攻击" in desc.split("应对")[-1]):
+        base = 0.7
+    else:
+        base = 0.5  # 其他应对按中间值
+
+    # 费用微调：低费更灵活，成功率略高
+    if cost <= 2:
+        return min(base * 1.05, 0.85)
+    return base
+COND_DISCOUNT_BASE = 0.5  # 统一兜底值
 # 条件性强化检测模式
 _COND_RE = r'(?:若|如果|额外获得|本技能位于|应对.{0,10}(?:改为|获得))'
 
@@ -128,6 +175,22 @@ MECH_BASE = {
     "聒噪": 14, "烧能量": 12, "回能": 10, "清减益": 10, "清增益": 10,
     "天气": 20, "翻倍减益": 16, "交换技能": 12, "转化增益": 14,
     "全队回能": 12, "变身": 12, "迅捷链": 14, "相邻成长": 10,
+}
+# v7优化: 脱离机制战术价值全面提升 (换人是回合制游戏核心战术)
+# 分级体系: 无条件 > 条件触发 | 敌方脱离 > 自己脱离 | 紧急 = 更快的脱离
+ESCAPE_VALUE = {
+    "self_uncond": 18,      # 无条件自己脱离 (如高温回火: 造成伤害后必脱离)
+    "self_cond": 12,        # 条件性自己脱离 (应对攻击才触发, 如泡沫幻影)
+    "self_uncond_emerg": 22,  # 无条件紧急自己脱离
+    "self_cond_emerg": 16,    # 条件性紧急自己脱离
+    "enemy_uncond": 28,       # 无条件敌方脱离
+    "enemy_cond": 20,         # 条件性敌方脱离 (如吓退)
+    "enemy_uncond_emerg": 33, # 无条件紧急敌方脱离
+    "enemy_cond_emerg": 24,   # 条件性紧急敌方脱离
+    "both_uncond": 32,        # 双方都脱离 (强制重置场面)
+    "inherit_buff": 8,        # 脱离时传增益给下一个
+    "next_heal_energy": 6,    # 脱离时给下一个回能
+    "next_defense": 5,        # 脱离时给下一个减伤 (随机上场减分)
 }
 def score_skill(skill):
     """v6: 统一实战价值评估 - 三类技能从底层平衡，无事后校准"""
@@ -152,10 +215,10 @@ def score_skill(skill):
         pts["威力"] = round(pv, 1)
         final += pv
 
-        # 0费攻击额外加分
+        # v7优化: 0费攻击额外加分（从3分提升到5分）
         if cost == 0:
-            pts["0费奖励"] = 3
-            final += 3
+            pts["0费奖励"] = 5
+            final += 5
 
     # --- 1b. 防御技能: 减伤核心 ---
     if "减伤" in desc or "减少" in desc and ("伤害" in desc or "受到" in desc):
@@ -169,15 +232,10 @@ def score_skill(skill):
     # 2. 通用附加效果 (所有技能共用)
     # ========================
 
-    # 先手/迅捷
-    if "迅捷" in desc:
-        if power > 0:
-            pts["迅捷(攻)"] = SWIFT_ATTACK
-            final += SWIFT_ATTACK
-        else:
-            pts["迅捷"] = SWIFT_DEFENSE
-            final += SWIFT_DEFENSE
-    elif "先手" in desc:
+    # 迅捷标记 (后置计算, 见下方)
+    has_swift = "迅捷" in desc
+    # 先手
+    if not has_swift and "先手" in desc:
         n = _find_int(r"先手\+(\d+)", desc)
         if n > 0:
             v = PRIORITY(n)
@@ -211,18 +269,22 @@ def score_skill(skill):
         ("蓄电印记", MARK["蓄电"], r"(\d+)层蓄电"),
         ("蓄势印记", MARK["蓄势"], r"(\d+)层蓄势"),
     ]
-    # 辅助: 检测印记是否仅在应对子句中 (条件折扣)
+    # 辅助: 检测印记是否为条件触发 (应对/转化)
     def _mark_cond(mk_name):
+        # v7优化: 转化为印记需要前置状态，按条件折扣处理
+        if "转化" in desc:
+            return True
         if "应对" in desc and mk_name not in desc.split("应对")[0]:
             return True
         return False
 
+    cd = cond_discount(desc, cost, power)  # 本技能的条件折扣
     for mk_name, base, pat in mark_config:
         if mk_name in desc:
             layers = max(1, _find_int(pat, desc))
             v = base + (layers - 1) * MARK_LAYER
             if _mark_cond(mk_name):
-                v = int(v * COND_DISCOUNT)
+                v = int(v * cd)
                 mk_name += "(条件)"
             pts[mk_name] = v
             final += v
@@ -232,7 +294,7 @@ def score_skill(skill):
             layers = max(1, _find_int(r"(\d+)层星陨", desc))
             v = MARK["星陨"] + (layers - 1) * MARK_LAYER
             if _mark_cond("星陨"):
-                v = int(v * COND_DISCOUNT)
+                v = int(v * cd)
             pts["星陨印记"] = v
             if _mark_cond("星陨"):
                 pts["星陨印记(条件)"] = pts.pop("星陨印记")
@@ -240,7 +302,7 @@ def score_skill(skill):
         elif "中毒印记" in desc or ("转化为印记" in desc and "中毒" in desc):
             v = MARK["中毒印"]
             if _mark_cond("中毒"):
-                v = int(v * COND_DISCOUNT)
+                v = int(v * cd)
             pts["中毒印记"] = v
             final += v
         elif "印记" in desc and "驱散" not in desc and "焚毁" not in name and "食腐" not in name:
@@ -320,30 +382,37 @@ def score_skill(skill):
     cond_atk = atk_pct > 0 and _is_cond(r'[物魔双]攻\+')
     cond_spd = spd_pct > 0 and _is_cond(r'速度\+|速度永久\+')
     cond_def = def_pct > 0 and _is_cond(r'[物魔双]防\+')
+    cd = cond_discount(desc, cost, power)  # 本技能的条件折扣
     if atk_pct > 0 or spd_pct > 0 or def_pct > 0 or has_double:
         bv = buff_value(atk_pct, spd_pct, def_pct)
         # 条件强化打折
         if cond_atk:
-            bv -= atk_pct / 10 * 3.5 * (1 - COND_DISCOUNT)
+            bv -= atk_pct / 10 * 3.5 * (1 - cd)
         if cond_spd:
-            bv -= spd_pct / 10 * 2.0 * (1 - COND_DISCOUNT)
+            bv -= spd_pct / 10 * 2.0 * (1 - cd)
         if cond_def:
-            bv -= def_pct / 10 * 2.3 * (1 - COND_DISCOUNT)
+            bv -= def_pct / 10 * 2.3 * (1 - cd)
         if atk_pct > 0:
             k = f"攻+{atk_pct}%" + ("(条件)" if cond_atk else "")
-            pts[k] = round(atk_pct / 10 * 3.5 * (COND_DISCOUNT if cond_atk else 1.0), 1)
+            # v7优化: 使用递减后的数值显示
+            atk_val = _buff_diminish(atk_pct, 3.5) * (cd if cond_atk else 1.0)
+            pts[k] = round(atk_val, 1)
         if spd_pct > 0:
             suffix = "%" if spd_is_pct else ""
             k = f"速+{spd_pct}{suffix}" + ("(条件)" if cond_spd else "")
-            pts[k] = round(spd_pct / 10 * 2.0 * (COND_DISCOUNT if cond_spd else 1.0), 1)
+            # v7优化: 使用递减后的数值显示
+            spd_val = _buff_diminish(spd_pct, 2.0) * (cd if cond_spd else 1.0)
+            pts[k] = round(spd_val, 1)
         if def_pct > 0:
             k = f"防+{def_pct}%" + ("(条件)" if cond_def else "")
-            pts[k] = round(def_pct / 10 * 2.3 * (COND_DISCOUNT if cond_def else 1.0), 1)
+            # v7优化: 使用递减后的数值显示
+            def_val = _buff_diminish(def_pct, 2.3) * (cd if cond_def else 1.0)
+            pts[k] = round(def_val, 1)
         # 攻+速协同: 同时加输出和先手 → 推队能力
         if atk_pct > 0 and spd_pct > 0:
             synergy = min(atk_pct, spd_pct) / 10 * 2.0
             if cond_atk or cond_spd:
-                synergy *= COND_DISCOUNT
+                synergy *= cd
             pts["攻速协同"] = round(synergy, 1)
             bv += synergy
         # 翻倍增益: 有自身buff→按buff值50%估算; 纯翻倍→保守估计12
@@ -359,8 +428,12 @@ def score_skill(skill):
 
     # 特殊机制
     if "吸血" in desc:
-        pct = _find_int(r"吸血(\d+)%", desc)
-        v = 6 if pct >= 50 else 4
+        pct = _find_int(r"吸血(\d+)%", desc) or _find_int(r"(\d+)%吸血", desc)
+        # v7优化: 吸血按比例分级 (高吸血=高续航价值)
+        if pct >= 100: v = 8
+        elif pct >= 50: v = 6
+        elif pct >= 20: v = 5
+        else: v = 4
         pts["吸血"] = v; final += v
     if "传动" in desc:
         layers = _find_int(r"传动(\d+)", desc) or 1
@@ -374,20 +447,132 @@ def score_skill(skill):
     if "全技能能耗永久" in desc:
         n = _find_int(r"全技能能耗永久-(\d+)", desc) or 1
         pts["能耗永久-"] = n * 8; final += n * 8
+    # v7优化: 技能冷却减少效果评分（防御技能冷却-1战略价值很高）
+    if "冷却" in desc and "-" in desc:
+        n = _find_int(r"冷却-(\d+)", desc) or 1
+        is_cond = "应对" in desc or "若" in desc
+        v = n * 8 * (0.5 if is_cond else 1.0)  # 基础分从6→8
+        pts["冷却-"] = int(v); final += int(v)
+    # v7优化: 本技能能耗减少效果评分
+    if "本技能能耗" in desc and "-" in desc:
+        n = _find_int(r"本技能能耗-(\d+)", desc) or 1
+        # 条件性能耗减少打5折（如"若上次使用攻击技则能耗-2"）
+        is_cond = "应对" in desc or "若" in desc
+        v = n * 3 * (0.5 if is_cond else 1.0)
+        pts["能耗-"] = int(v); final += int(v)
+    # v7优化: 每次受伤获得增益的机制（如嗜痛）
+    # 只有少量技能会连击，期望叠加1.3次（大部分1次，少数2-3次）
+    if ("每次受到伤害" in desc or "每次受伤" in desc) and "+" in desc:
+        # 精确匹配攻/防/速增益百分比（排除减伤%、吸血%等干扰）
+        buff_pct = max(
+            _find_int(r"物攻\+(\d+)%", desc),
+            _find_int(r"魔攻\+(\d+)%", desc),
+            _find_int(r"双攻\+(\d+)%", desc),
+            _find_int(r"[物魔双]防\+(\d+)%", desc),
+            _find_int(r"速度\+(\d+)%", desc),
+            0
+        )
+        if buff_pct == 0:
+            buff_pct = 10  # 保底
+        # 按期望1.3次叠加 + 应对成功率折扣0.5
+        expected_val = _buff_diminish(int(buff_pct * 1.3), 3.5) * 0.5
+        pts["受伤成长"] = round(expected_val, 1); final += expected_val
     if re.search(r"连击数\+|连击数永久|连击数翻倍", desc):
         n = _find_int(r"连击数\+(\d+)", desc) or _find_int(r"连击数永久\+(\d+)", desc) or 1
         n = min(n, 5)
         pts["连击数+"] = n * GROWTH["combo"]; final += n * GROWTH["combo"]
     if "连击" in desc and "连击数" not in desc:
         n = _find_int(r"(\d+)连击", desc) or 2
-        pts[f"{n}连击"] = 3 if n >= 2 else 0; final += 3 if n >= 2 else 0
+        # v7优化: 连击基础分按连击数分级 (触发奉献/连击相关机制)
+        if n >= 4: v = 4
+        elif n >= 2: v = 3
+        else: v = 2  # 1连击也有价值(触发奉献)
+        pts[f"{n}连击"] = v; final += v
+    # v7优化: 奉献机制记分
+    if "奉献" in desc:
+        n = _find_int(r"(\d+)次奉献", desc) or 1
+        v = n * 6  # 每层奉献价值6分(一次额外触发机会)
+        pts["奉献"] = v; final += v
+    # v7优化: 锁换人机制 (控制价值高)
+    if "无法更换精灵" in desc:
+        n = _find_int(r"(\d+)回合无法更换", desc) or 3
+        v = n * 4  # 每回合控制值4分
+        pts["锁换人"] = v; final += v
+    # v7优化: 威力倍数机制 (如"威力变为10倍")
+    if "威力变为" in desc and "倍" in desc:
+        mul = _find_int(r"威力变为(\d+)倍", desc) or _find_int(r"变为(\d+)倍", desc)
+        if mul and mul >= 2:
+            # 应对状态下才能触发，按条件折扣
+            is_cond = "应对" in desc or "若" in desc
+            cd = cond_discount(desc, cost, power) if is_cond else 0.6
+            # 威力倍数价值 = 基础威力 × (倍数-1) × 系数 × 折扣
+            v = int(power * (mul - 1) * 0.08 * cd)
+            pts[f"威力×{mul}"] = v; final += v
+    # v7优化: 威力永久翻倍 (超级成长)
+    if "威力永久翻倍" in desc:
+        # 每层翻倍按初始威力×0.5算，期望2层
+        v = int(power * 0.08 * 2)
+        pts["威力翻倍"] = v; final += v
+    # v7优化: 下次攻击技能威力翻倍 (一次性buff)
+    if "下次攻击技能" in desc and "翻倍" in desc:
+        v = 5  # 一次性翻倍价值 (期望下次威力80→2倍80=+80, 成本约6.4, 打折扣)
+        is_cond = "应对" in desc
+        if is_cond:
+            cd = cond_discount(desc, cost, power)
+            v = int(v * cd)
+        pts["下次翻倍"] = v; final += v
+    # v7优化: 本技能威力等于敌方能耗×N (动态威力)
+    if "本技能威力等于" in desc and "能耗" in desc:
+        n = _find_int(r"能耗的(\d+)倍", desc) or 10
+        # 按敌方平均能耗5计算期望值，减半
+        expected_val = min(5 * n * 0.08, 15)
+        pts["威力=能耗"] = round(expected_val, 1); final += expected_val
+    # v7优化: 脱离机制分级评分 + 应对类型折扣
     if "脱离" in desc:
-        if "紧急" in desc:
-            pts["紧急脱离"] = 5; final += 5
-        elif "敌" in desc:
-            pts["敌脱离"] = MECH_BASE["敌脱离"]; final += MECH_BASE["敌脱离"]
+        is_self_escape = "自己" in desc or "己方" in desc or (not ("敌方" in desc or "敌" in desc))
+        is_enemy_escape = "敌方" in desc or "敌" in desc
+        is_both_escape = ("敌方" in desc or "敌" in desc) and "自己" in desc and "均脱离" in desc
+        is_conditional = "应对" in desc or "若" in desc
+        is_emergency = "紧急" in desc
+
+        # 计算应对成功率折扣: 应对攻击>应对打断>应对状态
+        cd = 1.0
+        if is_conditional:
+            if "应对状态" in desc:
+                cd = 0.4  # 应对状态成功率低
+            elif "应对攻击" in desc or "应对打断" in desc:
+                cd = 0.75  # 应对攻击/打断成功率高
+            else:
+                cd = 0.6
+
+        if is_both_escape:
+            pts["双方脱离"] = ESCAPE_VALUE["both_uncond"]; final += ESCAPE_VALUE["both_uncond"]
         else:
-            pts["脱离"] = MECH_BASE["脱离"]; final += MECH_BASE["脱离"]
+            if is_enemy_escape:
+                if is_emergency:
+                    base_v = ESCAPE_VALUE["enemy_uncond_emerg"]
+                    k = "敌紧急脱离(条件)" if is_conditional else "敌紧急脱离"
+                else:
+                    base_v = ESCAPE_VALUE["enemy_uncond"]
+                    k = "敌脱离(条件)" if is_conditional else "敌脱离"
+                v = int(base_v * cd) if is_conditional else base_v
+                pts[k] = v; final += v
+            if is_self_escape and not is_both_escape:
+                if is_emergency:
+                    base_v = ESCAPE_VALUE["self_uncond_emerg"]
+                    k = "紧急脱离(条件)" if is_conditional else "紧急脱离"
+                else:
+                    base_v = ESCAPE_VALUE["self_uncond"]
+                    k = "脱离(条件)" if is_conditional else "脱离"
+                v = int(base_v * cd) if is_conditional else base_v
+                pts[k] = v; final += v
+        # 脱离附带效果
+        if ("继承" in desc or "传" in desc) and "增益" in desc:
+            pts["传增益"] = ESCAPE_VALUE["inherit_buff"]; final += ESCAPE_VALUE["inherit_buff"]
+        if ("下一个" in desc or "入场" in desc) and "能量" in desc and "回复" in desc:
+            pts["下一个回能"] = ESCAPE_VALUE["next_heal_energy"]; final += ESCAPE_VALUE["next_heal_energy"]
+        if ("下一个" in desc or "入场" in desc) and "减伤" in desc:
+            pts["下一个减伤"] = ESCAPE_VALUE["next_defense"]; final += ESCAPE_VALUE["next_defense"]
     if "聒噪" in desc or "全攻击技能能耗" in desc:
         pts["聒噪"] = MECH_BASE["聒噪"]; final += MECH_BASE["聒噪"]
     if ("失去" in desc or "偷取" in desc) and "能量" in desc and "敌方" in desc:
@@ -395,11 +580,32 @@ def score_skill(skill):
         v = 8 if e >= 6 else MECH_BASE["烧能量"]
         pts["烧能量"] = v; final += v
     if "回复" in desc and "能量" in desc and "敌方" not in desc:
-        e = _find_int(r"回复(\d+)能量", desc)
-        v = 6 if e >= 4 else MECH_BASE["回能"]
+        e = _find_int(r"回复(\d+)能量", desc) or 0
+        # v7优化: 回能按实际数值分级 (1能量≈2分, 边际效益递减)
+        if e >= 10: v = 20
+        elif e >= 8: v = 16
+        elif e >= 5: v = 14
+        elif e >= 4: v = 12
+        elif e >= 3: v = 10
+        elif e >= 2: v = 8
+        elif e >= 1: v = 6
+        else: v = 10  # 未知数量按保底算
+        # 全队回能加成 (场下每个精灵都回能 → 价值×2)
+        if "每个精灵" in desc or "全队" in desc or "场下" in desc:
+            v = int(v * 2)
+        # 应对性回能打折 (如抽枝: 应对状态才回能)
+        if "应对" in desc and "回复" in desc.split("应对")[-1]:
+            v = int(v * 0.6)
         pts["回能"] = v; final += v
     if "回复" in desc and ("HP" in desc or "生命" in desc) and "敌方" not in desc and "吸血" not in desc:
-        pts["回血"] = 4; final += 4
+        # v7优化: 回血按回复比例分级
+        pct = _find_int(r"回复(\d+)%", desc) or _find_int(r"回复(\d+)%生命", desc) or _find_int(r"(\d+)%生命", desc) or 0
+        if pct >= 60: v = 8
+        elif pct >= 40: v = 6
+        elif pct >= 20: v = 5
+        elif pct >= 10: v = 4
+        else: v = 4
+        pts["回血"] = v; final += v
     if "清减益" in desc or ("驱散" in desc and "减益" in desc and "敌方" not in desc and "自己的减益" in desc):
         pts["清减益"] = MECH_BASE["清减益"]; final += MECH_BASE["清减益"]
     if "清增益" in desc or (re.search(r"驱散.*增益|清除.*增益", desc) and "驱散自己的减益" not in desc):
@@ -425,16 +631,33 @@ def score_skill(skill):
                 if mk in before:
                     before = before.split(mk)[0]
             is_cond = not re.search(r'威力永久', before)
-            gv = pw * GROWTH["power"] * (COND_DISCOUNT if is_cond else 1.0)
+            cd = cond_discount(desc, cost, power)
+            gv = pw * GROWTH["power"] * (cd if is_cond else 1.0)
             k = "威力成长(条件)" if is_cond else "威力成长"
             pts[k] = int(gv); final += int(gv)
     elif power == 0 and "威力" in desc:
-        # 状态技能临时威力强化 (如"攻击技能威力+70")
-        tmp = _find_int(r"威力\+(\d+)", desc)
-        if tmp > 0:
-            v = min(tmp * 0.15, 10)
-            pts["威力强化"] = round(v, 1); final += v
+        # 状态技能临时威力强化 (如"攻击技能威力+70", "全技能威力+40")
+        tmp = _find_int(r"威力\+(\d+)", desc) or 0
+        # v7优化: 全技能威力对全队有价值，乘以期望使用次数(3)
+        if "全技能" in desc:
+            coeff = 0.28  # 全队每技能受益
+        elif "攻击技能" in desc:
+            coeff = 0.22  # 仅攻击技能
+        else:
+            coeff = 0.18  # 单技能或未知范围
+        v = min(tmp * coeff, 14)
         pts["威力强化"] = round(v, 1); final += v
+        # v7优化: 额外获得(条件性)威力也计入
+        extra = _find_int(r"额外获得威力\+(\d+)", desc) or 0
+        if extra > 0:
+            ev = min(extra * coeff * 0.5, 8)  # 条件触发打5折
+            pts["威力强化(+条件)"] = round(ev, 1); final += ev
+    # v7优化: 敌方威力降低 (变相减伤)
+    if "敌方" in desc and "技能威力" in desc and "-" in desc:
+        n = _find_int(r"技能威力-(\d+)", desc)
+        if n > 0:
+            v = int(n * 0.08)
+            pts["敌威力-"] = v; final += v
 
     # 负面惩罚
     if "消耗全部生命" in desc:
@@ -465,15 +688,49 @@ def score_skill(skill):
     if re.search(r'(?:获得|自己).{0,10}[-−]\d+%.{0,30}应对', desc):
         pts["应对风险"] = -5; final += -5
 
-    # 属性系数修正 (攻击技能影响更大)
-    if power > 0:
+    # v7优化: 动态威力技能(power=0但是攻击技能)标记
+    is_dynamic_attack = power == 0 and ("造成物伤" in desc or "造成魔伤" in desc)
+
+    # ========================
+    # 迅捷后置计算 (基于核心价值: 威力/减伤 + 附带效果)
+    # ========================
+    if has_swift:
+        if power > 0 or is_dynamic_attack:
+            # 攻击先手价值 = 基础16 + 威力关联(高威力先手收益更大)
+            pv = power_value(power, cost)
+            swift = 16 + pv * 0.5  # 范围: 16 + 4~16 = 20~32
+            swift = max(16, min(26, round(swift, 1)))
+        elif "减伤" in desc or ("减少" in desc and "伤害" in desc):
+            # 防御先手价值 = 基础13 + 减伤关联(高减伤先手开盾更值)
+            dv = defense_value(_find_int(r"减伤(\d+)%", desc) or _find_int(r"减少(\d+)%", desc) or 50, cost)
+            swift = 13 + dv * 0.25
+            swift = max(13, min(20, round(swift, 1)))
+        else:
+            # 状态先手价值 = 基础12 + 效果关联
+            swift = 12
+            if "清增益" in desc: swift += 4
+            if "清减益" in desc: swift += 3
+            if any(kw in desc for kw in ['眩晕', '寄生', '萌化', '焚毁']): swift += 4
+            if "连击数" in desc: swift += 2
+            swift = max(12, min(18, swift))
+        pts["迅捷(攻)" if power > 0 else "迅捷"] = swift
+        final += swift
+
+    # 属性系数修正 (攻击技能影响更大，包括动态威力技能)
+    if power > 0 or is_dynamic_attack:
         pts["属性系数"] = round(tc, 2)
         final = round(final * tc, 1)
 
     # ========================
     # 3. 费用惩罚 (仅非输出技能，防御技能惩罚更高)
     # ========================
-    if power == 0:
+    # v7优化: 动态威力技能不施加费用惩罚
+    if power == 0 and not is_dynamic_attack:
+        # v7优化: 0费状态技能增加基础分（体现战略价值）
+        if cost == 0:
+            pts["0费基础分"] = 4
+            final += 4
+
         penalty = fee_penalty(cost)
         is_defense = "减伤" in desc or ("减少" in desc and "伤害" in desc)
         if is_defense:
@@ -491,11 +748,17 @@ def score_skill(skill):
 
 
 def generate_rankings():
-    with open(DATA_DIR / "pets_final.json", encoding="utf-8") as f:
-        pets = json.load(f)
+    with open(DATA_DIR / "pet_learnset.json", encoding="utf-8") as f:
+        learnsets = json.load(f)
+    with open(DATA_DIR / "pet_recommended.json", encoding="utf-8") as f:
+        recommended = json.load(f)
     skill_map = {}
-    for pid, pet in pets.items():
-        for sk in pet["skills"].get("learnset", []) + pet["skills"].get("recommended", []):
+    for pname, skills in learnsets.items():
+        for sk in skills:
+            if sk["name"] not in skill_map:
+                skill_map[sk["name"]] = sk
+    for pname, skills in recommended.items():
+        for sk in skills:
             if sk["name"] not in skill_map:
                 skill_map[sk["name"]] = sk
     results = [(score_skill(sk)[0], score_skill(sk)[1]) for sk in skill_map.values()]
