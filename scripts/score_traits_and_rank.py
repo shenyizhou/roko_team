@@ -137,15 +137,17 @@ def calc_combat_score(attrs, stats, rec_skills=None):
     # 计算实际速度值（默认+20%性格修正，对应高速输出手）
     actual_spd = base_to_actual(spd, 0.2)
 
-    # 1. 攻击能力: 取最强单技能伤害 = (实际攻击 ÷ 目标防御) × 威力 × 本系
-    # 只看最强输出技能的能力，不是所有技能的总和
+    # 1. 攻击能力: 种族攻击力 × 本系加成（不重复算技能威力，技能威力归 skill_score）
+    # 检查是否有对应类型攻击技能
     actual_atk = base_to_actual(atk, 0.2)
     actual_matk = base_to_actual(matk, 0.2)
-    TARGET_DEF = 200  # 标准目标防御值
-    SCALE = 0.35  # 缩放到与防御分同量级
+    STAT_SCALE = 0.2
+    STAB = 1.25
 
-    phys_best = 0.0
-    spec_best = 0.0
+    has_phys = False
+    has_phys_stab = False
+    has_spec = False
+    has_spec_stab = False
     if rec_skills:
         for sk in rec_skills:
             power = sk.get("power", 0) if isinstance(sk, dict) else 0
@@ -153,17 +155,18 @@ def calc_combat_score(attrs, stats, rec_skills=None):
                 continue
             category = sk.get("category", "") if isinstance(sk, dict) else ""
             element = sk.get("element", "普通") if isinstance(sk, dict) else "普通"
-            stab = 1.5 if element in attrs else 1.0
-            # 伤害 = 实际攻击 ÷ 标准防御 × 威力 × 本系
-            damage = (actual_atk if "物理" in category else actual_matk) / TARGET_DEF * power * stab
             if "物理" in category:
-                phys_best = max(phys_best, damage)
+                has_phys = True
+                if element in attrs:
+                    has_phys_stab = True
             else:
-                spec_best = max(spec_best, damage)
+                has_spec = True
+                if element in attrs:
+                    has_spec_stab = True
 
-    phys_atk_score = round(phys_best * SCALE, 1)
-    spec_atk_score = round(spec_best * SCALE, 1)
-    # 取物攻和特攻中更高的，代表精灵的最高输出能力
+    phys_atk_score = round(actual_atk * STAT_SCALE * (STAB if has_phys_stab else 1.0), 1) if has_phys else 0
+    spec_atk_score = round(actual_matk * STAT_SCALE * (STAB if has_spec_stab else 1.0), 1) if has_spec else 0
+    # 取物攻和特攻中更高的，代表精灵的最佳攻击能力
     atk_stat = max(phys_atk_score, spec_atk_score)
     # 攻击分 = 种族攻击 + 技能打击面
     type_atk = type_offense * 0.45
