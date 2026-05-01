@@ -573,8 +573,8 @@ def main():
         attr_str = f"{p['attr_bonus']} (防{ad.get('defense',0):.0f}/攻{ad.get('offense',0):.0f}/协{ad.get('synergy',0):.0f})"
         boss_str = f" 首领化+{p['boss_bonus']:.0f}" if p.get('boss_bonus', 0) > 0 else ""
         print(f"{i:>2}. {p['name']:<12} {p['score']:>6.1f}  "
-              f"(技能={p['skill_score']:.0f} 特性×4={trait_x4:.0f} "
-              f"属性={attr_str} 种族×4={stats_x4:.0f}{boss_str}) "
+              f"(技能={p['skill_score']:.0f} 特性={trait_x4:.0f} "
+              f"属性={attr_str} 种族={stats_x4:.0f}{boss_str}) "
               f"【{p['trait_name']}】")
 
     # === 最优队伍组建 (体系协同版) ===
@@ -841,8 +841,8 @@ def main():
         attr_str = f"{p['attr_bonus']} (防{ad.get('defense',0):.0f}/攻{ad.get('offense',0):.0f}/协{ad.get('synergy',0):.0f})"
         lines.append(
             f"{i:>3}. {p['name']:<14} {p['score']:>6.1f}  "
-            f"技能={p['skill_score']:.0f} 特性×4={trait_x4:.0f} "
-            f"属性={attr_str} 种族×4={stats_x4:.0f}  "
+            f"技能={p['skill_score']:.0f} 特性={trait_x4:.0f} "
+            f"属性={attr_str} 种族={stats_x4:.0f}  "
             f"【{p['trait_name']}】{p['trait_desc'][:50]}"
         )
     (DATA_DIR / "all_pet_rankings.txt").write_text("\n".join(lines), encoding="utf-8")
