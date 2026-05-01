@@ -593,9 +593,10 @@ def main():
         cd = p.get('combat_detail', {})
         combat_str = f"{p['combat_score']} (攻{cd.get('attack',0):.0f}/防{cd.get('defense',0):.0f}/速{cd.get('speed',0):.0f})"
         boss_str = f" 首领化+{p['boss_bonus']:.0f}" if p.get('boss_bonus', 0) > 0 else ""
+        trait_str = f" 负面={p['trait_score']:.0f}" if p['trait_score'] < 0 else ""
         sk_names = " · ".join(p.get("recommended_skills", [])[:4])
         print(f"{i:>2}. {p['name']:<12} {p['score']:>6.1f}  "
-              f"(技能={p['skill_score']:.0f} {combat_str}{boss_str} [{sk_names}]) "
+              f"(技能={p['skill_score']:.0f} [{sk_names}] {combat_str}{boss_str}{trait_str}) "
               f"【{p['trait_name']}】")
 
     # === 最优队伍组建 (体系协同版) ===
@@ -859,10 +860,11 @@ def main():
         cd = p.get('combat_detail', {})
         combat_str = f"{p['combat_score']} (攻{cd.get('attack',0):.0f}/防{cd.get('defense',0):.0f}/速{cd.get('speed',0):.0f})"
         boss_str = f" 首领化+{p['boss_bonus']:.0f}" if p.get('boss_bonus', 0) > 0 else ""
+        trait_str = f" 负面={p['trait_score']:.0f}" if p['trait_score'] < 0 else ""
         sk_names = " · ".join(p.get("recommended_skills", [])[:4])
         lines.append(
             f"{i:>3}. {p['name']:<14} {p['score']:>6.1f}  "
-            f"技能={p['skill_score']:.0f} {combat_str}{boss_str} [{sk_names}]  "
+            f"技能={p['skill_score']:.0f} [{sk_names}] {combat_str}{boss_str}{trait_str}  "
             f"【{p['trait_name']}】{p['trait_desc'][:50]}"
         )
     (DATA_DIR / "all_pet_rankings.txt").write_text("\n".join(lines), encoding="utf-8")
