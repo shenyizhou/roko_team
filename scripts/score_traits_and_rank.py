@@ -11,7 +11,7 @@ from itertools import combinations
 
 DATA_DIR = Path(__file__).parent.parent / "data"
 
-# ===== 属性综合评分 =====
+# ===== 属性 × 种族 综合战斗能力评分 =====
 _ATTR_CHART = None
 _SHORT_MAP = {"幽": "幽灵", "恶": "恶魔", "普通": "一般"}
 
@@ -34,19 +34,19 @@ def _atk_weight(atk_type):
     if atk_type in _HOT_T2: return 1.5
     return 1.0
 
-def calc_attr_score(attrs):
+def calc_combat_score(attrs, stats):
     """
-    属性综合评分：联防面 + 打击面 + 属性协同
-    取代旧版 len(attrs) * 50 的简单计数
+    属性×种族值 综合战斗能力评分：攻击能力 + 防御能力 + 速度线
+    取代旧版的 calc_attr_score (纯属性) + stats_score (总种族/20)
     返回 (total, breakdown)
     """
     if not attrs:
-        return 0
+        return 0, {"attack": 0, "defense": 0, "speed": 0}
 
     chart = _load_chart()
     normalized = [_norm(a) for a in attrs]
 
-    # 构建 atk_type -> {def_type: multiplier}
+    # ---- 属性 matchup 计算 ----
     atk_vs = {}
     for e in chart["attributes"]:
         atk_n = e["nameCn"]
@@ -55,14 +55,13 @@ def calc_attr_score(attrs):
             for t in targets:
                 atk_vs[atk_n][t] = float(ms)
 
-    # === 1. 联防面 (0~55) ===
-    defense_raw = 15.0  # 基线
+    # 属性联防面 (0~55)
+    defense_raw = 15.0
     for atk_t in atk_vs:
         best_m = 2.0
         for def_t in normalized:
             m = atk_vs[atk_t].get(def_t, 1.0)
             best_m = min(best_m, m)
-
         w = _atk_weight(atk_t)
         if best_m == 0:
             defense_raw += 5.5 * w
@@ -70,9 +69,9 @@ def calc_attr_score(attrs):
             defense_raw += 2.8 * w
         elif best_m >= 2.0:
             defense_raw -= 4.0 * w
+    type_defense = max(defense_raw * 0.75, 0)
 
-    defense_score = max(defense_raw * 0.75, 0)
-    # === 2. 打击面 (0~45) ===
+    # 属性打击面 (0~45)
     stab_se = set()
     stab_immune = set()
     for atk_t in normalized:
@@ -81,45 +80,74 @@ def calc_attr_score(attrs):
                 stab_se.add(def_t)
             elif m == 0:
                 stab_immune.add(def_t)
-
     can_hit = 18 - len(stab_immune)
-    offense_score = max(can_hit * 1.6 + len(stab_se) * 1.2 - len(stab_immune) * 2.0 + 3, 0)
+    type_offense = max(can_hit * 1.6 + len(stab_se) * 1.2 - len(stab_immune) * 2.0 + 3, 0)
 
-    # === 3. 属性协同 (0~25) ===
+    # 属性协同 (0~25)
     if len(normalized) == 2:
         t1, t2 = normalized
-        weak = {}
-        resist = {}
+        weak, resist = {}, {}
         for t in [t1, t2]:
-            wset = set()
-            rset = set()
+            wset, rset = set(), set()
             for atk_t in atk_vs:
                 m = atk_vs[atk_t].get(t, 1.0)
-                if m >= 2:
-                    wset.add(atk_t)
-                elif m <= 0.5:
-                    rset.add(atk_t)
-            weak[t] = wset
-            resist[t] = rset
-
-        covered = set()
-        dup = set()
+                if m >= 2: wset.add(atk_t)
+                elif m <= 0.5: rset.add(atk_t)
+            weak[t] = wset; resist[t] = rset
+        covered = set(); dup = set()
         for w in weak[t1]:
             if w in resist[t2]: covered.add(w)
             elif w in weak[t2]: dup.add(w)
         for w in weak[t2]:
             if w in resist[t1]: covered.add(w)
             elif w in weak[t1]: dup.add(w)
-
-        synergy = len(covered) * 5.5 - len(dup) * 4.0
+        type_synergy = len(covered) * 5.5 - len(dup) * 4.0
     else:
-        synergy = 3  # 单属性无协同也不扣分
+        type_synergy = 3
 
-    total = defense_score * 0.45 + offense_score * 0.33 + synergy * 0.22
-    return round(total, 1), {
-        "defense": round(defense_score, 1),
-        "offense": round(offense_score, 1),
-        "synergy": round(synergy, 1),
+    # ---- 种族值维度 ----
+    hp = stats.get("hp", 80)
+    atk = stats.get("atk", 80)
+    matk = stats.get("matk", 80)
+    def_ = stats.get("def", 80)
+    mdef = stats.get("mdef", 80)
+    spd = stats.get("spd", 80)
+
+    # 1. 攻击能力: 攻击种族 + 属性打击面
+    best_atk = max(atk, matk)
+    second_atk = min(atk, matk)
+    atk_stat = best_atk * 0.3 + second_atk * 0.08
+    atk_type_bonus = type_offense * 0.45
+    attack_score = round(atk_stat + atk_type_bonus, 1)
+
+    # 2. 防御能力: 耐久种族 + 属性联防面
+    bulk_stat = (hp + def_ + mdef) / 6
+    type_def_bonus = type_defense * 0.6
+    defense_score = round(bulk_stat + type_def_bonus, 1)
+
+    # 3. 速度线 (0~30)
+    if spd >= 135:
+        speed_score = 30
+    elif spd >= 125:
+        speed_score = 26
+    elif spd >= 115:
+        speed_score = 22
+    elif spd >= 105:
+        speed_score = 18
+    elif spd >= 97:
+        speed_score = 14
+    elif spd >= 85:
+        speed_score = 10
+    elif spd >= 75:
+        speed_score = 7
+    else:
+        speed_score = 4
+
+    total = round(attack_score + defense_score + speed_score, 1)
+    return total, {
+        "attack": attack_score,
+        "defense": defense_score,
+        "speed": speed_score,
     }
 
 
@@ -474,25 +502,21 @@ def score_pet(pet_name, pet_data, learnset_skills, rec_skills, skill_scores, bos
     trait = pet_data.get("trait", {})
     trait_score, trait_pts = score_trait(trait.get("name", ""), trait.get("desc", ""))
 
-    # 属性综合评分: 联防面 + 打击面 + 属性协同
+    # 属性×种族 综合战斗能力评分: 攻击能力 + 防御能力 + 速度线
     attrs = pet_data.get("attrs", [])
-    attr_bonus, attr_detail = calc_attr_score(attrs)
-
-    # 种族值分: 每20点种族值≈1分
     stats = pet_data.get("stats", {})
-    total_stats = stats.get("total", 300)
-    stats_score = round(total_stats / 20, 1)
+    attr_bonus, attr_detail = calc_combat_score(attrs, stats)
 
-    # 权重: 特性(×4) > 种族(×4) ≈ 属性 > 技能
-    total = round(skill_total + trait_score * 4 + attr_bonus + stats_score * 4 + boss_bonus, 1)
+    # 权重: 特性得分暂置0（仅保留负面惩罚），属性种族合并为战斗能力
+    trait_positive = max(trait_score, 0)
+    total = round(skill_total + (trait_score - trait_positive) * 4 + attr_bonus + boss_bonus, 1)
 
     return total, {
         "skill_score": round(skill_total, 1),
         "trait_score": trait_score,
         "trait_pts": trait_pts,
-        "attr_bonus": attr_bonus,
-        "attr_detail": attr_detail,
-        "stats_score": stats_score,
+        "combat_score": attr_bonus,
+        "combat_detail": attr_detail,
         "boss_bonus": boss_bonus,
         "trait_name": trait.get("name", ""),
         "trait_desc": trait.get("desc", ""),
@@ -548,9 +572,8 @@ def main():
             "trait_score": meta["trait_score"],
             "trait_pts": meta["trait_pts"],
             "skill_score": meta["skill_score"],
-            "attr_bonus": meta["attr_bonus"],
-            "attr_detail": meta["attr_detail"],
-            "stats_score": meta["stats_score"],
+            "combat_score": meta["combat_score"],
+            "combat_detail": meta["combat_detail"],
             "boss_bonus": meta["boss_bonus"],
             "recommended_skills": rec_skills,
         }
@@ -564,17 +587,15 @@ def main():
 
     # Print top 30
     print("=" * 90)
-    print("精灵综合排名 (技能+特性+属性+种族值)")
+    print("精灵综合排名 (技能 + 战斗能力[攻防速])")
     print("=" * 90)
     for i, p in enumerate(ranked[:30], 1):
-        trait_x4 = round(p['trait_score'] * 4, 1)
-        stats_x4 = round(p['stats_score'] * 4, 1)
-        ad = p.get('attr_detail', {})
-        attr_str = f"{p['attr_bonus']} (防{ad.get('defense',0):.0f}/攻{ad.get('offense',0):.0f}/协{ad.get('synergy',0):.0f})"
+        cd = p.get('combat_detail', {})
+        combat_str = f"{p['combat_score']} (攻{cd.get('attack',0):.0f}/防{cd.get('defense',0):.0f}/速{cd.get('speed',0):.0f})"
         boss_str = f" 首领化+{p['boss_bonus']:.0f}" if p.get('boss_bonus', 0) > 0 else ""
+        sk_names = " · ".join(p.get("recommended_skills", [])[:4])
         print(f"{i:>2}. {p['name']:<12} {p['score']:>6.1f}  "
-              f"(技能={p['skill_score']:.0f} 特性={trait_x4:.0f} "
-              f"属性={attr_str} 种族={stats_x4:.0f}{boss_str}) "
+              f"(技能={p['skill_score']:.0f} {combat_str}{boss_str} [{sk_names}]) "
               f"【{p['trait_name']}】")
 
     # === 最优队伍组建 (体系协同版) ===
@@ -832,17 +853,16 @@ def main():
     # Print pet_rankings.txt as well
     lines = []
     lines.append("=" * 100)
-    lines.append("精灵综合排名 (技能评分 + 特性评分 + 属性分 + 种族值分)")
+    lines.append("精灵综合排名 (技能 + 战斗能力[攻防速])")
     lines.append("=" * 100)
     for i, p in enumerate(ranked, 1):
-        trait_x4 = round(p['trait_score'] * 4, 1)
-        stats_x4 = round(p['stats_score'] * 4, 1)
-        ad = p.get('attr_detail', {})
-        attr_str = f"{p['attr_bonus']} (防{ad.get('defense',0):.0f}/攻{ad.get('offense',0):.0f}/协{ad.get('synergy',0):.0f})"
+        cd = p.get('combat_detail', {})
+        combat_str = f"{p['combat_score']} (攻{cd.get('attack',0):.0f}/防{cd.get('defense',0):.0f}/速{cd.get('speed',0):.0f})"
+        boss_str = f" 首领化+{p['boss_bonus']:.0f}" if p.get('boss_bonus', 0) > 0 else ""
+        sk_names = " · ".join(p.get("recommended_skills", [])[:4])
         lines.append(
             f"{i:>3}. {p['name']:<14} {p['score']:>6.1f}  "
-            f"技能={p['skill_score']:.0f} 特性={trait_x4:.0f} "
-            f"属性={attr_str} 种族={stats_x4:.0f}  "
+            f"技能={p['skill_score']:.0f} {combat_str}{boss_str} [{sk_names}]  "
             f"【{p['trait_name']}】{p['trait_desc'][:50]}"
         )
     (DATA_DIR / "all_pet_rankings.txt").write_text("\n".join(lines), encoding="utf-8")
