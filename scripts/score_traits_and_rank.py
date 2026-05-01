@@ -80,18 +80,22 @@ def calc_combat_score(attrs, stats, rec_skills=None):
             m = atk_vs[atk_t].get(def_t, 1.0)
             best_m = min(best_m, m)
         w = _atk_weight(atk_t)
-        if best_m == 0:
-            defense_raw += 5.5 * w
-        elif best_m <= 0.5:
-            defense_raw += 2.8 * w
+        if best_m <= 0.5:
+            defense_raw += 3.5 * w   # 抵抗
         elif best_m >= 2.0:
-            defense_raw -= 4.0 * w
+            defense_raw -= 3.0 * w   # 弱点
     type_defense = max(defense_raw * 0.75, 0)
 
-    # 属性打击面 (0~45)
+    # 属性打击面：精灵属性 + 携带技能的属性（技能打击面）
+    offense_attrs = set(normalized)
+    if rec_skills:
+        for sk in rec_skills:
+            power = sk.get("power", 0) if isinstance(sk, dict) else 0
+            if power > 0:
+                offense_attrs.add(sk.get("element", "普通") if isinstance(sk, dict) else "普通")
     stab_se = set()
     stab_immune = set()
-    for atk_t in normalized:
+    for atk_t in offense_attrs:
         for def_t, m in atk_vs.get(atk_t, {}).items():
             if m >= 2:
                 stab_se.add(def_t)
@@ -161,21 +165,26 @@ def calc_combat_score(attrs, stats, rec_skills=None):
     spec_atk_score = round(spec_best * SCALE, 1)
     # 取物攻和特攻中更高的，代表精灵的最高输出能力
     atk_stat = max(phys_atk_score, spec_atk_score)
-    atk_type_bonus = type_offense * 0.45
-    attack_score = round(atk_stat + atk_type_bonus, 1)
+    # 攻击分 = 种族攻击 + 技能打击面
+    type_atk = type_offense * 0.45
+    attack_score = round(atk_stat + type_atk, 1)
 
-    # 2. 防御能力: 基于伤害公式，拆分为物防/特防分
+    # 2. 防御能力: 基于伤害公式，拆分为物防/特防分（纯种族值）
     # 伤害 ∝ 攻击÷防御，能承受的总伤害 ∝ HP×防御
     # 物攻环境主导 (65%物理，35%特殊)
-    scale = 180  # 缩放系数，控制防御分与攻击分(40-70)的量级
-    phys_bulk = hp * def_ / scale   # 标准化物理耐久（伤害公式：atk/def × 常数）
-    spec_bulk = hp * mdef / scale   # 标准化特殊耐久
-    phys_def_score = round(phys_bulk * 0.65, 1)  # 物防分：物攻环境权重高
-    spec_def_score = round(spec_bulk * 0.35, 1)  # 特防分：魔攻环境权重低
-    type_def_bonus = type_defense * 0.6
-    defense_score = round(phys_def_score + spec_def_score + type_def_bonus, 1)
+    scale = 180
+    phys_bulk = hp * def_ / scale
+    spec_bulk = hp * mdef / scale
+    phys_def_score = round(phys_bulk * 0.65, 1)
+    spec_def_score = round(spec_bulk * 0.35, 1)
+    defense_score = round(phys_def_score + spec_def_score, 1)  # 纯种族防御分
 
-    # 3. 速度分：连续量化计算 - 低于100基础为0，超过后抛物线增长
+    # 3a. 属性得分：联防面 + 协同（属性组合的抗性价值）
+    type_def = type_defense * 0.6
+    type_syn = max(type_synergy, 0)  # 协同不惩罚（弱协同=0分）
+    attr_score = round(type_def + type_syn, 1)
+
+    # 3b. 速度分：连续量化计算 - 低于100基础为0，超过后抛物线增长
     # 公式：speed_score = max(spd - 98, 0) ^ 1.5 * 0.32
     if spd >= 100:
         speed_score = round(pow(max(spd - 98, 0), 1.5) * 0.32, 1)
@@ -185,19 +194,21 @@ def calc_combat_score(attrs, stats, rec_skills=None):
         speed_line = 0
 
     # 无权重：直接相加，一视同仁
-    total = round(attack_score + defense_score + speed_score, 1)
+    total = round(attack_score + defense_score + speed_score + attr_score, 1)
     return total, {
         "attack": attack_score,
         "phys_atk": round(phys_atk_score, 1),
         "spec_atk": round(spec_atk_score, 1),
-        "type_atk": round(atk_type_bonus, 1),
         "defense": defense_score,
         "phys_def": phys_def_score,
         "spec_def": spec_def_score,
-        "type_def": round(type_def_bonus, 1),
         "speed": speed_score,
         "speed_line": speed_line,
         "actual_spd": actual_spd,
+        "attr_score": attr_score,
+        "type_atk": round(type_atk, 1),
+        "type_def": round(type_def, 1),
+        "type_syn": round(type_syn, 1),
     }
 
 
@@ -682,6 +693,7 @@ def main():
         sd = cd.get('spec_def', 0)
         parts.append(f"物防{pd:.0f}/特防{sd:.0f}")
         parts.append(f"速{cd.get('speed',0):.0f}/{actual_spd}")
+        parts.append(f"属性{cd.get('attr_score',0):.0f}")
         return f"{combat_score} ({' '.join(parts)})"
 
     for i, p in enumerate(ranked[:30], 1):
