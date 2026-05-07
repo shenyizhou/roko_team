@@ -12,8 +12,8 @@ DATA_DIR = Path(__file__).parent.parent / "data"
 
 class RoleClassifier:
     def __init__(self):
-        with open(DATA_DIR / "pets_final.json", encoding="utf-8") as f:
-            self.pets = json.load(f)
+        from . import get_all_pets_with_skills
+        self.pets = get_all_pets_with_skills()
 
     def _has_buff_skills(self, pet_id: str) -> dict:
         """检查是否有强化技能"""

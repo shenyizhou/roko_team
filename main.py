@@ -32,20 +32,37 @@ def print_pet_rankings(limit: int = 30):
 
 def analyze_custom_team(pet_names: list[str]):
     """分析自定义队伍"""
+    from models import get_family_map
+    family_map = get_family_map()
     analyzer = TeamAnalyzer()
 
     # 通过名称找ID
     name_to_id = {pet["name"]: pet_id for pet_id, pet in analyzer.pets.items()}
 
     team_ids = []
+    seen_families = set()
     for name in pet_names:
         if name in name_to_id:
-            team_ids.append(name_to_id[name])
+            pid = name_to_id[name]
+            fam = family_map.get(pid, pid)
+            if fam in seen_families:
+                # 同家族冲突：跳过或警告
+                fam_members = [n for n, f in family_map.items() if f == fam and n in name_to_id]
+                print(f"  警告: '{name}' 与队伍中已有精灵属于同一家族({fam})，跳过。家族成员: {fam_members}")
+                continue
+            seen_families.add(fam)
+            team_ids.append(pid)
         else:
             # 模糊匹配
             matches = [n for n in name_to_id.keys() if name in n]
             if matches:
-                team_ids.append(name_to_id[matches[0]])
+                pid = name_to_id[matches[0]]
+                fam = family_map.get(pid, pid)
+                if fam in seen_families:
+                    print(f"  警告: '{matches[0]}' 与队伍中已有精灵属于同一家族，跳过")
+                    continue
+                seen_families.add(fam)
+                team_ids.append(pid)
                 print(f"  模糊匹配: {name} -> {matches[0]}")
             else:
                 print(f"  警告: 找不到宠物 '{name}'")
@@ -81,12 +98,24 @@ def main():
     # 1. 宠物排行榜
     rankings = print_pet_rankings(limit=30)
 
-    # 2. 用最高评分的6只组队（基准测试）
+    # 2. 用最高评分的6只组队（基准测试），考虑家族约束
     print("\n" + "=" * 80)
-    print("【基准测试 - 评分最高的6只组队】")
+    print("【基准测试 - 评分最高的6只组队（同一家族只取一只）】")
     print("=" * 80)
+    from models import get_family_map
+    family_map = get_family_map()
     analyzer = TeamAnalyzer()
-    top6_ids = [p["id"] for p in rankings[:6]]
+
+    top6_ids = []
+    seen_families = set()
+    for p in rankings:
+        # 合并形态取第一个
+        pid = p.get("merged_forms", [p.get("id")])[0] if "merged_forms" in p else p.get("id")
+        if pid:
+            fam = family_map.get(pid, pid)
+            if fam not in seen_families and len(top6_ids) < 6:
+                seen_families.add(fam)
+                top6_ids.append(pid)
     analyzer.print_team_report(top6_ids)
 
     # 3. 遗传算法优化队伍

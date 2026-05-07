@@ -20,14 +20,56 @@ class GeneticTeamOptimizer:
         self.population_size = population_size
         self.generations = generations
 
+        from models import get_family_map, _filter_index_items
+        self.family_map = get_family_map()  # {名称: noText}
+
+        # 首领化精灵集合（typeClass == "boss"）
+        self.boss_names = set(
+            it["name"] for it in _filter_index_items()
+            if it.get("typeClass") == "boss"
+        )
+        self.max_bosses = 1  # 队伍中最多允许1只首领化精灵
+
         # 遗传算法参数
         self.mutation_rate = 0.3
         self.crossover_rate = 0.7
         self.elitism_rate = 0.1  # 保留前10%的精英个体
 
+    def _get_family(self, pet_id: str) -> str:
+        """获取精灵所属家族编号，同一家族只能上一只"""
+        return self.family_map.get(pet_id, pet_id)
+
+    def _has_family_conflict(self, team: list[str], new_pet: str) -> bool:
+        """检查新精灵是否与队伍中已有精灵属于同一家族"""
+        new_family = self._get_family(new_pet)
+        for p in team:
+            if self._get_family(p) == new_family:
+                return True
+        return False
+
+    def _count_bosses(self, team: list[str]) -> int:
+        """统计队伍中首领化精灵数量"""
+        return sum(1 for p in team if p in self.boss_names)
+
+    def _is_valid_addition(self, team: list[str], new_pet: str) -> bool:
+        """检查加入新精灵是否违反约束：家族不重复 + 首领不超过上限"""
+        if self._has_family_conflict(team, new_pet):
+            return False
+        if new_pet in self.boss_names and self._count_bosses(team) >= self.max_bosses:
+            return False
+        return True
+
     def create_random_team(self) -> list[str]:
-        """创建随机队伍"""
-        return random.sample(self.all_pet_ids, 6)
+        """创建随机队伍，确保同一家族只上一只 + 最多1只首领"""
+        team = []
+        available = list(self.all_pet_ids)
+        random.shuffle(available)
+        for p in available:
+            if self._is_valid_addition(team, p):
+                team.append(p)
+            if len(team) == 6:
+                break
+        return team
 
     def fitness(self, team: list[str]) -> float:
         """适应度函数 - 队伍综合评分"""
@@ -37,33 +79,51 @@ class GeneticTeamOptimizer:
         return result["team_score"]
 
     def mutate(self, team: list[str]) -> list[str]:
-        """变异：随机替换1-2只宠物"""
+        """变异：随机替换1-2只宠物，避开同家族且不超首领上限"""
         new_team = team.copy()
         num_mutations = random.randint(1, 2)
         for _ in range(num_mutations):
             idx = random.randint(0, 5)
-            new_pet = random.choice(self.all_pet_ids)
-            while new_pet in new_team:
-                new_pet = random.choice(self.all_pet_ids)
-            new_team[idx] = new_pet
+            candidates = [p for p in self.all_pet_ids
+                          if p not in new_team and self._is_valid_addition(
+                              [t for j, t in enumerate(new_team) if j != idx], p)]
+            if candidates:
+                new_team[idx] = random.choice(candidates)
         return new_team
 
     def crossover(self, team1: list[str], team2: list[str]) -> tuple[list[str], list[str]]:
-        """交叉：交换两队的部分宠物"""
-        # 单点交叉
+        """交叉：交换两队的部分宠物，避开同家族且不超首领上限"""
         point = random.randint(1, 5)
         child1 = team1[:point] + [p for p in team2[point:] if p not in team1[:point]]
         child2 = team2[:point] + [p for p in team1[point:] if p not in team2[:point]]
 
-        # 补全到6只
-        while len(child1) < 6:
-            p = random.choice(self.all_pet_ids)
-            if p not in child1:
-                child1.append(p)
-        while len(child2) < 6:
-            p = random.choice(self.all_pet_ids)
-            if p not in child2:
-                child2.append(p)
+        # 补全到6只，避开约束冲突
+        for child in (child1, child2):
+            # 先移除同家族冲突的精灵（保留靠前的）
+            seen_families = set()
+            clean_child = []
+            for p in child:
+                fam = self._get_family(p)
+                if fam not in seen_families:
+                    seen_families.add(fam)
+                    clean_child.append(p)
+            # 再检查首领上限
+            final_child = []
+            boss_count = 0
+            for p in clean_child:
+                if p in self.boss_names:
+                    if boss_count >= self.max_bosses:
+                        continue
+                    boss_count += 1
+                final_child.append(p)
+            child[:] = final_child
+
+            while len(child) < 6:
+                candidates = [p for p in self.all_pet_ids
+                              if p not in child and self._is_valid_addition(child, p)]
+                if not candidates:
+                    candidates = [p for p in self.all_pet_ids if p not in child]
+                child.append(random.choice(candidates))
 
         return child1, child2
 

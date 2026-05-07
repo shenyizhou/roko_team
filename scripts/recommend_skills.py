@@ -767,18 +767,16 @@ def main():
     with open(DATA_DIR / "spirits_detail.json") as f:
         spirits = json.load(f)
 
-    # 补充：加载 pets.json 中不在 spirits_detail 的宠物
-    with open(DATA_DIR / "pets.json") as f:
-        pets_data = json.load(f)
-    with open(DATA_DIR / "pet_learnset.json") as f:
-        learnset_data = json.load(f)
+    # 补充：加载 pets 中不在 spirits_detail 的宠物（使用统一数据源）
+    from models import get_all_pets_with_skills
+    pets_data = get_all_pets_with_skills()
 
     existing_names = {pd.get("name", "") for pd in spirits.values()}
     added_count = 0
     for name, pet_info in pets_data.items():
         if name in existing_names:
             continue
-        ls = learnset_data.get(name, [])
+        ls = pet_info.get("skills", {}).get("learnset", [])
         if not ls:
             continue
         st = pet_info.get("stats", {})
@@ -795,7 +793,7 @@ def main():
         }
         added_count += 1
     if added_count:
-        print(f"已从 pets.json 补充 {added_count} 个不在 spirits_detail 中的精灵")
+        print(f"已从 spirit_filter_index 补充 {added_count} 个不在 spirits_detail 中的精灵")
 
     skill_scores = load_skill_scores()
 

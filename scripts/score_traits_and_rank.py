@@ -652,13 +652,9 @@ def score_pet(pet_name, pet_data, learnset_skills, rec_skills, skill_scores):
 
 
 def main():
-    # Load data
-    with open(DATA_DIR / "pets.json") as f:
-        pets = json.load(f)
-    with open(DATA_DIR / "pet_learnset.json") as f:
-        learnsets = json.load(f)
-    with open(DATA_DIR / "pet_recommended.json") as f:
-        recommended = json.load(f)
+    # Load data — 使用 spirit_filter_index.json 作为唯一数据源
+    from models import get_all_pets_with_skills, DATA_DIR as M_DATA_DIR
+    pets = get_all_pets_with_skills()
     with open(DATA_DIR / "all_skill_rankings.json") as f:
         rankings = json.load(f)
 
@@ -667,6 +663,7 @@ def main():
     # 首领化 lineage：从 spirit_filter_index 自动识别
     # 同一 NO 编号下有 boss + 非boss 形态 = 一条首领化进化线
     BOSS_LINE = set()
+    BOSS_NAMES = set()  # 仅首领形态（typeClass=boss），用于 [首领] 标注
     try:
         with open(DATA_DIR / "spirit_filter_index.json") as f:
             filter_idx = json.load(f)
@@ -677,6 +674,7 @@ def main():
             name = it.get("name", "")
             if it.get("typeClass") == "boss":
                 no_groups[no]["boss"].append(name)
+                BOSS_NAMES.add(name)
             else:
                 no_groups[no]["base"].append(name)
         # 有 boss 形态的 NO 即为首领化进化线
@@ -776,7 +774,8 @@ def main():
             actual_spd = cd.get('actual_spd', 0)
             combat_str = _format_combat(cd, p['combat_score'], actual_spd)
             sk_names = " · ".join(p.get("recommended_skills", [])[:4])
-            print(f"{i:>3}. {p['name']:<14} {p['score']:>6.1f}  "
+            label = " [首领]" if p['name'] in BOSS_NAMES else ""
+            print(f"{i:>3}. {p['name']}{label:<14} {p['score']:>6.1f}  "
                   f"技能={p['skill_score']:.0f} [{sk_names}] {combat_str}  "
                   f"【{p['trait_name']}={p['trait_score']:.0f}】{p['trait_desc'][:50]}")
 

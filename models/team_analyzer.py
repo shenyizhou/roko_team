@@ -16,8 +16,8 @@ DATA_DIR = Path(__file__).parent.parent / "data"
 
 class TeamAnalyzer:
     def __init__(self):
-        with open(DATA_DIR / "pets_final.json", encoding="utf-8") as f:
-            self.pets = json.load(f)
+        from . import get_all_pets_with_skills
+        self.pets = get_all_pets_with_skills()
 
         self.attr_matrix = AttributeMatrix()
         self.pet_scorer = PetScorer()

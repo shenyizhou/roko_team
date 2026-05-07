@@ -18,16 +18,24 @@ DATA_DIR = Path(__file__).parent.parent / "data"
 
 class BuildAnalyzer:
     def __init__(self):
-        with open(DATA_DIR / "pets_final.json", encoding="utf-8") as f:
-            self.pets = json.load(f)
+        from . import get_all_pets_with_skills, get_pet, get_family_map
+        self.pets = get_all_pets_with_skills()
+        self.family_map = get_family_map()  # {名称: noText}
 
-        # 加载PVP热门精灵
+        # 加载PVP热门精灵（仅名称列表，数据从 spirit_filter_index 读取）
         hot_path = DATA_DIR / "pvp_hot_pets.json"
         if hot_path.exists():
             with open(hot_path, encoding="utf-8") as f:
-                self.hot_pets = json.load(f)
+                raw = json.load(f)
+            if isinstance(raw, list):
+                self.hot_pets = raw
+            elif isinstance(raw, dict) and all(isinstance(v, str) for v in raw.values()):
+                self.hot_pets = list(raw.values())
+            else:
+                # 兼容旧格式: dict of {rank: {name, attrs, stats, ...}}
+                self.hot_pets = [v["name"] for v in raw.values()]
         else:
-            self.hot_pets = {}
+            self.hot_pets = []
 
         # 属性克制表
         self.weakness_map = {
@@ -297,11 +305,12 @@ class BuildAnalyzer:
 
         # 对每只热门精灵计算威胁度
         threat_results = []
-        total_can_counter = 0
-        for rank_key, hot_pet in sorted(self.hot_pets.items(), key=lambda x: int(x[0])):
-            hot_name = hot_pet["name"]
-            hot_attrs = hot_pet["attrs"]
-            hot_stats = hot_pet["stats"]
+        for i, hot_name in enumerate(self.hot_pets, 1):
+            hot_pet = self.pets.get(hot_name, {})
+            if not hot_pet:
+                continue
+            hot_attrs = hot_pet.get("attrs", [])
+            hot_stats = hot_pet.get("stats", {})
 
             # 计算队伍中能counter它的精灵数量
             counter_count = 0
@@ -309,7 +318,6 @@ class BuildAnalyzer:
             for pid in team:
                 pet = self.pets.get(pid, {})
                 my_attrs = pet.get("attrs", [])
-                # 属性克制
                 can_counter = False
                 for hot_attr in hot_attrs:
                     for counter_attr in self.weakness_map.get(hot_attr, []):
@@ -334,7 +342,7 @@ class BuildAnalyzer:
                 risk_label = "🟢 可应对"
 
             threat_results.append({
-                "rank": int(rank_key),
+                "rank": i,
                 "name": hot_name,
                 "attrs": hot_attrs,
                 "speed": hot_stats.get("spd", 0),
@@ -518,7 +526,7 @@ class BuildAnalyzer:
 
     def _greedy_team_search(self, core: List[str], candidates: List[str], slots: int,
                             axis_info: Dict, top_k: int) -> List[Dict]:
-        """贪心搜索最优队伍"""
+        """贪心搜索最优队伍，同一家族只取一只"""
         import random
         random.seed(42)
 
@@ -527,12 +535,18 @@ class BuildAnalyzer:
 
         # 多轮随机采样
         for _ in range(min(200, len(candidates) * 10)):
-            # 随机选slots个候选填充
-            if len(candidates) < slots:
-                fill = candidates[:]
-            else:
-                fill = random.sample(candidates, slots)
-            team = core + fill
+            # 随机选slots个候选填充，避开同家族
+            team = list(core)
+            seen_families = set()
+            for p in team:
+                seen_families.add(self.family_map.get(p, p))
+
+            available = [c for c in candidates if self.family_map.get(c, c) not in seen_families]
+            if len(available) < slots:
+                available = candidates[:]  # 不够就放宽限制
+
+            fill = random.sample(available, min(slots, len(available)))
+            team.extend(fill)
 
             if len(team) != 6:
                 continue

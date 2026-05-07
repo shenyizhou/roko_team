@@ -13,8 +13,8 @@ DATA_DIR = Path(__file__).parent.parent / "data"
 
 class PetScorer:
     def __init__(self):
-        with open(DATA_DIR / "pets_final.json", encoding="utf-8") as f:
-            self.pets = json.load(f)
+        from . import get_all_pets_with_skills
+        self.pets = get_all_pets_with_skills()
 
         self.attr_matrix = AttributeMatrix()
 
@@ -880,12 +880,56 @@ class PetScorer:
         }
 
     def get_all_rankings(self) -> list:
-        """获取所有宠物的排行榜"""
-        rankings = []
+        """获取所有宠物的排行榜，同一家族多形态同分时合并展示"""
+        from . import get_family_map, get_family_members
+
+        family_map = get_family_map()
+        family_members_map = get_family_members()
+
+        # 先评分所有精灵
+        all_results = {}
         for pet_id in self.pets.keys():
             result = self.score_pet(pet_id)
             if "error" not in result:
-                rankings.append(result)
+                all_results[pet_id] = result
+
+        # 按家族（noText）分组
+        families = {}
+        for pet_id, result in all_results.items():
+            no = family_map.get(pet_id, pet_id)
+            if no not in families:
+                families[no] = []
+            families[no].append(result)
+
+        # 每个家族取最高分，同分合并
+        rankings = []
+        for no, members in families.items():
+            members.sort(key=lambda x: -x["scores"]["total"])
+            best_score = members[0]["scores"]["total"]
+
+            # 找出所有同分的形态
+            tied = [m for m in members if abs(m["scores"]["total"] - best_score) < 0.01]
+
+            if len(tied) > 1:
+                # 多形态同分：合并展示，使用公共前缀作为名称
+                names = [m["name"] for m in tied]
+                import os
+                prefix = os.path.commonprefix(names)
+                # 从公共前缀末尾往回找括号，截断到括号前
+                cut = prefix.rfind("（")
+                if cut == -1:
+                    cut = prefix.rfind("(")
+                if cut > 1:
+                    prefix = prefix[:cut]
+                elif len(prefix) < 2:
+                    prefix = min(names, key=len)
+                merged = dict(tied[0])  # 以第一个的数据为基础
+                merged["name"] = prefix
+                merged["merged_forms"] = names
+                merged["scores"] = dict(tied[0]["scores"])
+                rankings.append(merged)
+            else:
+                rankings.append(members[0])
 
         rankings.sort(key=lambda x: -x["scores"]["total"])
         return rankings
