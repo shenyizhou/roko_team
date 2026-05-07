@@ -261,13 +261,22 @@ TRAIT_SCORES = {
 
     # ── B档：优秀特性 (60-100) ──
     "哨兵": 90,        # 速度+50 + 行动后脱离
+    "夺目": 85,        # 额外3个随机技能，非光系技能威力+25%
+    "大捞一笔": 80,    # 回合结束时偷取所有敌方精灵2点能量
+    "爆燃": 80,        # 使用火系技能后双攻永久+30%
     "守望星": 80,      # 星陨半消耗满伤害
     "电流刺激": 80,    # 攻击技能迸发威力+40
     "圣火骑士": 75,    # 应对成功后下次攻击威力翻倍
     "煤渣草": 70,      # 灼烧衰减→增长
     "预警": 70,        # 速度+50
+    "悼亡": 70,        # 双方每1只力竭精灵→双攻+30%(终局极强)
+    "御驾亲征": 70,    # 大幅提升种族值，力竭扣4魔力(高风险高回报)
     "吟游之弦": 65,    # 印记共存
+    "游弋": 65,        # 蓄力时可使用任意技能+双防+100%
+    "坠星": 65,        # 敌每层星陨印记→技能威力+15%
     "棋王契约": 65,    # 棋类体系核心
+    "全神贯注": 60,    # 入场首回合物攻+100%，每次衰减20%
+    "三鼓作气": 60,    # 使用能耗3技能→攻防永久+20%
     "营养液泡": 60,    # 增益额外+2层
     "珊瑚骨": 60,      # 敌方离场→全技能能耗-3(不可驱散)
 
@@ -277,6 +286,10 @@ TRAIT_SCORES = {
     "保守派": 55,      # 低总能耗时双防+80%
     "破空": 55,        # 先手时威力+75%
     "蚀刻": 55,        # 中毒→印记转化
+    "养分内循环": 55,  # 回合结束获得6能量
+    "超级电池": 55,    # 每入场1次→双攻永久+30%
+    "浪潮": 55,        # 使用水系技能后全技能能耗-2
+    "伙伴的力量": 55,  # 不同系别技能→攻防+5%，光系+20%
     "\u201c国王\u201d的威严": 55,  # 种族值大幅增加+低耗技能威力+50%
     "快锤": 50,        # 低耗技能获得迅捷
     "生物电": 50,      # 电系技能迸发能耗-2
@@ -295,9 +308,13 @@ TRAIT_SCORES = {
     "整点报时": 45,    # 初始位置传动能耗-5
     "吸灵": 45,        # 继承阵亡队友最高属性
     "冰封": 45,        # 敌方全技能能耗+1
+    "抓到你了": 50,    # 入场敌2层冻结+冻结时敌全能耗+1
     "下黑手": 40,      # 敌方离场→5层中毒
     "缩壳": 40,        # 防御技能能耗-2
     "思维之盾": 40,    # 应对后能耗-5
+    "虫群突袭": 45,    # 每只虫系队友→入场攻防速+15%
+    "深层氧循环": 40,  # 使用草系技能后回复15%生命
+    "水翼飞升": 40,    # 队友水系→入场全能耗-1，0能耗威力+30%
     "快充": 40,        # 离场回10能量
     "衡量": 40,        # 复制敌方增益+持续复制
     "斗技": 40,        # 应对后全技能威力+20
@@ -320,6 +337,7 @@ TRAIT_SCORES = {
     "张弛有度": 35,    # 周末攻/平时防+40%
     "恶魔的晚宴": 35,  # 击败后双攻+50%(条件苛刻)
     "恶魔红钻": 35,    # 击败后队伍5次奉献
+    "地脉馈赠": 35,    # 入队回10能+队友地系→回3能
     "石天平": 30,      # 能耗差惩罚敌方
     "扩散侵蚀": 30,    # 水系后敌方中毒(印记2倍)
     "碰瓷": 30,        # 恶系后敌方失2能量
@@ -406,6 +424,28 @@ TRAIT_SCORES = {
     "共鸣": 10,        # 虫鸣威力+20
     "不移": 10,        # 无额外效果攻击技能威力+30%
     "啾啾冲刺": 10,    # 先手→连击+1
+
+    # ── 首领基础形态特性 (弱于首领版本) ──
+    "专注力": 55,      # 入场首回合物攻+100% (无衰减版)
+    "捉到你了": 45,    # 入场敌2层冻结+冻结时敌全能耗+2
+    "悲悯": 40,        # 己方每1只力竭→双攻+30%
+    "助燃": 35,        # 使用火系技能后双攻+20%
+    "蓄电池": 35,      # 每入场1次→双攻永久+20%
+    "小偷小摸": 35,    # 入场时偷取所有敌方精灵2能量
+    "最好的伙伴": 30,  # 克制伤害后→攻防速+20%+回2能
+    "嫉妒": 30,        # 蓄力时可使用任意技能
+    "养分重吸收": 30,  # 回合结束回复3能量
+    "观星": 30,        # 敌每层星陨→地系技能威力+15%
+    "虫群鼓舞": 30,    # 每只虫系队友→入场攻防速+10%
+    "生物碱": 25,      # 使用草系技能时敌获2层中毒
+    "水翼推进": 25,    # 队友水系→入场全能耗-1
+    "浸润": 25,        # 使用水系技能后全能耗-1
+    "目空": 25,        # 非光系技能威力+25%
+    "鼓气": 25,        # 使用能耗3技能→攻防+20%
+    "氧循环": 25,      # 使用草系后回复10%生命
+    "地脉": 20,        # 初始0能量，队友地系→回3能量
+    "捉迷藏": 20,      # 冻结时敌全能耗+1
+    "偏振": 15,        # 受携带技能系别伤害-40%
 
     # ── E档：微弱特性 (0-10) ──
     "生机": 10,        #
@@ -624,18 +664,38 @@ def main():
 
     skill_scores = {s['name']: s['score'] for s in rankings}
 
-    # 首领化 lineage 精灵：各形态独立评分，单独排名（不可同队，冲突）
-    BOSS_FORMS = {"圣剑骑士", "鸭吉吉（起来鸭）", "岚鸟（本来的样子）", "千棘盔（磨损的样子）", "黑猫密探"}
-    BOSS_BASES = {"圣剑侍从", "圣剑-X", "鸭吉吉", "岚鸟", "千棘盔", "黑猫巫师"}
-    BOSS_LINE = BOSS_FORMS | BOSS_BASES
+    # 首领化 lineage：从 spirit_filter_index 自动识别
+    # 同一 NO 编号下有 boss + 非boss 形态 = 一条首领化进化线
+    BOSS_LINE = set()
+    try:
+        with open(DATA_DIR / "spirit_filter_index.json") as f:
+            filter_idx = json.load(f)
+        from collections import defaultdict
+        no_groups = defaultdict(lambda: {"boss": [], "base": []})
+        for it in filter_idx.get("items", []):
+            no = it.get("noText", "")
+            name = it.get("name", "")
+            if it.get("typeClass") == "boss":
+                no_groups[no]["boss"].append(name)
+            else:
+                no_groups[no]["base"].append(name)
+        # 有 boss 形态的 NO 即为首领化进化线
+        for no, group in no_groups.items():
+            if group["boss"]:
+                BOSS_LINE.update(group["boss"])
+                BOSS_LINE.update(group["base"])
+    except Exception:
+        pass
 
-    # 棋家族中间形态：跳过（仅在进化路径中，不是独立可用的形态）
-    # 棋骑士、棋齐垒、棋祈督、棋绮后 等已在 _boss_info 标记 remove
+    # 棋家族中间形态：不在最终进化态的跳过（仅进化路径）
     removed_pets = set()
     try:
         with open(DATA_DIR / "_boss_info.json") as f:
             boss_info = json.load(f)
-        removed_pets = {n for n, bi in boss_info.items() if bi.get('remove') and n not in BOSS_LINE}
+        # 只移除棋家族进化中间态（不在 BOSS_LINE 中且标记 remove）
+        removed_pets = {n for n, bi in boss_info.items()
+                        if bi.get('remove') and n not in BOSS_LINE
+                        and '棋' in n}
     except Exception:
         pass
 
@@ -693,24 +753,22 @@ def main():
         json.dump(ranked, f, ensure_ascii=False, indent=2)
 
     def _format_combat(cd, combat_score, actual_spd):
-        parts = []
+        stat_parts = []
         pa = cd.get('phys_atk', cd.get('attack', 0))
         sa = cd.get('spec_atk', 0)
         if pa > 0 and sa > 0:
-            parts.append(f"物攻{pa:.0f}/特攻{sa:.0f}")
+            stat_parts.append(f"物攻{pa:.0f}/特攻{sa:.0f}")
         elif pa > 0:
-            parts.append(f"物攻{pa:.0f}")
+            stat_parts.append(f"物攻{pa:.0f}")
         elif sa > 0:
-            parts.append(f"特攻{sa:.0f}")
+            stat_parts.append(f"特攻{sa:.0f}")
         pd = cd.get('phys_def', 0)
         sd = cd.get('spec_def', 0)
-        parts.append(f"物防{pd:.0f}/特防{sd:.0f}")
-        parts.append(f"速{actual_spd}={cd.get('speed',0):.0f}")
+        stat_parts.append(f"物防{pd:.0f}/特防{sd:.0f}")
+        stat_parts.append(f"速{actual_spd}={cd.get('speed',0):.0f}")
         attr_s = cd.get('attr_score', 0)
         race_s = round(combat_score - attr_s, 1)
-        parts.append(f"种族值{race_s:.0f}")
-        parts.append(f"属性{attr_s:.0f}")
-        return f"{combat_score} ({' '.join(parts)})"
+        return f"种族值={race_s:.0f} ({' '.join(stat_parts)}) 属性={attr_s:.0f}"
 
     def _print_ranking(pets_list, title, start_idx=1, top_n=None):
         print("\n" + "=" * 100)
