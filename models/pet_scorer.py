@@ -639,6 +639,18 @@ class PetScorer:
         if not unique_skills:
             return []
 
+        # 根据种族值+技能池综合判断主力攻击类型（物攻/特攻）
+        atk_type = self._determine_attack_type(pet.get("skills", {}), pet.get("stats"))
+        stats = pet.get("stats", {})
+        if atk_type == "physical":
+            useful_atk = stats.get("atk", 0)
+            bad_atk = stats.get("matk", 0)
+        else:
+            useful_atk = stats.get("matk", 0)
+            bad_atk = stats.get("atk", 0)
+        # 错误类型攻击的收益比率（物攻手用特攻技能的打折比例）
+        mismatch_ratio = bad_atk / max(useful_atk, 1)
+
         # 控制类关键词加分
         control_kw = {
             "睡眠": 15, "催眠": 15, "麻痹": 12, "冰冻": 15, "冻结": 15,
@@ -658,6 +670,7 @@ class PetScorer:
             power = s.get("power", 0)
             cost = s.get("cost", 1)
             category = s.get("category", "")
+            is_mismatched_atk = False  # 攻击类型与种族值不匹配
 
             if power > 0:
                 # 攻击技能：威力/能耗比为核心
@@ -665,12 +678,24 @@ class PetScorer:
                 # 属性与本系一致加分
                 if s.get("element") in pet["attrs"]:
                     score += 10
+                # 攻击类型与种族值不匹配 → 按比例打折
+                if atk_type == "physical" and category == "魔法":
+                    is_mismatched_atk = True
+                elif atk_type == "special" and category == "物理":
+                    is_mismatched_atk = True
+                if is_mismatched_atk:
+                    score *= mismatch_ratio
             else:
                 # 变化技能：看描述价值
                 score = 0
                 # 防御技能有基础分
                 if "防御" in s.get("name", "") or "守护" in s.get("name", ""):
                     score += 5
+                # 增益与攻击类型不匹配标记
+                if atk_type == "special" and "物攻" in desc and "魔攻" not in desc and "双攻" not in desc:
+                    is_mismatched_atk = True
+                elif atk_type == "physical" and "魔攻" in desc and "物攻" not in desc and "双攻" not in desc:
+                    is_mismatched_atk = True
 
             # 控制效果加分
             for kw, val in control_kw.items():
@@ -681,11 +706,18 @@ class PetScorer:
             # 增益效果加分
             for kw, val in buff_kw.items():
                 if kw in desc:
-                    score += val
+                    if is_mismatched_atk and kw in ("物攻+", "魔攻+"):
+                        score += val * mismatch_ratio
+                    else:
+                        score += val
 
             # 减益效果加分
             if "降低" in desc or "削弱" in desc or "减少" in desc:
                 score += 4
+
+            # 变化技能：总体攻击类型错配打折
+            if power == 0 and is_mismatched_atk:
+                score *= 0.3
 
             scored.append({"skill": s, "score": score})
 

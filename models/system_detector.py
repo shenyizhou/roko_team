@@ -26,7 +26,7 @@ class SystemDetector:
                 "calc": self._calc_unicorn_team,
             },
             "恶魔狼王队": {
-                "core": ["恶魔狼", "奇瓦亚"],
+                "core": ["恶魔狼", "奇瓦重"],
                 "synergy": ["音速犬"],
                 "calc": self._calc_wolfking_team,
             },
@@ -187,7 +187,7 @@ class SystemDetector:
         if self._has_pet_name_contains(members, "恶魔狼"):
             core_count += 1
             score += 30
-        if self._has_pet_name_contains(members, "奇瓦亚"):
+        if self._has_pet_name_contains(members, "奇瓦重"):
             core_count += 1
             score += 20
         details["core"] = core_count

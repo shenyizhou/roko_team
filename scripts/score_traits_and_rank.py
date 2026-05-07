@@ -376,7 +376,7 @@ TRAIT_SCORES = {
     "慢热型": 25,      # 初始0能量，应对回5能
     "超负荷": 25,      # 攻击迸发→敌全技能能耗+1
     "超聚能": 25,      # 蓄力转化
-    "连续负荷": 25,    # 迸发延长1回合
+    "连续负荷": 5,    # 迸发延长1回合
     "马步": 25,        # 状态应对回10能
     "暗流": 25,        # 与下只精灵换血量百分比
     "蒸汽膨胀": 25,    # 队友火系→入场全技能威力+10
@@ -660,6 +660,12 @@ def main():
 
     skill_scores = {s['name']: s['score'] for s in rankings}
 
+    # Load learnset and recommended skill data
+    with open(DATA_DIR / "pet_learnset.json") as f:
+        learnsets = json.load(f)
+    with open(DATA_DIR / "pet_recommended.json") as f:
+        recommended = json.load(f)
+
     # 首领化 lineage：从 spirit_filter_index 自动识别
     # 同一 NO 编号下有 boss + 非boss 形态 = 一条首领化进化线
     BOSS_LINE = set()
@@ -685,15 +691,14 @@ def main():
     except Exception:
         pass
 
-    # 棋家族中间形态：不在最终进化态的跳过（仅进化路径）
+    # 中间进化形态：只保留最终进化态和首领化形态
     removed_pets = set()
     try:
         with open(DATA_DIR / "_boss_info.json") as f:
             boss_info = json.load(f)
-        # 只移除棋家族进化中间态（不在 BOSS_LINE 中且标记 remove）
+        # 移除所有标记 remove 的进化中间态（保护首领形态不被误删）
         removed_pets = {n for n, bi in boss_info.items()
-                        if bi.get('remove') and n not in BOSS_LINE
-                        and '棋' in n}
+                        if bi.get('remove') and n not in BOSS_NAMES}
     except Exception:
         pass
 
@@ -728,12 +733,13 @@ def main():
     # Sort all by score
     ranked_all = sorted(pet_scores.values(), key=lambda x: -x["score"])
 
-    # 去重：棋家族的黑子和白子完全一样，只保留一个（白子）
+    # 去重：棋家族的黑子和白子完全一样，只保留一个（白子优先）
+    # 格式: "棋契陛下（棋骑士-白子）" → base = "棋契陛下（棋骑士）"
     seen = set()
     unique_ranked = []
     for p in ranked_all:
         name = p["name"]
-        base_name = name.replace("（白子）", "").replace("（黑子）", "")
+        base_name = name.replace("-白子", "").replace("-黑子", "")
         if base_name in seen:
             continue
         seen.add(base_name)
@@ -774,276 +780,691 @@ def main():
             actual_spd = cd.get('actual_spd', 0)
             combat_str = _format_combat(cd, p['combat_score'], actual_spd)
             sk_names = " · ".join(p.get("recommended_skills", [])[:4])
-            label = " [首领]" if p['name'] in BOSS_NAMES else ""
-            print(f"{i:>3}. {p['name']}{label:<14} {p['score']:>6.1f}  "
+            display_name = p['name'] + ("[首领]" if p['name'] in BOSS_NAMES else "")
+            print(f"{i:>3}. {display_name:<16} {p['score']:>6.1f}  "
                   f"技能={p['skill_score']:.0f} [{sk_names}] {combat_str}  "
                   f"【{p['trait_name']}={p['trait_score']:.0f}】{p['trait_desc'][:50]}")
 
     # Print unified ranking (top 50)
     _print_ranking(ranked, "精灵综合排名 (技能 + 战斗能力[攻防速])", top_n=50)
 
-    # === 最优队伍组建 (体系协同版) ===
-    print("\n" + "=" * 90)
-    print("最优队伍组建 (体系协同搜索)")
-    print("=" * 90)
+    # === 体系队伍推荐 ===
+    print("\n" + "=" * 100)
+    print("体系队伍推荐 — 围绕每个体系组建最优6人队")
+    print("=" * 100)
 
     score_map = {p["name"]: p["score"] for p in ranked}
 
     def has_defense_skill(name):
         rec = recommended.get(name, [])
-        return any("减伤" in sk["desc"] for sk in rec)
+        return any("减伤" in sk.get("desc", "") for sk in rec)
 
     def has_utility_skill(name):
         rec = recommended.get(name, [])
         return any(
-            "驱散" in sk["desc"] or "印记" in sk["desc"] or "眩晕" in sk["desc"]
+            "驱散" in sk.get("desc", "") or "印记" in sk.get("desc", "")
+            or "眩晕" in sk.get("desc", "")
             for sk in rec
         )
 
     def get_attrs(name):
         return pets.get(name, {}).get("attrs", [])
 
-    # 体系定义
-    RAIN_SETTERS = [n for n in score_map if any(
-        sk["name"] == "落雨" for sk in learnsets.get(n, [])
-    )]
-    RAIN_BENEFICIARY = "卷毛鸭"
+    def get_trait(name):
+        return pets.get(name, {}).get("trait", {})
 
-    THUNDER_CORE = ["闪电鳗鱼", "星光狮"]
-    SHADOW_CORE = ["影狸", "黑羽夫人"]
+    def get_trait_text(name):
+        t = get_trait(name)
+        return (t.get("name", "") or "") + " " + (t.get("desc", "") or "")
 
-    # 体系包: (成员列表, 协同加分, 描述)
-    SYNERGY_PACKAGES = []
-    for rs in RAIN_SETTERS:
-        if rs != RAIN_BENEFICIARY and RAIN_BENEFICIARY in score_map:
-            SYNERGY_PACKAGES.append(([rs, RAIN_BENEFICIARY], 80, f"雨天体系({rs}+卷毛鸭)"))
-    if all(m in score_map for m in THUNDER_CORE):
-        SYNERGY_PACKAGES.append((THUNDER_CORE, 60, "雷暴体系(闪电鳗鱼+星光狮)"))
-    if all(m in score_map for m in SHADOW_CORE):
-        SYNERGY_PACKAGES.append((SHADOW_CORE, 50, "换场压制(影狸+黑羽夫人)"))
+    def has_skill_match(name, keywords):
+        """检查精灵的技能是否匹配关键词"""
+        ls = learnsets.get(name, [])
+        for sk in ls:
+            text = (sk.get("name", "") or "") + " " + (sk.get("desc", "") or "")
+            for kw in keywords:
+                if kw in text:
+                    return True
+        return False
 
-    def eval_team(members, synergy_bonus=0):
-        """评估队伍质量: 总分+协同+约束+特性配合"""
-        if len(members) != 6:
-            return -9999, {}
-        # 属性约束: 同属性最多2个
-        attr_count = {}
+    def has_trait_match(name, keywords):
+        """检查精灵的特性是否匹配关键词"""
+        text = get_trait_text(name)
+        for kw in keywords:
+            if kw in text:
+                return True
+        return False
+
+    # ─── 体系定义 ───
+    SYSTEMS = [
+        # ═══ 机制体系 ═══
+        {
+            "id": "poison", "name": "毒体系", "type": "mechanic",
+            "skill_keywords": ["中毒", "毒雾", "毒囊", "疫病吐息", "剧毒"],
+            "trait_keywords": ["中毒", "毒腺", "下黑手", "毒牙", "侵蚀",
+                             "复方汤剂", "高浓生物碱", "溶解", "扩散侵蚀"],
+            "engine_skills": ["毒雾", "疫病吐息", "感染病", "剧毒"],
+            "bonus": 60, "desc": "中毒印记联动体系",
+        },
+        {
+            "id": "starfall", "name": "星陨体系", "type": "mechanic",
+            "skill_keywords": ["星陨", "心灵洞悉"],
+            "trait_keywords": ["星陨", "吸积盘", "守望星", "坠星", "观星",
+                             "陨落", "月牙雪糕", "星云旅者", "穹顶之下"],
+            "engine_skills": ["心灵洞悉", "二律背反", "错乱"],
+            "bonus": 70, "desc": "星陨印记联动体系",
+        },
+        {
+            "id": "burn", "name": "灼烧体系", "type": "mechanic",
+            "skill_keywords": ["灼烧", "焚烧", "火焰护盾"],
+            "trait_keywords": ["灼烧", "焚烧", "煤渣草", "爆燃", "助燃",
+                             "贪心算法", "灵魂灼伤", "急性子", "仁心"],
+            "engine_skills": ["焚烧烙印", "焚毁", "火焰护盾", "天火"],
+            "bonus": 55, "desc": "灼烧印记联动体系",
+        },
+        {
+            "id": "freeze", "name": "冻结体系", "type": "mechanic",
+            "skill_keywords": ["冻结", "速冻", "冰墙", "暴风雪"],
+            "trait_keywords": ["冻结", "冰封", "冰钻", "打雪仗", "加个雪球",
+                             "捉迷藏", "抓到你了", "捉到你了", "月牙雪糕"],
+            "engine_skills": ["暴风雪", "速冻", "滚雪球", "冰点"],
+            "bonus": 55, "desc": "冻结印记联动体系",
+        },
+        {
+            "id": "moe", "name": "萌化体系", "type": "mechanic",
+            "skill_keywords": ["萌化", "甜心续航"],
+            "trait_keywords": ["萌化", "自由飘", "无忧无虑", "守护者", "化茧"],
+            "engine_skills": ["甜心续航", "捧杀"],
+            "bonus": 65, "desc": "萌化印记联动体系",
+        },
+        {
+            "id": "devotion", "name": "奉献体系", "type": "mechanic",
+            "skill_keywords": ["奉献"],
+            "trait_keywords": ["奉献", "恶魔红钻", "花精灵", "振奋虫心",
+                             "坚韧铠甲", "虫群突袭", "虫群鼓舞", "壮胆"],
+            "engine_skills": ["假寐", "虫茧", "虫结阵"],
+            "bonus": 50, "desc": "奉献联动体系（虫系核心）",
+        },
+        {
+            "id": "energy_drain", "name": "吸能体系", "type": "mechanic",
+            "skill_keywords": ["敌方失去", "偷取", "勾魂", "恶作剧", "惊吓盒子",
+                             "报复", "能量不足"],
+            "trait_keywords": ["大捞一笔", "小偷小摸", "碰瓷", "做噩梦",
+                             "珊瑚骨", "毒蘑菇", "特殊清洁场景", "冰封",
+                             "敌方.*能量", "失去.*能量"],
+            "engine_skills": ["勾魂", "恶作剧", "报复", "惊吓盒子"],
+            "bonus": 55, "desc": "削减敌方能量体系",
+        },
+        {
+            "id": "charge", "name": "蓄能体系", "type": "mechanic",
+            "skill_keywords": ["蓄势", "蓄能", "蓄电", "增程"],
+            "trait_keywords": ["蓄势", "蓄能", "蓄电", "增程", "对流",
+                             "超聚能", "超负荷", "连续负荷"],
+            "engine_skills": ["蓄势待发", "增程电池", "蓄能轰击"],
+            "bonus": 55, "desc": "蓄能印记联动体系",
+        },
+        {
+            "id": "counter", "name": "应对体系", "type": "mechanic",
+            "skill_keywords": ["应对状态", "应对攻击", "应对防御"],
+            "trait_keywords": ["应对", "慢热型", "野性感官", "圣火骑士",
+                             "思维之盾", "身经百练", "斗技", "擒拿", "马步"],
+            "engine_skills": ["叠势", "气势一击"],
+            "bonus": 65, "desc": "应对技能/特性联动体系",
+        },
+        # ═══ 天气体系 ═══
+        {
+            "id": "rain", "name": "雨天体系", "type": "weather",
+            "weather_skill": "落雨",
+            "skill_keywords": ["落雨", "雨天", "湿润", "水翼"],
+            "trait_keywords": ["得寸进尺", "浪潮", "水翼飞升", "水翼推进",
+                             "浸润", "雨天", "落雨"],
+            "engine_skills": ["落雨"],
+            "bonus": 70, "desc": "雨天天气体系",
+        },
+        {
+            "id": "thunder", "name": "雷暴体系", "type": "weather",
+            "weather_skill": "雷暴",
+            "skill_keywords": ["雷暴", "雷", "电"],
+            "trait_keywords": ["雷暴", "电弧", "闪电", "电", "生物电",
+                             "电流刺激", "电容器"],
+            "engine_skills": ["雷暴"],
+            "bonus": 65, "desc": "雷暴天气体系",
+        },
+        {
+            "id": "sand", "name": "沙暴体系", "type": "weather",
+            "weather_skill": "沙涌",
+            "skill_keywords": ["沙涌", "沙暴", "沙尘", "流沙"],
+            "trait_keywords": ["沙暴", "沙尘", "消波块", "鸣沙"],
+            "engine_skills": ["沙涌"],
+            "bonus": 60, "desc": "沙暴天气体系",
+        },
+        {
+            "id": "snow", "name": "雪天体系", "type": "weather",
+            "weather_skill": "冬至",
+            "skill_keywords": ["暴风雪", "冬至", "雪", "冰天雪地"],
+            "trait_keywords": ["暴风雪", "冬至", "雪", "打雪仗", "冰封"],
+            "engine_skills": ["冬至", "暴风雪"],
+            "bonus": 60, "desc": "雪天/暴风雪天气体系",
+        },
+        # ═══ 核心精灵体系 ═══
+        {
+            "id": "status", "name": "状态队", "type": "center",
+            "center_pets": ["寒音蛇"],
+            "support_keywords": ["灼烧", "中毒", "冻结", "萌化", "棘刺",
+                               "聒噪", "减速", "状态技能"],
+            "engine_skills": [],
+            "bonus": 65, "desc": "寒音蛇状态联动队",
+        },
+        {
+            "id": "moe_team", "name": "萌队", "type": "center",
+            "center_pets": ["卡洛儿"],
+            "support_keywords": ["萌化", "甜心", "萌"],
+            "engine_skills": [],
+            "bonus": 65, "desc": "卡洛儿萌化联动队",
+        },
+        {
+            "id": "fire_team", "name": "火队", "type": "center",
+            "center_pets": ["烈火守护"],
+            "support_keywords": ["火", "灼烧", "爆燃", "焚烧", "蒸汽"],
+            "engine_skills": [],
+            "bonus": 60, "desc": "烈火守护火系联动队",
+        },
+        {
+            "id": "wing_king", "name": "翼王队", "type": "center",
+            "center_pets": ["圣羽翼王"],
+            "support_keywords": ["翼", "水刃", "闪击", "黑羽", "翠顶", "岚鸟"],
+            "engine_skills": ["水刃", "闪击"],
+            "bonus": 80, "desc": "飓风翼王 — 绑定水刃翼系队友(岚鸟/翠顶/黑羽)",
+        },
+    ]
+
+    top_pool = [p["name"] for p in ranked[:80]]
+    # 不能在队伍间通用的精灵：首领
+    NOFILL = BOSS_NAMES
+    noboss_pool = [n for n in top_pool if n not in NOFILL]
+
+    # ─── 为每个首领精灵自动生成队伍定义 ───
+    # 按家族(noText)分组，取每族最高分形态
+    def _make_boss_teams():
+        """为所有首领化精灵自动生成中心型体系定义"""
+        boss_groups = {}
+        from models import get_family_map
+        family_map = get_family_map()
+        for name in BOSS_NAMES:
+            if name not in score_map:
+                continue
+            no = family_map.get(name, name)
+            if no not in boss_groups or score_map[name] > score_map[boss_groups[no]]:
+                boss_groups[no] = name
+
+        boss_defs = []
+        for no, boss_name in sorted(boss_groups.items(),
+                                     key=lambda x: -score_map.get(x[1], 0)):
+            attrs = get_attrs(boss_name)
+            trait_text = get_trait_text(boss_name)
+            support_kw = list(attrs)
+            for kw in ["奉献", "萌化", "中毒", "灼烧", "冻结", "星陨", "应对",
+                       "连击", "蓄力", "印记", "雨天", "沙暴", "暴风雪"]:
+                if kw in trait_text:
+                    support_kw.append(kw)
+            # 棋家族特殊处理：匹配地/武
+            if "棋" in boss_name or "御驾亲征" in trait_text:
+                support_kw.extend(["地", "武"])
+            boss_defs.append({
+                "id": f"boss_{no}",
+                "name": f"{boss_name}队",
+                "type": "center",
+                "center_pets": [boss_name],
+                "support_keywords": list(set(support_kw)),
+                "engine_skills": [],
+                "bonus": 60,
+                "desc": f"围绕{boss_name}的首领化队伍",
+            })
+        return boss_defs
+
+    BOSS_SYSTEMS = _make_boss_teams()
+    ALL_SYSTEMS = SYSTEMS + BOSS_SYSTEMS
+
+    def score_system_fit(name, sys_def):
+        """评估精灵与体系的匹配度 (0-100)"""
+        score = 0
+        tp = sys_def["type"]
+
+        if tp == "center":
+            if name in sys_def["center_pets"]:
+                return 100
+            # 检查属性、技能、特性、名称是否匹配支援关键词
+            attrs = get_attrs(name)
+            sup_kw = sys_def.get("support_keywords", [])
+            for a in attrs:
+                if a in sup_kw:
+                    score += 25
+            for kw in sup_kw:
+                if kw in name:
+                    score += 15
+            if has_skill_match(name, sup_kw):
+                score += 25
+            if has_trait_match(name, sup_kw):
+                score += 25
+            return min(score, 85)
+
+        if tp == "weather":
+            if has_skill_match(name, [sys_def["weather_skill"]]):
+                score += 60
+            if has_skill_match(name, sys_def.get("skill_keywords", [])):
+                score += 20
+            if has_trait_match(name, sys_def.get("trait_keywords", [])):
+                score += 30
+            return min(score, 100)
+
+        # mechanic
+        if has_skill_match(name, sys_def.get("skill_keywords", [])):
+            score += 35
+        if has_trait_match(name, sys_def.get("trait_keywords", [])):
+            score += 50
+        # 发动机技能额外加分
+        if has_skill_match(name, sys_def.get("engine_skills", [])):
+            score += 25
+        return min(score, 100)
+
+    def discover_system_pets(sys_def):
+        """发现属于某体系的所有精灵，返回 [(name, fit_score), ...] 按匹配度排序
+        注意：首领精灵不通过关键词自动发现，避免被错误归类到其他体系
+        """
+        result = []
+        for name in score_map:
+            if name not in learnsets:
+                continue
+            if name in BOSS_NAMES:
+                continue  # 首领精灵不入体系池，只在center类型显式指定
+            fit = score_system_fit(name, sys_def)
+            if fit > 0:
+                result.append((name, fit))
+        result.sort(key=lambda x: (-x[1], -score_map.get(x[0], 0)))
+        return result
+
+    def _attr_ok(members, max_same=2):
+        """检查同属性不超过max_same个"""
+        ac = {}
         for m in members:
             for a in get_attrs(m):
-                if attr_count.get(a, 0) >= 2:
-                    return -9999, {}
-                attr_count[a] = attr_count.get(a, 0) + 1
+                if ac.get(a, 0) >= max_same:
+                    return False
+                ac[a] = ac.get(a, 0) + 1
+        return True
+
+    def eval_team(members, synergy_bonus=0, sys_def=None):
+        """评估队伍质量"""
+        if len(members) != 6:
+            return -9999, {}
+        if not _attr_ok(members, 3):
+            return -9999, {}
 
         base_score = sum(score_map.get(m, 0) for m in members)
         def_count = sum(1 for m in members if has_defense_skill(m))
         utl_count = sum(1 for m in members if has_utility_skill(m))
         all_attrs = set()
+        spd_list = []
         for m in members:
             all_attrs.update(get_attrs(m))
+            spd_list.append(pets.get(m, {}).get("stats", {}).get("spd", 0))
 
-        # 约束惩罚 + 特性团队配合检查
         penalty = 0
         if def_count < 3:
             penalty -= (3 - def_count) * 15
 
-        # 特性需要队伍配合但队伍没有
+        # 特性配合检查
         for m in members:
-            trait_desc = pets.get(m, {}).get("trait", {}).get("desc", "")
+            trait_text = get_trait_text(m)
             pet_attrs = get_attrs(m)
-            # 奉献类特性：需要同系队友（虫系专属机制）
-            if "奉献" in trait_desc:
-                same_type_teammates = sum(
-                    1 for other in members if other != m
-                    and set(pet_attrs) & set(get_attrs(other))
-                )
-                if same_type_teammates == 0:
-                    penalty -= 35  # 奉献没虫系队友=完全浪费
-            # 击败触发类特性：条件苛刻
-            if "主动击败" in trait_desc:
+            if "奉献" in trait_text:
+                same = sum(1 for o in members if o != m
+                          and set(pet_attrs) & set(get_attrs(o)))
+                if same == 0:
+                    penalty -= 35
+            if "主动击败" in trait_text:
                 penalty -= 12
 
-        total = base_score + synergy_bonus + penalty
+        # 体系发动机检查
+        engine_bonus = 0
+        if sys_def and sys_def.get("engine_skills"):
+            has_engine = any(
+                has_skill_match(m, sys_def["engine_skills"])
+                for m in members
+            )
+            if not has_engine:
+                penalty -= 20
 
+        # 天气体系：检查是否有天气手
+        if sys_def and sys_def["type"] == "weather":
+            has_weather = any(
+                has_skill_match(m, [sys_def["weather_skill"]])
+                for m in members
+            )
+            if not has_weather:
+                penalty -= 40
+
+        # ── 体系纯净加分 ──
+        purity_bonus = 0
+        if sys_def:
+            sys_fit_count = sum(1 for m in members
+                               if score_system_fit(m, sys_def) >= 50)
+            if sys_fit_count >= 5:
+                purity_bonus += 25
+            elif sys_fit_count >= 4:
+                purity_bonus += 15
+            elif sys_fit_count >= 3:
+                purity_bonus += 8
+
+        # ── 首领队/中心队：冗余战术 + 联防面加分 ──
+        redundancy_bonus = 0
+        coverage_bonus = 0
+        if sys_def and sys_def["type"] == "center":
+            # 冗余战术：多只防御精灵
+            if def_count >= 2:
+                redundancy_bonus += 20
+            # 冗余战术：多只高速精灵 (基础速度 > 120)
+            high_spd = sum(1 for s in spd_list if s > 120)
+            if high_spd >= 2:
+                redundancy_bonus += 15
+            # 联防面：属性覆盖广度
+            if len(all_attrs) >= 8:
+                coverage_bonus += 25
+            elif len(all_attrs) >= 7:
+                coverage_bonus += 15
+
+        total = (base_score + synergy_bonus + engine_bonus + purity_bonus
+                + redundancy_bonus + coverage_bonus + penalty)
         return total, {
             "base": base_score, "synergy": synergy_bonus, "penalty": penalty,
-            "defense": def_count, "utility": utl_count, "attr_coverage": len(all_attrs),
+            "purity": purity_bonus, "redundancy": redundancy_bonus,
+            "coverage": coverage_bonus,
+            "defense": def_count, "utility": utl_count,
+            "attr_coverage": len(all_attrs),
         }
 
-    # 搜索最优队伍
-    best_team = None
-    best_info = None
-    best_total = -9999
-
-    top_pool = [p["name"] for p in ranked[:60]]  # 候选池
-
-    def fill_team(core, bonus, existing_total=None):
-        """贪心补位：逐个尝试候选人，用eval_team评估"""
-        nonlocal best_team, best_info, best_total
+    def greedy_fill_team(core, bonus, sys_def=None, candidate_pool=None):
+        """贪心补位：从核心开始，逐个填充到6人"""
+        if candidate_pool is None:
+            candidate_pool = noboss_pool
+        # 同属性最多3个
+        max_attr = 3
         current = list(core)
         for _ in range(6 - len(core)):
             best_fill_score = -9999
             best_fill = None
-            for cand in top_pool:
+            for cand in candidate_pool:
                 if cand in current:
                     continue
                 trial = current + [cand]
+                if not _attr_ok(trial, max_attr):
+                    continue
                 if len(trial) < 6:
-                    # 中间步骤只看属性不冲突
-                    ac = {}
-                    ok = True
-                    for m in trial:
-                        for a in get_attrs(m):
-                            if ac.get(a, 0) >= 2:
-                                ok = False; break
-                        if not ok: break
-                        ac[a] = ac.get(a, 0) + 1
-                    if not ok:
-                        continue
-                    # 用个体分做启发式
                     fill_score = score_map.get(cand, 0)
                 else:
-                    total, info = eval_team(trial, bonus)
-                    fill_score = total
+                    fill_score, _ = eval_team(trial, bonus, sys_def)
                 if fill_score > best_fill_score:
                     best_fill_score = fill_score
                     best_fill = cand
             if best_fill:
                 current.append(best_fill)
+            else:
+                break
         if len(current) == 6:
-            total, info = eval_team(current, bonus)
-            if total > best_total:
-                best_total = total
-                best_team = list(current)
-                best_info = info
+            total, info = eval_team(current, bonus, sys_def)
+            return current, total, info
+        return None, -9999, {}
 
-    # 策略0: 无体系（纯高分，贪心补位）
-    best_desc = "无特定体系"
-    fill_team([], 0)
+    # ─── 为每个体系组建队伍 ───
+    all_system_teams = []
+    system_pet_cache = {}
 
-    # 策略1: 单体系 + 贪心补位
-    for pkg_members, pkg_bonus, pkg_desc in SYNERGY_PACKAGES:
-        if len(pkg_members) > 6:
-            continue
-        prev_best = best_total
-        fill_team(pkg_members, pkg_bonus)
-        if best_total > prev_best:
-            best_desc = pkg_desc
+    for i, sys_def in enumerate(ALL_SYSTEMS):
+        sys_name = sys_def["name"]
+        bonus = sys_def["bonus"]
 
-    # 策略2: 双体系（不重叠）+ 贪心补位
-    for i, (pkg1_m, pkg1_b, pkg1_d) in enumerate(SYNERGY_PACKAGES):
-        for j, (pkg2_m, pkg2_b, pkg2_d) in enumerate(SYNERGY_PACKAGES):
-            if i >= j:
+        # 发现体系精灵
+        sys_pets = discover_system_pets(sys_def)
+        sys_pet_names = [p[0] for p in sys_pets]
+        system_pet_cache[sys_name] = sys_pets
+
+        # 构建候选池：体系精灵优先 + 补位高分精灵（排除首领）
+        sys_pool = sys_pet_names[:20]  # 前20个体系精灵
+        fill_pool = [n for n in noboss_pool if n not in set(sys_pool)]
+        full_pool = sys_pool + fill_pool
+
+        best_team = None
+        best_total = -9999
+        best_info = None
+
+        # 策略：中心型体系必须包含核心精灵，非中心型从体系池起搜
+        if sys_def["type"] == "center":
+            # 中心型：强制包含核心精灵
+            for cp in sys_def["center_pets"]:
+                if cp not in score_map:
+                    continue
+                for core_size in [3, 2]:
+                    core = [cp] + [n for n in sys_pool[:core_size] if n != cp]
+                    team, total, info = greedy_fill_team(core, bonus, sys_def, full_pool)
+                    if team and total > best_total:
+                        best_team, best_total, best_info = team, total, info
+        elif sys_def["type"] == "weather":
+            # 天气体系：先搜天气手
+            weather_skill = sys_def["weather_skill"]
+            weather_setters = [n for n in full_pool if has_skill_match(n, [weather_skill])]
+            for ws in weather_setters[:3]:
+                for core_size in [3, 2]:
+                    core = [ws] + [n for n in sys_pool[:core_size] if n != ws]
+                    team, total, info = greedy_fill_team(core, bonus, sys_def, full_pool)
+                    if team and total > best_total:
+                        best_team, best_total, best_info = team, total, info
+        else:
+            # 机制体系：从体系池取3~4个
+            for core_size in [4, 3]:
+                core = sys_pool[:core_size]
+                if not core:
+                    continue
+                team, total, info = greedy_fill_team(core, bonus, sys_def, full_pool)
+                if team and total > best_total:
+                    best_team, best_total, best_info = team, total, info
+
+        if best_team is None:
+            # 回退：纯高分队（不用首领），中心型必须含核心
+            if sys_def["type"] == "center":
+                for cp in sys_def["center_pets"]:
+                    if cp not in score_map:
+                        continue
+                    core = [cp]
+                    best_team, best_total, best_info = greedy_fill_team(core, bonus, sys_def, full_pool)
+                    if best_team:
+                        break
+            if best_team is None:
+                best_team, best_total, best_info = greedy_fill_team([], 0, None, noboss_pool)
+
+        # 调整技能：确保发动机技能被携带
+        def adjust_skills(team_members, sys_def):
+            adjusted = {}
+            for name in team_members:
+                rec_sk = recommended.get(name, [])
+                if not rec_sk:
+                    adjusted[name] = []
+                    continue
+                ls_map = {sk["name"]: sk for sk in learnsets.get(name, [])}
+                engine_skills = sys_def.get("engine_skills", [])
+                for es in engine_skills:
+                    if es not in ls_map:
+                        continue
+                    has_es = any(sk.get("name") == es for sk in rec_sk)
+                    if not has_es:
+                        scored = [(sk, skill_scores.get(sk.get("name", ""), 0))
+                                  for sk in rec_sk]
+                        scored.sort(key=lambda x: x[1])
+                        for old_sk, _ in scored:
+                            if "减伤" not in old_sk.get("desc", ""):
+                                rec_sk = [ls_map[es] if s.get("name") == old_sk.get("name") else s
+                                         for s in rec_sk]
+                                break
+                # 天气体系：确保天气手携带天气技能
+                if sys_def["type"] == "weather":
+                    weather_skill = sys_def["weather_skill"]
+                    if weather_skill in ls_map:
+                        has_ws = any(sk.get("name") == weather_skill for sk in rec_sk)
+                        if not has_ws:
+                            scored = [(sk, skill_scores.get(sk.get("name", ""), 0))
+                                      for sk in rec_sk]
+                            scored.sort(key=lambda x: x[1])
+                            for old_sk, _ in scored:
+                                if "减伤" not in old_sk.get("desc", ""):
+                                    rec_sk = [ls_map[weather_skill] if s.get("name") == old_sk.get("name") else s
+                                             for s in rec_sk]
+                                    break
+                adjusted[name] = rec_sk
+            return adjusted
+
+        team_skills = adjust_skills(best_team, sys_def)
+
+        # 收集结果
+        sys_fit = sum(score_system_fit(m, sys_def) for m in best_team)
+        all_system_teams.append({
+            "system": sys_def,
+            "members": best_team,
+            "total": best_total,
+            "info": best_info,
+            "skills": team_skills,
+            "sys_fit": sys_fit,
+        })
+
+    # ─── 输出所有体系队伍 ───
+    # 按总分排序
+    all_system_teams.sort(key=lambda x: -x["total"])
+
+    for rank, st in enumerate(all_system_teams, 1):
+        sys_def = st["system"]
+        team = st["members"]
+        info = st["info"]
+        team_skills = st["skills"]
+
+        purity_str = f" 纯净=+{info.get('purity', 0)}" if info.get('purity', 0) else ""
+        redundancy_str = f" 冗余=+{info.get('redundancy', 0)}" if info.get('redundancy', 0) else ""
+        coverage_str = f" 联防=+{info.get('coverage', 0)}" if info.get('coverage', 0) else ""
+        print(f"\n{'─' * 90}")
+        print(f"  [{rank:>2}] {sys_def['name']} — {sys_def['desc']}")
+        print(f"      总={st['total']:.1f}  基础={info['base']:.0f}  协同=+{info['synergy']}"
+              f"{purity_str}{redundancy_str}{coverage_str}"
+              f"  罚={info.get('penalty', 0):.0f}"
+              f"  防{info['defense']} 辅{info['utility']} 属{info['attr_coverage']}")
+        for n in team:
+            p = next((x for x in ranked if x["name"] == n), None)
+            if not p:
                 continue
-            if set(pkg1_m) & set(pkg2_m):
-                continue
-            all_pkg = pkg1_m + pkg2_m
-            if len(all_pkg) > 6:
-                continue
-            combined_bonus = pkg1_b + pkg2_b
-            prev_best = best_total
-            fill_team(all_pkg, combined_bonus)
-            if best_total > prev_best:
-                best_desc = f"{pkg1_d} + {pkg2_d}"
+            rec_sk = team_skills.get(n, [])
+            sk_names = [sk["name"] for sk in rec_sk] if rec_sk else []
+            tag = ""
+            if sys_def["type"] == "center" and n in sys_def["center_pets"]:
+                tag = " ★核心"
+            elif score_system_fit(n, sys_def) >= 50:
+                tag = " ●"
+            print(f"    {n:<14}分{p['score']:>5.1f}  {str(p['attrs']):<12}"
+                  f"【{p['trait_name']}={p['trait_score']:.0f}】{tag}")
+            if sk_names:
+                print(f"      技能: {' · '.join(sk_names[:5])}")
 
-    # === 体系技能修正：确保关键发动机技能被携带 ===
-    def adjust_skills_for_synergy(team_members):
-        """给体系成员换上关键发动机技能"""
-        adjusted = {}
-        for name in team_members:
-            rec_sk = recommended.get(name, [])
-            if not rec_sk:
-                adjusted[name] = []
-                continue
-            learnset = {sk["name"]: sk for sk in learnsets.get(name, [])}
-
-            # 雨天体系：如果该精灵能学落雨，强制换上
-            if name in RAIN_SETTERS:
-                has_rain = any(sk["name"] == "落雨" for sk in rec_sk)
-                if not has_rain and "落雨" in learnset:
-                    # 用落雨替换分数最低的非防御技能
-                    scored = [(sk, skill_scores.get(sk["name"], 0)) for sk in rec_sk]
-                    scored.sort(key=lambda x: x[1])
-                    for old_sk, _ in scored:
-                        if "减伤" not in old_sk.get("desc", ""):  # 保留防御
-                            rec_sk = [learnset["落雨"] if s["name"] == old_sk["name"] else s for s in rec_sk]
-                            break
-
-            # 雷暴体系：如果该精灵能学雷暴，强制换上
-            if name in THUNDER_CORE:
-                has_thunder = any(sk["name"] == "雷暴" for sk in rec_sk)
-                if not has_thunder and "雷暴" in learnset:
-                    scored = [(sk, skill_scores.get(sk["name"], 0)) for sk in rec_sk]
-                    scored.sort(key=lambda x: x[1])
-                    for old_sk, _ in scored:
-                        if "减伤" not in old_sk.get("desc", ""):
-                            rec_sk = [learnset["雷暴"] if s["name"] == old_sk["name"] else s for s in rec_sk]
-                            break
-
-            adjusted[name] = rec_sk
-        return adjusted
-
-    team_skills = adjust_skills_for_synergy(best_team)
-
-    # 输出
-    desc = best_info.pop("desc", best_desc) if best_info else best_desc
-    print(f"体系: {desc}")
-    print(f"队伍: {', '.join(best_team)}")
-    print(f"总分: {best_total:.1f} (基础={best_info['base']:.0f} 协同=+{best_info['synergy']} 罚={best_info['penalty']})")
-    print(f"防御: {best_info['defense']}/6 | 功能: {best_info['utility']}/6 | 属性覆盖: {best_info['attr_coverage']}种")
-    print()
-    for n in best_team:
-        p = next(x for x in ranked if x["name"] == n)
-        rec_sk = team_skills.get(n, [])
-        sk_names = [sk["name"] for sk in rec_sk] if rec_sk else []
-        print(f"  {n:<12} {p['score']:>5.1f}  {p['attrs']}  "
-              f"【{p['trait_name']}={p['trait_score']:.0f}】{p['trait_desc'][:35]}")
-        print(f"    技能: {' · '.join(sk_names)}")
-        print()
-
-    # Save team
-    selected = best_team
-    def_count = best_info["defense"]
-    utl_count = best_info["utility"]
-    all_attrs = set()
-    for n in selected:
-        all_attrs.update(get_attrs(n))
-
-    # Save team
-    team_data = {
-        "members": selected,
-        "total_score": sum(p["score"] for p in ranked if p["name"] in selected),
-        "defense_count": def_count,
-        "utility_count": utl_count,
-        "attr_coverage": len(all_attrs),
-    }
-    pets_data = {}
-    for n in selected:
-        pets_data[n] = {
-            "score": next(x["score"] for x in ranked if x["name"] == n),
-            "attrs": get_attrs(n),
-            "trait": pet_scores[n]["trait_name"],
-            "recommended_skills": [sk["name"] for sk in team_skills.get(n, [])],
-        }
-    team_data["details"] = pets_data
+    # ─── 保存结果 ───
+    # 保存所有体系队伍
+    all_teams_data = []
+    for st in all_system_teams:
+        sys_def = st["system"]
+        members_data = {}
+        for n in st["members"]:
+            members_data[n] = {
+                "score": score_map.get(n, 0),
+                "attrs": get_attrs(n),
+                "trait": pet_scores[n]["trait_name"] if n in pet_scores else "",
+                "system_fit": score_system_fit(n, sys_def),
+                "recommended_skills": [sk["name"] for sk in st["skills"].get(n, [])],
+            }
+        all_teams_data.append({
+            "system": sys_def["name"],
+            "system_desc": sys_def["desc"],
+            "members": st["members"],
+            "total_score": st["total"],
+            "base_score": st["info"]["base"],
+            "synergy_bonus": st["info"]["synergy"],
+            "system_fit_total": st["sys_fit"],
+            "defense_count": st["info"]["defense"],
+            "utility_count": st["info"]["utility"],
+            "attr_coverage": st["info"]["attr_coverage"],
+            "details": members_data,
+        })
 
     with open(DATA_DIR / "optimal_team.json", "w") as f:
-        json.dump(team_data, f, ensure_ascii=False, indent=2)
-    print(f"\n最优队伍已保存到 data/optimal_team.json")
+        json.dump(all_teams_data, f, ensure_ascii=False, indent=2)
+    print(f"\n所有体系队伍已保存到 data/optimal_team.json ({len(all_teams_data)}队)")
 
-    # Print pet_rankings.txt as well
+    # ─── 生成队伍展示txt ───
+    txt_lines = []
+    txt_lines.append("=" * 100)
+    txt_lines.append("洛克王国世界 — 体系队伍推荐")
+    txt_lines.append("=" * 100)
+    txt_lines.append("")
+
+    type_labels = {"mechanic": "机制体系", "weather": "天气体系", "center": "核心精灵体系"}
+    for st in all_system_teams:
+        sys_def = st["system"]
+        team = st["members"]
+        info = st["info"]
+        team_skills = st["skills"]
+
+        tlabel = type_labels.get(sys_def["type"], "首领化队伍")
+        txt_lines.append(f"【{tlabel}】{sys_def['name']} — {sys_def['desc']}")
+        txt_lines.append(f"  总分: {st['total']:.1f}  基础={info['base']:.0f}  "
+                        f"协同=+{info['synergy']}  体系匹配={st['sys_fit']:.0f}  "
+                        f"罚={info['penalty']:.0f}")
+        txt_lines.append(f"  防御:{info['defense']}/6  功能:{info['utility']}/6  "
+                        f"属性覆盖:{info['attr_coverage']}种")
+
+        for i, n in enumerate(team, 1):
+            p = next((x for x in ranked if x["name"] == n), None)
+            if not p:
+                continue
+            cd = p.get('combat_detail', {})
+            actual_spd = cd.get('actual_spd', 0)
+            combat_str = _format_combat(cd, p['combat_score'], actual_spd)
+            rec_sk = team_skills.get(n, [])
+            sk_names = [sk["name"] for sk in rec_sk] if rec_sk else []
+
+            tag = ""
+            if sys_def["type"] == "center" and n in sys_def.get("center_pets", []):
+                tag = " [核心]"
+            elif score_system_fit(n, sys_def) >= 50:
+                tag = " [体系]"
+
+            txt_lines.append(f"  {i}. {n}{tag}  分{p['score']:.1f}  "
+                            f"{str(p['attrs'])}  "
+                            f"【{p['trait_name']}={p['trait_score']:.0f}】")
+            txt_lines.append(f"     技能: {' · '.join(sk_names[:5])}  "
+                            f"{combat_str}")
+        txt_lines.append("")
+
+    team_txt_path = DATA_DIR / "all_system_teams.txt"
+    team_txt_path.write_text("\n".join(txt_lines), encoding="utf-8")
+    print(f"队伍推荐已保存到 data/all_system_teams.txt")
+
+    # 保存排名文件
     lines = []
     def _rank_lines(pets_list, title, start_idx=1):
         out = []
         out.append("=" * 100)
         out.append(title)
         out.append("=" * 100)
-        for i, p in enumerate(pets_list, start_idx):
+        for idx, p in enumerate(pets_list, start_idx):
             cd = p.get('combat_detail', {})
             actual_spd = cd.get('actual_spd', 0)
             combat_str = _format_combat(cd, p['combat_score'], actual_spd)
             sk_names = " · ".join(p.get("recommended_skills", [])[:4])
+            display_name = p['name'] + ("[首领]" if p['name'] in BOSS_NAMES else "")
             out.append(
-                f"{i:>3}. {p['name']:<14} {p['score']:>6.1f}  "
+                f"{idx:>3}. {display_name:<16} {p['score']:>6.1f}  "
                 f"技能={p['skill_score']:.0f} [{sk_names}] {combat_str}  "
                 f"【{p['trait_name']}={p['trait_score']:.0f}】{p['trait_desc'][:50]}"
             )
