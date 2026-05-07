@@ -5,11 +5,17 @@
 特性评分原则: 与技能评分同源，按效果量化
 """
 
-import json, re
+import json, re, sys
 from pathlib import Path
 from itertools import combinations
 
 DATA_DIR = Path(__file__).parent.parent / "data"
+SCRIPT_DIR = Path(__file__).parent
+if str(SCRIPT_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPT_DIR))
+
+# 引入技能评分的威力公式，用于动态技能分计算
+from score_all_skills import power_value, MAX_POWER
 
 # ===== 属性 × 种族 综合战斗能力评分 =====
 _ATTR_CHART = None
@@ -51,7 +57,7 @@ def _atk_weight(atk_type):
     if atk_type in _HOT_T2: return 1.5
     return 1.0
 
-def calc_combat_score(attrs, stats, rec_skills=None):
+def calc_combat_score(attrs, stats, rec_skills=None, trait_name=""):
     """
     属性×种族值 综合战斗能力评分：攻击能力 + 防御能力 + 速度线
     攻击分基于伤害公式：技能威力 × 对应攻击力 × 本系加成
@@ -189,9 +195,10 @@ def calc_combat_score(attrs, stats, rec_skills=None):
 
     # 3b. 速度分：连续量化计算 - 低于100基础为0，超过后抛物线增长
     # 公式：speed_score = max(spd - 98, 0) ^ 1.5 * 0.32
-    if spd >= 100:
-        speed_score = round(pow(max(spd - 98, 0), 1.5) * 0.32, 1)
-        speed_line = spd
+    effective_spd = spd
+    if effective_spd >= 100:
+        speed_score = round(pow(max(effective_spd - 98, 0), 1.5) * 0.32, 1)
+        speed_line = effective_spd
     else:
         speed_score = 0
         speed_line = 0
@@ -236,318 +243,288 @@ def _cond_mult(desc):
     return 1.0
 
 
-def score_trait(trait_name, desc):
+# ===== 特性手工评分表 =====
+# 直接按特性名查分，分数已综合考量效果强度、触发条件、队伍依赖等因素
+TRAIT_SCORES = {
+    # ── S档：顶级特性 (>150) ──
+    "化茧": 250,       # 2次免死+萌化 — 游戏最强生存特性
+    "不朽": 200,       # 力竭3回合后复活 — 可预知第二条命
+
+    # ── A+档：极强特性 (150-160) ──
+    "飓风": 150,       # 全技能迅捷，但被击败额外损失魔力
+    "付给恶魔的赎价": 160,  # 击杀多扣敌方魔力，进攻端极强
+
+    # ── A档：强力特性 (100-140) ──
+    "冰钻": 130,       # 敌方每1能耗→威力+10%，被动增伤极强
+    "悬一线": 120,     # 1次免死+眩晕敌方1回合
+    "先知": 100,       # 速度+50 + 攻击+50%
+
+    # ── B档：优秀特性 (60-100) ──
+    "哨兵": 90,        # 速度+50 + 行动后脱离
+    "守望星": 80,      # 星陨半消耗满伤害
+    "电流刺激": 80,    # 攻击技能迸发威力+40
+    "圣火骑士": 75,    # 应对成功后下次攻击威力翻倍
+    "煤渣草": 70,      # 灼烧衰减→增长
+    "预警": 70,        # 速度+50
+    "吟游之弦": 65,    # 印记共存
+    "棋王契约": 65,    # 棋类体系核心
+    "营养液泡": 60,    # 增益额外+2层
+    "珊瑚骨": 60,      # 敌方离场→全技能能耗-3(不可驱散)
+
+    # ── C档：实用特性 (30-60) ──
+    "贪心算法": 55,    # 传动1 + 6层灼烧
+    "得寸进尺": 55,    # 雨天双攻+100%
+    "保守派": 55,      # 低总能耗时双防+80%
+    "破空": 55,        # 先手时威力+75%
+    "蚀刻": 55,        # 中毒→印记转化
+    "\u201c国王\u201d的威严": 55,  # 种族值大幅增加+低耗技能威力+50%
+    "快锤": 50,        # 低耗技能获得迅捷
+    "生物电": 50,      # 电系技能迸发能耗-2
+    "洄游": 50,        # 蓄力→全技能能耗-1
+    "自由飘": 50,      # 萌化→连击数
+    "吸积盘": 50,      # 回合结束敌方2层星陨
+    "绒粉星光": 50,    # 非本系血脉→威力+100%
+    "天通地明": 50,    # 污染血脉→威力+100%
+    "月光审判": 50,    # 首领血脉→威力+100%
+    "盲从": 45,        # 可多个随机技能，非幻系能耗-2
+    "灵魂灼伤": 45,    # 冰→灼烧, 火→冻结
+    "嫁祸": 45,        # 失血→连击
+    "侵蚀": 45,        # 中毒→连击
+    "暴食": 45,        # 龙系技能迅捷
+    "翼轴": 45,        # 1号位迅捷+传动
+    "整点报时": 45,    # 初始位置传动能耗-5
+    "吸灵": 45,        # 继承阵亡队友最高属性
+    "冰封": 45,        # 敌方全技能能耗+1
+    "下黑手": 40,      # 敌方离场→5层中毒
+    "缩壳": 40,        # 防御技能能耗-2
+    "思维之盾": 40,    # 应对后能耗-5
+    "快充": 40,        # 离场回10能量
+    "衡量": 40,        # 复制敌方增益+持续复制
+    "斗技": 40,        # 应对后全技能威力+20
+    "做噩梦": 40,      # 敌方离场→失去3能量
+    "绝对秩序": 40,    # 非系别伤害-50%
+    "复方汤剂": 40,    # 中毒触发次数+1
+    "向心力": 40,      # 1/2号位传动+威力30
+    "勇敢": 35,        # 高耗技能威力+40%
+    "贪婪": 35,        # 继承增益减益(需队伍配合)
+    "乘风连击": 35,    # 翼系技能后连击+1
+    "威慑": 35,        # 打断后冷却+2
+    "壮胆": 35,        # 有虫系队友→双攻+50%
+    "毒蘑菇": 35,      # 回合结束偷1能量
+    "起飞加速": 35,    # 首次技能迅捷
+    "盲拧": 35,        # 4号位能耗-4
+    "美拉德反应": 35,  # 离场后队友双攻+20%免疫灼烧
+    "高浓生物碱": 35,  # 使用技能→敌方2层中毒
+    "囤积": 35,        # 每能量双防+10%
+    "月牙雪糕": 35,    # 冻结视为星陨印记
+    "张弛有度": 35,    # 周末攻/平时防+40%
+    "恶魔的晚宴": 35,  # 击败后双攻+50%(条件苛刻)
+    "恶魔红钻": 35,    # 击败后队伍5次奉献
+    "石天平": 30,      # 能耗差惩罚敌方
+    "扩散侵蚀": 30,    # 水系后敌方中毒(印记2倍)
+    "碰瓷": 30,        # 恶系后敌方失2能量
+    "多人宿舍": 30,    # 能量超上限
+    "挺起胸脯": 30,    # 低耗技能威力+50%
+    "顺风": 30,        # 先手威力+50%
+    "消波块": 30,      # 水系→地系能耗-1
+    "溶解腐蚀": 30,    # 毒系→水系中毒2层
+    "溶解扩散": 30,    # 毒系→水系中毒1层
+    "特殊清洁场景": 30, # 回合结束偷1层印记
+    "花精灵": 30,      # 回合结束队伍1次奉献
+    "野性感官": 30,    # 应对后先手+1
+    "生长": 30,        # 回合结束回12%生命
+    "渴求": 30,        # 入场50%吸血
+    "格斗小五": 30,    # (擒拿) 攻击应对回血25%
+    "星云旅者": 30,    # (穹顶之下) 攻击时印记→星陨
+    "格兰球": 30,      # (生长) 回合结束回12%生命
+    "卡瓦重": 30,      # (诈死) 力竭少损失1魔力
+    "擒拿": 30,        # 攻击应对回血25%
+    "穹顶之下": 30,    # 攻击时印记→星陨
+    "诈死": 30,        # 力竭少损失1魔力
+
+    # ── D档：较弱特性 (10-30) ──
+    "防过载保护": 25,  # 每次行动后脱离
+    "警惕": 25,        # 能量为0时脱离
+    "流浪鼠": 25,      # (奔波命) 使用防御后脱离
+    "奔波命": 25,
+    "木桶戏法": 25,    # 离场后队友木桶登场
+    "星地善良": 25,    # 队友0能量自动替换
+    "渗透": 25,        # 队友武/地系→入场攻防+5%
+    "身经百练": 25,    # 应对→入场水/武威力+20%
+    "冻土": 25,        # 冰系→地系威力+10%
+    "机械变式": 25,    # 技能位置变化→能耗-1
+    "散热": 25,        # 初始0能量，火系回3能
+    "打雪仗": 25,      # 初始0能量，冰系回3能
+    "慢热型": 25,      # 初始0能量，应对回5能
+    "超负荷": 25,      # 攻击迸发→敌全技能能耗+1
+    "超聚能": 25,      # 蓄力转化
+    "连续负荷": 25,    # 迸发延长1回合
+    "马步": 25,        # 状态应对回10能
+    "暗流": 25,        # 与下只精灵换血量百分比
+    "蒸汽膨胀": 25,    # 队友火系→入场全技能威力+10
+    "坚韧铠甲": 25,    # 受击→队伍1次奉献
+    "栗子壳": 25,      # 被攻击→敌方棘刺印记
+    "刺肤": 25,        # 被攻击→反伤
+    "四轴机床": 25,    # 新4号位技能能耗-3
+    "咔咔冲刺": 25,    # 先手行动后连击+1
+    "急性子": 25,      # 连击→2层灼烧
+    "受身": 25,        # 敌方换宠→全属性+100%
+    "格斗小八": 25,    # (受身)
+    "变形活画": 20,    # 敌方增益→威力+10%
+    "仁心": 20,        # 灼烧伤害→回血
+    "耐活王": 20,      # (仁心类) 中毒伤害→回血
+    "夜枭": 20,        # (搜刮) 敌方聚能→入场魔攻+20%
+    "搜刮": 20,
+    "陨落": 20,        # 双方回合结束触发-1
+    "古卷匣魔像": 20,  # (构装契约者) 条件双防+50%
+    "构装契约者": 20,
+    "深蓝鲸": 20,      # (倾轧) 能耗变化效果翻倍
+    "倾轧": 20,
+    "泛音列": 20,      # 状态技能→敌方聒噪
+    "石头大餐": 20,    # 能量不足→耗血代能量
+    "晶体蜗": 20,      # (完全偏振) 抵抗携带技能系别
+    "完全偏振": 20,
+    "噼啪！": 20,      # (噼啪鸟) 入场首次行动+1次数
+    "逐魂鸟": 15,      # 低耗攻击技免自伤
+    "窃光蚊": 15,      # (血型吸引) 敌方系别→威力+
+    "血型吸引": 15,
+    "兽花蕾": 15,      # (稀兽花宝) 血脉决定入场效果
+    "稀兽花宝": 15,
+    "拨浪鼓": 15,      # 队友状态→入场毒/萌威力+10
+    "春花兔": 15,      # (系统发育) 回能/回血分给队友
+    "系统发育": 15,
+    "伊贝粉粉": 15,    # (腐植循环) 回能同时回血5%
+    "腐植循环": 15,
+    "定向精炼": 15,    # 队友防御→入场技能威力+10%
+    "契约的形状": 15,  # 咕噜球品质→全属性提升
+    "间歇式训练": 15,  # 武系后物攻+20%速度-10
+    "毒牙": 15,        # 中毒时附加魔攻魔防-40%
+    "加个雪球": 15,    # 冻结时附加2层冻结
+    "凡鹰": 15,        # (先锋) 普通系→翼系
+    "先锋": 15,
+    "无差别过滤": 10,  # 所有精灵连击=2 (可能负面)
+    "共鸣": 10,        # 虫鸣威力+20
+    "不移": 10,        # 无额外效果攻击技能威力+30%
+    "啾啾冲刺": 10,    # 先手→连击+1
+
+    # ── E档：微弱特性 (0-10) ──
+    "生机": 10,        #
+    "噼啪鸟": 10,      #
+    "咔咔鸟": 10,
+    "烈火守护": 10,    # (蒸汽膨胀) 队友火系→入场全技能威力+10
+    "斑枭": 10,
+    "幽冥眼": 10,      # (惊吓) 0能量精灵无法伤己
+    "惊吓": 10,
+    "寒音蛇": 10,
+    "起源钟": 10,
+    "溯源钟": 0,       # 已在上面有整点报时=45
+    "啾啾鸟": 10,
+    "圆号鱼": 10,
+    "健猫教练": 10,
+    "机甲小子": 10,
+    "月亮砣": 10,
+    "火羽": 10,
+    "壳栗丝鼠": 10,
+    "风滚暮虫": 10,
+    "格斗小六": 10,
+    "红绒十字": 10,
+    "邪眼巨魔": 10,
+    "陨星虫": 10,
+    "罗隐": 10,
+    "利灯鱼": 10,      # (对流) 能耗增减反转
+    "对流": 10,
+
+    # ── 棋类变身 (个体不强，体系价值在棋王契约) ──
+    "腾挪": 0,         # 攻击应对后变身棋绮后
+    "保卫": 0,         # 防御应对后变身棋绮后
+    "好象坏象": 0,     # 状态应对后变身棋绮后
+
+    # ── 圣剑系列 (技能位限制，暂不扣分) ──
+    "正位宝剑": 0,     # 仅1号位技能
+    "宝剑王牌": 0,     # 仅1/3号位技能
+
+    # ── 负面/代价特性 ──
+    "铃兰晚钟": -10,   # 入场失去一半生命
+    "虚假宝箱": -10,   # 力竭时敌方攻防+20%
+    "留学生": -5,      # 全技能能耗+2，但可学全部攻击技
+    "守护者": 30,      # 队友萌化→入场全技能能耗-1
+    "振奋虫心": 35,    # 主动击败→队伍5次奉献(与恶魔红钻同)
+    "无忧无虑": 30,    # 萌化层数不受限制
+    "毒腺": 40,        # 低能耗技能→敌方4层中毒
+}
+
+def score_trait(trait_name, desc=""):
     """
-    量化特性价值，返回 (score, details)
-    评分与技能体系对齐，单位等效
+    特性评分：优先查手工评分表，未收录的返回0
+    返回 (score, {"manual": score})
     """
-    score = 0
-    pts = {}
+    score = TRAIT_SCORES.get(trait_name, 0)
+    return score, {"manual": score}
 
-    cm = _cond_mult(desc)  # 统一条件折扣系数
 
-    # === 1. 威力提升 ===
-    pw = _find_int(r"威力\+(\d+)%", desc) or _find_int(r"威力\+(\d+)", desc)
-    if pw == 0:
-        pw = _find_int(r"威力\+(\d+)", desc)
-    if pw > 0:
-        v = round(min(pw * 0.2 * cm, 18), 1)
-        pts["威力+"] = v; score += v
+# ===== 动态技能威力计算 =====
+# 闪击/鸣沙陷阱的威力取决于精灵自身数值与参考对手的差值
+REF_OPPONENT_SPD = 250   # 参考对手速度
+REF_OPPONENT_DEF = 210   # 参考对手物防
+STAB = 1.5               # 本系加成
 
-    # 全技能威力+
-    apw = _find_int(r"全技能威力\+(\d+)", desc) or _find_int(r"全技能威力永久\+(\d+)", desc)
-    if apw > 0:
-        v = round(apw * 0.25 * cm, 1)
-        pts["全技能威力+"] = v; score += v
+# 速度/物防差值 → 基础威力档位表（闪击/鸣沙陷阱共用）
+_POWER_TIERS = [
+    (0,    75),
+    (15,  125),
+    (30,  162),
+    (45,  175),
+    (60,  187),
+    (75,  200),
+    (90,  212),
+    (105, 225),
+    (120, 237),
+    (135, 243),
+    (999, 250),
+]
 
-    # === 2. 能耗操作 ===
-    cost_down = _find_int(r"能耗-(\d+)", desc) or _find_int(r"能耗永久-(\d+)", desc)
-    if cost_down > 0:
-        scope = "全技能" if "全技能" in desc else "技能"
-        v = round(cost_down * (6 if "全技能" in desc else 4) * cm, 1)
-        pts[f"{scope}能耗-"] = v; score += v
+def _tier_power(diff):
+    """差值→档位威力"""
+    for threshold, power in _POWER_TIERS:
+        if diff < threshold:
+            return power
+    return 250
 
-    # 携带技能能耗减少
-    if "携带" in desc:
-        cd = _find_int(r"能耗-(\d+)", desc)
-        if cd > 0:
-            v = round(cd * 5 * cm, 1)
-            pts["携带能耗-"] = v; score += v
+def flash_strike_power(pet_spd, has_stab=False):
+    """
+    闪击动态威力：速度比对手越高威力越高
+    pet_spd: 速度种族值
+    has_stab: 精灵是否拥有翼属性
+    """
+    actual_spd = base_to_actual(pet_spd, 0.2)
+    diff = actual_spd - REF_OPPONENT_SPD
+    base_power = _tier_power(diff)
+    return base_power * (STAB if has_stab else 1.0)
 
-    # 敌方能耗增加
-    enemy_cost = _find_int(r"能耗\+(\d+)", desc)
-    if enemy_cost > 0 and "敌方" in desc:
-        v = round(enemy_cost * 3 * cm, 1)
-        pts["敌能耗+"] = v; score += v
+def sand_trap_power(pet_def, has_stab=False):
+    """
+    鸣沙陷阱动态威力：物防比对手越高威力越高
+    pet_def: 物防种族值
+    has_stab: 精灵是否拥有地属性
+    """
+    actual_def = base_to_actual(pet_def, 0.2)
+    diff = actual_def - REF_OPPONENT_DEF
+    base_power = _tier_power(diff)
+    return base_power * (STAB if has_stab else 1.0)
 
-    # === 3. 能量/生命操作 ===
-    energy = _find_int(r"回复(\d+)能量", desc)
-    if energy > 0:
-        v = round(min(energy * 1.5, 15) * cm, 1)
-        pts["回能"] = v; score += v
-
-    # 偷取敌方能量
-    steal_e = _find_int(r"偷取.*?(\d+)能量", desc) or _find_int(r"失去(\d+)能量", desc)
-    if steal_e > 0 and "敌方" in desc:
-        v = round(steal_e * 2 * cm, 1)
-        pts["偷能量"] = v; score += v
-
-    # 回血
-    heal_pct = _find_int(r"回复(\d+)%生命", desc)
-    if heal_pct > 0:
-        v = round(heal_pct * 0.08 * cm, 1)
-        pts["回血"] = v; score += v
-
-    # 吸血
-    leech = _find_int(r"(\d+)%吸血", desc)
-    if leech > 0:
-        v = round((6 if leech >= 50 else 4) * cm, 1)
-        pts["吸血"] = v; score += v
-
-    # === 4. 属性强化 ===
-    atk = _find_int(r"双攻\+(\d+)%", desc) or _find_int(r"物攻\+(\d+)%", desc) or _find_int(r"魔攻\+(\d+)%", desc)
-    if atk > 0:
-        v = round(atk / 10 * 3.5 * cm, 1)
-        pts["攻+%"] = v; score += v
-
-    # 双防+
-    df = _find_int(r"双防\+(\d+)%", desc) or _find_int(r"物防\+(\d+)%", desc) or _find_int(r"魔防\+(\d+)%", desc)
-    if df > 0:
-        v = round(df / 10 * 2.3 * cm, 1)
-        pts["防+%"] = v; score += v
-
-    # 速度+
-    spd = _find_int(r"速度\+(\d+)", desc) or _find_int(r"速度永久-(\d+)", desc)
-    if spd > 0:
-        v = round(spd / 10 * 2.0, 1)
-        pts["速+"] = v; score += v
-
-    # === 5. 状态/印记 ===
-    poison = _find_int(r"(\d+)层中毒", desc)
-    if poison > 0 and "获得" in desc:
-        v = round(poison * 4 * cm, 1)
-        pts["中毒层"] = v; score += v
-    if "中毒" in desc and "触发次数" in desc:
-        v = round(8 * cm, 1)
-        pts["中毒触发+"] = v; score += v
-
-    burn = _find_int(r"(\d+)层灼烧", desc)
-    if burn > 0:
-        v = round(burn * 3 * cm, 1)
-        pts["灼烧层"] = v; score += v
-
-    freeze = _find_int(r"(\d+)层冻结", desc)
-    if freeze > 0:
-        v = round(freeze * 4 * cm, 1)
-        pts["冻结层"] = v; score += v
-
-    star_mark = _find_int(r"(\d+)层星陨", desc)
-    if star_mark > 0:
-        v = round(star_mark * 6 * cm, 1)
-        pts["星陨印记"] = v; score += v
-
-    thorn = _find_int(r"(\d+)层棘刺", desc)
-    if thorn > 0:
-        v = round(8 * cm, 1)
-        pts["棘刺印记"] = v; score += v
-
-    # 印记偷取
-    if "偷取" in desc and "印记" in desc:
-        v = 10
-        pts["偷印记"] = v; score += v
-
-    # === 6. 迅捷/先手 ===
-    if "迅捷" in desc:
-        # 条件性迅捷减分
-        if "获得迅捷" in desc:
-            v = 14
-        elif "携带" in desc and "获得迅捷" in desc:
-            v = 12
-        else:
-            v = 10
-        pts["迅捷"] = v; score += v
-
-    # 先手+
-    prior = _find_int(r"先手\+(\d+)", desc)
-    if prior > 0:
-        v = prior * 6
-        pts["先手+"] = v; score += v
-
-    # === 7. 入场/离场效果 ===
-    if "入场" in desc:
-        pts["入场效果"] = 3; score += 3
-    if "离场" in desc and "更换" in desc:
-        pts["离场增益"] = 5; score += 5
-    if "脱离" in desc:
-        pts["脱离"] = 8; score += 8
-
-    # === 8. 应对效果 — 主体效果已由对应段计算，此处仅给应对触发奖励
-    if "应对成功" in desc:
-        if "威力翻倍" in desc:
-            v = 10  # 威力翻倍=独特应对机制
-            pts["应对威力翻倍"] = v; score += v
-        elif "技能能耗" in desc:
-            v = 3  # 主体已由能耗段用cm折扣计算
-            pts["应对触发"] = v; score += v
-        elif "回复" in desc:
-            v = _find_int(r"回复(\d+)%生命", desc) * 0.05
-            pts["应对回血"] = round(v, 1); score += v
-        elif "全技能威力" in desc:
-            v = 4  # 主体已由威力段用cm折扣计算
-            pts["应对触发"] = v; score += v
-
-    # === 9. 连击/奉献 ===
-    combo = _find_int(r"连击数\+(\d+)", desc)
-    if combo > 0:
-        v = combo * 4
-        pts["连击数+"] = v; score += v
-    if "奉献" in desc:
-        n = _find_int(r"(\d+)次随机奉献", desc) or _find_int(r"(\d+)次奉献", desc) or 1
-        # 奉献是虫系专属机制，给队友的奉献只有虫系队友能受益
-        # 个体评估时折半（默认只有一半队友受益）
-        v = round(n * 6 * cm, 1)
-        if "队伍" in desc or "己方" in desc:
-            v = round(v * 0.4, 1)  # 给队伍的奉献，非虫系队友无法受益
-        pts["奉献"] = v; score += v
-
-    # === 10. 特殊机制 ===
-    # 迸发效果
-    if "迸发" in desc and "威力" in desc:
-        pw = _find_int(r"威力\+(\d+)", desc)
-        v = pw * 0.15
-        pts["迸发威力"] = round(v, 1); score += v
-
-    # 迸发能耗
-    if "迸发" in desc and "能耗" in desc:
-        v = 6
-        pts["迸发能耗-"] = v; score += v
-
-    # 反伤
-    reflect = _find_int(r"造成(\d+)威力", desc)
-    if reflect > 0 and ("受到" in desc or "每受到" in desc):
-        v = round(reflect / 10 * 1.5, 1)
-        pts["反伤"] = v; score += v
-
-    # 伤害减免
-    dmg_reduce = _find_int(r"伤害-(\d+)%", desc)
-    if dmg_reduce > 0 or "伤害-50%" in desc:
-        v = 10
-        pts["减伤"] = v; score += v
-
-    # 继承增益/减益
-    if "继承" in desc or ("更换" in desc and "增益" in desc):
-        v = 8
-        pts["继承"] = v; score += v
-
-    # 萌化相关
-    if "萌化" in desc and ("不受限制" in desc or "层数" in desc):
-        v = 6
-        pts["萌化增强"] = v; score += v
-
-    # 蓄力相关
-    if "蓄力" in desc and "能耗" in desc:
-        v = 8
-        pts["蓄力能耗-"] = v; score += v
-
-    # 印记共存 (如里拉鳐: 赋予的印记不会替换，同时生效)
-    if "印记" in desc and ("不会替换" in desc or "同时生效" in desc):
-        v = 10
-        pts["印记共存"] = v; score += v
-
-    # 复活机制 — 游戏中最强特性之一，价值极高
-    if "复活" in desc:
-        v = 35  # 第二条命，战略价值极高
-        # 力竭N回合后复活：可预测、可规划，更强
-        if "力竭" in desc and "回合后复活" in desc:
-            v += 10
-        pts["复活"] = v; score += v
-
-    # 免死/保留1血
-    if "保留1生命" in desc or "免疫此次伤害" in desc:
-        v = 22
-        pts["免死"] = v; score += v
-
-    # 能力上限突破 (能量超过上限、萌化层数不受限)
-    if "不受限制" in desc or "超过" in desc and ("上限" in desc or "能量" in desc):
-        v = 8
-        pts["上限突破"] = v; score += v
-
-    # 打断敌方冷却
-    if "打断" in desc and "冷却" in desc:
-        v = 10
-        pts["打断冷却"] = v; score += v
-
-    # 印记效率 (星陨消耗一半仍满伤)
-    if "星陨" in desc and "仅消耗一半" in desc:
-        v = 12
-        pts["星陨效率"] = v; score += v
-
-    # 增益翻倍/额外层数
-    if ("增益" in desc and "额外" in desc and "层数" in desc) or ("翻倍" in desc and "增益" in desc):
-        v = 10
-        pts["增益翻倍"] = v; score += v
-
-    # 敌方离场效果 (通用)
-    if "敌方精灵离场" in desc and "更换" in desc and "失去" in desc:
-        e = _find_int(r"失去(\d+)能量", desc) or _find_int(r"(\d+)层中毒", desc)
-        v = max(e * 2, 6)
-        pts["离场惩罚"] = v; score += v
-
-    # 中毒转化印记 (毒→印记)
-    if "中毒转化为" in desc and "印记" in desc:
-        v = 10
-        pts["毒转印记"] = v; score += v
-
-    # 灼烧衰减变增长
-    if "灼烧" in desc and "衰减变为增长" in desc:
-        v = 12
-        pts["灼烧逆转"] = v; score += v
-
-    # 替换精灵 (队友空能量时自动替换)
-    if "替换" in desc and "能量等于0" in desc:
-        v = 8
-        pts["自动替换"] = v; score += v
-
-    # 蓄力效果转化
-    if "蓄力" in desc and "变为" in desc:
-        v = 8
-        pts["蓄力转化"] = v; score += v
-
-    # 携带技能系别计数加成 (每携带1个X系技能...)
-    m = re.search(r"每携带1个(.{1,3})系技能", desc)
-    if m:
-        v = 6  # 保守估计携带2-3个同系技能
-        pts["系别加成"] = v; score += v
-
-    # 种族值大幅增加 (正面)
-    if "种族值大幅增加" in desc or "大幅提升种族值" in desc:
-        v = 12
-        pts["种族值+"] = v; score += v
-
-    # === 11. 负面评分 ===
-    # 种族值操作 (大幅增加=积极，但额外损失魔力=消极)
-    if "力竭" in desc and "额外损失" in desc:
-        v = -8
-        pts["力竭惩罚"] = v; score += v
-    if "额外损失" in desc and "魔力" in desc:
-        v = -6
-        pts["额外魔力损失"] = v; score += v
-    if "失去自己一半" in desc:
-        v = -6
-        pts["自伤"] = v; score += v
-    if "额外扣除4点魔力" in desc or "扣除4点魔力" in desc:
-        v = -12
-        pts["高魔力惩罚"] = v; score += v
-
-    # 技能位限制（圣剑系列）- 暂不扣分
-    # if "仅可以使用1号位技能" in desc and "3号" not in desc:
-    #     v = -18
-    #     pts["单技能位限制"] = v; score += v
-    # if "仅可使用1号和3号位技能" in desc:
-    #     v = -8
-    #     pts["双技能位限制"] = v; score += v
-
-    return round(score, 1), pts
+def dynamic_skill_score(skill_name, pet_attrs, pet_stats):
+    """获取动态技能分：闪击/鸣沙陷阱按精灵数值计算，其他技能返回None"""
+    if skill_name == "闪击":
+        spd = pet_stats.get("spd", 80)
+        has_stab = "翼" in pet_attrs
+        p = flash_strike_power(spd, has_stab)
+        return round(min(power_value(p, 4), MAX_POWER), 1)
+    if skill_name == "鸣沙陷阱":
+        def_ = pet_stats.get("def", 80)
+        has_stab = "地" in pet_attrs
+        p = sand_trap_power(def_, has_stab)
+        return round(min(power_value(p, 4), MAX_POWER), 1)
+    return None
 
 
 def score_pet(pet_name, pet_data, learnset_skills, rec_skills, skill_scores, boss_bonus=0):
@@ -555,20 +532,22 @@ def score_pet(pet_name, pet_data, learnset_skills, rec_skills, skill_scores, bos
     精灵综合评分 = 推荐技能总分 + 特性分
     boss_bonus: 首领化加成（先提升种族值，再计算战斗能力）
     """
-    # 技能分 (推荐配置)
+    # 技能分 (推荐配置) — 闪击/鸣沙陷阱按精灵数值动态计算
     skill_total = 0
+    attrs = pet_data.get("attrs", [])
+    stats = pet_data.get("stats", {})
     if rec_skills:
         for sk in rec_skills:
             sk_name = sk["name"] if isinstance(sk, dict) else sk
-            skill_total += skill_scores.get(sk_name, 0)
+            dyn_score = dynamic_skill_score(sk_name, attrs, stats)
+            skill_total += dyn_score if dyn_score is not None else skill_scores.get(sk_name, 0)
 
     # 特性分
     trait = pet_data.get("trait", {})
     trait_score, trait_pts = score_trait(trait.get("name", ""), trait.get("desc", ""))
 
     # 属性×种族 综合战斗能力评分: 攻击能力 + 防御能力 + 速度线
-    attrs = pet_data.get("attrs", [])
-    stats = dict(pet_data.get("stats", {}))  # copy to avoid modifying original
+    stats = dict(stats)  # copy to avoid modifying original (stats may be modified below)
 
     # 特性对种族的直接影响：先于 combat_score 计算生效
     # 失去一半生命 → 有效HP减半（防御力折半）
@@ -584,12 +563,11 @@ def score_pet(pet_name, pet_data, learnset_skills, rec_skills, skill_scores, bos
             if k != 'total':
                 stats[k] = int(stats[k] * race_boost)
 
-    attr_bonus, attr_detail = calc_combat_score(attrs, stats, rec_skills)
+    attr_bonus, attr_detail = calc_combat_score(attrs, stats, rec_skills, trait.get("name", ""))
 
-    # 权重: 特性得分暂置0（仅保留负面惩罚），属性种族合并为战斗能力
-    trait_positive = max(trait_score, 0)
-    # 首领化不再重复加分（已通过种族提升体现在战斗能力中）
-    total = round(skill_total + (trait_score - trait_positive) * 4 + attr_bonus, 1)
+    # 特性分直接使用手工评分表的值，已综合所有效果
+    trait_effective = trait_score
+    total = round(skill_total + trait_effective + attr_bonus, 1)
 
     return total, {
         "skill_score": round(skill_total, 1),
@@ -704,11 +682,10 @@ def main():
         actual_spd = cd.get('actual_spd', 0)
         combat_str = _format_combat(cd, p['combat_score'], actual_spd)
         boss_str = f" 首领化+{p['boss_bonus']:.0f}" if p.get('boss_bonus', 0) > 0 else ""
-        trait_str = f" 负面={p['trait_score']:.0f}" if p['trait_score'] < 0 else ""
         sk_names = " · ".join(p.get("recommended_skills", [])[:4])
         print(f"{i:>2}. {p['name']:<12} {p['score']:>6.1f}  "
-              f"(技能={p['skill_score']:.0f} [{sk_names}] {combat_str}{boss_str}{trait_str}) "
-              f"【{p['trait_name']}】")
+              f"(技能={p['skill_score']:.0f} [{sk_names}] {combat_str}{boss_str}) "
+              f"【{p['trait_name']}={p['trait_score']:.0f}】")
 
     # === 最优队伍组建 (体系协同版) ===
     print("\n" + "=" * 90)
@@ -852,15 +829,17 @@ def main():
                 best_info = info
 
     # 策略0: 无体系（纯高分，贪心补位）
+    best_desc = "无特定体系"
     fill_team([], 0)
 
     # 策略1: 单体系 + 贪心补位
     for pkg_members, pkg_bonus, pkg_desc in SYNERGY_PACKAGES:
         if len(pkg_members) > 6:
             continue
+        prev_best = best_total
         fill_team(pkg_members, pkg_bonus)
-        if best_info:
-            best_info["desc"] = pkg_desc
+        if best_total > prev_best:
+            best_desc = pkg_desc
 
     # 策略2: 双体系（不重叠）+ 贪心补位
     for i, (pkg1_m, pkg1_b, pkg1_d) in enumerate(SYNERGY_PACKAGES):
@@ -873,9 +852,10 @@ def main():
             if len(all_pkg) > 6:
                 continue
             combined_bonus = pkg1_b + pkg2_b
+            prev_best = best_total
             fill_team(all_pkg, combined_bonus)
-            if best_info:
-                best_info["desc"] = f"{pkg1_d} + {pkg2_d}"
+            if best_total > prev_best:
+                best_desc = f"{pkg1_d} + {pkg2_d}"
 
     # === 体系技能修正：确保关键发动机技能被携带 ===
     def adjust_skills_for_synergy(team_members):
@@ -917,7 +897,7 @@ def main():
     team_skills = adjust_skills_for_synergy(best_team)
 
     # 输出
-    desc = best_info.pop("desc", "无特定体系")
+    desc = best_info.pop("desc", best_desc) if best_info else best_desc
     print(f"体系: {desc}")
     print(f"队伍: {', '.join(best_team)}")
     print(f"总分: {best_total:.1f} (基础={best_info['base']:.0f} 协同=+{best_info['synergy']} 罚={best_info['penalty']})")
@@ -928,7 +908,7 @@ def main():
         rec_sk = team_skills.get(n, [])
         sk_names = [sk["name"] for sk in rec_sk] if rec_sk else []
         print(f"  {n:<12} {p['score']:>5.1f}  {p['attrs']}  "
-              f"【{p['trait_name']}】{p['trait_desc'][:45]}")
+              f"【{p['trait_name']}={p['trait_score']:.0f}】{p['trait_desc'][:35]}")
         print(f"    技能: {' · '.join(sk_names)}")
         print()
 
@@ -972,12 +952,11 @@ def main():
         actual_spd = cd.get('actual_spd', 0)
         combat_str = _format_combat(cd, p['combat_score'], actual_spd)
         boss_str = f" 首领化+{p['boss_bonus']:.0f}" if p.get('boss_bonus', 0) > 0 else ""
-        trait_str = f" 负面={p['trait_score']:.0f}" if p['trait_score'] < 0 else ""
         sk_names = " · ".join(p.get("recommended_skills", [])[:4])
         lines.append(
             f"{i:>3}. {p['name']:<14} {p['score']:>6.1f}  "
-            f"技能={p['skill_score']:.0f} [{sk_names}] {combat_str}{boss_str}{trait_str}  "
-            f"【{p['trait_name']}】{p['trait_desc'][:50]}"
+            f"技能={p['skill_score']:.0f} [{sk_names}] {combat_str}{boss_str}  "
+            f"【{p['trait_name']}={p['trait_score']:.0f}】{p['trait_desc'][:50]}"
         )
     (DATA_DIR / "all_pet_rankings.txt").write_text("\n".join(lines), encoding="utf-8")
     print(f"排名已保存到 data/all_pet_rankings.txt")

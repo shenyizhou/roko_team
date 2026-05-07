@@ -25314,5 +25314,117 @@
       "power": 0,
       "desc": "自己回复30%生命。"
     }
+  ],
+  "黑猫巫师": [
+    {
+      "source": "learnset",
+      "name": "防御",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    },
+    {
+      "source": "learnset",
+      "name": "魔法增效",
+      "element": "普通",
+      "category": "变化",
+      "cost": 0,
+      "power": 0,
+      "desc": "自己获得魔攻+70%。"
+    },
+    {
+      "source": "learnset",
+      "name": "力量增效",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得物攻+100%。"
+    },
+    {
+      "source": "learnset",
+      "name": "先发制人",
+      "element": "普通",
+      "category": "物理",
+      "cost": 2,
+      "power": 55,
+      "desc": "造成物理伤害，先手+1。"
+    },
+    {
+      "source": "learnset",
+      "name": "偷袭",
+      "element": "普通",
+      "category": "物理",
+      "cost": 3,
+      "power": 85,
+      "desc": "造成物伤，应对状态：本次技能威力变为3倍。"
+    },
+    {
+      "source": "learnset",
+      "name": "有效预防",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤50%，应对攻击：下一次行动获得先手+1。"
+    }
+  ],
+  "黑猫密探": [
+    {
+      "source": "learnset",
+      "name": "防御",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤70%，应对攻击。"
+    },
+    {
+      "source": "learnset",
+      "name": "魔法增效",
+      "element": "普通",
+      "category": "变化",
+      "cost": 0,
+      "power": 0,
+      "desc": "自己获得魔攻+70%。"
+    },
+    {
+      "source": "learnset",
+      "name": "力量增效",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "自己获得物攻+100%。"
+    },
+    {
+      "source": "learnset",
+      "name": "先发制人",
+      "element": "普通",
+      "category": "物理",
+      "cost": 2,
+      "power": 55,
+      "desc": "造成物理伤害，先手+1。"
+    },
+    {
+      "source": "learnset",
+      "name": "偷袭",
+      "element": "普通",
+      "category": "物理",
+      "cost": 3,
+      "power": 85,
+      "desc": "造成物伤，应对状态：本次技能威力变为3倍。"
+    },
+    {
+      "source": "learnset",
+      "name": "有效预防",
+      "element": "普通",
+      "category": "变化",
+      "cost": 1,
+      "power": 0,
+      "desc": "减伤50%，应对攻击：下一次行动获得先手+1。"
+    }
   ]
 }

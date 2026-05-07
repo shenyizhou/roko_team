@@ -11,12 +11,16 @@
 6. 窄体系依赖技能惩罚（龙噬印记仅适合梦想三三）
 """
 
-import json
-import re
+import json, re, sys
 from itertools import combinations
 from pathlib import Path
 
 DATA_DIR = Path(__file__).parent.parent / "data"
+SCRIPT_DIR = Path(__file__).parent
+if str(SCRIPT_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPT_DIR))
+
+from score_traits_and_rank import dynamic_skill_score
 
 
 def load_skill_scores():
@@ -458,9 +462,79 @@ def score_config(config, skill_scores, trait_desc="", pet_data=None):
     if swift_count >= 2:
         penalty -= (swift_count - 1) * 15
 
-    # 防御冗余：第二个防御技能边际价值大幅递减
-    if defense_count >= 2:
-        penalty -= (defense_count - 1) * 15
+    # v3 新增：强化技能冗余检测
+    # 纯强化技能（只加攻防不带输出/防御的）
+    pure_buff_count = 0
+    atk_buff_count = 0  # 强化物攻的技能数
+    matk_buff_count = 0  # 强化魔攻的技能数
+    combo_buff_count = 0  # 增加连击数的技能数
+    has_physical_attack = False  # 是否有物攻输出技能
+    has_magic_attack = False  # 是否有魔攻输出技能
+    has_combo_attack = False  # 是否有连击输出技能
+
+    for sk in config:
+        desc = sk.get("desc", "")
+        power = sk.get("power", 0)
+        cat = sk.get("category", "")
+
+        # 检测是否是纯强化技能（无威力、非防御）
+        is_pure_buff = power == 0 and not is_defense(sk)
+
+        # 统计强化物攻的技能（纯强化或防御技能中的物攻加成）
+        if "物攻+" in desc:
+            atk_buff_count += 1
+            if is_pure_buff:
+                pure_buff_count += 1
+
+        # 统计强化魔攻的技能
+        if "魔攻+" in desc:
+            matk_buff_count += 1
+            if is_pure_buff:
+                pure_buff_count += 1
+
+        # 统计增加连击数的技能（纯buff类）
+        if "连击数+" in desc and power == 0:
+            combo_buff_count += 1
+
+        # 检测物攻输出技能（有威力 + 物理属性）
+        if power > 0 and cat == "物理":
+            has_physical_attack = True
+
+        # 检测魔攻输出技能
+        if power > 0 and cat == "魔法":
+            has_magic_attack = True
+
+        # 检测连击输出技能（带有"X连击"的输出技能）
+        if power > 0 and ("连击" in desc and "连击数" not in desc):
+            has_combo_attack = True
+
+    # 1. 强化技能冗余：多个纯强化技能边际价值递减
+    if pure_buff_count >= 2:
+        penalty -= (pure_buff_count - 1) * 20
+
+    # 2. 强化了物攻但没有物攻输出技能 = 白强化
+    if atk_buff_count > 0 and not has_physical_attack:
+        penalty -= 15 * atk_buff_count
+
+    # 3. 强化了魔攻但没有魔攻输出技能 = 白强化
+    if matk_buff_count > 0 and not has_magic_attack:
+        penalty -= 15 * matk_buff_count
+
+    # 4. 增加了连击数但没有连击输出技能 = 浪费技能位
+    if combo_buff_count > 0 and not has_combo_attack:
+        penalty -= 12 * combo_buff_count
+
+    # 5. 防御技能冗余：除了壁垒外，多个防御技能边际价值大幅递减
+    non_barrier_defense = 0
+    has_barrier = False
+    for sk in config:
+        if is_defense(sk):
+            if sk.get("name", "") == "壁垒":
+                has_barrier = True
+            else:
+                non_barrier_defense += 1
+    if non_barrier_defense >= 2:
+        penalty -= (non_barrier_defense - 1) * 18
 
     # 功能冗余
     for cat_pattern in [r"驱散.*印记"]:
@@ -551,6 +625,18 @@ MAX_SKILL_CANDIDATES = 18  # C(18,4) = 3060, 可控
 
 def recommend_for_pet(pet_data, skill_scores):
     """为一个精灵推荐最优技能配置"""
+    # 闪击/鸣沙陷阱按精灵数值动态算分
+    pstats = pet_data.get("stats") or pet_data.get("baseLv1", {})
+    pattrs = pet_data.get("attrs", [])
+    local_scores = dict(skill_scores)  # shallow copy
+    for sk_name in ("闪击", "鸣沙陷阱"):
+        dyn = dynamic_skill_score(sk_name, pattrs, pstats)
+        if dyn is not None:
+            if sk_name in local_scores:
+                local_scores[sk_name] = {**local_scores[sk_name], "score": dyn}
+            else:
+                local_scores[sk_name] = {"score": dyn}
+
     skills_data = pet_data.get("skills", {})
     learnset = skills_data.get("learnset", [])
     other = skills_data.get("other", [])
@@ -573,7 +659,7 @@ def recommend_for_pet(pet_data, skill_scores):
     pet_matk = pet_data.get("baseLv1", {}).get("matk", 0) or pet_data.get("stats", {}).get("matk", 0)
     pet_spd = pet_data.get("baseLv1", {}).get("spd", 0) or pet_data.get("stats", {}).get("spd", 0)
     if len(all_skills) > MAX_SKILL_CANDIDATES:
-        ranked = sorted(all_skills, key=lambda sk: -pre_rank_skill(sk, skill_scores, pet_atk, pet_matk, pet_spd))
+        ranked = sorted(all_skills, key=lambda sk: -pre_rank_skill(sk, local_scores, pet_atk, pet_matk, pet_spd))
         candidates = ranked[:MAX_SKILL_CANDIDATES]
     else:
         candidates = all_skills
@@ -583,7 +669,7 @@ def recommend_for_pet(pet_data, skill_scores):
     best_meta = None
 
     for combo in combinations(candidates, 4):
-        score, meta = score_config(list(combo), skill_scores, trait_desc, pet_data)
+        score, meta = score_config(list(combo), local_scores, trait_desc, pet_data)
         if score > best_score:
             best_score = score
             best_config = list(combo)

@@ -341,17 +341,21 @@ def score_skill(skill):
             pts[kw] = v
             final += v
 
-    # 敌方削弱
+    # 敌方削弱 (排除比较句式：X比敌方越高/越低)
     CF = 0.7  # 可清除系数
     if "敌方" in desc:
-        if ("物防" in desc and "魔防" in desc) or "双防" in desc:
-            pts["敌双防-"] = int(6 * CF); final += int(6 * CF)
-        elif "物防" in desc or "魔防" in desc:
-            pts["敌单防-"] = int(4 * CF); final += int(4 * CF)
+        is_comparison = "比敌方" in desc  # 鸣沙陷阱: 物防比敌方越高
+        if not is_comparison:
+            if ("物防" in desc and "魔防" in desc) or "双防" in desc:
+                pts["敌双防-"] = int(6 * CF); final += int(6 * CF)
+            elif "物防" in desc or "魔防" in desc:
+                pts["敌单防-"] = int(4 * CF); final += int(4 * CF)
         if ("物攻" in desc and "魔攻" in desc) or "双攻" in desc:
-            pts["敌双攻-"] = int(5 * CF); final += int(5 * CF)
+            if not is_comparison:
+                pts["敌双攻-"] = int(5 * CF); final += int(5 * CF)
         elif "物攻" in desc or "魔攻" in desc:
-            pts["敌单攻-"] = int(3 * CF); final += int(3 * CF)
+            if not is_comparison:
+                pts["敌单攻-"] = int(3 * CF); final += int(3 * CF)
         if "速度" in desc and "降低" in desc:
             pts["敌速-"] = 3; final += 3
         if "技能能耗" in desc:
@@ -453,12 +457,25 @@ def score_skill(skill):
         is_cond = "应对" in desc or "若" in desc
         v = n * 8 * (0.5 if is_cond else 1.0)  # 基础分从6→8
         pts["冷却-"] = int(v); final += int(v)
-    # v7优化: 本技能能耗减少效果评分
+    # 本技能能耗永久减少效果评分
+    # 应对成功永久降费战略价值极高：水刃4费→0费，天洪7费→1费
     if "本技能能耗" in desc and "-" in desc:
-        n = _find_int(r"本技能能耗-(\d+)", desc) or 1
-        # 条件性能耗减少打5折（如"若上次使用攻击技则能耗-2"）
+        n = _find_int(r"本技能能耗(?:永久)?-(\d+)", desc) or 1
+        is_perm = "永久" in desc
         is_cond = "应对" in desc or "若" in desc
-        v = n * 3 * (0.5 if is_cond else 1.0)
+        if is_perm:
+            base = 6  # 永久降费基础分
+            # 应对成功率折扣：应对状态40%，应对攻击/打断75%
+            if "应对状态" in desc:
+                cd = 0.4
+            elif "应对攻击" in desc or "应对打断" in desc:
+                cd = 0.75
+            else:
+                cd = 0.5 if is_cond else 1.0
+        else:
+            base = 3
+            cd = 0.5 if is_cond else 1.0
+        v = n * base * cd
         pts["能耗-"] = int(v); final += int(v)
     # v7优化: 每次受伤获得增益的机制（如嗜痛）
     # 只有少量技能会连击，期望叠加1.3次（大部分1次，少数2-3次）
