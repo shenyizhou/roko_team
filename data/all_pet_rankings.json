@@ -92,6 +92,98 @@
     ]
   },
   {
+    "id": "黑猫密探",
+    "name": "黑猫密探",
+    "score": 366.2,
+    "attrs": [
+      "普通"
+    ],
+    "stats": {
+      "total": 701,
+      "hp": 152,
+      "atk": 107,
+      "matk": 186,
+      "def": 67,
+      "mdef": 119,
+      "spd": 70
+    },
+    "trait_name": "先知",
+    "trait_desc": "若敌方技能足够击败自己，回合开始时自己获得速度+50，攻击+50%。",
+    "trait_score": 100,
+    "trait_pts": {
+      "manual": 100
+    },
+    "skill_score": 114.7,
+    "combat_score": 151.5,
+    "combat_detail": {
+      "attack": 70.2,
+      "phys_atk": 60.8,
+      "spec_atk": 0,
+      "defense": 72.0,
+      "phys_def": 36.8,
+      "spec_def": 35.2,
+      "speed": 0,
+      "speed_line": 0,
+      "actual_spd": 194,
+      "attr_score": 9.3,
+      "type_atk": 9.5,
+      "type_def": 6.3,
+      "type_syn": 3
+    },
+    "recommended_skills": [
+      "力量增效",
+      "先发制人",
+      "偷袭",
+      "有效预防"
+    ]
+  },
+  {
+    "id": "黑猫巫师",
+    "name": "黑猫巫师",
+    "score": 331.0,
+    "attrs": [
+      "普通"
+    ],
+    "stats": {
+      "total": 662,
+      "hp": 152,
+      "atk": 91,
+      "matk": 163,
+      "def": 67,
+      "mdef": 119,
+      "spd": 70
+    },
+    "trait_name": "预警",
+    "trait_desc": "若敌方技能足够击败自己，回合开始时自己获得速度+50。",
+    "trait_score": 70,
+    "trait_pts": {
+      "manual": 70
+    },
+    "skill_score": 114.7,
+    "combat_score": 146.3,
+    "combat_detail": {
+      "attack": 65.0,
+      "phys_atk": 55.5,
+      "spec_atk": 0,
+      "defense": 72.0,
+      "phys_def": 36.8,
+      "spec_def": 35.2,
+      "speed": 0,
+      "speed_line": 0,
+      "actual_spd": 194,
+      "attr_score": 9.3,
+      "type_atk": 9.5,
+      "type_def": 6.3,
+      "type_syn": 3
+    },
+    "recommended_skills": [
+      "力量增效",
+      "先发制人",
+      "偷袭",
+      "有效预防"
+    ]
+  },
+  {
     "id": "岚鸟",
     "name": "岚鸟",
     "score": 330.6,
@@ -1351,52 +1443,6 @@
     ]
   },
   {
-    "id": "黑猫密探",
-    "name": "黑猫密探",
-    "score": 366.2,
-    "attrs": [
-      "普通"
-    ],
-    "stats": {
-      "total": 701,
-      "hp": 152,
-      "atk": 107,
-      "matk": 186,
-      "def": 67,
-      "mdef": 119,
-      "spd": 70
-    },
-    "trait_name": "先知",
-    "trait_desc": "若敌方技能足够击败自己，回合开始时自己获得速度+50，攻击+50%。",
-    "trait_score": 100,
-    "trait_pts": {
-      "manual": 100
-    },
-    "skill_score": 114.7,
-    "combat_score": 151.5,
-    "combat_detail": {
-      "attack": 70.2,
-      "phys_atk": 60.8,
-      "spec_atk": 0,
-      "defense": 72.0,
-      "phys_def": 36.8,
-      "spec_def": 35.2,
-      "speed": 0,
-      "speed_line": 0,
-      "actual_spd": 194,
-      "attr_score": 9.3,
-      "type_atk": 9.5,
-      "type_def": 6.3,
-      "type_syn": 3
-    },
-    "recommended_skills": [
-      "力量增效",
-      "先发制人",
-      "偷袭",
-      "有效预防"
-    ]
-  },
-  {
     "id": "雪巨人",
     "name": "雪巨人",
     "score": 365.4,
@@ -2562,52 +2608,6 @@
       "啮合传递",
       "嗜痛",
       "摇篮曲"
-    ]
-  },
-  {
-    "id": "黑猫巫师",
-    "name": "黑猫巫师",
-    "score": 331.0,
-    "attrs": [
-      "普通"
-    ],
-    "stats": {
-      "total": 662,
-      "hp": 152,
-      "atk": 91,
-      "matk": 163,
-      "def": 67,
-      "mdef": 119,
-      "spd": 70
-    },
-    "trait_name": "预警",
-    "trait_desc": "若敌方技能足够击败自己，回合开始时自己获得速度+50。",
-    "trait_score": 70,
-    "trait_pts": {
-      "manual": 70
-    },
-    "skill_score": 114.7,
-    "combat_score": 146.3,
-    "combat_detail": {
-      "attack": 65.0,
-      "phys_atk": 55.5,
-      "spec_atk": 0,
-      "defense": 72.0,
-      "phys_def": 36.8,
-      "spec_def": 35.2,
-      "speed": 0,
-      "speed_line": 0,
-      "actual_spd": 194,
-      "attr_score": 9.3,
-      "type_atk": 9.5,
-      "type_def": 6.3,
-      "type_syn": 3
-    },
-    "recommended_skills": [
-      "力量增效",
-      "先发制人",
-      "偷袭",
-      "有效预防"
     ]
   },
   {
