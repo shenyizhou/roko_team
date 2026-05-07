@@ -270,11 +270,11 @@ TRAIT_SCORES = {
     "煤渣草": 70,      # 灼烧衰减→增长
     "预警": 70,        # 速度+50
     "悼亡": 70,        # 双方每1只力竭精灵→双攻+30%(终局极强)
-    "御驾亲征": 70,    # 大幅提升种族值，力竭扣4魔力(高风险高回报)
-    "吟游之弦": 65,    # 印记共存
+    "御驾亲征": -5,    # 大幅提升种族值，力竭扣4魔力(分数已经加到种族值里，因为一般都是最后一个出场负面较为可控)
+    "吟游之弦": 10,    # 印记共存
     "游弋": 65,        # 蓄力时可使用任意技能+双防+100%
     "坠星": 65,        # 敌每层星陨印记→技能威力+15%
-    "棋王契约": 65,    # 棋类体系核心
+    "棋王契约": -5,    # 棋类体系核心
     "全神贯注": 60,    # 入场首回合物攻+100%，每次衰减20%
     "三鼓作气": 60,    # 使用能耗3技能→攻防永久+20%
     "营养液泡": 60,    # 增益额外+2层
@@ -741,12 +741,8 @@ def main():
         seen.add(base_name)
         unique_ranked.append(p)
 
-    # Split into 首领化 lineage and regular pets
-    boss_ranked = [p for p in unique_ranked if p["name"] in BOSS_LINE]
-    regular_ranked = [p for p in unique_ranked if p["name"] not in BOSS_LINE]
-
-    # Full ranking (for JSON): boss section first, then regular
-    ranked = boss_ranked + regular_ranked
+    # Full ranking: unified, no boss/regular split
+    ranked = unique_ranked
 
     # Save rankings
     with open(DATA_DIR / "all_pet_rankings.json", "w") as f:
@@ -784,11 +780,8 @@ def main():
                   f"技能={p['skill_score']:.0f} [{sk_names}] {combat_str}  "
                   f"【{p['trait_name']}={p['trait_score']:.0f}】{p['trait_desc'][:50]}")
 
-    # Print 首领化 lineage ranking (all boss-line pets, separate section)
-    if boss_ranked:
-        _print_ranking(boss_ranked, "首领化精灵排名 (含各形态，冲突不可同队)")
-    # Print regular ranking (top 50)
-    _print_ranking(regular_ranked, "精灵综合排名 (技能 + 战斗能力[攻防速])", top_n=50)
+    # Print unified ranking (top 50)
+    _print_ranking(ranked, "精灵综合排名 (技能 + 战斗能力[攻防速])", top_n=50)
 
     # === 最优队伍组建 (体系协同版) ===
     print("\n" + "=" * 90)
@@ -1057,9 +1050,7 @@ def main():
             )
         return out
 
-    if boss_ranked:
-        lines += _rank_lines(boss_ranked, "首领化精灵排名 (含各形态，冲突不可同队)")
-    lines += _rank_lines(regular_ranked, "精灵综合排名 (技能 + 战斗能力[攻防速])", start_idx=len(boss_ranked) + 1)
+    lines += _rank_lines(ranked, "精灵综合排名 (技能 + 战斗能力[攻防速])")
     (DATA_DIR / "all_pet_rankings.txt").write_text("\n".join(lines), encoding="utf-8")
     print(f"排名已保存到 data/all_pet_rankings.txt")
 

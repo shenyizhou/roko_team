@@ -343,21 +343,48 @@ def score_skill(skill):
 
     # 敌方削弱 (排除比较句式：X比敌方越高/越低)
     CF = 0.7  # 可清除系数
+    def _debuff_score(pct, base, layers=1):
+        """减益动态记分：递减函数 × 可清除系数 × 层数"""
+        return _buff_diminish(pct, base) * CF * layers
+
     if "敌方" in desc:
         is_comparison = "比敌方" in desc  # 鸣沙陷阱: 物防比敌方越高
         if not is_comparison:
-            if ("物防" in desc and "魔防" in desc) or "双防" in desc:
-                pts["敌双防-"] = int(6 * CF); final += int(6 * CF)
-            elif "物防" in desc or "魔防" in desc:
-                pts["敌单防-"] = int(4 * CF); final += int(4 * CF)
-        if ("物攻" in desc and "魔攻" in desc) or "双攻" in desc:
-            if not is_comparison:
-                pts["敌双攻-"] = int(5 * CF); final += int(5 * CF)
-        elif "物攻" in desc or "魔攻" in desc:
-            if not is_comparison:
-                pts["敌单攻-"] = int(3 * CF); final += int(3 * CF)
-        if "速度" in desc and "降低" in desc:
-            pts["敌速-"] = 3; final += 3
+            # 提取减益百分比：双防=物防+魔防共用同一百分比（如"敌方双防-30%"）
+            dual_def = _find_int(r"双防-(\d+)%", desc)
+            pdef_pct = dual_def or _find_int(r"物防-(\d+)%", desc)
+            mdef_pct = dual_def or _find_int(r"魔防-(\d+)%", desc)
+            # 提取层数
+            def_layers = max(1, _find_int(r"(\d+)层(?:.{0,5}(?:双防|物防|魔防))", desc))
+
+            dual_atk = _find_int(r"双攻-(\d+)%", desc)
+            patk_pct = dual_atk or _find_int(r"物攻-(\d+)%", desc)
+            matk_pct = dual_atk or _find_int(r"魔攻-(\d+)%", desc)
+            atk_layers = max(1, _find_int(r"(\d+)层(?:.{0,5}(?:双攻|物攻|魔攻))", desc))
+
+            spd_pct = _find_int(r"速度-(\d+)%", desc) or _find_int(r"速度-(\d+)", desc)
+            spd_layers = max(1, _find_int(r"(\d+)层(?:.{0,5}速度)", desc))
+
+            if pdef_pct > 0:
+                v = _debuff_score(pdef_pct, 1.7, def_layers)
+                pts[f"敌物防-{pdef_pct}%{'×'+str(def_layers) if def_layers>1 else ''}"] = round(v, 1)
+                final += v
+            if mdef_pct > 0:
+                v = _debuff_score(mdef_pct, 1.7, def_layers)
+                pts[f"敌魔防-{mdef_pct}%{'×'+str(def_layers) if def_layers>1 else ''}"] = round(v, 1)
+                final += v
+            if patk_pct > 0:
+                v = _debuff_score(patk_pct, 2.5, atk_layers)
+                pts[f"敌物攻-{patk_pct}%{'×'+str(atk_layers) if atk_layers>1 else ''}"] = round(v, 1)
+                final += v
+            if matk_pct > 0:
+                v = _debuff_score(matk_pct, 2.5, atk_layers)
+                pts[f"敌魔攻-{matk_pct}%{'×'+str(atk_layers) if atk_layers>1 else ''}"] = round(v, 1)
+                final += v
+            if spd_pct > 0:
+                v = _debuff_score(spd_pct, 2.0, spd_layers)
+                pts[f"敌速度-{spd_pct}%{'×'+str(spd_layers) if spd_layers>1 else ''}"] = round(v, 1)
+                final += v
         if "技能能耗" in desc:
             pts["敌加费"] = 6; final += 6
 
