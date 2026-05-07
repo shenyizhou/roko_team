@@ -527,10 +527,48 @@ def dynamic_skill_score(skill_name, pet_attrs, pet_stats):
     return None
 
 
-def score_pet(pet_name, pet_data, learnset_skills, rec_skills, skill_scores, boss_bonus=0):
+def swift_strike_score(other_skills, skill_scores, has_hurricane=False):
     """
-    精灵综合评分 = 推荐技能总分 + 特性分
-    boss_bonus: 首领化加成（先提升种族值，再计算战斗能力）
+    疾风连袭动态评分。
+    other_skills: 除疾风连袭外的其他技能列表 (list of dict)
+    skill_scores: 技能分数字典 {name: {score, power, ...}}
+    has_hurricane: 飓风特性使全技能获得迅捷
+
+    机制: 释放所有使用过的迅捷技能(各最多1次)
+    能耗 = floor(迅捷技能总能耗/2 + 已使用次数), 首用次数=0
+    """
+    swift_skills = []
+    for sk in other_skills:
+        desc = sk.get("desc", "")
+        if has_hurricane or "迅捷" in desc:
+            swift_skills.append(sk)
+
+    if not swift_skills:
+        return 0, 0  # 无迅捷技能可释放
+
+    total_cost = sum(sk.get("cost", 0) for sk in swift_skills)
+    dyn_cost = total_cost // 2  # floor(总能耗/2)
+
+    # 释放的价值 = 迅捷技能总分 × 0.5 (每个仅释放1次，边际递减)
+    total_swift_score = sum(
+        skill_scores.get(sk.get("name", ""), {}).get("score", 0)
+        for sk in swift_skills
+    )
+    # 也计入威力贡献（buff技能power=0但有分数值）
+    total_power = sum(sk.get("power", 0) for sk in swift_skills)
+
+    # 综合评分: 释放技能的分数价值 + 威力效率分
+    # 疾风连袭是行动压缩技能（一回合释放所有迅捷技能），价值高于普通攻击
+    value = total_swift_score * 0.5
+    if total_power > 0 and dyn_cost > 0:
+        value += power_value(total_power, dyn_cost) * 0.3
+
+    return round(min(value, MAX_POWER * 1.5), 1), dyn_cost
+
+
+def score_pet(pet_name, pet_data, learnset_skills, rec_skills, skill_scores):
+    """
+    精灵综合评分 = 推荐技能总分 + 特性分 + 战斗能力分
     """
     # 技能分 (推荐配置) — 闪击/鸣沙陷阱按精灵数值动态计算
     skill_total = 0
@@ -547,21 +585,12 @@ def score_pet(pet_name, pet_data, learnset_skills, rec_skills, skill_scores, bos
     trait_score, trait_pts = score_trait(trait.get("name", ""), trait.get("desc", ""))
 
     # 属性×种族 综合战斗能力评分: 攻击能力 + 防御能力 + 速度线
-    stats = dict(stats)  # copy to avoid modifying original (stats may be modified below)
+    stats = dict(stats)  # copy to avoid modifying original
 
     # 特性对种族的直接影响：先于 combat_score 计算生效
-    # 失去一半生命 → 有效HP减半（防御力折半）
     trait_desc = trait.get("desc", "")
     if "失去自己一半" in trait_desc or "失去一半" in trait_desc:
         stats['hp'] = stats['hp'] // 2
-
-    # 首领化：先按比例提升种族值（boss_bonus 换算为种族提升百分比）
-    # boss_bonus 每 10 分 ≈ 种族值整体提升约 10%
-    if boss_bonus > 0:
-        race_boost = 1 + (boss_bonus / 100)  # 20分 ≈ +20% 种族
-        for k in stats:
-            if k != 'total':
-                stats[k] = int(stats[k] * race_boost)
 
     attr_bonus, attr_detail = calc_combat_score(attrs, stats, rec_skills, trait.get("name", ""))
 
@@ -575,7 +604,6 @@ def score_pet(pet_name, pet_data, learnset_skills, rec_skills, skill_scores, bos
         "trait_pts": trait_pts,
         "combat_score": attr_bonus,
         "combat_detail": attr_detail,
-        "boss_bonus": boss_bonus,
         "trait_name": trait.get("name", ""),
         "trait_desc": trait.get("desc", ""),
         "attrs": attrs,
@@ -596,27 +624,31 @@ def main():
 
     skill_scores = {s['name']: s['score'] for s in rankings}
 
-    # Load boss info for 首领化 bonuses
-    boss_info = {}
+    # 首领化 lineage 精灵：各形态独立评分，单独排名（不可同队，冲突）
+    BOSS_FORMS = {"圣剑-X", "鸭吉吉（起来鸭）", "岚鸟（本来的样子）", "千棘盔（磨损的样子）"}
+    BOSS_BASES = {"圣剑骑士", "圣剑侍从", "鸭吉吉", "岚鸟", "千棘盔"}
+    BOSS_LINE = BOSS_FORMS | BOSS_BASES
+
+    # 棋家族中间形态：跳过（仅在进化路径中，不是独立可用的形态）
+    # 棋骑士、棋齐垒、棋祈督、棋绮后 等已在 _boss_info 标记 remove
+    removed_pets = set()
     try:
         with open(DATA_DIR / "_boss_info.json") as f:
             boss_info = json.load(f)
+        removed_pets = {n for n, bi in boss_info.items() if bi.get('remove') and n not in BOSS_LINE}
     except Exception:
         pass
-    # Build set of pets to remove (intermediate/boss duplicates)
-    removed_pets = {n for n, bi in boss_info.items() if bi.get('remove')}
 
-    # Score all pets
+    # Score all pets (including boss base forms, without race boosting)
     pet_scores = {}
     for name, pet in pets.items():
         if name in removed_pets:
             continue
         if name not in learnsets:
             continue
-        bb = boss_info.get(name, {}).get('bonus', 0)
         score, meta = score_pet(
             name, pet, learnsets.get(name, []),
-            recommended.get(name, []), skill_scores, bb
+            recommended.get(name, []), skill_scores
         )
         rec_skills = [sk["name"] for sk in recommended.get(name, [])]
         pet_scores[name] = {
@@ -632,34 +664,34 @@ def main():
             "skill_score": meta["skill_score"],
             "combat_score": meta["combat_score"],
             "combat_detail": meta["combat_detail"],
-            "boss_bonus": meta["boss_bonus"],
             "recommended_skills": rec_skills,
         }
 
-    # Sort by score
-    ranked = sorted(pet_scores.values(), key=lambda x: -x["score"])
+    # Sort all by score
+    ranked_all = sorted(pet_scores.values(), key=lambda x: -x["score"])
 
     # 去重：棋家族的黑子和白子完全一样，只保留一个（白子）
     seen = set()
     unique_ranked = []
-    for p in ranked:
+    for p in ranked_all:
         name = p["name"]
-        # 提取基础名称（去掉"（白子）"或"（黑子）"后缀）
         base_name = name.replace("（白子）", "").replace("（黑子）", "")
         if base_name in seen:
             continue
         seen.add(base_name)
         unique_ranked.append(p)
-    ranked = unique_ranked
+
+    # Split into 首领化 lineage and regular pets
+    boss_ranked = [p for p in unique_ranked if p["name"] in BOSS_LINE]
+    regular_ranked = [p for p in unique_ranked if p["name"] not in BOSS_LINE]
+
+    # Full ranking (for JSON): boss section first, then regular
+    ranked = boss_ranked + regular_ranked
 
     # Save rankings
     with open(DATA_DIR / "all_pet_rankings.json", "w") as f:
         json.dump(ranked, f, ensure_ascii=False, indent=2)
 
-    # Print top 30
-    print("=" * 90)
-    print("精灵综合排名 (技能 + 战斗能力[攻防速])")
-    print("=" * 90)
     def _format_combat(cd, combat_score, actual_spd):
         parts = []
         pa = cd.get('phys_atk', cd.get('attack', 0))
@@ -673,19 +705,32 @@ def main():
         pd = cd.get('phys_def', 0)
         sd = cd.get('spec_def', 0)
         parts.append(f"物防{pd:.0f}/特防{sd:.0f}")
-        parts.append(f"速{cd.get('speed',0):.0f}/{actual_spd}")
-        parts.append(f"属性{cd.get('attr_score',0):.0f}")
+        parts.append(f"速{actual_spd}={cd.get('speed',0):.0f}")
+        attr_s = cd.get('attr_score', 0)
+        race_s = round(combat_score - attr_s, 1)
+        parts.append(f"种族值{race_s:.0f}")
+        parts.append(f"属性{attr_s:.0f}")
         return f"{combat_score} ({' '.join(parts)})"
 
-    for i, p in enumerate(ranked[:30], 1):
-        cd = p.get('combat_detail', {})
-        actual_spd = cd.get('actual_spd', 0)
-        combat_str = _format_combat(cd, p['combat_score'], actual_spd)
-        boss_str = f" 首领化+{p['boss_bonus']:.0f}" if p.get('boss_bonus', 0) > 0 else ""
-        sk_names = " · ".join(p.get("recommended_skills", [])[:4])
-        print(f"{i:>2}. {p['name']:<12} {p['score']:>6.1f}  "
-              f"(技能={p['skill_score']:.0f} [{sk_names}] {combat_str}{boss_str}) "
-              f"【{p['trait_name']}={p['trait_score']:.0f}】")
+    def _print_ranking(pets_list, title, start_idx=1, top_n=None):
+        print("\n" + "=" * 100)
+        print(title)
+        print("=" * 100)
+        items = pets_list[:top_n] if top_n else pets_list
+        for i, p in enumerate(items, start_idx):
+            cd = p.get('combat_detail', {})
+            actual_spd = cd.get('actual_spd', 0)
+            combat_str = _format_combat(cd, p['combat_score'], actual_spd)
+            sk_names = " · ".join(p.get("recommended_skills", [])[:4])
+            print(f"{i:>3}. {p['name']:<14} {p['score']:>6.1f}  "
+                  f"技能={p['skill_score']:.0f} [{sk_names}] {combat_str}  "
+                  f"【{p['trait_name']}={p['trait_score']:.0f}】{p['trait_desc'][:50]}")
+
+    # Print 首领化 lineage ranking (all boss-line pets, separate section)
+    if boss_ranked:
+        _print_ranking(boss_ranked, "首领化精灵排名 (含各形态，冲突不可同队)")
+    # Print regular ranking (top 50)
+    _print_ranking(regular_ranked, "精灵综合排名 (技能 + 战斗能力[攻防速])", top_n=50)
 
     # === 最优队伍组建 (体系协同版) ===
     print("\n" + "=" * 90)
@@ -768,13 +813,6 @@ def main():
                 penalty -= 12
 
         total = base_score + synergy_bonus + penalty
-
-        # 首领化：一队只能触发一次，只计最高加分
-        boss_bonuses = [pet_scores.get(m, {}).get('boss_bonus', 0) for m in members]
-        max_boss = max(boss_bonuses) if boss_bonuses else 0
-        # base_score 已包含全部首领化加分，减去多余的只保留最高
-        excess_boss = sum(boss_bonuses) - max_boss
-        total -= excess_boss
 
         return total, {
             "base": base_score, "synergy": synergy_bonus, "penalty": penalty,
@@ -944,20 +982,26 @@ def main():
 
     # Print pet_rankings.txt as well
     lines = []
-    lines.append("=" * 100)
-    lines.append("精灵综合排名 (技能 + 战斗能力[攻防速])")
-    lines.append("=" * 100)
-    for i, p in enumerate(ranked, 1):
-        cd = p.get('combat_detail', {})
-        actual_spd = cd.get('actual_spd', 0)
-        combat_str = _format_combat(cd, p['combat_score'], actual_spd)
-        boss_str = f" 首领化+{p['boss_bonus']:.0f}" if p.get('boss_bonus', 0) > 0 else ""
-        sk_names = " · ".join(p.get("recommended_skills", [])[:4])
-        lines.append(
-            f"{i:>3}. {p['name']:<14} {p['score']:>6.1f}  "
-            f"技能={p['skill_score']:.0f} [{sk_names}] {combat_str}{boss_str}  "
-            f"【{p['trait_name']}={p['trait_score']:.0f}】{p['trait_desc'][:50]}"
-        )
+    def _rank_lines(pets_list, title, start_idx=1):
+        out = []
+        out.append("=" * 100)
+        out.append(title)
+        out.append("=" * 100)
+        for i, p in enumerate(pets_list, start_idx):
+            cd = p.get('combat_detail', {})
+            actual_spd = cd.get('actual_spd', 0)
+            combat_str = _format_combat(cd, p['combat_score'], actual_spd)
+            sk_names = " · ".join(p.get("recommended_skills", [])[:4])
+            out.append(
+                f"{i:>3}. {p['name']:<14} {p['score']:>6.1f}  "
+                f"技能={p['skill_score']:.0f} [{sk_names}] {combat_str}  "
+                f"【{p['trait_name']}={p['trait_score']:.0f}】{p['trait_desc'][:50]}"
+            )
+        return out
+
+    if boss_ranked:
+        lines += _rank_lines(boss_ranked, "首领化精灵排名 (含各形态，冲突不可同队)")
+    lines += _rank_lines(regular_ranked, "精灵综合排名 (技能 + 战斗能力[攻防速])", start_idx=len(boss_ranked) + 1)
     (DATA_DIR / "all_pet_rankings.txt").write_text("\n".join(lines), encoding="utf-8")
     print(f"排名已保存到 data/all_pet_rankings.txt")
 

@@ -20,13 +20,22 @@ SCRIPT_DIR = Path(__file__).parent
 if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
 
-from score_traits_and_rank import dynamic_skill_score
+from score_traits_and_rank import dynamic_skill_score, swift_strike_score
 
 
 def load_skill_scores():
     with open(DATA_DIR / "all_skill_rankings.json") as f:
         return {s["name"]: s for s in json.load(f)}
 
+
+# ============================================================
+# 精灵约束例外
+# ============================================================
+# 某些精灵因特殊机制可不遵循常规约束（如必须带防御/强化）
+PET_OVERRIDES = {
+    "圣羽翼王": {"no_defense_ok": True},      # 飓风全技能迅捷，需进攻打击面，可不带防御
+    "寂灭骨龙": {"pure_buff_ok_to_skip": True},  # 速度慢，力量增效也难以推队
+}
 
 # ============================================================
 # 技能分类函数
@@ -175,7 +184,7 @@ def detect_narrow_skill(skill):
     return penalty
 
 
-def score_speed_buff_synergy(skill, pet_spd):
+def score_speed_buff_synergy(skill, pet_spd, pet_name=""):
     """
     评估速度与buff技能的协同
     低速精灵带纯buff技能价值打折：还没来得及用就可能被打残
@@ -188,11 +197,16 @@ def score_speed_buff_synergy(skill, pet_spd):
     if power > 0 or is_defense(skill):
         return penalty
 
+    overrides = PET_OVERRIDES.get(pet_name, {})
+
     # 低速阈值：速度<90 的精灵带纯buff技能风险高
     if pet_spd < 90:
         # 力量增效类：纯buff，无防御
         if re.search(r"[物魔双]攻\+", desc) and "减伤" not in desc:
             penalty -= 6
+            # 特定精灵强化技能价值更低（如寂灭骨龙速度慢难推队）
+            if overrides.get("pure_buff_ok_to_skip"):
+                penalty -= 10  # 额外重罚
         # 其他纯buff
         elif "获得" in desc or "加" in desc or "+" in desc:
             penalty -= 3
@@ -398,11 +412,25 @@ def score_config(config, skill_scores, trait_desc="", pet_data=None):
     pet_matk = pstats.get("matk", 0)
     pet_spd = pstats.get("spd", 0)
 
+    has_swift_strike = any(sk.get("name") == "疾风连袭" for sk in config)
+    trait_name = pet_data.get("trait", {}).get("name", "") if pet_data else ""
+    # 飓风特性：全技能获得迅捷（名称为"飓风"或描述中含"飓风"）
+    has_hurricane = trait_name == "飓风" or "飓风" in (trait_desc or "")
+
     for sk in config:
         name = sk.get("name", "")
-        sc = skill_scores.get(name, {})
-        base += sc.get("score", 0)
-        details[name] = sc.get("score", 0)
+        if name == "疾风连袭":
+            # 动态算分：基于其他3个技能
+            other = [s for s in config if s.get("name") != "疾风连袭"]
+            dyn_score, dyn_cost = swift_strike_score(other, skill_scores, has_hurricane)
+            base += dyn_score
+            details[name] = dyn_score
+            # 更新技能的cost字段供后续约束检查
+            sk["_dyn_cost"] = dyn_cost
+        else:
+            sc = skill_scores.get(name, {})
+            base += sc.get("score", 0)
+            details[name] = sc.get("score", 0)
 
     penalty = 0
 
@@ -425,15 +453,18 @@ def score_config(config, skill_scores, trait_desc="", pet_data=None):
     reliable_bonus = sum(score_reliable_power(sk, pet_atk, pet_matk) for sk in config)
 
     # 3c. 低速buff惩罚
-    speed_buff_penalty = sum(score_speed_buff_synergy(sk, pet_spd) for sk in config)
+    pet_name = pet_data.get("name", "") if pet_data else ""
+    speed_buff_penalty = sum(score_speed_buff_synergy(sk, pet_spd, pet_name) for sk in config)
     penalty += speed_buff_penalty
 
     # ================================================================
     # 约束检查
     # ================================================================
 
+    overrides = PET_OVERRIDES.get(pet_name, {})
+
     defense_count = sum(1 for sk in config if is_defense(sk))
-    if defense_count == 0:
+    if defense_count == 0 and not overrides.get("no_defense_ok"):
         penalty -= 15
 
     offense_count = sum(1 for sk in config if is_offense(sk))
@@ -478,7 +509,8 @@ def score_config(config, skill_scores, trait_desc="", pet_data=None):
         cat = sk.get("category", "")
 
         # 检测是否是纯强化技能（无威力、非防御）
-        is_pure_buff = power == 0 and not is_defense(sk)
+        # 排除特殊机制技能：疾风连袭（释放迅捷技能）、其他非buff类变化技能
+        is_pure_buff = power == 0 and not is_defense(sk) and sk.get("name") != "疾风连袭"
 
         # 统计强化物攻的技能（纯强化或防御技能中的物攻加成）
         if "物攻+" in desc:
@@ -523,6 +555,22 @@ def score_config(config, skill_scores, trait_desc="", pet_data=None):
     # 4. 增加了连击数但没有连击输出技能 = 浪费技能位
     if combo_buff_count > 0 and not has_combo_attack:
         penalty -= 12 * combo_buff_count
+
+    # 6. 双攻混合惩罚：同时携带物攻和魔攻技能时，弱侧额外减值
+    #    输出手通常只强化速度+单攻+生命，双修会浪费属性分配
+    #    考虑种族值差异 + 强化偏向（如力量增效只加物攻）
+    if has_physical_attack and has_magic_attack:
+        # 有效攻击力：种族 × 强化偏向
+        eff_atk = pet_atk * (2.0 if atk_buff_count > 0 else 1.0)
+        eff_matk = pet_matk * (2.0 if matk_buff_count > 0 else 1.0)
+        atk_ratio = min(eff_atk, eff_matk) / max(eff_atk, eff_matk, 1)
+        # 弱攻侧扣分 = 弱侧技能总分 × (1-ratio) × 0.5
+        weak_penalty = sum(details.get(sk.get("name"), 0) for sk in config
+                          if sk.get("power", 0) > 0
+                          and ((eff_atk < eff_matk and sk.get("category") == "物理")
+                               or (eff_matk < eff_atk and sk.get("category") == "魔法")))
+        weak_penalty *= (1 - atk_ratio) * 0.5
+        penalty -= round(weak_penalty)
 
     # 5. 防御技能冗余：除了壁垒外，多个防御技能边际价值大幅递减
     non_barrier_defense = 0
@@ -596,9 +644,14 @@ def score_config(config, skill_scores, trait_desc="", pet_data=None):
 # 推荐主逻辑
 # ============================================================
 
-def pre_rank_skill(sk, skill_scores, pet_atk=0, pet_matk=0, pet_spd=0):
+def pre_rank_skill(sk, skill_scores, pet_atk=0, pet_matk=0, pet_spd=0, pet_name=""):
     """单个技能快速启发式评分，用于预筛选"""
-    sc = skill_scores.get(sk.get("name", ""), {})
+    sk_name = sk.get("name", "")
+    # 疾风连袭预估值：需要进组合后再动态算分，这里给一个中等偏高的估值确保不被过滤
+    if sk_name == "疾风连袭":
+        # 有飓风特性=很棒，没有的话价值打折
+        return 35  # 中高分确保进入候选池
+    sc = skill_scores.get(sk_name, {})
     score = sc.get("score", 0)
 
     # 惩罚负面效果
@@ -615,7 +668,7 @@ def pre_rank_skill(sk, skill_scores, pet_atk=0, pet_matk=0, pet_spd=0):
     # 应对爆发加分
     score += score_counter_offense(sk, pet_atk, pet_matk)
     # 低速buff惩罚
-    score += score_speed_buff_synergy(sk, pet_spd)
+    score += score_speed_buff_synergy(sk, pet_spd, pet_name)
 
     return score
 
@@ -657,6 +710,7 @@ def recommend_for_pet(pet_data, skill_scores):
     if not all_skills:
         return None
 
+    pet_name = pet_data.get("name", "")
     trait_desc = pet_data.get("trait", {}).get("desc", "")
 
     if len(all_skills) < 4:
@@ -671,7 +725,7 @@ def recommend_for_pet(pet_data, skill_scores):
     pet_matk = pet_data.get("baseLv1", {}).get("matk", 0) or pet_data.get("stats", {}).get("matk", 0)
     pet_spd = pet_data.get("baseLv1", {}).get("spd", 0) or pet_data.get("stats", {}).get("spd", 0)
     if len(all_skills) > MAX_SKILL_CANDIDATES:
-        ranked = sorted(all_skills, key=lambda sk: -pre_rank_skill(sk, local_scores, pet_atk, pet_matk, pet_spd))
+        ranked = sorted(all_skills, key=lambda sk: -pre_rank_skill(sk, local_scores, pet_atk, pet_matk, pet_spd, pet_name))
         candidates = ranked[:MAX_SKILL_CANDIDATES]
     else:
         candidates = all_skills
@@ -686,6 +740,20 @@ def recommend_for_pet(pet_data, skill_scores):
             best_score = score
             best_config = list(combo)
             best_meta = meta
+
+    # 疾风连袭技能排序：1号位=疾风连袭，状态技能在前，攻击在后
+    if best_config and any(sk.get("name") == "疾风连袭" for sk in best_config):
+        swift_strike_sk = None
+        status_sks = []
+        attack_sks = []
+        for sk in best_config:
+            if sk.get("name") == "疾风连袭":
+                swift_strike_sk = sk
+            elif sk.get("power", 0) > 0:
+                attack_sks.append(sk)
+            else:
+                status_sks.append(sk)
+        best_config = [swift_strike_sk] + status_sks + attack_sks if swift_strike_sk else best_config
 
     return {
         "skills": best_config,
