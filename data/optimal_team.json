@@ -5,24 +5,24 @@
     "龙息帕尔",
     "化蝶",
     "圣剑-X",
-    "棋契国王"
+    "噼啪鸟"
   ],
-  "total_score": 2608.0,
-  "defense_count": 6,
+  "total_score": 2630.1,
+  "defense_count": 5,
   "utility_count": 0,
-  "attr_coverage": 9,
+  "attr_coverage": 8,
   "details": {
     "圣羽翼王": {
-      "score": 463.8,
+      "score": 484.6,
       "attrs": [
         "翼"
       ],
       "trait": "飓风",
       "recommended_skills": [
+        "闪击",
         "水刃",
         "力量增效",
-        "有效预防",
-        "天光"
+        "有效预防"
       ]
     },
     "寂灭骨龙": {
@@ -79,18 +79,18 @@
         "先发制人"
       ]
     },
-    "棋契国王": {
-      "score": 404.1,
+    "噼啪鸟": {
+      "score": 405.4,
       "attrs": [
-        "武",
-        "地"
+        "电",
+        "翼"
       ],
-      "trait": "棋王契约",
+      "trait": "连续负荷",
       "recommended_skills": [
-        "抛石",
-        "迫近攻击",
+        "闪击",
+        "天旋地转",
         "啮合传递",
-        "有效预防"
+        "电弧"
       ]
     }
   }

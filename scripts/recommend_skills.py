@@ -625,23 +625,35 @@ MAX_SKILL_CANDIDATES = 18  # C(18,4) = 3060, 可控
 
 def recommend_for_pet(pet_data, skill_scores):
     """为一个精灵推荐最优技能配置"""
-    # 闪击/鸣沙陷阱按精灵数值动态算分
+    # 闪击/鸣沙陷阱按精灵数值动态算分（含威力）
     pstats = pet_data.get("stats") or pet_data.get("baseLv1", {})
     pattrs = pet_data.get("attrs", [])
     local_scores = dict(skill_scores)  # shallow copy
+    from score_traits_and_rank import flash_strike_power, sand_trap_power
     for sk_name in ("闪击", "鸣沙陷阱"):
         dyn = dynamic_skill_score(sk_name, pattrs, pstats)
         if dyn is not None:
-            if sk_name in local_scores:
-                local_scores[sk_name] = {**local_scores[sk_name], "score": dyn}
+            # 计算动态期望威力（含STAB）
+            if sk_name == "闪击":
+                dp = flash_strike_power(pstats.get("spd", 80), "翼" in pattrs)
             else:
-                local_scores[sk_name] = {"score": dyn}
+                dp = sand_trap_power(pstats.get("def", 80), "地" in pattrs)
+            if sk_name in local_scores:
+                local_scores[sk_name] = {**local_scores[sk_name], "score": dyn, "power": int(dp)}
+            else:
+                local_scores[sk_name] = {"score": dyn, "power": int(dp)}
 
     skills_data = pet_data.get("skills", {})
     learnset = skills_data.get("learnset", [])
     other = skills_data.get("other", [])
 
     all_skills = learnset + other
+    # 同步更新 dynamic 技能的 power 字段到技能 dict
+    for sk in all_skills:
+        if sk["name"] in ("闪击", "鸣沙陷阱"):
+            dp = local_scores.get(sk["name"], {}).get("power")
+            if dp:
+                sk["power"] = dp
     if not all_skills:
         return None
 

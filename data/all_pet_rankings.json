@@ -2,7 +2,7 @@
   {
     "id": "圣羽翼王",
     "name": "圣羽翼王",
-    "score": 463.8,
+    "score": 484.6,
     "attrs": [
       "翼"
     ],
@@ -21,12 +21,12 @@
     "trait_pts": {
       "manual": 150
     },
-    "skill_score": 117.3,
-    "combat_score": 196.5,
+    "skill_score": 126.9,
+    "combat_score": 207.7,
     "combat_detail": {
-      "attack": 58.1,
-      "phys_atk": 49.2,
-      "spec_atk": 49.2,
+      "attack": 69.3,
+      "phys_atk": 61.5,
+      "spec_atk": 0,
       "defense": 82.3,
       "phys_def": 61.0,
       "spec_def": 21.3,
@@ -34,16 +34,16 @@
       "speed_line": 125,
       "actual_spd": 266,
       "attr_score": 11.2,
-      "type_atk": 8.9,
+      "type_atk": 7.8,
       "type_def": 8.2,
       "type_syn": 3
     },
     "boss_bonus": 0,
     "recommended_skills": [
+      "闪击",
       "水刃",
       "力量增效",
-      "有效预防",
-      "天光"
+      "有效预防"
     ]
   },
   {
@@ -237,6 +237,54 @@
     ]
   },
   {
+    "id": "噼啪鸟",
+    "name": "噼啪鸟",
+    "score": 405.4,
+    "attrs": [
+      "电",
+      "翼"
+    ],
+    "stats": {
+      "total": 618,
+      "hp": 78,
+      "atk": 116,
+      "matk": 109,
+      "def": 85,
+      "mdef": 85,
+      "spd": 145
+    },
+    "trait_name": "连续负荷",
+    "trait_desc": "自己技能的迸发效果延长1回合。",
+    "trait_score": 25,
+    "trait_pts": {
+      "manual": 25
+    },
+    "skill_score": 141.4,
+    "combat_score": 239.0,
+    "combat_detail": {
+      "attack": 72.7,
+      "phys_atk": 63.8,
+      "spec_atk": 0,
+      "defense": 36.8,
+      "phys_def": 23.9,
+      "spec_def": 12.9,
+      "speed": 103.1,
+      "speed_line": 145,
+      "actual_spd": 294,
+      "attr_score": 26.4,
+      "type_atk": 8.9,
+      "type_def": 20.9,
+      "type_syn": 5.5
+    },
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "闪击",
+      "天旋地转",
+      "啮合传递",
+      "电弧"
+    ]
+  },
+  {
     "id": "棋契国王",
     "name": "棋契国王",
     "score": 404.1,
@@ -282,54 +330,6 @@
       "迫近攻击",
       "啮合传递",
       "有效预防"
-    ]
-  },
-  {
-    "id": "噼啪鸟",
-    "name": "噼啪鸟",
-    "score": 399.4,
-    "attrs": [
-      "电",
-      "翼"
-    ],
-    "stats": {
-      "total": 618,
-      "hp": 78,
-      "atk": 116,
-      "matk": 109,
-      "def": 85,
-      "mdef": 85,
-      "spd": 145
-    },
-    "trait_name": "连续负荷",
-    "trait_desc": "自己技能的迸发效果延长1回合。",
-    "trait_score": 25,
-    "trait_pts": {
-      "manual": 25
-    },
-    "skill_score": 135.4,
-    "combat_score": 239.0,
-    "combat_detail": {
-      "attack": 72.7,
-      "phys_atk": 63.8,
-      "spec_atk": 0,
-      "defense": 36.8,
-      "phys_def": 23.9,
-      "spec_def": 12.9,
-      "speed": 103.1,
-      "speed_line": 145,
-      "actual_spd": 294,
-      "attr_score": 26.4,
-      "type_atk": 8.9,
-      "type_def": 20.9,
-      "type_syn": 5.5
-    },
-    "boss_bonus": 0,
-    "recommended_skills": [
-      "天旋地转",
-      "啮合传递",
-      "电弧",
-      "防御"
     ]
   },
   {
@@ -476,54 +476,6 @@
     ]
   },
   {
-    "id": "九幽菇",
-    "name": "九幽菇",
-    "score": 386.2,
-    "attrs": [
-      "地",
-      "草"
-    ],
-    "stats": {
-      "total": 627,
-      "hp": 149,
-      "atk": 102,
-      "matk": 95,
-      "def": 116,
-      "mdef": 95,
-      "spd": 70
-    },
-    "trait_name": "多人宿舍",
-    "trait_desc": "自己的能量可以超过能量上限。",
-    "trait_score": 30,
-    "trait_pts": {
-      "manual": 30
-    },
-    "skill_score": 157.4,
-    "combat_score": 198.8,
-    "combat_detail": {
-      "attack": 64.1,
-      "phys_atk": 59.0,
-      "spec_atk": 0,
-      "defense": 89.9,
-      "phys_def": 62.4,
-      "spec_def": 27.5,
-      "speed": 0,
-      "speed_line": 0,
-      "actual_spd": 194,
-      "attr_score": 44.8,
-      "type_atk": 5.1,
-      "type_def": 26.8,
-      "type_syn": 18.0
-    },
-    "boss_bonus": 0,
-    "recommended_skills": [
-      "抛石",
-      "芳香诱引",
-      "啮合传递",
-      "防御"
-    ]
-  },
-  {
     "id": "炽心勇狮",
     "name": "炽心勇狮",
     "score": 383.6,
@@ -664,6 +616,54 @@
       "倾泻",
       "防御",
       "错乱"
+    ]
+  },
+  {
+    "id": "九幽菇",
+    "name": "九幽菇",
+    "score": 377.6,
+    "attrs": [
+      "地",
+      "草"
+    ],
+    "stats": {
+      "total": 627,
+      "hp": 149,
+      "atk": 102,
+      "matk": 95,
+      "def": 116,
+      "mdef": 95,
+      "spd": 70
+    },
+    "trait_name": "多人宿舍",
+    "trait_desc": "自己的能量可以超过能量上限。",
+    "trait_score": 30,
+    "trait_pts": {
+      "manual": 30
+    },
+    "skill_score": 148.8,
+    "combat_score": 198.8,
+    "combat_detail": {
+      "attack": 64.1,
+      "phys_atk": 59.0,
+      "spec_atk": 0,
+      "defense": 89.9,
+      "phys_def": 62.4,
+      "spec_def": 27.5,
+      "speed": 0,
+      "speed_line": 0,
+      "actual_spd": 194,
+      "attr_score": 44.8,
+      "type_atk": 5.1,
+      "type_def": 26.8,
+      "type_syn": 18.0
+    },
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "抛石",
+      "鸣沙陷阱",
+      "啮合传递",
+      "防御"
     ]
   },
   {
@@ -1239,54 +1239,6 @@
     ]
   },
   {
-    "id": "波多西",
-    "name": "波多西",
-    "score": 365.3,
-    "attrs": [
-      "机械",
-      "地"
-    ],
-    "stats": {
-      "total": 573,
-      "hp": 106,
-      "atk": 122,
-      "matk": 43,
-      "def": 136,
-      "mdef": 116,
-      "spd": 50
-    },
-    "trait_name": "定向精炼",
-    "trait_desc": "己方精灵每使用1次防御技能，自己入场时机械系和地面系技能威力+10%。",
-    "trait_score": 15,
-    "trait_pts": {
-      "manual": 15
-    },
-    "skill_score": 158.2,
-    "combat_score": 192.1,
-    "combat_detail": {
-      "attack": 73.3,
-      "phys_atk": 65.5,
-      "spec_atk": 0,
-      "defense": 76.0,
-      "phys_def": 52.1,
-      "spec_def": 23.9,
-      "speed": 0,
-      "speed_line": 0,
-      "actual_spd": 168,
-      "attr_score": 42.8,
-      "type_atk": 7.8,
-      "type_def": 28.8,
-      "type_syn": 14.0
-    },
-    "boss_bonus": 0,
-    "recommended_skills": [
-      "地刺",
-      "吓退",
-      "啮合传递",
-      "壁垒"
-    ]
-  },
-  {
     "id": "黑羽夫人",
     "name": "黑羽夫人",
     "score": 360.0,
@@ -1379,6 +1331,54 @@
       "消毒法",
       "潮汐",
       "水幕冲击"
+    ]
+  },
+  {
+    "id": "波多西",
+    "name": "波多西",
+    "score": 357.3,
+    "attrs": [
+      "机械",
+      "地"
+    ],
+    "stats": {
+      "total": 573,
+      "hp": 106,
+      "atk": 122,
+      "matk": 43,
+      "def": 136,
+      "mdef": 116,
+      "spd": 50
+    },
+    "trait_name": "定向精炼",
+    "trait_desc": "己方精灵每使用1次防御技能，自己入场时机械系和地面系技能威力+10%。",
+    "trait_score": 15,
+    "trait_pts": {
+      "manual": 15
+    },
+    "skill_score": 150.2,
+    "combat_score": 192.1,
+    "combat_detail": {
+      "attack": 73.3,
+      "phys_atk": 65.5,
+      "spec_atk": 0,
+      "defense": 76.0,
+      "phys_def": 52.1,
+      "spec_def": 23.9,
+      "speed": 0,
+      "speed_line": 0,
+      "actual_spd": 168,
+      "attr_score": 42.8,
+      "type_atk": 7.8,
+      "type_def": 28.8,
+      "type_syn": 14.0
+    },
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "鸣沙陷阱",
+      "吓退",
+      "啮合传递",
+      "壁垒"
     ]
   },
   {
@@ -1714,54 +1714,6 @@
       "消毒法",
       "焚烧烙印",
       "防御"
-    ]
-  },
-  {
-    "id": "月牙雪熊",
-    "name": "月牙雪熊",
-    "score": 342.9,
-    "attrs": [
-      "冰",
-      "幻"
-    ],
-    "stats": {
-      "total": 586,
-      "hp": 126,
-      "atk": 97,
-      "matk": 39,
-      "def": 141,
-      "mdef": 103,
-      "spd": 80
-    },
-    "trait_name": "月牙雪糕",
-    "trait_desc": "使用攻击技能时，敌方每层冻结视为1层额外星陨印记。",
-    "trait_score": 35,
-    "trait_pts": {
-      "manual": 35
-    },
-    "skill_score": 127.4,
-    "combat_score": 180.5,
-    "combat_detail": {
-      "attack": 67.0,
-      "phys_atk": 57.5,
-      "spec_atk": 0,
-      "defense": 89.4,
-      "phys_def": 64.2,
-      "spec_def": 25.2,
-      "speed": 0,
-      "speed_line": 0,
-      "actual_spd": 207,
-      "attr_score": 24.1,
-      "type_atk": 9.5,
-      "type_def": 18.6,
-      "type_syn": 5.5
-    },
-    "boss_bonus": 0,
-    "recommended_skills": [
-      "吓退",
-      "偷袭",
-      "冰雹",
-      "壁垒"
     ]
   },
   {
@@ -2433,6 +2385,54 @@
     ]
   },
   {
+    "id": "月牙雪熊",
+    "name": "月牙雪熊",
+    "score": 330.4,
+    "attrs": [
+      "冰",
+      "幻"
+    ],
+    "stats": {
+      "total": 586,
+      "hp": 126,
+      "atk": 97,
+      "matk": 39,
+      "def": 141,
+      "mdef": 103,
+      "spd": 80
+    },
+    "trait_name": "月牙雪糕",
+    "trait_desc": "使用攻击技能时，敌方每层冻结视为1层额外星陨印记。",
+    "trait_score": 35,
+    "trait_pts": {
+      "manual": 35
+    },
+    "skill_score": 128.1,
+    "combat_score": 167.3,
+    "combat_detail": {
+      "attack": 53.8,
+      "phys_atk": 46.0,
+      "spec_atk": 0,
+      "defense": 89.4,
+      "phys_def": 64.2,
+      "spec_def": 25.2,
+      "speed": 0,
+      "speed_line": 0,
+      "actual_spd": 207,
+      "attr_score": 24.1,
+      "type_atk": 7.8,
+      "type_def": 18.6,
+      "type_syn": 5.5
+    },
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "吓退",
+      "鸣沙陷阱",
+      "偷袭",
+      "壁垒"
+    ]
+  },
+  {
     "id": "巨噬针鼹",
     "name": "巨噬针鼹",
     "score": 330.0,
@@ -2957,9 +2957,56 @@
     ]
   },
   {
+    "id": "高脚鹬",
+    "name": "高脚鹬",
+    "score": 317.8,
+    "attrs": [
+      "翼"
+    ],
+    "stats": {
+      "total": 534,
+      "hp": 94,
+      "atk": 63,
+      "matk": 63,
+      "def": 112,
+      "mdef": 87,
+      "spd": 115
+    },
+    "trait_name": "起飞加速",
+    "trait_desc": "本场战斗首次使用的技能获得迅捷。",
+    "trait_score": 35,
+    "trait_pts": {
+      "manual": 35
+    },
+    "skill_score": 139.8,
+    "combat_score": 143.0,
+    "combat_detail": {
+      "attack": 55.5,
+      "phys_atk": 46.0,
+      "spec_atk": 36.8,
+      "defense": 53.9,
+      "phys_def": 38.0,
+      "spec_def": 15.9,
+      "speed": 22.4,
+      "speed_line": 115,
+      "actual_spd": 254,
+      "attr_score": 11.2,
+      "type_atk": 9.5,
+      "type_def": 8.2,
+      "type_syn": 3
+    },
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "吓退",
+      "闪击",
+      "啮合传递",
+      "倾泻"
+    ]
+  },
+  {
     "id": "罗隐",
     "name": "罗隐",
-    "score": 318.6,
+    "score": 317.6,
     "attrs": [
       "地",
       "恶"
@@ -2979,7 +3026,7 @@
     "trait_pts": {
       "manual": 20
     },
-    "skill_score": 132.8,
+    "skill_score": 131.8,
     "combat_score": 165.8,
     "combat_detail": {
       "attack": 85.8,
@@ -2999,9 +3046,9 @@
     "boss_bonus": 0,
     "recommended_skills": [
       "地刺",
+      "鸣沙陷阱",
       "火焰切割",
-      "有效预防",
-      "力量增效"
+      "有效预防"
     ]
   },
   {
@@ -3144,6 +3191,53 @@
       "当头棒喝",
       "力量增效",
       "冰晶坠"
+    ]
+  },
+  {
+    "id": "皇家狮鹫",
+    "name": "皇家狮鹫",
+    "score": 316.5,
+    "attrs": [
+      "翼"
+    ],
+    "stats": {
+      "total": 554,
+      "hp": 103,
+      "atk": 110,
+      "matk": 53,
+      "def": 103,
+      "mdef": 60,
+      "spd": 125
+    },
+    "trait_name": "乘风连击",
+    "trait_desc": "自己使用翼系技能后，获得连击数+1。",
+    "trait_score": 35,
+    "trait_pts": {
+      "manual": 35
+    },
+    "skill_score": 103.9,
+    "combat_score": 177.6,
+    "combat_detail": {
+      "attack": 71.2,
+      "phys_atk": 61.8,
+      "spec_atk": 0,
+      "defense": 50.3,
+      "phys_def": 38.3,
+      "spec_def": 12.0,
+      "speed": 44.9,
+      "speed_line": 125,
+      "actual_spd": 266,
+      "attr_score": 11.2,
+      "type_atk": 9.5,
+      "type_def": 8.2,
+      "type_syn": 3
+    },
+    "boss_bonus": 0,
+    "recommended_skills": [
+      "飞羽",
+      "乘风",
+      "防御",
+      "闪击"
     ]
   },
   {
@@ -4001,53 +4095,6 @@
     ]
   },
   {
-    "id": "皇家狮鹫",
-    "name": "皇家狮鹫",
-    "score": 310.6,
-    "attrs": [
-      "翼"
-    ],
-    "stats": {
-      "total": 554,
-      "hp": 103,
-      "atk": 110,
-      "matk": 53,
-      "def": 103,
-      "mdef": 60,
-      "spd": 125
-    },
-    "trait_name": "乘风连击",
-    "trait_desc": "自己使用翼系技能后，获得连击数+1。",
-    "trait_score": 35,
-    "trait_pts": {
-      "manual": 35
-    },
-    "skill_score": 98.0,
-    "combat_score": 177.6,
-    "combat_detail": {
-      "attack": 71.2,
-      "phys_atk": 61.8,
-      "spec_atk": 0,
-      "defense": 50.3,
-      "phys_def": 38.3,
-      "spec_def": 12.0,
-      "speed": 44.9,
-      "speed_line": 125,
-      "actual_spd": 266,
-      "attr_score": 11.2,
-      "type_atk": 9.5,
-      "type_def": 8.2,
-      "type_syn": 3
-    },
-    "boss_bonus": 0,
-    "recommended_skills": [
-      "飞羽",
-      "乘风",
-      "防御",
-      "羽刃"
-    ]
-  },
-  {
     "id": "权杖-V",
     "name": "权杖-V",
     "score": 309.9,
@@ -4092,53 +4139,6 @@
       "冰晶坠",
       "有效预防",
       "摇篮曲"
-    ]
-  },
-  {
-    "id": "岚鸟（本来的样子）",
-    "name": "岚鸟（本来的样子）",
-    "score": 309.7,
-    "attrs": [
-      "翼"
-    ],
-    "stats": {
-      "total": 570,
-      "hp": 91,
-      "atk": 130,
-      "matk": 56,
-      "def": 110,
-      "mdef": 75,
-      "spd": 117
-    },
-    "trait_name": "顺风",
-    "trait_desc": "若先于敌方攻击，本次技能威力+50%。",
-    "trait_score": 30,
-    "trait_pts": {
-      "manual": 30
-    },
-    "skill_score": 114.9,
-    "combat_score": 164.8,
-    "combat_detail": {
-      "attack": 77.7,
-      "phys_atk": 68.2,
-      "spec_atk": 0,
-      "defense": 49.4,
-      "phys_def": 36.1,
-      "spec_def": 13.3,
-      "speed": 26.5,
-      "speed_line": 117,
-      "actual_spd": 256,
-      "attr_score": 11.2,
-      "type_atk": 9.5,
-      "type_def": 8.2,
-      "type_syn": 3
-    },
-    "boss_bonus": 1.9,
-    "recommended_skills": [
-      "力量增效",
-      "先发制人",
-      "防御",
-      "龙卷风"
     ]
   },
   {
@@ -4330,6 +4330,53 @@
       "除厄",
       "火焰护盾",
       "魔法增效"
+    ]
+  },
+  {
+    "id": "岚鸟（本来的样子）",
+    "name": "岚鸟（本来的样子）",
+    "score": 307.1,
+    "attrs": [
+      "翼"
+    ],
+    "stats": {
+      "total": 570,
+      "hp": 91,
+      "atk": 130,
+      "matk": 56,
+      "def": 110,
+      "mdef": 75,
+      "spd": 117
+    },
+    "trait_name": "顺风",
+    "trait_desc": "若先于敌方攻击，本次技能威力+50%。",
+    "trait_score": 30,
+    "trait_pts": {
+      "manual": 30
+    },
+    "skill_score": 112.3,
+    "combat_score": 164.8,
+    "combat_detail": {
+      "attack": 77.7,
+      "phys_atk": 68.2,
+      "spec_atk": 0,
+      "defense": 49.4,
+      "phys_def": 36.1,
+      "spec_def": 13.3,
+      "speed": 26.5,
+      "speed_line": 117,
+      "actual_spd": 256,
+      "attr_score": 11.2,
+      "type_atk": 9.5,
+      "type_def": 8.2,
+      "type_syn": 3
+    },
+    "boss_bonus": 1.9,
+    "recommended_skills": [
+      "力量增效",
+      "先发制人",
+      "防御",
+      "闪击"
     ]
   },
   {
@@ -4614,53 +4661,6 @@
       "偷袭",
       "防御",
       "力量增效"
-    ]
-  },
-  {
-    "id": "高脚鹬",
-    "name": "高脚鹬",
-    "score": 302.2,
-    "attrs": [
-      "翼"
-    ],
-    "stats": {
-      "total": 534,
-      "hp": 94,
-      "atk": 63,
-      "matk": 63,
-      "def": 112,
-      "mdef": 87,
-      "spd": 115
-    },
-    "trait_name": "起飞加速",
-    "trait_desc": "本场战斗首次使用的技能获得迅捷。",
-    "trait_score": 35,
-    "trait_pts": {
-      "manual": 35
-    },
-    "skill_score": 135.1,
-    "combat_score": 132.1,
-    "combat_detail": {
-      "attack": 44.6,
-      "phys_atk": 36.8,
-      "spec_atk": 36.8,
-      "defense": 53.9,
-      "phys_def": 38.0,
-      "spec_def": 15.9,
-      "speed": 22.4,
-      "speed_line": 115,
-      "actual_spd": 254,
-      "attr_score": 11.2,
-      "type_atk": 7.8,
-      "type_def": 8.2,
-      "type_syn": 3
-    },
-    "boss_bonus": 0,
-    "recommended_skills": [
-      "吓退",
-      "啮合传递",
-      "水幕冲击",
-      "倾泻"
     ]
   },
   {
