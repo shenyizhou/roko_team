@@ -1,20 +1,16 @@
 #!/usr/bin/env python3
 """
-洛克王国世界 - 全技能量化评分系统 v3
+洛克王国世界 - 全技能量化评分系统 v4
 
 核心设计:
-1. 以"等效伤害值"(EDV)为统一度量: 1 EDV ≈ 1点伤害价值
-   基准: 3费60威 = 60/(3*20) = 1.0 EDV/费
-
-2. 纯状态技能的费用 = 机会成本:
-   cost_penalty = cost * 3 (1费≈3分, 参考同费攻击技能的基础伤害价值)
-
-3. 印记: 按全队总收益量化
-   湿润印记 = 全队耗能-1 → 12次使用×20EDV=240 → 80→归一化42
-   光合印记 = 每回合+1能 → 8回合×20EDV=160 → 53→归一化38
-
-4. 减益: ×0.6清除因子 (洗礼1费/除厄2费可清除)
+1. 输出技能: 纯性价比 power/(cost+2)，实际伤害归入精灵种族值计算
+2. 异常状态: EDV折算（期望回合×存活概率×贴现）
+   灼烧 2%/层,每回合减半,换人消失 → 8.7 EDV/层
+   中毒 3%/层,换人消失         → 20.2 EDV/层
+   中毒印记 3%/层,不消失       → 27.6 EDV/层
+3. 属性系数只乘伤害部分(威力+灼烧+中毒)，不乘印记/控制/强化
 """
+
 
 import json
 import re
@@ -50,39 +46,21 @@ def _find_int(pattern, text, default=0):
 # 量化常量
 # ============================================================
 
-# === v6: 统一实战价值评估体系 ===
-# 核心设计原则: 从底层统一三类技能平衡，无事后校准
-
-# --- 1. 统一费用惩罚函数 (所有技能共用)
-# v7优化: 减缓高费惩罚增长速度，避免技能归零
-# 再优化: 6-7费每费+2, 8费以上每费+1，避免高费技能完全废掉
-def fee_penalty(c):
-    if c <= 0: return 0
-    if c <= 1: return 1
-    if c <= 2: return 3
-    if c <= 3: return 6
-    if c <= 4: return 9
-    if c <= 5: return 12
-    if c <= 7: return 12 + (c - 5) * 2  # 每费+2(原3)
-    return 16 + (c - 7) * 1  # 7费以上每费+1(原2)
-
-# --- 2. 威力价值公式 (输出技能核心)
-POWER_COEFF = 2.5  # 每10威力基础分
-
+# --- 1. 输出技能性价比公式: power/(cost+2) ---
 def power_value(power, cost):
-    if power <= 80:
-        base = power / 10 * POWER_COEFF
-    elif power <= 120:
-        base = 8 * POWER_COEFF + (power - 80) * 0.5 / 10 * POWER_COEFF
-    else:
-        # v7优化: 威力超过120后，边际衰减从0.25调整为0.35，让高威力技能有区分度
-        base = 8 * POWER_COEFF + 40 * 0.5 / 10 * POWER_COEFF + (power - 120) * 0.35 / 10 * POWER_COEFF
-    cost_diff = abs(cost - 3)
-    eff_factor = max(0.30, 1.0 - cost_diff * 0.12)
-    return base * eff_factor
+    return power / (cost + 2)
 
-# v7优化: 提升威力上限，让高威力大招有区分度
-MAX_POWER = 35
+# 基准HP (用于%伤害折算EDV)
+AVG_HP = 300
+
+# --- 2. 异常状态 EDV 折算表 ---
+# 灼烧: 2%/层,每回合减半,换人消失,受属性克制
+# 期望回合 = Σ 0.5^(t-1) × 存活(t) × 0.85^(t-1) × 2%×HP
+BURN_EDV_PER_LAYER = 8.7
+# 中毒: 3%/层,不减半,换人消失,受属性克制
+POISON_EDV_PER_LAYER = 20.2
+# 中毒印记: 3%/层,不减半,不消失,不受属性克制
+POISON_MARK_EDV_PER_LAYER = 27.6
 
 # --- 3. 减伤价值公式 (防御技能核心)
 def defense_value(def_pct, cost):
@@ -119,7 +97,7 @@ def buff_value(atk_pct, spd_pct, def_pct):
 MARK = {
     "湿润": 38, "光合": 40, "龙噬": 32, "星陨": 12,
     "风起": 28, "蓄电": 24, "蓄势": 20,
-    "中毒印": 28, "棘刺": 24, "降灵": 24, "减速": 20, "攻击": 20,
+    "中毒印": POISON_MARK_EDV_PER_LAYER, "棘刺": 24, "降灵": 24, "减速": 20, "攻击": 20,
 }
 MARK_LAYER = 6
 
@@ -131,7 +109,7 @@ PRIORITY = lambda n: 7 + n * 5
 
 # --- 控制状态分
 # v7优化: 灼烧降低到每层2分（可换人清除，实际收益有限）
-DEBUFF_LAYER = {"中毒": 5, "萌化": 7, "冻结": 4, "灼烧": 2}
+DEBUFF_LAYER = {"中毒": POISON_EDV_PER_LAYER, "萌化": 7, "冻结": 4, "灼烧": BURN_EDV_PER_LAYER}
 CONTROL = {"眩晕": 18, "寄生": 12}
 
 # --- 成长
@@ -204,18 +182,20 @@ def score_skill(skill):
     pts = {}
 
     final = 0
+    damage_total = 0  # 受属性克制的伤害部分(威力+灼烧+中毒)
 
     # ========================
     # 1. 核心价值计算
     # ========================
 
-    # --- 1a. 输出技能: 威力核心 ---
+    # --- 1a. 输出技能: 纯性价比 ---
     if power > 0:
-        pv = min(power_value(power, cost), MAX_POWER)
+        pv = power_value(power, cost)
         pts["威力"] = round(pv, 1)
         final += pv
+        damage_total += pv
 
-        # v7优化: 0费攻击额外加分（从3分提升到5分）
+        # 0费攻击额外奖励（免费压血线）
         if cost == 0:
             pts["0费奖励"] = 5
             final += 5
@@ -324,7 +304,7 @@ def score_skill(skill):
     elif "驱散" in desc and "印记" in desc:
         pts["驱散印记"] = ANTI_MARK["驱散通用"]; final += ANTI_MARK["驱散通用"]
 
-    # 控制状态 (层式减益) — 萌化只计敌方/双方；中毒印记已含中毒不计重复
+    # 控制状态 (层式减益) — 灼烧/中毒受属性克制; 萌化只计敌方/双方；中毒印记已含中毒不计重复
     for kw, per_layer in DEBUFF_LAYER.items():
         if kw in desc:
             if kw == "萌化":
@@ -333,8 +313,11 @@ def score_skill(skill):
             if kw == "中毒" and ("中毒印记" in desc or "转化为印记" in desc):
                 continue  # 中毒印记已包含中毒效果，不重复计
             layers = max(1, _find_int(rf"(\d+)层{kw}", desc))
-            pts[f"{kw}({layers}层)"] = layers * per_layer
-            final += layers * per_layer
+            v = layers * per_layer
+            pts[f"{kw}({layers}层)"] = round(v, 1)
+            final += v
+            if kw in ("灼烧", "中毒"):
+                damage_total += v
     # 单次强控
     for kw, v in CONTROL.items():
         if kw in desc:
@@ -740,10 +723,9 @@ def score_skill(skill):
     # ========================
     if has_swift:
         if power > 0 or is_dynamic_attack:
-            # 攻击先手价值 = 基础16 + 威力关联(高威力先手收益更大)
             pv = power_value(power, cost)
-            swift = 16 + pv * 0.5  # 范围: 16 + 4~16 = 20~32
-            swift = max(16, min(26, round(swift, 1)))
+            swift = 16 + pv * 0.4
+            swift = max(16, min(28, round(swift, 1)))
         elif "减伤" in desc or ("减少" in desc and "伤害" in desc):
             # 防御先手价值 = 基础13 + 减伤关联(高减伤先手开盾更值)
             dv = defense_value(_find_int(r"减伤(\d+)%", desc) or _find_int(r"减少(\d+)%", desc) or 50, cost)
@@ -760,28 +742,24 @@ def score_skill(skill):
         pts["迅捷(攻)" if power > 0 else "迅捷"] = swift
         final += swift
 
-    # 属性系数修正 (攻击技能影响更大，包括动态威力技能)
+    # 属性系数：只作用在伤害部分(威力+灼烧+中毒)，不乘印记/控制/强化
     if power > 0 or is_dynamic_attack:
         pts["属性系数"] = round(tc, 2)
-        final = round(final * tc, 1)
+        utility = final - damage_total
+        final = round(damage_total * tc, 1) + utility
 
     # ========================
-    # 3. 费用惩罚 (仅非输出技能，防御技能惩罚更高)
+    # 3. 费用 (仅非输出技能扣机会成本)
     # ========================
-    # v7优化: 动态威力技能不施加费用惩罚
     if power == 0 and not is_dynamic_attack:
-        # v7优化: 0费状态技能增加基础分（体现战略价值）
         if cost == 0:
             pts["0费基础分"] = 4
             final += 4
-
-        penalty = fee_penalty(cost)
-        is_defense = "减伤" in desc or ("减少" in desc and "伤害" in desc)
-        if is_defense:
-            penalty = int(penalty * DEF_PENALTY_MULT)
-        if penalty > 0:
-            pts["费用惩罚"] = -penalty
-        final = max(0, final - penalty)
+        elif cost > 0:
+            # 每费 ≈ 4 EDV 机会成本 (简化线性替代旧非线性fee_penalty)
+            cost_penalty = cost * 4
+            pts["费用"] = -cost_penalty
+            final = max(0, final - cost_penalty)
 
     return round(final, 1), {
         "name": name, "element": element, "category": skill.get("category", ""),

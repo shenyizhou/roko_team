@@ -15,7 +15,7 @@ if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
 
 # 引入技能评分的威力公式，用于动态技能分计算
-from score_all_skills import power_value, MAX_POWER
+from score_all_skills import power_value
 
 # ===== 属性 × 种族 综合战斗能力评分 =====
 _ATTR_CHART = None
@@ -493,13 +493,50 @@ TRAIT_SCORES = {
     "毒腺": 40,        # 低能耗技能→敌方4层中毒
 }
 
-def score_trait(trait_name, desc=""):
+def score_trait(trait_name, desc="", team_skill_stats=None, pet_name=""):
     """
     特性评分：优先查手工评分表，未收录的返回0
-    返回 (score, {"manual": score})
+    team_skill_stats: 队伍技能统计，格式为 {"earth": N, "martial": N, "counter": N}
+    返回 (score, breakdown)
+
+    动态特性：
+    - 棋绮后: 根据地系/武系技能数量加分
+    - 瞌睡王: 根据应对技能数量加分
+    - 海豹船长: 根据应对技能数量加分
     """
-    score = TRAIT_SCORES.get(trait_name, 0)
-    return score, {"manual": score}
+    base_score = TRAIT_SCORES.get(trait_name, 0)
+    breakdown = {"base": base_score}
+
+    if team_skill_stats is None:
+        return base_score, breakdown
+
+    # 棋绮后动态加分: 每有1个地系/武系技能 +10分
+    if "棋绮后" in pet_name or "棋王后" in pet_name or "腾挪" in trait_name or "保卫" in trait_name:
+        earth_skills = team_skill_stats.get("earth", 0)
+        martial_skills = team_skill_stats.get("martial", 0)
+        dynamic_bonus = (earth_skills + martial_skills) * 10
+        breakdown["earth_skills"] = earth_skills
+        breakdown["martial_skills"] = martial_skills
+        breakdown["dynamic_bonus"] = dynamic_bonus
+        return base_score + dynamic_bonus, breakdown
+
+    # 瞌睡王动态加分: 每有1个应对技能 +8分
+    if "瞌睡王" in pet_name:
+        counter_skills = team_skill_stats.get("counter", 0)
+        dynamic_bonus = counter_skills * 8
+        breakdown["counter_skills"] = counter_skills
+        breakdown["dynamic_bonus"] = dynamic_bonus
+        return base_score + dynamic_bonus, breakdown
+
+    # 海豹船长动态加分: 每有1个应对技能 +8分
+    if "海豹船长" in pet_name:
+        counter_skills = team_skill_stats.get("counter", 0)
+        dynamic_bonus = counter_skills * 8
+        breakdown["counter_skills"] = counter_skills
+        breakdown["dynamic_bonus"] = dynamic_bonus
+        return base_score + dynamic_bonus, breakdown
+
+    return base_score, breakdown
 
 
 # ===== 动态技能威力计算 =====
@@ -558,12 +595,12 @@ def dynamic_skill_score(skill_name, pet_attrs, pet_stats):
         spd = pet_stats.get("spd", 80)
         has_stab = "翼" in pet_attrs
         p = flash_strike_power(spd, has_stab)
-        return round(min(power_value(p, 4), MAX_POWER), 1)
+        return round(power_value(p, 4), 1)
     if skill_name == "鸣沙陷阱":
         def_ = pet_stats.get("def", 80)
         has_stab = "地" in pet_attrs
         p = sand_trap_power(def_, has_stab)
-        return round(min(power_value(p, 4), MAX_POWER), 1)
+        return round(power_value(p, 4), 1)
     return None
 
 
@@ -603,7 +640,7 @@ def swift_strike_score(other_skills, skill_scores, has_hurricane=False):
     if total_power > 0 and dyn_cost > 0:
         value += power_value(total_power, dyn_cost) * 0.3
 
-    return round(min(value, MAX_POWER * 1.5), 1), dyn_cost
+    return round(value, 1), dyn_cost
 
 
 def score_pet(pet_name, pet_data, learnset_skills, rec_skills, skill_scores):
@@ -1067,6 +1104,9 @@ def main():
             score += 25
         return min(score, 100)
 
+    # 精灵黑名单：未出的精灵不参与组队
+    PET_BLACKLIST = {'格斗小六', '格斗小五'}
+
     def discover_system_pets(sys_def):
         """发现属于某体系的所有精灵，返回 [(name, fit_score), ...] 按匹配度排序
         注意：首领精灵不通过关键词自动发现，避免被错误归类到其他体系
@@ -1077,14 +1117,16 @@ def main():
                 continue
             if name in BOSS_NAMES:
                 continue  # 首领精灵不入体系池，只在center类型显式指定
+            if name in PET_BLACKLIST:
+                continue  # 黑名单精灵不参与体系池
             fit = score_system_fit(name, sys_def)
             if fit > 0:
                 result.append((name, fit))
         result.sort(key=lambda x: (-x[1], -score_map.get(x[0], 0)))
         return result
 
-    def _attr_ok(members, max_same=2):
-        """检查同属性不超过max_same个"""
+    def _attr_ok(members, max_same=6):
+        """同属性限制：纯体系队大幅放宽，允许6只同核心属性"""
         ac = {}
         for m in members:
             for a in get_attrs(m):
@@ -1093,14 +1135,45 @@ def main():
                 ac[a] = ac.get(a, 0) + 1
         return True
 
+    def calc_team_skill_stats(members):
+        """计算队伍技能统计：地系技能数、武系技能数、应对技能数"""
+        earth_count = 0
+        martial_count = 0
+        counter_count = 0
+        for m in members:
+            rec = recommended.get(m, [])
+            for sk in rec:
+                sk_element = sk.get("element", "") if isinstance(sk, dict) else ""
+                sk_desc = sk.get("desc", "") if isinstance(sk, dict) else ""
+                sk_name = sk.get("name", "") if isinstance(sk, dict) else ""
+                if sk_element == "地":
+                    earth_count += 1
+                elif sk_element == "武":
+                    martial_count += 1
+                if "应对" in sk_name or "应对" in sk_desc:
+                    counter_count += 1
+        return {
+            "earth": earth_count,
+            "martial": martial_count,
+            "counter": counter_count,
+        }
+
     def eval_team(members, synergy_bonus=0, sys_def=None):
-        """评估队伍质量"""
+        """评估队伍质量：包含动态特性加分和体系匹配度奖励"""
         if len(members) != 6:
             return -9999, {}
-        if not _attr_ok(members, 3):
+        if not _attr_ok(members, 6):  # 纯体系队大幅放宽属性限制
             return -9999, {}
 
         base_score = sum(score_map.get(m, 0) for m in members)
+        # 体系匹配度奖励：体系是灵魂！高匹配度精灵大幅加分
+        if sys_def:
+            for m in members:
+                fit = score_system_fit(m, sys_def)
+                if fit >= 85:
+                    base_score += 350  # 核心体系精灵超大奖励
+                elif fit >= 50:
+                    base_score += 180  # 高匹配精灵大奖励
         def_count = sum(1 for m in members if has_defense_skill(m))
         utl_count = sum(1 for m in members if has_utility_skill(m))
         all_attrs = set()
@@ -1108,6 +1181,18 @@ def main():
         for m in members:
             all_attrs.update(get_attrs(m))
             spd_list.append(pets.get(m, {}).get("stats", {}).get("spd", 0))
+
+        # 动态特性加分: 根据队伍技能情况重新计算
+        team_skill_stats = calc_team_skill_stats(members)
+        dynamic_trait_bonus = 0
+        for m in members:
+            trait = pets.get(m, {}).get("trait", {})
+            t_score, _ = score_trait(
+                trait.get("name", ""), trait.get("desc", ""),
+                team_skill_stats, m
+            )
+            base = TRAIT_SCORES.get(trait.get("name", ""), 0)
+            dynamic_trait_bonus += max(t_score - base, 0)
 
         penalty = 0
         if def_count < 3:
@@ -1147,69 +1232,208 @@ def main():
         # ── 体系纯净加分 ──
         purity_bonus = 0
         if sys_def:
-            sys_fit_count = sum(1 for m in members
-                               if score_system_fit(m, sys_def) >= 50)
-            if sys_fit_count >= 5:
-                purity_bonus += 25
-            elif sys_fit_count >= 4:
-                purity_bonus += 15
-            elif sys_fit_count >= 3:
-                purity_bonus += 8
+            # 体系纯净度是体系的灵魂！纯体系队必须碾压混合队
+            core_fit_count = sum(1 for m in members
+                                 if score_system_fit(m, sys_def) >= 85)
+            high_fit_count = sum(1 for m in members
+                                 if score_system_fit(m, sys_def) >= 50)
+            if core_fit_count >= 6:  # 6只核心体系精灵
+                purity_bonus += 600
+            elif core_fit_count >= 5:
+                purity_bonus += 500
+            elif high_fit_count >= 6:  # 6只高匹配体系精灵
+                purity_bonus += 400
+            elif high_fit_count >= 5:
+                purity_bonus += 300
+            elif high_fit_count >= 4:
+                purity_bonus += 150
+            elif high_fit_count >= 3:
+                purity_bonus += 80
 
-        # ── 首领队/中心队：冗余战术 + 联防面加分 ──
+        # ── 进攻冗余 + 控制战术 + 联防面加分 ──
         redundancy_bonus = 0
+        control_bonus = 0
         coverage_bonus = 0
-        if sys_def and sys_def["type"] == "center":
-            # 冗余战术：多只防御精灵
-            if def_count >= 2:
+
+        # --- 战术一：定向施压（同属性输出集中度） ---
+        element_counts = {}
+        for m in members:
+            rec = recommended.get(m, [])
+            for sk in rec:
+                elem = sk.get("element", "") if isinstance(sk, dict) else ""
+                if elem and sk.get("power", 0) >= 70:
+                    element_counts[elem] = element_counts.get(elem, 0) + 1
+
+        if element_counts:
+            max_element_count = max(element_counts.values())
+            if max_element_count >= 6:
+                redundancy_bonus += 100
+            elif max_element_count >= 5:
+                redundancy_bonus += 70
+            elif max_element_count >= 4:
+                redundancy_bonus += 40
+            elif max_element_count >= 3:
                 redundancy_bonus += 20
-            # 冗余战术：多只高速精灵 (基础速度 > 120)
+
+        # --- 战术二：控制战术（让counter失能） ---
+        # 统计各类控制技能的数量和强度
+        freeze_count = 0    # 冻结：无法下场清除
+        moe_count = 0       # 萌化：无法下场清除
+        energy_drain_count = 0  # 吸能/阻止回能
+        stun_count = 0      # 眩晕/打断
+
+        for m in members:
+            rec = recommended.get(m, [])
+            for sk in rec:
+                desc = sk.get("desc", "") if isinstance(sk, dict) else ""
+                sk_name = sk.get("name", "") if isinstance(sk, dict) else ""
+
+                if "冻结" in desc or "冰冻" in desc or "暴风雪" in sk_name or "滚雪球" in sk_name:
+                    freeze_count += 1
+                if "萌化" in desc or "甜心" in sk_name:
+                    moe_count += 1
+                if "失去" in desc and "能量" in desc or "勾魂" in sk_name or "惊吓盒子" in sk_name:
+                    energy_drain_count += 1
+                if "眩晕" in desc or "打断" in desc or "地刺" in sk_name:
+                    stun_count += 1
+
+        # 控制技能加分：多类型控制组合效果更好
+        total_control = freeze_count + moe_count + energy_drain_count + stun_count
+        control_types = sum(1 for x in [freeze_count, moe_count, energy_drain_count, stun_count] if x > 0)
+        if control_types >= 3:  # 3种以上控制类型 = 立体控制
+            control_bonus += 60
+        elif control_types >= 2:  # 2种控制类型
+            control_bonus += 30
+        if total_control >= 6:
+            control_bonus += 40
+        elif total_control >= 4:
+            control_bonus += 20
+
+        # --- 战术三：炮台战术（多炮台协同） ---
+        cannon_bonus = 0
+        # 炮台检测：高速(>100) + 高技能输出(>130) 或 有强化技能 + 高输出(>110)
+        cannons = []
+        for m in members:
+            spd = pets.get(m, {}).get("stats", {}).get("spd", 0)
+            sk_list = recommended.get(m, [])
+            skill_total = sum(skill_scores.get(sk.get("name", ""), 0) for sk in sk_list)
+            has_buff = any(
+                "物攻+" in sk.get("desc", "") or "魔攻+" in sk.get("desc", "")
+                for sk in sk_list
+            )
+            # 高速清场手类型：速度快 + 输出高
+            is_sweeper = spd >= 100 and skill_total >= 130
+            # 强化炮台类型：有强化技能 + 输出高
+            is_setup = has_buff and skill_total >= 130
+            is_cannon = is_sweeper or is_setup
+            if is_cannon:
+                cannons.append(m)
+
+        # 多炮台加分：2只炮台互相创造登场窗口
+        if len(cannons) >= 2:
+            # 检查炮台之间是否互为冗余（覆盖对方的counter）
+            cannon_attrs = [get_attrs(c) for c in cannons]
+            shared_counter = False
+            for i, a1 in enumerate(cannon_attrs):
+                for j, a2 in enumerate(cannon_attrs):
+                    if i >= j: continue
+                    # 不同属性组合 = 能覆盖不同的counter
+                    if set(a1) != set(a2):
+                        shared_counter = True
+                        break
+            if shared_counter:
+                cannon_bonus += 60  # 战术级加分
+            else:
+                cannon_bonus += 30
+        elif len(cannons) >= 1:
+            cannon_bonus += 15  # 单炮台基础分
+
+        # 联防面：属性覆盖广度（但不再是越高越好）
+        if len(all_attrs) >= 8:
+            coverage_bonus += 15
+        elif len(all_attrs) >= 6:
+            coverage_bonus += 10
+
+        # 中心型体系：额外防御冗余加分
+        if sys_def and sys_def["type"] == "center":
+            if def_count >= 2:
+                redundancy_bonus += 15
             high_spd = sum(1 for s in spd_list if s > 120)
             if high_spd >= 2:
-                redundancy_bonus += 15
-            # 联防面：属性覆盖广度
-            if len(all_attrs) >= 8:
-                coverage_bonus += 25
-            elif len(all_attrs) >= 7:
-                coverage_bonus += 15
+                redundancy_bonus += 10
 
-        total = (base_score + synergy_bonus + engine_bonus + purity_bonus
-                + redundancy_bonus + coverage_bonus + penalty)
+        total = (base_score + dynamic_trait_bonus + synergy_bonus
+                + engine_bonus + purity_bonus + redundancy_bonus + control_bonus
+                + cannon_bonus + coverage_bonus + penalty)
         return total, {
-            "base": base_score, "synergy": synergy_bonus, "penalty": penalty,
+            "base": base_score, "trait_bonus": dynamic_trait_bonus,
+            "synergy": synergy_bonus, "penalty": penalty,
             "purity": purity_bonus, "redundancy": redundancy_bonus,
-            "coverage": coverage_bonus,
+            "control": control_bonus, "cannon": cannon_bonus, "coverage": coverage_bonus,
             "defense": def_count, "utility": utl_count,
             "attr_coverage": len(all_attrs),
         }
 
-    def greedy_fill_team(core, bonus, sys_def=None, candidate_pool=None):
-        """贪心补位：从核心开始，逐个填充到6人"""
+    def greedy_fill_team(core, bonus, sys_def=None, candidate_pool=None,
+                        system_pool=None, force_pure_system=False):
+        """贪心补位：从核心开始，逐个填充到6人
+        force_pure_system: 强制6只都必须是体系精灵，不使用通用池补位
+        """
         if candidate_pool is None:
             candidate_pool = noboss_pool
-        # 同属性最多3个
-        max_attr = 3
+        # 纯体系队大幅放宽属性限制
+        max_attr = 6
         current = list(core)
-        for _ in range(6 - len(core)):
-            best_fill_score = -9999
-            best_fill = None
-            for cand in candidate_pool:
-                if cand in current:
-                    continue
-                trial = current + [cand]
-                if not _attr_ok(trial, max_attr):
-                    continue
-                if len(trial) < 6:
-                    fill_score = score_map.get(cand, 0)
+
+        # 填充策略：优先用体系池填充，体系匹配度给大权重加成
+        if system_pool:
+            for _ in range(6 - len(current)):
+                best_fill_score = -9999
+                best_fill = None
+                for cand in system_pool:
+                    if cand in current:
+                        continue
+                    trial = current + [cand]
+                    if not _attr_ok(trial, max_attr):
+                        continue
+                    if len(trial) < 6:
+                        # 体系精灵优先：基础分 + 体系匹配分(大权重) + 体系匹配度平方奖励
+                        fit = score_system_fit(cand, sys_def) if sys_def else 0
+                        # fit=85的核心体系精灵比fit=35的高匹配度精灵优先
+                        fill_score = score_map.get(cand, 0) + fit * 2.0 + (fit * fit) * 0.02
+                    else:
+                        fill_score, _ = eval_team(trial, bonus, sys_def)
+                    if fill_score > best_fill_score:
+                        best_fill_score = fill_score
+                        best_fill = cand
+                if best_fill:
+                    current.append(best_fill)
                 else:
-                    fill_score, _ = eval_team(trial, bonus, sys_def)
-                if fill_score > best_fill_score:
-                    best_fill_score = fill_score
-                    best_fill = cand
-            if best_fill:
-                current.append(best_fill)
-            else:
-                break
+                    break
+
+        # 如果不强制纯体系，且体系池不够填充到6只，再用通用池补位
+        if not force_pure_system:
+            while len(current) < 6:
+                best_fill_score = -9999
+                best_fill = None
+                for cand in candidate_pool:
+                    if cand in current:
+                        continue
+                    trial = current + [cand]
+                    if not _attr_ok(trial, max_attr):
+                        continue
+                    if len(trial) < 6:
+                        fill_score = score_map.get(cand, 0)
+                    else:
+                        fill_score, _ = eval_team(trial, bonus, sys_def)
+                    if fill_score > best_fill_score:
+                        best_fill_score = fill_score
+                        best_fill = cand
+                if best_fill:
+                    current.append(best_fill)
+                else:
+                    break
+
         if len(current) == 6:
             total, info = eval_team(current, bonus, sys_def)
             return current, total, info
@@ -1237,34 +1461,42 @@ def main():
         best_total = -9999
         best_info = None
 
-        # 策略：中心型体系必须包含核心精灵，非中心型从体系池起搜
+        # 策略：优先尝试6只全体系精灵，再逐步扩大候选池
         if sys_def["type"] == "center":
-            # 中心型：强制包含核心精灵
+            # 中心型：强制包含核心精灵，强制6只都是体系精灵
             for cp in sys_def["center_pets"]:
                 if cp not in score_map:
                     continue
-                for core_size in [3, 2]:
+                # 策略1: 核心 + 体系池，纯体系队
+                for core_size in [5, 4, 3, 2]:
                     core = [cp] + [n for n in sys_pool[:core_size] if n != cp]
-                    team, total, info = greedy_fill_team(core, bonus, sys_def, full_pool)
+                    team, total, info = greedy_fill_team(
+                        core, bonus, sys_def, full_pool, sys_pool, True
+                    )
                     if team and total > best_total:
                         best_team, best_total, best_info = team, total, info
         elif sys_def["type"] == "weather":
-            # 天气体系：先搜天气手
+            # 天气体系：先搜天气手，强制6只都是体系精灵
             weather_skill = sys_def["weather_skill"]
             weather_setters = [n for n in full_pool if has_skill_match(n, [weather_skill])]
             for ws in weather_setters[:3]:
-                for core_size in [3, 2]:
+                # 策略1: 天气手 + 体系池，纯体系队
+                for core_size in [5, 4, 3, 2]:
                     core = [ws] + [n for n in sys_pool[:core_size] if n != ws]
-                    team, total, info = greedy_fill_team(core, bonus, sys_def, full_pool)
+                    team, total, info = greedy_fill_team(
+                        core, bonus, sys_def, full_pool, sys_pool, True
+                    )
                     if team and total > best_total:
                         best_team, best_total, best_info = team, total, info
         else:
-            # 机制体系：从体系池取3~4个
-            for core_size in [4, 3]:
+            # 机制体系：从体系池取核心，强制6只都是体系精灵
+            for core_size in [5, 4, 3]:
                 core = sys_pool[:core_size]
                 if not core:
                     continue
-                team, total, info = greedy_fill_team(core, bonus, sys_def, full_pool)
+                team, total, info = greedy_fill_team(
+                    core, bonus, sys_def, full_pool, sys_pool, True
+                )
                 if team and total > best_total:
                     best_team, best_total, best_info = team, total, info
 
@@ -1275,7 +1507,9 @@ def main():
                     if cp not in score_map:
                         continue
                     core = [cp]
-                    best_team, best_total, best_info = greedy_fill_team(core, bonus, sys_def, full_pool)
+                    best_team, best_total, best_info = greedy_fill_team(
+                        core, bonus, sys_def, full_pool, sys_pool, True
+                    )
                     if best_team:
                         break
             if best_team is None:
@@ -1346,11 +1580,15 @@ def main():
 
         purity_str = f" 纯净=+{info.get('purity', 0)}" if info.get('purity', 0) else ""
         redundancy_str = f" 冗余=+{info.get('redundancy', 0)}" if info.get('redundancy', 0) else ""
+        control_str = f" 控制=+{info.get('control', 0)}" if info.get('control', 0) else ""
+        cannon_str = f" 炮台=+{info.get('cannon', 0)}" if info.get('cannon', 0) else ""
         coverage_str = f" 联防=+{info.get('coverage', 0)}" if info.get('coverage', 0) else ""
+        trait_str = f" 特性=+{info.get('trait_bonus', 0):.0f}" if info.get('trait_bonus', 0) else ""
         print(f"\n{'─' * 90}")
         print(f"  [{rank:>2}] {sys_def['name']} — {sys_def['desc']}")
-        print(f"      总={st['total']:.1f}  基础={info['base']:.0f}  协同=+{info['synergy']}"
-              f"{purity_str}{redundancy_str}{coverage_str}"
+        print(f"      总={st['total']:.1f}  基础={info['base']:.0f}"
+              f"{trait_str}  协同=+{info['synergy']}"
+              f"{purity_str}{redundancy_str}{control_str}{cannon_str}{coverage_str}"
               f"  罚={info.get('penalty', 0):.0f}"
               f"  防{info['defense']} 辅{info['utility']} 属{info['attr_coverage']}")
         for n in team:
@@ -1371,6 +1609,8 @@ def main():
 
     # ─── 保存结果 ───
     # 保存所有体系队伍
+    from models.pet_scorer import PetScorer
+    _scorer = PetScorer()
     all_teams_data = []
     for st in all_system_teams:
         sys_def = st["system"]
@@ -1381,10 +1621,11 @@ def main():
                 "attrs": get_attrs(n),
                 "trait": pet_scores[n]["trait_name"] if n in pet_scores else "",
                 "system_fit": score_system_fit(n, sys_def),
-                "recommended_skills": [sk["name"] for sk in st["skills"].get(n, [])],
+                "recommended_skills": [sk["name"] for sk in (_scorer.recommend_skills(n) or [])],
             }
         all_teams_data.append({
             "system": sys_def["name"],
+            "type": sys_def["type"],
             "system_desc": sys_def["desc"],
             "members": st["members"],
             "total_score": st["total"],
@@ -1416,8 +1657,9 @@ def main():
         team_skills = st["skills"]
 
         tlabel = type_labels.get(sys_def["type"], "首领化队伍")
+        trait_str = f"  特性=+{info.get('trait_bonus', 0):.0f}" if info.get('trait_bonus', 0) else ""
         txt_lines.append(f"【{tlabel}】{sys_def['name']} — {sys_def['desc']}")
-        txt_lines.append(f"  总分: {st['total']:.1f}  基础={info['base']:.0f}  "
+        txt_lines.append(f"  总分: {st['total']:.1f}  基础={info['base']:.0f}{trait_str}  "
                         f"协同=+{info['synergy']}  体系匹配={st['sys_fit']:.0f}  "
                         f"罚={info['penalty']:.0f}")
         txt_lines.append(f"  防御:{info['defense']}/6  功能:{info['utility']}/6  "

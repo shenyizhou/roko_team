@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>洛克王国世界 · 精灵分析</title>
+<style>
+:root {
+  --bg: #0a0e14;
+  --card: #141b22;
+  --border: #21262d;
+  --text: #c9d1d9;
+  --text2: #6e7681;
+  --gold: #d4a853;
+  --gold2: #f0c060;
+  --red: #f85149;
+  --green: #3fb950;
+  --blue: #58a6ff;
+  --purple: #bc8cff;
+  --orange: #d2991d;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { font-size: 15px; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Noto Sans SC', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  min-height: 100dvh;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Header ─── */
+header {
+  position: sticky; top:0; z-index:100;
+  background: linear-gradient(180deg, #151d2a 0%, #0f1620 100%);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 16px 10px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+header h1 {
+  font-size: 1.1rem; font-weight: 800;
+  letter-spacing: 0.5px;
+  background: linear-gradient(135deg, #f5d78c, var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+header .subtitle { font-size: 0.7rem; color: var(--text2); margin-top: 2px; }
+
+/* ─── Tabs ─── */
+.tabs {
+  display: flex; background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 57px; z-index: 99;
+}
+.tab {
+  flex: 1; text-align: center; padding: 13px 0 11px;
+  font-size: 0.9rem; font-weight: 600; color: var(--text2);
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+.tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+/* ─── Content ─── */
+.content { padding: 0 12px 32px; }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* ─── Filter pills ─── */
+.filter-row {
+  position: sticky; top: 104px; z-index: 98;
+  background: var(--bg); padding: 10px 0 6px;
+  display: flex; gap: 6px; flex-wrap: wrap;
+}
+.pill {
+  font-size: 0.72rem; padding: 5px 12px; border-radius: 14px;
+  border: 1px solid var(--border); color: var(--text2);
+  background: transparent; font-weight: 500;
+}
+.pill.active { background: var(--gold); color: #0a0e14; border-color: var(--gold); font-weight: 700; }
+
+/* ─── Search ─── */
+.search-row {
+  position: sticky; top: 104px; z-index: 98;
+  background: var(--bg); padding: 8px 0 4px;
+}
+.search-input {
+  width: 100%; padding: 10px 14px;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 10px; color: var(--text);
+  font-size: 0.9rem; outline: none; -webkit-appearance: none;
+}
+.search-input:focus { border-color: var(--gold); }
+.search-input::placeholder { color: var(--text2); }
+
+/* ─── Pet card (rankings) ─── */
+.pet-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 12px 14px;
+  margin-bottom: 8px;
+  transition: border-color 0.15s;
+}
+.pet-card:active { background: #1a2332; }
+.pet-card.expanded { border-color: var(--gold); }
+.pet-row {
+  display: flex; align-items: center; gap: 10px;
+}
+.pet-rank {
+  font-size: 0.82rem; font-weight: 700; color: var(--text2);
+  min-width: 24px; text-align: center;
+}
+.rank-1 { color: var(--gold2); font-size: 1rem; }
+.rank-2 { color: #c0c8d0; }
+.rank-3 { color: #cd7f32; }
+.pet-info { flex:1; min-width:0; }
+.pet-name {
+  font-size: 0.92rem; font-weight: 600;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.pet-name .boss { font-size: 0.62rem; color: var(--orange); font-weight: 500; }
+.pet-attrs { display: flex; gap: 4px; margin-top: 3px; }
+.attr-tag {
+  font-size: 0.6rem; padding: 1px 6px; border-radius: 8px;
+  font-weight: 600; letter-spacing: 0.3px;
+}
+.pet-score {
+  font-size: 1.05rem; font-weight: 800;
+  min-width: 48px; text-align: right;
+}
+.sc-S { color: var(--gold2); }
+.sc-A { color: #f0883e; }
+.sc-B { color: var(--blue); }
+.sc-C { color: var(--text2); }
+
+/* Expanded detail */
+.pet-body { display: none; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); }
+.pet-card.expanded .pet-body { display: block; }
+.score-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 5px; font-size: 0.73rem;
+}
+.score-grid .item {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 5px 8px; background: rgba(255,255,255,0.025);
+  border-radius: 6px;
+}
+.score-grid .label { color: var(--text2); }
+.score-grid .value { font-weight: 700; }
+.stat-row { display: flex; align-items: center; gap: 5px; margin: 2px 0; }
+.stat-row .sl { font-size: 0.62rem; color: var(--text2); width: 30px; text-align: right; }
+.stat-bar { flex:1; height: 5px; background: rgba(255,255,255,0.04); border-radius: 3px; overflow: hidden; }
+.stat-bar .fill { height: 100%; border-radius: 3px; }
+.fill-hp  { background: #3fb950; } .fill-atk  { background: #f85149; }
+.fill-matk{ background: #bc8cff; } .fill-def  { background: #d2991d; }
+.fill-mdef{ background: #58a6ff; } .fill-spd  { background: #d4a853; }
+.stat-row .sv { font-size: 0.65rem; width: 28px; text-align: right; }
+.skill-chips { margin-top: 6px; }
+.skill-chips .tt { font-size: 0.65rem; color: var(--text2); display: block; margin-bottom: 3px; }
+.chip {
+  display: inline-block; font-size: 0.68rem; padding: 2px 8px;
+  margin: 1px 3px 1px 0; border-radius: 8px;
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.06);
+}
+.trait-desc { font-size: 0.7rem; color: var(--text2); margin-top: 5px; line-height: 1.45; }
+
+/* ─── Team card ─── */
+.team-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px; margin-bottom: 10px; overflow: hidden;
+}
+.team-head {
+  padding: 14px 14px 12px;
+  display: flex; justify-content: space-between; align-items: flex-start;
+}
+.team-head:active { background: #1a2332; }
+.team-info { flex:1; min-width:0; }
+.team-type-badge {
+  font-size: 0.62rem; padding: 2px 8px; border-radius: 8px;
+  font-weight: 700; margin-right: 5px; letter-spacing: 0.5px;
+}
+.type-mechanic { background: rgba(188,140,255,0.18); color: #bc8cff; }
+.type-weather  { background: rgba(88,166,255,0.18); color: #58a6ff; }
+.type-center   { background: rgba(240,136,62,0.18); color: #f0883e; }
+.team-name { font-size: 0.92rem; font-weight: 700; }
+.team-desc { font-size: 0.68rem; color: var(--text2); margin-top: 2px; }
+.team-meta {
+  display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px;
+}
+.team-meta span { font-size: 0.68rem; color: var(--text2); }
+.team-meta .good { color: var(--green); }
+.team-total {
+  font-size: 1.25rem; font-weight: 800;
+  text-align: right; line-height: 1;
+}
+.team-total small { font-size: 0.6rem; color: var(--text2); font-weight: 400; }
+.score-bar-wrap {
+  height: 4px; background: rgba(255,255,255,0.04);
+  border-radius: 2px; margin: 8px 14px 0; overflow: hidden;
+}
+.score-bar-wrap .bar {
+  height: 100%; border-radius: 2px;
+  background: linear-gradient(90deg, var(--blue), var(--purple), var(--gold2));
+  transition: width 0.3s;
+}
+
+.team-body { display: none; padding: 0 14px 14px; border-top: 1px solid var(--border); }
+.team-card.expanded .team-body { display: block; }
+.tmember {
+  display: flex; align-items: center; gap: 8px;
+  padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+.tmember:last-child { border-bottom: none; }
+.tmember .tm-n { font-size: 0.82rem; font-weight: 600; flex:1; min-width:0; }
+.tmember .tm-s { font-size: 0.78rem; font-weight: 700; min-width: 44px; text-align: right; }
+.tm-core { font-size: 0.7rem; color: var(--gold2); font-weight: 700; }
+.tm-sys  { font-size: 0.7rem; color: var(--green); font-weight: 600; }
+.tm-fill { font-size: 0.7rem; color: var(--text2); }
+.tm-detail { font-size: 0.68rem; color: var(--text2); padding: 0 0 4px 24px; }
+
+.expand-arrow {
+  font-size: 0.65rem; color: var(--text2);
+  transition: transform 0.2s; margin-left: 4px; flex-shrink: 0;
+}
+.expanded .expand-arrow { transform: rotate(180deg); }
+
+/* ─── Loading ─── */
+.loading {
+  padding: 40px 0; text-align: center; color: var(--text2);
+}
+.spinner {
+  width: 28px; height: 28px; margin: 0 auto 10px;
+  border: 3px solid var(--border); border-top-color: var(--gold);
+  border-radius: 50%; animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ─── Footer ─── */
+footer {
+  text-align: center; padding: 24px 16px;
+  font-size: 0.68rem; color: var(--text2);
+  border-top: 1px solid var(--border);
+}
+
+/* ─── Error ─── */
+.error-box {
+  margin: 20px; padding: 20px; text-align: center;
+  background: rgba(248,81,73,0.08); border: 1px solid rgba(248,81,73,0.2);
+  border-radius: 12px;
+}
+.error-box h3 { color: var(--red); font-size: 0.95rem; margin-bottom: 6px; }
+.error-box p { font-size: 0.75rem; color: var(--text2); }
+.error-box code {
+  display: block; margin-top: 8px; padding: 8px 12px;
+  background: rgba(0,0,0,0.3); border-radius: 8px;
+  font-size: 0.75rem; color: var(--green);
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>洛克王国世界 · 精灵分析</h1>
+  <div class="subtitle">精灵排名 & 体系队伍</div>
+</header>
+
+<nav class="tabs">
+  <div class="tab active" onclick="switchTab('teams')">体系队伍</div>
+  <div class="tab" onclick="switchTab('rankings')">精灵排名</div>
+</nav>
+
+<main class="content">
+  <section id="tab-teams" class="tab-content active">
+    <div class="filter-row" id="teamFilters"></div>
+    <div id="teamList"><div class="loading"><div class="spinner"></div>加载中...</div></div>
+  </section>
+  <section id="tab-rankings" class="tab-content">
+    <div class="search-row">
+      <input type="text" class="search-input" id="petSearch" placeholder="搜索精灵名称 / 属性 / 特性..." autocomplete="off">
+    </div>
+    <div id="petList"><div class="loading"><div class="spinner"></div>加载中...</div></div>
+  </section>
+</main>
+
+<footer>洛克王国世界 · 量化分析 · 2025</footer>
+
+<script>
+// ════════════════════════════════════
+//  Data
+// ════════════════════════════════════
+let teamsData = [];
+let rankingsData = [];
+let scoreMap = {};
+
+async function init() {
+  try {
+    const [tRes, rRes] = await Promise.all([
+      fetch('../data/optimal_team.json'),
+      fetch('../data/all_pet_rankings.json')
+    ]);
+    if (!tRes.ok || !rRes.ok) throw new Error('HTTP ' + (tRes.status || rRes.status));
+    teamsData = await tRes.json();
+    rankingsData = await rRes.json();
+
+    for (const r of rankingsData) {
+      scoreMap[r.name] = r.score;
+      if (r.merged_forms) for (const f of r.merged_forms) scoreMap[f] = r.score;
+    }
+
+    renderTeams();
+    renderRankings();
+  } catch(e) {
+    const err = `<div class="error-box">
+      <h3>数据加载失败</h3>
+      <p>请先启动本地服务器</p>
+      <code>cd roko_team && python3 -m http.server 8080</code>
+      <p style="margin-top:8px;font-size:0.7rem">然后访问 http://localhost:8080/web/</p>
+    </div>`;
+    document.getElementById('teamList').innerHTML = err;
+    document.getElementById('petList').innerHTML = err;
+    console.error(e);
+  }
+}
+
+// ════════════════════════════════════
+//  Tab switching
+// ════════════════════════════════════
+function switchTab(name) {
+  document.querySelectorAll('.tab').forEach((t,i) => {
+    t.classList.toggle('active', t.textContent.includes(name === 'teams' ? '队伍' : '排名'));
+  });
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+}
+
+// ════════════════════════════════════
+//  Attribute helpers
+// ════════════════════════════════════
+const A = {
+  '火':'#f0883e','水':'#58a6ff','草':'#3fb950','冰':'#79c0ff',
+  '电':'#d2a830','一般':'#c9d1d9','武':'#f85149','毒':'#bc8cff',
+  '地':'#d2991d','翼':'#a5d6ff','虫':'#7ee787','幽灵':'#8b949e',
+  '恶':'#6e7681','龙':'#f0883e','幻':'#ff7b9c','机械':'#a5a5a5',
+  '光':'#f0e68c','萌':'#ffa5c3','恶魔':'#6e7681',
+};
+function tag(a) {
+  const c = A[a] || '#888';
+  return `<span class="attr-tag" style="background:${c}22;color:${c}">${a}</span>`;
+}
+function scC(s) {
+  return s>=430?'sc-S':s>=380?'sc-A':s>=320?'sc-B':'sc-C';
+}
+
+// ════════════════════════════════════
+//  Rankings
+// ════════════════════════════════════
+let petAllHTML = '';
+
+function renderRankings() {
+  const list = document.getElementById('petList');
+  const search = document.getElementById('petSearch');
+
+  // Pre-render all cards
+  let cards = [];
+  rankingsData.forEach((r, i) => {
+    const rc = i<3 ? `rank-${i+1}` : '';
+    const boss = /首领|陛下/.test(r.name);
+    cards.push({
+      name: r.name,
+      html: `<div class="pet-card" onclick="this.classList.toggle('expanded')">
+  <div class="pet-row">
+    <span class="pet-rank ${rc}">${i+1}</span>
+    <div class="pet-info">
+      <div class="pet-name">${r.name}${boss?' <span class="boss">首领</span>':''}</div>
+      <div class="pet-attrs">${(r.attrs||[]).map(tag).join('')}</div>
+    </div>
+    <span class="pet-score ${scC(r.score)}">${r.score.toFixed(1)}</span>
+  </div>
+  <div class="pet-body">
+    <div class="score-grid">
+      <div class="item"><span class="label">特性</span><span class="value">${r.trait_name||'—'}</span></div>
+      <div class="item"><span class="label">特性分</span><span class="value" style="color:var(--gold)">${r.trait_score||0}</span></div>
+      <div class="item"><span class="label">技能分</span><span class="value">${(r.skill_score||0).toFixed(1)}</span></div>
+      <div class="item"><span class="label">战斗分</span><span class="value">${(r.combat_score||0).toFixed(1)}</span></div>
+    </div>
+    ${r.stats ? statBars(r.stats) : ''}
+    ${r.recommended_skills && r.recommended_skills.length ? `
+    <div class="skill-chips"><span class="tt">推荐技能</span>
+      ${r.recommended_skills.slice(0,5).map(s=>`<span class="chip">${s}</span>`).join('')}
+    </div>` : ''}
+    ${r.trait_desc ? `<div class="trait-desc">${r.trait_desc}</div>` : ''}
+  </div>
+</div>`
+    });
+  });
+
+  function filter(q) {
+    if (!q) {
+      list.innerHTML = cards.map(c => c.html).join('');
+      return;
+    }
+    const ql = q.toLowerCase();
+    list.innerHTML = cards.filter(c => {
+      if (c.name.toLowerCase().includes(ql)) return true;
+      return false;
+    }).map(c => c.html).join('') || '<p style="padding:30px;color:var(--text2);text-align:center">无匹配结果</p>';
+  }
+
+  search.addEventListener('input', () => filter(search.value));
+  filter('');
+}
+
+function statBars(stats) {
+  const max = 180;
+  const bars = [
+    ['HP','hp','fill-hp'],['物攻','atk','fill-atk'],['魔攻','matk','fill-matk'],
+    ['物防','def','fill-def'],['魔防','mdef','fill-mdef'],['速度','spd','fill-spd']
+  ];
+  let h = '<div style="margin-top:8px">';
+  for (const [l,k,c] of bars) {
+    const v = stats[k]||0;
+    h += `<div class="stat-row">
+      <span class="sl">${l}</span><div class="stat-bar"><div class="fill ${c}" style="width:${Math.min(v/max*100,100)}%"></div></div>
+      <span class="sv">${v}</span></div>`;
+  }
+  return h + '</div>';
+}
+
+// ════════════════════════════════════
+//  Teams
+// ════════════════════════════════════
+const TL = { mechanic:'机制体系', weather:'天气体系', center:'首领化' };
+
+function renderTeams() {
+  const filters = document.getElementById('teamFilters');
+  const types = [...new Set(teamsData.map(t => t.type||'center'))];
+  filters.innerHTML = `<span class="pill active" onclick="filterTeams('all',this)">全部</span>` +
+    types.map(ty => `<span class="pill" onclick="filterTeams('${ty}',this)">${TL[ty]||ty}</span>`).join('');
+  filterTeams('all', filters.querySelector('.pill'));
+}
+
+function filterTeams(type, el) {
+  document.querySelectorAll('#teamFilters .pill').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+
+  let list = teamsData;
+  if (type !== 'all') list = teamsData.filter(t => (t.type||'center') === type);
+
+  const maxScore = teamsData[0]?.total_score || 3000;
+
+  let html = '';
+  list.forEach(t => {
+    const ty = t.type || 'center';
+    const pct = Math.min((t.total_score||0) / maxScore * 100, 100);
+    html += `<div class="team-card">
+  <div class="team-head" onclick="this.parentElement.classList.toggle('expanded')">
+    <div class="team-info">
+      <span class="team-type-badge type-${ty}">${TL[ty]||ty}</span>
+      <span class="team-name">${t.system}</span>
+      <div class="team-desc">${t.system_desc||''}</div>
+      <div class="team-meta">
+        <span class="good">协同+${t.synergy_bonus||0}</span>
+        <span>联防×${t.attr_coverage||0}</span>
+        <span>防${t.defense_count||0}</span>
+        ${t.system_fit_total ? `<span>匹配${t.system_fit_total}</span>` : ''}
+      </div>
+    </div>
+    <div style="text-align:right;flex-shrink:0">
+      <div class="team-total ${scC(t.total_score)}">${(t.total_score||0).toFixed(0)}<small>分</small></div>
+    </div>
+  </div>
+  <div class="score-bar-wrap"><div class="bar" style="width:${pct}%"></div></div>
+  <div class="team-body">`;
+
+    for (const name of (t.members||[])) {
+      const d = t.details && t.details[name];
+      const sc = scoreMap[name] || (d&&d.score) || 0;
+      const isCore = ty==='center' && d && d.system_fit >= 80;
+      const isSys = d && d.system_fit >= 50;
+
+      html += `<div class="tmember">
+  <span class="tm-n">${name}</span>
+  ${isCore?'<span class="tm-core">★核心</span>':isSys?'<span class="tm-sys">●</span>':'<span class="tm-fill">○</span>'}
+  <div class="pet-attrs" style="flex:none">${(d&&d.attrs||[]).map(tag).join('')}</div>
+  <span class="tm-s ${scC(sc)}">${sc.toFixed(1)}</span>
+</div>`;
+      if (d && d.recommended_skills && d.recommended_skills.length) {
+        html += `<div class="tm-detail">技能: ${d.recommended_skills.slice(0,4).map(s=>`<span class="chip">${s}</span>`).join(' ')}</div>`;
+      }
+      if (d && d.trait) {
+        html += `<div class="tm-detail" style="margin-top:-1px">${d.trait}</div>`;
+      }
+    }
+    html += '</div></div>';
+  });
+
+  if (!list.length) html = '<p style="padding:30px;color:var(--text2);text-align:center">无结果</p>';
+  document.getElementById('teamList').innerHTML = html;
+}
+
+// ════════════════════════════════════
+//  Start
+// ════════════════════════════════════
+init();
+</script>
+</body>
+</html>

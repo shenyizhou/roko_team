@@ -1,675 +1,26 @@
 [
   {
-    "system": "翼王队",
-    "system_desc": "飓风翼王 — 绑定水刃翼系队友(岚鸟/翠顶/黑羽)",
-    "members": [
-      "圣羽翼王",
-      "黑羽夫人",
-      "寂灭骨龙",
-      "龙息帕尔",
-      "格斗小六",
-      "绒光优优"
-    ],
-    "total_score": 2615.2,
-    "base_score": 2505.2,
-    "synergy_bonus": 80,
-    "system_fit_total": 165,
-    "defense_count": 5,
-    "utility_count": 0,
-    "attr_coverage": 7,
-    "details": {
-      "圣羽翼王": {
-        "score": 469.6,
-        "attrs": [
-          "翼"
-        ],
-        "trait": "飓风",
-        "system_fit": 100,
-        "recommended_skills": [
-          "疾风连袭",
-          "力量增效",
-          "闪击",
-          "水刃"
-        ]
-      },
-      "黑羽夫人": {
-        "score": 353.0,
-        "attrs": [
-          "翼",
-          "恶"
-        ],
-        "trait": "贪婪",
-        "system_fit": 65,
-        "recommended_skills": [
-          "掩护",
-          "水刃",
-          "力量增效",
-          "先发制人"
-        ]
-      },
-      "寂灭骨龙": {
-        "score": 455.8,
-        "attrs": [
-          "龙",
-          "幽"
-        ],
-        "trait": "不朽",
-        "system_fit": 0,
-        "recommended_skills": [
-          "吓退",
-          "电弧",
-          "偷袭",
-          "隼鳞"
-        ]
-      },
-      "龙息帕尔": {
-        "score": 444.2,
-        "attrs": [
-          "恶"
-        ],
-        "trait": "付给恶魔的赎价",
-        "system_fit": 0,
-        "recommended_skills": [
-          "撕裂",
-          "火云车",
-          "龙吟",
-          "有效预防"
-        ]
-      },
-      "格斗小六": {
-        "score": 393.6,
-        "attrs": [
-          "武"
-        ],
-        "trait": "马步",
-        "system_fit": 0,
-        "recommended_skills": [
-          "啮合传递",
-          "龙吟",
-          "飞踢",
-          "防御"
-        ]
-      },
-      "绒光优优": {
-        "score": 389.0,
-        "attrs": [
-          "地",
-          "光"
-        ],
-        "trait": "哨兵",
-        "system_fit": 0,
-        "recommended_skills": [
-          "啮合传递",
-          "硬化",
-          "跺地",
-          "天光"
-        ]
-      }
-    }
-  },
-  {
-    "system": "棋契陛下（棋齐垒-白子）队",
-    "system_desc": "围绕棋契陛下（棋齐垒-白子）的首领化队伍",
-    "members": [
-      "棋契陛下（棋齐垒-白子）",
-      "波多西",
-      "嗜波螺",
-      "圣羽翼王",
-      "寂灭骨龙",
-      "龙息帕尔"
-    ],
-    "total_score": 2601.4,
-    "base_score": 2488.4,
-    "synergy_bonus": 60,
-    "system_fit_total": 250,
-    "defense_count": 5,
-    "utility_count": 0,
-    "attr_coverage": 8,
-    "details": {
-      "棋契陛下（棋齐垒-白子）": {
-        "score": 417.9,
-        "attrs": [
-          "武",
-          "地"
-        ],
-        "trait": "御驾亲征",
-        "system_fit": 100,
-        "recommended_skills": [
-          "抛石",
-          "迫近攻击",
-          "啮合传递",
-          "有效预防"
-        ]
-      },
-      "波多西": {
-        "score": 357.3,
-        "attrs": [
-          "机械",
-          "地"
-        ],
-        "trait": "定向精炼",
-        "system_fit": 75,
-        "recommended_skills": [
-          "鸣沙陷阱",
-          "吓退",
-          "啮合传递",
-          "壁垒"
-        ]
-      },
-      "嗜波螺": {
-        "score": 343.6,
-        "attrs": [
-          "地",
-          "水"
-        ],
-        "trait": "消波块",
-        "system_fit": 75,
-        "recommended_skills": [
-          "抛石",
-          "掩护",
-          "水刃",
-          "践踏"
-        ]
-      },
-      "圣羽翼王": {
-        "score": 469.6,
-        "attrs": [
-          "翼"
-        ],
-        "trait": "飓风",
-        "system_fit": 0,
-        "recommended_skills": [
-          "疾风连袭",
-          "力量增效",
-          "闪击",
-          "水刃"
-        ]
-      },
-      "寂灭骨龙": {
-        "score": 455.8,
-        "attrs": [
-          "龙",
-          "幽"
-        ],
-        "trait": "不朽",
-        "system_fit": 0,
-        "recommended_skills": [
-          "吓退",
-          "电弧",
-          "偷袭",
-          "隼鳞"
-        ]
-      },
-      "龙息帕尔": {
-        "score": 444.2,
-        "attrs": [
-          "恶"
-        ],
-        "trait": "付给恶魔的赎价",
-        "system_fit": 0,
-        "recommended_skills": [
-          "撕裂",
-          "火云车",
-          "龙吟",
-          "有效预防"
-        ]
-      }
-    }
-  },
-  {
-    "system": "霜翼领主（秋天的样子）队",
-    "system_desc": "围绕霜翼领主（秋天的样子）的首领化队伍",
-    "members": [
-      "霜翼领主（秋天的样子）",
-      "圣羽翼王",
-      "噼啪鸟",
-      "寂灭骨龙",
-      "龙息帕尔",
-      "绒光优优"
-    ],
-    "total_score": 2592.6,
-    "base_score": 2474.6,
-    "synergy_bonus": 60,
-    "system_fit_total": 235,
-    "defense_count": 4,
-    "utility_count": 0,
-    "attr_coverage": 7,
-    "details": {
-      "霜翼领主（秋天的样子）": {
-        "score": 330.6,
-        "attrs": [
-          "翼"
-        ],
-        "trait": "破空",
-        "system_fit": 100,
-        "recommended_skills": [
-          "力量增效",
-          "先发制人",
-          "防御",
-          "闪击"
-        ]
-      },
-      "圣羽翼王": {
-        "score": 469.6,
-        "attrs": [
-          "翼"
-        ],
-        "trait": "飓风",
-        "system_fit": 85,
-        "recommended_skills": [
-          "疾风连袭",
-          "力量增效",
-          "闪击",
-          "水刃"
-        ]
-      },
-      "噼啪鸟": {
-        "score": 385.4,
-        "attrs": [
-          "电",
-          "翼"
-        ],
-        "trait": "连续负荷",
-        "system_fit": 50,
-        "recommended_skills": [
-          "闪击",
-          "天旋地转",
-          "啮合传递",
-          "电弧"
-        ]
-      },
-      "寂灭骨龙": {
-        "score": 455.8,
-        "attrs": [
-          "龙",
-          "幽"
-        ],
-        "trait": "不朽",
-        "system_fit": 0,
-        "recommended_skills": [
-          "吓退",
-          "电弧",
-          "偷袭",
-          "隼鳞"
-        ]
-      },
-      "龙息帕尔": {
-        "score": 444.2,
-        "attrs": [
-          "恶"
-        ],
-        "trait": "付给恶魔的赎价",
-        "system_fit": 0,
-        "recommended_skills": [
-          "撕裂",
-          "火云车",
-          "龙吟",
-          "有效预防"
-        ]
-      },
-      "绒光优优": {
-        "score": 389.0,
-        "attrs": [
-          "地",
-          "光"
-        ],
-        "trait": "哨兵",
-        "system_fit": 0,
-        "recommended_skills": [
-          "啮合传递",
-          "硬化",
-          "跺地",
-          "天光"
-        ]
-      }
-    }
-  },
-  {
-    "system": "祭礼巨像队",
-    "system_desc": "围绕祭礼巨像的首领化队伍",
-    "members": [
-      "祭礼巨像",
-      "暮星辰",
-      "食尘短绒",
-      "圣羽翼王",
-      "寂灭骨龙",
-      "龙息帕尔"
-    ],
-    "total_score": 2574.2,
-    "base_score": 2456.2,
-    "synergy_bonus": 60,
-    "system_fit_total": 300,
-    "defense_count": 5,
-    "utility_count": 2,
-    "attr_coverage": 7,
-    "details": {
-      "祭礼巨像": {
-        "score": 348.0,
-        "attrs": [
-          "地",
-          "幻"
-        ],
-        "trait": "坠星",
-        "system_fit": 100,
-        "recommended_skills": [
-          "掩护",
-          "啮合传递",
-          "跺地",
-          "冰爪"
-        ]
-      },
-      "暮星辰": {
-        "score": 376.0,
-        "attrs": [
-          "幻",
-          "翼"
-        ],
-        "trait": "守望星",
-        "system_fit": 75,
-        "recommended_skills": [
-          "嘲弄",
-          "倾泻",
-          "防御",
-          "错乱"
-        ]
-      },
-      "食尘短绒": {
-        "score": 362.6,
-        "attrs": [
-          "虫",
-          "地"
-        ],
-        "trait": "特殊清洁场景",
-        "system_fit": 75,
-        "recommended_skills": [
-          "地刺",
-          "掩护",
-          "壁垒",
-          "翅刃"
-        ]
-      },
-      "圣羽翼王": {
-        "score": 469.6,
-        "attrs": [
-          "翼"
-        ],
-        "trait": "飓风",
-        "system_fit": 25,
-        "recommended_skills": [
-          "疾风连袭",
-          "力量增效",
-          "闪击",
-          "水刃"
-        ]
-      },
-      "寂灭骨龙": {
-        "score": 455.8,
-        "attrs": [
-          "龙",
-          "幽"
-        ],
-        "trait": "不朽",
-        "system_fit": 25,
-        "recommended_skills": [
-          "吓退",
-          "电弧",
-          "偷袭",
-          "隼鳞"
-        ]
-      },
-      "龙息帕尔": {
-        "score": 444.2,
-        "attrs": [
-          "恶"
-        ],
-        "trait": "付给恶魔的赎价",
-        "system_fit": 0,
-        "recommended_skills": [
-          "撕裂",
-          "火云车",
-          "龙吟",
-          "有效预防"
-        ]
-      }
-    }
-  },
-  {
-    "system": "恶魔狼王队",
-    "system_desc": "围绕恶魔狼王的首领化队伍",
-    "members": [
-      "恶魔狼王",
-      "龙息帕尔",
-      "花影羚羊",
-      "圣羽翼王",
-      "寂灭骨龙",
-      "格斗小六"
-    ],
-    "total_score": 2548.1,
-    "base_score": 2445.1,
-    "synergy_bonus": 60,
-    "system_fit_total": 250,
-    "defense_count": 5,
-    "utility_count": 1,
-    "attr_coverage": 5,
-    "details": {
-      "恶魔狼王": {
-        "score": 339.5,
-        "attrs": [
-          "恶"
-        ],
-        "trait": "悼亡",
-        "system_fit": 100,
-        "recommended_skills": [
-          "掩护",
-          "啮合传递",
-          "跺地",
-          "冰爪"
-        ]
-      },
-      "龙息帕尔": {
-        "score": 444.2,
-        "attrs": [
-          "恶"
-        ],
-        "trait": "付给恶魔的赎价",
-        "system_fit": 75,
-        "recommended_skills": [
-          "撕裂",
-          "火云车",
-          "龙吟",
-          "有效预防"
-        ]
-      },
-      "花影羚羊": {
-        "score": 342.4,
-        "attrs": [
-          "幽",
-          "恶"
-        ],
-        "trait": "碰瓷",
-        "system_fit": 75,
-        "recommended_skills": [
-          "芳香诱引",
-          "啮合传递",
-          "报复",
-          "极限撕裂"
-        ]
-      },
-      "圣羽翼王": {
-        "score": 469.6,
-        "attrs": [
-          "翼"
-        ],
-        "trait": "飓风",
-        "system_fit": 0,
-        "recommended_skills": [
-          "疾风连袭",
-          "力量增效",
-          "闪击",
-          "水刃"
-        ]
-      },
-      "寂灭骨龙": {
-        "score": 455.8,
-        "attrs": [
-          "龙",
-          "幽"
-        ],
-        "trait": "不朽",
-        "system_fit": 0,
-        "recommended_skills": [
-          "吓退",
-          "电弧",
-          "偷袭",
-          "隼鳞"
-        ]
-      },
-      "格斗小六": {
-        "score": 393.6,
-        "attrs": [
-          "武"
-        ],
-        "trait": "马步",
-        "system_fit": 0,
-        "recommended_skills": [
-          "啮合传递",
-          "龙吟",
-          "飞踢",
-          "防御"
-        ]
-      }
-    }
-  },
-  {
-    "system": "灼烧体系",
-    "system_desc": "灼烧印记联动体系",
-    "members": [
-      "燃薪虫",
-      "贝古斯",
-      "熔岩布丁",
-      "圣羽翼王",
-      "寂灭骨龙",
-      "龙息帕尔"
-    ],
-    "total_score": 2543.6,
-    "base_score": 2480.6,
-    "synergy_bonus": 55,
-    "system_fit_total": 300,
-    "defense_count": 5,
-    "utility_count": 1,
-    "attr_coverage": 8,
-    "details": {
-      "燃薪虫": {
-        "score": 380.3,
-        "attrs": [
-          "火",
-          "草"
-        ],
-        "trait": "煤渣草",
-        "system_fit": 100,
-        "recommended_skills": [
-          "掩护",
-          "火焰护盾",
-          "力量增效",
-          "藤绞"
-        ]
-      },
-      "贝古斯": {
-        "score": 376.6,
-        "attrs": [
-          "机械",
-          "火"
-        ],
-        "trait": "贪心算法",
-        "system_fit": 100,
-        "recommended_skills": [
-          "天火",
-          "啮合传递",
-          "焚烧烙印",
-          "有效预防"
-        ]
-      },
-      "熔岩布丁": {
-        "score": 354.1,
-        "attrs": [
-          "水",
-          "火"
-        ],
-        "trait": "美拉德反应",
-        "system_fit": 100,
-        "recommended_skills": [
-          "掩护",
-          "水刃",
-          "火焰护盾",
-          "力量增效"
-        ]
-      },
-      "圣羽翼王": {
-        "score": 469.6,
-        "attrs": [
-          "翼"
-        ],
-        "trait": "飓风",
-        "system_fit": 0,
-        "recommended_skills": [
-          "疾风连袭",
-          "力量增效",
-          "闪击",
-          "水刃"
-        ]
-      },
-      "寂灭骨龙": {
-        "score": 455.8,
-        "attrs": [
-          "龙",
-          "幽"
-        ],
-        "trait": "不朽",
-        "system_fit": 0,
-        "recommended_skills": [
-          "吓退",
-          "电弧",
-          "偷袭",
-          "隼鳞"
-        ]
-      },
-      "龙息帕尔": {
-        "score": 444.2,
-        "attrs": [
-          "恶"
-        ],
-        "trait": "付给恶魔的赎价",
-        "system_fit": 0,
-        "recommended_skills": [
-          "撕裂",
-          "火云车",
-          "龙吟",
-          "有效预防"
-        ]
-      }
-    }
-  },
-  {
     "system": "应对体系",
+    "type": "mechanic",
     "system_desc": "应对技能/特性联动体系",
     "members": [
       "炽心勇狮",
       "游蛇魔使",
-      "格斗小六",
-      "圣羽翼王",
-      "寂灭骨龙",
-      "龙息帕尔"
+      "武者鸡",
+      "针叶巡林",
+      "瞌睡王",
+      "海豹船长"
     ],
-    "total_score": 2540.8,
-    "base_score": 2467.8,
+    "total_score": 5019.2,
+    "base_score": 4043.2,
     "synergy_bonus": 65,
-    "system_fit_total": 390,
-    "defense_count": 5,
-    "utility_count": 1,
-    "attr_coverage": 7,
+    "system_fit_total": 540,
+    "defense_count": 6,
+    "utility_count": 2,
+    "attr_coverage": 5,
     "details": {
       "炽心勇狮": {
-        "score": 383.6,
+        "score": 372.4,
         "attrs": [
           "火",
           "武"
@@ -677,14 +28,14 @@
         "trait": "圣火骑士",
         "system_fit": 100,
         "recommended_skills": [
-          "掩护",
-          "阳火增辉",
-          "叠势",
-          "怒火"
+          "气波",
+          "炎打",
+          "持续高温",
+          "焚毁"
         ]
       },
       "游蛇魔使": {
-        "score": 321.0,
+        "score": 303.5,
         "attrs": [
           "水",
           "武"
@@ -692,1600 +43,207 @@
         "trait": "思维之盾",
         "system_fit": 100,
         "recommended_skills": [
-          "泡沫幻影",
-          "啮合传递",
-          "打湿",
-          "叠势"
+          "潮涌",
+          "影袭",
+          "水幕冲击",
+          "啮合传递"
         ]
       },
-      "格斗小六": {
-        "score": 393.6,
+      "武者鸡": {
+        "score": 362.3,
         "attrs": [
+          "火",
           "武"
         ],
-        "trait": "马步",
+        "trait": "斗技",
         "system_fit": 85,
         "recommended_skills": [
-          "啮合传递",
-          "龙吟",
-          "飞踢",
-          "防御"
+          "火焰冲锋",
+          "闪燃",
+          "火焰切割",
+          "截拳"
         ]
       },
-      "圣羽翼王": {
-        "score": 469.6,
+      "针叶巡林": {
+        "score": 316.5,
         "attrs": [
-          "翼"
+          "草",
+          "武"
         ],
-        "trait": "飓风",
-        "system_fit": 35,
+        "trait": "野性感官",
+        "system_fit": 85,
         "recommended_skills": [
-          "疾风连袭",
-          "力量增效",
-          "闪击",
-          "水刃"
+          "顶端优势",
+          "影袭",
+          "截拳",
+          "先发制人"
         ]
       },
-      "寂灭骨龙": {
-        "score": 455.8,
+      "瞌睡王": {
+        "score": 308.6,
         "attrs": [
-          "龙",
-          "幽"
+          "普通",
+          "武"
         ],
-        "trait": "不朽",
-        "system_fit": 35,
+        "trait": "慢热型",
+        "system_fit": 85,
         "recommended_skills": [
-          "吓退",
-          "电弧",
-          "偷袭",
-          "隼鳞"
+          "后发制人",
+          "寸拳",
+          "先发制人",
+          "斩断"
         ]
       },
-      "龙息帕尔": {
-        "score": 444.2,
+      "海豹船长": {
+        "score": 279.9,
         "attrs": [
-          "恶"
+          "武",
+          "水"
         ],
-        "trait": "付给恶魔的赎价",
-        "system_fit": 35,
+        "trait": "身经百练",
+        "system_fit": 85,
         "recommended_skills": [
-          "撕裂",
-          "火云车",
-          "龙吟",
-          "有效预防"
+          "气波",
+          "泡沫",
+          "斩断",
+          "水幕冲击"
         ]
       }
     }
   },
   {
-    "system": "烈火战神队",
-    "system_desc": "围绕烈火战神的首领化队伍",
+    "system": "灼烧体系",
+    "type": "mechanic",
+    "system_desc": "灼烧印记联动体系",
     "members": [
-      "烈火战神",
-      "火焰猿",
-      "烈火守护",
-      "圣羽翼王",
-      "寂灭骨龙",
-      "龙息帕尔"
+      "贝古斯",
+      "尖嘴狐仙",
+      "燃薪虫",
+      "红绒十字",
+      "熔岩布丁",
+      "火焰猿"
     ],
-    "total_score": 2534.4,
-    "base_score": 2431.4,
-    "synergy_bonus": 60,
-    "system_fit_total": 270,
-    "defense_count": 5,
-    "utility_count": 1,
-    "attr_coverage": 5,
-    "details": {
-      "烈火战神": {
-        "score": 411.0,
-        "attrs": [
-          "火"
-        ],
-        "trait": "爆燃",
-        "system_fit": 100,
-        "recommended_skills": [
-          "掩护",
-          "啮合传递",
-          "跺地",
-          "冰爪"
-        ]
-      },
-      "火焰猿": {
-        "score": 368.4,
-        "attrs": [
-          "火"
-        ],
-        "trait": "散热",
-        "system_fit": 85,
-        "recommended_skills": [
-          "地刺",
-          "偷袭",
-          "焚烧烙印",
-          "防御"
-        ]
-      },
-      "烈火守护": {
-        "score": 282.4,
-        "attrs": [
-          "火"
-        ],
-        "trait": "蒸汽膨胀",
-        "system_fit": 85,
-        "recommended_skills": [
-          "偷袭",
-          "撕裂",
-          "火云车",
-          "有效预防"
-        ]
-      },
-      "圣羽翼王": {
-        "score": 469.6,
-        "attrs": [
-          "翼"
-        ],
-        "trait": "飓风",
-        "system_fit": 0,
-        "recommended_skills": [
-          "疾风连袭",
-          "力量增效",
-          "闪击",
-          "水刃"
-        ]
-      },
-      "寂灭骨龙": {
-        "score": 455.8,
-        "attrs": [
-          "龙",
-          "幽"
-        ],
-        "trait": "不朽",
-        "system_fit": 0,
-        "recommended_skills": [
-          "吓退",
-          "电弧",
-          "偷袭",
-          "隼鳞"
-        ]
-      },
-      "龙息帕尔": {
-        "score": 444.2,
-        "attrs": [
-          "恶"
-        ],
-        "trait": "付给恶魔的赎价",
-        "system_fit": 0,
-        "recommended_skills": [
-          "撕裂",
-          "火云车",
-          "龙吟",
-          "有效预防"
-        ]
-      }
-    }
-  },
-  {
-    "system": "圣剑骑士队",
-    "system_desc": "围绕圣剑骑士的首领化队伍",
-    "members": [
-      "圣剑骑士",
-      "波多西",
-      "权杖-V",
-      "圣羽翼王",
-      "寂灭骨龙",
-      "龙息帕尔"
-    ],
-    "total_score": 2532.6,
-    "base_score": 2444.6,
-    "synergy_bonus": 60,
-    "system_fit_total": 200,
-    "defense_count": 5,
-    "utility_count": 1,
+    "total_score": 4826.7,
+    "base_score": 4151.7,
+    "synergy_bonus": 55,
+    "system_fit_total": 560,
+    "defense_count": 6,
+    "utility_count": 4,
     "attr_coverage": 6,
     "details": {
-      "圣剑骑士": {
-        "score": 407.8,
-        "attrs": [
-          "机械"
-        ],
-        "trait": "宝剑王牌",
-        "system_fit": 100,
-        "recommended_skills": [
-          "防御",
-          "啮合传递",
-          "先发制人",
-          "齿轮切开"
-        ]
-      },
-      "波多西": {
-        "score": 357.3,
+      "贝古斯": {
+        "score": 399.3,
         "attrs": [
           "机械",
-          "地"
+          "火"
         ],
-        "trait": "定向精炼",
-        "system_fit": 50,
-        "recommended_skills": [
-          "鸣沙陷阱",
-          "吓退",
-          "啮合传递",
-          "壁垒"
-        ]
-      },
-      "权杖-V": {
-        "score": 309.9,
-        "attrs": [
-          "机械"
-        ],
-        "trait": "机械变式",
-        "system_fit": 50,
-        "recommended_skills": [
-          "啮合传递",
-          "冰晶坠",
-          "有效预防",
-          "摇篮曲"
-        ]
-      },
-      "圣羽翼王": {
-        "score": 469.6,
-        "attrs": [
-          "翼"
-        ],
-        "trait": "飓风",
-        "system_fit": 0,
-        "recommended_skills": [
-          "疾风连袭",
-          "力量增效",
-          "闪击",
-          "水刃"
-        ]
-      },
-      "寂灭骨龙": {
-        "score": 455.8,
-        "attrs": [
-          "龙",
-          "幽"
-        ],
-        "trait": "不朽",
-        "system_fit": 0,
-        "recommended_skills": [
-          "吓退",
-          "电弧",
-          "偷袭",
-          "隼鳞"
-        ]
-      },
-      "龙息帕尔": {
-        "score": 444.2,
-        "attrs": [
-          "恶"
-        ],
-        "trait": "付给恶魔的赎价",
-        "system_fit": 0,
-        "recommended_skills": [
-          "撕裂",
-          "火云车",
-          "龙吟",
-          "有效预防"
-        ]
-      }
-    }
-  },
-  {
-    "system": "神谕鲨队",
-    "system_desc": "围绕神谕鲨的首领化队伍",
-    "members": [
-      "神谕鲨",
-      "圣羽翼王",
-      "琉璃水母",
-      "寂灭骨龙",
-      "龙息帕尔",
-      "绒光优优"
-    ],
-    "total_score": 2531.7,
-    "base_score": 2403.7,
-    "synergy_bonus": 60,
-    "system_fit_total": 270,
-    "defense_count": 5,
-    "utility_count": 0,
-    "attr_coverage": 8,
-    "details": {
-      "神谕鲨": {
-        "score": 325.7,
-        "attrs": [
-          "水",
-          "翼"
-        ],
-        "trait": "水翼飞升",
+        "trait": "贪心算法",
         "system_fit": 100,
         "recommended_skills": [
-          "掩护",
-          "啮合传递",
-          "跺地",
-          "冰爪"
+          "离子震荡",
+          "燃尽",
+          "磁暴",
+          "烈焰风暴"
         ]
       },
-      "圣羽翼王": {
-        "score": 469.6,
-        "attrs": [
-          "翼"
-        ],
-        "trait": "飓风",
-        "system_fit": 85,
-        "recommended_skills": [
-          "疾风连袭",
-          "力量增效",
-          "闪击",
-          "水刃"
-        ]
-      },
-      "琉璃水母": {
-        "score": 319.4,
-        "attrs": [
-          "水",
-          "毒"
-        ],
-        "trait": "扩散侵蚀",
-        "system_fit": 85,
-        "recommended_skills": [
-          "吓退",
-          "天洪",
-          "润泽",
-          "湮灭"
-        ]
-      },
-      "寂灭骨龙": {
-        "score": 455.8,
-        "attrs": [
-          "龙",
-          "幽"
-        ],
-        "trait": "不朽",
-        "system_fit": 0,
-        "recommended_skills": [
-          "吓退",
-          "电弧",
-          "偷袭",
-          "隼鳞"
-        ]
-      },
-      "龙息帕尔": {
-        "score": 444.2,
-        "attrs": [
-          "恶"
-        ],
-        "trait": "付给恶魔的赎价",
-        "system_fit": 0,
-        "recommended_skills": [
-          "撕裂",
-          "火云车",
-          "龙吟",
-          "有效预防"
-        ]
-      },
-      "绒光优优": {
-        "score": 389.0,
-        "attrs": [
-          "地",
-          "光"
-        ],
-        "trait": "哨兵",
-        "system_fit": 0,
-        "recommended_skills": [
-          "啮合传递",
-          "硬化",
-          "跺地",
-          "天光"
-        ]
-      }
-    }
-  },
-  {
-    "system": "迷嶂布莱克队",
-    "system_desc": "围绕迷嶂布莱克的首领化队伍",
-    "members": [
-      "迷嶂布莱克",
-      "波多西",
-      "嗜波螺",
-      "圣羽翼王",
-      "寂灭骨龙",
-      "龙息帕尔"
-    ],
-    "total_score": 2531.0,
-    "base_score": 2428.0,
-    "synergy_bonus": 60,
-    "system_fit_total": 250,
-    "defense_count": 5,
-    "utility_count": 0,
-    "attr_coverage": 7,
-    "details": {
-      "迷嶂布莱克": {
-        "score": 357.5,
-        "attrs": [
-          "地"
-        ],
-        "trait": "地脉馈赠",
-        "system_fit": 100,
-        "recommended_skills": [
-          "掩护",
-          "啮合传递",
-          "跺地",
-          "冰爪"
-        ]
-      },
-      "波多西": {
-        "score": 357.3,
-        "attrs": [
-          "机械",
-          "地"
-        ],
-        "trait": "定向精炼",
-        "system_fit": 75,
-        "recommended_skills": [
-          "鸣沙陷阱",
-          "吓退",
-          "啮合传递",
-          "壁垒"
-        ]
-      },
-      "嗜波螺": {
-        "score": 343.6,
-        "attrs": [
-          "地",
-          "水"
-        ],
-        "trait": "消波块",
-        "system_fit": 75,
-        "recommended_skills": [
-          "抛石",
-          "掩护",
-          "水刃",
-          "践踏"
-        ]
-      },
-      "圣羽翼王": {
-        "score": 469.6,
-        "attrs": [
-          "翼"
-        ],
-        "trait": "飓风",
-        "system_fit": 0,
-        "recommended_skills": [
-          "疾风连袭",
-          "力量增效",
-          "闪击",
-          "水刃"
-        ]
-      },
-      "寂灭骨龙": {
-        "score": 455.8,
-        "attrs": [
-          "龙",
-          "幽"
-        ],
-        "trait": "不朽",
-        "system_fit": 0,
-        "recommended_skills": [
-          "吓退",
-          "电弧",
-          "偷袭",
-          "隼鳞"
-        ]
-      },
-      "龙息帕尔": {
-        "score": 444.2,
-        "attrs": [
-          "恶"
-        ],
-        "trait": "付给恶魔的赎价",
-        "system_fit": 0,
-        "recommended_skills": [
-          "撕裂",
-          "火云车",
-          "龙吟",
-          "有效预防"
-        ]
-      }
-    }
-  },
-  {
-    "system": "沙暴体系",
-    "system_desc": "沙暴天气体系",
-    "members": [
-      "嗜波螺",
-      "食尘短绒",
-      "圣羽翼王",
-      "寂灭骨龙",
-      "龙息帕尔",
-      "格斗小六"
-    ],
-    "total_score": 2529.4,
-    "base_score": 2469.4,
-    "synergy_bonus": 60,
-    "system_fit_total": 180,
-    "defense_count": 5,
-    "utility_count": 1,
-    "attr_coverage": 8,
-    "details": {
-      "嗜波螺": {
-        "score": 343.6,
-        "attrs": [
-          "地",
-          "水"
-        ],
-        "trait": "消波块",
-        "system_fit": 100,
-        "recommended_skills": [
-          "抛石",
-          "掩护",
-          "水刃",
-          "沙涌"
-        ]
-      },
-      "食尘短绒": {
-        "score": 362.6,
-        "attrs": [
-          "虫",
-          "地"
-        ],
-        "trait": "特殊清洁场景",
-        "system_fit": 80,
-        "recommended_skills": [
-          "地刺",
-          "掩护",
-          "壁垒",
-          "沙涌"
-        ]
-      },
-      "圣羽翼王": {
-        "score": 469.6,
-        "attrs": [
-          "翼"
-        ],
-        "trait": "飓风",
-        "system_fit": 0,
-        "recommended_skills": [
-          "疾风连袭",
-          "力量增效",
-          "闪击",
-          "水刃"
-        ]
-      },
-      "寂灭骨龙": {
-        "score": 455.8,
-        "attrs": [
-          "龙",
-          "幽"
-        ],
-        "trait": "不朽",
-        "system_fit": 0,
-        "recommended_skills": [
-          "吓退",
-          "电弧",
-          "偷袭",
-          "隼鳞"
-        ]
-      },
-      "龙息帕尔": {
-        "score": 444.2,
-        "attrs": [
-          "恶"
-        ],
-        "trait": "付给恶魔的赎价",
-        "system_fit": 0,
-        "recommended_skills": [
-          "撕裂",
-          "火云车",
-          "龙吟",
-          "有效预防"
-        ]
-      },
-      "格斗小六": {
-        "score": 393.6,
-        "attrs": [
-          "武"
-        ],
-        "trait": "马步",
-        "system_fit": 0,
-        "recommended_skills": [
-          "啮合传递",
-          "龙吟",
-          "飞踢",
-          "防御"
-        ]
-      }
-    }
-  },
-  {
-    "system": "蓄能体系",
-    "system_desc": "蓄能印记联动体系",
-    "members": [
-      "噼啪鸟",
-      "电企鹅",
-      "绒光优优",
-      "圣羽翼王",
-      "寂灭骨龙",
-      "龙息帕尔"
-    ],
-    "total_score": 2524.7,
-    "base_score": 2461.7,
-    "synergy_bonus": 55,
-    "system_fit_total": 260,
-    "defense_count": 4,
-    "utility_count": 0,
-    "attr_coverage": 8,
-    "details": {
-      "噼啪鸟": {
-        "score": 385.4,
-        "attrs": [
-          "电",
-          "翼"
-        ],
-        "trait": "连续负荷",
-        "system_fit": 100,
-        "recommended_skills": [
-          "增程电池",
-          "天旋地转",
-          "啮合传递",
-          "电弧"
-        ]
-      },
-      "电企鹅": {
-        "score": 317.7,
-        "attrs": [
-          "冰",
-          "电"
-        ],
-        "trait": "超负荷",
-        "system_fit": 100,
-        "recommended_skills": [
-          "掩护",
-          "增程电池",
-          "阻断",
-          "魔法增效"
-        ]
-      },
-      "绒光优优": {
-        "score": 389.0,
-        "attrs": [
-          "地",
-          "光"
-        ],
-        "trait": "哨兵",
-        "system_fit": 60,
-        "recommended_skills": [
-          "啮合传递",
-          "硬化",
-          "蓄势待发",
-          "天光"
-        ]
-      },
-      "圣羽翼王": {
-        "score": 469.6,
-        "attrs": [
-          "翼"
-        ],
-        "trait": "飓风",
-        "system_fit": 0,
-        "recommended_skills": [
-          "疾风连袭",
-          "力量增效",
-          "闪击",
-          "水刃"
-        ]
-      },
-      "寂灭骨龙": {
-        "score": 455.8,
-        "attrs": [
-          "龙",
-          "幽"
-        ],
-        "trait": "不朽",
-        "system_fit": 0,
-        "recommended_skills": [
-          "吓退",
-          "电弧",
-          "偷袭",
-          "隼鳞"
-        ]
-      },
-      "龙息帕尔": {
-        "score": 444.2,
-        "attrs": [
-          "恶"
-        ],
-        "trait": "付给恶魔的赎价",
-        "system_fit": 0,
-        "recommended_skills": [
-          "撕裂",
-          "火云车",
-          "龙吟",
-          "有效预防"
-        ]
-      }
-    }
-  },
-  {
-    "system": "萌队",
-    "system_desc": "卡洛儿萌化联动队",
-    "members": [
-      "卡洛儿",
-      "魔眷鸟",
-      "圣羽翼王",
-      "寂灭骨龙",
-      "龙息帕尔",
-      "绒光优优"
-    ],
-    "total_score": 2512.5,
-    "base_score": 2387.5,
-    "synergy_bonus": 65,
-    "system_fit_total": 175,
-    "defense_count": 5,
-    "utility_count": 2,
-    "attr_coverage": 8,
-    "details": {
-      "卡洛儿": {
-        "score": 308.8,
-        "attrs": [
-          "水",
-          "萌"
-        ],
-        "trait": "守护者",
-        "system_fit": 100,
-        "recommended_skills": [
-          "掩护",
-          "水刃",
-          "打湿",
-          "力量增效"
-        ]
-      },
-      "魔眷鸟": {
-        "score": 320.1,
-        "attrs": [
-          "萌",
-          "翼"
-        ],
-        "trait": "自由飘",
-        "system_fit": 75,
-        "recommended_skills": [
-          "阻断",
-          "灵媒",
-          "防御",
-          "摇篮曲"
-        ]
-      },
-      "圣羽翼王": {
-        "score": 469.6,
-        "attrs": [
-          "翼"
-        ],
-        "trait": "飓风",
-        "system_fit": 0,
-        "recommended_skills": [
-          "疾风连袭",
-          "力量增效",
-          "闪击",
-          "水刃"
-        ]
-      },
-      "寂灭骨龙": {
-        "score": 455.8,
-        "attrs": [
-          "龙",
-          "幽"
-        ],
-        "trait": "不朽",
-        "system_fit": 0,
-        "recommended_skills": [
-          "吓退",
-          "电弧",
-          "偷袭",
-          "隼鳞"
-        ]
-      },
-      "龙息帕尔": {
-        "score": 444.2,
-        "attrs": [
-          "恶"
-        ],
-        "trait": "付给恶魔的赎价",
-        "system_fit": 0,
-        "recommended_skills": [
-          "撕裂",
-          "火云车",
-          "龙吟",
-          "有效预防"
-        ]
-      },
-      "绒光优优": {
-        "score": 389.0,
-        "attrs": [
-          "地",
-          "光"
-        ],
-        "trait": "哨兵",
-        "system_fit": 0,
-        "recommended_skills": [
-          "啮合传递",
-          "硬化",
-          "跺地",
-          "天光"
-        ]
-      }
-    }
-  },
-  {
-    "system": "雪天体系",
-    "system_desc": "雪天/暴风雪天气体系",
-    "members": [
-      "尖嘴狐仙",
-      "雪巨人",
-      "圣羽翼王",
-      "寂灭骨龙",
-      "龙息帕尔",
-      "格斗小六"
-    ],
-    "total_score": 2511.5,
-    "base_score": 2451.5,
-    "synergy_bonus": 60,
-    "system_fit_total": 130,
-    "defense_count": 5,
-    "utility_count": 1,
-    "attr_coverage": 7,
-    "details": {
       "尖嘴狐仙": {
-        "score": 329.9,
+        "score": 371.8,
         "attrs": [
           "火",
           "冰"
         ],
         "trait": "灵魂灼伤",
-        "system_fit": 80,
+        "system_fit": 100,
         "recommended_skills": [
-          "啮合传递",
-          "焚烧烙印",
-          "冬至",
-          "火焰护盾"
-        ]
-      },
-      "雪巨人": {
-        "score": 358.4,
-        "attrs": [
-          "冰"
-        ],
-        "trait": "打雪仗",
-        "system_fit": 50,
-        "recommended_skills": [
-          "掩护",
+          "冷风",
           "暴风雪",
-          "冰雹",
-          "惊吓盒子"
-        ]
-      },
-      "圣羽翼王": {
-        "score": 469.6,
-        "attrs": [
-          "翼"
-        ],
-        "trait": "飓风",
-        "system_fit": 0,
-        "recommended_skills": [
-          "疾风连袭",
-          "力量增效",
-          "闪击",
-          "水刃"
-        ]
-      },
-      "寂灭骨龙": {
-        "score": 455.8,
-        "attrs": [
-          "龙",
-          "幽"
-        ],
-        "trait": "不朽",
-        "system_fit": 0,
-        "recommended_skills": [
-          "吓退",
-          "电弧",
-          "偷袭",
-          "隼鳞"
-        ]
-      },
-      "龙息帕尔": {
-        "score": 444.2,
-        "attrs": [
-          "恶"
-        ],
-        "trait": "付给恶魔的赎价",
-        "system_fit": 0,
-        "recommended_skills": [
-          "撕裂",
-          "火云车",
-          "龙吟",
-          "有效预防"
-        ]
-      },
-      "格斗小六": {
-        "score": 393.6,
-        "attrs": [
-          "武"
-        ],
-        "trait": "马步",
-        "system_fit": 0,
-        "recommended_skills": [
-          "啮合传递",
-          "龙吟",
-          "飞踢",
-          "防御"
-        ]
-      }
-    }
-  },
-  {
-    "system": "火队",
-    "system_desc": "烈火守护火系联动队",
-    "members": [
-      "烈火守护",
-      "火焰猿",
-      "圣羽翼王",
-      "寂灭骨龙",
-      "龙息帕尔",
-      "格斗小六"
-    ],
-    "total_score": 2509.0,
-    "base_score": 2414.0,
-    "synergy_bonus": 60,
-    "system_fit_total": 185,
-    "defense_count": 5,
-    "utility_count": 1,
-    "attr_coverage": 6,
-    "details": {
-      "烈火守护": {
-        "score": 282.4,
-        "attrs": [
-          "火"
-        ],
-        "trait": "蒸汽膨胀",
-        "system_fit": 100,
-        "recommended_skills": [
-          "偷袭",
-          "撕裂",
-          "火云车",
-          "有效预防"
-        ]
-      },
-      "火焰猿": {
-        "score": 368.4,
-        "attrs": [
-          "火"
-        ],
-        "trait": "散热",
-        "system_fit": 85,
-        "recommended_skills": [
-          "地刺",
-          "偷袭",
-          "焚烧烙印",
-          "防御"
-        ]
-      },
-      "圣羽翼王": {
-        "score": 469.6,
-        "attrs": [
-          "翼"
-        ],
-        "trait": "飓风",
-        "system_fit": 0,
-        "recommended_skills": [
-          "疾风连袭",
-          "力量增效",
-          "闪击",
-          "水刃"
-        ]
-      },
-      "寂灭骨龙": {
-        "score": 455.8,
-        "attrs": [
-          "龙",
-          "幽"
-        ],
-        "trait": "不朽",
-        "system_fit": 0,
-        "recommended_skills": [
-          "吓退",
-          "电弧",
-          "偷袭",
-          "隼鳞"
-        ]
-      },
-      "龙息帕尔": {
-        "score": 444.2,
-        "attrs": [
-          "恶"
-        ],
-        "trait": "付给恶魔的赎价",
-        "system_fit": 0,
-        "recommended_skills": [
-          "撕裂",
-          "火云车",
-          "龙吟",
-          "有效预防"
-        ]
-      },
-      "格斗小六": {
-        "score": 393.6,
-        "attrs": [
-          "武"
-        ],
-        "trait": "马步",
-        "system_fit": 0,
-        "recommended_skills": [
-          "啮合传递",
-          "龙吟",
-          "飞踢",
-          "防御"
-        ]
-      }
-    }
-  },
-  {
-    "system": "雪影冰灵队",
-    "system_desc": "围绕雪影冰灵的首领化队伍",
-    "members": [
-      "雪影冰灵",
-      "冰钻布鲁斯",
-      "雪巨人",
-      "圣羽翼王",
-      "寂灭骨龙",
-      "龙息帕尔"
-    ],
-    "total_score": 2508.9,
-    "base_score": 2420.9,
-    "synergy_bonus": 60,
-    "system_fit_total": 260,
-    "defense_count": 5,
-    "utility_count": 0,
-    "attr_coverage": 6,
-    "details": {
-      "雪影冰灵": {
-        "score": 323.4,
-        "attrs": [
-          "冰",
-          "萌"
-        ],
-        "trait": "抓到你了",
-        "system_fit": 100,
-        "recommended_skills": [
-          "掩护",
-          "啮合传递",
-          "跺地",
-          "冰爪"
-        ]
-      },
-      "冰钻布鲁斯": {
-        "score": 369.5,
-        "attrs": [
-          "冰"
-        ],
-        "trait": "冰钻",
-        "system_fit": 85,
-        "recommended_skills": [
-          "偷袭",
-          "冰雹",
-          "力量增效",
-          "有效预防"
-        ]
-      },
-      "雪巨人": {
-        "score": 358.4,
-        "attrs": [
-          "冰"
-        ],
-        "trait": "打雪仗",
-        "system_fit": 75,
-        "recommended_skills": [
-          "掩护",
-          "偷袭",
-          "冰雹",
-          "惊吓盒子"
-        ]
-      },
-      "圣羽翼王": {
-        "score": 469.6,
-        "attrs": [
-          "翼"
-        ],
-        "trait": "飓风",
-        "system_fit": 0,
-        "recommended_skills": [
-          "疾风连袭",
-          "力量增效",
-          "闪击",
-          "水刃"
-        ]
-      },
-      "寂灭骨龙": {
-        "score": 455.8,
-        "attrs": [
-          "龙",
-          "幽"
-        ],
-        "trait": "不朽",
-        "system_fit": 0,
-        "recommended_skills": [
-          "吓退",
-          "电弧",
-          "偷袭",
-          "隼鳞"
-        ]
-      },
-      "龙息帕尔": {
-        "score": 444.2,
-        "attrs": [
-          "恶"
-        ],
-        "trait": "付给恶魔的赎价",
-        "system_fit": 0,
-        "recommended_skills": [
-          "撕裂",
-          "火云车",
-          "龙吟",
-          "有效预防"
-        ]
-      }
-    }
-  },
-  {
-    "system": "状态队",
-    "system_desc": "寒音蛇状态联动队",
-    "members": [
-      "寒音蛇",
-      "燃薪虫",
-      "圣羽翼王",
-      "寂灭骨龙",
-      "龙息帕尔",
-      "格斗小六"
-    ],
-    "total_score": 2506.6,
-    "base_score": 2381.6,
-    "synergy_bonus": 65,
-    "system_fit_total": 175,
-    "defense_count": 4,
-    "utility_count": 0,
-    "attr_coverage": 9,
-    "details": {
-      "寒音蛇": {
-        "score": 238.1,
-        "attrs": [
-          "萌",
-          "毒"
-        ],
-        "trait": "拨浪鼓",
-        "system_fit": 100,
-        "recommended_skills": [
-          "毒孢子",
-          "超级糖果",
-          "力量增效",
-          "毒液渗透"
+          "炎枪",
+          "火焰切割"
         ]
       },
       "燃薪虫": {
-        "score": 380.3,
+        "score": 368.5,
         "attrs": [
           "火",
           "草"
         ],
         "trait": "煤渣草",
-        "system_fit": 50,
+        "system_fit": 100,
         "recommended_skills": [
-          "掩护",
+          "种子弹",
+          "火焰冲锋",
           "灼伤",
-          "力量增效",
-          "藤绞"
+          "抽枝"
         ]
       },
-      "圣羽翼王": {
-        "score": 469.6,
+      "红绒十字": {
+        "score": 357.9,
         "attrs": [
-          "翼"
+          "火",
+          "萌"
         ],
-        "trait": "飓风",
-        "system_fit": 0,
-        "recommended_skills": [
-          "疾风连袭",
-          "力量增效",
-          "闪击",
-          "水刃"
-        ]
-      },
-      "寂灭骨龙": {
-        "score": 455.8,
-        "attrs": [
-          "龙",
-          "幽"
-        ],
-        "trait": "不朽",
-        "system_fit": 0,
-        "recommended_skills": [
-          "吓退",
-          "电弧",
-          "偷袭",
-          "隼鳞"
-        ]
-      },
-      "龙息帕尔": {
-        "score": 444.2,
-        "attrs": [
-          "恶"
-        ],
-        "trait": "付给恶魔的赎价",
-        "system_fit": 0,
-        "recommended_skills": [
-          "撕裂",
-          "火云车",
-          "龙吟",
-          "有效预防"
-        ]
-      },
-      "格斗小六": {
-        "score": 393.6,
-        "attrs": [
-          "武"
-        ],
-        "trait": "马步",
-        "system_fit": 25,
-        "recommended_skills": [
-          "啮合传递",
-          "龙吟",
-          "飞踢",
-          "防御"
-        ]
-      }
-    }
-  },
-  {
-    "system": "冻结体系",
-    "system_desc": "冻结印记联动体系",
-    "members": [
-      "冰钻布鲁斯",
-      "雪巨人",
-      "月牙雪熊",
-      "圣羽翼王",
-      "寂灭骨龙",
-      "龙息帕尔"
-    ],
-    "total_score": 2490.9,
-    "base_score": 2427.9,
-    "synergy_bonus": 55,
-    "system_fit_total": 300,
-    "defense_count": 5,
-    "utility_count": 0,
-    "attr_coverage": 6,
-    "details": {
-      "冰钻布鲁斯": {
-        "score": 369.5,
-        "attrs": [
-          "冰"
-        ],
-        "trait": "冰钻",
+        "trait": "仁心",
         "system_fit": 100,
         "recommended_skills": [
-          "滚雪球",
-          "冰雹",
-          "力量增效",
-          "有效预防"
+          "热气",
+          "火爪",
+          "飞吻",
+          "除厄"
         ]
       },
-      "雪巨人": {
-        "score": 358.4,
-        "attrs": [
-          "冰"
-        ],
-        "trait": "打雪仗",
-        "system_fit": 100,
-        "recommended_skills": [
-          "掩护",
-          "暴风雪",
-          "冰雹",
-          "惊吓盒子"
-        ]
-      },
-      "月牙雪熊": {
-        "score": 330.4,
-        "attrs": [
-          "冰",
-          "幻"
-        ],
-        "trait": "月牙雪糕",
-        "system_fit": 100,
-        "recommended_skills": [
-          "吓退",
-          "暴风雪",
-          "冰点",
-          "壁垒"
-        ]
-      },
-      "圣羽翼王": {
-        "score": 469.6,
-        "attrs": [
-          "翼"
-        ],
-        "trait": "飓风",
-        "system_fit": 0,
-        "recommended_skills": [
-          "疾风连袭",
-          "力量增效",
-          "闪击",
-          "水刃"
-        ]
-      },
-      "寂灭骨龙": {
-        "score": 455.8,
-        "attrs": [
-          "龙",
-          "幽"
-        ],
-        "trait": "不朽",
-        "system_fit": 0,
-        "recommended_skills": [
-          "吓退",
-          "电弧",
-          "偷袭",
-          "隼鳞"
-        ]
-      },
-      "龙息帕尔": {
-        "score": 444.2,
-        "attrs": [
-          "恶"
-        ],
-        "trait": "付给恶魔的赎价",
-        "system_fit": 0,
-        "recommended_skills": [
-          "撕裂",
-          "火云车",
-          "龙吟",
-          "有效预防"
-        ]
-      }
-    }
-  },
-  {
-    "system": "圣水守护队",
-    "system_desc": "围绕圣水守护的首领化队伍",
-    "members": [
-      "圣水守护",
-      "琉璃水母",
-      "嗜波螺",
-      "圣羽翼王",
-      "寂灭骨龙",
-      "龙息帕尔"
-    ],
-    "total_score": 2481.5,
-    "base_score": 2378.5,
-    "synergy_bonus": 60,
-    "system_fit_total": 260,
-    "defense_count": 5,
-    "utility_count": 0,
-    "attr_coverage": 7,
-    "details": {
-      "圣水守护": {
-        "score": 345.9,
-        "attrs": [
-          "水"
-        ],
-        "trait": "浪潮",
-        "system_fit": 100,
-        "recommended_skills": [
-          "掩护",
-          "啮合传递",
-          "虹光冲击",
-          "跺地"
-        ]
-      },
-      "琉璃水母": {
-        "score": 319.4,
+      "熔岩布丁": {
+        "score": 341.1,
         "attrs": [
           "水",
-          "毒"
+          "火"
         ],
-        "trait": "扩散侵蚀",
-        "system_fit": 85,
-        "recommended_skills": [
-          "吓退",
-          "天洪",
-          "润泽",
-          "湮灭"
-        ]
-      },
-      "嗜波螺": {
-        "score": 343.6,
-        "attrs": [
-          "地",
-          "水"
-        ],
-        "trait": "消波块",
-        "system_fit": 75,
-        "recommended_skills": [
-          "抛石",
-          "掩护",
-          "水刃",
-          "践踏"
-        ]
-      },
-      "圣羽翼王": {
-        "score": 469.6,
-        "attrs": [
-          "翼"
-        ],
-        "trait": "飓风",
-        "system_fit": 0,
-        "recommended_skills": [
-          "疾风连袭",
-          "力量增效",
-          "闪击",
-          "水刃"
-        ]
-      },
-      "寂灭骨龙": {
-        "score": 455.8,
-        "attrs": [
-          "龙",
-          "幽"
-        ],
-        "trait": "不朽",
-        "system_fit": 0,
-        "recommended_skills": [
-          "吓退",
-          "电弧",
-          "偷袭",
-          "隼鳞"
-        ]
-      },
-      "龙息帕尔": {
-        "score": 444.2,
-        "attrs": [
-          "恶"
-        ],
-        "trait": "付给恶魔的赎价",
-        "system_fit": 0,
-        "recommended_skills": [
-          "撕裂",
-          "火云车",
-          "龙吟",
-          "有效预防"
-        ]
-      }
-    }
-  },
-  {
-    "system": "吸能体系",
-    "system_desc": "削减敌方能量体系",
-    "members": [
-      "花影羚羊",
-      "幻影灵菇",
-      "食尘短绒",
-      "圣羽翼王",
-      "寂灭骨龙",
-      "龙息帕尔"
-    ],
-    "total_score": 2474.4,
-    "base_score": 2411.4,
-    "synergy_bonus": 55,
-    "system_fit_total": 285,
-    "defense_count": 5,
-    "utility_count": 2,
-    "attr_coverage": 7,
-    "details": {
-      "花影羚羊": {
-        "score": 342.4,
-        "attrs": [
-          "幽",
-          "恶"
-        ],
-        "trait": "碰瓷",
+        "trait": "美拉德反应",
         "system_fit": 100,
         "recommended_skills": [
-          "芳香诱引",
-          "啮合传递",
-          "报复",
-          "恶作剧"
+          "落星",
+          "泡沫",
+          "潮涌",
+          "火焰切割"
         ]
       },
-      "幻影灵菇": {
-        "score": 336.8,
+      "火焰猿": {
+        "score": 383.1,
         "attrs": [
-          "幽",
-          "草"
+          "火"
         ],
-        "trait": "毒蘑菇",
-        "system_fit": 100,
+        "trait": "散热",
+        "system_fit": 60,
         "recommended_skills": [
-          "吓退",
-          "惊吓盒子",
-          "嘲弄",
-          "报复"
-        ]
-      },
-      "食尘短绒": {
-        "score": 362.6,
-        "attrs": [
-          "虫",
-          "地"
-        ],
-        "trait": "特殊清洁场景",
-        "system_fit": 85,
-        "recommended_skills": [
-          "地刺",
-          "掩护",
-          "壁垒",
-          "翅刃"
-        ]
-      },
-      "圣羽翼王": {
-        "score": 469.6,
-        "attrs": [
-          "翼"
-        ],
-        "trait": "飓风",
-        "system_fit": 0,
-        "recommended_skills": [
-          "疾风连袭",
-          "力量增效",
-          "闪击",
-          "水刃"
-        ]
-      },
-      "寂灭骨龙": {
-        "score": 455.8,
-        "attrs": [
-          "龙",
-          "幽"
-        ],
-        "trait": "不朽",
-        "system_fit": 0,
-        "recommended_skills": [
-          "吓退",
-          "电弧",
-          "偷袭",
-          "隼鳞"
-        ]
-      },
-      "龙息帕尔": {
-        "score": 444.2,
-        "attrs": [
-          "恶"
-        ],
-        "trait": "付给恶魔的赎价",
-        "system_fit": 0,
-        "recommended_skills": [
-          "撕裂",
-          "火云车",
-          "龙吟",
-          "有效预防"
+          "炎息",
+          "吹火",
+          "闪燃",
+          "灼伤"
         ]
       }
     }
   },
   {
     "system": "毒体系",
+    "type": "mechanic",
     "system_desc": "中毒印记联动体系",
     "members": [
       "厉毒修萝",
+      "嘟嘟锅",
       "影狸",
-      "琉璃水母",
-      "圣羽翼王",
-      "寂灭骨龙",
-      "龙息帕尔"
+      "裘卡",
+      "蹦蹦花（象牙球形态）",
+      "蹦蹦花（彩玉球形态）"
     ],
-    "total_score": 2472.6,
-    "base_score": 2404.6,
+    "total_score": 4760.3,
+    "base_score": 4045.3,
     "synergy_bonus": 60,
-    "system_fit_total": 300,
-    "defense_count": 5,
-    "utility_count": 1,
-    "attr_coverage": 6,
+    "system_fit_total": 600,
+    "defense_count": 6,
+    "utility_count": 5,
+    "attr_coverage": 4,
     "details": {
       "厉毒修萝": {
-        "score": 371.5,
+        "score": 360.9,
         "attrs": [
           "毒",
           "恶"
@@ -2293,14 +251,28 @@
         "trait": "侵蚀",
         "system_fit": 100,
         "recommended_skills": [
-          "感染病",
+          "魔爪",
           "跌落",
-          "力量增效",
-          "防御"
+          "毒针",
+          "趁火打劫"
+        ]
+      },
+      "嘟嘟锅": {
+        "score": 335.4,
+        "attrs": [
+          "毒"
+        ],
+        "trait": "复方汤剂",
+        "system_fit": 100,
+        "recommended_skills": [
+          "毒泡泡",
+          "拍击",
+          "瘴气喷射",
+          "毒液渗透"
         ]
       },
       "影狸": {
-        "score": 344.1,
+        "score": 332.7,
         "attrs": [
           "幽",
           "毒"
@@ -2308,631 +280,80 @@
         "trait": "下黑手",
         "system_fit": 100,
         "recommended_skills": [
-          "嘲弄",
-          "剧毒",
-          "感染病",
-          "防御"
+          "幻象",
+          "鬼火",
+          "坟场搏击",
+          "抓挠"
         ]
       },
-      "琉璃水母": {
-        "score": 319.4,
+      "裘卡": {
+        "score": 312.1,
         "attrs": [
-          "水",
           "毒"
         ],
-        "trait": "扩散侵蚀",
+        "trait": "蚀刻",
         "system_fit": 100,
         "recommended_skills": [
-          "吓退",
-          "天洪",
-          "润泽",
-          "疫病吐息"
-        ]
-      },
-      "圣羽翼王": {
-        "score": 469.6,
-        "attrs": [
-          "翼"
-        ],
-        "trait": "飓风",
-        "system_fit": 0,
-        "recommended_skills": [
-          "疾风连袭",
-          "力量增效",
-          "闪击",
-          "水刃"
-        ]
-      },
-      "寂灭骨龙": {
-        "score": 455.8,
-        "attrs": [
-          "龙",
-          "幽"
-        ],
-        "trait": "不朽",
-        "system_fit": 0,
-        "recommended_skills": [
-          "吓退",
-          "电弧",
-          "偷袭",
-          "隼鳞"
-        ]
-      },
-      "龙息帕尔": {
-        "score": 444.2,
-        "attrs": [
-          "恶"
-        ],
-        "trait": "付给恶魔的赎价",
-        "system_fit": 0,
-        "recommended_skills": [
-          "撕裂",
-          "火云车",
-          "龙吟",
-          "有效预防"
-        ]
-      }
-    }
-  },
-  {
-    "system": "彩虹独角兽队",
-    "system_desc": "围绕彩虹独角兽的首领化队伍",
-    "members": [
-      "彩虹独角兽",
-      "疾光千兽",
-      "绒仙子",
-      "圣羽翼王",
-      "寂灭骨龙",
-      "龙息帕尔"
-    ],
-    "total_score": 2464.9,
-    "base_score": 2376.9,
-    "synergy_bonus": 60,
-    "system_fit_total": 260,
-    "defense_count": 5,
-    "utility_count": 1,
-    "attr_coverage": 6,
-    "details": {
-      "彩虹独角兽": {
-        "score": 387.9,
-        "attrs": [
-          "光"
-        ],
-        "trait": "夺目",
-        "system_fit": 100,
-        "recommended_skills": [
-          "掩护",
-          "啮合传递",
-          "虹光冲击",
-          "跺地"
-        ]
-      },
-      "疾光千兽": {
-        "score": 306.5,
-        "attrs": [
-          "光"
-        ],
-        "trait": "月光审判",
-        "system_fit": 85,
-        "recommended_skills": [
-          "偷袭",
-          "力量增效",
-          "崩拳",
-          "防御"
-        ]
-      },
-      "绒仙子": {
-        "score": 312.9,
-        "attrs": [
-          "光",
-          "虫"
-        ],
-        "trait": "绒粉星光",
-        "system_fit": 75,
-        "recommended_skills": [
-          "啮合传递",
-          "光刃",
-          "防御",
-          "摇篮曲"
-        ]
-      },
-      "圣羽翼王": {
-        "score": 469.6,
-        "attrs": [
-          "翼"
-        ],
-        "trait": "飓风",
-        "system_fit": 0,
-        "recommended_skills": [
-          "疾风连袭",
-          "力量增效",
-          "闪击",
-          "水刃"
-        ]
-      },
-      "寂灭骨龙": {
-        "score": 455.8,
-        "attrs": [
-          "龙",
-          "幽"
-        ],
-        "trait": "不朽",
-        "system_fit": 0,
-        "recommended_skills": [
-          "吓退",
-          "电弧",
-          "偷袭",
-          "隼鳞"
-        ]
-      },
-      "龙息帕尔": {
-        "score": 444.2,
-        "attrs": [
-          "恶"
-        ],
-        "trait": "付给恶魔的赎价",
-        "system_fit": 0,
-        "recommended_skills": [
-          "撕裂",
-          "火云车",
-          "龙吟",
-          "有效预防"
-        ]
-      }
-    }
-  },
-  {
-    "system": "雨天体系",
-    "system_desc": "雨天天气体系",
-    "members": [
-      "游蛇魔使",
-      "卡洛儿",
-      "圣羽翼王",
-      "寂灭骨龙",
-      "龙息帕尔",
-      "格斗小六"
-    ],
-    "total_score": 2463.0,
-    "base_score": 2393.0,
-    "synergy_bonus": 70,
-    "system_fit_total": 160,
-    "defense_count": 5,
-    "utility_count": 2,
-    "attr_coverage": 7,
-    "details": {
-      "游蛇魔使": {
-        "score": 321.0,
-        "attrs": [
-          "水",
-          "武"
-        ],
-        "trait": "思维之盾",
-        "system_fit": 80,
-        "recommended_skills": [
-          "泡沫幻影",
-          "啮合传递",
-          "打湿",
-          "落雨"
-        ]
-      },
-      "卡洛儿": {
-        "score": 308.8,
-        "attrs": [
-          "水",
-          "萌"
-        ],
-        "trait": "守护者",
-        "system_fit": 80,
-        "recommended_skills": [
-          "掩护",
-          "水刃",
-          "落雨",
-          "力量增效"
-        ]
-      },
-      "圣羽翼王": {
-        "score": 469.6,
-        "attrs": [
-          "翼"
-        ],
-        "trait": "飓风",
-        "system_fit": 0,
-        "recommended_skills": [
-          "疾风连袭",
-          "力量增效",
-          "闪击",
-          "水刃"
-        ]
-      },
-      "寂灭骨龙": {
-        "score": 455.8,
-        "attrs": [
-          "龙",
-          "幽"
-        ],
-        "trait": "不朽",
-        "system_fit": 0,
-        "recommended_skills": [
-          "吓退",
-          "电弧",
-          "偷袭",
-          "隼鳞"
-        ]
-      },
-      "龙息帕尔": {
-        "score": 444.2,
-        "attrs": [
-          "恶"
-        ],
-        "trait": "付给恶魔的赎价",
-        "system_fit": 0,
-        "recommended_skills": [
-          "撕裂",
-          "火云车",
-          "龙吟",
-          "有效预防"
-        ]
-      },
-      "格斗小六": {
-        "score": 393.6,
-        "attrs": [
-          "武"
-        ],
-        "trait": "马步",
-        "system_fit": 0,
-        "recommended_skills": [
-          "啮合传递",
-          "龙吟",
-          "飞踢",
-          "防御"
-        ]
-      }
-    }
-  },
-  {
-    "system": "千棘海针（本来的样子）队",
-    "system_desc": "围绕千棘海针（本来的样子）的首领化队伍",
-    "members": [
-      "千棘海针（本来的样子）",
-      "厉毒修萝",
-      "琉璃水母",
-      "圣羽翼王",
-      "寂灭骨龙",
-      "龙息帕尔"
-    ],
-    "total_score": 2461.6,
-    "base_score": 2358.6,
-    "synergy_bonus": 60,
-    "system_fit_total": 270,
-    "defense_count": 5,
-    "utility_count": 1,
-    "attr_coverage": 6,
-    "details": {
-      "千棘海针（本来的样子）": {
-        "score": 298.1,
-        "attrs": [
-          "水",
-          "毒"
-        ],
-        "trait": "溶解腐蚀",
-        "system_fit": 100,
-        "recommended_skills": [
-          "许愿星",
-          "疫病吐息",
-          "泡沫幻影",
+          "毒泡泡",
+          "瘴气喷射",
+          "毒液渗透",
           "感染病"
         ]
       },
-      "厉毒修萝": {
-        "score": 371.5,
+      "蹦蹦花（象牙球形态）": {
+        "score": 305.0,
         "attrs": [
-          "毒",
-          "恶"
-        ],
-        "trait": "侵蚀",
-        "system_fit": 85,
-        "recommended_skills": [
-          "偷袭",
-          "跌落",
-          "力量增效",
-          "防御"
-        ]
-      },
-      "琉璃水母": {
-        "score": 319.4,
-        "attrs": [
-          "水",
+          "草",
           "毒"
         ],
-        "trait": "扩散侵蚀",
-        "system_fit": 85,
-        "recommended_skills": [
-          "吓退",
-          "天洪",
-          "润泽",
-          "湮灭"
-        ]
-      },
-      "圣羽翼王": {
-        "score": 469.6,
-        "attrs": [
-          "翼"
-        ],
-        "trait": "飓风",
-        "system_fit": 0,
-        "recommended_skills": [
-          "疾风连袭",
-          "力量增效",
-          "闪击",
-          "水刃"
-        ]
-      },
-      "寂灭骨龙": {
-        "score": 455.8,
-        "attrs": [
-          "龙",
-          "幽"
-        ],
-        "trait": "不朽",
-        "system_fit": 0,
-        "recommended_skills": [
-          "吓退",
-          "电弧",
-          "偷袭",
-          "隼鳞"
-        ]
-      },
-      "龙息帕尔": {
-        "score": 444.2,
-        "attrs": [
-          "恶"
-        ],
-        "trait": "付给恶魔的赎价",
-        "system_fit": 0,
-        "recommended_skills": [
-          "撕裂",
-          "火云车",
-          "龙吟",
-          "有效预防"
-        ]
-      }
-    }
-  },
-  {
-    "system": "雷暴体系",
-    "system_desc": "雷暴天气体系",
-    "members": [
-      "闪电鳗鱼",
-      "酷拉",
-      "圣羽翼王",
-      "寂灭骨龙",
-      "龙息帕尔",
-      "格斗小六"
-    ],
-    "total_score": 2461.1,
-    "base_score": 2396.1,
-    "synergy_bonus": 65,
-    "system_fit_total": 180,
-    "defense_count": 5,
-    "utility_count": 1,
-    "attr_coverage": 7,
-    "details": {
-      "闪电鳗鱼": {
-        "score": 333.5,
-        "attrs": [
-          "电",
-          "水"
-        ],
-        "trait": "生物电",
+        "trait": "生物碱",
         "system_fit": 100,
         "recommended_skills": [
-          "掩护",
-          "电弧",
-          "消毒法",
-          "雷暴"
+          "汲取",
+          "毒沼",
+          "叶绿光束",
+          "毒液渗透"
         ]
       },
-      "酷拉": {
-        "score": 299.4,
+      "蹦蹦花（彩玉球形态）": {
+        "score": 299.2,
         "attrs": [
-          "电"
+          "草",
+          "毒"
         ],
-        "trait": "噼啪！",
-        "system_fit": 80,
-        "recommended_skills": [
-          "电弧",
-          "力量增效",
-          "雷暴",
-          "防御"
-        ]
-      },
-      "圣羽翼王": {
-        "score": 469.6,
-        "attrs": [
-          "翼"
-        ],
-        "trait": "飓风",
-        "system_fit": 0,
-        "recommended_skills": [
-          "疾风连袭",
-          "力量增效",
-          "闪击",
-          "水刃"
-        ]
-      },
-      "寂灭骨龙": {
-        "score": 455.8,
-        "attrs": [
-          "龙",
-          "幽"
-        ],
-        "trait": "不朽",
-        "system_fit": 0,
-        "recommended_skills": [
-          "吓退",
-          "电弧",
-          "偷袭",
-          "隼鳞"
-        ]
-      },
-      "龙息帕尔": {
-        "score": 444.2,
-        "attrs": [
-          "恶"
-        ],
-        "trait": "付给恶魔的赎价",
-        "system_fit": 0,
-        "recommended_skills": [
-          "撕裂",
-          "火云车",
-          "龙吟",
-          "有效预防"
-        ]
-      },
-      "格斗小六": {
-        "score": 393.6,
-        "attrs": [
-          "武"
-        ],
-        "trait": "马步",
-        "system_fit": 0,
-        "recommended_skills": [
-          "啮合传递",
-          "龙吟",
-          "飞踢",
-          "防御"
-        ]
-      }
-    }
-  },
-  {
-    "system": "波普鹿队",
-    "system_desc": "围绕波普鹿的首领化队伍",
-    "members": [
-      "波普鹿",
-      "闪电鳗鱼",
-      "电球咩咩",
-      "圣羽翼王",
-      "寂灭骨龙",
-      "龙息帕尔"
-    ],
-    "total_score": 2458.7,
-    "base_score": 2355.7,
-    "synergy_bonus": 60,
-    "system_fit_total": 250,
-    "defense_count": 5,
-    "utility_count": 1,
-    "attr_coverage": 6,
-    "details": {
-      "波普鹿": {
-        "score": 323.4,
-        "attrs": [
-          "电"
-        ],
-        "trait": "超级电池",
+        "trait": "生物碱",
         "system_fit": 100,
         "recommended_skills": [
-          "掩护",
-          "啮合传递",
-          "跺地",
-          "冰爪"
-        ]
-      },
-      "闪电鳗鱼": {
-        "score": 333.5,
-        "attrs": [
-          "电",
-          "水"
-        ],
-        "trait": "生物电",
-        "system_fit": 85,
-        "recommended_skills": [
-          "掩护",
-          "电弧",
-          "消毒法",
-          "雷暴"
-        ]
-      },
-      "电球咩咩": {
-        "score": 329.2,
-        "attrs": [
-          "电"
-        ],
-        "trait": "快充",
-        "system_fit": 65,
-        "recommended_skills": [
-          "吓退",
-          "掩护",
-          "偷袭",
-          "落雷"
-        ]
-      },
-      "圣羽翼王": {
-        "score": 469.6,
-        "attrs": [
-          "翼"
-        ],
-        "trait": "飓风",
-        "system_fit": 0,
-        "recommended_skills": [
-          "疾风连袭",
-          "力量增效",
-          "闪击",
-          "水刃"
-        ]
-      },
-      "寂灭骨龙": {
-        "score": 455.8,
-        "attrs": [
-          "龙",
-          "幽"
-        ],
-        "trait": "不朽",
-        "system_fit": 0,
-        "recommended_skills": [
-          "吓退",
-          "电弧",
-          "偷袭",
-          "隼鳞"
-        ]
-      },
-      "龙息帕尔": {
-        "score": 444.2,
-        "attrs": [
-          "恶"
-        ],
-        "trait": "付给恶魔的赎价",
-        "system_fit": 0,
-        "recommended_skills": [
-          "撕裂",
-          "火云车",
-          "龙吟",
-          "有效预防"
+          "汲取",
+          "毒沼",
+          "叶绿光束",
+          "毒液渗透"
         ]
       }
     }
   },
   {
     "system": "蹦蹦果（短毛球形态）队",
+    "type": "center",
     "system_desc": "围绕蹦蹦果（短毛球形态）的首领化队伍",
     "members": [
       "蹦蹦果（短毛球形态）",
       "厉毒修萝",
       "蹦蹦花（象牙球形态）",
-      "圣羽翼王",
-      "寂灭骨龙",
-      "龙息帕尔"
+      "蹦蹦花（彩玉球形态）",
+      "蹦蹦花（短毛球形态）",
+      "蹦蹦花（海神球形态）"
     ],
-    "total_score": 2452.7,
-    "base_score": 2349.7,
+    "total_score": 4725.3,
+    "base_score": 3960.3,
     "synergy_bonus": 60,
-    "system_fit_total": 270,
-    "defense_count": 5,
-    "utility_count": 2,
-    "attr_coverage": 6,
+    "system_fit_total": 525,
+    "defense_count": 6,
+    "utility_count": 5,
+    "attr_coverage": 3,
     "details": {
       "蹦蹦果（短毛球形态）": {
-        "score": 293.0,
+        "score": 300.2,
         "attrs": [
           "草",
           "毒"
@@ -2940,14 +361,14 @@
         "trait": "高浓生物碱",
         "system_fit": 100,
         "recommended_skills": [
-          "防御",
-          "毒液渗透",
-          "仙人掌刺击",
-          "芳香诱引"
+          "汲取",
+          "毒沼",
+          "叶绿光束",
+          "针刺射击"
         ]
       },
       "厉毒修萝": {
-        "score": 371.5,
+        "score": 360.9,
         "attrs": [
           "毒",
           "恶"
@@ -2955,14 +376,14 @@
         "trait": "侵蚀",
         "system_fit": 85,
         "recommended_skills": [
-          "偷袭",
+          "魔爪",
           "跌落",
-          "力量增效",
-          "防御"
+          "毒针",
+          "趁火打劫"
         ]
       },
       "蹦蹦花（象牙球形态）": {
-        "score": 315.6,
+        "score": 305.0,
         "attrs": [
           "草",
           "毒"
@@ -2970,184 +391,520 @@
         "trait": "生物碱",
         "system_fit": 85,
         "recommended_skills": [
-          "芳香诱引",
-          "啮合传递",
-          "藤绞",
-          "防御"
+          "汲取",
+          "毒沼",
+          "叶绿光束",
+          "毒液渗透"
         ]
       },
-      "圣羽翼王": {
-        "score": 469.6,
+      "蹦蹦花（彩玉球形态）": {
+        "score": 299.2,
         "attrs": [
-          "翼"
+          "草",
+          "毒"
         ],
-        "trait": "飓风",
-        "system_fit": 0,
+        "trait": "生物碱",
+        "system_fit": 85,
         "recommended_skills": [
-          "疾风连袭",
-          "力量增效",
-          "闪击",
-          "水刃"
+          "汲取",
+          "毒沼",
+          "叶绿光束",
+          "毒液渗透"
         ]
       },
-      "寂灭骨龙": {
-        "score": 455.8,
+      "蹦蹦花（短毛球形态）": {
+        "score": 298.0,
         "attrs": [
-          "龙",
-          "幽"
+          "草",
+          "毒"
         ],
-        "trait": "不朽",
-        "system_fit": 0,
+        "trait": "生物碱",
+        "system_fit": 85,
         "recommended_skills": [
-          "吓退",
-          "电弧",
-          "偷袭",
-          "隼鳞"
+          "汲取",
+          "毒沼",
+          "叶绿光束",
+          "针刺射击"
         ]
       },
-      "龙息帕尔": {
-        "score": 444.2,
+      "蹦蹦花（海神球形态）": {
+        "score": 297.0,
         "attrs": [
-          "恶"
+          "草",
+          "毒"
         ],
-        "trait": "付给恶魔的赎价",
-        "system_fit": 0,
+        "trait": "生物碱",
+        "system_fit": 85,
         "recommended_skills": [
-          "撕裂",
-          "火云车",
-          "龙吟",
-          "有效预防"
+          "汲取",
+          "毒沼",
+          "叶绿光束",
+          "针刺射击"
         ]
       }
     }
   },
   {
-    "system": "黑猫密探队",
-    "system_desc": "围绕黑猫密探的首领化队伍",
+    "system": "冻结体系",
+    "type": "mechanic",
+    "system_desc": "冻结印记联动体系",
     "members": [
-      "黑猫密探",
-      "公平鸽",
-      "蹦床松鼠",
-      "圣羽翼王",
-      "寂灭骨龙",
-      "龙息帕尔"
+      "尖嘴狐仙",
+      "冰钻布鲁斯",
+      "雪巨人",
+      "月牙雪熊",
+      "雪灵",
+      "獠牙猪"
     ],
-    "total_score": 2450.0,
-    "base_score": 2362.0,
-    "synergy_bonus": 60,
-    "system_fit_total": 200,
-    "defense_count": 5,
-    "utility_count": 1,
-    "attr_coverage": 5,
+    "total_score": 4666.0,
+    "base_score": 3946.0,
+    "synergy_bonus": 55,
+    "system_fit_total": 560,
+    "defense_count": 6,
+    "utility_count": 2,
+    "attr_coverage": 4,
     "details": {
-      "黑猫密探": {
-        "score": 366.2,
+      "尖嘴狐仙": {
+        "score": 371.8,
         "attrs": [
-          "普通"
+          "火",
+          "冰"
         ],
-        "trait": "先知",
+        "trait": "灵魂灼伤",
         "system_fit": 100,
         "recommended_skills": [
-          "力量增效",
+          "冷风",
+          "暴风雪",
+          "炎枪",
+          "火焰切割"
+        ]
+      },
+      "冰钻布鲁斯": {
+        "score": 355.8,
+        "attrs": [
+          "冰"
+        ],
+        "trait": "冰钻",
+        "system_fit": 100,
+        "recommended_skills": [
+          "暴风雪",
+          "滚雪球",
+          "冰爪",
+          "先发制人"
+        ]
+      },
+      "雪巨人": {
+        "score": 342.1,
+        "attrs": [
+          "冰"
+        ],
+        "trait": "打雪仗",
+        "system_fit": 100,
+        "recommended_skills": [
+          "冰锥",
+          "暴风雪",
           "先发制人",
-          "偷袭",
-          "有效预防"
+          "丢冰块"
         ]
       },
-      "公平鸽": {
-        "score": 331.0,
+      "月牙雪熊": {
+        "score": 323.0,
         "attrs": [
-          "普通"
+          "冰",
+          "幻"
         ],
-        "trait": "衡量",
-        "system_fit": 50,
+        "trait": "月牙雪糕",
+        "system_fit": 100,
         "recommended_skills": [
-          "天旋地转",
-          "啮合传递",
-          "嗜痛",
-          "摇篮曲"
+          "冰锥",
+          "粒子对撞",
+          "暴风雪",
+          "鸣沙陷阱"
         ]
       },
-      "蹦床松鼠": {
-        "score": 295.2,
+      "雪灵": {
+        "score": 308.0,
         "attrs": [
-          "普通"
+          "冰"
         ],
-        "trait": "囤积",
-        "system_fit": 50,
+        "trait": "冰封",
+        "system_fit": 100,
         "recommended_skills": [
-          "吓退",
-          "掩护",
-          "蓄能轰击",
-          "虹光冲击"
+          "冰锥",
+          "丢冰块",
+          "雪替身",
+          "啮合传递"
         ]
       },
-      "圣羽翼王": {
-        "score": 469.6,
+      "獠牙猪": {
+        "score": 315.3,
         "attrs": [
-          "翼"
+          "冰",
+          "地"
         ],
-        "trait": "飓风",
-        "system_fit": 0,
+        "trait": "冻土",
+        "system_fit": 60,
         "recommended_skills": [
-          "疾风连袭",
-          "力量增效",
-          "闪击",
-          "水刃"
+          "暴风雪",
+          "滚雪球",
+          "地刺",
+          "岩脉崩毁"
         ]
-      },
-      "寂灭骨龙": {
-        "score": 455.8,
+      }
+    }
+  },
+  {
+    "system": "千棘海针（磨损的样子）队",
+    "type": "center",
+    "system_desc": "围绕千棘海针（磨损的样子）的首领化队伍",
+    "members": [
+      "千棘海针（磨损的样子）",
+      "厉毒修萝",
+      "琉璃水母",
+      "千棘盔（磨损的样子）",
+      "千棘盔（本来的样子）",
+      "刺盔虫（本来的样子）"
+    ],
+    "total_score": 4603.9,
+    "base_score": 3858.9,
+    "synergy_bonus": 60,
+    "system_fit_total": 525,
+    "defense_count": 6,
+    "utility_count": 4,
+    "attr_coverage": 3,
+    "details": {
+      "千棘海针（磨损的样子）": {
+        "score": 281.1,
         "attrs": [
-          "龙",
-          "幽"
+          "水",
+          "毒"
         ],
-        "trait": "不朽",
-        "system_fit": 0,
+        "trait": "溶解腐蚀",
+        "system_fit": 100,
         "recommended_skills": [
-          "吓退",
-          "电弧",
-          "偷袭",
-          "隼鳞"
+          "甩水",
+          "毒液渗透",
+          "感染病",
+          "腐蚀酸液"
         ]
       },
-      "龙息帕尔": {
-        "score": 444.2,
+      "厉毒修萝": {
+        "score": 360.9,
         "attrs": [
+          "毒",
           "恶"
         ],
-        "trait": "付给恶魔的赎价",
-        "system_fit": 0,
+        "trait": "侵蚀",
+        "system_fit": 85,
         "recommended_skills": [
+          "魔爪",
+          "跌落",
+          "毒针",
+          "趁火打劫"
+        ]
+      },
+      "琉璃水母": {
+        "score": 303.8,
+        "attrs": [
+          "水",
+          "毒"
+        ],
+        "trait": "扩散侵蚀",
+        "system_fit": 85,
+        "recommended_skills": [
+          "甩水",
+          "瘴气喷射",
+          "激流",
+          "毒液渗透"
+        ]
+      },
+      "千棘盔（磨损的样子）": {
+        "score": 285.4,
+        "attrs": [
+          "水",
+          "毒"
+        ],
+        "trait": "溶解扩散",
+        "system_fit": 85,
+        "recommended_skills": [
+          "甩水",
+          "毒液渗透",
+          "感染病",
+          "腐蚀酸液"
+        ]
+      },
+      "千棘盔（本来的样子）": {
+        "score": 272.9,
+        "attrs": [
+          "水",
+          "毒"
+        ],
+        "trait": "溶解扩散",
+        "system_fit": 85,
+        "recommended_skills": [
+          "甩水",
+          "毒液渗透",
+          "感染病",
+          "腐蚀酸液"
+        ]
+      },
+      "刺盔虫（本来的样子）": {
+        "score": 254.8,
+        "attrs": [
+          "水",
+          "毒"
+        ],
+        "trait": "溶解扩散",
+        "system_fit": 85,
+        "recommended_skills": [
+          "甩水",
+          "毒液渗透",
+          "感染病",
+          "腐蚀酸液"
+        ]
+      }
+    }
+  },
+  {
+    "system": "烈火战神队",
+    "type": "center",
+    "system_desc": "围绕烈火战神的首领化队伍",
+    "members": [
+      "烈火战神",
+      "火焰猿",
+      "烈火守护",
+      "炽心勇狮",
+      "尖嘴狐仙",
+      "贝古斯"
+    ],
+    "total_score": 4381.9,
+    "base_score": 3796.9,
+    "synergy_bonus": 60,
+    "system_fit_total": 470,
+    "defense_count": 6,
+    "utility_count": 3,
+    "attr_coverage": 4,
+    "details": {
+      "烈火战神": {
+        "score": 408.5,
+        "attrs": [
+          "火"
+        ],
+        "trait": "爆燃",
+        "system_fit": 100,
+        "recommended_skills": [
+          "火焰冲锋",
+          "噬心",
+          "溃烂触碰",
+          "星云漩涡"
+        ]
+      },
+      "火焰猿": {
+        "score": 383.1,
+        "attrs": [
+          "火"
+        ],
+        "trait": "散热",
+        "system_fit": 85,
+        "recommended_skills": [
+          "炎息",
+          "吹火",
+          "闪燃",
+          "灼伤"
+        ]
+      },
+      "烈火守护": {
+        "score": 271.8,
+        "attrs": [
+          "火"
+        ],
+        "trait": "蒸汽膨胀",
+        "system_fit": 85,
+        "recommended_skills": [
+          "火焰冲锋",
+          "闪燃",
           "撕裂",
-          "火云车",
-          "龙吟",
-          "有效预防"
+          "火云车"
+        ]
+      },
+      "炽心勇狮": {
+        "score": 372.4,
+        "attrs": [
+          "火",
+          "武"
+        ],
+        "trait": "圣火骑士",
+        "system_fit": 75,
+        "recommended_skills": [
+          "气波",
+          "炎打",
+          "持续高温",
+          "焚毁"
+        ]
+      },
+      "尖嘴狐仙": {
+        "score": 371.8,
+        "attrs": [
+          "火",
+          "冰"
+        ],
+        "trait": "灵魂灼伤",
+        "system_fit": 75,
+        "recommended_skills": [
+          "冷风",
+          "暴风雪",
+          "炎枪",
+          "火焰切割"
+        ]
+      },
+      "贝古斯": {
+        "score": 399.3,
+        "attrs": [
+          "机械",
+          "火"
+        ],
+        "trait": "贪心算法",
+        "system_fit": 50,
+        "recommended_skills": [
+          "离子震荡",
+          "燃尽",
+          "磁暴",
+          "烈焰风暴"
+        ]
+      }
+    }
+  },
+  {
+    "system": "风暴战犬队",
+    "type": "center",
+    "system_desc": "围绕风暴战犬的首领化队伍",
+    "members": [
+      "风暴战犬",
+      "火焰猿",
+      "烈火守护",
+      "炽心勇狮",
+      "尖嘴狐仙",
+      "贝古斯"
+    ],
+    "total_score": 4301.2,
+    "base_score": 3716.2,
+    "synergy_bonus": 60,
+    "system_fit_total": 470,
+    "defense_count": 6,
+    "utility_count": 3,
+    "attr_coverage": 4,
+    "details": {
+      "风暴战犬": {
+        "score": 327.8,
+        "attrs": [
+          "火"
+        ],
+        "trait": "全神贯注",
+        "system_fit": 100,
+        "recommended_skills": [
+          "火焰冲锋",
+          "噬心",
+          "溃烂触碰",
+          "星云漩涡"
+        ]
+      },
+      "火焰猿": {
+        "score": 383.1,
+        "attrs": [
+          "火"
+        ],
+        "trait": "散热",
+        "system_fit": 85,
+        "recommended_skills": [
+          "炎息",
+          "吹火",
+          "闪燃",
+          "灼伤"
+        ]
+      },
+      "烈火守护": {
+        "score": 271.8,
+        "attrs": [
+          "火"
+        ],
+        "trait": "蒸汽膨胀",
+        "system_fit": 85,
+        "recommended_skills": [
+          "火焰冲锋",
+          "闪燃",
+          "撕裂",
+          "火云车"
+        ]
+      },
+      "炽心勇狮": {
+        "score": 372.4,
+        "attrs": [
+          "火",
+          "武"
+        ],
+        "trait": "圣火骑士",
+        "system_fit": 75,
+        "recommended_skills": [
+          "气波",
+          "炎打",
+          "持续高温",
+          "焚毁"
+        ]
+      },
+      "尖嘴狐仙": {
+        "score": 371.8,
+        "attrs": [
+          "火",
+          "冰"
+        ],
+        "trait": "灵魂灼伤",
+        "system_fit": 75,
+        "recommended_skills": [
+          "冷风",
+          "暴风雪",
+          "炎枪",
+          "火焰切割"
+        ]
+      },
+      "贝古斯": {
+        "score": 399.3,
+        "attrs": [
+          "机械",
+          "火"
+        ],
+        "trait": "贪心算法",
+        "system_fit": 50,
+        "recommended_skills": [
+          "离子震荡",
+          "燃尽",
+          "磁暴",
+          "烈焰风暴"
         ]
       }
     }
   },
   {
     "system": "星陨体系",
+    "type": "mechanic",
     "system_desc": "星陨印记联动体系",
     "members": [
       "暮星辰",
       "落陨星兔",
       "怖哭菇",
-      "圣羽翼王",
-      "寂灭骨龙",
-      "龙息帕尔"
+      "月牙雪熊",
+      "星云旅者",
+      "迷迷箱怪"
     ],
-    "total_score": 2448.8,
-    "base_score": 2370.8,
+    "total_score": 4246.2,
+    "base_score": 3676.2,
     "synergy_bonus": 70,
-    "system_fit_total": 300,
+    "system_fit_total": 530,
     "defense_count": 5,
     "utility_count": 1,
     "attr_coverage": 5,
     "details": {
       "暮星辰": {
-        "score": 376.0,
+        "score": 367.6,
         "attrs": [
           "幻",
           "翼"
@@ -3155,14 +912,14 @@
         "trait": "守望星",
         "system_fit": 100,
         "recommended_skills": [
-          "嘲弄",
-          "倾泻",
-          "防御",
-          "错乱"
+          "鸣叫",
+          "坍缩",
+          "翼击",
+          "大爆炸"
         ]
       },
       "落陨星兔": {
-        "score": 349.3,
+        "score": 334.5,
         "attrs": [
           "幻",
           "幽"
@@ -3170,92 +927,425 @@
         "trait": "陨落",
         "system_fit": 100,
         "recommended_skills": [
-          "吓退",
-          "嘲弄",
           "坍缩",
-          "二律背反"
+          "拍击",
+          "恐吓",
+          "大爆炸"
         ]
       },
       "怖哭菇": {
-        "score": 275.9,
+        "score": 266.0,
         "attrs": [
           "幻"
         ],
         "trait": "吸积盘",
         "system_fit": 100,
         "recommended_skills": [
-          "吓退",
-          "掩护",
+          "偷师",
+          "星云漩涡",
           "错乱",
-          "藤绞"
+          "先发制人"
+        ]
+      },
+      "月牙雪熊": {
+        "score": 323.0,
+        "attrs": [
+          "冰",
+          "幻"
+        ],
+        "trait": "月牙雪糕",
+        "system_fit": 85,
+        "recommended_skills": [
+          "冰锥",
+          "粒子对撞",
+          "暴风雪",
+          "鸣沙陷阱"
+        ]
+      },
+      "星云旅者": {
+        "score": 130.1,
+        "attrs": [
+          "幻",
+          "翼"
+        ],
+        "trait": "穹顶之下",
+        "system_fit": 85,
+        "recommended_skills": [
+          "升龙咆哮",
+          "魅惑",
+          "花香",
+          "离子震荡"
+        ]
+      },
+      "迷迷箱怪": {
+        "score": 325.0,
+        "attrs": [
+          "机械",
+          "幻"
+        ],
+        "trait": "虚假宝箱",
+        "system_fit": 60,
+        "recommended_skills": [
+          "粒子对撞",
+          "星云漩涡",
+          "离子震荡",
+          "后发制人"
+        ]
+      }
+    }
+  },
+  {
+    "system": "神谕鲨队",
+    "type": "center",
+    "system_desc": "围绕神谕鲨的首领化队伍",
+    "members": [
+      "神谕鲨",
+      "圣羽翼王",
+      "琉璃水母",
+      "嗜波螺",
+      "锤头鹳",
+      "海豹船长"
+    ],
+    "total_score": 4219.3,
+    "base_score": 3584.3,
+    "synergy_bonus": 60,
+    "system_fit_total": 495,
+    "defense_count": 5,
+    "utility_count": 1,
+    "attr_coverage": 5,
+    "details": {
+      "神谕鲨": {
+        "score": 323.2,
+        "attrs": [
+          "水",
+          "翼"
+        ],
+        "trait": "水翼飞升",
+        "system_fit": 100,
+        "recommended_skills": [
+          "泡沫",
+          "升龙咆哮",
+          "魅惑",
+          "噬心"
         ]
       },
       "圣羽翼王": {
-        "score": 469.6,
+        "score": 473.4,
         "attrs": [
           "翼"
         ],
         "trait": "飓风",
-        "system_fit": 0,
+        "system_fit": 85,
         "recommended_skills": [
-          "疾风连袭",
-          "力量增效",
           "闪击",
-          "水刃"
+          "后发制人",
+          "翼击",
+          "龙卷风"
         ]
       },
-      "寂灭骨龙": {
-        "score": 455.8,
+      "琉璃水母": {
+        "score": 303.8,
         "attrs": [
-          "龙",
-          "幽"
+          "水",
+          "毒"
         ],
-        "trait": "不朽",
-        "system_fit": 0,
+        "trait": "扩散侵蚀",
+        "system_fit": 85,
         "recommended_skills": [
-          "吓退",
-          "电弧",
-          "偷袭",
-          "隼鳞"
+          "甩水",
+          "瘴气喷射",
+          "激流",
+          "毒液渗透"
         ]
       },
-      "龙息帕尔": {
-        "score": 444.2,
+      "嗜波螺": {
+        "score": 324.0,
         "attrs": [
+          "地",
+          "水"
+        ],
+        "trait": "消波块",
+        "system_fit": 75,
+        "recommended_skills": [
+          "泡沫",
+          "热砂",
+          "潮涌",
+          "气泡"
+        ]
+      },
+      "锤头鹳": {
+        "score": 290.0,
+        "attrs": [
+          "翼",
+          "水"
+        ],
+        "trait": "快锤",
+        "system_fit": 75,
+        "recommended_skills": [
+          "鸣叫",
+          "翼击",
+          "风矢",
+          "潮涌"
+        ]
+      },
+      "海豹船长": {
+        "score": 279.9,
+        "attrs": [
+          "武",
+          "水"
+        ],
+        "trait": "身经百练",
+        "system_fit": 75,
+        "recommended_skills": [
+          "气波",
+          "泡沫",
+          "斩断",
+          "水幕冲击"
+        ]
+      }
+    }
+  },
+  {
+    "system": "火队",
+    "type": "center",
+    "system_desc": "烈火守护火系联动队",
+    "members": [
+      "烈火守护",
+      "火焰猿",
+      "贝古斯",
+      "炽心勇狮",
+      "尖嘴狐仙",
+      "燃薪虫"
+    ],
+    "total_score": 4191.9,
+    "base_score": 3586.9,
+    "synergy_bonus": 60,
+    "system_fit_total": 485,
+    "defense_count": 6,
+    "utility_count": 3,
+    "attr_coverage": 5,
+    "details": {
+      "烈火守护": {
+        "score": 271.8,
+        "attrs": [
+          "火"
+        ],
+        "trait": "蒸汽膨胀",
+        "system_fit": 100,
+        "recommended_skills": [
+          "火焰冲锋",
+          "闪燃",
+          "撕裂",
+          "火云车"
+        ]
+      },
+      "火焰猿": {
+        "score": 383.1,
+        "attrs": [
+          "火"
+        ],
+        "trait": "散热",
+        "system_fit": 85,
+        "recommended_skills": [
+          "炎息",
+          "吹火",
+          "闪燃",
+          "灼伤"
+        ]
+      },
+      "贝古斯": {
+        "score": 399.3,
+        "attrs": [
+          "机械",
+          "火"
+        ],
+        "trait": "贪心算法",
+        "system_fit": 75,
+        "recommended_skills": [
+          "离子震荡",
+          "燃尽",
+          "磁暴",
+          "烈焰风暴"
+        ]
+      },
+      "炽心勇狮": {
+        "score": 372.4,
+        "attrs": [
+          "火",
+          "武"
+        ],
+        "trait": "圣火骑士",
+        "system_fit": 75,
+        "recommended_skills": [
+          "气波",
+          "炎打",
+          "持续高温",
+          "焚毁"
+        ]
+      },
+      "尖嘴狐仙": {
+        "score": 371.8,
+        "attrs": [
+          "火",
+          "冰"
+        ],
+        "trait": "灵魂灼伤",
+        "system_fit": 75,
+        "recommended_skills": [
+          "冷风",
+          "暴风雪",
+          "炎枪",
+          "火焰切割"
+        ]
+      },
+      "燃薪虫": {
+        "score": 368.5,
+        "attrs": [
+          "火",
+          "草"
+        ],
+        "trait": "煤渣草",
+        "system_fit": 75,
+        "recommended_skills": [
+          "种子弹",
+          "火焰冲锋",
+          "灼伤",
+          "抽枝"
+        ]
+      }
+    }
+  },
+  {
+    "system": "霜翼领主（秋天的样子）队",
+    "type": "center",
+    "system_desc": "围绕霜翼领主（秋天的样子）的首领化队伍",
+    "members": [
+      "霜翼领主（秋天的样子）",
+      "圣羽翼王",
+      "噼啪鸟",
+      "暮星辰",
+      "黑羽夫人",
+      "高脚鹬"
+    ],
+    "total_score": 4159.6,
+    "base_score": 3634.6,
+    "synergy_bonus": 60,
+    "system_fit_total": 385,
+    "defense_count": 4,
+    "utility_count": 2,
+    "attr_coverage": 4,
+    "details": {
+      "霜翼领主（秋天的样子）": {
+        "score": 330.3,
+        "attrs": [
+          "翼"
+        ],
+        "trait": "破空",
+        "system_fit": 100,
+        "recommended_skills": [
+          "龙卷风",
+          "羽刃",
+          "啄击",
+          "俯冲猛击"
+        ]
+      },
+      "圣羽翼王": {
+        "score": 473.4,
+        "attrs": [
+          "翼"
+        ],
+        "trait": "飓风",
+        "system_fit": 85,
+        "recommended_skills": [
+          "闪击",
+          "后发制人",
+          "翼击",
+          "龙卷风"
+        ]
+      },
+      "噼啪鸟": {
+        "score": 388.0,
+        "attrs": [
+          "电",
+          "翼"
+        ],
+        "trait": "连续负荷",
+        "system_fit": 50,
+        "recommended_skills": [
+          "闪击",
+          "翼击",
+          "龙卷风",
+          "羽刃"
+        ]
+      },
+      "暮星辰": {
+        "score": 367.6,
+        "attrs": [
+          "幻",
+          "翼"
+        ],
+        "trait": "守望星",
+        "system_fit": 50,
+        "recommended_skills": [
+          "鸣叫",
+          "坍缩",
+          "翼击",
+          "大爆炸"
+        ]
+      },
+      "黑羽夫人": {
+        "score": 344.5,
+        "attrs": [
+          "翼",
           "恶"
         ],
-        "trait": "付给恶魔的赎价",
-        "system_fit": 0,
+        "trait": "贪婪",
+        "system_fit": 50,
         "recommended_skills": [
-          "撕裂",
-          "火云车",
-          "龙吟",
-          "有效预防"
+          "灾厄",
+          "迫害",
+          "鸣叫",
+          "风矢"
+        ]
+      },
+      "高脚鹬": {
+        "score": 310.8,
+        "attrs": [
+          "翼"
+        ],
+        "trait": "起飞加速",
+        "system_fit": 50,
+        "recommended_skills": [
+          "鸣叫",
+          "鹰爪",
+          "翼击",
+          "风墙"
         ]
       }
     }
   },
   {
     "system": "钻石蜗（莲花刚玉的样子）队",
+    "type": "center",
     "system_desc": "围绕钻石蜗（莲花刚玉的样子）的首领化队伍",
     "members": [
       "钻石蜗（莲花刚玉的样子）",
       "绒光优优",
       "疾光千兽",
-      "圣羽翼王",
-      "寂灭骨龙",
-      "龙息帕尔"
+      "波多西",
+      "嗜波螺",
+      "泥吼牙"
     ],
-    "total_score": 2445.2,
-    "base_score": 2357.2,
+    "total_score": 4129.1,
+    "base_score": 3554.1,
     "synergy_bonus": 60,
-    "system_fit_total": 270,
-    "defense_count": 5,
+    "system_fit_total": 470,
+    "defense_count": 6,
     "utility_count": 0,
-    "attr_coverage": 6,
+    "attr_coverage": 5,
     "details": {
       "钻石蜗（莲花刚玉的样子）": {
-        "score": 292.1,
+        "score": 273.4,
         "attrs": [
           "光",
           "地"
@@ -3263,14 +1353,14 @@
         "trait": "完全偏振",
         "system_fit": 100,
         "recommended_skills": [
-          "淤泥表皮",
-          "壁垒",
-          "闪光冲击",
-          "地刺"
+          "脉冲光线",
+          "泥浆",
+          "透射",
+          "扬沙"
         ]
       },
       "绒光优优": {
-        "score": 389.0,
+        "score": 381.0,
         "attrs": [
           "地",
           "光"
@@ -3278,519 +1368,316 @@
         "trait": "哨兵",
         "system_fit": 85,
         "recommended_skills": [
-          "啮合传递",
-          "硬化",
-          "跺地",
-          "天光"
+          "泥浆",
+          "闪光",
+          "泥巴喷射",
+          "热砂"
         ]
       },
       "疾光千兽": {
-        "score": 306.5,
+        "score": 300.0,
         "attrs": [
           "光"
         ],
         "trait": "月光审判",
         "system_fit": 85,
         "recommended_skills": [
-          "偷袭",
-          "力量增效",
+          "透射",
+          "光刃",
           "崩拳",
-          "防御"
+          "先发制人"
         ]
       },
-      "圣羽翼王": {
-        "score": 469.6,
+      "波多西": {
+        "score": 359.3,
         "attrs": [
-          "翼"
+          "机械",
+          "地"
         ],
-        "trait": "飓风",
-        "system_fit": 0,
-        "recommended_skills": [
-          "疾风连袭",
-          "力量增效",
-          "闪击",
-          "水刃"
-        ]
-      },
-      "寂灭骨龙": {
-        "score": 455.8,
-        "attrs": [
-          "龙",
-          "幽"
-        ],
-        "trait": "不朽",
-        "system_fit": 0,
-        "recommended_skills": [
-          "吓退",
-          "电弧",
-          "偷袭",
-          "隼鳞"
-        ]
-      },
-      "龙息帕尔": {
-        "score": 444.2,
-        "attrs": [
-          "恶"
-        ],
-        "trait": "付给恶魔的赎价",
-        "system_fit": 0,
-        "recommended_skills": [
-          "撕裂",
-          "火云车",
-          "龙吟",
-          "有效预防"
-        ]
-      }
-    }
-  },
-  {
-    "system": "风暴战犬队",
-    "system_desc": "围绕风暴战犬的首领化队伍",
-    "members": [
-      "风暴战犬",
-      "火焰猿",
-      "烈火守护",
-      "圣羽翼王",
-      "寂灭骨龙",
-      "龙息帕尔"
-    ],
-    "total_score": 2438.7,
-    "base_score": 2350.7,
-    "synergy_bonus": 60,
-    "system_fit_total": 270,
-    "defense_count": 5,
-    "utility_count": 1,
-    "attr_coverage": 5,
-    "details": {
-      "风暴战犬": {
-        "score": 330.3,
-        "attrs": [
-          "火"
-        ],
-        "trait": "全神贯注",
-        "system_fit": 100,
-        "recommended_skills": [
-          "掩护",
-          "啮合传递",
-          "跺地",
-          "冰爪"
-        ]
-      },
-      "火焰猿": {
-        "score": 368.4,
-        "attrs": [
-          "火"
-        ],
-        "trait": "散热",
-        "system_fit": 85,
+        "trait": "定向精炼",
+        "system_fit": 75,
         "recommended_skills": [
           "地刺",
-          "偷袭",
-          "焚烧烙印",
-          "防御"
+          "先发制人",
+          "齿轮切开",
+          "齿轮扭矩"
         ]
       },
-      "烈火守护": {
-        "score": 282.4,
+      "嗜波螺": {
+        "score": 324.0,
         "attrs": [
-          "火"
+          "地",
+          "水"
         ],
-        "trait": "蒸汽膨胀",
-        "system_fit": 85,
+        "trait": "消波块",
+        "system_fit": 75,
         "recommended_skills": [
-          "偷袭",
-          "撕裂",
-          "火云车",
-          "有效预防"
+          "泡沫",
+          "热砂",
+          "潮涌",
+          "气泡"
         ]
       },
-      "圣羽翼王": {
-        "score": 469.6,
+      "泥吼牙": {
+        "score": 326.4,
         "attrs": [
+          "地",
           "翼"
         ],
-        "trait": "飓风",
-        "system_fit": 0,
-        "recommended_skills": [
-          "疾风连袭",
-          "力量增效",
-          "闪击",
-          "水刃"
-        ]
-      },
-      "寂灭骨龙": {
-        "score": 455.8,
-        "attrs": [
-          "龙",
-          "幽"
-        ],
-        "trait": "不朽",
-        "system_fit": 0,
-        "recommended_skills": [
-          "吓退",
-          "电弧",
-          "偷袭",
-          "隼鳞"
-        ]
-      },
-      "龙息帕尔": {
-        "score": 444.2,
-        "attrs": [
-          "恶"
-        ],
-        "trait": "付给恶魔的赎价",
-        "system_fit": 0,
-        "recommended_skills": [
-          "撕裂",
-          "火云车",
-          "龙吟",
-          "有效预防"
-        ]
-      }
-    }
-  },
-  {
-    "system": "鸭吉吉国王（蓬松的样子）队",
-    "system_desc": "围绕鸭吉吉国王（蓬松的样子）的首领化队伍",
-    "members": [
-      "鸭吉吉国王（蓬松的样子）",
-      "公平鸽",
-      "蹦床松鼠",
-      "圣羽翼王",
-      "寂灭骨龙",
-      "龙息帕尔"
-    ],
-    "total_score": 2428.5,
-    "base_score": 2340.5,
-    "synergy_bonus": 60,
-    "system_fit_total": 200,
-    "defense_count": 5,
-    "utility_count": 1,
-    "attr_coverage": 5,
-    "details": {
-      "鸭吉吉国王（蓬松的样子）": {
-        "score": 344.7,
-        "attrs": [
-          "普通"
-        ],
-        "trait": "“国王”的威严",
-        "system_fit": 100,
-        "recommended_skills": [
-          "力量增效",
-          "扫尾",
-          "吓退",
-          "快速移动"
-        ]
-      },
-      "公平鸽": {
-        "score": 331.0,
-        "attrs": [
-          "普通"
-        ],
-        "trait": "衡量",
+        "trait": "无差别过滤",
         "system_fit": 50,
         "recommended_skills": [
-          "天旋地转",
-          "啮合传递",
-          "嗜痛",
-          "摇篮曲"
-        ]
-      },
-      "蹦床松鼠": {
-        "score": 295.2,
-        "attrs": [
-          "普通"
-        ],
-        "trait": "囤积",
-        "system_fit": 50,
-        "recommended_skills": [
-          "吓退",
-          "掩护",
-          "蓄能轰击",
-          "虹光冲击"
-        ]
-      },
-      "圣羽翼王": {
-        "score": 469.6,
-        "attrs": [
-          "翼"
-        ],
-        "trait": "飓风",
-        "system_fit": 0,
-        "recommended_skills": [
-          "疾风连袭",
-          "力量增效",
-          "闪击",
-          "水刃"
-        ]
-      },
-      "寂灭骨龙": {
-        "score": 455.8,
-        "attrs": [
-          "龙",
-          "幽"
-        ],
-        "trait": "不朽",
-        "system_fit": 0,
-        "recommended_skills": [
-          "吓退",
-          "电弧",
-          "偷袭",
-          "隼鳞"
-        ]
-      },
-      "龙息帕尔": {
-        "score": 444.2,
-        "attrs": [
-          "恶"
-        ],
-        "trait": "付给恶魔的赎价",
-        "system_fit": 0,
-        "recommended_skills": [
-          "撕裂",
-          "火云车",
-          "龙吟",
-          "有效预防"
+          "落石",
+          "羽刃",
+          "地刺",
+          "啄击"
         ]
       }
     }
   },
   {
-    "system": "伊兰龙队",
-    "system_desc": "围绕伊兰龙的首领化队伍",
+    "system": "吸能体系",
+    "type": "mechanic",
+    "system_desc": "削减敌方能量体系",
     "members": [
-      "伊兰龙",
-      "龙鱼",
-      "翼龙",
-      "圣羽翼王",
-      "龙息帕尔",
-      "格斗小六"
+      "花影羚羊",
+      "幻影灵菇",
+      "食尘短绒",
+      "落陨星兔",
+      "影狸",
+      "卡拉波斯"
     ],
-    "total_score": 2419.7,
-    "base_score": 2316.7,
-    "synergy_bonus": 60,
-    "system_fit_total": 310,
-    "defense_count": 5,
-    "utility_count": 1,
-    "attr_coverage": 5,
+    "total_score": 4118.0,
+    "base_score": 3583.0,
+    "synergy_bonus": 55,
+    "system_fit_total": 465,
+    "defense_count": 6,
+    "utility_count": 4,
+    "attr_coverage": 7,
     "details": {
-      "伊兰龙": {
-        "score": 335.1,
+      "花影羚羊": {
+        "score": 331.2,
         "attrs": [
-          "龙"
+          "幽",
+          "恶"
         ],
-        "trait": "游弋",
+        "trait": "碰瓷",
         "system_fit": 100,
         "recommended_skills": [
-          "掩护",
-          "啮合传递",
-          "虹光冲击",
-          "跺地"
+          "恶能量",
+          "幻象",
+          "坟场搏击",
+          "极限撕裂"
         ]
       },
-      "龙鱼": {
-        "score": 361.2,
+      "幻影灵菇": {
+        "score": 320.7,
         "attrs": [
-          "水",
-          "龙"
+          "幽",
+          "草"
         ],
-        "trait": "洄游",
+        "trait": "毒蘑菇",
+        "system_fit": 100,
+        "recommended_skills": [
+          "鬼火",
+          "种子弹",
+          "幻象",
+          "汲取"
+        ]
+      },
+      "食尘短绒": {
+        "score": 347.1,
+        "attrs": [
+          "虫",
+          "地"
+        ],
+        "trait": "特殊清洁场景",
         "system_fit": 85,
         "recommended_skills": [
-          "超导",
-          "打湿",
-          "龙吟",
-          "防御"
+          "尾后针",
+          "地刺",
+          "网缚",
+          "翅刃"
         ]
       },
-      "翼龙": {
-        "score": 313.0,
+      "落陨星兔": {
+        "score": 334.5,
         "attrs": [
-          "龙",
-          "翼"
+          "幻",
+          "幽"
         ],
-        "trait": "暴食",
-        "system_fit": 85,
+        "trait": "陨落",
+        "system_fit": 60,
         "recommended_skills": [
-          "偷袭",
-          "龙吟",
-          "力量增效",
-          "防御"
+          "坍缩",
+          "拍击",
+          "恐吓",
+          "大爆炸"
         ]
       },
-      "圣羽翼王": {
-        "score": 469.6,
+      "影狸": {
+        "score": 332.7,
         "attrs": [
-          "翼"
+          "幽",
+          "毒"
         ],
-        "trait": "飓风",
-        "system_fit": 25,
+        "trait": "下黑手",
+        "system_fit": 60,
         "recommended_skills": [
-          "疾风连袭",
-          "力量增效",
-          "闪击",
-          "水刃"
+          "幻象",
+          "鬼火",
+          "坟场搏击",
+          "抓挠"
         ]
       },
-      "龙息帕尔": {
-        "score": 444.2,
+      "卡拉波斯": {
+        "score": 326.8,
         "attrs": [
           "恶"
         ],
-        "trait": "付给恶魔的赎价",
-        "system_fit": 15,
+        "trait": "悬一线",
+        "system_fit": 60,
         "recommended_skills": [
-          "撕裂",
-          "火云车",
-          "龙吟",
-          "有效预防"
-        ]
-      },
-      "格斗小六": {
-        "score": 393.6,
-        "attrs": [
-          "武"
-        ],
-        "trait": "马步",
-        "system_fit": 0,
-        "recommended_skills": [
-          "啮合传递",
-          "龙吟",
-          "飞踢",
-          "防御"
+          "落星",
+          "诡刺",
+          "魔爪",
+          "恶能量"
         ]
       }
     }
   },
   {
-    "system": "奇梦咪队",
-    "system_desc": "围绕奇梦咪的首领化队伍",
+    "system": "雪影冰灵队",
+    "type": "center",
+    "system_desc": "围绕雪影冰灵的首领化队伍",
     "members": [
-      "奇梦咪",
-      "魔眷鸟",
-      "卡洛儿",
-      "圣羽翼王",
-      "寂灭骨龙",
-      "龙息帕尔"
+      "雪影冰灵",
+      "冰钻布鲁斯",
+      "尖嘴狐仙",
+      "雪巨人",
+      "月牙雪熊",
+      "红绒十字"
     ],
-    "total_score": 2419.1,
-    "base_score": 2316.1,
+    "total_score": 4096.5,
+    "base_score": 3491.5,
     "synergy_bonus": 60,
-    "system_fit_total": 250,
-    "defense_count": 5,
+    "system_fit_total": 460,
+    "defense_count": 6,
     "utility_count": 2,
-    "attr_coverage": 6,
+    "attr_coverage": 4,
     "details": {
-      "奇梦咪": {
-        "score": 317.6,
+      "雪影冰灵": {
+        "score": 320.9,
         "attrs": [
+          "冰",
           "萌"
         ],
-        "trait": "三鼓作气",
+        "trait": "抓到你了",
         "system_fit": 100,
         "recommended_skills": [
-          "掩护",
-          "啮合传递",
-          "跺地",
-          "冰爪"
+          "碰爪",
+          "魅惑",
+          "升龙咆哮",
+          "噬心"
         ]
       },
-      "魔眷鸟": {
-        "score": 320.1,
+      "冰钻布鲁斯": {
+        "score": 355.8,
         "attrs": [
-          "萌",
-          "翼"
+          "冰"
         ],
-        "trait": "自由飘",
+        "trait": "冰钻",
+        "system_fit": 85,
+        "recommended_skills": [
+          "暴风雪",
+          "滚雪球",
+          "冰爪",
+          "先发制人"
+        ]
+      },
+      "尖嘴狐仙": {
+        "score": 371.8,
+        "attrs": [
+          "火",
+          "冰"
+        ],
+        "trait": "灵魂灼伤",
         "system_fit": 75,
         "recommended_skills": [
-          "阻断",
-          "灵媒",
-          "防御",
-          "摇篮曲"
+          "冷风",
+          "暴风雪",
+          "炎枪",
+          "火焰切割"
         ]
       },
-      "卡洛儿": {
-        "score": 308.8,
+      "雪巨人": {
+        "score": 342.1,
         "attrs": [
-          "水",
+          "冰"
+        ],
+        "trait": "打雪仗",
+        "system_fit": 75,
+        "recommended_skills": [
+          "冰锥",
+          "暴风雪",
+          "先发制人",
+          "丢冰块"
+        ]
+      },
+      "月牙雪熊": {
+        "score": 323.0,
+        "attrs": [
+          "冰",
+          "幻"
+        ],
+        "trait": "月牙雪糕",
+        "system_fit": 75,
+        "recommended_skills": [
+          "冰锥",
+          "粒子对撞",
+          "暴风雪",
+          "鸣沙陷阱"
+        ]
+      },
+      "红绒十字": {
+        "score": 357.9,
+        "attrs": [
+          "火",
           "萌"
         ],
-        "trait": "守护者",
-        "system_fit": 75,
+        "trait": "仁心",
+        "system_fit": 50,
         "recommended_skills": [
-          "掩护",
-          "水刃",
-          "打湿",
-          "力量增效"
-        ]
-      },
-      "圣羽翼王": {
-        "score": 469.6,
-        "attrs": [
-          "翼"
-        ],
-        "trait": "飓风",
-        "system_fit": 0,
-        "recommended_skills": [
-          "疾风连袭",
-          "力量增效",
-          "闪击",
-          "水刃"
-        ]
-      },
-      "寂灭骨龙": {
-        "score": 455.8,
-        "attrs": [
-          "龙",
-          "幽"
-        ],
-        "trait": "不朽",
-        "system_fit": 0,
-        "recommended_skills": [
-          "吓退",
-          "电弧",
-          "偷袭",
-          "隼鳞"
-        ]
-      },
-      "龙息帕尔": {
-        "score": 444.2,
-        "attrs": [
-          "恶"
-        ],
-        "trait": "付给恶魔的赎价",
-        "system_fit": 0,
-        "recommended_skills": [
-          "撕裂",
-          "火云车",
-          "龙吟",
-          "有效预防"
+          "热气",
+          "火爪",
+          "飞吻",
+          "除厄"
         ]
       }
     }
   },
   {
     "system": "女王蜂队",
+    "type": "center",
     "system_desc": "围绕女王蜂的首领化队伍",
     "members": [
       "女王蜂",
       "圣羽翼王",
       "恶魔红钻",
-      "寂灭骨龙",
-      "龙息帕尔",
-      "格斗小六"
+      "噼啪鸟",
+      "暮星辰",
+      "食尘短绒"
     ],
-    "total_score": 2413.5,
-    "base_score": 2322.5,
+    "total_score": 4025.3,
+    "base_score": 3542.3,
     "synergy_bonus": 60,
-    "system_fit_total": 260,
-    "defense_count": 5,
-    "utility_count": 0,
+    "system_fit_total": 410,
+    "defense_count": 4,
+    "utility_count": 2,
     "attr_coverage": 6,
     "details": {
       "女王蜂": {
-        "score": 243.2,
+        "score": 240.7,
         "attrs": [
           "虫",
           "翼"
@@ -3798,28 +1685,28 @@
         "trait": "虫群突袭",
         "system_fit": 100,
         "recommended_skills": [
-          "掩护",
-          "啮合传递",
-          "跺地",
-          "冰爪"
+          "噬心",
+          "升龙咆哮",
+          "溃烂触碰",
+          "星云漩涡"
         ]
       },
       "圣羽翼王": {
-        "score": 469.6,
+        "score": 473.4,
         "attrs": [
           "翼"
         ],
         "trait": "飓风",
         "system_fit": 85,
         "recommended_skills": [
-          "疾风连袭",
-          "力量增效",
           "闪击",
-          "水刃"
+          "后发制人",
+          "翼击",
+          "龙卷风"
         ]
       },
       "恶魔红钻": {
-        "score": 316.1,
+        "score": 305.5,
         "attrs": [
           "虫",
           "恶"
@@ -3827,402 +1714,1077 @@
         "trait": "振奋虫心",
         "system_fit": 75,
         "recommended_skills": [
-          "偷袭",
+          "灾厄",
           "跌落",
-          "力量增效",
-          "防御"
+          "蝙蝠",
+          "尾后针"
         ]
       },
-      "寂灭骨龙": {
-        "score": 455.8,
+      "噼啪鸟": {
+        "score": 388.0,
         "attrs": [
-          "龙",
-          "幽"
-        ],
-        "trait": "不朽",
-        "system_fit": 0,
-        "recommended_skills": [
-          "吓退",
-          "电弧",
-          "偷袭",
-          "隼鳞"
-        ]
-      },
-      "龙息帕尔": {
-        "score": 444.2,
-        "attrs": [
-          "恶"
-        ],
-        "trait": "付给恶魔的赎价",
-        "system_fit": 0,
-        "recommended_skills": [
-          "撕裂",
-          "火云车",
-          "龙吟",
-          "有效预防"
-        ]
-      },
-      "格斗小六": {
-        "score": 393.6,
-        "attrs": [
-          "武"
-        ],
-        "trait": "马步",
-        "system_fit": 0,
-        "recommended_skills": [
-          "啮合传递",
-          "龙吟",
-          "飞踢",
-          "防御"
-        ]
-      }
-    }
-  },
-  {
-    "system": "圣光迪莫队",
-    "system_desc": "围绕圣光迪莫的首领化队伍",
-    "members": [
-      "圣光迪莫",
-      "疾光千兽",
-      "绒仙子",
-      "圣羽翼王",
-      "寂灭骨龙",
-      "龙息帕尔"
-    ],
-    "total_score": 2383.1,
-    "base_score": 2295.1,
-    "synergy_bonus": 60,
-    "system_fit_total": 260,
-    "defense_count": 5,
-    "utility_count": 1,
-    "attr_coverage": 6,
-    "details": {
-      "圣光迪莫": {
-        "score": 306.1,
-        "attrs": [
-          "光"
-        ],
-        "trait": "伙伴的力量",
-        "system_fit": 100,
-        "recommended_skills": [
-          "掩护",
-          "啮合传递",
-          "跺地",
-          "冰爪"
-        ]
-      },
-      "疾光千兽": {
-        "score": 306.5,
-        "attrs": [
-          "光"
-        ],
-        "trait": "月光审判",
-        "system_fit": 85,
-        "recommended_skills": [
-          "偷袭",
-          "力量增效",
-          "崩拳",
-          "防御"
-        ]
-      },
-      "绒仙子": {
-        "score": 312.9,
-        "attrs": [
-          "光",
-          "虫"
-        ],
-        "trait": "绒粉星光",
-        "system_fit": 75,
-        "recommended_skills": [
-          "啮合传递",
-          "光刃",
-          "防御",
-          "摇篮曲"
-        ]
-      },
-      "圣羽翼王": {
-        "score": 469.6,
-        "attrs": [
+          "电",
           "翼"
         ],
-        "trait": "飓风",
-        "system_fit": 0,
+        "trait": "连续负荷",
+        "system_fit": 50,
         "recommended_skills": [
-          "疾风连袭",
-          "力量增效",
           "闪击",
-          "水刃"
+          "翼击",
+          "龙卷风",
+          "羽刃"
         ]
       },
-      "寂灭骨龙": {
-        "score": 455.8,
+      "暮星辰": {
+        "score": 367.6,
         "attrs": [
-          "龙",
-          "幽"
-        ],
-        "trait": "不朽",
-        "system_fit": 0,
-        "recommended_skills": [
-          "吓退",
-          "电弧",
-          "偷袭",
-          "隼鳞"
-        ]
-      },
-      "龙息帕尔": {
-        "score": 444.2,
-        "attrs": [
-          "恶"
-        ],
-        "trait": "付给恶魔的赎价",
-        "system_fit": 0,
-        "recommended_skills": [
-          "撕裂",
-          "火云车",
-          "龙吟",
-          "有效预防"
-        ]
-      }
-    }
-  },
-  {
-    "system": "幻影荆棘队",
-    "system_desc": "围绕幻影荆棘的首领化队伍",
-    "members": [
-      "幻影荆棘",
-      "蹦蹦草（海神球形态）",
-      "蹦蹦草（彩玉球形态）",
-      "圣羽翼王",
-      "寂灭骨龙",
-      "龙息帕尔"
-    ],
-    "total_score": 2343.1,
-    "base_score": 2255.1,
-    "synergy_bonus": 60,
-    "system_fit_total": 255,
-    "defense_count": 5,
-    "utility_count": 2,
-    "attr_coverage": 6,
-    "details": {
-      "幻影荆棘": {
-        "score": 353.9,
-        "attrs": [
-          "幽",
-          "草"
-        ],
-        "trait": "大捞一笔",
-        "system_fit": 100,
-        "recommended_skills": [
-          "掩护",
-          "啮合传递",
-          "跺地",
-          "冰爪"
-        ]
-      },
-      "蹦蹦草（海神球形态）": {
-        "score": 265.8,
-        "attrs": [
-          "草",
-          "毒"
-        ],
-        "trait": "生物碱",
-        "system_fit": 65,
-        "recommended_skills": [
-          "防御",
-          "毒液渗透",
-          "仙人掌刺击",
-          "芳香诱引"
-        ]
-      },
-      "蹦蹦草（彩玉球形态）": {
-        "score": 265.8,
-        "attrs": [
-          "草",
-          "毒"
-        ],
-        "trait": "生物碱",
-        "system_fit": 65,
-        "recommended_skills": [
-          "防御",
-          "毒液渗透",
-          "仙人掌刺击",
-          "芳香诱引"
-        ]
-      },
-      "圣羽翼王": {
-        "score": 469.6,
-        "attrs": [
+          "幻",
           "翼"
         ],
-        "trait": "飓风",
-        "system_fit": 0,
+        "trait": "守望星",
+        "system_fit": 50,
         "recommended_skills": [
-          "疾风连袭",
-          "力量增效",
-          "闪击",
-          "水刃"
+          "鸣叫",
+          "坍缩",
+          "翼击",
+          "大爆炸"
         ]
       },
-      "寂灭骨龙": {
-        "score": 455.8,
+      "食尘短绒": {
+        "score": 347.1,
         "attrs": [
-          "龙",
-          "幽"
+          "虫",
+          "地"
         ],
-        "trait": "不朽",
-        "system_fit": 25,
+        "trait": "特殊清洁场景",
+        "system_fit": 50,
         "recommended_skills": [
-          "吓退",
-          "电弧",
-          "偷袭",
-          "隼鳞"
-        ]
-      },
-      "龙息帕尔": {
-        "score": 444.2,
-        "attrs": [
-          "恶"
-        ],
-        "trait": "付给恶魔的赎价",
-        "system_fit": 0,
-        "recommended_skills": [
-          "撕裂",
-          "火云车",
-          "龙吟",
-          "有效预防"
+          "尾后针",
+          "地刺",
+          "网缚",
+          "翅刃"
         ]
       }
     }
   },
   {
-    "system": "萌化体系",
-    "system_desc": "萌化印记联动体系",
+    "system": "状态队",
+    "type": "center",
+    "system_desc": "寒音蛇状态联动队",
     "members": [
-      "魔眷鸟",
-      "卡洛儿",
-      "菊花梨",
-      "圣羽翼王",
-      "寂灭骨龙",
-      "龙息帕尔"
+      "寒音蛇",
+      "贝古斯",
+      "尖嘴狐仙",
+      "燃薪虫",
+      "厉毒修萝",
+      "魔眷鸟"
     ],
-    "total_score": 2322.7,
-    "base_score": 2249.7,
+    "total_score": 4019.1,
+    "base_score": 3374.1,
     "synergy_bonus": 65,
-    "system_fit_total": 285,
+    "system_fit_total": 350,
     "defense_count": 5,
     "utility_count": 3,
-    "attr_coverage": 6,
+    "attr_coverage": 8,
     "details": {
+      "寒音蛇": {
+        "score": 314.9,
+        "attrs": [
+          "萌",
+          "毒"
+        ],
+        "trait": "拨浪鼓",
+        "system_fit": 100,
+        "recommended_skills": [
+          "溃烂触碰",
+          "魅惑",
+          "超级糖果",
+          "毒液渗透"
+        ]
+      },
+      "贝古斯": {
+        "score": 399.3,
+        "attrs": [
+          "机械",
+          "火"
+        ],
+        "trait": "贪心算法",
+        "system_fit": 50,
+        "recommended_skills": [
+          "离子震荡",
+          "燃尽",
+          "磁暴",
+          "烈焰风暴"
+        ]
+      },
+      "尖嘴狐仙": {
+        "score": 371.8,
+        "attrs": [
+          "火",
+          "冰"
+        ],
+        "trait": "灵魂灼伤",
+        "system_fit": 50,
+        "recommended_skills": [
+          "冷风",
+          "暴风雪",
+          "炎枪",
+          "火焰切割"
+        ]
+      },
+      "燃薪虫": {
+        "score": 368.5,
+        "attrs": [
+          "火",
+          "草"
+        ],
+        "trait": "煤渣草",
+        "system_fit": 50,
+        "recommended_skills": [
+          "种子弹",
+          "火焰冲锋",
+          "灼伤",
+          "抽枝"
+        ]
+      },
+      "厉毒修萝": {
+        "score": 360.9,
+        "attrs": [
+          "毒",
+          "恶"
+        ],
+        "trait": "侵蚀",
+        "system_fit": 50,
+        "recommended_skills": [
+          "魔爪",
+          "跌落",
+          "毒针",
+          "趁火打劫"
+        ]
+      },
       "魔眷鸟": {
-        "score": 320.1,
+        "score": 308.7,
         "attrs": [
           "萌",
           "翼"
         ],
         "trait": "自由飘",
+        "system_fit": 50,
+        "recommended_skills": [
+          "龙卷风",
+          "超级糖果",
+          "啄击",
+          "扇风"
+        ]
+      }
+    }
+  },
+  {
+    "system": "蓄能体系",
+    "type": "mechanic",
+    "system_desc": "蓄能印记联动体系",
+    "members": [
+      "噼啪鸟",
+      "电企鹅",
+      "绒光优优",
+      "波多西",
+      "鳗尾兽",
+      "公平鸽"
+    ],
+    "total_score": 3997.0,
+    "base_score": 3507.0,
+    "synergy_bonus": 55,
+    "system_fit_total": 440,
+    "defense_count": 5,
+    "utility_count": 1,
+    "attr_coverage": 8,
+    "details": {
+      "噼啪鸟": {
+        "score": 388.0,
+        "attrs": [
+          "电",
+          "翼"
+        ],
+        "trait": "连续负荷",
         "system_fit": 100,
         "recommended_skills": [
-          "阻断",
-          "甜心续航",
-          "防御",
-          "摇篮曲"
+          "闪击",
+          "翼击",
+          "龙卷风",
+          "羽刃"
         ]
       },
-      "卡洛儿": {
-        "score": 308.8,
+      "电企鹅": {
+        "score": 316.5,
         "attrs": [
-          "水",
-          "萌"
+          "冰",
+          "电"
         ],
-        "trait": "守护者",
+        "trait": "超负荷",
         "system_fit": 100,
         "recommended_skills": [
-          "掩护",
-          "水刃",
-          "捧杀",
-          "力量增效"
+          "电流",
+          "风吹雪",
+          "超导加速",
+          "极寒领域"
         ]
       },
-      "菊花梨": {
-        "score": 251.2,
+      "绒光优优": {
+        "score": 381.0,
         "attrs": [
-          "萌"
+          "地",
+          "光"
         ],
-        "trait": "无忧无虑",
-        "system_fit": 85,
+        "trait": "哨兵",
+        "system_fit": 60,
         "recommended_skills": [
-          "倾泻",
-          "虹光冲击",
-          "灵媒",
-          "防御"
+          "泥浆",
+          "闪光",
+          "泥巴喷射",
+          "热砂"
         ]
       },
+      "波多西": {
+        "score": 359.3,
+        "attrs": [
+          "机械",
+          "地"
+        ],
+        "trait": "定向精炼",
+        "system_fit": 60,
+        "recommended_skills": [
+          "地刺",
+          "先发制人",
+          "齿轮切开",
+          "齿轮扭矩"
+        ]
+      },
+      "鳗尾兽": {
+        "score": 330.0,
+        "attrs": [
+          "地",
+          "草"
+        ],
+        "trait": "铃兰晚钟",
+        "system_fit": 60,
+        "recommended_skills": [
+          "泥浆",
+          "花香",
+          "热砂",
+          "地刺"
+        ]
+      },
+      "公平鸽": {
+        "score": 312.2,
+        "attrs": [
+          "普通"
+        ],
+        "trait": "衡量",
+        "system_fit": 60,
+        "recommended_skills": [
+          "拍击",
+          "先发制人",
+          "天旋地转",
+          "吞噬"
+        ]
+      }
+    }
+  },
+  {
+    "system": "棋契陛下（棋齐垒-白子）队",
+    "type": "center",
+    "system_desc": "围绕棋契陛下（棋齐垒-白子）的首领化队伍",
+    "members": [
+      "棋契陛下（棋齐垒-白子）",
+      "波多西",
+      "嗜波螺",
+      "獠牙猪",
+      "鳗尾兽",
+      "海豹船长"
+    ],
+    "total_score": 3996.0,
+    "base_score": 3256.0,
+    "synergy_bonus": 60,
+    "system_fit_total": 425,
+    "defense_count": 6,
+    "utility_count": 0,
+    "attr_coverage": 6,
+    "details": {
+      "棋契陛下（棋齐垒-白子）": {
+        "score": 397.5,
+        "attrs": [
+          "武",
+          "地"
+        ],
+        "trait": "御驾亲征",
+        "system_fit": 100,
+        "recommended_skills": [
+          "寸拳",
+          "扬沙",
+          "猛烈撞击",
+          "透射"
+        ]
+      },
+      "波多西": {
+        "score": 359.3,
+        "attrs": [
+          "机械",
+          "地"
+        ],
+        "trait": "定向精炼",
+        "system_fit": 75,
+        "recommended_skills": [
+          "地刺",
+          "先发制人",
+          "齿轮切开",
+          "齿轮扭矩"
+        ]
+      },
+      "嗜波螺": {
+        "score": 324.0,
+        "attrs": [
+          "地",
+          "水"
+        ],
+        "trait": "消波块",
+        "system_fit": 75,
+        "recommended_skills": [
+          "泡沫",
+          "热砂",
+          "潮涌",
+          "气泡"
+        ]
+      },
+      "獠牙猪": {
+        "score": 315.3,
+        "attrs": [
+          "冰",
+          "地"
+        ],
+        "trait": "冻土",
+        "system_fit": 75,
+        "recommended_skills": [
+          "暴风雪",
+          "滚雪球",
+          "地刺",
+          "岩脉崩毁"
+        ]
+      },
+      "鳗尾兽": {
+        "score": 330.0,
+        "attrs": [
+          "地",
+          "草"
+        ],
+        "trait": "铃兰晚钟",
+        "system_fit": 50,
+        "recommended_skills": [
+          "泥浆",
+          "花香",
+          "热砂",
+          "地刺"
+        ]
+      },
+      "海豹船长": {
+        "score": 279.9,
+        "attrs": [
+          "武",
+          "水"
+        ],
+        "trait": "身经百练",
+        "system_fit": 50,
+        "recommended_skills": [
+          "气波",
+          "泡沫",
+          "斩断",
+          "水幕冲击"
+        ]
+      }
+    }
+  },
+  {
+    "system": "翼王队",
+    "type": "center",
+    "system_desc": "飓风翼王 — 绑定水刃翼系队友(岚鸟/翠顶/黑羽)",
+    "members": [
+      "圣羽翼王",
+      "黑羽夫人",
+      "岚鸟（本来的样子）",
+      "噼啪鸟",
+      "暮星辰",
+      "高脚鹬"
+    ],
+    "total_score": 3980.1,
+    "base_score": 3435.1,
+    "synergy_bonus": 80,
+    "system_fit_total": 380,
+    "defense_count": 4,
+    "utility_count": 2,
+    "attr_coverage": 4,
+    "details": {
       "圣羽翼王": {
-        "score": 469.6,
+        "score": 473.4,
         "attrs": [
           "翼"
         ],
         "trait": "飓风",
-        "system_fit": 0,
+        "system_fit": 100,
         "recommended_skills": [
-          "疾风连袭",
-          "力量增效",
           "闪击",
-          "水刃"
+          "后发制人",
+          "翼击",
+          "龙卷风"
+        ]
+      },
+      "黑羽夫人": {
+        "score": 344.5,
+        "attrs": [
+          "翼",
+          "恶"
+        ],
+        "trait": "贪婪",
+        "system_fit": 65,
+        "recommended_skills": [
+          "灾厄",
+          "迫害",
+          "鸣叫",
+          "风矢"
+        ]
+      },
+      "岚鸟（本来的样子）": {
+        "score": 300.8,
+        "attrs": [
+          "翼"
+        ],
+        "trait": "顺风",
+        "system_fit": 65,
+        "recommended_skills": [
+          "龙卷风",
+          "羽刃",
+          "啄击",
+          "俯冲猛击"
+        ]
+      },
+      "噼啪鸟": {
+        "score": 388.0,
+        "attrs": [
+          "电",
+          "翼"
+        ],
+        "trait": "连续负荷",
+        "system_fit": 50,
+        "recommended_skills": [
+          "闪击",
+          "翼击",
+          "龙卷风",
+          "羽刃"
+        ]
+      },
+      "暮星辰": {
+        "score": 367.6,
+        "attrs": [
+          "幻",
+          "翼"
+        ],
+        "trait": "守望星",
+        "system_fit": 50,
+        "recommended_skills": [
+          "鸣叫",
+          "坍缩",
+          "翼击",
+          "大爆炸"
+        ]
+      },
+      "高脚鹬": {
+        "score": 310.8,
+        "attrs": [
+          "翼"
+        ],
+        "trait": "起飞加速",
+        "system_fit": 50,
+        "recommended_skills": [
+          "鸣叫",
+          "鹰爪",
+          "翼击",
+          "风墙"
+        ]
+      }
+    }
+  },
+  {
+    "system": "伊兰龙队",
+    "type": "center",
+    "system_desc": "围绕伊兰龙的首领化队伍",
+    "members": [
+      "伊兰龙",
+      "龙鱼",
+      "翼龙",
+      "超能阿布",
+      "寂灭骨龙",
+      "圣羽翼王"
+    ],
+    "total_score": 3979.8,
+    "base_score": 3594.8,
+    "synergy_bonus": 60,
+    "system_fit_total": 435,
+    "defense_count": 5,
+    "utility_count": 1,
+    "attr_coverage": 4,
+    "details": {
+      "伊兰龙": {
+        "score": 327.5,
+        "attrs": [
+          "龙"
+        ],
+        "trait": "游弋",
+        "system_fit": 100,
+        "recommended_skills": [
+          "升龙咆哮",
+          "魅惑",
+          "花香",
+          "离子震荡"
+        ]
+      },
+      "龙鱼": {
+        "score": 344.1,
+        "attrs": [
+          "水",
+          "龙"
+        ],
+        "trait": "洄游",
+        "system_fit": 85,
+        "recommended_skills": [
+          "龙之利爪",
+          "龙息环爆",
+          "角击",
+          "潮涌"
+        ]
+      },
+      "翼龙": {
+        "score": 297.4,
+        "attrs": [
+          "龙",
+          "翼"
+        ],
+        "trait": "暴食",
+        "system_fit": 85,
+        "recommended_skills": [
+          "鹰爪",
+          "龙之利爪",
+          "抓挠",
+          "羽刃"
+        ]
+      },
+      "超能阿布": {
+        "score": 297.9,
+        "attrs": [
+          "龙"
+        ],
+        "trait": "超聚能",
+        "system_fit": 75,
+        "recommended_skills": [
+          "升龙咆哮",
+          "龙之利爪",
+          "龙炮",
+          "先发制人"
         ]
       },
       "寂灭骨龙": {
-        "score": 455.8,
+        "score": 444.5,
         "attrs": [
           "龙",
           "幽"
         ],
         "trait": "不朽",
-        "system_fit": 0,
+        "system_fit": 65,
         "recommended_skills": [
-          "吓退",
-          "电弧",
-          "偷袭",
-          "隼鳞"
+          "诡刺",
+          "龙吼",
+          "幻象",
+          "龙之利爪"
         ]
       },
-      "龙息帕尔": {
-        "score": 444.2,
+      "圣羽翼王": {
+        "score": 473.4,
         "attrs": [
-          "恶"
+          "翼"
         ],
-        "trait": "付给恶魔的赎价",
-        "system_fit": 0,
+        "trait": "飓风",
+        "system_fit": 25,
         "recommended_skills": [
-          "撕裂",
-          "火云车",
-          "龙吟",
-          "有效预防"
+          "闪击",
+          "后发制人",
+          "翼击",
+          "龙卷风"
+        ]
+      }
+    }
+  },
+  {
+    "system": "祭礼巨像队",
+    "type": "center",
+    "system_desc": "围绕祭礼巨像的首领化队伍",
+    "members": [
+      "祭礼巨像",
+      "暮星辰",
+      "波多西",
+      "食尘短绒",
+      "嗜波螺",
+      "绒光优优"
+    ],
+    "total_score": 3929.5,
+    "base_score": 3374.5,
+    "synergy_bonus": 60,
+    "system_fit_total": 450,
+    "defense_count": 6,
+    "utility_count": 2,
+    "attr_coverage": 7,
+    "details": {
+      "祭礼巨像": {
+        "score": 345.5,
+        "attrs": [
+          "地",
+          "幻"
+        ],
+        "trait": "坠星",
+        "system_fit": 100,
+        "recommended_skills": [
+          "星云漩涡",
+          "升龙咆哮",
+          "魅惑",
+          "花香"
+        ]
+      },
+      "暮星辰": {
+        "score": 367.6,
+        "attrs": [
+          "幻",
+          "翼"
+        ],
+        "trait": "守望星",
+        "system_fit": 75,
+        "recommended_skills": [
+          "鸣叫",
+          "坍缩",
+          "翼击",
+          "大爆炸"
+        ]
+      },
+      "波多西": {
+        "score": 359.3,
+        "attrs": [
+          "机械",
+          "地"
+        ],
+        "trait": "定向精炼",
+        "system_fit": 75,
+        "recommended_skills": [
+          "地刺",
+          "先发制人",
+          "齿轮切开",
+          "齿轮扭矩"
+        ]
+      },
+      "食尘短绒": {
+        "score": 347.1,
+        "attrs": [
+          "虫",
+          "地"
+        ],
+        "trait": "特殊清洁场景",
+        "system_fit": 75,
+        "recommended_skills": [
+          "尾后针",
+          "地刺",
+          "网缚",
+          "翅刃"
+        ]
+      },
+      "嗜波螺": {
+        "score": 324.0,
+        "attrs": [
+          "地",
+          "水"
+        ],
+        "trait": "消波块",
+        "system_fit": 75,
+        "recommended_skills": [
+          "泡沫",
+          "热砂",
+          "潮涌",
+          "气泡"
+        ]
+      },
+      "绒光优优": {
+        "score": 381.0,
+        "attrs": [
+          "地",
+          "光"
+        ],
+        "trait": "哨兵",
+        "system_fit": 50,
+        "recommended_skills": [
+          "泥浆",
+          "闪光",
+          "泥巴喷射",
+          "热砂"
+        ]
+      }
+    }
+  },
+  {
+    "system": "波普鹿队",
+    "type": "center",
+    "system_desc": "围绕波普鹿的首领化队伍",
+    "members": [
+      "波普鹿",
+      "闪电鳗鱼",
+      "电企鹅",
+      "电球咩咩",
+      "荆棘电环",
+      "噼啪鸟"
+    ],
+    "total_score": 3927.3,
+    "base_score": 3372.3,
+    "synergy_bonus": 60,
+    "system_fit_total": 430,
+    "defense_count": 5,
+    "utility_count": 1,
+    "attr_coverage": 4,
+    "details": {
+      "波普鹿": {
+        "score": 320.9,
+        "attrs": [
+          "电"
+        ],
+        "trait": "超级电池",
+        "system_fit": 100,
+        "recommended_skills": [
+          "球状闪电",
+          "噬心",
+          "溃烂触碰",
+          "星云漩涡"
+        ]
+      },
+      "闪电鳗鱼": {
+        "score": 331.5,
+        "attrs": [
+          "电",
+          "水"
+        ],
+        "trait": "生物电",
+        "system_fit": 85,
+        "recommended_skills": [
+          "泡沫",
+          "雷暴",
+          "交叉闪电",
+          "水光冲击"
+        ]
+      },
+      "电企鹅": {
+        "score": 316.5,
+        "attrs": [
+          "冰",
+          "电"
+        ],
+        "trait": "超负荷",
+        "system_fit": 65,
+        "recommended_skills": [
+          "电流",
+          "风吹雪",
+          "超导加速",
+          "极寒领域"
+        ]
+      },
+      "电球咩咩": {
+        "score": 313.6,
+        "attrs": [
+          "电"
+        ],
+        "trait": "快充",
+        "system_fit": 65,
+        "recommended_skills": [
+          "球状闪电",
+          "感电",
+          "先发制人",
+          "强制重启"
+        ]
+      },
+      "荆棘电环": {
+        "score": 281.8,
+        "attrs": [
+          "电"
+        ],
+        "trait": "防过载保护",
+        "system_fit": 65,
+        "recommended_skills": [
+          "电流",
+          "导电撞击",
+          "交叉闪电",
+          "先发制人"
+        ]
+      },
+      "噼啪鸟": {
+        "score": 388.0,
+        "attrs": [
+          "电",
+          "翼"
+        ],
+        "trait": "连续负荷",
+        "system_fit": 50,
+        "recommended_skills": [
+          "闪击",
+          "翼击",
+          "龙卷风",
+          "羽刃"
+        ]
+      }
+    }
+  },
+  {
+    "system": "圣水守护队",
+    "type": "center",
+    "system_desc": "围绕圣水守护的首领化队伍",
+    "members": [
+      "圣水守护",
+      "琉璃水母",
+      "嗜波螺",
+      "千棘盔（磨损的样子）",
+      "海豹船长",
+      "熔岩布丁"
+    ],
+    "total_score": 3895.5,
+    "base_score": 3292.5,
+    "synergy_bonus": 60,
+    "system_fit_total": 460,
+    "defense_count": 6,
+    "utility_count": 1,
+    "attr_coverage": 5,
+    "details": {
+      "圣水守护": {
+        "score": 338.3,
+        "attrs": [
+          "水"
+        ],
+        "trait": "浪潮",
+        "system_fit": 100,
+        "recommended_skills": [
+          "升龙咆哮",
+          "魅惑",
+          "花香",
+          "离子震荡"
+        ]
+      },
+      "琉璃水母": {
+        "score": 303.8,
+        "attrs": [
+          "水",
+          "毒"
+        ],
+        "trait": "扩散侵蚀",
+        "system_fit": 85,
+        "recommended_skills": [
+          "甩水",
+          "瘴气喷射",
+          "激流",
+          "毒液渗透"
+        ]
+      },
+      "嗜波螺": {
+        "score": 324.0,
+        "attrs": [
+          "地",
+          "水"
+        ],
+        "trait": "消波块",
+        "system_fit": 75,
+        "recommended_skills": [
+          "泡沫",
+          "热砂",
+          "潮涌",
+          "气泡"
+        ]
+      },
+      "千棘盔（磨损的样子）": {
+        "score": 285.4,
+        "attrs": [
+          "水",
+          "毒"
+        ],
+        "trait": "溶解扩散",
+        "system_fit": 75,
+        "recommended_skills": [
+          "甩水",
+          "毒液渗透",
+          "感染病",
+          "腐蚀酸液"
+        ]
+      },
+      "海豹船长": {
+        "score": 279.9,
+        "attrs": [
+          "武",
+          "水"
+        ],
+        "trait": "身经百练",
+        "system_fit": 75,
+        "recommended_skills": [
+          "气波",
+          "泡沫",
+          "斩断",
+          "水幕冲击"
+        ]
+      },
+      "熔岩布丁": {
+        "score": 341.1,
+        "attrs": [
+          "水",
+          "火"
+        ],
+        "trait": "美拉德反应",
+        "system_fit": 50,
+        "recommended_skills": [
+          "落星",
+          "泡沫",
+          "潮涌",
+          "火焰切割"
+        ]
+      }
+    }
+  },
+  {
+    "system": "迷嶂布莱克队",
+    "type": "center",
+    "system_desc": "围绕迷嶂布莱克的首领化队伍",
+    "members": [
+      "迷嶂布莱克",
+      "波多西",
+      "嗜波螺",
+      "獠牙猪",
+      "鳗尾兽",
+      "泥吼牙"
+    ],
+    "total_score": 3895.0,
+    "base_score": 3260.0,
+    "synergy_bonus": 60,
+    "system_fit_total": 425,
+    "defense_count": 6,
+    "utility_count": 0,
+    "attr_coverage": 6,
+    "details": {
+      "迷嶂布莱克": {
+        "score": 355.0,
+        "attrs": [
+          "地"
+        ],
+        "trait": "地脉馈赠",
+        "system_fit": 100,
+        "recommended_skills": [
+          "噬心",
+          "溃烂触碰",
+          "星云漩涡",
+          "泡沫"
+        ]
+      },
+      "波多西": {
+        "score": 359.3,
+        "attrs": [
+          "机械",
+          "地"
+        ],
+        "trait": "定向精炼",
+        "system_fit": 75,
+        "recommended_skills": [
+          "地刺",
+          "先发制人",
+          "齿轮切开",
+          "齿轮扭矩"
+        ]
+      },
+      "嗜波螺": {
+        "score": 324.0,
+        "attrs": [
+          "地",
+          "水"
+        ],
+        "trait": "消波块",
+        "system_fit": 75,
+        "recommended_skills": [
+          "泡沫",
+          "热砂",
+          "潮涌",
+          "气泡"
+        ]
+      },
+      "獠牙猪": {
+        "score": 315.3,
+        "attrs": [
+          "冰",
+          "地"
+        ],
+        "trait": "冻土",
+        "system_fit": 75,
+        "recommended_skills": [
+          "暴风雪",
+          "滚雪球",
+          "地刺",
+          "岩脉崩毁"
+        ]
+      },
+      "鳗尾兽": {
+        "score": 330.0,
+        "attrs": [
+          "地",
+          "草"
+        ],
+        "trait": "铃兰晚钟",
+        "system_fit": 50,
+        "recommended_skills": [
+          "泥浆",
+          "花香",
+          "热砂",
+          "地刺"
+        ]
+      },
+      "泥吼牙": {
+        "score": 326.4,
+        "attrs": [
+          "地",
+          "翼"
+        ],
+        "trait": "无差别过滤",
+        "system_fit": 50,
+        "recommended_skills": [
+          "落石",
+          "羽刃",
+          "地刺",
+          "啄击"
         ]
       }
     }
   },
   {
     "system": "奉献体系",
+    "type": "mechanic",
     "system_desc": "奉献联动体系（虫系核心）",
     "members": [
       "恶魔红钻",
       "铠甲虫",
       "花衣蝶",
-      "圣羽翼王",
-      "寂灭骨龙",
-      "龙息帕尔"
+      "食尘短绒",
+      "绒仙子",
+      "巨噬针鼹"
     ],
-    "total_score": 2308.1,
-    "base_score": 2262.1,
+    "total_score": 3874.6,
+    "base_score": 3406.6,
     "synergy_bonus": 50,
-    "system_fit_total": 300,
-    "defense_count": 5,
-    "utility_count": 2,
+    "system_fit_total": 470,
+    "defense_count": 6,
+    "utility_count": 4,
     "attr_coverage": 6,
     "details": {
       "恶魔红钻": {
-        "score": 316.1,
+        "score": 305.5,
         "attrs": [
           "虫",
           "恶"
@@ -4230,28 +2792,28 @@
         "trait": "振奋虫心",
         "system_fit": 100,
         "recommended_skills": [
-          "虫茧",
+          "灾厄",
           "跌落",
-          "力量增效",
-          "防御"
+          "蝙蝠",
+          "尾后针"
         ]
       },
       "铠甲虫": {
-        "score": 299.1,
+        "score": 286.8,
         "attrs": [
           "虫"
         ],
         "trait": "坚韧铠甲",
         "system_fit": 100,
         "recommended_skills": [
-          "掩护",
-          "吓退",
-          "虫结阵",
-          "力量增效"
+          "蛰针",
+          "啃咬",
+          "尾后针",
+          "网缚"
         ]
       },
       "花衣蝶": {
-        "score": 277.3,
+        "score": 266.1,
         "attrs": [
           "虫",
           "草"
@@ -4259,92 +2821,866 @@
         "trait": "花精灵",
         "system_fit": 100,
         "recommended_skills": [
-          "芳香诱引",
-          "啮合传递",
-          "虫结阵",
-          "防御"
+          "啃咬",
+          "飞叶",
+          "花香",
+          "汲取"
         ]
       },
-      "圣羽翼王": {
-        "score": 469.6,
+      "食尘短绒": {
+        "score": 347.1,
         "attrs": [
-          "翼"
+          "虫",
+          "地"
         ],
-        "trait": "飓风",
-        "system_fit": 0,
+        "trait": "特殊清洁场景",
+        "system_fit": 60,
         "recommended_skills": [
-          "疾风连袭",
-          "力量增效",
-          "闪击",
-          "水刃"
+          "尾后针",
+          "地刺",
+          "网缚",
+          "翅刃"
         ]
       },
-      "寂灭骨龙": {
-        "score": 455.8,
+      "绒仙子": {
+        "score": 296.9,
         "attrs": [
-          "龙",
-          "幽"
+          "光",
+          "虫"
         ],
-        "trait": "不朽",
-        "system_fit": 0,
+        "trait": "绒粉星光",
+        "system_fit": 60,
         "recommended_skills": [
-          "吓退",
-          "电弧",
+          "脉冲光线",
+          "啃咬",
+          "落星",
+          "虫网"
+        ]
+      },
+      "巨噬针鼹": {
+        "score": 314.2,
+        "attrs": [
+          "普通"
+        ],
+        "trait": "壮胆",
+        "system_fit": 50,
+        "recommended_skills": [
+          "抓挠",
+          "先发制人",
           "偷袭",
-          "隼鳞"
+          "当头棒喝"
+        ]
+      }
+    }
+  },
+  {
+    "system": "彩虹独角兽队",
+    "type": "center",
+    "system_desc": "围绕彩虹独角兽的首领化队伍",
+    "members": [
+      "彩虹独角兽",
+      "疾光千兽",
+      "绒仙子",
+      "绒光优优",
+      "窃光蚊",
+      "晶石蜗（西瓜碧玺的样子）"
+    ],
+    "total_score": 3836.6,
+    "base_score": 3321.6,
+    "synergy_bonus": 60,
+    "system_fit_total": 440,
+    "defense_count": 6,
+    "utility_count": 2,
+    "attr_coverage": 4,
+    "details": {
+      "彩虹独角兽": {
+        "score": 380.3,
+        "attrs": [
+          "光"
+        ],
+        "trait": "夺目",
+        "system_fit": 100,
+        "recommended_skills": [
+          "升龙咆哮",
+          "魅惑",
+          "花香",
+          "离子震荡"
+        ]
+      },
+      "疾光千兽": {
+        "score": 300.0,
+        "attrs": [
+          "光"
+        ],
+        "trait": "月光审判",
+        "system_fit": 85,
+        "recommended_skills": [
+          "透射",
+          "光刃",
+          "崩拳",
+          "先发制人"
+        ]
+      },
+      "绒仙子": {
+        "score": 296.9,
+        "attrs": [
+          "光",
+          "虫"
+        ],
+        "trait": "绒粉星光",
+        "system_fit": 75,
+        "recommended_skills": [
+          "脉冲光线",
+          "啃咬",
+          "落星",
+          "虫网"
+        ]
+      },
+      "绒光优优": {
+        "score": 381.0,
+        "attrs": [
+          "地",
+          "光"
+        ],
+        "trait": "哨兵",
+        "system_fit": 65,
+        "recommended_skills": [
+          "泥浆",
+          "闪光",
+          "泥巴喷射",
+          "热砂"
+        ]
+      },
+      "窃光蚊": {
+        "score": 269.2,
+        "attrs": [
+          "恶",
+          "光"
+        ],
+        "trait": "血型吸引",
+        "system_fit": 65,
+        "recommended_skills": [
+          "灾厄",
+          "迫害",
+          "跌落",
+          "蝙蝠"
+        ]
+      },
+      "晶石蜗（西瓜碧玺的样子）": {
+        "score": 274.2,
+        "attrs": [
+          "光",
+          "地"
+        ],
+        "trait": "偏振",
+        "system_fit": 50,
+        "recommended_skills": [
+          "脉冲光线",
+          "泥浆",
+          "透射",
+          "扬沙"
+        ]
+      }
+    }
+  },
+  {
+    "system": "恶魔狼王队",
+    "type": "center",
+    "system_desc": "围绕恶魔狼王的首领化队伍",
+    "members": [
+      "恶魔狼王",
+      "龙息帕尔",
+      "花影羚羊",
+      "卡拉波斯",
+      "朔夜伊芙",
+      "邪眼巨魔"
+    ],
+    "total_score": 3769.8,
+    "base_score": 3244.8,
+    "synergy_bonus": 60,
+    "system_fit_total": 400,
+    "defense_count": 6,
+    "utility_count": 3,
+    "attr_coverage": 3,
+    "details": {
+      "恶魔狼王": {
+        "score": 337.0,
+        "attrs": [
+          "恶"
+        ],
+        "trait": "悼亡",
+        "system_fit": 100,
+        "recommended_skills": [
+          "恶能量",
+          "噬心",
+          "溃烂触碰",
+          "星云漩涡"
         ]
       },
       "龙息帕尔": {
-        "score": 444.2,
+        "score": 431.2,
         "attrs": [
           "恶"
         ],
         "trait": "付给恶魔的赎价",
-        "system_fit": 0,
+        "system_fit": 75,
         "recommended_skills": [
+          "蝙蝠",
           "撕裂",
-          "火云车",
-          "龙吟",
-          "有效预防"
+          "诋毁",
+          "极限撕裂"
+        ]
+      },
+      "花影羚羊": {
+        "score": 331.2,
+        "attrs": [
+          "幽",
+          "恶"
+        ],
+        "trait": "碰瓷",
+        "system_fit": 75,
+        "recommended_skills": [
+          "恶能量",
+          "幻象",
+          "坟场搏击",
+          "极限撕裂"
+        ]
+      },
+      "卡拉波斯": {
+        "score": 326.8,
+        "attrs": [
+          "恶"
+        ],
+        "trait": "悬一线",
+        "system_fit": 50,
+        "recommended_skills": [
+          "落星",
+          "诡刺",
+          "魔爪",
+          "恶能量"
+        ]
+      },
+      "朔夜伊芙": {
+        "score": 310.1,
+        "attrs": [
+          "恶"
+        ],
+        "trait": "嫁祸",
+        "system_fit": 50,
+        "recommended_skills": [
+          "魔爪",
+          "掠夺",
+          "蝙蝠",
+          "音波弹"
+        ]
+      },
+      "邪眼巨魔": {
+        "score": 258.5,
+        "attrs": [
+          "恶",
+          "虫"
+        ],
+        "trait": "暗流",
+        "system_fit": 50,
+        "recommended_skills": [
+          "迫害",
+          "啃咬",
+          "落星",
+          "虫网"
+        ]
+      }
+    }
+  },
+  {
+    "system": "奇梦咪队",
+    "type": "center",
+    "system_desc": "围绕奇梦咪的首领化队伍",
+    "members": [
+      "奇梦咪",
+      "寒音蛇",
+      "魔眷鸟",
+      "卡洛儿",
+      "红绒十字",
+      "白发路路"
+    ],
+    "total_score": 3766.8,
+    "base_score": 3171.8,
+    "synergy_bonus": 60,
+    "system_fit_total": 425,
+    "defense_count": 5,
+    "utility_count": 4,
+    "attr_coverage": 6,
+    "details": {
+      "奇梦咪": {
+        "score": 315.1,
+        "attrs": [
+          "萌"
+        ],
+        "trait": "三鼓作气",
+        "system_fit": 100,
+        "recommended_skills": [
+          "碰爪",
+          "魅惑",
+          "升龙咆哮",
+          "噬心"
+        ]
+      },
+      "寒音蛇": {
+        "score": 314.9,
+        "attrs": [
+          "萌",
+          "毒"
+        ],
+        "trait": "拨浪鼓",
+        "system_fit": 75,
+        "recommended_skills": [
+          "溃烂触碰",
+          "魅惑",
+          "超级糖果",
+          "毒液渗透"
+        ]
+      },
+      "魔眷鸟": {
+        "score": 308.7,
+        "attrs": [
+          "萌",
+          "翼"
+        ],
+        "trait": "自由飘",
+        "system_fit": 75,
+        "recommended_skills": [
+          "龙卷风",
+          "超级糖果",
+          "啄击",
+          "扇风"
+        ]
+      },
+      "卡洛儿": {
+        "score": 291.6,
+        "attrs": [
+          "水",
+          "萌"
+        ],
+        "trait": "守护者",
+        "system_fit": 75,
+        "recommended_skills": [
+          "肥皂泡",
+          "泡沫",
+          "潮涌",
+          "水刃"
+        ]
+      },
+      "红绒十字": {
+        "score": 357.9,
+        "attrs": [
+          "火",
+          "萌"
+        ],
+        "trait": "仁心",
+        "system_fit": 50,
+        "recommended_skills": [
+          "热气",
+          "火爪",
+          "飞吻",
+          "除厄"
+        ]
+      },
+      "白发路路": {
+        "score": 333.6,
+        "attrs": [
+          "草",
+          "萌"
+        ],
+        "trait": "营养液泡",
+        "system_fit": 50,
+        "recommended_skills": [
+          "花香",
+          "魅惑",
+          "种子弹",
+          "碰爪"
+        ]
+      }
+    }
+  },
+  {
+    "system": "圣光迪莫队",
+    "type": "center",
+    "system_desc": "围绕圣光迪莫的首领化队伍",
+    "members": [
+      "圣光迪莫",
+      "疾光千兽",
+      "绒仙子",
+      "绒光优优",
+      "窃光蚊",
+      "晶石蜗（烧蓝黄金的样子）"
+    ],
+    "total_score": 3746.6,
+    "base_score": 3251.6,
+    "synergy_bonus": 60,
+    "system_fit_total": 440,
+    "defense_count": 6,
+    "utility_count": 2,
+    "attr_coverage": 4,
+    "details": {
+      "圣光迪莫": {
+        "score": 303.6,
+        "attrs": [
+          "光"
+        ],
+        "trait": "伙伴的力量",
+        "system_fit": 100,
+        "recommended_skills": [
+          "透射",
+          "升龙咆哮",
+          "魅惑",
+          "噬心"
+        ]
+      },
+      "疾光千兽": {
+        "score": 300.0,
+        "attrs": [
+          "光"
+        ],
+        "trait": "月光审判",
+        "system_fit": 85,
+        "recommended_skills": [
+          "透射",
+          "光刃",
+          "崩拳",
+          "先发制人"
+        ]
+      },
+      "绒仙子": {
+        "score": 296.9,
+        "attrs": [
+          "光",
+          "虫"
+        ],
+        "trait": "绒粉星光",
+        "system_fit": 75,
+        "recommended_skills": [
+          "脉冲光线",
+          "啃咬",
+          "落星",
+          "虫网"
+        ]
+      },
+      "绒光优优": {
+        "score": 381.0,
+        "attrs": [
+          "地",
+          "光"
+        ],
+        "trait": "哨兵",
+        "system_fit": 65,
+        "recommended_skills": [
+          "泥浆",
+          "闪光",
+          "泥巴喷射",
+          "热砂"
+        ]
+      },
+      "窃光蚊": {
+        "score": 269.2,
+        "attrs": [
+          "恶",
+          "光"
+        ],
+        "trait": "血型吸引",
+        "system_fit": 65,
+        "recommended_skills": [
+          "灾厄",
+          "迫害",
+          "跌落",
+          "蝙蝠"
+        ]
+      },
+      "晶石蜗（烧蓝黄金的样子）": {
+        "score": 280.9,
+        "attrs": [
+          "光",
+          "地"
+        ],
+        "trait": "偏振",
+        "system_fit": 50,
+        "recommended_skills": [
+          "脉冲光线",
+          "泥浆",
+          "透射",
+          "扬沙"
+        ]
+      }
+    }
+  },
+  {
+    "system": "萌队",
+    "type": "center",
+    "system_desc": "卡洛儿萌化联动队",
+    "members": [
+      "卡洛儿",
+      "寒音蛇",
+      "魔眷鸟",
+      "菊花梨",
+      "红绒十字",
+      "白发路路"
+    ],
+    "total_score": 3696.9,
+    "base_score": 3096.9,
+    "synergy_bonus": 65,
+    "system_fit_total": 425,
+    "defense_count": 5,
+    "utility_count": 5,
+    "attr_coverage": 6,
+    "details": {
+      "卡洛儿": {
+        "score": 291.6,
+        "attrs": [
+          "水",
+          "萌"
+        ],
+        "trait": "守护者",
+        "system_fit": 100,
+        "recommended_skills": [
+          "肥皂泡",
+          "泡沫",
+          "潮涌",
+          "水刃"
+        ]
+      },
+      "寒音蛇": {
+        "score": 314.9,
+        "attrs": [
+          "萌",
+          "毒"
+        ],
+        "trait": "拨浪鼓",
+        "system_fit": 75,
+        "recommended_skills": [
+          "溃烂触碰",
+          "魅惑",
+          "超级糖果",
+          "毒液渗透"
+        ]
+      },
+      "魔眷鸟": {
+        "score": 308.7,
+        "attrs": [
+          "萌",
+          "翼"
+        ],
+        "trait": "自由飘",
+        "system_fit": 75,
+        "recommended_skills": [
+          "龙卷风",
+          "超级糖果",
+          "啄击",
+          "扇风"
+        ]
+      },
+      "菊花梨": {
+        "score": 240.2,
+        "attrs": [
+          "萌"
+        ],
+        "trait": "无忧无虑",
+        "system_fit": 75,
+        "recommended_skills": [
+          "破罐破摔",
+          "阻断",
+          "虹光冲击",
+          "灵媒"
+        ]
+      },
+      "红绒十字": {
+        "score": 357.9,
+        "attrs": [
+          "火",
+          "萌"
+        ],
+        "trait": "仁心",
+        "system_fit": 50,
+        "recommended_skills": [
+          "热气",
+          "火爪",
+          "飞吻",
+          "除厄"
+        ]
+      },
+      "白发路路": {
+        "score": 333.6,
+        "attrs": [
+          "草",
+          "萌"
+        ],
+        "trait": "营养液泡",
+        "system_fit": 50,
+        "recommended_skills": [
+          "花香",
+          "魅惑",
+          "种子弹",
+          "碰爪"
+        ]
+      }
+    }
+  },
+  {
+    "system": "沙暴体系",
+    "type": "weather",
+    "system_desc": "沙暴天气体系",
+    "members": [
+      "嗜波螺",
+      "食尘短绒",
+      "鳗尾兽",
+      "巨灵石",
+      "流浪鼠",
+      "记忆石"
+    ],
+    "total_score": 3695.0,
+    "base_score": 3135.0,
+    "synergy_bonus": 60,
+    "system_fit_total": 500,
+    "defense_count": 6,
+    "utility_count": 2,
+    "attr_coverage": 5,
+    "details": {
+      "嗜波螺": {
+        "score": 324.0,
+        "attrs": [
+          "地",
+          "水"
+        ],
+        "trait": "消波块",
+        "system_fit": 100,
+        "recommended_skills": [
+          "泡沫",
+          "热砂",
+          "潮涌",
+          "气泡"
+        ]
+      },
+      "食尘短绒": {
+        "score": 347.1,
+        "attrs": [
+          "虫",
+          "地"
+        ],
+        "trait": "特殊清洁场景",
+        "system_fit": 80,
+        "recommended_skills": [
+          "尾后针",
+          "地刺",
+          "网缚",
+          "翅刃"
+        ]
+      },
+      "鳗尾兽": {
+        "score": 330.0,
+        "attrs": [
+          "地",
+          "草"
+        ],
+        "trait": "铃兰晚钟",
+        "system_fit": 80,
+        "recommended_skills": [
+          "泥浆",
+          "花香",
+          "热砂",
+          "地刺"
+        ]
+      },
+      "巨灵石": {
+        "score": 304.0,
+        "attrs": [
+          "地",
+          "幽"
+        ],
+        "trait": "石天平",
+        "system_fit": 80,
+        "recommended_skills": [
+          "鬼火",
+          "泥巴喷射",
+          "幻象",
+          "跺地"
+        ]
+      },
+      "流浪鼠": {
+        "score": 297.0,
+        "attrs": [
+          "地"
+        ],
+        "trait": "奔波命",
+        "system_fit": 80,
+        "recommended_skills": [
+          "泥浆",
+          "泥巴喷射",
+          "拍击",
+          "热砂"
+        ]
+      },
+      "记忆石": {
+        "score": 282.9,
+        "attrs": [
+          "地"
+        ],
+        "trait": "不移",
+        "system_fit": 80,
+        "recommended_skills": [
+          "扬沙",
+          "跺地",
+          "裂石",
+          "陨石"
+        ]
+      }
+    }
+  },
+  {
+    "system": "幻影荆棘队",
+    "type": "center",
+    "system_desc": "围绕幻影荆棘的首领化队伍",
+    "members": [
+      "幻影荆棘",
+      "蹦蹦草（海神球形态）",
+      "蹦蹦草（彩玉球形态）",
+      "蹦蹦草（短毛球形态）",
+      "燃薪虫",
+      "白发路路"
+    ],
+    "total_score": 3687.5,
+    "base_score": 3122.5,
+    "synergy_bonus": 60,
+    "system_fit_total": 395,
+    "defense_count": 6,
+    "utility_count": 4,
+    "attr_coverage": 5,
+    "details": {
+      "幻影荆棘": {
+        "score": 351.4,
+        "attrs": [
+          "幽",
+          "草"
+        ],
+        "trait": "大捞一笔",
+        "system_fit": 100,
+        "recommended_skills": [
+          "花香",
+          "升龙咆哮",
+          "魅惑",
+          "噬心"
+        ]
+      },
+      "蹦蹦草（海神球形态）": {
+        "score": 273.0,
+        "attrs": [
+          "草",
+          "毒"
+        ],
+        "trait": "生物碱",
+        "system_fit": 65,
+        "recommended_skills": [
+          "汲取",
+          "毒沼",
+          "叶绿光束",
+          "针刺射击"
+        ]
+      },
+      "蹦蹦草（彩玉球形态）": {
+        "score": 273.0,
+        "attrs": [
+          "草",
+          "毒"
+        ],
+        "trait": "生物碱",
+        "system_fit": 65,
+        "recommended_skills": [
+          "汲取",
+          "毒沼",
+          "叶绿光束",
+          "针刺射击"
+        ]
+      },
+      "蹦蹦草（短毛球形态）": {
+        "score": 273.0,
+        "attrs": [
+          "草",
+          "毒"
+        ],
+        "trait": "生物碱",
+        "system_fit": 65,
+        "recommended_skills": [
+          "汲取",
+          "毒沼",
+          "叶绿光束",
+          "针刺射击"
+        ]
+      },
+      "燃薪虫": {
+        "score": 368.5,
+        "attrs": [
+          "火",
+          "草"
+        ],
+        "trait": "煤渣草",
+        "system_fit": 50,
+        "recommended_skills": [
+          "种子弹",
+          "火焰冲锋",
+          "灼伤",
+          "抽枝"
+        ]
+      },
+      "白发路路": {
+        "score": 333.6,
+        "attrs": [
+          "草",
+          "萌"
+        ],
+        "trait": "营养液泡",
+        "system_fit": 50,
+        "recommended_skills": [
+          "花香",
+          "魅惑",
+          "种子弹",
+          "碰爪"
         ]
       }
     }
   },
   {
     "system": "奇丽果队",
+    "type": "center",
     "system_desc": "围绕奇丽果的首领化队伍",
     "members": [
       "奇丽果",
       "蹦蹦草（海神球形态）",
       "蹦蹦草（彩玉球形态）",
-      "圣羽翼王",
-      "寂灭骨龙",
-      "龙息帕尔"
+      "蹦蹦草（短毛球形态）",
+      "燃薪虫",
+      "白发路路"
     ],
-    "total_score": 2307.9,
-    "base_score": 2219.9,
+    "total_score": 3652.3,
+    "base_score": 3087.3,
     "synergy_bonus": 60,
-    "system_fit_total": 230,
-    "defense_count": 5,
-    "utility_count": 2,
-    "attr_coverage": 6,
+    "system_fit_total": 395,
+    "defense_count": 6,
+    "utility_count": 4,
+    "attr_coverage": 4,
     "details": {
       "奇丽果": {
-        "score": 318.7,
+        "score": 316.2,
         "attrs": [
           "草"
         ],
         "trait": "养分内循环",
         "system_fit": 100,
         "recommended_skills": [
-          "掩护",
-          "啮合传递",
-          "跺地",
-          "冰爪"
+          "花香",
+          "升龙咆哮",
+          "魅惑",
+          "噬心"
         ]
       },
       "蹦蹦草（海神球形态）": {
-        "score": 265.8,
+        "score": 273.0,
         "attrs": [
           "草",
           "毒"
@@ -4352,14 +3688,14 @@
         "trait": "生物碱",
         "system_fit": 65,
         "recommended_skills": [
-          "防御",
-          "毒液渗透",
-          "仙人掌刺击",
-          "芳香诱引"
+          "汲取",
+          "毒沼",
+          "叶绿光束",
+          "针刺射击"
         ]
       },
       "蹦蹦草（彩玉球形态）": {
-        "score": 265.8,
+        "score": 273.0,
         "attrs": [
           "草",
           "毒"
@@ -4367,92 +3703,95 @@
         "trait": "生物碱",
         "system_fit": 65,
         "recommended_skills": [
-          "防御",
-          "毒液渗透",
-          "仙人掌刺击",
-          "芳香诱引"
+          "汲取",
+          "毒沼",
+          "叶绿光束",
+          "针刺射击"
         ]
       },
-      "圣羽翼王": {
-        "score": 469.6,
+      "蹦蹦草（短毛球形态）": {
+        "score": 273.0,
         "attrs": [
-          "翼"
+          "草",
+          "毒"
         ],
-        "trait": "飓风",
-        "system_fit": 0,
+        "trait": "生物碱",
+        "system_fit": 65,
         "recommended_skills": [
-          "疾风连袭",
-          "力量增效",
-          "闪击",
-          "水刃"
+          "汲取",
+          "毒沼",
+          "叶绿光束",
+          "针刺射击"
         ]
       },
-      "寂灭骨龙": {
-        "score": 455.8,
+      "燃薪虫": {
+        "score": 368.5,
         "attrs": [
-          "龙",
-          "幽"
+          "火",
+          "草"
         ],
-        "trait": "不朽",
-        "system_fit": 0,
+        "trait": "煤渣草",
+        "system_fit": 50,
         "recommended_skills": [
-          "吓退",
-          "电弧",
-          "偷袭",
-          "隼鳞"
+          "种子弹",
+          "火焰冲锋",
+          "灼伤",
+          "抽枝"
         ]
       },
-      "龙息帕尔": {
-        "score": 444.2,
+      "白发路路": {
+        "score": 333.6,
         "attrs": [
-          "恶"
+          "草",
+          "萌"
         ],
-        "trait": "付给恶魔的赎价",
-        "system_fit": 0,
+        "trait": "营养液泡",
+        "system_fit": 50,
         "recommended_skills": [
-          "撕裂",
-          "火云车",
-          "龙吟",
-          "有效预防"
+          "花香",
+          "魅惑",
+          "种子弹",
+          "碰爪"
         ]
       }
     }
   },
   {
     "system": "叶冕魔力猫队",
+    "type": "center",
     "system_desc": "围绕叶冕魔力猫的首领化队伍",
     "members": [
       "叶冕魔力猫",
       "蹦蹦草（海神球形态）",
       "蹦蹦草（彩玉球形态）",
-      "圣羽翼王",
-      "寂灭骨龙",
-      "龙息帕尔"
+      "蹦蹦草（短毛球形态）",
+      "燃薪虫",
+      "白发路路"
     ],
-    "total_score": 2273.4,
-    "base_score": 2185.4,
+    "total_score": 3617.8,
+    "base_score": 3052.8,
     "synergy_bonus": 60,
-    "system_fit_total": 230,
-    "defense_count": 5,
-    "utility_count": 2,
-    "attr_coverage": 6,
+    "system_fit_total": 395,
+    "defense_count": 6,
+    "utility_count": 4,
+    "attr_coverage": 4,
     "details": {
       "叶冕魔力猫": {
-        "score": 284.2,
+        "score": 281.7,
         "attrs": [
           "草"
         ],
         "trait": "深层氧循环",
         "system_fit": 100,
         "recommended_skills": [
-          "掩护",
-          "啮合传递",
-          "跺地",
-          "冰爪"
+          "花香",
+          "升龙咆哮",
+          "魅惑",
+          "噬心"
         ]
       },
       "蹦蹦草（海神球形态）": {
-        "score": 265.8,
+        "score": 273.0,
         "attrs": [
           "草",
           "毒"
@@ -4460,14 +3799,14 @@
         "trait": "生物碱",
         "system_fit": 65,
         "recommended_skills": [
-          "防御",
-          "毒液渗透",
-          "仙人掌刺击",
-          "芳香诱引"
+          "汲取",
+          "毒沼",
+          "叶绿光束",
+          "针刺射击"
         ]
       },
       "蹦蹦草（彩玉球形态）": {
-        "score": 265.8,
+        "score": 273.0,
         "attrs": [
           "草",
           "毒"
@@ -4475,53 +3814,819 @@
         "trait": "生物碱",
         "system_fit": 65,
         "recommended_skills": [
-          "防御",
-          "毒液渗透",
-          "仙人掌刺击",
-          "芳香诱引"
+          "汲取",
+          "毒沼",
+          "叶绿光束",
+          "针刺射击"
         ]
       },
-      "圣羽翼王": {
-        "score": 469.6,
+      "蹦蹦草（短毛球形态）": {
+        "score": 273.0,
         "attrs": [
+          "草",
+          "毒"
+        ],
+        "trait": "生物碱",
+        "system_fit": 65,
+        "recommended_skills": [
+          "汲取",
+          "毒沼",
+          "叶绿光束",
+          "针刺射击"
+        ]
+      },
+      "燃薪虫": {
+        "score": 368.5,
+        "attrs": [
+          "火",
+          "草"
+        ],
+        "trait": "煤渣草",
+        "system_fit": 50,
+        "recommended_skills": [
+          "种子弹",
+          "火焰冲锋",
+          "灼伤",
+          "抽枝"
+        ]
+      },
+      "白发路路": {
+        "score": 333.6,
+        "attrs": [
+          "草",
+          "萌"
+        ],
+        "trait": "营养液泡",
+        "system_fit": 50,
+        "recommended_skills": [
+          "花香",
+          "魅惑",
+          "种子弹",
+          "碰爪"
+        ]
+      }
+    }
+  },
+  {
+    "system": "萌化体系",
+    "type": "mechanic",
+    "system_desc": "萌化印记联动体系",
+    "members": [
+      "魔眷鸟",
+      "卡洛儿",
+      "菊花梨",
+      "秩序鱿墨",
+      "溯源钟",
+      "火羽"
+    ],
+    "total_score": 3518.3,
+    "base_score": 3043.3,
+    "synergy_bonus": 65,
+    "system_fit_total": 465,
+    "defense_count": 4,
+    "utility_count": 4,
+    "attr_coverage": 7,
+    "details": {
+      "魔眷鸟": {
+        "score": 308.7,
+        "attrs": [
+          "萌",
           "翼"
         ],
-        "trait": "飓风",
-        "system_fit": 0,
+        "trait": "自由飘",
+        "system_fit": 100,
         "recommended_skills": [
-          "疾风连袭",
-          "力量增效",
-          "闪击",
+          "龙卷风",
+          "超级糖果",
+          "啄击",
+          "扇风"
+        ]
+      },
+      "卡洛儿": {
+        "score": 291.6,
+        "attrs": [
+          "水",
+          "萌"
+        ],
+        "trait": "守护者",
+        "system_fit": 100,
+        "recommended_skills": [
+          "肥皂泡",
+          "泡沫",
+          "潮涌",
           "水刃"
         ]
       },
-      "寂灭骨龙": {
-        "score": 455.8,
+      "菊花梨": {
+        "score": 240.2,
         "attrs": [
-          "龙",
-          "幽"
+          "萌"
         ],
-        "trait": "不朽",
-        "system_fit": 0,
+        "trait": "无忧无虑",
+        "system_fit": 85,
         "recommended_skills": [
-          "吓退",
-          "电弧",
-          "偷袭",
-          "隼鳞"
+          "破罐破摔",
+          "阻断",
+          "虹光冲击",
+          "灵媒"
         ]
       },
-      "龙息帕尔": {
-        "score": 444.2,
+      "秩序鱿墨": {
+        "score": 328.7,
         "attrs": [
-          "恶"
+          "幽",
+          "萌"
         ],
-        "trait": "付给恶魔的赎价",
-        "system_fit": 0,
+        "trait": "绝对秩序",
+        "system_fit": 60,
         "recommended_skills": [
-          "撕裂",
-          "火云车",
-          "龙吟",
-          "有效预防"
+          "鞭打",
+          "诡刺",
+          "幻象",
+          "坟场搏击"
+        ]
+      },
+      "溯源钟": {
+        "score": 144.9,
+        "attrs": [
+          "幻",
+          "机械"
+        ],
+        "trait": "整点报时",
+        "system_fit": 60,
+        "recommended_skills": [
+          "离子震荡",
+          "星云漩涡",
+          "升龙咆哮",
+          "械斗"
+        ]
+      },
+      "火羽": {
+        "score": 139.2,
+        "attrs": [
+          "火",
+          "翼"
+        ],
+        "trait": "急性子",
+        "system_fit": 60,
+        "recommended_skills": [
+          "火焰冲锋",
+          "升龙咆哮",
+          "噬心",
+          "溃烂触碰"
+        ]
+      }
+    }
+  },
+  {
+    "system": "雪天体系",
+    "type": "weather",
+    "system_desc": "雪天/暴风雪天气体系",
+    "members": [
+      "尖嘴狐仙",
+      "雪巨人",
+      "月牙雪熊",
+      "雪灵",
+      "冰钻布鲁斯",
+      "獠牙猪"
+    ],
+    "total_score": 3111.0,
+    "base_score": 2736.0,
+    "synergy_bonus": 60,
+    "system_fit_total": 270,
+    "defense_count": 6,
+    "utility_count": 2,
+    "attr_coverage": 4,
+    "details": {
+      "尖嘴狐仙": {
+        "score": 371.8,
+        "attrs": [
+          "火",
+          "冰"
+        ],
+        "trait": "灵魂灼伤",
+        "system_fit": 80,
+        "recommended_skills": [
+          "冷风",
+          "暴风雪",
+          "炎枪",
+          "火焰切割"
+        ]
+      },
+      "雪巨人": {
+        "score": 342.1,
+        "attrs": [
+          "冰"
+        ],
+        "trait": "打雪仗",
+        "system_fit": 50,
+        "recommended_skills": [
+          "冰锥",
+          "暴风雪",
+          "先发制人",
+          "丢冰块"
+        ]
+      },
+      "月牙雪熊": {
+        "score": 323.0,
+        "attrs": [
+          "冰",
+          "幻"
+        ],
+        "trait": "月牙雪糕",
+        "system_fit": 50,
+        "recommended_skills": [
+          "冰锥",
+          "粒子对撞",
+          "暴风雪",
+          "鸣沙陷阱"
+        ]
+      },
+      "雪灵": {
+        "score": 308.0,
+        "attrs": [
+          "冰"
+        ],
+        "trait": "冰封",
+        "system_fit": 50,
+        "recommended_skills": [
+          "冰锥",
+          "丢冰块",
+          "雪替身",
+          "啮合传递"
+        ]
+      },
+      "冰钻布鲁斯": {
+        "score": 355.8,
+        "attrs": [
+          "冰"
+        ],
+        "trait": "冰钻",
+        "system_fit": 20,
+        "recommended_skills": [
+          "暴风雪",
+          "滚雪球",
+          "冰爪",
+          "先发制人"
+        ]
+      },
+      "獠牙猪": {
+        "score": 315.3,
+        "attrs": [
+          "冰",
+          "地"
+        ],
+        "trait": "冻土",
+        "system_fit": 20,
+        "recommended_skills": [
+          "暴风雪",
+          "滚雪球",
+          "地刺",
+          "岩脉崩毁"
+        ]
+      }
+    }
+  },
+  {
+    "system": "雨天体系",
+    "type": "weather",
+    "system_desc": "雨天天气体系",
+    "members": [
+      "游蛇魔使",
+      "深蓝鲸",
+      "卡洛儿",
+      "圆号鱼",
+      "利灯鱼",
+      "龙鱼"
+    ],
+    "total_score": 3100.9,
+    "base_score": 2690.9,
+    "synergy_bonus": 70,
+    "system_fit_total": 420,
+    "defense_count": 6,
+    "utility_count": 5,
+    "attr_coverage": 5,
+    "details": {
+      "游蛇魔使": {
+        "score": 303.5,
+        "attrs": [
+          "水",
+          "武"
+        ],
+        "trait": "思维之盾",
+        "system_fit": 80,
+        "recommended_skills": [
+          "潮涌",
+          "影袭",
+          "水幕冲击",
+          "啮合传递"
+        ]
+      },
+      "深蓝鲸": {
+        "score": 297.1,
+        "attrs": [
+          "水"
+        ],
+        "trait": "倾轧",
+        "system_fit": 80,
+        "recommended_skills": [
+          "甩水",
+          "气泡",
+          "激流",
+          "水炮"
+        ]
+      },
+      "卡洛儿": {
+        "score": 291.6,
+        "attrs": [
+          "水",
+          "萌"
+        ],
+        "trait": "守护者",
+        "system_fit": 80,
+        "recommended_skills": [
+          "肥皂泡",
+          "泡沫",
+          "潮涌",
+          "水刃"
+        ]
+      },
+      "圆号鱼": {
+        "score": 289.2,
+        "attrs": [
+          "水"
+        ],
+        "trait": "泛音列",
+        "system_fit": 80,
+        "recommended_skills": [
+          "甩水",
+          "肥皂泡",
+          "水炮",
+          "许愿星"
+        ]
+      },
+      "利灯鱼": {
+        "score": 265.4,
+        "attrs": [
+          "水",
+          "电"
+        ],
+        "trait": "对流",
+        "system_fit": 80,
+        "recommended_skills": [
+          "水弹",
+          "超导",
+          "激流",
+          "水光冲击"
+        ]
+      },
+      "龙鱼": {
+        "score": 344.1,
+        "attrs": [
+          "水",
+          "龙"
+        ],
+        "trait": "洄游",
+        "system_fit": 20,
+        "recommended_skills": [
+          "龙之利爪",
+          "龙息环爆",
+          "角击",
+          "潮涌"
+        ]
+      }
+    }
+  },
+  {
+    "system": "圣剑骑士队",
+    "type": "center",
+    "system_desc": "围绕圣剑骑士的首领化队伍",
+    "members": [
+      "圣剑骑士",
+      "波多西",
+      "权杖-V",
+      "贝古斯",
+      "迷迷箱怪",
+      "声波缇塔"
+    ],
+    "total_score": 2985.9,
+    "base_score": 2795.9,
+    "synergy_bonus": 60,
+    "system_fit_total": 275,
+    "defense_count": 6,
+    "utility_count": 2,
+    "attr_coverage": 4,
+    "details": {
+      "圣剑骑士": {
+        "score": 404.1,
+        "attrs": [
+          "机械"
+        ],
+        "trait": "宝剑王牌",
+        "system_fit": 100,
+        "recommended_skills": [
+          "械斗",
+          "主轴",
+          "磁暴",
+          "金属噪音"
+        ]
+      },
+      "波多西": {
+        "score": 359.3,
+        "attrs": [
+          "机械",
+          "地"
+        ],
+        "trait": "定向精炼",
+        "system_fit": 50,
+        "recommended_skills": [
+          "地刺",
+          "先发制人",
+          "齿轮切开",
+          "齿轮扭矩"
+        ]
+      },
+      "权杖-V": {
+        "score": 291.2,
+        "attrs": [
+          "机械"
+        ],
+        "trait": "机械变式",
+        "system_fit": 50,
+        "recommended_skills": [
+          "彗星",
+          "械斗",
+          "离子震荡",
+          "磁暴"
+        ]
+      },
+      "贝古斯": {
+        "score": 399.3,
+        "attrs": [
+          "机械",
+          "火"
+        ],
+        "trait": "贪心算法",
+        "system_fit": 25,
+        "recommended_skills": [
+          "离子震荡",
+          "燃尽",
+          "磁暴",
+          "烈焰风暴"
+        ]
+      },
+      "迷迷箱怪": {
+        "score": 325.0,
+        "attrs": [
+          "机械",
+          "幻"
+        ],
+        "trait": "虚假宝箱",
+        "system_fit": 25,
+        "recommended_skills": [
+          "粒子对撞",
+          "星云漩涡",
+          "离子震荡",
+          "后发制人"
+        ]
+      },
+      "声波缇塔": {
+        "score": 307.0,
+        "attrs": [
+          "机械"
+        ],
+        "trait": "向心力",
+        "system_fit": 25,
+        "recommended_skills": [
+          "拆卸",
+          "主轴",
+          "先发制人",
+          "齿轮切开"
+        ]
+      }
+    }
+  },
+  {
+    "system": "黑猫密探队",
+    "type": "center",
+    "system_desc": "围绕黑猫密探的首领化队伍",
+    "members": [
+      "黑猫密探",
+      "公平鸽",
+      "蹦床松鼠",
+      "卷胡巨獭",
+      "巨噬针鼹",
+      "瞌睡王"
+    ],
+    "total_score": 2958.2,
+    "base_score": 2605.2,
+    "synergy_bonus": 60,
+    "system_fit_total": 275,
+    "defense_count": 6,
+    "utility_count": 1,
+    "attr_coverage": 3,
+    "details": {
+      "黑猫密探": {
+        "score": 358.3,
+        "attrs": [
+          "普通"
+        ],
+        "trait": "先知",
+        "system_fit": 100,
+        "recommended_skills": [
+          "先发制人",
+          "偷袭",
+          "有效预防",
+          "防御"
+        ]
+      },
+      "公平鸽": {
+        "score": 312.2,
+        "attrs": [
+          "普通"
+        ],
+        "trait": "衡量",
+        "system_fit": 50,
+        "recommended_skills": [
+          "拍击",
+          "先发制人",
+          "天旋地转",
+          "吞噬"
+        ]
+      },
+      "蹦床松鼠": {
+        "score": 281.7,
+        "attrs": [
+          "普通"
+        ],
+        "trait": "囤积",
+        "system_fit": 50,
+        "recommended_skills": [
+          "落星",
+          "抓挠",
+          "拍击",
+          "音波弹"
+        ]
+      },
+      "卷胡巨獭": {
+        "score": 320.2,
+        "attrs": [
+          "普通",
+          "水"
+        ],
+        "trait": "保守派",
+        "system_fit": 25,
+        "recommended_skills": [
+          "落星",
+          "水弹",
+          "抓挠",
+          "泡沫"
+        ]
+      },
+      "巨噬针鼹": {
+        "score": 314.2,
+        "attrs": [
+          "普通"
+        ],
+        "trait": "壮胆",
+        "system_fit": 25,
+        "recommended_skills": [
+          "抓挠",
+          "先发制人",
+          "偷袭",
+          "当头棒喝"
+        ]
+      },
+      "瞌睡王": {
+        "score": 308.6,
+        "attrs": [
+          "普通",
+          "武"
+        ],
+        "trait": "慢热型",
+        "system_fit": 25,
+        "recommended_skills": [
+          "后发制人",
+          "寸拳",
+          "先发制人",
+          "斩断"
+        ]
+      }
+    }
+  },
+  {
+    "system": "鸭吉吉国王（蓬松的样子）队",
+    "type": "center",
+    "system_desc": "围绕鸭吉吉国王（蓬松的样子）的首领化队伍",
+    "members": [
+      "鸭吉吉国王（蓬松的样子）",
+      "公平鸽",
+      "蹦床松鼠",
+      "卷胡巨獭",
+      "巨噬针鼹",
+      "瞌睡王"
+    ],
+    "total_score": 2936.0,
+    "base_score": 2583.0,
+    "synergy_bonus": 60,
+    "system_fit_total": 275,
+    "defense_count": 6,
+    "utility_count": 1,
+    "attr_coverage": 3,
+    "details": {
+      "鸭吉吉国王（蓬松的样子）": {
+        "score": 336.1,
+        "attrs": [
+          "普通"
+        ],
+        "trait": "“国王”的威严",
+        "system_fit": 100,
+        "recommended_skills": [
+          "猛烈撞击",
+          "扫尾",
+          "见招拆招",
+          "旋转突击"
+        ]
+      },
+      "公平鸽": {
+        "score": 312.2,
+        "attrs": [
+          "普通"
+        ],
+        "trait": "衡量",
+        "system_fit": 50,
+        "recommended_skills": [
+          "拍击",
+          "先发制人",
+          "天旋地转",
+          "吞噬"
+        ]
+      },
+      "蹦床松鼠": {
+        "score": 281.7,
+        "attrs": [
+          "普通"
+        ],
+        "trait": "囤积",
+        "system_fit": 50,
+        "recommended_skills": [
+          "落星",
+          "抓挠",
+          "拍击",
+          "音波弹"
+        ]
+      },
+      "卷胡巨獭": {
+        "score": 320.2,
+        "attrs": [
+          "普通",
+          "水"
+        ],
+        "trait": "保守派",
+        "system_fit": 25,
+        "recommended_skills": [
+          "落星",
+          "水弹",
+          "抓挠",
+          "泡沫"
+        ]
+      },
+      "巨噬针鼹": {
+        "score": 314.2,
+        "attrs": [
+          "普通"
+        ],
+        "trait": "壮胆",
+        "system_fit": 25,
+        "recommended_skills": [
+          "抓挠",
+          "先发制人",
+          "偷袭",
+          "当头棒喝"
+        ]
+      },
+      "瞌睡王": {
+        "score": 308.6,
+        "attrs": [
+          "普通",
+          "武"
+        ],
+        "trait": "慢热型",
+        "system_fit": 25,
+        "recommended_skills": [
+          "后发制人",
+          "寸拳",
+          "先发制人",
+          "斩断"
+        ]
+      }
+    }
+  },
+  {
+    "system": "雷暴体系",
+    "type": "weather",
+    "system_desc": "雷暴天气体系",
+    "members": [
+      "闪电鳗鱼",
+      "酷拉",
+      "噼啪鸟",
+      "电企鹅",
+      "电球咩咩",
+      "荆棘电环"
+    ],
+    "total_score": 2614.9,
+    "base_score": 2449.9,
+    "synergy_bonus": 65,
+    "system_fit_total": 260,
+    "defense_count": 5,
+    "utility_count": 1,
+    "attr_coverage": 4,
+    "details": {
+      "闪电鳗鱼": {
+        "score": 331.5,
+        "attrs": [
+          "电",
+          "水"
+        ],
+        "trait": "生物电",
+        "system_fit": 100,
+        "recommended_skills": [
+          "泡沫",
+          "雷暴",
+          "交叉闪电",
+          "水光冲击"
+        ]
+      },
+      "酷拉": {
+        "score": 288.5,
+        "attrs": [
+          "电"
+        ],
+        "trait": "噼啪！",
+        "system_fit": 80,
+        "recommended_skills": [
+          "球状闪电",
+          "雷暴",
+          "超导加速",
+          "超导"
+        ]
+      },
+      "噼啪鸟": {
+        "score": 388.0,
+        "attrs": [
+          "电",
+          "翼"
+        ],
+        "trait": "连续负荷",
+        "system_fit": 20,
+        "recommended_skills": [
+          "闪击",
+          "翼击",
+          "龙卷风",
+          "羽刃"
+        ]
+      },
+      "电企鹅": {
+        "score": 316.5,
+        "attrs": [
+          "冰",
+          "电"
+        ],
+        "trait": "超负荷",
+        "system_fit": 20,
+        "recommended_skills": [
+          "电流",
+          "风吹雪",
+          "超导加速",
+          "极寒领域"
+        ]
+      },
+      "电球咩咩": {
+        "score": 313.6,
+        "attrs": [
+          "电"
+        ],
+        "trait": "快充",
+        "system_fit": 20,
+        "recommended_skills": [
+          "球状闪电",
+          "感电",
+          "先发制人",
+          "强制重启"
+        ]
+      },
+      "荆棘电环": {
+        "score": 281.8,
+        "attrs": [
+          "电"
+        ],
+        "trait": "防过载保护",
+        "system_fit": 20,
+        "recommended_skills": [
+          "电流",
+          "导电撞击",
+          "交叉闪电",
+          "先发制人"
         ]
       }
     }
