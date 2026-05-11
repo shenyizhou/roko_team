@@ -25,7 +25,8 @@ from score_traits_and_rank import dynamic_skill_score, swift_strike_score
 
 def load_skill_scores():
     with open(DATA_DIR / "all_skill_rankings.json") as f:
-        return {s["name"]: s for s in json.load(f)}
+        data = {s["name"]: s for s in json.load(f)}
+    return data, {s["name"]: s["score"] for s in data.values()}
 
 
 # ============================================================
@@ -307,6 +308,29 @@ def score_counter_offense(skill, pet_atk, pet_matk):
     return bonus
 
 
+def score_stat_mismatch(skill, pet_atk, pet_matk):
+    """
+    攻防类型错配惩罚：物攻手用特攻技能 / 特攻手用物攻技能
+    仅当一侧攻击力不到另一侧40%时触发
+    """
+    penalty = 0
+    power = skill.get("power", 0)
+    category = skill.get("category", "")
+    if power <= 0 or not category:
+        return penalty
+    max_atk = max(pet_atk, pet_matk, 1)
+    min_atk = min(pet_atk, pet_matk, 1)
+    ratio = min_atk / max(max_atk, 1)
+    if ratio >= 0.4:
+        return penalty  # 双攻均衡，不惩罚
+    weak_side = "物理" if pet_atk < pet_matk else "魔法"
+    if category == weak_side:
+        # 惩罚力度 = 技能威力 × 错配系数 × 衰减倍率
+        mismatch_pct = (0.4 - ratio) / 0.4  # 0~1, ratio越小惩罚越大
+        penalty -= round(power * mismatch_pct * 0.6)
+    return penalty
+
+
 # ============================================================
 # 技能协同（保持原有逻辑）
 # ============================================================
@@ -400,9 +424,11 @@ def mark_synergy_score(skill_list, skill_scores):
 # 组合评分（核心）
 # ============================================================
 
-def score_config(config, skill_scores, trait_desc="", pet_data=None):
+def score_config(config, skill_scores, trait_desc="", pet_data=None, skill_scores_num=None):
     """
     对4技能组合评分
+    skill_scores: {name: full_dict} 用于查技能详情
+    skill_scores_num: {name: score_number} 用于swift_strike_score
     """
     base = 0
     details = {}
@@ -422,7 +448,7 @@ def score_config(config, skill_scores, trait_desc="", pet_data=None):
         if name == "疾风连袭":
             # 动态算分：基于其他3个技能
             other = [s for s in config if s.get("name") != "疾风连袭"]
-            dyn_score, dyn_cost = swift_strike_score(other, skill_scores, has_hurricane)
+            dyn_score, dyn_cost = swift_strike_score(other, skill_scores_num or skill_scores, has_hurricane)
             base += dyn_score
             details[name] = dyn_score
             # 更新技能的cost字段供后续约束检查
@@ -546,11 +572,11 @@ def score_config(config, skill_scores, trait_desc="", pet_data=None):
 
     # 2. 强化了物攻但没有物攻输出技能 = 白强化
     if atk_buff_count > 0 and not has_physical_attack:
-        penalty -= 15 * atk_buff_count
+        penalty -= 30 * atk_buff_count
 
     # 3. 强化了魔攻但没有魔攻输出技能 = 白强化
     if matk_buff_count > 0 and not has_magic_attack:
-        penalty -= 15 * matk_buff_count
+        penalty -= 30 * matk_buff_count
 
     # 4. 增加了连击数但没有连击输出技能 = 浪费技能位
     if combo_buff_count > 0 and not has_combo_attack:
@@ -564,13 +590,17 @@ def score_config(config, skill_scores, trait_desc="", pet_data=None):
         eff_atk = pet_atk * (2.0 if atk_buff_count > 0 else 1.0)
         eff_matk = pet_matk * (2.0 if matk_buff_count > 0 else 1.0)
         atk_ratio = min(eff_atk, eff_matk) / max(eff_atk, eff_matk, 1)
-        # 弱攻侧扣分 = 弱侧技能总分 × (1-ratio) × 0.5
+        # 弱攻侧扣分 = 弱侧技能总分 × (1-ratio)，系数加大到0.8
         weak_penalty = sum(details.get(sk.get("name"), 0) for sk in config
                           if sk.get("power", 0) > 0
                           and ((eff_atk < eff_matk and sk.get("category") == "物理")
                                or (eff_matk < eff_atk and sk.get("category") == "魔法")))
-        weak_penalty *= (1 - atk_ratio) * 0.5
+        weak_penalty *= (1 - atk_ratio) * 0.8
         penalty -= round(weak_penalty)
+    # 6b. 单技能攻防错配惩罚：即使没混搭，用错类型的技能也要扣分
+    for sk in config:
+        mismatch = score_stat_mismatch(sk, pet_atk, pet_matk)
+        penalty += mismatch
 
     # 5. 防御技能冗余：除了壁垒外，多个防御技能边际价值大幅递减
     non_barrier_defense = 0
@@ -667,6 +697,8 @@ def pre_rank_skill(sk, skill_scores, pet_atk=0, pet_matk=0, pet_spd=0, pet_name=
     score += score_reliable_power(sk, pet_atk, pet_matk)
     # 应对爆发加分
     score += score_counter_offense(sk, pet_atk, pet_matk)
+    # 攻防类型错配惩罚（物攻手拿特攻技能等）
+    score += score_stat_mismatch(sk, pet_atk, pet_matk)
     # 低速buff惩罚
     score += score_speed_buff_synergy(sk, pet_spd, pet_name)
 
@@ -676,7 +708,7 @@ def pre_rank_skill(sk, skill_scores, pet_atk=0, pet_matk=0, pet_spd=0, pet_name=
 MAX_SKILL_CANDIDATES = 18  # C(18,4) = 3060, 可控
 
 
-def recommend_for_pet(pet_data, skill_scores):
+def recommend_for_pet(pet_data, skill_scores, skill_scores_num=None):
     """为一个精灵推荐最优技能配置"""
     # 闪击/鸣沙陷阱按精灵数值动态算分（含威力）
     pstats = pet_data.get("stats") or pet_data.get("baseLv1", {})
@@ -735,7 +767,7 @@ def recommend_for_pet(pet_data, skill_scores):
     best_meta = None
 
     for combo in combinations(candidates, 4):
-        score, meta = score_config(list(combo), local_scores, trait_desc, pet_data)
+        score, meta = score_config(list(combo), local_scores, trait_desc, pet_data, skill_scores_num)
         if score > best_score:
             best_score = score
             best_config = list(combo)
@@ -772,14 +804,43 @@ def main():
     pets_data = get_all_pets_with_skills()
 
     existing_names = {pd.get("name", "") for pd in spirits.values()}
+
+    # 构建回退索引：基底名 → spirits_detail中的条目列表
+    _fallback_other = {}
+    for k, v in spirits.items():
+        base = v.get("name", "").split("（")[0] if "（" in v.get("name", "") else v.get("name", "")
+        if base not in _fallback_other:
+            _fallback_other[base] = []
+        _fallback_other[base].append(v)
+
     added_count = 0
+    inherited_count = 0
     for name, pet_info in pets_data.items():
         if name in existing_names:
             continue
         ls = pet_info.get("skills", {}).get("learnset", [])
         if not ls:
-            continue
+            # 无learnset：尝试从同基底spirits_detail条目获取learnset
+            base = name.split("（")[0] if "（" in name else name
+            fallback_entries = _fallback_other.get(base, [])
+            for fe in fallback_entries:
+                fe_ls = fe.get("skills", {}).get("learnset", [])
+                if fe_ls:
+                    ls = fe_ls
+                    break
+            if not ls:
+                continue
         st = pet_info.get("stats", {})
+        # 继承同基底形态的 other 技能池
+        base = name.split("（")[0] if "（" in name else name
+        other = []
+        fallback_entries = _fallback_other.get(base, [])
+        for fe in fallback_entries:
+            fe_other = fe.get("skills", {}).get("other", [])
+            if fe_other:
+                other = fe_other
+                inherited_count += 1
+                break
         spirits[f"__pets__{name}"] = {
             "name": name,
             "attrs": pet_info.get("attrs", []),
@@ -788,14 +849,15 @@ def main():
             "trait": pet_info.get("trait", {}),
             "skills": {
                 "learnset": ls,
-                "other": [],
+                "other": other,
             },
         }
         added_count += 1
     if added_count:
-        print(f"已从 spirit_filter_index 补充 {added_count} 个不在 spirits_detail 中的精灵")
+        print(f"已从 spirit_filter_index 补充 {added_count} 个不在 spirits_detail 中的精灵"
+              f"（其中{inherited_count}个继承了other技能池）")
 
-    skill_scores = load_skill_scores()
+    skill_scores, skill_scores_num = load_skill_scores()
 
     results = {}
     pet_count = 0
@@ -808,7 +870,7 @@ def main():
             continue
         pet_count += 1
 
-        rec = recommend_for_pet(pet_data, skill_scores)
+        rec = recommend_for_pet(pet_data, skill_scores, skill_scores_num)
         if rec:
             results[name] = {
                 "name": name,

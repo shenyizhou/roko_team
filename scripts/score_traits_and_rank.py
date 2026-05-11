@@ -19,7 +19,7 @@ from score_all_skills import power_value
 
 # ===== 属性 × 种族 综合战斗能力评分 =====
 _ATTR_CHART = None
-_SHORT_MAP = {"幽": "幽灵", "恶": "恶魔", "普通": "一般"}
+_SHORT_MAP = {}  # 属性名已统一("幽"/"恶"/"普通")，不再需要映射
 
 def _load_chart():
     global _ATTR_CHART
@@ -49,18 +49,19 @@ def base_to_actual(base_stat, nature_mod=0.0, is_hp=False):
         return round(raw)  # 第二次四舍五入
 
 # 攻击属性热门度分级
-_HOT_T1 = {"一般", "翼", "水", "地", "机械", "火"}
-_HOT_T2 = {"光", "恶魔", "冰", "电", "武"}
+_HOT_T1 = {"普通", "翼", "水", "地", "机械", "火"}
+_HOT_T2 = {"光", "恶", "冰", "电", "武"}
 
 def _atk_weight(atk_type):
     if atk_type in _HOT_T1: return 2.0
     if atk_type in _HOT_T2: return 1.5
     return 1.0
 
-def calc_combat_score(attrs, stats, rec_skills=None, trait_name=""):
+def calc_combat_score(attrs, stats, rec_skills=None, trait_name="", speed_percentile=None):
     """
     属性×种族值 综合战斗能力评分：攻击能力 + 防御能力 + 速度线
     攻击分基于伤害公式：技能威力 × 对应攻击力 × 本系加成
+    speed_percentile: 速度超越比例 (0~1)，用于百分位加权速度分
     返回 (total, breakdown)
     """
     if not attrs:
@@ -79,21 +80,22 @@ def calc_combat_score(attrs, stats, rec_skills=None, trait_name=""):
                 atk_vs[atk_n][t] = float(ms)
 
     # 属性联防面 (0~100)
-    # 游戏meta: 每只精灵带1个防御技+状态技，输出技能少，学习面受限
-    # 弱点主要怕愿力但防不住 → 弱点扣分小，抵抗价值压倒弱点
+    # 双属性实际倍率 = 两个属性的倍率相乘（不是取min）
     defense_raw = 0
     for atk_t in atk_vs:
-        best_m = 2.0
+        combined_m = 1.0
         for def_t in normalized:
             m = atk_vs[atk_t].get(def_t, 1.0)
-            best_m = min(best_m, m)
+            combined_m *= m
         w = _atk_weight(atk_t)
-        if best_m <= 0.5:
-            defense_raw += 7 * w    # 抵抗 — 联防核心价值
-        elif best_m <= 1.0:
-            pass                      # 中立
-        elif best_m >= 2.0:
-            defense_raw -= 5 * w     # 弱点 — 扣分较小（愿力防不住）
+        if combined_m <= 0.5:
+            defense_raw += 5 * w    # 抵抗
+        elif combined_m <= 0.75:
+            defense_raw += 2 * w    # 小抵抗（0.5x 但倍率 <0.75）
+        elif combined_m >= 4.0:
+            defense_raw -= 8 * w    # 四倍弱点
+        elif combined_m >= 2.0:
+            defense_raw -= 5 * w    # 弱点
     type_defense = max(defense_raw, 0)  # 差属性=0分，不扣分
 
     # 属性打击面：精灵属性 + 携带技能的属性（技能打击面）
@@ -132,7 +134,7 @@ def calc_combat_score(attrs, stats, rec_skills=None, trait_name=""):
         for w in weak[t2]:
             if w in resist[t1]: covered.add(w)
             elif w in weak[t1]: dup.add(w)
-        type_synergy = len(covered) * 7.0 - len(dup) * 5.0
+        type_synergy = len(covered) * 5.0 - len(dup) * 4.0
     else:
         type_synergy = 3
 
@@ -192,20 +194,33 @@ def calc_combat_score(attrs, stats, rec_skills=None, trait_name=""):
     spec_def_score = round(spec_bulk * 0.35, 1)
     defense_score = round(phys_def_score + spec_def_score, 1)  # 纯种族防御分
 
-    # 3a. 属性得分：联防面 + 协同（属性组合的抗性价值）
+    # 3a. 属性得分：联防面 × 物防面折扣 + 协同（脆皮带不动好属性）
     type_def = type_defense  # 不压缩，让好属性充分体现
     type_syn = max(type_synergy, 0)  # 协同不惩罚（弱协同=0分）
-    attr_score = round(type_def + type_syn, 1)
+    # 物防面折扣：phys_bulk = HP × 防御，低于10000的精灵联防分打折
+    phys_bulk = hp * def_
+    bulk_factor = min(1.0, pow(max(phys_bulk / 10000, 0), 0.5))
+    type_def_effective = round(type_def * bulk_factor, 1)
+    attr_score = round(type_def_effective + type_syn, 1)
 
-    # 3b. 速度分：连续量化计算 - 低于100基础为0，超过后抛物线增长
-    # 公式：speed_score = max(spd - 98, 0) ^ 1.5 * 0.32
-    effective_spd = spd
-    if effective_spd >= 100:
-        speed_score = round(pow(max(effective_spd - 98, 0), 1.5) * 0.32, 1)
-        speed_line = effective_spd
-    else:
+    # 3b. 速度分：百分位加权 — 速度价值取决于超越多少精灵
+    # 低于50%分位 = 0分；50%~100%分位线性映射到 0~120
+    MAX_SPEED = 120
+    if speed_percentile is not None and speed_percentile > 0.5:
+        excess = speed_percentile - 0.5  # 0 ~ 0.5
+        speed_score = round(excess * 2 * MAX_SPEED, 1)
+        speed_line = spd
+    elif speed_percentile is not None:
         speed_score = 0
         speed_line = 0
+    else:
+        # 回退：无百分位数据时使用旧公式
+        if spd >= 100:
+            speed_score = round(pow(max(spd - 98, 0), 1.5) * 0.32, 1)
+            speed_line = spd
+        else:
+            speed_score = 0
+            speed_line = 0
 
     # 无权重：直接相加，一视同仁
     total = round(attack_score + defense_score + speed_score + attr_score, 1)
@@ -222,7 +237,9 @@ def calc_combat_score(attrs, stats, rec_skills=None, trait_name=""):
         "attr_score": attr_score,
         "type_atk": round(type_atk, 1),
         "type_def": round(type_def, 1),
+        "type_def_effective": type_def_effective,
         "type_syn": round(type_syn, 1),
+        "bulk_factor": round(bulk_factor, 2),
     }
 
 
@@ -297,7 +314,7 @@ TRAIT_SCORES = {
     "\u201c国王\u201d的威严": 55,  # 种族值大幅增加+低耗技能威力+50%
     "快锤": 50,        # 低耗技能获得迅捷
     "生物电": 50,      # 电系技能迸发能耗-2
-    "洄游": 50,        # 蓄力→全技能能耗-1
+    "洄游": 10,        # 蓄力→全技能能耗-1
     "自由飘": 50,      # 萌化→连击数
     "吸积盘": 50,      # 回合结束敌方2层星陨
     "绒粉星光": 50,    # 非本系血脉→威力+100%
@@ -351,7 +368,7 @@ TRAIT_SCORES = {
     "消波块": 30,      # 水系→地系能耗-1
     "溶解腐蚀": 30,    # 毒系→水系中毒2层
     "溶解扩散": 30,    # 毒系→水系中毒1层
-    "特殊清洁场景": 30, # 回合结束偷1层印记
+    "特殊清洁场景": 80, # 回合结束偷1层印记
     "花精灵": 30,      # 回合结束队伍1次奉献
     "野性感官": 30,    # 应对后先手+1
     "生长": 30,        # 回合结束回12%生命
@@ -725,7 +742,7 @@ def _swift_bonus_for_skill(sk):
     return swift
 
 
-def score_pet(pet_name, pet_data, learnset_skills, rec_skills, skill_scores):
+def score_pet(pet_name, pet_data, learnset_skills, rec_skills, skill_scores, speed_percentile=None):
     """
     精灵综合评分 = 推荐技能总分 + 特性分 + 战斗能力分
     """
@@ -778,7 +795,7 @@ def score_pet(pet_name, pet_data, learnset_skills, rec_skills, skill_scores):
     if "失去自己一半" in trait_desc or "失去一半" in trait_desc:
         stats['hp'] = stats['hp'] // 2
 
-    attr_bonus, attr_detail = calc_combat_score(attrs, stats, rec_skills, trait.get("name", ""))
+    attr_bonus, attr_detail = calc_combat_score(attrs, stats, rec_skills, trait.get("name", ""), speed_percentile)
 
     # 特性分直接使用手工评分表的值，已综合所有效果
     trait_effective = trait_score
@@ -800,6 +817,17 @@ def score_pet(pet_name, pet_data, learnset_skills, rec_skills, skill_scores):
     }
 
 
+def _get_fallback_key(name, data_dict):
+    """地区形态回退：若name不在data_dict中，查找同基底形态的条目"""
+    if name in data_dict:
+        return name
+    base = name.split("（")[0] if "（" in name else name
+    for k in data_dict:
+        if k.split("（")[0] == base:
+            return k
+    return None
+
+
 def main():
     # Load data — 使用 spirit_filter_index.json 作为唯一数据源
     from models import get_all_pets_with_skills, DATA_DIR as M_DATA_DIR
@@ -814,6 +842,18 @@ def main():
         learnsets = json.load(f)
     with open(DATA_DIR / "pet_recommended.json") as f:
         recommended = json.load(f)
+
+    # 计算全精灵速度百分位
+    all_speeds = []
+    for name, pet in pets.items():
+        spd = pet.get("stats", {}).get("spd", 80)
+        all_speeds.append(spd)
+    all_speeds.sort()
+    n_speeds = len(all_speeds)
+    def _speed_percentile(spd):
+        """返回速度超越比例 (0~1)"""
+        faster_than = sum(1 for s in all_speeds if spd > s)
+        return faster_than / n_speeds
 
     # 御驾亲征精灵（棋契陛下）：收尾精灵不应携带强化/变化技能，只保留攻击技能
     for name in list(recommended.keys()):
@@ -880,11 +920,24 @@ def main():
         pet_skills = pet.get("skills", {})
         pet_learnset = pet_skills.get("learnset", [])
         pet_recommended = pet_skills.get("recommended", [])
-        if not pet_learnset and name not in learnsets:
+
+        # 地区形态回退：若无推荐技能/学习面，继承同基底形态
+        if not pet_learnset:
+            fallback = _get_fallback_key(name, learnsets)
+            if fallback:
+                pet_learnset = learnsets.get(fallback, [])
+        if not pet_recommended:
+            fallback = _get_fallback_key(name, recommended)
+            if fallback:
+                pet_recommended = recommended.get(fallback, [])
+
+        if not pet_learnset and not pet_recommended:
             continue
+        spd = pet.get("stats", {}).get("spd", 80)
+        pct = _speed_percentile(spd)
         score, meta = score_pet(
             name, pet, pet_learnset or learnsets.get(name, []),
-            pet_recommended or recommended.get(name, []), skill_scores
+            pet_recommended or recommended.get(name, []), skill_scores, pct
         )
         rec_skills_full = pet_recommended or recommended.get(name, [])
         rec_skills = [sk["name"] for sk in rec_skills_full]
@@ -942,7 +995,7 @@ def main():
     with open(DATA_DIR / "all_pet_rankings.json", "w") as f:
         json.dump(ranked, f, ensure_ascii=False, indent=2)
 
-    def _format_combat(cd, combat_score, actual_spd):
+    def _format_combat(cd, combat_score, actual_spd, attrs=None):
         stat_parts = []
         pa = cd.get('phys_atk', cd.get('attack', 0))
         sa = cd.get('spec_atk', 0)
@@ -958,7 +1011,8 @@ def main():
         stat_parts.append(f"速{actual_spd}={cd.get('speed',0):.0f}")
         attr_s = cd.get('attr_score', 0)
         race_s = round(combat_score - attr_s, 1)
-        return f"种族值={race_s:.0f} ({' '.join(stat_parts)}) 属性={attr_s:.0f}"
+        attr_label = f"{'+'.join(attrs)}" if attrs else ""
+        return f"种族值={race_s:.0f} ({' '.join(stat_parts)}) 属性={attr_s:.0f}[{attr_label}]"
 
     def _print_ranking(pets_list, title, start_idx=1, top_n=None):
         print("\n" + "=" * 100)
@@ -968,7 +1022,7 @@ def main():
         for i, p in enumerate(items, start_idx):
             cd = p.get('combat_detail', {})
             actual_spd = cd.get('actual_spd', 0)
-            combat_str = _format_combat(cd, p['combat_score'], actual_spd)
+            combat_str = _format_combat(cd, p['combat_score'], actual_spd, p.get('attrs'))
             sf = p.get('skill_final_scores', {})
             if sf:
                 sk_parts = [f"{sn}={sf[sn]:.0f}" if sn in sf else sn for sn in p.get("recommended_skills", [])[:4]]
@@ -1975,7 +2029,7 @@ def main():
                 continue
             cd = p.get('combat_detail', {})
             actual_spd = cd.get('actual_spd', 0)
-            combat_str = _format_combat(cd, p['combat_score'], actual_spd)
+            combat_str = _format_combat(cd, p['combat_score'], actual_spd, p.get('attrs'))
             rec_sk = team_skills.get(n, [])
             sk_names = [sk["name"] for sk in rec_sk] if rec_sk else []
 
@@ -2007,7 +2061,7 @@ def main():
         for idx, p in enumerate(pets_list, start_idx):
             cd = p.get('combat_detail', {})
             actual_spd = cd.get('actual_spd', 0)
-            combat_str = _format_combat(cd, p['combat_score'], actual_spd)
+            combat_str = _format_combat(cd, p['combat_score'], actual_spd, p.get('attrs'))
             sf = p.get('skill_final_scores', {})
             if sf:
                 sk_parts = [f"{sn}={sf[sn]:.0f}" if sn in sf else sn for sn in p.get("recommended_skills", [])[:4]]

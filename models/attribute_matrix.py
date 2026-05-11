@@ -10,7 +10,7 @@ from pathlib import Path
 DATA_DIR = Path(__file__).parent.parent / "data"
 
 # 游戏18属性标准名
-GAME_ATTRS = ["火", "水", "草", "光", "恶魔", "幽灵", "一般", "地", "冰", "龙",
+GAME_ATTRS = ["火", "水", "草", "光", "恶", "幽", "普通", "地", "冰", "龙",
               "电", "毒", "虫", "武", "翼", "萌", "机械", "幻"]
 
 
@@ -21,15 +21,11 @@ class AttributeMatrix:
 
         self.attr_names = [a["nameCn"] for a in self.attr_data["attributes"]]
 
-        # 宠物数据属性名 → 游戏标准名
-        self.short_to_full = {
-            "幽": "幽灵",
-            "恶": "恶魔",
-            "普通": "一般",
-            "地": "地",
-        }
-        for name in self.attr_names:
-            self.short_to_full[name] = name
+        # 宠物数据属性名 → chart标准名（现已统一，映射为恒等）
+        self.short_to_full = {a: a for a in self.attr_names}
+        self.short_to_full["恶"] = "恶"
+        self.short_to_full["幽"] = "幽"
+        self.short_to_full["普通"] = "普通"
 
         # 构建倍率矩阵
         self.multipliers = {atk: {def_: 1.0 for def_ in self.attr_names}
