@@ -80,22 +80,24 @@ def calc_combat_score(attrs, stats, rec_skills=None, trait_name="", speed_percen
                 atk_vs[atk_n][t] = float(ms)
 
     # 属性联防面 (0~100)
-    # 双属性实际倍率 = 两个属性的倍率相乘（不是取min）
+    # 双属性倍率 = 弱点/抵抗计数抵消（非相乘！）
+    # 免疫(0x)→0; 1抗=0.5, 2抗=0.33; 1弱=2, 2弱=3; 1弱1抗=1
     defense_raw = 0
     for atk_t in atk_vs:
-        combined_m = 1.0
-        for def_t in normalized:
-            m = atk_vs[atk_t].get(def_t, 1.0)
-            combined_m *= m
+        weak_n = sum(1 for def_t in normalized if atk_vs[atk_t].get(def_t, 1.0) >= 2.0)
+        resist_n = sum(1 for def_t in normalized if atk_vs[atk_t].get(def_t, 1.0) <= 0.5)
         w = _atk_weight(atk_t)
-        if combined_m <= 0.5:
-            defense_raw += 5 * w    # 抵抗
-        elif combined_m <= 0.75:
-            defense_raw += 2 * w    # 小抵抗（0.5x 但倍率 <0.75）
-        elif combined_m >= 4.0:
-            defense_raw -= 8 * w    # 四倍弱点
-        elif combined_m >= 2.0:
-            defense_raw -= 5 * w    # 弱点
+        diff = weak_n - resist_n
+        if diff > 0:
+            if diff >= 2:
+                defense_raw -= 16 * w  # 双弱点
+            else:
+                defense_raw -= 10 * w  # 单弱点
+        elif diff < 0:
+            if abs(diff) >= 2:
+                defense_raw += 16 * w  # 双抵抗
+            else:
+                defense_raw += 10 * w  # 单抵抗
     type_defense = max(defense_raw, 0)  # 差属性=0分，不扣分
 
     # 属性打击面：精灵属性 + 携带技能的属性（技能打击面）
