@@ -496,47 +496,93 @@ TRAIT_SCORES = {
 def score_trait(trait_name, desc="", team_skill_stats=None, pet_name=""):
     """
     特性评分：优先查手工评分表，未收录的返回0
-    team_skill_stats: 队伍技能统计，格式为 {"earth": N, "martial": N, "counter": N}
+    team_skill_stats: 队伍技能统计
     返回 (score, breakdown)
 
-    动态特性：
-    - 棋绮后: 根据地系/武系技能数量加分
-    - 瞌睡王: 根据应对技能数量加分
-    - 海豹船长: 根据应对技能数量加分
+    动态特性（按队友技能数计分）：
+    - 棋绮后/棋契陛下(渗透): 地系/武系技能数
+    - 瞌睡王(慢热型): 应对技能数
+    - 海豹船长(身经百练): 应对技能数
+    - 烈火守护(蒸汽膨胀): 火系技能数
+    - 火焰猿(散热): 火系技能数
+    - 雪巨人(打雪仗): 冰系技能数
+    - 布克棱岩等(地脉): 地系技能数
+    - 迷嶂布莱克(地脉馈赠): 地系技能数
+    - 神谕鲨(水翼飞升): 水系技能数
+    - 风铃鲨等(水翼推进): 水系技能数
+    - 波多西(定向精炼): 防御技能数
+    - 寒音蛇(拨浪鼓): 状态技能数
     """
-    base_score = TRAIT_SCORES.get(trait_name, 0)
-    breakdown = {"base": base_score}
+    static_base = TRAIT_SCORES.get(trait_name, 0)  # 精灵排序时的默认分
+    in_team = team_skill_stats is not None
 
-    if team_skill_stats is None:
-        return base_score, breakdown
+    if not in_team:
+        return static_base, {"base": static_base}
 
-    # 棋绮后动态加分: 每有1个地系/武系技能 +10分
-    if "棋绮后" in pet_name or "棋王后" in pet_name or "腾挪" in trait_name or "保卫" in trait_name:
-        earth_skills = team_skill_stats.get("earth", 0)
-        martial_skills = team_skill_stats.get("martial", 0)
-        dynamic_bonus = (earth_skills + martial_skills) * 10
-        breakdown["earth_skills"] = earth_skills
-        breakdown["martial_skills"] = martial_skills
-        breakdown["dynamic_bonus"] = dynamic_bonus
-        return base_score + dynamic_bonus, breakdown
+    # ── 以下为组队上下文（动态特性基础分归0，仅计动态部分）──
 
-    # 瞌睡王动态加分: 每有1个应对技能 +8分
-    if "瞌睡王" in pet_name:
-        counter_skills = team_skill_stats.get("counter", 0)
-        dynamic_bonus = counter_skills * 8
-        breakdown["counter_skills"] = counter_skills
-        breakdown["dynamic_bonus"] = dynamic_bonus
-        return base_score + dynamic_bonus, breakdown
+    # 棋绮后/棋契陛下动态加分: 每有1个地系/武系技能 +10分
+    if "棋绮后" in pet_name or "棋王后" in pet_name or "棋契陛下" in pet_name or trait_name in ("渗透", "腾挪", "保卫", "御驾亲征"):
+        dynamic_bonus = (team_skill_stats.get("earth", 0) + team_skill_stats.get("martial", 0)) * 10
+        return dynamic_bonus, {"base": 0, "dynamic_bonus": dynamic_bonus}
 
-    # 海豹船长动态加分: 每有1个应对技能 +8分
-    if "海豹船长" in pet_name:
-        counter_skills = team_skill_stats.get("counter", 0)
-        dynamic_bonus = counter_skills * 8
-        breakdown["counter_skills"] = counter_skills
-        breakdown["dynamic_bonus"] = dynamic_bonus
-        return base_score + dynamic_bonus, breakdown
+    # 瞌睡王动态加分: 每有1个应对技能 +10分
+    if "瞌睡王" in pet_name or trait_name == "慢热型":
+        dynamic_bonus = team_skill_stats.get("counter", 0) * 10
+        return dynamic_bonus, {"base": 0, "dynamic_bonus": dynamic_bonus}
 
-    return base_score, breakdown
+    # 海豹船长动态加分: 每有1个应对技能 +10分
+    if "海豹船长" in pet_name or trait_name == "身经百练":
+        dynamic_bonus = team_skill_stats.get("counter", 0) * 10
+        return dynamic_bonus, {"base": 0, "dynamic_bonus": dynamic_bonus}
+
+    # 烈火守护动态加分: 每有1个火系技能 +10分
+    if "烈火守护" in pet_name or trait_name == "蒸汽膨胀":
+        dynamic_bonus = team_skill_stats.get("fire_skills", 0) * 10
+        return dynamic_bonus, {"base": 0, "dynamic_bonus": dynamic_bonus}
+
+    # 火焰猿动态加分: 每有1个火系技能 +10分
+    if "火焰猿" in pet_name or trait_name == "散热":
+        dynamic_bonus = team_skill_stats.get("fire_skills", 0) * 10
+        return dynamic_bonus, {"base": 0, "dynamic_bonus": dynamic_bonus}
+
+    # 雪巨人动态加分: 每有1个冰系技能 +10分
+    if "雪巨人" in pet_name or trait_name == "打雪仗":
+        dynamic_bonus = team_skill_stats.get("ice_skills", 0) * 10
+        return dynamic_bonus, {"base": 0, "dynamic_bonus": dynamic_bonus}
+
+    # 布克棱岩/布是石/布是岩动态加分: 每有1个地系技能 +10分
+    if trait_name == "地脉":
+        dynamic_bonus = team_skill_stats.get("earth", 0) * 10
+        return dynamic_bonus, {"base": 0, "dynamic_bonus": dynamic_bonus}
+
+    # 迷嶂布莱克动态加分: 每有1个地系技能 +10分
+    if trait_name == "地脉馈赠":
+        dynamic_bonus = team_skill_stats.get("earth", 0) * 10
+        return dynamic_bonus, {"base": 0, "dynamic_bonus": dynamic_bonus}
+
+    # 神谕鲨动态加分: 每有1个水系技能 +10分
+    if trait_name == "水翼飞升":
+        dynamic_bonus = team_skill_stats.get("water_skills", 0) * 10
+        return dynamic_bonus, {"base": 0, "dynamic_bonus": dynamic_bonus}
+
+    # 风铃鲨/蓝蝶鲨/彩蝶鲨动态加分: 每有1个水系技能 +10分
+    if trait_name == "水翼推进":
+        dynamic_bonus = team_skill_stats.get("water_skills", 0) * 10
+        return dynamic_bonus, {"base": 0, "dynamic_bonus": dynamic_bonus}
+
+    # 波多西动态加分: 每有1个防御技能 +10分
+    if trait_name == "定向精炼":
+        dynamic_bonus = team_skill_stats.get("defense_skills", 0) * 10
+        return dynamic_bonus, {"base": 0, "dynamic_bonus": dynamic_bonus}
+
+    # 寒音蛇动态加分: 每有1个状态技能 +10分
+    if trait_name == "拨浪鼓":
+        dynamic_bonus = team_skill_stats.get("status_skills", 0) * 10
+        return dynamic_bonus, {"base": 0, "dynamic_bonus": dynamic_bonus}
+
+    # 非动态特性：返回静态分
+    return static_base, {"base": static_base}
 
 
 # ===== 动态技能威力计算 =====
@@ -702,6 +748,20 @@ def main():
         learnsets = json.load(f)
     with open(DATA_DIR / "pet_recommended.json") as f:
         recommended = json.load(f)
+
+    # 御驾亲征精灵（棋契陛下）：收尾精灵不应携带强化/变化技能，只保留攻击技能
+    for name in list(recommended.keys()):
+        if "棋契陛下" in name:
+            rec_skills = recommended[name]
+            recommended[name] = [s for s in rec_skills
+                                 if s.get("power", 0) > 0 and s.get("category") != "变化"]
+            if len(recommended[name]) < 4:
+                # 攻击技能不足4个，从learnset中补攻击技能
+                ls = learnsets.get(name, [])
+                existing = {s["name"] for s in recommended[name]}
+                attacks = [s for s in ls if s.get("power", 0) > 0
+                          and s.get("name") not in existing]
+                recommended[name].extend(attacks[:4 - len(recommended[name])])
 
     # 首领化 lineage：从 spirit_filter_index 自动识别
     # 同一 NO 编号下有 boss + 非boss 形态 = 一条首领化进化线
@@ -895,7 +955,8 @@ def main():
             "id": "burn", "name": "灼烧体系", "type": "mechanic",
             "skill_keywords": ["灼烧", "焚烧", "火焰护盾"],
             "trait_keywords": ["灼烧", "焚烧", "煤渣草", "爆燃", "助燃",
-                             "贪心算法", "灵魂灼伤", "急性子", "仁心"],
+                             "贪心算法", "灵魂灼伤", "急性子", "仁心",
+                             "蒸汽膨胀", "散热"],
             "engine_skills": ["焚烧烙印", "焚毁", "火焰护盾", "天火"],
             "bonus": 55, "desc": "灼烧印记联动体系",
         },
@@ -1125,8 +1186,41 @@ def main():
         result.sort(key=lambda x: (-x[1], -score_map.get(x[0], 0)))
         return result
 
-    def _attr_ok(members, max_same=6):
-        """同属性限制：纯体系队大幅放宽，允许6只同核心属性"""
+    # 同一家族(NO)只能携带一只的精灵族（进化线共享NO的需要合并）
+    FAMILY_BLACKLIST_NOS = {
+        "NO.024",  # 蹦蹦种子 → 蹦蹦草 → 蹦蹦花 → 蹦蹦果 (草毒家族，各种形态)
+        "NO.017",  # 海盔虫 → 刺盔虫 → 千棘盔 (水毒家族)
+        "NO.033",  # 海针 → 千棘海针 (水毒家族)
+        "NO.001",  # 迪莫 → 圣光迪莫
+        "NO.002",  # 喵喵 → 魔力猫 → 叶冕魔力猫
+        "NO.004",  # 水蓝蓝 → 水灵 → 圣水守护
+        "NO.003",  # 火花 → 火神 → 烈火战神
+        "NO.005",  # 鸭吉吉家族
+        "NO.011",  # 晶石蜗家族
+    }
+
+    from models import get_family_map as _get_fm
+    _family_map = _get_fm()
+
+    def _get_family_no(name):
+        """返回精灵的家族编号（相同NO = 同一进化线/家族，只能上一只）"""
+        if name in _family_map:
+            return _family_map[name]
+        return name  # fallback: use name itself as unique key
+
+    def _family_ok(members):
+        """检查没有同家族的精灵"""
+        seen_nos = set()
+        for m in members:
+            no = _get_family_no(m)
+            if no in FAMILY_BLACKLIST_NOS:
+                if no in seen_nos:
+                    return False
+                seen_nos.add(no)
+        return True
+
+    def _attr_ok(members, max_same=4):
+        """同属性限制：纯体系队放宽，但不过度集中（避免6只同一属性）"""
         ac = {}
         for m in members:
             for a in get_attrs(m):
@@ -1135,15 +1229,23 @@ def main():
                 ac[a] = ac.get(a, 0) + 1
         return True
 
-    def calc_team_skill_stats(members):
-        """计算队伍技能统计：地系技能数、武系技能数、应对技能数"""
+    def calc_team_skill_stats(members, exclude=None):
+        """计算队伍技能统计，exclude为需要排除的精灵名（动态特性计算自身不参与）"""
         earth_count = 0
         martial_count = 0
         counter_count = 0
+        fire_skill_count = 0    # 火系技能数
+        ice_skill_count = 0     # 冰系技能数
+        water_skill_count = 0   # 水系技能数
+        defense_skill_count = 0 # 防御技能数 (category=变化)
+        status_skill_count = 0  # 状态技能数 (category=变化)
         for m in members:
+            if m == exclude:
+                continue
             rec = recommended.get(m, [])
             for sk in rec:
                 sk_element = sk.get("element", "") if isinstance(sk, dict) else ""
+                sk_category = sk.get("category", "") if isinstance(sk, dict) else ""
                 sk_desc = sk.get("desc", "") if isinstance(sk, dict) else ""
                 sk_name = sk.get("name", "") if isinstance(sk, dict) else ""
                 if sk_element == "地":
@@ -1152,17 +1254,33 @@ def main():
                     martial_count += 1
                 if "应对" in sk_name or "应对" in sk_desc:
                     counter_count += 1
+                if sk_element == "火":
+                    fire_skill_count += 1
+                if sk_element == "冰":
+                    ice_skill_count += 1
+                if sk_element == "水":
+                    water_skill_count += 1
+                if sk_category == "变化":
+                    defense_skill_count += 1
+                    status_skill_count += 1
         return {
             "earth": earth_count,
             "martial": martial_count,
             "counter": counter_count,
+            "fire_skills": fire_skill_count,
+            "ice_skills": ice_skill_count,
+            "water_skills": water_skill_count,
+            "defense_skills": defense_skill_count,
+            "status_skills": status_skill_count,
         }
 
     def eval_team(members, synergy_bonus=0, sys_def=None):
         """评估队伍质量：包含动态特性加分和体系匹配度奖励"""
         if len(members) != 6:
             return -9999, {}
-        if not _attr_ok(members, 6):  # 纯体系队大幅放宽属性限制
+        if not _attr_ok(members, 6):  # 同属性限制
+            return -9999, {}
+        if not _family_ok(members):  # 同家族只能上一只
             return -9999, {}
 
         base_score = sum(score_map.get(m, 0) for m in members)
@@ -1182,17 +1300,19 @@ def main():
             all_attrs.update(get_attrs(m))
             spd_list.append(pets.get(m, {}).get("stats", {}).get("spd", 0))
 
-        # 动态特性加分: 根据队伍技能情况重新计算
-        team_skill_stats = calc_team_skill_stats(members)
+        # 动态特性加分: 根据队伍技能情况重新计算（排除自身）
         dynamic_trait_bonus = 0
+        trait_scores = {}  # 每只精灵的特性分（组队上下文）
         for m in members:
             trait = pets.get(m, {}).get("trait", {})
-            t_score, _ = score_trait(
+            team_skill_stats = calc_team_skill_stats(members, exclude=m)
+            t_score, t_breakdown = score_trait(
                 trait.get("name", ""), trait.get("desc", ""),
                 team_skill_stats, m
             )
-            base = TRAIT_SCORES.get(trait.get("name", ""), 0)
-            dynamic_trait_bonus += max(t_score - base, 0)
+            dyn_bonus = t_breakdown.get("dynamic_bonus", 0)
+            dynamic_trait_bonus += dyn_bonus
+            trait_scores[m] = t_score
 
         penalty = 0
         if def_count < 3:
@@ -1266,13 +1386,19 @@ def main():
 
         if element_counts:
             max_element_count = max(element_counts.values())
-            if max_element_count >= 6:
-                redundancy_bonus += 100
-            elif max_element_count >= 5:
-                redundancy_bonus += 70
-            elif max_element_count >= 4:
-                redundancy_bonus += 40
+            # 冗余战术：2-3个核心属性的集中才有战术价值
+            # 4+同属性属于过度集中（容错率低），奖励递减
+            if max_element_count >= 4:
+                redundancy_bonus += 30  # 过度集中不奖励太多
             elif max_element_count >= 3:
+                redundancy_bonus += 50  # 最佳集中度
+            elif max_element_count >= 2:
+                redundancy_bonus += 20
+            # 奖励多属性进攻轴（双属性集中更有战术灵活性）
+            multi_element = sum(1 for v in element_counts.values() if v >= 2)
+            if multi_element >= 3:
+                redundancy_bonus += 40  # 多轴进攻
+            elif multi_element >= 2:
                 redundancy_bonus += 20
 
         # --- 战术二：控制战术（让counter失能） ---
@@ -1348,6 +1474,69 @@ def main():
         elif len(cannons) >= 1:
             cannon_bonus += 15  # 单炮台基础分
 
+        # --- 战术四：捕获战术（迅捷手场下压力） ---
+        capture_bonus = 0
+        # 检测迅捷手数量：有迅捷技能的高威胁精灵
+        swift_count = 0
+        for m in members:
+            rec = recommended.get(m, [])
+            has_swift = any(
+                "迅捷" in sk.get("desc", "") if isinstance(sk, dict) else False
+                for sk in rec
+            )
+            spd = pets.get(m, {}).get("stats", {}).get("spd", 0)
+            if has_swift and spd >= 100:
+                swift_count += 1
+
+        # 场下压力：迅捷手越多，捕获能力越强
+        if swift_count >= 2:
+            capture_bonus += 70
+        elif swift_count >= 1:
+            capture_bonus += 30
+
+        # --- 战术五：场地战术（印记/天气改变对位关系） ---
+        field_bonus = 0
+        # 检测天气释放者
+        weather_setters = {"落雨", "雷暴", "沙涌", "冬至"}
+        weather_setter_count = 0
+        mark_setters = 0
+        for m in members:
+            rec = recommended.get(m, [])
+            for sk in rec:
+                sk_name = sk.get("name", "") if isinstance(sk, dict) else ""
+                if sk_name in weather_setters:
+                    weather_setter_count += 1
+                    break
+            if any("印记" in sk.get("desc", "") or "星陨" in sk.get("desc", "") or
+                   "灼烧" in sk.get("desc", "") for sk in rec if isinstance(sk, dict)):
+                mark_setters += 1
+
+        if weather_setter_count >= 1:
+            field_bonus += 40
+        if mark_setters >= 3:
+            field_bonus += 50
+
+        # --- 容错率分析：猜拳失败后的兜底能力 ---
+        high_spd = sum(1 for s in spd_list if s > 120)
+        tolerance_bonus = 0
+        # 防御兜底：防御技能数量决定猜拳失败后的存活能力
+        if def_count >= 4:
+            tolerance_bonus += 40
+        elif def_count >= 3:
+            tolerance_bonus += 20
+
+        # 起点压力检测：高输出高速精灵作为起点时，对方必须换人
+        pressure_count = 0
+        for i, m in enumerate(members):
+            if score_map.get(m, 0) >= 370 and spd_list[i] >= 100:
+                pressure_count += 1
+        if pressure_count >= 2:
+            tolerance_bonus += 30  # 多点压力 = 多点猜拳机会
+
+        # 猜拳失败代价评估：高速精灵多 → 即使猜错也能先手换人 → 损失小
+        if high_spd >= 3:
+            tolerance_bonus += 25
+
         # 联防面：属性覆盖广度（但不再是越高越好）
         if len(all_attrs) >= 8:
             coverage_bonus += 15
@@ -1358,18 +1547,22 @@ def main():
         if sys_def and sys_def["type"] == "center":
             if def_count >= 2:
                 redundancy_bonus += 15
-            high_spd = sum(1 for s in spd_list if s > 120)
             if high_spd >= 2:
                 redundancy_bonus += 10
 
         total = (base_score + dynamic_trait_bonus + synergy_bonus
                 + engine_bonus + purity_bonus + redundancy_bonus + control_bonus
-                + cannon_bonus + coverage_bonus + penalty)
+                + cannon_bonus + capture_bonus + field_bonus + tolerance_bonus
+                + coverage_bonus + penalty)
         return total, {
             "base": base_score, "trait_bonus": dynamic_trait_bonus,
             "synergy": synergy_bonus, "penalty": penalty,
             "purity": purity_bonus, "redundancy": redundancy_bonus,
-            "control": control_bonus, "cannon": cannon_bonus, "coverage": coverage_bonus,
+            "control": control_bonus, "cannon": cannon_bonus,
+            "capture": capture_bonus, "field": field_bonus,
+            "tolerance": tolerance_bonus,
+            "coverage": coverage_bonus,
+            "trait_scores": trait_scores,
             "defense": def_count, "utility": utl_count,
             "attr_coverage": len(all_attrs),
         }
@@ -1381,7 +1574,7 @@ def main():
         """
         if candidate_pool is None:
             candidate_pool = noboss_pool
-        # 纯体系队大幅放宽属性限制
+        # 纯体系队放宽属性限制
         max_attr = 6
         current = list(core)
 
@@ -1395,6 +1588,8 @@ def main():
                         continue
                     trial = current + [cand]
                     if not _attr_ok(trial, max_attr):
+                        continue
+                    if not _family_ok(trial):  # 同家族只能上一只
                         continue
                     if len(trial) < 6:
                         # 体系精灵优先：基础分 + 体系匹配分(大权重) + 体系匹配度平方奖励
@@ -1421,6 +1616,8 @@ def main():
                         continue
                     trial = current + [cand]
                     if not _attr_ok(trial, max_attr):
+                        continue
+                    if not _family_ok(trial):
                         continue
                     if len(trial) < 6:
                         fill_score = score_map.get(cand, 0)
@@ -1582,13 +1779,16 @@ def main():
         redundancy_str = f" 冗余=+{info.get('redundancy', 0)}" if info.get('redundancy', 0) else ""
         control_str = f" 控制=+{info.get('control', 0)}" if info.get('control', 0) else ""
         cannon_str = f" 炮台=+{info.get('cannon', 0)}" if info.get('cannon', 0) else ""
+        capture_str = f" 捕获=+{info.get('capture', 0)}" if info.get('capture', 0) else ""
+        field_str = f" 场地=+{info.get('field', 0)}" if info.get('field', 0) else ""
+        tolerance_str = f" 容错=+{info.get('tolerance', 0)}" if info.get('tolerance', 0) else ""
         coverage_str = f" 联防=+{info.get('coverage', 0)}" if info.get('coverage', 0) else ""
         trait_str = f" 特性=+{info.get('trait_bonus', 0):.0f}" if info.get('trait_bonus', 0) else ""
         print(f"\n{'─' * 90}")
         print(f"  [{rank:>2}] {sys_def['name']} — {sys_def['desc']}")
         print(f"      总={st['total']:.1f}  基础={info['base']:.0f}"
               f"{trait_str}  协同=+{info['synergy']}"
-              f"{purity_str}{redundancy_str}{control_str}{cannon_str}{coverage_str}"
+              f"{purity_str}{redundancy_str}{control_str}{cannon_str}{capture_str}{field_str}{tolerance_str}{coverage_str}"
               f"  罚={info.get('penalty', 0):.0f}"
               f"  防{info['defense']} 辅{info['utility']} 属{info['attr_coverage']}")
         for n in team:
@@ -1602,8 +1802,9 @@ def main():
                 tag = " ★核心"
             elif score_system_fit(n, sys_def) >= 50:
                 tag = " ●"
+            team_trait = info.get('trait_scores', {}).get(n, p['trait_score'])
             print(f"    {n:<14}分{p['score']:>5.1f}  {str(p['attrs']):<12}"
-                  f"【{p['trait_name']}={p['trait_score']:.0f}】{tag}")
+                  f"【{p['trait_name']}={team_trait:.0f}】{tag}")
             if sk_names:
                 print(f"      技能: {' · '.join(sk_names[:5])}")
 
@@ -1681,9 +1882,10 @@ def main():
             elif score_system_fit(n, sys_def) >= 50:
                 tag = " [体系]"
 
+            team_trait = info.get('trait_scores', {}).get(n, p['trait_score'])
             txt_lines.append(f"  {i}. {n}{tag}  分{p['score']:.1f}  "
                             f"{str(p['attrs'])}  "
-                            f"【{p['trait_name']}={p['trait_score']:.0f}】")
+                            f"【{p['trait_name']}={team_trait:.0f}】")
             txt_lines.append(f"     技能: {' · '.join(sk_names[:5])}  "
                             f"{combat_str}")
         txt_lines.append("")

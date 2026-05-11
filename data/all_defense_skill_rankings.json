@@ -1,0 +1,788 @@
+[
+  {
+    "rank": 1,
+    "tier": "S",
+    "name": "吓退",
+    "element": "普通",
+    "category": "变化",
+    "cost": 2,
+    "power": 0,
+    "score": 38.2,
+    "type_coef": 1.0,
+    "is_pure_status": true,
+    "points": {
+      "减伤70%": 25.2,
+      "敌脱离(条件)": 21,
+      "费用": -8
+    },
+    "desc": "减伤70%，应对攻击：敌方脱离。"
+  },
+  {
+    "rank": 2,
+    "tier": "S",
+    "name": "泡沫幻影",
+    "element": "水",
+    "category": "变化",
+    "cost": 2,
+    "power": 0,
+    "score": 36.2,
+    "type_coef": 1.0,
+    "is_pure_status": true,
+    "points": {
+      "减伤70%": 25.2,
+      "脱离(条件)": 19,
+      "费用": -8
+    },
+    "desc": "减伤70%，应对攻击：自己脱离。"
+  },
+  {
+    "rank": 3,
+    "tier": "S",
+    "name": "嗜痛",
+    "element": "普通",
+    "category": "变化",
+    "cost": 2,
+    "power": 0,
+    "score": 35.1,
+    "type_coef": 1.0,
+    "is_pure_status": true,
+    "points": {
+      "减伤70%": 25.2,
+      "攻+40%(条件)": 8.8,
+      "受伤成长": 9.1,
+      "费用": -8
+    },
+    "desc": "减伤70%，应对攻击：期间自己每次受到伤害，获得双攻+40%。"
+  },
+  {
+    "rank": 4,
+    "tier": "S",
+    "name": "风墙",
+    "element": "翼",
+    "category": "变化",
+    "cost": 2,
+    "power": 0,
+    "score": 34.3,
+    "type_coef": 0.9,
+    "is_pure_status": true,
+    "points": {
+      "减伤50%": 18.0,
+      "迅捷": 24.3,
+      "费用": -8
+    },
+    "desc": "减伤50%，迅捷，应对攻击。"
+  },
+  {
+    "rank": 5,
+    "tier": "S",
+    "name": "水泡盾",
+    "element": "水",
+    "category": "变化",
+    "cost": 2,
+    "power": 0,
+    "score": 32.6,
+    "type_coef": 1.0,
+    "is_pure_status": true,
+    "points": {
+      "减伤70%": 25.2,
+      "攻+70%(条件)": 15.4,
+      "费用": -8
+    },
+    "desc": "减伤70%，应对攻击：自己获得魔攻+70%。"
+  },
+  {
+    "rank": 6,
+    "tier": "A",
+    "name": "掩护",
+    "element": "虫",
+    "category": "变化",
+    "cost": 2,
+    "power": 0,
+    "score": 31.2,
+    "type_coef": 0.75,
+    "is_pure_status": true,
+    "points": {
+      "减伤70%": 25.2,
+      "紧急脱离(条件)": 9,
+      "下一个减伤": 5,
+      "费用": -8
+    },
+    "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
+  },
+  {
+    "rank": 7,
+    "tier": "A",
+    "name": "有效预防",
+    "element": "普通",
+    "category": "变化",
+    "cost": 1,
+    "power": 0,
+    "score": 31.0,
+    "type_coef": 1.0,
+    "is_pure_status": true,
+    "points": {
+      "减伤50%": 20.0,
+      "先手+1": 15,
+      "费用": -4
+    },
+    "desc": "减伤50%，应对攻击：下一次行动获得先手+1。"
+  },
+  {
+    "rank": 8,
+    "tier": "A",
+    "name": "听桥",
+    "element": "武",
+    "category": "变化",
+    "cost": 4,
+    "power": 0,
+    "score": 31.0,
+    "type_coef": 0.9,
+    "is_pure_status": true,
+    "points": {
+      "减伤60%": 12.0,
+      "反击秒杀": 35,
+      "费用": -16
+    },
+    "desc": "减伤60%，应对攻击：对敌方造成伤害，威力与被应对技能相等。"
+  },
+  {
+    "rank": 9,
+    "tier": "A",
+    "name": "冰墙",
+    "element": "冰",
+    "category": "变化",
+    "cost": 2,
+    "power": 0,
+    "score": 30.7,
+    "type_coef": 1.1,
+    "is_pure_status": true,
+    "points": {
+      "减伤70%": 25.2,
+      "冻结(2层)": 13.5,
+      "费用": -8
+    },
+    "desc": "减伤70%，应对攻击：敌方获得2层冻结。"
+  },
+  {
+    "rank": 10,
+    "tier": "A",
+    "name": "无畏之心",
+    "element": "普通",
+    "category": "变化",
+    "cost": 5,
+    "power": 0,
+    "score": 30.5,
+    "type_coef": 1.0,
+    "is_pure_status": true,
+    "points": {
+      "减伤100%": 32.5,
+      "能耗永久+": -10,
+      "回血": 28,
+      "费用": -20
+    },
+    "desc": "减伤100%，应对攻击：减免的伤害变为回复自己生命，且本技能能耗永久+2。"
+  },
+  {
+    "rank": 11,
+    "tier": "A",
+    "name": "虚化",
+    "element": "幽",
+    "category": "变化",
+    "cost": 2,
+    "power": 0,
+    "score": 29.5,
+    "type_coef": 1.0,
+    "is_pure_status": true,
+    "points": {
+      "减伤70%": 25.2,
+      "防+70%(条件)": 12.3,
+      "费用": -8
+    },
+    "desc": "减伤70%，应对攻击：自己获得魔防+70%。"
+  },
+  {
+    "rank": 12,
+    "tier": "A",
+    "name": "纤维化",
+    "element": "草",
+    "category": "变化",
+    "cost": 2,
+    "power": 0,
+    "score": 29.5,
+    "type_coef": 0.85,
+    "is_pure_status": true,
+    "points": {
+      "减伤70%": 25.2,
+      "防+70%(条件)": 12.3,
+      "费用": -8
+    },
+    "desc": "减伤70%，应对攻击：自己获得物防+70%。"
+  },
+  {
+    "rank": 13,
+    "tier": "A",
+    "name": "火焰护盾",
+    "element": "火",
+    "category": "变化",
+    "cost": 2,
+    "power": 0,
+    "score": 28.5,
+    "type_coef": 1.1,
+    "is_pure_status": true,
+    "points": {
+      "减伤70%": 25.2,
+      "灼烧(4层)": 11.3,
+      "费用": -8
+    },
+    "desc": "减伤70%，应对攻击：敌方获得4层灼烧。"
+  },
+  {
+    "rank": 14,
+    "tier": "A",
+    "name": "壁垒",
+    "element": "地",
+    "category": "变化",
+    "cost": 2,
+    "power": 0,
+    "score": 28.4,
+    "type_coef": 1.2,
+    "is_pure_status": true,
+    "points": {
+      "减伤90%": 32.4,
+      "冷却-": 4,
+      "费用": -8
+    },
+    "desc": "减伤90%，应对攻击：防御技能冷却-1。"
+  },
+  {
+    "rank": 15,
+    "tier": "A",
+    "name": "遁地",
+    "element": "地",
+    "category": "变化",
+    "cost": 3,
+    "power": 0,
+    "score": 28.0,
+    "type_coef": 1.2,
+    "is_pure_status": true,
+    "points": {
+      "减伤50%": 14.0,
+      "脱离": 26,
+      "费用": -12
+    },
+    "desc": "减伤50%并脱离，应对攻击。"
+  },
+  {
+    "rank": 16,
+    "tier": "A",
+    "name": "不可接触",
+    "element": "毒",
+    "category": "变化",
+    "cost": 1,
+    "power": 0,
+    "score": 28.0,
+    "type_coef": 0.9,
+    "is_pure_status": true,
+    "points": {
+      "减伤50%": 20.0,
+      "中毒(1层)": 12.0,
+      "费用": -4
+    },
+    "desc": "减伤50%，敌方每有1层中毒效果，本技能减伤+10%，应对攻击。"
+  },
+  {
+    "rank": 17,
+    "tier": "A",
+    "name": "硬化",
+    "element": "地",
+    "category": "变化",
+    "cost": 2,
+    "power": 0,
+    "score": 27.4,
+    "type_coef": 1.2,
+    "is_pure_status": true,
+    "points": {
+      "减伤90%": 32.4,
+      "能耗-": 3,
+      "费用": -8
+    },
+    "desc": "减伤90%，若上次使用攻击技则本技能能耗-2，应对攻击。"
+  },
+  {
+    "rank": 18,
+    "tier": "A",
+    "name": "雪替身",
+    "element": "冰",
+    "category": "变化",
+    "cost": 2,
+    "power": 0,
+    "score": 27.2,
+    "type_coef": 1.1,
+    "is_pure_status": true,
+    "points": {
+      "减伤70%": 25.2,
+      "回能": 10,
+      "费用": -8
+    },
+    "desc": "减伤70%，应对攻击：回复能量，回复值等于被应对技能能耗的2倍。"
+  },
+  {
+    "rank": 19,
+    "tier": "A",
+    "name": "报复",
+    "element": "幽",
+    "category": "变化",
+    "cost": 2,
+    "power": 0,
+    "score": 25.6,
+    "type_coef": 1.0,
+    "is_pure_status": true,
+    "points": {
+      "减伤60%": 21.6,
+      "烧能量": 12,
+      "费用": -8
+    },
+    "desc": "减伤60%，应对攻击：敌方失去3能量。"
+  },
+  {
+    "rank": 20,
+    "tier": "A",
+    "name": "不动如山",
+    "element": "地",
+    "category": "变化",
+    "cost": 2,
+    "power": 0,
+    "score": 24.4,
+    "type_coef": 1.2,
+    "is_pure_status": true,
+    "points": {
+      "减伤90%": 32.4,
+      "费用": -8
+    },
+    "desc": "减伤90%，应对攻击。"
+  },
+  {
+    "rank": 21,
+    "tier": "A",
+    "name": "防御",
+    "element": "普通",
+    "category": "变化",
+    "cost": 1,
+    "power": 0,
+    "score": 24.0,
+    "type_coef": 1.0,
+    "is_pure_status": true,
+    "points": {
+      "减伤70%": 28.0,
+      "费用": -4
+    },
+    "desc": "减伤70%，应对攻击。"
+  },
+  {
+    "rank": 22,
+    "tier": "B",
+    "name": "蜡质膜",
+    "element": "草",
+    "category": "变化",
+    "cost": 2,
+    "power": 0,
+    "score": 23.2,
+    "type_coef": 0.85,
+    "is_pure_status": true,
+    "points": {
+      "减伤70%": 25.2,
+      "回能": 6,
+      "费用": -8
+    },
+    "desc": "减伤70%，应对攻击：回复3能量。"
+  },
+  {
+    "rank": 23,
+    "tier": "B",
+    "name": "防反",
+    "element": "普通",
+    "category": "变化",
+    "cost": 2,
+    "power": 0,
+    "score": 22.4,
+    "type_coef": 1.0,
+    "is_pure_status": true,
+    "points": {
+      "减伤60%": 21.6,
+      "攻+40%(条件)": 8.8,
+      "费用": -8
+    },
+    "desc": "减伤60%，应对攻击：自己获得物攻和魔攻+40%。"
+  },
+  {
+    "rank": 24,
+    "tier": "B",
+    "name": "捧杀",
+    "element": "萌",
+    "category": "变化",
+    "cost": 4,
+    "power": 0,
+    "score": 22.0,
+    "type_coef": 1.0,
+    "is_pure_status": true,
+    "points": {
+      "减伤90%": 18.0,
+      "萌化(1层)": 20.0,
+      "费用": -16
+    },
+    "desc": "减伤90%，应对攻击：敌方获得1层萌化。"
+  },
+  {
+    "rank": 25,
+    "tier": "B",
+    "name": "龙血",
+    "element": "龙",
+    "category": "变化",
+    "cost": 2,
+    "power": 0,
+    "score": 21.6,
+    "type_coef": 1.0,
+    "is_pure_status": true,
+    "points": {
+      "减伤60%": 21.6,
+      "免蓄力": 8,
+      "费用": -8
+    },
+    "desc": "减伤60%，本技能可以在蓄力状态下使用，应对攻击：下次技能无需蓄力。"
+  },
+  {
+    "rank": 26,
+    "tier": "B",
+    "name": "防御反击",
+    "element": "武",
+    "category": "变化",
+    "cost": 3,
+    "power": 0,
+    "score": 21.6,
+    "type_coef": 0.9,
+    "is_pure_status": true,
+    "points": {
+      "减伤80%": 22.4,
+      "威力强化": 11.2,
+      "费用": -12
+    },
+    "desc": "减伤80%，应对攻击：获得全技能威力+40。"
+  },
+  {
+    "rank": 27,
+    "tier": "B",
+    "name": "能量守恒",
+    "element": "机械",
+    "category": "变化",
+    "cost": 2,
+    "power": 0,
+    "score": 20.8,
+    "type_coef": 0.9,
+    "is_pure_status": true,
+    "points": {
+      "减伤80%": 28.8,
+      "费用": -8
+    },
+    "desc": "减伤80%，应对攻击：两侧的技能能耗永久-1。"
+  },
+  {
+    "rank": 28,
+    "tier": "B",
+    "name": "淤泥表皮",
+    "element": "地",
+    "category": "变化",
+    "cost": 2,
+    "power": 0,
+    "score": 20.8,
+    "type_coef": 1.2,
+    "is_pure_status": true,
+    "points": {
+      "减伤80%": 28.8,
+      "费用": -8
+    },
+    "desc": "减伤80%，应对攻击：敌方获得连击数-2。"
+  },
+  {
+    "rank": 29,
+    "tier": "B",
+    "name": "镜像反射",
+    "element": "光",
+    "category": "变化",
+    "cost": 2,
+    "power": 0,
+    "score": 20.8,
+    "type_coef": 1.0,
+    "is_pure_status": true,
+    "points": {
+      "减伤80%": 28.8,
+      "费用": -8
+    },
+    "desc": "减伤80%，应对攻击：本技能变为被应对的技能。"
+  },
+  {
+    "rank": 30,
+    "tier": "B",
+    "name": "虚假破产",
+    "element": "恶",
+    "category": "变化",
+    "cost": 2,
+    "power": 0,
+    "score": 20.8,
+    "type_coef": 1.0,
+    "is_pure_status": true,
+    "points": {
+      "减伤80%": 28.8,
+      "费用": -8
+    },
+    "desc": "减伤80%，能量不足时，消耗5%生命代替1能量，应对攻击。"
+  },
+  {
+    "rank": 31,
+    "tier": "B",
+    "name": "冰蛋壳",
+    "element": "冰",
+    "category": "变化",
+    "cost": 3,
+    "power": 0,
+    "score": 19.8,
+    "type_coef": 1.1,
+    "is_pure_status": true,
+    "points": {
+      "减伤60%": 16.8,
+      "减速印记(条件)": 15,
+      "费用": -12
+    },
+    "desc": "减伤60%，应对攻击：敌方获得2层减速印记。"
+  },
+  {
+    "rank": 32,
+    "tier": "B",
+    "name": "虫结阵",
+    "element": "虫",
+    "category": "变化",
+    "cost": 2,
+    "power": 0,
+    "score": 19.6,
+    "type_coef": 0.75,
+    "is_pure_status": true,
+    "points": {
+      "减伤60%": 21.6,
+      "奉献": 6,
+      "费用": -8
+    },
+    "desc": "减伤60%，应对攻击：获得1次随机奉献。"
+  },
+  {
+    "rank": 33,
+    "tier": "B",
+    "name": "血气",
+    "element": "普通",
+    "category": "变化",
+    "cost": 2,
+    "power": 0,
+    "score": 19.6,
+    "type_coef": 1.0,
+    "is_pure_status": true,
+    "points": {
+      "减伤60%": 21.6,
+      "保留1血": 6,
+      "费用": -8
+    },
+    "desc": "减伤60%，应对攻击：本回合受到致命伤害时，保留1生命值。"
+  },
+  {
+    "rank": 34,
+    "tier": "B",
+    "name": "羽翼庇护",
+    "element": "翼",
+    "category": "变化",
+    "cost": 3,
+    "power": 0,
+    "score": 19.6,
+    "type_coef": 0.9,
+    "is_pure_status": true,
+    "points": {
+      "减伤70%": 19.6,
+      "连击数+": 12,
+      "费用": -12
+    },
+    "desc": "减伤70%，应对攻击：自己获得连击数+3。"
+  },
+  {
+    "rank": 35,
+    "tier": "B",
+    "name": "等价交换",
+    "element": "恶",
+    "category": "变化",
+    "cost": 3,
+    "power": 0,
+    "score": 19.2,
+    "type_coef": 1.0,
+    "is_pure_status": true,
+    "points": {
+      "减伤90%": 25.2,
+      "吸血": 6,
+      "费用": -12
+    },
+    "desc": "减伤90%，应对攻击：自己获得50%吸血。"
+  },
+  {
+    "rank": 36,
+    "tier": "B",
+    "name": "潮汐",
+    "element": "水",
+    "category": "变化",
+    "cost": 4,
+    "power": 0,
+    "score": 18.0,
+    "type_coef": 1.0,
+    "is_pure_status": true,
+    "points": {
+      "减伤60%": 12.0,
+      "湿润印记(条件)": 22,
+      "费用": -16
+    },
+    "desc": "减伤60%，应对攻击：自己获得1层湿润印记。"
+  },
+  {
+    "rank": 37,
+    "tier": "B",
+    "name": "冥想",
+    "element": "幻",
+    "category": "变化",
+    "cost": 3,
+    "power": 0,
+    "score": 17.6,
+    "type_coef": 0.9,
+    "is_pure_status": true,
+    "points": {
+      "减伤70%": 19.6,
+      "星陨印记(条件)": 10,
+      "费用": -12
+    },
+    "desc": "减伤70%，应对攻击：敌方获得2层星陨。"
+  },
+  {
+    "rank": 38,
+    "tier": "B",
+    "name": "集中",
+    "element": "电",
+    "category": "变化",
+    "cost": 2,
+    "power": 0,
+    "score": 17.2,
+    "type_coef": 0.9,
+    "is_pure_status": true,
+    "points": {
+      "减伤70%": 25.2,
+      "费用": -8
+    },
+    "desc": "减伤70%，应对攻击：自己回合结束返场。"
+  },
+  {
+    "rank": 39,
+    "tier": "B",
+    "name": "水环",
+    "element": "水",
+    "category": "变化",
+    "cost": 2,
+    "power": 0,
+    "score": 17.2,
+    "type_coef": 1.0,
+    "is_pure_status": true,
+    "points": {
+      "减伤70%": 25.2,
+      "费用": -8
+    },
+    "desc": "减伤70%，应对攻击：自己获得全技能能耗-2。"
+  },
+  {
+    "rank": 40,
+    "tier": "B",
+    "name": "酶浓度调整",
+    "element": "草",
+    "category": "变化",
+    "cost": 3,
+    "power": 0,
+    "score": 17.2,
+    "type_coef": 0.85,
+    "is_pure_status": true,
+    "points": {
+      "减伤70%": 19.6,
+      "回血": 9.6,
+      "费用": -12
+    },
+    "desc": "减伤70%，应对攻击：自己回复20%生命。"
+  },
+  {
+    "rank": 41,
+    "tier": "B",
+    "name": "冰天雪地",
+    "element": "冰",
+    "category": "变化",
+    "cost": 2,
+    "power": 0,
+    "score": 17.2,
+    "type_coef": 1.1,
+    "is_pure_status": true,
+    "points": {
+      "减伤70%": 25.2,
+      "费用": -8
+    },
+    "desc": "减伤70%，应对攻击：被应对技能能耗+3。"
+  },
+  {
+    "rank": 42,
+    "tier": "B",
+    "name": "刺盾",
+    "element": "地",
+    "category": "变化",
+    "cost": 3,
+    "power": 0,
+    "score": 16.3,
+    "type_coef": 1.2,
+    "is_pure_status": true,
+    "points": {
+      "减伤70%": 19.6,
+      "敌物攻-50%": 8.8,
+      "费用": -12
+    },
+    "desc": "减伤70%，应对攻击：敌方获得物攻-50%。"
+  },
+  {
+    "rank": 43,
+    "tier": "B",
+    "name": "电磁偏转",
+    "element": "电",
+    "category": "变化",
+    "cost": 3,
+    "power": 0,
+    "score": 14.8,
+    "type_coef": 0.9,
+    "is_pure_status": true,
+    "points": {
+      "减伤60%": 16.8,
+      "使用次数+": 10,
+      "费用": -12
+    },
+    "desc": "减伤60%，应对攻击：下回合所选技能使用次数+1。"
+  },
+  {
+    "rank": 44,
+    "tier": "C",
+    "name": "淬火",
+    "element": "火",
+    "category": "变化",
+    "cost": 4,
+    "power": 0,
+    "score": 13.0,
+    "type_coef": 1.1,
+    "is_pure_status": true,
+    "points": {
+      "减伤70%": 14.0,
+      "下次翻倍": 15,
+      "费用": -16
+    },
+    "desc": "减伤70%，应对攻击：下次攻击技能威力翻倍。"
+  }
+]

@@ -43,6 +43,13 @@ class PetScorer:
         raw = 1.1 * base_stat + PetScorer.IV * 0.55 + 10
         return int(raw * (1 + nature_mod))
 
+    @staticmethod
+    def _has_trait(pet: dict, trait_name: str) -> bool:
+        trait = pet.get("trait", {})
+        if isinstance(trait, dict):
+            return trait.get("name", "") == trait_name
+        return False
+
     def _determine_attack_type(self, pet_skills: dict, stats: dict = None) -> str:
         """根据技能池和种族值判断是物攻手还是特攻手"""
         physical = 0
@@ -719,6 +726,10 @@ class PetScorer:
             if power == 0 and is_mismatched_atk:
                 score *= 0.3
 
+            # 御驾亲征：棋契陛下是收尾精灵（力竭扣4血），不应用强化技能
+            if power == 0 and self._has_trait(pet, "御驾亲征"):
+                score = -100
+
             scored.append({"skill": s, "score": score})
 
         # 排序并取前N
@@ -729,11 +740,15 @@ class PetScorer:
         support_skills = [x for x in scored if x["skill"].get("power", 0) == 0]
 
         picked = []
-        # 先拿前2个攻击技能
-        picked.extend(attack_skills[:2])
-        # 再从剩余中取最高分补满N
-        remaining = [x for x in scored if x not in picked]
-        picked.extend(remaining[:top_n - len(picked)])
+        # 御驾亲征：棋契陛下是收尾精灵（力竭扣4血），只选攻击技能
+        if self._has_trait(pet, "御驾亲征"):
+            picked.extend(attack_skills[:top_n])
+        else:
+            # 先拿前2个攻击技能
+            picked.extend(attack_skills[:2])
+            # 再从剩余中取最高分补满N
+            remaining = [x for x in scored if x not in picked]
+            picked.extend(remaining[:top_n - len(picked)])
 
         # 如果攻击技能不足2个，用任何技能补满
         if len(picked) < top_n:
