@@ -8,7 +8,7 @@
     "cost": 2,
     "power": 0,
     "score": 38.2,
-    "type_coef": 1.0,
+    "type_coef": 0.85,
     "is_pure_status": true,
     "points": {
       "减伤70%": 25.2,
@@ -44,7 +44,7 @@
     "cost": 2,
     "power": 0,
     "score": 35.1,
-    "type_coef": 1.0,
+    "type_coef": 0.85,
     "is_pure_status": true,
     "points": {
       "减伤70%": 25.2,
@@ -118,7 +118,7 @@
     "cost": 1,
     "power": 0,
     "score": 31.0,
-    "type_coef": 1.0,
+    "type_coef": 0.85,
     "is_pure_status": true,
     "points": {
       "减伤50%": 20.0,
@@ -172,7 +172,7 @@
     "cost": 5,
     "power": 0,
     "score": 30.5,
-    "type_coef": 1.0,
+    "type_coef": 0.85,
     "is_pure_status": true,
     "points": {
       "减伤100%": 32.5,
@@ -191,7 +191,7 @@
     "cost": 2,
     "power": 0,
     "score": 29.5,
-    "type_coef": 1.0,
+    "type_coef": 1.1,
     "is_pure_status": true,
     "points": {
       "减伤70%": 25.2,
@@ -335,7 +335,7 @@
     "cost": 2,
     "power": 0,
     "score": 25.6,
-    "type_coef": 1.0,
+    "type_coef": 1.1,
     "is_pure_status": true,
     "points": {
       "减伤60%": 21.6,
@@ -370,7 +370,7 @@
     "cost": 1,
     "power": 0,
     "score": 24.0,
-    "type_coef": 1.0,
+    "type_coef": 0.85,
     "is_pure_status": true,
     "points": {
       "减伤70%": 28.0,
@@ -405,7 +405,7 @@
     "cost": 2,
     "power": 0,
     "score": 22.4,
-    "type_coef": 1.0,
+    "type_coef": 0.85,
     "is_pure_status": true,
     "points": {
       "减伤60%": 21.6,
@@ -581,7 +581,7 @@
     "cost": 2,
     "power": 0,
     "score": 19.6,
-    "type_coef": 1.0,
+    "type_coef": 0.85,
     "is_pure_status": true,
     "points": {
       "减伤60%": 21.6,

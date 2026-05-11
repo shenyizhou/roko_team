@@ -35,7 +35,6 @@ def load_skill_scores():
 # 某些精灵因特殊机制可不遵循常规约束（如必须带防御/强化）
 PET_OVERRIDES = {
     "圣羽翼王": {"no_defense_ok": True},      # 飓风全技能迅捷，需进攻打击面，可不带防御
-    "寂灭骨龙": {"pure_buff_ok_to_skip": True},  # 速度慢，力量增效也难以推队
 }
 
 # ============================================================
@@ -79,7 +78,7 @@ def score_defense_quality(skill):
     # --- 战术性防御效果（高价值）---
     # 吓退 / 迫换
     if "脱离" in desc and "应对" in desc:
-        score += 6  # 应对攻击迫使敌方脱离，战术价值极高
+        score += 8  # 应对攻击迫使敌方脱离，战术价值极高
     if "回合结束返场" in desc and "应对" in desc:
         score += 4  # 应对攻击后自己返场
 
@@ -569,6 +568,9 @@ def score_config(config, skill_scores, trait_desc="", pet_data=None, skill_score
     # 1. 强化技能冗余：多个纯强化技能边际价值递减
     if pure_buff_count >= 2:
         penalty -= (pure_buff_count - 1) * 20
+    # 1b. 单强化技能战术价值：提供应变能力，避免纯输出被换人针对
+    elif pure_buff_count == 1:
+        penalty += 16
 
     # 2. 强化了物攻但没有物攻输出技能 = 白强化
     if atk_buff_count > 0 and not has_physical_attack:

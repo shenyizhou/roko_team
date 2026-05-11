@@ -208,11 +208,6 @@ def score_skill(skill):
         final += pv
         damage_total += pv
 
-        # 0费攻击额外奖励（免费压血线）
-        if cost == 0:
-            pts["0费奖励"] = 5
-            final += 5
-
     # --- 1b. 防御技能: 减伤核心 ---
     if "减伤" in desc or "减少" in desc and ("伤害" in desc or "受到" in desc):
         pct = _find_int(r"减伤(\d+)%", desc) or _find_int(r"减少(\d+)%", desc)
@@ -472,7 +467,30 @@ def score_skill(skill):
         if v != 0:
             pts["传动"] = v; final += v
     if "迸发" in desc:
-        pts["迸发"] = MECH_BASE["迸发"]; final += MECH_BASE["迸发"]
+        burst_score = 0
+        burst_match = re.search(r"迸发[：:](.+?)(?:。|$)", desc)
+        if burst_match:
+            burst_text = burst_match.group(1)
+            # 雷暴：复制所有迸发效果（超强 scaling）
+            if "所有" in burst_text and "迸发" in burst_text:
+                burst_score = 24
+            # 使用次数+X
+            elif "使用次数" in burst_text:
+                n = _find_int(r"使用次数\+(\d+)", burst_text) or 1
+                burst_score = n * 8
+            # 能耗-X
+            elif "能耗" in burst_text and "-" in burst_text:
+                n = _find_int(r"能耗-(\d+)", burst_text) or 1
+                burst_score = n * 7
+            # 威力+X
+            elif "威力" in burst_text:
+                n = _find_int(r"威力\+(\d+)", burst_text) or 20
+                burst_score = round(n * 0.15)
+            else:
+                burst_score = 8  # 兜底
+        else:
+            burst_score = 8
+        pts["迸发"] = burst_score; final += burst_score
     if "萌化转移给敌方" in desc or ("转移" in desc and "萌化" in desc and "敌方" in desc):
         pts["萌化转移"] = 10; final += 10
     if "全技能能耗永久" in desc:
@@ -550,15 +568,16 @@ def score_skill(skill):
         n = _find_int(r"(\d+)回合无法更换", desc) or 3
         v = n * 4  # 每回合控制值4分
         pts["锁换人"] = v; final += v
-    # v7优化: 威力倍数机制 (如"威力变为10倍")
+    # v7优化: 威力倍数机制 (如"威力变为3倍")
+    # 按应对成功概率计算伤害期望：E = P(成功) × 翻倍威力值
     if "威力变为" in desc and "倍" in desc:
         mul = _find_int(r"威力变为(\d+)倍", desc) or _find_int(r"变为(\d+)倍", desc)
         if mul and mul >= 2:
-            # 应对状态下才能触发，按条件折扣
             is_cond = "应对" in desc or "若" in desc
             cd = cond_discount(desc, cost, power) if is_cond else 0.6
-            # 威力倍数价值 = 基础威力 × (倍数-1) × 系数 × 折扣
-            v = int(power * (mul - 1) * 0.08 * cd)
+            base_pv = power_value(power, cost)
+            boosted_pv = power_value(power * mul, cost)
+            v = round(cd * (boosted_pv - base_pv), 1)
             pts[f"威力×{mul}"] = v; final += v
     # v7优化: 威力永久翻倍 (超级成长)
     if "威力永久翻倍" in desc:

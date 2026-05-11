@@ -23,6 +23,24 @@
   {
     "rank": 2,
     "tier": "S",
+    "name": "雷暴",
+    "element": "电",
+    "category": "魔法",
+    "cost": 1,
+    "power": 55,
+    "score": 40.5,
+    "type_coef": 0.9,
+    "is_pure_status": false,
+    "points": {
+      "威力": 18.3,
+      "迸发": 24,
+      "属性系数": 0.9
+    },
+    "desc": "造成魔伤，迸发：本技能获得所有生效过的迸发效果，每获得1种，本技能能耗+1，威力+10。"
+  },
+  {
+    "rank": 3,
+    "tier": "S",
     "name": "焚毁",
     "element": "火",
     "category": "魔法",
@@ -39,7 +57,7 @@
     "desc": "造成魔伤，驱散敌方所有印记。"
   },
   {
-    "rank": 3,
+    "rank": 4,
     "tier": "S",
     "name": "吓退",
     "element": "普通",
@@ -47,7 +65,7 @@
     "cost": 2,
     "power": 0,
     "score": 38.2,
-    "type_coef": 1.0,
+    "type_coef": 0.85,
     "is_pure_status": true,
     "points": {
       "减伤70%": 25.2,
@@ -55,25 +73,6 @@
       "费用": -8
     },
     "desc": "减伤70%，应对攻击：敌方脱离。"
-  },
-  {
-    "rank": 4,
-    "tier": "S",
-    "name": "天旋地转",
-    "element": "普通",
-    "category": "物理",
-    "cost": 3,
-    "power": 55,
-    "score": 38.0,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 11.0,
-      "先手+1": 15,
-      "迸发": 12,
-      "属性系数": 1.0
-    },
-    "desc": "造成物理伤害，先手+1，迸发：本次技能威力+30。"
   },
   {
     "rank": 5,
@@ -215,7 +214,7 @@
     "cost": 2,
     "power": 0,
     "score": 35.1,
-    "type_coef": 1.0,
+    "type_coef": 0.85,
     "is_pure_status": true,
     "points": {
       "减伤70%": 25.2,
@@ -302,6 +301,24 @@
   {
     "rank": 17,
     "tier": "S",
+    "name": "坟场搏击",
+    "element": "幽",
+    "category": "物理",
+    "cost": 4,
+    "power": 180,
+    "score": 33.0,
+    "type_coef": 1.1,
+    "is_pure_status": false,
+    "points": {
+      "威力": 30.0,
+      "敌威力-": 0,
+      "属性系数": 1.1
+    },
+    "desc": "造成物伤，敌方每有1能量，本次技能威力-10%。"
+  },
+  {
+    "rank": 18,
+    "tier": "S",
     "name": "水泡盾",
     "element": "水",
     "category": "变化",
@@ -318,80 +335,7 @@
     "desc": "减伤70%，应对攻击：自己获得魔攻+70%。"
   },
   {
-    "rank": 18,
-    "tier": "S",
-    "name": "超导",
-    "element": "电",
-    "category": "魔法",
-    "cost": 3,
-    "power": 95,
-    "score": 32.1,
-    "type_coef": 0.9,
-    "is_pure_status": false,
-    "points": {
-      "威力": 19.0,
-      "迸发": 12,
-      "能耗-": 3,
-      "属性系数": 0.9
-    },
-    "desc": "造成魔伤，迸发：本技能能耗-1。"
-  },
-  {
     "rank": 19,
-    "tier": "S",
-    "name": "能量刃",
-    "element": "普通",
-    "category": "物理",
-    "cost": 3,
-    "power": 70,
-    "score": 32.0,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 14.0,
-      "威力成长(条件)": 18,
-      "属性系数": 1.0
-    },
-    "desc": "造成物伤，每应对成功1次，本技能威力永久+90。"
-  },
-  {
-    "rank": 20,
-    "tier": "S",
-    "name": "迫近攻击",
-    "element": "普通",
-    "category": "物理",
-    "cost": 3,
-    "power": 80,
-    "score": 32.0,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 16.0,
-      "威力成长": 16,
-      "属性系数": 1.0
-    },
-    "desc": "造成物伤。每次使用后，本技能威力永久+40。"
-  },
-  {
-    "rank": 21,
-    "tier": "A",
-    "name": "阻断",
-    "element": "普通",
-    "category": "魔法",
-    "cost": 2,
-    "power": 70,
-    "score": 31.5,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 17.5,
-      "打断应对": 14,
-      "属性系数": 1.0
-    },
-    "desc": "造成魔伤，应对状态：额外打断被应对技能。"
-  },
-  {
-    "rank": 22,
     "tier": "A",
     "name": "掩护",
     "element": "虫",
@@ -410,7 +354,7 @@
     "desc": "减伤70%，紧急脱离，应对攻击：下个入场精灵获得减伤。"
   },
   {
-    "rank": 23,
+    "rank": 20,
     "tier": "A",
     "name": "有效预防",
     "element": "普通",
@@ -418,7 +362,7 @@
     "cost": 1,
     "power": 0,
     "score": 31.0,
-    "type_coef": 1.0,
+    "type_coef": 0.85,
     "is_pure_status": true,
     "points": {
       "减伤50%": 20.0,
@@ -428,7 +372,7 @@
     "desc": "减伤50%，应对攻击：下一次行动获得先手+1。"
   },
   {
-    "rank": 24,
+    "rank": 21,
     "tier": "A",
     "name": "听桥",
     "element": "武",
@@ -446,7 +390,7 @@
     "desc": "减伤60%，应对攻击：对敌方造成伤害，威力与被应对技能相等。"
   },
   {
-    "rank": 25,
+    "rank": 22,
     "tier": "A",
     "name": "冰墙",
     "element": "冰",
@@ -464,7 +408,7 @@
     "desc": "减伤70%，应对攻击：敌方获得2层冻结。"
   },
   {
-    "rank": 26,
+    "rank": 23,
     "tier": "A",
     "name": "烈焰风暴",
     "element": "火",
@@ -482,7 +426,7 @@
     "desc": "造成魔伤，敌方获得6层灼烧。"
   },
   {
-    "rank": 27,
+    "rank": 24,
     "tier": "A",
     "name": "无畏之心",
     "element": "普通",
@@ -490,7 +434,7 @@
     "cost": 5,
     "power": 0,
     "score": 30.5,
-    "type_coef": 1.0,
+    "type_coef": 0.85,
     "is_pure_status": true,
     "points": {
       "减伤100%": 32.5,
@@ -501,25 +445,7 @@
     "desc": "减伤100%，应对攻击：减免的伤害变为回复自己生命，且本技能能耗永久+2。"
   },
   {
-    "rank": 28,
-    "tier": "A",
-    "name": "坟场搏击",
-    "element": "幽",
-    "category": "物理",
-    "cost": 4,
-    "power": 180,
-    "score": 30.0,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 30.0,
-      "敌威力-": 0,
-      "属性系数": 1.0
-    },
-    "desc": "造成物伤，敌方每有1能量，本次技能威力-10%。"
-  },
-  {
-    "rank": 29,
+    "rank": 25,
     "tier": "A",
     "name": "月光合奏",
     "element": "萌",
@@ -538,7 +464,25 @@
     "desc": "造成物伤，1连击，双方携带的所有精灵每有1层萌化，本次技能连击数+1。"
   },
   {
-    "rank": 30,
+    "rank": 26,
+    "tier": "A",
+    "name": "能量刃",
+    "element": "普通",
+    "category": "物理",
+    "cost": 3,
+    "power": 70,
+    "score": 29.9,
+    "type_coef": 0.85,
+    "is_pure_status": false,
+    "points": {
+      "威力": 14.0,
+      "威力成长(条件)": 18,
+      "属性系数": 0.85
+    },
+    "desc": "造成物伤，每应对成功1次，本技能威力永久+90。"
+  },
+  {
+    "rank": 27,
     "tier": "A",
     "name": "裂石",
     "element": "地",
@@ -556,7 +500,7 @@
     "desc": "造成物伤，应对状态：敌方获得物防-80%。"
   },
   {
-    "rank": 31,
+    "rank": 28,
     "tier": "A",
     "name": "斩断",
     "element": "武",
@@ -574,7 +518,7 @@
     "desc": "造成物伤，应对状态：额外打断被应对技能。"
   },
   {
-    "rank": 32,
+    "rank": 29,
     "tier": "A",
     "name": "天洪",
     "element": "水",
@@ -592,7 +536,25 @@
     "desc": "造成魔伤，应对状态：本技能能耗永久-6。"
   },
   {
-    "rank": 33,
+    "rank": 30,
+    "tier": "A",
+    "name": "迫近攻击",
+    "element": "普通",
+    "category": "物理",
+    "cost": 3,
+    "power": 80,
+    "score": 29.6,
+    "type_coef": 0.85,
+    "is_pure_status": false,
+    "points": {
+      "威力": 16.0,
+      "威力成长": 16,
+      "属性系数": 0.85
+    },
+    "desc": "造成物伤。每次使用后，本技能威力永久+40。"
+  },
+  {
+    "rank": 31,
     "tier": "A",
     "name": "虚化",
     "element": "幽",
@@ -600,7 +562,7 @@
     "cost": 2,
     "power": 0,
     "score": 29.5,
-    "type_coef": 1.0,
+    "type_coef": 1.1,
     "is_pure_status": true,
     "points": {
       "减伤70%": 25.2,
@@ -610,7 +572,7 @@
     "desc": "减伤70%，应对攻击：自己获得魔防+70%。"
   },
   {
-    "rank": 34,
+    "rank": 32,
     "tier": "A",
     "name": "纤维化",
     "element": "草",
@@ -628,7 +590,7 @@
     "desc": "减伤70%，应对攻击：自己获得物防+70%。"
   },
   {
-    "rank": 35,
+    "rank": 33,
     "tier": "A",
     "name": "毒液渗透",
     "element": "毒",
@@ -647,7 +609,7 @@
     "desc": "造成魔伤，每拥有1层中毒效果，本技能能耗-1，赋予1层中毒。"
   },
   {
-    "rank": 36,
+    "rank": 34,
     "tier": "A",
     "name": "持续高温",
     "element": "火",
@@ -665,7 +627,25 @@
     "desc": "造成魔伤，应对状态：下次攻击技能威力翻倍。"
   },
   {
-    "rank": 37,
+    "rank": 35,
+    "tier": "A",
+    "name": "技巧打击",
+    "element": "武",
+    "category": "物理",
+    "cost": 2,
+    "power": 25,
+    "score": 29.2,
+    "type_coef": 0.9,
+    "is_pure_status": false,
+    "points": {
+      "威力": 6.2,
+      "威力×10": 23.6,
+      "属性系数": 0.9
+    },
+    "desc": "造成物伤，应对状态：本次技能威力变为10倍。"
+  },
+  {
+    "rank": 36,
     "tier": "A",
     "name": "翼击",
     "element": "翼",
@@ -683,25 +663,7 @@
     "desc": "造成魔伤，迅捷。"
   },
   {
-    "rank": 38,
-    "tier": "A",
-    "name": "泥浆",
-    "element": "地",
-    "category": "魔法",
-    "cost": 0,
-    "power": 40,
-    "score": 29.0,
-    "type_coef": 1.2,
-    "is_pure_status": false,
-    "points": {
-      "威力": 20.0,
-      "0费奖励": 5,
-      "属性系数": 1.2
-    },
-    "desc": "对敌方精灵造成魔法伤害。"
-  },
-  {
-    "rank": 39,
+    "rank": 37,
     "tier": "A",
     "name": "加大功率",
     "element": "电",
@@ -721,25 +683,25 @@
     "desc": "自己脱离，被替换入场的精灵回复8能量。"
   },
   {
-    "rank": 40,
+    "rank": 38,
     "tier": "A",
-    "name": "先发制人",
+    "name": "阻断",
     "element": "普通",
-    "category": "物理",
+    "category": "魔法",
     "cost": 2,
-    "power": 55,
-    "score": 28.8,
-    "type_coef": 1.0,
+    "power": 70,
+    "score": 28.9,
+    "type_coef": 0.85,
     "is_pure_status": false,
     "points": {
-      "威力": 13.8,
-      "先手+1": 15,
-      "属性系数": 1.0
+      "威力": 17.5,
+      "打断应对": 14,
+      "属性系数": 0.85
     },
-    "desc": "造成物理伤害，先手+1。"
+    "desc": "造成魔伤，应对状态：额外打断被应对技能。"
   },
   {
-    "rank": 41,
+    "rank": 39,
     "tier": "A",
     "name": "地陷",
     "element": "地",
@@ -757,7 +719,7 @@
     "desc": "造成物伤，自己获得物防+60%，应对状态：本次技能威力翻倍，且物防额外+60%。"
   },
   {
-    "rank": 42,
+    "rank": 40,
     "tier": "A",
     "name": "羽刃",
     "element": "翼",
@@ -775,7 +737,7 @@
     "desc": "造成物伤，应对状态：回合结束使敌方紧急脱离。"
   },
   {
-    "rank": 43,
+    "rank": 41,
     "tier": "A",
     "name": "砂石冲撞",
     "element": "地",
@@ -793,25 +755,7 @@
     "desc": "造成物伤，应对状态：敌方获得物防-80%。"
   },
   {
-    "rank": 44,
-    "tier": "A",
-    "name": "雷暴",
-    "element": "电",
-    "category": "魔法",
-    "cost": 1,
-    "power": 55,
-    "score": 28.5,
-    "type_coef": 0.9,
-    "is_pure_status": false,
-    "points": {
-      "威力": 18.3,
-      "迸发": 12,
-      "属性系数": 0.9
-    },
-    "desc": "造成魔伤，迸发：本技能获得所有生效过的迸发效果，每获得1种，本技能能耗+1，威力+10。"
-  },
-  {
-    "rank": 45,
+    "rank": 42,
     "tier": "A",
     "name": "火焰护盾",
     "element": "火",
@@ -829,7 +773,7 @@
     "desc": "减伤70%，应对攻击：敌方获得4层灼烧。"
   },
   {
-    "rank": 46,
+    "rank": 43,
     "tier": "A",
     "name": "阳火增辉",
     "element": "火",
@@ -847,7 +791,7 @@
     "desc": "造成魔伤，每次击败敌方，本技能威力永久翻倍。"
   },
   {
-    "rank": 47,
+    "rank": 44,
     "tier": "A",
     "name": "壁垒",
     "element": "地",
@@ -865,7 +809,26 @@
     "desc": "减伤90%，应对攻击：防御技能冷却-1。"
   },
   {
-    "rank": 48,
+    "rank": 45,
+    "tier": "A",
+    "name": "天旋地转",
+    "element": "普通",
+    "category": "物理",
+    "cost": 3,
+    "power": 55,
+    "score": 28.3,
+    "type_coef": 0.85,
+    "is_pure_status": false,
+    "points": {
+      "威力": 11.0,
+      "先手+1": 15,
+      "迸发": 4,
+      "属性系数": 0.85
+    },
+    "desc": "造成物理伤害，先手+1，迸发：本次技能威力+30。"
+  },
+  {
+    "rank": 46,
     "tier": "A",
     "name": "水刃",
     "element": "水",
@@ -883,7 +846,7 @@
     "desc": "造成物伤，应对状态：本技能能耗永久-4。"
   },
   {
-    "rank": 49,
+    "rank": 47,
     "tier": "A",
     "name": "嘲弄",
     "element": "幽",
@@ -891,7 +854,7 @@
     "cost": 2,
     "power": 0,
     "score": 28.2,
-    "type_coef": 1.0,
+    "type_coef": 1.1,
     "is_pure_status": true,
     "points": {
       "攻+70%": 24.5,
@@ -903,7 +866,7 @@
     "desc": "自己获得魔攻+70%，若敌方本回合替换精灵，自己获得速度+70。"
   },
   {
-    "rank": 50,
+    "rank": 48,
     "tier": "A",
     "name": "崩拳",
     "element": "武",
@@ -921,7 +884,7 @@
     "desc": "造成物伤，应对状态：自己获得物攻+100%。"
   },
   {
-    "rank": 51,
+    "rank": 49,
     "tier": "A",
     "name": "力量增效",
     "element": "普通",
@@ -929,7 +892,7 @@
     "cost": 1,
     "power": 0,
     "score": 28.0,
-    "type_coef": 1.0,
+    "type_coef": 0.85,
     "is_pure_status": true,
     "points": {
       "攻+100%": 35.0,
@@ -939,7 +902,25 @@
     "desc": "自己获得物攻+100%。"
   },
   {
-    "rank": 52,
+    "rank": 50,
+    "tier": "A",
+    "name": "偷袭",
+    "element": "普通",
+    "category": "物理",
+    "cost": 3,
+    "power": 85,
+    "score": 28.0,
+    "type_coef": 0.85,
+    "is_pure_status": false,
+    "points": {
+      "威力": 17.0,
+      "威力×3": 13.6,
+      "属性系数": 0.85
+    },
+    "desc": "造成物伤，应对状态：本次技能威力变为3倍。"
+  },
+  {
+    "rank": 51,
     "tier": "A",
     "name": "遁地",
     "element": "地",
@@ -957,27 +938,7 @@
     "desc": "减伤50%并脱离，应对攻击。"
   },
   {
-    "rank": 53,
-    "tier": "A",
-    "name": "啃咬",
-    "element": "虫",
-    "category": "物理",
-    "cost": 0,
-    "power": 40,
-    "score": 28.0,
-    "type_coef": 0.75,
-    "is_pure_status": false,
-    "points": {
-      "威力": 20.0,
-      "0费奖励": 5,
-      "1连击": 2,
-      "奉献": 6,
-      "属性系数": 0.75
-    },
-    "desc": "造成物伤，1连击，本技能会受奉献影响，每被影响1次，能耗永久+1。"
-  },
-  {
-    "rank": 54,
+    "rank": 52,
     "tier": "A",
     "name": "不可接触",
     "element": "毒",
@@ -995,25 +956,7 @@
     "desc": "减伤50%，敌方每有1层中毒效果，本技能减伤+10%，应对攻击。"
   },
   {
-    "rank": 55,
-    "tier": "A",
-    "name": "消毒法",
-    "element": "普通",
-    "category": "魔法",
-    "cost": 4,
-    "power": 105,
-    "score": 27.5,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 17.5,
-      "清增益": 10,
-      "属性系数": 1.0
-    },
-    "desc": "造成魔伤，驱散敌方5层增益。"
-  },
-  {
-    "rank": 56,
+    "rank": 53,
     "tier": "A",
     "name": "怒火",
     "element": "火",
@@ -1032,26 +975,25 @@
     "desc": "自己获得双攻+130%和双防-40%。"
   },
   {
-    "rank": 57,
+    "rank": 54,
     "tier": "A",
-    "name": "风吹雪",
-    "element": "冰",
-    "category": "魔法",
-    "cost": 0,
-    "power": 30,
+    "name": "闪燃",
+    "element": "火",
+    "category": "物理",
+    "cost": 1,
+    "power": 35,
     "score": 27.5,
     "type_coef": 1.1,
     "is_pure_status": false,
     "points": {
-      "威力": 15.0,
-      "0费奖励": 5,
-      "回能": 6,
+      "威力": 11.7,
+      "威力×4": 14.7,
       "属性系数": 1.1
     },
-    "desc": "造成魔伤，自己回复1能量。"
+    "desc": "造成物伤，应对状态：本次技能威力变为4倍。"
   },
   {
-    "rank": 58,
+    "rank": 55,
     "tier": "A",
     "name": "硬化",
     "element": "地",
@@ -1069,7 +1011,7 @@
     "desc": "减伤90%，若上次使用攻击技则本技能能耗-2，应对攻击。"
   },
   {
-    "rank": 59,
+    "rank": 56,
     "tier": "A",
     "name": "雪替身",
     "element": "冰",
@@ -1087,7 +1029,7 @@
     "desc": "减伤70%，应对攻击：回复能量，回复值等于被应对技能能耗的2倍。"
   },
   {
-    "rank": 60,
+    "rank": 57,
     "tier": "A",
     "name": "龙卷风",
     "element": "翼",
@@ -1105,7 +1047,26 @@
     "desc": "造成物伤，迅捷，应对状态：本次技能威力变为1.5倍。"
   },
   {
-    "rank": 61,
+    "rank": 58,
+    "tier": "A",
+    "name": "超导",
+    "element": "电",
+    "category": "魔法",
+    "cost": 3,
+    "power": 95,
+    "score": 27.1,
+    "type_coef": 0.9,
+    "is_pure_status": false,
+    "points": {
+      "威力": 19.0,
+      "迸发": 7,
+      "能耗-": 3,
+      "属性系数": 0.9
+    },
+    "desc": "造成魔伤，迸发：本技能能耗-1。"
+  },
+  {
+    "rank": 59,
     "tier": "A",
     "name": "移花接木",
     "element": "草",
@@ -1124,79 +1085,25 @@
     "desc": "自己回复15%生命，随后脱离。"
   },
   {
-    "rank": 62,
+    "rank": 60,
     "tier": "A",
-    "name": "炎息",
-    "element": "火",
-    "category": "物理",
-    "cost": 0,
-    "power": 40,
-    "score": 27.0,
-    "type_coef": 1.1,
-    "is_pure_status": false,
-    "points": {
-      "威力": 20.0,
-      "0费奖励": 5,
-      "属性系数": 1.1
-    },
-    "desc": "对敌方精灵造成物理伤害。"
-  },
-  {
-    "rank": 63,
-    "tier": "A",
-    "name": "冰锥",
-    "element": "冰",
-    "category": "物理",
-    "cost": 0,
-    "power": 40,
-    "score": 27.0,
-    "type_coef": 1.1,
-    "is_pure_status": false,
-    "points": {
-      "威力": 20.0,
-      "0费奖励": 5,
-      "属性系数": 1.1
-    },
-    "desc": "对敌方精灵造成物理伤害。"
-  },
-  {
-    "rank": 64,
-    "tier": "A",
-    "name": "蓄能轰击",
+    "name": "先发制人",
     "element": "普通",
-    "category": "魔法",
-    "cost": 6,
-    "power": 120,
-    "score": 27.0,
-    "type_coef": 1.0,
+    "category": "物理",
+    "cost": 2,
+    "power": 55,
+    "score": 26.7,
+    "type_coef": 0.85,
     "is_pure_status": false,
     "points": {
-      "威力": 15.0,
-      "能耗-": 12,
-      "属性系数": 1.0
+      "威力": 13.8,
+      "先手+1": 15,
+      "属性系数": 0.85
     },
-    "desc": "造成魔伤，每使用1次其他普通系技能，本技能能耗永久-2。"
+    "desc": "造成物理伤害，先手+1。"
   },
   {
-    "rank": 65,
-    "tier": "A",
-    "name": "热气",
-    "element": "火",
-    "category": "魔法",
-    "cost": 0,
-    "power": 40,
-    "score": 27.0,
-    "type_coef": 1.1,
-    "is_pure_status": false,
-    "points": {
-      "威力": 20.0,
-      "0费奖励": 5,
-      "属性系数": 1.1
-    },
-    "desc": "对敌方精灵造成魔法伤害。"
-  },
-  {
-    "rank": 66,
+    "rank": 61,
     "tier": "A",
     "name": "暴风雪",
     "element": "冰",
@@ -1214,7 +1121,25 @@
     "desc": "造成物伤，敌方获得1层冻结。"
   },
   {
-    "rank": 67,
+    "rank": 62,
+    "tier": "A",
+    "name": "惊吓盒子",
+    "element": "幽",
+    "category": "物理",
+    "cost": 3,
+    "power": 85,
+    "score": 26.7,
+    "type_coef": 1.1,
+    "is_pure_status": false,
+    "points": {
+      "威力": 17.0,
+      "烧能量": 8,
+      "属性系数": 1.1
+    },
+    "desc": "造成物伤，应对状态：使敌方失去6能量。"
+  },
+  {
+    "rank": 63,
     "tier": "A",
     "name": "除厄",
     "element": "火",
@@ -1232,25 +1157,7 @@
     "desc": "造成魔伤，驱散自己的减益。"
   },
   {
-    "rank": 68,
-    "tier": "A",
-    "name": "电弧",
-    "element": "电",
-    "category": "物理",
-    "cost": 3,
-    "power": 80,
-    "score": 26.4,
-    "type_coef": 0.9,
-    "is_pure_status": false,
-    "points": {
-      "威力": 16.0,
-      "迸发": 12,
-      "属性系数": 0.9
-    },
-    "desc": "造成物伤，迸发：本次技能威力+40。"
-  },
-  {
-    "rank": 69,
+    "rank": 64,
     "tier": "A",
     "name": "焚烧烙印",
     "element": "火",
@@ -1269,7 +1176,7 @@
     "desc": "驱散双方所有印记，每驱散1层，敌方获得5层灼烧。"
   },
   {
-    "rank": 70,
+    "rank": 65,
     "tier": "A",
     "name": "丰饶",
     "element": "草",
@@ -1287,7 +1194,7 @@
     "desc": "自己获得物攻和魔攻+130%。"
   },
   {
-    "rank": 71,
+    "rank": 66,
     "tier": "A",
     "name": "吹火",
     "element": "火",
@@ -1305,25 +1212,7 @@
     "desc": "造成物伤，每次使用后，本技能威力永久+20。"
   },
   {
-    "rank": 72,
-    "tier": "A",
-    "name": "倾泻",
-    "element": "普通",
-    "category": "魔法",
-    "cost": 3,
-    "power": 60,
-    "score": 26.0,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 12.0,
-      "驱散印记": 14,
-      "属性系数": 1.0
-    },
-    "desc": "造成魔伤，若本次攻击未被防御技能应对，则驱散双方所有印记。"
-  },
-  {
-    "rank": 73,
+    "rank": 67,
     "tier": "A",
     "name": "龙吟",
     "element": "龙",
@@ -1344,83 +1233,7 @@
     "desc": "蓄力，自己获得双攻+100%和速度+60。"
   },
   {
-    "rank": 74,
-    "tier": "A",
-    "name": "魔爪",
-    "element": "恶",
-    "category": "物理",
-    "cost": 0,
-    "power": 30,
-    "score": 26.0,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 15.0,
-      "0费奖励": 5,
-      "回能": 6,
-      "属性系数": 1.0
-    },
-    "desc": "造成物伤，自己回复1能量。"
-  },
-  {
-    "rank": 75,
-    "tier": "A",
-    "name": "抓挠",
-    "element": "普通",
-    "category": "物理",
-    "cost": 0,
-    "power": 30,
-    "score": 26.0,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 15.0,
-      "0费奖励": 5,
-      "回能": 6,
-      "属性系数": 1.0
-    },
-    "desc": "造成物伤，自己回复1能量。"
-  },
-  {
-    "rank": 76,
-    "tier": "A",
-    "name": "鬼火",
-    "element": "幽",
-    "category": "魔法",
-    "cost": 0,
-    "power": 30,
-    "score": 26.0,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 15.0,
-      "0费奖励": 5,
-      "回能": 6,
-      "属性系数": 1.0
-    },
-    "desc": "造成魔伤，自己回复1能量。"
-  },
-  {
-    "rank": 77,
-    "tier": "A",
-    "name": "甩水",
-    "element": "水",
-    "category": "魔法",
-    "cost": 0,
-    "power": 30,
-    "score": 26.0,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 15.0,
-      "0费奖励": 5,
-      "回能": 6,
-      "属性系数": 1.0
-    },
-    "desc": "造成魔伤，自己回复1能量。"
-  },
-  {
-    "rank": 78,
+    "rank": 68,
     "tier": "A",
     "name": "腐蚀酸液",
     "element": "毒",
@@ -1438,7 +1251,7 @@
     "desc": "造成魔伤，敌方获得2层中毒。"
   },
   {
-    "rank": 79,
+    "rank": 69,
     "tier": "A",
     "name": "跌落",
     "element": "恶",
@@ -1457,7 +1270,7 @@
     "desc": "造成大量物伤，自己获得物攻-50%，应对状态：改为获得物攻+50%。"
   },
   {
-    "rank": 80,
+    "rank": 70,
     "tier": "A",
     "name": "报复",
     "element": "幽",
@@ -1465,7 +1278,7 @@
     "cost": 2,
     "power": 0,
     "score": 25.6,
-    "type_coef": 1.0,
+    "type_coef": 1.1,
     "is_pure_status": true,
     "points": {
       "减伤60%": 21.6,
@@ -1475,7 +1288,7 @@
     "desc": "减伤60%，应对攻击：敌方失去3能量。"
   },
   {
-    "rank": 81,
+    "rank": 71,
     "tier": "A",
     "name": "滚雪球",
     "element": "冰",
@@ -1493,7 +1306,7 @@
     "desc": "造成物伤，敌方获得2层冻结，应对状态：额外获得2层，本次技能威力翻倍。"
   },
   {
-    "rank": 82,
+    "rank": 72,
     "tier": "A",
     "name": "魔法增效",
     "element": "普通",
@@ -1501,7 +1314,7 @@
     "cost": 0,
     "power": 0,
     "score": 25.5,
-    "type_coef": 1.0,
+    "type_coef": 0.85,
     "is_pure_status": true,
     "points": {
       "攻+70%": 24.5,
@@ -1511,7 +1324,7 @@
     "desc": "自己获得魔攻+70%。"
   },
   {
-    "rank": 83,
+    "rank": 73,
     "tier": "A",
     "name": "藤绞",
     "element": "草",
@@ -1529,7 +1342,7 @@
     "desc": "造成物伤，自己回复5能量。"
   },
   {
-    "rank": 84,
+    "rank": 74,
     "tier": "A",
     "name": "翅刃",
     "element": "虫",
@@ -1547,7 +1360,7 @@
     "desc": "造成物伤，驱散敌方所有印记，应对状态：改为偷取印记。"
   },
   {
-    "rank": 85,
+    "rank": 75,
     "tier": "A",
     "name": "毒孢子",
     "element": "毒",
@@ -1565,133 +1378,25 @@
     "desc": "敌方获得5层中毒。"
   },
   {
-    "rank": 86,
+    "rank": 76,
     "tier": "A",
-    "name": "诡刺",
-    "element": "幽",
-    "category": "物理",
-    "cost": 0,
-    "power": 40,
-    "score": 25.0,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 20.0,
-      "0费奖励": 5,
-      "属性系数": 1.0
-    },
-    "desc": "对敌方精灵造成物理伤害。"
-  },
-  {
-    "rank": 87,
-    "tier": "A",
-    "name": "落星",
-    "element": "普通",
-    "category": "物理",
-    "cost": 0,
-    "power": 40,
-    "score": 25.0,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 20.0,
-      "0费奖励": 5,
-      "属性系数": 1.0
-    },
-    "desc": "对敌方精灵造成物理伤害。"
-  },
-  {
-    "rank": 88,
-    "tier": "A",
-    "name": "迫害",
-    "element": "恶",
-    "category": "物理",
-    "cost": 0,
-    "power": 40,
-    "score": 25.0,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 20.0,
-      "0费奖励": 5,
-      "属性系数": 1.0
-    },
-    "desc": "对敌方精灵造成物理伤害。"
-  },
-  {
-    "rank": 89,
-    "tier": "A",
-    "name": "水弹",
-    "element": "水",
-    "category": "魔法",
-    "cost": 0,
-    "power": 40,
-    "score": 25.0,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 20.0,
-      "0费奖励": 5,
-      "属性系数": 1.0
-    },
-    "desc": "对敌方精灵造成魔法伤害。"
-  },
-  {
-    "rank": 90,
-    "tier": "A",
-    "name": "惊吓盒子",
-    "element": "幽",
+    "name": "爆冲",
+    "element": "武",
     "category": "物理",
     "cost": 3,
-    "power": 85,
+    "power": 50,
     "score": 25.0,
-    "type_coef": 1.0,
+    "type_coef": 0.9,
     "is_pure_status": false,
     "points": {
-      "威力": 17.0,
-      "烧能量": 8,
-      "属性系数": 1.0
+      "威力": 10.0,
+      "威力×5": 16.0,
+      "属性系数": 0.9
     },
-    "desc": "造成物伤，应对状态：使敌方失去6能量。"
+    "desc": "造成物伤，应对状态：本次技能威力变为5倍。"
   },
   {
-    "rank": 91,
-    "tier": "A",
-    "name": "鞭打",
-    "element": "萌",
-    "category": "物理",
-    "cost": 0,
-    "power": 40,
-    "score": 25.0,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 20.0,
-      "0费奖励": 5,
-      "属性系数": 1.0
-    },
-    "desc": "对敌方精灵造成物理伤害。"
-  },
-  {
-    "rank": 92,
-    "tier": "A",
-    "name": "脉冲光线",
-    "element": "光",
-    "category": "魔法",
-    "cost": 0,
-    "power": 40,
-    "score": 25.0,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 20.0,
-      "0费奖励": 5,
-      "属性系数": 1.0
-    },
-    "desc": "对敌方精灵造成魔法伤害。"
-  },
-  {
-    "rank": 93,
+    "rank": 77,
     "tier": "A",
     "name": "撕裂",
     "element": "恶",
@@ -1709,26 +1414,43 @@
     "desc": "造成物伤，应对状态：本次攻击吸血100%。"
   },
   {
-    "rank": 94,
+    "rank": 78,
     "tier": "A",
-    "name": "毒针",
-    "element": "毒",
-    "category": "物理",
-    "cost": 0,
-    "power": 20,
-    "score": 24.8,
-    "type_coef": 0.9,
+    "name": "消毒法",
+    "element": "普通",
+    "category": "魔法",
+    "cost": 4,
+    "power": 105,
+    "score": 24.9,
+    "type_coef": 0.85,
     "is_pure_status": false,
     "points": {
-      "威力": 10.0,
-      "0费奖励": 5,
-      "中毒(1层)": 12.0,
-      "属性系数": 0.9
+      "威力": 17.5,
+      "清增益": 10,
+      "属性系数": 0.85
     },
-    "desc": "造成物伤，敌方获得1层中毒效果。"
+    "desc": "造成魔伤，驱散敌方5层增益。"
   },
   {
-    "rank": 95,
+    "rank": 79,
+    "tier": "A",
+    "name": "蓄能轰击",
+    "element": "普通",
+    "category": "魔法",
+    "cost": 6,
+    "power": 120,
+    "score": 24.8,
+    "type_coef": 0.85,
+    "is_pure_status": false,
+    "points": {
+      "威力": 15.0,
+      "能耗-": 12,
+      "属性系数": 0.85
+    },
+    "desc": "造成魔伤，每使用1次其他普通系技能，本技能能耗永久-2。"
+  },
+  {
+    "rank": 80,
     "tier": "A",
     "name": "空间压迫",
     "element": "幻",
@@ -1746,45 +1468,7 @@
     "desc": "造成物伤，敌方获得1层星陨。"
   },
   {
-    "rank": 96,
-    "tier": "A",
-    "name": "偷师",
-    "element": "幻",
-    "category": "物理",
-    "cost": 0,
-    "power": 30,
-    "score": 24.5,
-    "type_coef": 0.9,
-    "is_pure_status": false,
-    "points": {
-      "威力": 15.0,
-      "0费奖励": 5,
-      "回能": 6,
-      "属性系数": 0.9
-    },
-    "desc": "造成物伤，自己回复1能量。"
-  },
-  {
-    "rank": 97,
-    "tier": "A",
-    "name": "寸拳",
-    "element": "武",
-    "category": "物理",
-    "cost": 0,
-    "power": 30,
-    "score": 24.5,
-    "type_coef": 0.9,
-    "is_pure_status": false,
-    "points": {
-      "威力": 15.0,
-      "0费奖励": 5,
-      "回能": 6,
-      "属性系数": 0.9
-    },
-    "desc": "造成物伤，自己回复1能量。"
-  },
-  {
-    "rank": 98,
+    "rank": 81,
     "tier": "A",
     "name": "不动如山",
     "element": "地",
@@ -1801,7 +1485,7 @@
     "desc": "减伤90%，应对攻击。"
   },
   {
-    "rank": 99,
+    "rank": 82,
     "tier": "A",
     "name": "冰雹",
     "element": "冰",
@@ -1819,7 +1503,25 @@
     "desc": "造成物伤，应对状态：额外使敌方获得全技能能耗+3。"
   },
   {
-    "rank": 100,
+    "rank": 83,
+    "tier": "A",
+    "name": "倾泻",
+    "element": "普通",
+    "category": "魔法",
+    "cost": 3,
+    "power": 60,
+    "score": 24.2,
+    "type_coef": 0.85,
+    "is_pure_status": false,
+    "points": {
+      "威力": 12.0,
+      "驱散印记": 14,
+      "属性系数": 0.85
+    },
+    "desc": "造成魔伤，若本次攻击未被防御技能应对，则驱散双方所有印记。"
+  },
+  {
+    "rank": 84,
     "tier": "A",
     "name": "坍缩",
     "element": "幻",
@@ -1837,7 +1539,7 @@
     "desc": "造成魔伤，若击败敌方，自己获得魔攻+50%。"
   },
   {
-    "rank": 101,
+    "rank": 85,
     "tier": "A",
     "name": "防御",
     "element": "普通",
@@ -1845,7 +1547,7 @@
     "cost": 1,
     "power": 0,
     "score": 24.0,
-    "type_coef": 1.0,
+    "type_coef": 0.85,
     "is_pure_status": true,
     "points": {
       "减伤70%": 28.0,
@@ -1854,7 +1556,24 @@
     "desc": "减伤70%，应对攻击。"
   },
   {
-    "rank": 102,
+    "rank": 86,
+    "tier": "A",
+    "name": "泥浆",
+    "element": "地",
+    "category": "魔法",
+    "cost": 0,
+    "power": 40,
+    "score": 24.0,
+    "type_coef": 1.2,
+    "is_pure_status": false,
+    "points": {
+      "威力": 20.0,
+      "属性系数": 1.2
+    },
+    "desc": "对敌方精灵造成魔法伤害。"
+  },
+  {
+    "rank": 87,
     "tier": "A",
     "name": "泥巴喷射",
     "element": "地",
@@ -1871,7 +1590,7 @@
     "desc": "对敌方精灵造成魔法伤害。"
   },
   {
-    "rank": 103,
+    "rank": 88,
     "tier": "A",
     "name": "热砂",
     "element": "地",
@@ -1888,7 +1607,7 @@
     "desc": "对敌方精灵造成魔法伤害。"
   },
   {
-    "rank": 104,
+    "rank": 89,
     "tier": "A",
     "name": "陨石",
     "element": "地",
@@ -1905,7 +1624,7 @@
     "desc": "对敌方精灵造成魔法伤害。"
   },
   {
-    "rank": 105,
+    "rank": 90,
     "tier": "A",
     "name": "岩脉崩毁",
     "element": "地",
@@ -1922,7 +1641,7 @@
     "desc": "造成物伤，本技能能耗固定为4。"
   },
   {
-    "rank": 106,
+    "rank": 91,
     "tier": "A",
     "name": "石锁",
     "element": "地",
@@ -1940,7 +1659,7 @@
     "desc": "造成物伤，敌方3回合无法更换精灵。"
   },
   {
-    "rank": 107,
+    "rank": 92,
     "tier": "A",
     "name": "过曝",
     "element": "光",
@@ -1958,7 +1677,7 @@
     "desc": "造成魔伤，每使用过1个其他系别技能，本技能威力永久+30。"
   },
   {
-    "rank": 108,
+    "rank": 93,
     "tier": "A",
     "name": "落石",
     "element": "地",
@@ -1976,7 +1695,7 @@
     "desc": "造成物伤，1连击。"
   },
   {
-    "rank": 109,
+    "rank": 94,
     "tier": "A",
     "name": "扬沙",
     "element": "地",
@@ -1993,7 +1712,7 @@
     "desc": "对敌方精灵造成物理伤害。"
   },
   {
-    "rank": 110,
+    "rank": 95,
     "tier": "A",
     "name": "跺地",
     "element": "地",
@@ -2010,26 +1729,7 @@
     "desc": "对敌方精灵造成物理伤害。"
   },
   {
-    "rank": 111,
-    "tier": "B",
-    "name": "种子弹",
-    "element": "草",
-    "category": "物理",
-    "cost": 0,
-    "power": 30,
-    "score": 23.8,
-    "type_coef": 0.85,
-    "is_pure_status": false,
-    "points": {
-      "威力": 15.0,
-      "0费奖励": 5,
-      "回能": 6,
-      "属性系数": 0.85
-    },
-    "desc": "造成物伤，自己回复1能量。"
-  },
-  {
-    "rank": 112,
+    "rank": 96,
     "tier": "B",
     "name": "错乱",
     "element": "幻",
@@ -2047,7 +1747,7 @@
     "desc": "造成魔伤，应对状态：敌方获得3层星陨。"
   },
   {
-    "rank": 113,
+    "rank": 97,
     "tier": "B",
     "name": "鸩毒",
     "element": "毒",
@@ -2065,7 +1765,7 @@
     "desc": "造成魔伤，敌方每有1层中毒效果，本次技能威力+10，应对状态：敌方获得2层中毒。"
   },
   {
-    "rank": 114,
+    "rank": 98,
     "tier": "B",
     "name": "蜡质膜",
     "element": "草",
@@ -2083,7 +1783,7 @@
     "desc": "减伤70%，应对攻击：回复3能量。"
   },
   {
-    "rank": 115,
+    "rank": 99,
     "tier": "B",
     "name": "蝙蝠",
     "element": "恶",
@@ -2101,43 +1801,7 @@
     "desc": "造成物伤，吸血100%。"
   },
   {
-    "rank": 116,
-    "tier": "B",
-    "name": "粒子对撞",
-    "element": "幻",
-    "category": "物理",
-    "cost": 0,
-    "power": 40,
-    "score": 23.0,
-    "type_coef": 0.9,
-    "is_pure_status": false,
-    "points": {
-      "威力": 20.0,
-      "0费奖励": 5,
-      "属性系数": 0.9
-    },
-    "desc": "对敌方精灵造成物理伤害。"
-  },
-  {
-    "rank": 117,
-    "tier": "B",
-    "name": "鸣叫",
-    "element": "翼",
-    "category": "魔法",
-    "cost": 0,
-    "power": 40,
-    "score": 23.0,
-    "type_coef": 0.9,
-    "is_pure_status": false,
-    "points": {
-      "威力": 20.0,
-      "0费奖励": 5,
-      "属性系数": 0.9
-    },
-    "desc": "对敌方精灵造成魔法伤害。"
-  },
-  {
-    "rank": 118,
+    "rank": 100,
     "tier": "B",
     "name": "飞羽",
     "element": "翼",
@@ -2156,25 +1820,7 @@
     "desc": "迅捷，驱散敌方一种增益。"
   },
   {
-    "rank": 119,
-    "tier": "B",
-    "name": "气波",
-    "element": "武",
-    "category": "魔法",
-    "cost": 0,
-    "power": 40,
-    "score": 23.0,
-    "type_coef": 0.9,
-    "is_pure_status": false,
-    "points": {
-      "威力": 20.0,
-      "0费奖励": 5,
-      "属性系数": 0.9
-    },
-    "desc": "对敌方精灵造成魔法伤害。"
-  },
-  {
-    "rank": 120,
+    "rank": 101,
     "tier": "B",
     "name": "加固",
     "element": "普通",
@@ -2182,7 +1828,7 @@
     "cost": 2,
     "power": 0,
     "score": 23.0,
-    "type_coef": 1.0,
+    "type_coef": 0.85,
     "is_pure_status": true,
     "points": {
       "防+140%": 34.0,
@@ -2192,7 +1838,7 @@
     "desc": "自己获得物防+140%。"
   },
   {
-    "rank": 121,
+    "rank": 102,
     "tier": "B",
     "name": "落雷",
     "element": "电",
@@ -2210,79 +1856,26 @@
     "desc": "造成魔伤，每次入场，本技能威力永久+20。"
   },
   {
-    "rank": 122,
+    "rank": 103,
     "tier": "B",
-    "name": "导电撞击",
-    "element": "电",
+    "name": "啃咬",
+    "element": "虫",
     "category": "物理",
     "cost": 0,
     "power": 40,
     "score": 23.0,
-    "type_coef": 0.9,
+    "type_coef": 0.75,
     "is_pure_status": false,
     "points": {
       "威力": 20.0,
-      "0费奖励": 5,
-      "属性系数": 0.9
+      "1连击": 2,
+      "奉献": 6,
+      "属性系数": 0.75
     },
-    "desc": "对敌方精灵造成物理伤害。"
+    "desc": "造成物伤，1连击，本技能会受奉献影响，每被影响1次，能耗永久+1。"
   },
   {
-    "rank": 123,
-    "tier": "B",
-    "name": "拆卸",
-    "element": "机械",
-    "category": "物理",
-    "cost": 0,
-    "power": 40,
-    "score": 23.0,
-    "type_coef": 0.9,
-    "is_pure_status": false,
-    "points": {
-      "威力": 20.0,
-      "0费奖励": 5,
-      "属性系数": 0.9
-    },
-    "desc": "对敌方精灵造成物理伤害。"
-  },
-  {
-    "rank": 124,
-    "tier": "B",
-    "name": "毒泡泡",
-    "element": "毒",
-    "category": "魔法",
-    "cost": 0,
-    "power": 40,
-    "score": 23.0,
-    "type_coef": 0.9,
-    "is_pure_status": false,
-    "points": {
-      "威力": 20.0,
-      "0费奖励": 5,
-      "属性系数": 0.9
-    },
-    "desc": "对敌方精灵造成魔法伤害。"
-  },
-  {
-    "rank": 125,
-    "tier": "B",
-    "name": "电流",
-    "element": "电",
-    "category": "魔法",
-    "cost": 0,
-    "power": 40,
-    "score": 23.0,
-    "type_coef": 0.9,
-    "is_pure_status": false,
-    "points": {
-      "威力": 20.0,
-      "0费奖励": 5,
-      "属性系数": 0.9
-    },
-    "desc": "对敌方精灵造成魔法伤害。"
-  },
-  {
-    "rank": 126,
+    "rank": 104,
     "tier": "B",
     "name": "岩土暴击",
     "element": "地",
@@ -2300,7 +1893,7 @@
     "desc": "造成物伤，每被攻击1次，本技能能耗永久-1。"
   },
   {
-    "rank": 127,
+    "rank": 105,
     "tier": "B",
     "name": "感染病",
     "element": "毒",
@@ -2318,7 +1911,7 @@
     "desc": "造成魔伤，若击败敌方则将中毒转化为印记。"
   },
   {
-    "rank": 128,
+    "rank": 106,
     "tier": "B",
     "name": "毒囊",
     "element": "毒",
@@ -2336,7 +1929,25 @@
     "desc": "造成物伤，敌方获得2层中毒，应对状态：改为获得6层。"
   },
   {
-    "rank": 129,
+    "rank": 107,
+    "tier": "B",
+    "name": "鬼火",
+    "element": "幽",
+    "category": "魔法",
+    "cost": 0,
+    "power": 30,
+    "score": 22.5,
+    "type_coef": 1.1,
+    "is_pure_status": false,
+    "points": {
+      "威力": 15.0,
+      "回能": 6,
+      "属性系数": 1.1
+    },
+    "desc": "造成魔伤，自己回复1能量。"
+  },
+  {
+    "rank": 108,
     "tier": "B",
     "name": "冰晶坠",
     "element": "冰",
@@ -2354,7 +1965,25 @@
     "desc": "造成物伤，敌方获得全技能能耗+1。"
   },
   {
-    "rank": 130,
+    "rank": 109,
+    "tier": "B",
+    "name": "风吹雪",
+    "element": "冰",
+    "category": "魔法",
+    "cost": 0,
+    "power": 30,
+    "score": 22.5,
+    "type_coef": 1.1,
+    "is_pure_status": false,
+    "points": {
+      "威力": 15.0,
+      "回能": 6,
+      "属性系数": 1.1
+    },
+    "desc": "造成魔伤，自己回复1能量。"
+  },
+  {
+    "rank": 110,
     "tier": "B",
     "name": "极寒领域",
     "element": "冰",
@@ -2372,7 +2001,7 @@
     "desc": "造成魔伤，若敌方有冻结，本次技能威力+60，应对状态：使冻结翻倍。"
   },
   {
-    "rank": 131,
+    "rank": 111,
     "tier": "B",
     "name": "防反",
     "element": "普通",
@@ -2380,7 +2009,7 @@
     "cost": 2,
     "power": 0,
     "score": 22.4,
-    "type_coef": 1.0,
+    "type_coef": 0.85,
     "is_pure_status": true,
     "points": {
       "减伤60%": 21.6,
@@ -2390,7 +2019,7 @@
     "desc": "减伤60%，应对攻击：自己获得物攻和魔攻+40%。"
   },
   {
-    "rank": 132,
+    "rank": 112,
     "tier": "B",
     "name": "炙热波动",
     "element": "火",
@@ -2408,26 +2037,41 @@
     "desc": "造成魔伤，敌方获得4层灼烧，应对状态：本次技能威力和赋予灼烧翻倍。"
   },
   {
-    "rank": 133,
+    "rank": 113,
     "tier": "B",
-    "name": "虫网",
-    "element": "虫",
-    "category": "魔法",
+    "name": "诡刺",
+    "element": "幽",
+    "category": "物理",
     "cost": 0,
-    "power": 30,
-    "score": 22.2,
-    "type_coef": 0.75,
+    "power": 40,
+    "score": 22.0,
+    "type_coef": 1.1,
     "is_pure_status": false,
     "points": {
-      "威力": 15.0,
-      "0费奖励": 5,
-      "回能": 6,
-      "属性系数": 0.75
+      "威力": 20.0,
+      "属性系数": 1.1
     },
-    "desc": "造成魔伤，自己回复1能量。"
+    "desc": "对敌方精灵造成物理伤害。"
   },
   {
-    "rank": 134,
+    "rank": 114,
+    "tier": "B",
+    "name": "幻象",
+    "element": "幽",
+    "category": "物理",
+    "cost": 1,
+    "power": 60,
+    "score": 22.0,
+    "type_coef": 1.1,
+    "is_pure_status": false,
+    "points": {
+      "威力": 20.0,
+      "属性系数": 1.1
+    },
+    "desc": "对敌方精灵造成物理伤害。"
+  },
+  {
+    "rank": 115,
     "tier": "B",
     "name": "冷风",
     "element": "冰",
@@ -2444,7 +2088,7 @@
     "desc": "对敌方精灵造成魔法伤害。"
   },
   {
-    "rank": 135,
+    "rank": 116,
     "tier": "B",
     "name": "炎枪",
     "element": "火",
@@ -2461,7 +2105,7 @@
     "desc": "对敌方精灵造成魔法伤害。"
   },
   {
-    "rank": 136,
+    "rank": 117,
     "tier": "B",
     "name": "火焰切割",
     "element": "火",
@@ -2478,25 +2122,24 @@
     "desc": "对敌方精灵造成物理伤害。"
   },
   {
-    "rank": 137,
+    "rank": 118,
     "tier": "B",
-    "name": "偷袭",
-    "element": "普通",
-    "category": "物理",
-    "cost": 3,
-    "power": 85,
+    "name": "幽灵爆发",
+    "element": "幽",
+    "category": "魔法",
+    "cost": 5,
+    "power": 140,
     "score": 22.0,
-    "type_coef": 1.0,
+    "type_coef": 1.1,
     "is_pure_status": false,
     "points": {
-      "威力": 17.0,
-      "威力×3": 5,
-      "属性系数": 1.0
+      "威力": 20.0,
+      "属性系数": 1.1
     },
-    "desc": "造成物伤，应对状态：本次技能威力变为3倍。"
+    "desc": "对敌方精灵造成魔法伤害。"
   },
   {
-    "rank": 138,
+    "rank": 119,
     "tier": "B",
     "name": "火焰冲锋",
     "element": "火",
@@ -2513,7 +2156,7 @@
     "desc": "对敌方精灵造成物理伤害。"
   },
   {
-    "rank": 139,
+    "rank": 120,
     "tier": "B",
     "name": "灼伤",
     "element": "火",
@@ -2530,7 +2173,7 @@
     "desc": "对敌方精灵造成物理伤害。"
   },
   {
-    "rank": 140,
+    "rank": 121,
     "tier": "B",
     "name": "升龙咆哮",
     "element": "龙",
@@ -2548,7 +2191,24 @@
     "desc": "蓄力，对敌方造成魔法伤害。"
   },
   {
-    "rank": 141,
+    "rank": 122,
+    "tier": "B",
+    "name": "炎息",
+    "element": "火",
+    "category": "物理",
+    "cost": 0,
+    "power": 40,
+    "score": 22.0,
+    "type_coef": 1.1,
+    "is_pure_status": false,
+    "points": {
+      "威力": 20.0,
+      "属性系数": 1.1
+    },
+    "desc": "对敌方精灵造成物理伤害。"
+  },
+  {
+    "rank": 123,
     "tier": "B",
     "name": "火云车",
     "element": "火",
@@ -2565,7 +2225,7 @@
     "desc": "对敌方精灵造成物理伤害。"
   },
   {
-    "rank": 142,
+    "rank": 124,
     "tier": "B",
     "name": "捧杀",
     "element": "萌",
@@ -2583,25 +2243,58 @@
     "desc": "减伤90%，应对攻击：敌方获得1层萌化。"
   },
   {
-    "rank": 143,
+    "rank": 125,
     "tier": "B",
-    "name": "音波弹",
-    "element": "普通",
+    "name": "恐吓",
+    "element": "幽",
     "category": "魔法",
-    "cost": 1,
-    "power": 60,
+    "cost": 2,
+    "power": 80,
     "score": 22.0,
-    "type_coef": 1.0,
+    "type_coef": 1.1,
     "is_pure_status": false,
     "points": {
       "威力": 20.0,
-      "1连击": 2,
-      "属性系数": 1.0
+      "属性系数": 1.1
     },
-    "desc": "造成魔伤，1连击。"
+    "desc": "对敌方精灵造成魔法伤害。"
   },
   {
-    "rank": 144,
+    "rank": 126,
+    "tier": "B",
+    "name": "冰锥",
+    "element": "冰",
+    "category": "物理",
+    "cost": 0,
+    "power": 40,
+    "score": 22.0,
+    "type_coef": 1.1,
+    "is_pure_status": false,
+    "points": {
+      "威力": 20.0,
+      "属性系数": 1.1
+    },
+    "desc": "对敌方精灵造成物理伤害。"
+  },
+  {
+    "rank": 127,
+    "tier": "B",
+    "name": "热气",
+    "element": "火",
+    "category": "魔法",
+    "cost": 0,
+    "power": 40,
+    "score": 22.0,
+    "type_coef": 1.1,
+    "is_pure_status": false,
+    "points": {
+      "威力": 20.0,
+      "属性系数": 1.1
+    },
+    "desc": "对敌方精灵造成魔法伤害。"
+  },
+  {
+    "rank": 128,
     "tier": "B",
     "name": "火爪",
     "element": "火",
@@ -2618,25 +2311,24 @@
     "desc": "对敌方精灵造成魔法伤害。"
   },
   {
-    "rank": 145,
+    "rank": 129,
     "tier": "B",
-    "name": "飞叶",
-    "element": "草",
-    "category": "物理",
-    "cost": 0,
-    "power": 40,
+    "name": "灵媒",
+    "element": "幽",
+    "category": "魔法",
+    "cost": 3,
+    "power": 100,
     "score": 22.0,
-    "type_coef": 0.85,
+    "type_coef": 1.1,
     "is_pure_status": false,
     "points": {
       "威力": 20.0,
-      "0费奖励": 5,
-      "属性系数": 0.85
+      "属性系数": 1.1
     },
-    "desc": "对敌方精灵造成物理伤害。"
+    "desc": "对敌方精灵造成魔法伤害。"
   },
   {
-    "rank": 146,
+    "rank": 130,
     "tier": "B",
     "name": "冰爪",
     "element": "冰",
@@ -2653,7 +2345,7 @@
     "desc": "对敌方精灵造成物理伤害。"
   },
   {
-    "rank": 147,
+    "rank": 131,
     "tier": "B",
     "name": "丢冰块",
     "element": "冰",
@@ -2671,7 +2363,7 @@
     "desc": "造成物伤，敌方获得速度-30。"
   },
   {
-    "rank": 148,
+    "rank": 132,
     "tier": "B",
     "name": "龙息环爆",
     "element": "龙",
@@ -2689,7 +2381,7 @@
     "desc": "造成魔伤，应对状态：下次技能无需蓄力。"
   },
   {
-    "rank": 149,
+    "rank": 133,
     "tier": "B",
     "name": "水炮",
     "element": "水",
@@ -2707,7 +2399,7 @@
     "desc": "造成魔伤，每次使用后，本技能能耗永久-1。"
   },
   {
-    "rank": 150,
+    "rank": 134,
     "tier": "B",
     "name": "龙血",
     "element": "龙",
@@ -2725,7 +2417,7 @@
     "desc": "减伤60%，本技能可以在蓄力状态下使用，应对攻击：下次技能无需蓄力。"
   },
   {
-    "rank": 151,
+    "rank": 135,
     "tier": "B",
     "name": "防御反击",
     "element": "武",
@@ -2743,26 +2435,43 @@
     "desc": "减伤80%，应对攻击：获得全技能威力+40。"
   },
   {
-    "rank": 152,
+    "rank": 136,
     "tier": "B",
-    "name": "引雷",
-    "element": "电",
+    "name": "突袭",
+    "element": "普通",
     "category": "魔法",
-    "cost": 3,
-    "power": 35,
-    "score": 21.3,
-    "type_coef": 0.9,
+    "cost": 2,
+    "power": 50,
+    "score": 21.1,
+    "type_coef": 0.85,
     "is_pure_status": false,
     "points": {
-      "威力": 7.0,
-      "迸发": 12,
-      "2连击": 3,
-      "属性系数": 0.9
+      "威力": 12.5,
+      "威力×3": 10.5,
+      "属性系数": 0.85
     },
-    "desc": "造成魔伤，2连击，迸发：本次技能威力+15。"
+    "desc": "造成魔伤，应对状态：本次技能威力变为3倍。"
   },
   {
-    "rank": 153,
+    "rank": 137,
+    "tier": "B",
+    "name": "魔爪",
+    "element": "恶",
+    "category": "物理",
+    "cost": 0,
+    "power": 30,
+    "score": 21.0,
+    "type_coef": 1.0,
+    "is_pure_status": false,
+    "points": {
+      "威力": 15.0,
+      "回能": 6,
+      "属性系数": 1.0
+    },
+    "desc": "造成物伤，自己回复1能量。"
+  },
+  {
+    "rank": 138,
     "tier": "B",
     "name": "光合作用",
     "element": "草",
@@ -2780,25 +2489,25 @@
     "desc": "自己获得1层光合印记。"
   },
   {
-    "rank": 154,
+    "rank": 139,
     "tier": "B",
-    "name": "埋伏",
-    "element": "普通",
+    "name": "甩水",
+    "element": "水",
     "category": "魔法",
-    "cost": 4,
+    "cost": 0,
     "power": 30,
     "score": 21.0,
     "type_coef": 1.0,
     "is_pure_status": false,
     "points": {
-      "威力": 5.0,
-      "连击数+": 16,
+      "威力": 15.0,
+      "回能": 6,
       "属性系数": 1.0
     },
-    "desc": "造成魔伤，3连击，若敌方本回合替换精灵，本次技能连击数+4。"
+    "desc": "造成魔伤，自己回复1能量。"
   },
   {
-    "rank": 155,
+    "rank": 140,
     "tier": "B",
     "name": "能量守恒",
     "element": "机械",
@@ -2815,7 +2524,7 @@
     "desc": "减伤80%，应对攻击：两侧的技能能耗永久-1。"
   },
   {
-    "rank": 156,
+    "rank": 141,
     "tier": "B",
     "name": "淤泥表皮",
     "element": "地",
@@ -2832,7 +2541,7 @@
     "desc": "减伤80%，应对攻击：敌方获得连击数-2。"
   },
   {
-    "rank": 157,
+    "rank": 142,
     "tier": "B",
     "name": "镜像反射",
     "element": "光",
@@ -2849,7 +2558,7 @@
     "desc": "减伤80%，应对攻击：本技能变为被应对的技能。"
   },
   {
-    "rank": 158,
+    "rank": 143,
     "tier": "B",
     "name": "虚假破产",
     "element": "恶",
@@ -2866,7 +2575,43 @@
     "desc": "减伤80%，能量不足时，消耗5%生命代替1能量，应对攻击。"
   },
   {
-    "rank": 159,
+    "rank": 144,
+    "tier": "B",
+    "name": "虫击",
+    "element": "虫",
+    "category": "物理",
+    "cost": 3,
+    "power": 90,
+    "score": 20.7,
+    "type_coef": 0.75,
+    "is_pure_status": false,
+    "points": {
+      "威力": 18.0,
+      "威力×2": 7.2,
+      "属性系数": 0.75
+    },
+    "desc": "造成物伤，应对状态：本次技能威力变为2倍，无视敌方系别抵抗。"
+  },
+  {
+    "rank": 145,
+    "tier": "B",
+    "name": "电弧",
+    "element": "电",
+    "category": "物理",
+    "cost": 3,
+    "power": 80,
+    "score": 20.4,
+    "type_coef": 0.9,
+    "is_pure_status": false,
+    "points": {
+      "威力": 16.0,
+      "迸发": 6,
+      "属性系数": 0.9
+    },
+    "desc": "造成物伤，迸发：本次技能威力+40。"
+  },
+  {
+    "rank": 146,
     "tier": "B",
     "name": "寒风吹",
     "element": "冰",
@@ -2884,7 +2629,25 @@
     "desc": "造成魔伤，敌方获得魔防-40%。"
   },
   {
-    "rank": 160,
+    "rank": 147,
+    "tier": "B",
+    "name": "埋伏",
+    "element": "普通",
+    "category": "魔法",
+    "cost": 4,
+    "power": 30,
+    "score": 20.2,
+    "type_coef": 0.85,
+    "is_pure_status": false,
+    "points": {
+      "威力": 5.0,
+      "连击数+": 16,
+      "属性系数": 0.85
+    },
+    "desc": "造成魔伤，3连击，若敌方本回合替换精灵，本次技能连击数+4。"
+  },
+  {
+    "rank": 148,
     "tier": "B",
     "name": "龙吼",
     "element": "龙",
@@ -2901,24 +2664,7 @@
     "desc": "对敌方精灵造成物理伤害。"
   },
   {
-    "rank": 161,
-    "tier": "B",
-    "name": "幻象",
-    "element": "幽",
-    "category": "物理",
-    "cost": 1,
-    "power": 60,
-    "score": 20.0,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 20.0,
-      "属性系数": 1.0
-    },
-    "desc": "对敌方精灵造成物理伤害。"
-  },
-  {
-    "rank": 162,
+    "rank": 149,
     "tier": "B",
     "name": "隼鳞",
     "element": "龙",
@@ -2935,7 +2681,7 @@
     "desc": "对敌方精灵造成物理伤害。"
   },
   {
-    "rank": 163,
+    "rank": 150,
     "tier": "B",
     "name": "泡沫",
     "element": "水",
@@ -2952,7 +2698,7 @@
     "desc": "对敌方精灵造成物理伤害。"
   },
   {
-    "rank": 164,
+    "rank": 151,
     "tier": "B",
     "name": "水光冲击",
     "element": "水",
@@ -2969,7 +2715,7 @@
     "desc": "对敌方精灵造成魔法伤害。"
   },
   {
-    "rank": 165,
+    "rank": 152,
     "tier": "B",
     "name": "潮涌",
     "element": "水",
@@ -2986,7 +2732,7 @@
     "desc": "对敌方精灵造成物理伤害。"
   },
   {
-    "rank": 166,
+    "rank": 153,
     "tier": "B",
     "name": "角击",
     "element": "龙",
@@ -3003,7 +2749,7 @@
     "desc": "对敌方精灵造成魔法伤害。"
   },
   {
-    "rank": 167,
+    "rank": 154,
     "tier": "B",
     "name": "水幕冲击",
     "element": "水",
@@ -3020,7 +2766,7 @@
     "desc": "对敌方精灵造成物理伤害。"
   },
   {
-    "rank": 168,
+    "rank": 155,
     "tier": "B",
     "name": "龙炮",
     "element": "龙",
@@ -3037,41 +2783,7 @@
     "desc": "对敌方精灵造成物理伤害。"
   },
   {
-    "rank": 169,
-    "tier": "B",
-    "name": "拍击",
-    "element": "普通",
-    "category": "魔法",
-    "cost": 1,
-    "power": 60,
-    "score": 20.0,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 20.0,
-      "属性系数": 1.0
-    },
-    "desc": "对敌方精灵造成魔法伤害。"
-  },
-  {
-    "rank": 170,
-    "tier": "B",
-    "name": "许愿星",
-    "element": "普通",
-    "category": "魔法",
-    "cost": 3,
-    "power": 100,
-    "score": 20.0,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 20.0,
-      "属性系数": 1.0
-    },
-    "desc": "对敌方精灵造成魔法伤害。"
-  },
-  {
-    "rank": 171,
+    "rank": 156,
     "tier": "B",
     "name": "恶能量",
     "element": "恶",
@@ -3088,13 +2800,13 @@
     "desc": "对敌方精灵造成物理伤害。"
   },
   {
-    "rank": 172,
+    "rank": 157,
     "tier": "B",
-    "name": "猛烈撞击",
-    "element": "普通",
+    "name": "迫害",
+    "element": "恶",
     "category": "物理",
-    "cost": 1,
-    "power": 60,
+    "cost": 0,
+    "power": 40,
     "score": 20.0,
     "type_coef": 1.0,
     "is_pure_status": false,
@@ -3105,24 +2817,7 @@
     "desc": "对敌方精灵造成物理伤害。"
   },
   {
-    "rank": 173,
-    "tier": "B",
-    "name": "扫尾",
-    "element": "普通",
-    "category": "物理",
-    "cost": 2,
-    "power": 80,
-    "score": 20.0,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 20.0,
-      "属性系数": 1.0
-    },
-    "desc": "对敌方精灵造成物理伤害。"
-  },
-  {
-    "rank": 174,
+    "rank": 158,
     "tier": "B",
     "name": "灾厄",
     "element": "恶",
@@ -3140,48 +2835,13 @@
     "desc": "对自己造成物伤，应对状态：改为对敌方造成物伤。"
   },
   {
-    "rank": 175,
+    "rank": 159,
     "tier": "B",
-    "name": "鼓劲",
-    "element": "普通",
-    "category": "变化",
-    "cost": 3,
-    "power": 0,
-    "score": 20.0,
-    "type_coef": 1.0,
-    "is_pure_status": true,
-    "points": {
-      "防+150%": 35.0,
-      "费用": -12,
-      "打断风险": -3
-    },
-    "desc": "自己获得魔防+150%。"
-  },
-  {
-    "rank": 176,
-    "tier": "B",
-    "name": "践踏",
-    "element": "普通",
-    "category": "物理",
-    "cost": 4,
-    "power": 120,
-    "score": 20.0,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 20.0,
-      "属性系数": 1.0
-    },
-    "desc": "对敌方精灵造成物理伤害。"
-  },
-  {
-    "rank": 177,
-    "tier": "B",
-    "name": "幽灵爆发",
-    "element": "幽",
+    "name": "水弹",
+    "element": "水",
     "category": "魔法",
-    "cost": 5,
-    "power": 140,
+    "cost": 0,
+    "power": 40,
     "score": 20.0,
     "type_coef": 1.0,
     "is_pure_status": false,
@@ -3192,7 +2852,25 @@
     "desc": "对敌方精灵造成魔法伤害。"
   },
   {
-    "rank": 178,
+    "rank": 160,
+    "tier": "B",
+    "name": "鼓劲",
+    "element": "普通",
+    "category": "变化",
+    "cost": 3,
+    "power": 0,
+    "score": 20.0,
+    "type_coef": 0.85,
+    "is_pure_status": true,
+    "points": {
+      "防+150%": 35.0,
+      "费用": -12,
+      "打断风险": -3
+    },
+    "desc": "自己获得魔防+150%。"
+  },
+  {
+    "rank": 161,
     "tier": "B",
     "name": "闪光",
     "element": "光",
@@ -3209,7 +2887,7 @@
     "desc": "对敌方精灵造成魔法伤害。"
   },
   {
-    "rank": 179,
+    "rank": 162,
     "tier": "B",
     "name": "魅惑",
     "element": "萌",
@@ -3226,7 +2904,7 @@
     "desc": "对敌方精灵造成魔法伤害。"
   },
   {
-    "rank": 180,
+    "rank": 163,
     "tier": "B",
     "name": "碰爪",
     "element": "萌",
@@ -3243,7 +2921,7 @@
     "desc": "对敌方精灵造成物理伤害。"
   },
   {
-    "rank": 181,
+    "rank": 164,
     "tier": "B",
     "name": "气泡",
     "element": "水",
@@ -3260,25 +2938,7 @@
     "desc": "对敌方精灵造成魔法伤害。"
   },
   {
-    "rank": 182,
-    "tier": "B",
-    "name": "重击",
-    "element": "普通",
-    "category": "物理",
-    "cost": 2,
-    "power": 100,
-    "score": 20.0,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 25.0,
-      "能耗永久+": -5,
-      "属性系数": 1.0
-    },
-    "desc": "造成物伤，每次使用后，本技能能耗永久+1。"
-  },
-  {
-    "rank": 183,
+    "rank": 165,
     "tier": "B",
     "name": "肥皂泡",
     "element": "水",
@@ -3295,24 +2955,7 @@
     "desc": "对敌方精灵造成魔法伤害。"
   },
   {
-    "rank": 184,
-    "tier": "B",
-    "name": "湮灭",
-    "element": "普通",
-    "category": "魔法",
-    "cost": 5,
-    "power": 140,
-    "score": 20.0,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 20.0,
-      "属性系数": 1.0
-    },
-    "desc": "对敌方精灵造成魔法伤害。"
-  },
-  {
-    "rank": 185,
+    "rank": 166,
     "tier": "B",
     "name": "光球",
     "element": "光",
@@ -3329,7 +2972,7 @@
     "desc": "对敌方精灵造成魔法伤害。"
   },
   {
-    "rank": 186,
+    "rank": 167,
     "tier": "B",
     "name": "虹光冲击",
     "element": "光",
@@ -3346,7 +2989,24 @@
     "desc": "对敌方精灵造成魔法伤害。"
   },
   {
-    "rank": 187,
+    "rank": 168,
+    "tier": "B",
+    "name": "鞭打",
+    "element": "萌",
+    "category": "物理",
+    "cost": 0,
+    "power": 40,
+    "score": 20.0,
+    "type_coef": 1.0,
+    "is_pure_status": false,
+    "points": {
+      "威力": 20.0,
+      "属性系数": 1.0
+    },
+    "desc": "对敌方精灵造成物理伤害。"
+  },
+  {
+    "rank": 169,
     "tier": "B",
     "name": "诋毁",
     "element": "恶",
@@ -3363,24 +3023,7 @@
     "desc": "对敌方精灵造成物理伤害。"
   },
   {
-    "rank": 188,
-    "tier": "B",
-    "name": "恐吓",
-    "element": "幽",
-    "category": "魔法",
-    "cost": 2,
-    "power": 80,
-    "score": 20.0,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 20.0,
-      "属性系数": 1.0
-    },
-    "desc": "对敌方精灵造成魔法伤害。"
-  },
-  {
-    "rank": 189,
+    "rank": 170,
     "tier": "B",
     "name": "爆米花爆破",
     "element": "萌",
@@ -3397,25 +3040,7 @@
     "desc": "对敌方精灵造成物理伤害。"
   },
   {
-    "rank": 190,
-    "tier": "B",
-    "name": "蛰针",
-    "element": "虫",
-    "category": "物理",
-    "cost": 0,
-    "power": 40,
-    "score": 20.0,
-    "type_coef": 0.75,
-    "is_pure_status": false,
-    "points": {
-      "威力": 20.0,
-      "0费奖励": 5,
-      "属性系数": 0.75
-    },
-    "desc": "对敌方精灵造成物理伤害。"
-  },
-  {
-    "rank": 191,
+    "rank": 171,
     "tier": "B",
     "name": "龙爪",
     "element": "龙",
@@ -3432,7 +3057,24 @@
     "desc": "对敌方精灵造成物理伤害。"
   },
   {
-    "rank": 192,
+    "rank": 172,
+    "tier": "B",
+    "name": "脉冲光线",
+    "element": "光",
+    "category": "魔法",
+    "cost": 0,
+    "power": 40,
+    "score": 20.0,
+    "type_coef": 1.0,
+    "is_pure_status": false,
+    "points": {
+      "威力": 20.0,
+      "属性系数": 1.0
+    },
+    "desc": "对敌方精灵造成魔法伤害。"
+  },
+  {
+    "rank": 173,
     "tier": "B",
     "name": "光刃",
     "element": "光",
@@ -3449,7 +3091,7 @@
     "desc": "对敌方精灵造成物理伤害。"
   },
   {
-    "rank": 193,
+    "rank": 174,
     "tier": "B",
     "name": "掠夺",
     "element": "恶",
@@ -3466,24 +3108,7 @@
     "desc": "对敌方精灵造成魔法伤害。"
   },
   {
-    "rank": 194,
-    "tier": "B",
-    "name": "压扁",
-    "element": "普通",
-    "category": "物理",
-    "cost": 5,
-    "power": 140,
-    "score": 20.0,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 20.0,
-      "属性系数": 1.0
-    },
-    "desc": "对敌方精灵造成物理伤害。"
-  },
-  {
-    "rank": 195,
+    "rank": 175,
     "tier": "B",
     "name": "透射",
     "element": "光",
@@ -3500,7 +3125,7 @@
     "desc": "对敌方精灵造成物理伤害。"
   },
   {
-    "rank": 196,
+    "rank": 176,
     "tier": "B",
     "name": "激流",
     "element": "水",
@@ -3517,24 +3142,7 @@
     "desc": "对敌方精灵造成魔法伤害。"
   },
   {
-    "rank": 197,
-    "tier": "B",
-    "name": "飞踢",
-    "element": "普通",
-    "category": "物理",
-    "cost": 3,
-    "power": 100,
-    "score": 20.0,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 20.0,
-      "属性系数": 1.0
-    },
-    "desc": "对敌方精灵造成物理伤害。"
-  },
-  {
-    "rank": 198,
+    "rank": 177,
     "tier": "B",
     "name": "闪光冲击",
     "element": "光",
@@ -3551,7 +3159,7 @@
     "desc": "对敌方精灵造成物理伤害。"
   },
   {
-    "rank": 199,
+    "rank": 178,
     "tier": "B",
     "name": "飞吻",
     "element": "萌",
@@ -3568,58 +3176,25 @@
     "desc": "对敌方精灵造成魔法伤害。"
   },
   {
-    "rank": 200,
+    "rank": 179,
     "tier": "B",
-    "name": "灵媒",
-    "element": "幽",
-    "category": "魔法",
-    "cost": 3,
-    "power": 100,
-    "score": 20.0,
-    "type_coef": 1.0,
+    "name": "毒针",
+    "element": "毒",
+    "category": "物理",
+    "cost": 0,
+    "power": 20,
+    "score": 19.8,
+    "type_coef": 0.9,
     "is_pure_status": false,
     "points": {
-      "威力": 20.0,
-      "属性系数": 1.0
+      "威力": 10.0,
+      "中毒(1层)": 12.0,
+      "属性系数": 0.9
     },
-    "desc": "对敌方精灵造成魔法伤害。"
+    "desc": "造成物伤，敌方获得1层中毒效果。"
   },
   {
-    "rank": 201,
-    "tier": "B",
-    "name": "音爆",
-    "element": "普通",
-    "category": "魔法",
-    "cost": 4,
-    "power": 120,
-    "score": 20.0,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 20.0,
-      "属性系数": 1.0
-    },
-    "desc": "对敌方精灵造成魔法伤害。"
-  },
-  {
-    "rank": 202,
-    "tier": "B",
-    "name": "星星撞击",
-    "element": "普通",
-    "category": "魔法",
-    "cost": 2,
-    "power": 80,
-    "score": 20.0,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 20.0,
-      "属性系数": 1.0
-    },
-    "desc": "对敌方精灵造成魔法伤害。"
-  },
-  {
-    "rank": 203,
+    "rank": 180,
     "tier": "B",
     "name": "冰蛋壳",
     "element": "冰",
@@ -3637,7 +3212,7 @@
     "desc": "减伤60%，应对攻击：敌方获得2层减速印记。"
   },
   {
-    "rank": 204,
+    "rank": 181,
     "tier": "B",
     "name": "爆裂飞弹",
     "element": "火",
@@ -3654,7 +3229,7 @@
     "desc": "对敌方精灵造成魔法伤害。"
   },
   {
-    "rank": 205,
+    "rank": 182,
     "tier": "B",
     "name": "虫结阵",
     "element": "虫",
@@ -3672,7 +3247,7 @@
     "desc": "减伤60%，应对攻击：获得1次随机奉献。"
   },
   {
-    "rank": 206,
+    "rank": 183,
     "tier": "B",
     "name": "血气",
     "element": "普通",
@@ -3680,7 +3255,7 @@
     "cost": 2,
     "power": 0,
     "score": 19.6,
-    "type_coef": 1.0,
+    "type_coef": 0.85,
     "is_pure_status": true,
     "points": {
       "减伤60%": 21.6,
@@ -3690,7 +3265,7 @@
     "desc": "减伤60%，应对攻击：本回合受到致命伤害时，保留1生命值。"
   },
   {
-    "rank": 207,
+    "rank": 184,
     "tier": "B",
     "name": "羽翼庇护",
     "element": "翼",
@@ -3708,25 +3283,61 @@
     "desc": "减伤70%，应对攻击：自己获得连击数+3。"
   },
   {
-    "rank": 208,
+    "rank": 185,
     "tier": "B",
-    "name": "双联脉冲",
-    "element": "电",
-    "category": "魔法",
-    "cost": 4,
-    "power": 50,
+    "name": "偷师",
+    "element": "幻",
+    "category": "物理",
+    "cost": 0,
+    "power": 30,
     "score": 19.5,
     "type_coef": 0.9,
     "is_pure_status": false,
     "points": {
-      "威力": 8.3,
-      "迸发": 12,
+      "威力": 15.0,
+      "回能": 6,
       "属性系数": 0.9
     },
-    "desc": "造成魔伤，迸发：本技能使用次数+1。"
+    "desc": "造成物伤，自己回复1能量。"
   },
   {
-    "rank": 209,
+    "rank": 186,
+    "tier": "B",
+    "name": "无影脚",
+    "element": "武",
+    "category": "物理",
+    "cost": 3,
+    "power": 75,
+    "score": 19.5,
+    "type_coef": 0.9,
+    "is_pure_status": false,
+    "points": {
+      "威力": 15.0,
+      "威力×2": 6.0,
+      "属性系数": 0.9
+    },
+    "desc": "造成物伤，应对状态：本次技能威力变为2倍。"
+  },
+  {
+    "rank": 187,
+    "tier": "B",
+    "name": "寸拳",
+    "element": "武",
+    "category": "物理",
+    "cost": 0,
+    "power": 30,
+    "score": 19.5,
+    "type_coef": 0.9,
+    "is_pure_status": false,
+    "points": {
+      "威力": 15.0,
+      "回能": 6,
+      "属性系数": 0.9
+    },
+    "desc": "造成物伤，自己回复1能量。"
+  },
+  {
+    "rank": 188,
     "tier": "B",
     "name": "超导加速",
     "element": "电",
@@ -3744,7 +3355,7 @@
     "desc": "造成魔伤，自身获得速度+30。"
   },
   {
-    "rank": 210,
+    "rank": 189,
     "tier": "B",
     "name": "炎打",
     "element": "火",
@@ -3762,25 +3373,7 @@
     "desc": "造成高额魔法伤害，自己获得物防-40%。"
   },
   {
-    "rank": 211,
-    "tier": "B",
-    "name": "冲撞",
-    "element": "普通",
-    "category": "物理",
-    "cost": 7,
-    "power": 120,
-    "score": 19.3,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 13.3,
-      "能耗-": 6,
-      "属性系数": 1.0
-    },
-    "desc": "造成物伤，回合结束时，本技能能耗永久-1。"
-  },
-  {
-    "rank": 212,
+    "rank": 190,
     "tier": "B",
     "name": "等价交换",
     "element": "恶",
@@ -3798,7 +3391,7 @@
     "desc": "减伤90%，应对攻击：自己获得50%吸血。"
   },
   {
-    "rank": 213,
+    "rank": 191,
     "tier": "B",
     "name": "水波术",
     "element": "水",
@@ -3816,7 +3409,7 @@
     "desc": "造成魔伤，回合结束时，本技能威力永久+20。"
   },
   {
-    "rank": 214,
+    "rank": 192,
     "tier": "B",
     "name": "震击",
     "element": "地",
@@ -3833,7 +3426,7 @@
     "desc": "造成物理伤害，敌方获得连击数-3。"
   },
   {
-    "rank": 215,
+    "rank": 193,
     "tier": "B",
     "name": "打湿",
     "element": "水",
@@ -3851,7 +3444,7 @@
     "desc": "自己获得1层湿润印记。"
   },
   {
-    "rank": 216,
+    "rank": 194,
     "tier": "B",
     "name": "天光",
     "element": "光",
@@ -3868,7 +3461,7 @@
     "desc": "造成魔伤，本技能系别始终和天气系别相同。"
   },
   {
-    "rank": 217,
+    "rank": 195,
     "tier": "B",
     "name": "击鼓传花",
     "element": "萌",
@@ -3887,7 +3480,7 @@
     "desc": "自己脱离，下个入场精灵继承自己增益。"
   },
   {
-    "rank": 218,
+    "rank": 196,
     "tier": "B",
     "name": "地震",
     "element": "地",
@@ -3904,7 +3497,7 @@
     "desc": "对敌方精灵造成物理伤害。"
   },
   {
-    "rank": 219,
+    "rank": 197,
     "tier": "B",
     "name": "多维击打",
     "element": "幻",
@@ -3923,7 +3516,25 @@
     "desc": "造成魔伤，1连击，敌方每有1层星陨，本次技能连击数+1。"
   },
   {
-    "rank": 220,
+    "rank": 198,
+    "tier": "B",
+    "name": "音波弹",
+    "element": "普通",
+    "category": "魔法",
+    "cost": 1,
+    "power": 60,
+    "score": 19.0,
+    "type_coef": 0.85,
+    "is_pure_status": false,
+    "points": {
+      "威力": 20.0,
+      "1连击": 2,
+      "属性系数": 0.85
+    },
+    "desc": "造成魔伤，1连击。"
+  },
+  {
+    "rank": 199,
     "tier": "B",
     "name": "四维降解",
     "element": "幻",
@@ -3942,7 +3553,7 @@
     "desc": "造成魔伤，敌方每有1层印记，本技能能耗-1。"
   },
   {
-    "rank": 221,
+    "rank": 200,
     "tier": "B",
     "name": "栽赃",
     "element": "恶",
@@ -3959,24 +3570,25 @@
     "desc": "对敌方精灵造成魔法伤害。"
   },
   {
-    "rank": 222,
+    "rank": 201,
     "tier": "B",
-    "name": "打鼾",
+    "name": "抓挠",
     "element": "普通",
-    "category": "魔法",
-    "cost": 6,
-    "power": 150,
+    "category": "物理",
+    "cost": 0,
+    "power": 30,
     "score": 18.8,
-    "type_coef": 1.0,
+    "type_coef": 0.85,
     "is_pure_status": false,
     "points": {
-      "威力": 18.8,
-      "属性系数": 1.0
+      "威力": 15.0,
+      "回能": 6,
+      "属性系数": 0.85
     },
-    "desc": "对敌方精灵造成魔法伤害。"
+    "desc": "造成物伤，自己回复1能量。"
   },
   {
-    "rank": 223,
+    "rank": 202,
     "tier": "B",
     "name": "齿轮扭矩",
     "element": "机械",
@@ -3994,7 +3606,25 @@
     "desc": "造成物伤，每变化1次位置，本技能威力永久+20。"
   },
   {
-    "rank": 224,
+    "rank": 203,
+    "tier": "B",
+    "name": "种子弹",
+    "element": "草",
+    "category": "物理",
+    "cost": 0,
+    "power": 30,
+    "score": 18.8,
+    "type_coef": 0.85,
+    "is_pure_status": false,
+    "points": {
+      "威力": 15.0,
+      "回能": 6,
+      "属性系数": 0.85
+    },
+    "desc": "造成物伤，自己回复1能量。"
+  },
+  {
+    "rank": 204,
     "tier": "B",
     "name": "绵里藏针",
     "element": "龙",
@@ -4012,7 +3642,7 @@
     "desc": "造成魔伤，若敌方上回合没受到技能伤害，本技能威力永久+30。"
   },
   {
-    "rank": 225,
+    "rank": 205,
     "tier": "B",
     "name": "骗局",
     "element": "恶",
@@ -4029,7 +3659,7 @@
     "desc": "造成魔伤，能量不足时每1点能量消耗5%生命。"
   },
   {
-    "rank": 226,
+    "rank": 206,
     "tier": "B",
     "name": "冰冻光线",
     "element": "冰",
@@ -4047,7 +3677,7 @@
     "desc": "造成魔伤，敌方获得全技能能耗+2。"
   },
   {
-    "rank": 227,
+    "rank": 207,
     "tier": "B",
     "name": "交叉闪电",
     "element": "电",
@@ -4064,7 +3694,7 @@
     "desc": "对敌方精灵造成物理伤害。"
   },
   {
-    "rank": 228,
+    "rank": 208,
     "tier": "B",
     "name": "大爆炸",
     "element": "幻",
@@ -4081,7 +3711,24 @@
     "desc": "对敌方精灵造成魔法伤害。"
   },
   {
-    "rank": 229,
+    "rank": 209,
+    "tier": "B",
+    "name": "粒子对撞",
+    "element": "幻",
+    "category": "物理",
+    "cost": 0,
+    "power": 40,
+    "score": 18.0,
+    "type_coef": 0.9,
+    "is_pure_status": false,
+    "points": {
+      "威力": 20.0,
+      "属性系数": 0.9
+    },
+    "desc": "对敌方精灵造成物理伤害。"
+  },
+  {
+    "rank": 210,
     "tier": "B",
     "name": "双星",
     "element": "幻",
@@ -4098,7 +3745,24 @@
     "desc": "对敌方精灵造成物理伤害。"
   },
   {
-    "rank": 230,
+    "rank": 211,
+    "tier": "B",
+    "name": "鸣叫",
+    "element": "翼",
+    "category": "魔法",
+    "cost": 0,
+    "power": 40,
+    "score": 18.0,
+    "type_coef": 0.9,
+    "is_pure_status": false,
+    "points": {
+      "威力": 20.0,
+      "属性系数": 0.9
+    },
+    "desc": "对敌方精灵造成魔法伤害。"
+  },
+  {
+    "rank": 212,
     "tier": "B",
     "name": "风矢",
     "element": "翼",
@@ -4115,7 +3779,7 @@
     "desc": "对敌方精灵造成物理伤害。"
   },
   {
-    "rank": 231,
+    "rank": 213,
     "tier": "B",
     "name": "影袭",
     "element": "武",
@@ -4132,7 +3796,7 @@
     "desc": "对敌方精灵造成物理伤害。"
   },
   {
-    "rank": 232,
+    "rank": 214,
     "tier": "B",
     "name": "潮汐",
     "element": "水",
@@ -4150,7 +3814,7 @@
     "desc": "减伤60%，应对攻击：自己获得1层湿润印记。"
   },
   {
-    "rank": 233,
+    "rank": 215,
     "tier": "B",
     "name": "星云漩涡",
     "element": "幻",
@@ -4167,7 +3831,24 @@
     "desc": "对敌方精灵造成物理伤害。"
   },
   {
-    "rank": 234,
+    "rank": 216,
+    "tier": "B",
+    "name": "气波",
+    "element": "武",
+    "category": "魔法",
+    "cost": 0,
+    "power": 40,
+    "score": 18.0,
+    "type_coef": 0.9,
+    "is_pure_status": false,
+    "points": {
+      "威力": 20.0,
+      "属性系数": 0.9
+    },
+    "desc": "对敌方精灵造成魔法伤害。"
+  },
+  {
+    "rank": 217,
     "tier": "B",
     "name": "鹰爪",
     "element": "翼",
@@ -4184,7 +3865,7 @@
     "desc": "对敌方精灵造成物理伤害。"
   },
   {
-    "rank": 235,
+    "rank": 218,
     "tier": "B",
     "name": "一拳",
     "element": "武",
@@ -4201,7 +3882,24 @@
     "desc": "对敌方精灵造成物理伤害。"
   },
   {
-    "rank": 236,
+    "rank": 219,
+    "tier": "B",
+    "name": "导电撞击",
+    "element": "电",
+    "category": "物理",
+    "cost": 0,
+    "power": 40,
+    "score": 18.0,
+    "type_coef": 0.9,
+    "is_pure_status": false,
+    "points": {
+      "威力": 20.0,
+      "属性系数": 0.9
+    },
+    "desc": "对敌方精灵造成物理伤害。"
+  },
+  {
+    "rank": 220,
     "tier": "B",
     "name": "离子火花",
     "element": "电",
@@ -4218,7 +3916,41 @@
     "desc": "对敌方精灵造成物理伤害。"
   },
   {
-    "rank": 237,
+    "rank": 221,
+    "tier": "B",
+    "name": "拆卸",
+    "element": "机械",
+    "category": "物理",
+    "cost": 0,
+    "power": 40,
+    "score": 18.0,
+    "type_coef": 0.9,
+    "is_pure_status": false,
+    "points": {
+      "威力": 20.0,
+      "属性系数": 0.9
+    },
+    "desc": "对敌方精灵造成物理伤害。"
+  },
+  {
+    "rank": 222,
+    "tier": "B",
+    "name": "毒泡泡",
+    "element": "毒",
+    "category": "魔法",
+    "cost": 0,
+    "power": 40,
+    "score": 18.0,
+    "type_coef": 0.9,
+    "is_pure_status": false,
+    "points": {
+      "威力": 20.0,
+      "属性系数": 0.9
+    },
+    "desc": "对敌方精灵造成魔法伤害。"
+  },
+  {
+    "rank": 223,
     "tier": "B",
     "name": "瘴气喷射",
     "element": "毒",
@@ -4235,7 +3967,24 @@
     "desc": "对敌方精灵造成魔法伤害。"
   },
   {
-    "rank": 238,
+    "rank": 224,
+    "tier": "B",
+    "name": "电流",
+    "element": "电",
+    "category": "魔法",
+    "cost": 0,
+    "power": 40,
+    "score": 18.0,
+    "type_coef": 0.9,
+    "is_pure_status": false,
+    "points": {
+      "威力": 20.0,
+      "属性系数": 0.9
+    },
+    "desc": "对敌方精灵造成魔法伤害。"
+  },
+  {
+    "rank": 225,
     "tier": "B",
     "name": "俯冲猛击",
     "element": "翼",
@@ -4252,7 +4001,7 @@
     "desc": "对敌方精灵造成物理伤害。"
   },
   {
-    "rank": 239,
+    "rank": 226,
     "tier": "B",
     "name": "回旋风暴",
     "element": "翼",
@@ -4269,7 +4018,7 @@
     "desc": "对敌方精灵造成魔法伤害。"
   },
   {
-    "rank": 240,
+    "rank": 227,
     "tier": "B",
     "name": "球状闪电",
     "element": "电",
@@ -4286,7 +4035,7 @@
     "desc": "对敌方精灵造成物理伤害。"
   },
   {
-    "rank": 241,
+    "rank": 228,
     "tier": "B",
     "name": "毒沼",
     "element": "毒",
@@ -4303,7 +4052,7 @@
     "desc": "对敌方精灵造成物理伤害。"
   },
   {
-    "rank": 242,
+    "rank": 229,
     "tier": "B",
     "name": "溃烂触碰",
     "element": "毒",
@@ -4320,24 +4069,7 @@
     "desc": "对敌方精灵造成物理伤害。"
   },
   {
-    "rank": 243,
-    "tier": "B",
-    "name": "逆袭",
-    "element": "普通",
-    "category": "物理",
-    "cost": 3,
-    "power": 90,
-    "score": 18.0,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 18.0,
-      "属性系数": 1.0
-    },
-    "desc": "造成物伤，本技能能耗每+1，威力+45。"
-  },
-  {
-    "rank": 244,
+    "rank": 230,
     "tier": "B",
     "name": "金属噪音",
     "element": "机械",
@@ -4354,7 +4086,7 @@
     "desc": "对敌方造成魔法伤害。"
   },
   {
-    "rank": 245,
+    "rank": 231,
     "tier": "B",
     "name": "贯手",
     "element": "武",
@@ -4371,7 +4103,7 @@
     "desc": "对敌方精灵造成魔法伤害。"
   },
   {
-    "rank": 246,
+    "rank": 232,
     "tier": "B",
     "name": "暗突袭",
     "element": "恶",
@@ -4389,7 +4121,7 @@
     "desc": "造成物伤，吸血50%，应对状态：本次技能威力翻倍。"
   },
   {
-    "rank": 247,
+    "rank": 233,
     "tier": "B",
     "name": "润泽",
     "element": "水",
@@ -4407,7 +4139,7 @@
     "desc": "自己获得魔攻+190%。"
   },
   {
-    "rank": 248,
+    "rank": 234,
     "tier": "B",
     "name": "冥想",
     "element": "幻",
@@ -4425,7 +4157,7 @@
     "desc": "减伤70%，应对攻击：敌方获得2层星陨。"
   },
   {
-    "rank": 249,
+    "rank": 235,
     "tier": "B",
     "name": "燃尽",
     "element": "火",
@@ -4443,7 +4175,25 @@
     "desc": "造成魔伤，敌方每失去5%生命，本次技能威力-5。"
   },
   {
-    "rank": 250,
+    "rank": 236,
+    "tier": "B",
+    "name": "冲撞",
+    "element": "普通",
+    "category": "物理",
+    "cost": 7,
+    "power": 120,
+    "score": 17.3,
+    "type_coef": 0.85,
+    "is_pure_status": false,
+    "points": {
+      "威力": 13.3,
+      "能耗-": 6,
+      "属性系数": 0.85
+    },
+    "desc": "造成物伤，回合结束时，本技能能耗永久-1。"
+  },
+  {
+    "rank": 237,
     "tier": "B",
     "name": "集中",
     "element": "电",
@@ -4460,7 +4210,7 @@
     "desc": "减伤70%，应对攻击：自己回合结束返场。"
   },
   {
-    "rank": 251,
+    "rank": 238,
     "tier": "B",
     "name": "水环",
     "element": "水",
@@ -4477,7 +4227,7 @@
     "desc": "减伤70%，应对攻击：自己获得全技能能耗-2。"
   },
   {
-    "rank": 252,
+    "rank": 239,
     "tier": "B",
     "name": "连续毒针",
     "element": "毒",
@@ -4496,7 +4246,7 @@
     "desc": "造成物伤，2连击，每次连击使敌方获得1层中毒。"
   },
   {
-    "rank": 253,
+    "rank": 240,
     "tier": "B",
     "name": "酶浓度调整",
     "element": "草",
@@ -4514,7 +4264,25 @@
     "desc": "减伤70%，应对攻击：自己回复20%生命。"
   },
   {
-    "rank": 254,
+    "rank": 241,
+    "tier": "B",
+    "name": "虫网",
+    "element": "虫",
+    "category": "魔法",
+    "cost": 0,
+    "power": 30,
+    "score": 17.2,
+    "type_coef": 0.75,
+    "is_pure_status": false,
+    "points": {
+      "威力": 15.0,
+      "回能": 6,
+      "属性系数": 0.75
+    },
+    "desc": "造成魔伤，自己回复1能量。"
+  },
+  {
+    "rank": 242,
     "tier": "B",
     "name": "冰天雪地",
     "element": "冰",
@@ -4531,7 +4299,7 @@
     "desc": "减伤70%，应对攻击：被应对技能能耗+3。"
   },
   {
-    "rank": 255,
+    "rank": 243,
     "tier": "B",
     "name": "磁暴",
     "element": "机械",
@@ -4548,7 +4316,7 @@
     "desc": "造成魔伤，本技能位于1号或3号位时，威力+30。传动1。"
   },
   {
-    "rank": 256,
+    "rank": 244,
     "tier": "B",
     "name": "龙威",
     "element": "龙",
@@ -4566,7 +4334,7 @@
     "desc": "获得1层龙噬印记。"
   },
   {
-    "rank": 257,
+    "rank": 245,
     "tier": "B",
     "name": "易燃物质",
     "element": "火",
@@ -4585,7 +4353,24 @@
     "desc": "造成魔伤，2连击，每次连击使敌方获得2层灼烧。"
   },
   {
-    "rank": 258,
+    "rank": 246,
+    "tier": "B",
+    "name": "拍击",
+    "element": "普通",
+    "category": "魔法",
+    "cost": 1,
+    "power": 60,
+    "score": 17.0,
+    "type_coef": 0.85,
+    "is_pure_status": false,
+    "points": {
+      "威力": 20.0,
+      "属性系数": 0.85
+    },
+    "desc": "对敌方精灵造成魔法伤害。"
+  },
+  {
+    "rank": 247,
     "tier": "B",
     "name": "花香",
     "element": "草",
@@ -4602,7 +4387,92 @@
     "desc": "对敌方精灵造成魔法伤害。"
   },
   {
-    "rank": 259,
+    "rank": 248,
+    "tier": "B",
+    "name": "许愿星",
+    "element": "普通",
+    "category": "魔法",
+    "cost": 3,
+    "power": 100,
+    "score": 17.0,
+    "type_coef": 0.85,
+    "is_pure_status": false,
+    "points": {
+      "威力": 20.0,
+      "属性系数": 0.85
+    },
+    "desc": "对敌方精灵造成魔法伤害。"
+  },
+  {
+    "rank": 249,
+    "tier": "B",
+    "name": "落星",
+    "element": "普通",
+    "category": "物理",
+    "cost": 0,
+    "power": 40,
+    "score": 17.0,
+    "type_coef": 0.85,
+    "is_pure_status": false,
+    "points": {
+      "威力": 20.0,
+      "属性系数": 0.85
+    },
+    "desc": "对敌方精灵造成物理伤害。"
+  },
+  {
+    "rank": 250,
+    "tier": "B",
+    "name": "猛烈撞击",
+    "element": "普通",
+    "category": "物理",
+    "cost": 1,
+    "power": 60,
+    "score": 17.0,
+    "type_coef": 0.85,
+    "is_pure_status": false,
+    "points": {
+      "威力": 20.0,
+      "属性系数": 0.85
+    },
+    "desc": "对敌方精灵造成物理伤害。"
+  },
+  {
+    "rank": 251,
+    "tier": "B",
+    "name": "扫尾",
+    "element": "普通",
+    "category": "物理",
+    "cost": 2,
+    "power": 80,
+    "score": 17.0,
+    "type_coef": 0.85,
+    "is_pure_status": false,
+    "points": {
+      "威力": 20.0,
+      "属性系数": 0.85
+    },
+    "desc": "对敌方精灵造成物理伤害。"
+  },
+  {
+    "rank": 252,
+    "tier": "B",
+    "name": "践踏",
+    "element": "普通",
+    "category": "物理",
+    "cost": 4,
+    "power": 120,
+    "score": 17.0,
+    "type_coef": 0.85,
+    "is_pure_status": false,
+    "points": {
+      "威力": 20.0,
+      "属性系数": 0.85
+    },
+    "desc": "对敌方精灵造成物理伤害。"
+  },
+  {
+    "rank": 253,
     "tier": "B",
     "name": "放晴",
     "element": "光",
@@ -4620,7 +4490,7 @@
     "desc": "光系技能威力永久+40%，应对防御：改为永久+80%。"
   },
   {
-    "rank": 260,
+    "rank": 254,
     "tier": "B",
     "name": "棘突",
     "element": "草",
@@ -4637,7 +4507,24 @@
     "desc": "对敌方精灵造成魔法伤害。"
   },
   {
-    "rank": 261,
+    "rank": 255,
+    "tier": "B",
+    "name": "湮灭",
+    "element": "普通",
+    "category": "魔法",
+    "cost": 5,
+    "power": 140,
+    "score": 17.0,
+    "type_coef": 0.85,
+    "is_pure_status": false,
+    "points": {
+      "威力": 20.0,
+      "属性系数": 0.85
+    },
+    "desc": "对敌方精灵造成魔法伤害。"
+  },
+  {
+    "rank": 256,
     "tier": "B",
     "name": "氧输送",
     "element": "草",
@@ -4655,7 +4542,7 @@
     "desc": "获得4能量，并获得魔攻+80%。"
   },
   {
-    "rank": 262,
+    "rank": 257,
     "tier": "B",
     "name": "叶绿光束",
     "element": "草",
@@ -4672,7 +4559,7 @@
     "desc": "对敌方精灵造成魔法伤害。"
   },
   {
-    "rank": 263,
+    "rank": 258,
     "tier": "B",
     "name": "顶端优势",
     "element": "草",
@@ -4689,7 +4576,24 @@
     "desc": "对敌方精灵造成物理伤害。"
   },
   {
-    "rank": 264,
+    "rank": 259,
+    "tier": "B",
+    "name": "压扁",
+    "element": "普通",
+    "category": "物理",
+    "cost": 5,
+    "power": 140,
+    "score": 17.0,
+    "type_coef": 0.85,
+    "is_pure_status": false,
+    "points": {
+      "威力": 20.0,
+      "属性系数": 0.85
+    },
+    "desc": "对敌方精灵造成物理伤害。"
+  },
+  {
+    "rank": 260,
     "tier": "B",
     "name": "撒娇",
     "element": "萌",
@@ -4706,6 +4610,74 @@
       "属性系数": 1.0
     },
     "desc": "造成魔伤，3连击，获得萌化：威力永久+20。"
+  },
+  {
+    "rank": 261,
+    "tier": "B",
+    "name": "飞踢",
+    "element": "普通",
+    "category": "物理",
+    "cost": 3,
+    "power": 100,
+    "score": 17.0,
+    "type_coef": 0.85,
+    "is_pure_status": false,
+    "points": {
+      "威力": 20.0,
+      "属性系数": 0.85
+    },
+    "desc": "对敌方精灵造成物理伤害。"
+  },
+  {
+    "rank": 262,
+    "tier": "B",
+    "name": "音爆",
+    "element": "普通",
+    "category": "魔法",
+    "cost": 4,
+    "power": 120,
+    "score": 17.0,
+    "type_coef": 0.85,
+    "is_pure_status": false,
+    "points": {
+      "威力": 20.0,
+      "属性系数": 0.85
+    },
+    "desc": "对敌方精灵造成魔法伤害。"
+  },
+  {
+    "rank": 263,
+    "tier": "B",
+    "name": "飞叶",
+    "element": "草",
+    "category": "物理",
+    "cost": 0,
+    "power": 40,
+    "score": 17.0,
+    "type_coef": 0.85,
+    "is_pure_status": false,
+    "points": {
+      "威力": 20.0,
+      "属性系数": 0.85
+    },
+    "desc": "对敌方精灵造成物理伤害。"
+  },
+  {
+    "rank": 264,
+    "tier": "B",
+    "name": "星星撞击",
+    "element": "普通",
+    "category": "魔法",
+    "cost": 2,
+    "power": 80,
+    "score": 17.0,
+    "type_coef": 0.85,
+    "is_pure_status": false,
+    "points": {
+      "威力": 20.0,
+      "属性系数": 0.85
+    },
+    "desc": "对敌方精灵造成魔法伤害。"
   },
   {
     "rank": 265,
@@ -4747,23 +4719,6 @@
   {
     "rank": 267,
     "tier": "B",
-    "name": "吞噬",
-    "element": "普通",
-    "category": "物理",
-    "cost": 6,
-    "power": 135,
-    "score": 16.9,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 16.9,
-      "属性系数": 1.0
-    },
-    "desc": "造成物伤，若释放本技能击败敌方，回复6能量。"
-  },
-  {
-    "rank": 268,
-    "tier": "B",
     "name": "碎冰冰",
     "element": "冰",
     "category": "魔法",
@@ -4780,7 +4735,7 @@
     "desc": "造成魔伤，敌方每有1层冻结，本次技能威力+20。"
   },
   {
-    "rank": 269,
+    "rank": 268,
     "tier": "B",
     "name": "离子震荡",
     "element": "机械",
@@ -4797,7 +4752,7 @@
     "desc": "造成魔伤，本技能位于3号位时，威力+40。传动1。"
   },
   {
-    "rank": 270,
+    "rank": 269,
     "tier": "B",
     "name": "械斗",
     "element": "机械",
@@ -4814,7 +4769,7 @@
     "desc": "造成物伤，本技能位于1号位时，威力+60。传动1。"
   },
   {
-    "rank": 271,
+    "rank": 270,
     "tier": "B",
     "name": "汲取",
     "element": "草",
@@ -4832,7 +4787,7 @@
     "desc": "造成魔伤，并吸血100%。"
   },
   {
-    "rank": 272,
+    "rank": 271,
     "tier": "B",
     "name": "剧毒",
     "element": "毒",
@@ -4850,7 +4805,7 @@
     "desc": "敌方获得3层中毒，应对防御：改为获得8层。"
   },
   {
-    "rank": 273,
+    "rank": 272,
     "tier": "B",
     "name": "齿轮切开",
     "element": "机械",
@@ -4867,7 +4822,7 @@
     "desc": "造成物伤，本技能位于1号或3号位时能耗-2。传动1。"
   },
   {
-    "rank": 274,
+    "rank": 273,
     "tier": "B",
     "name": "刺盾",
     "element": "地",
@@ -4885,24 +4840,25 @@
     "desc": "减伤70%，应对攻击：敌方获得物攻-50%。"
   },
   {
-    "rank": 275,
+    "rank": 274,
     "tier": "B",
-    "name": "穿膛",
+    "name": "重击",
     "element": "普通",
     "category": "物理",
     "cost": 2,
-    "power": 65,
+    "power": 100,
     "score": 16.2,
-    "type_coef": 1.0,
+    "type_coef": 0.85,
     "is_pure_status": false,
     "points": {
-      "威力": 16.2,
-      "属性系数": 1.0
+      "威力": 25.0,
+      "能耗永久+": -5,
+      "属性系数": 0.85
     },
-    "desc": "造成物伤，若敌方能量小于等于2，造成5倍伤害。"
+    "desc": "造成物伤，每次使用后，本技能能耗永久+1。"
   },
   {
-    "rank": 276,
+    "rank": 275,
     "tier": "B",
     "name": "吹炎",
     "element": "龙",
@@ -4920,24 +4876,7 @@
     "desc": "蓄力，造成物伤，应对状态：本次技能威力翻倍。"
   },
   {
-    "rank": 277,
-    "tier": "B",
-    "name": "当头棒喝",
-    "element": "普通",
-    "category": "物理",
-    "cost": 3,
-    "power": 80,
-    "score": 16.0,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 16.0,
-      "属性系数": 1.0
-    },
-    "desc": "造成物伤，若敌方本回合替换精灵，本次技能威力+150。"
-  },
-  {
-    "rank": 278,
+    "rank": 276,
     "tier": "B",
     "name": "破罐破摔",
     "element": "萌",
@@ -4954,7 +4893,24 @@
     "desc": "造成魔伤，自己有减益时，本次技能威力+60。"
   },
   {
-    "rank": 279,
+    "rank": 277,
+    "tier": "B",
+    "name": "打鼾",
+    "element": "普通",
+    "category": "魔法",
+    "cost": 6,
+    "power": 150,
+    "score": 15.9,
+    "type_coef": 0.85,
+    "is_pure_status": false,
+    "points": {
+      "威力": 18.8,
+      "属性系数": 0.85
+    },
+    "desc": "对敌方精灵造成魔法伤害。"
+  },
+  {
+    "rank": 278,
     "tier": "B",
     "name": "仙人掌刺击",
     "element": "草",
@@ -4971,25 +4927,7 @@
     "desc": "对敌方精灵造成物理伤害。"
   },
   {
-    "rank": 280,
-    "tier": "B",
-    "name": "闪燃",
-    "element": "火",
-    "category": "物理",
-    "cost": 1,
-    "power": 35,
-    "score": 15.8,
-    "type_coef": 1.1,
-    "is_pure_status": false,
-    "points": {
-      "威力": 11.7,
-      "威力×4": 3,
-      "属性系数": 1.1
-    },
-    "desc": "造成物伤，应对状态：本次技能威力变为4倍。"
-  },
-  {
-    "rank": 281,
+    "rank": 279,
     "tier": "B",
     "name": "冰点",
     "element": "冰",
@@ -5007,7 +4945,7 @@
     "desc": "敌方获得5层冻结，应对防御：额外获得5层。"
   },
   {
-    "rank": 282,
+    "rank": 280,
     "tier": "B",
     "name": "霜降",
     "element": "冰",
@@ -5025,7 +4963,25 @@
     "desc": "敌方获得4层冻结效果。"
   },
   {
-    "rank": 283,
+    "rank": 281,
+    "tier": "B",
+    "name": "双联脉冲",
+    "element": "电",
+    "category": "魔法",
+    "cost": 4,
+    "power": 50,
+    "score": 15.5,
+    "type_coef": 0.9,
+    "is_pure_status": false,
+    "points": {
+      "威力": 8.3,
+      "迸发": 8,
+      "属性系数": 0.9
+    },
+    "desc": "造成魔伤，迸发：本技能使用次数+1。"
+  },
+  {
+    "rank": 282,
     "tier": "B",
     "name": "彼岸之手",
     "element": "恶",
@@ -5043,43 +4999,7 @@
     "desc": "造成物伤，自己每失去10%生命，本技能能耗-1。"
   },
   {
-    "rank": 284,
-    "tier": "B",
-    "name": "突袭",
-    "element": "普通",
-    "category": "魔法",
-    "cost": 2,
-    "power": 50,
-    "score": 15.5,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 12.5,
-      "威力×3": 3,
-      "属性系数": 1.0
-    },
-    "desc": "造成魔伤，应对状态：本次技能威力变为3倍。"
-  },
-  {
-    "rank": 285,
-    "tier": "B",
-    "name": "无影脚",
-    "element": "武",
-    "category": "物理",
-    "cost": 3,
-    "power": 75,
-    "score": 15.5,
-    "type_coef": 0.9,
-    "is_pure_status": false,
-    "points": {
-      "威力": 15.0,
-      "威力×2": 2,
-      "属性系数": 0.9
-    },
-    "desc": "造成物伤，应对状态：本次技能威力变为2倍。"
-  },
-  {
-    "rank": 286,
+    "rank": 283,
     "tier": "B",
     "name": "以毒攻毒",
     "element": "毒",
@@ -5098,25 +5018,7 @@
     "desc": "敌方每有1层中毒效果，自己获得魔攻+30%。"
   },
   {
-    "rank": 287,
-    "tier": "B",
-    "name": "虫击",
-    "element": "虫",
-    "category": "物理",
-    "cost": 3,
-    "power": 90,
-    "score": 15.5,
-    "type_coef": 0.75,
-    "is_pure_status": false,
-    "points": {
-      "威力": 18.0,
-      "威力×2": 2,
-      "属性系数": 0.75
-    },
-    "desc": "造成物伤，应对状态：本次技能威力变为2倍，无视敌方系别抵抗。"
-  },
-  {
-    "rank": 288,
+    "rank": 284,
     "tier": "B",
     "name": "腐化",
     "element": "毒",
@@ -5136,7 +5038,7 @@
     "desc": "敌方每有1层中毒效果，敌方获得双攻-30%。"
   },
   {
-    "rank": 289,
+    "rank": 285,
     "tier": "B",
     "name": "流沙",
     "element": "地",
@@ -5156,7 +5058,24 @@
     "desc": "敌方3回合无法更换精灵，应对防御：敌方获得双防-60%。"
   },
   {
-    "rank": 290,
+    "rank": 286,
+    "tier": "B",
+    "name": "逆袭",
+    "element": "普通",
+    "category": "物理",
+    "cost": 3,
+    "power": 90,
+    "score": 15.3,
+    "type_coef": 0.85,
+    "is_pure_status": false,
+    "points": {
+      "威力": 18.0,
+      "属性系数": 0.85
+    },
+    "desc": "造成物伤，本技能能耗每+1，威力+45。"
+  },
+  {
+    "rank": 287,
     "tier": "B",
     "name": "捆缚",
     "element": "虫",
@@ -5175,7 +5094,7 @@
     "desc": "敌方获得2层中毒，获得1次奉献：敌方获得2层中毒。"
   },
   {
-    "rank": 291,
+    "rank": 288,
     "tier": "B",
     "name": "摇篮曲",
     "element": "普通",
@@ -5183,7 +5102,7 @@
     "cost": 5,
     "power": 0,
     "score": 15,
-    "type_coef": 1.0,
+    "type_coef": 0.85,
     "is_pure_status": true,
     "points": {
       "打断应对": 14,
@@ -5195,7 +5114,7 @@
     "desc": "敌方获得全技能能耗+3，应对防御：额外造成打断，且敌方下回合获得眩晕。"
   },
   {
-    "rank": 292,
+    "rank": 289,
     "tier": "B",
     "name": "尾后针",
     "element": "虫",
@@ -5212,7 +5131,24 @@
     "desc": "对敌方精灵造成物理伤害。"
   },
   {
-    "rank": 293,
+    "rank": 290,
+    "tier": "B",
+    "name": "蛰针",
+    "element": "虫",
+    "category": "物理",
+    "cost": 0,
+    "power": 40,
+    "score": 15.0,
+    "type_coef": 0.75,
+    "is_pure_status": false,
+    "points": {
+      "威力": 20.0,
+      "属性系数": 0.75
+    },
+    "desc": "对敌方精灵造成物理伤害。"
+  },
+  {
+    "rank": 291,
     "tier": "B",
     "name": "恶意逃离",
     "element": "恶",
@@ -5231,25 +5167,7 @@
     "desc": "脱离，应对防御：额外使敌方攻击技能能耗+6。"
   },
   {
-    "rank": 294,
-    "tier": "B",
-    "name": "爆冲",
-    "element": "武",
-    "category": "物理",
-    "cost": 3,
-    "power": 50,
-    "score": 15.0,
-    "type_coef": 0.9,
-    "is_pure_status": false,
-    "points": {
-      "威力": 10.0,
-      "威力×5": 6,
-      "属性系数": 0.9
-    },
-    "desc": "造成物伤，应对状态：本次技能威力变为5倍。"
-  },
-  {
-    "rank": 295,
+    "rank": 292,
     "tier": "B",
     "name": "噬心",
     "element": "虫",
@@ -5266,7 +5184,7 @@
     "desc": "对敌方精灵造成物理伤害。"
   },
   {
-    "rank": 296,
+    "rank": 293,
     "tier": "B",
     "name": "虫蛊",
     "element": "虫",
@@ -5283,7 +5201,7 @@
     "desc": "对敌方精灵造成魔法伤害。"
   },
   {
-    "rank": 297,
+    "rank": 294,
     "tier": "B",
     "name": "趁火打劫",
     "element": "恶",
@@ -5301,25 +5219,7 @@
     "desc": "造成物伤，2连击，若击败敌方，本技能连击数永久+2。"
   },
   {
-    "rank": 298,
-    "tier": "B",
-    "name": "追打",
-    "element": "普通",
-    "category": "魔法",
-    "cost": 3,
-    "power": 65,
-    "score": 15.0,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 13.0,
-      "1连击": 2,
-      "属性系数": 1.0
-    },
-    "desc": "造成魔伤，1连击，应对状态：本技能变为3连击。"
-  },
-  {
-    "rank": 299,
+    "rank": 295,
     "tier": "B",
     "name": "电磁偏转",
     "element": "电",
@@ -5337,7 +5237,7 @@
     "desc": "减伤60%，应对攻击：下回合所选技能使用次数+1。"
   },
   {
-    "rank": 300,
+    "rank": 296,
     "tier": "B",
     "name": "网缚",
     "element": "虫",
@@ -5355,7 +5255,7 @@
     "desc": "造成物伤，敌方获得物防-30%。"
   },
   {
-    "rank": 301,
+    "rank": 297,
     "tier": "B",
     "name": "虫群过境",
     "element": "虫",
@@ -5374,26 +5274,7 @@
     "desc": "造成物伤，2连击。获得1次奉献：获得连击数+1。"
   },
   {
-    "rank": 302,
-    "tier": "B",
-    "name": "啄击",
-    "element": "翼",
-    "category": "物理",
-    "cost": 0,
-    "power": 15,
-    "score": 14.8,
-    "type_coef": 0.9,
-    "is_pure_status": false,
-    "points": {
-      "威力": 7.5,
-      "0费奖励": 5,
-      "2连击": 3,
-      "属性系数": 0.9
-    },
-    "desc": "造成物伤，2连击。"
-  },
-  {
-    "rank": 303,
+    "rank": 298,
     "tier": "B",
     "name": "强制重启",
     "element": "电",
@@ -5410,7 +5291,7 @@
     "desc": "造成魔伤，应对状态：回合结束时使敌方精灵返场。"
   },
   {
-    "rank": 304,
+    "rank": 299,
     "tier": "B",
     "name": "钢铁洪流",
     "element": "机械",
@@ -5427,7 +5308,7 @@
     "desc": "造成物伤，本技能位于1号位时威力+90。传动2。"
   },
   {
-    "rank": 305,
+    "rank": 300,
     "tier": "B",
     "name": "回旋踢",
     "element": "武",
@@ -5444,7 +5325,24 @@
     "desc": "造成物伤，若敌方本回合更换精灵，本次技能威力翻倍。"
   },
   {
-    "rank": 306,
+    "rank": 301,
+    "tier": "B",
+    "name": "吞噬",
+    "element": "普通",
+    "category": "物理",
+    "cost": 6,
+    "power": 135,
+    "score": 14.3,
+    "type_coef": 0.85,
+    "is_pure_status": false,
+    "points": {
+      "威力": 16.9,
+      "属性系数": 0.85
+    },
+    "desc": "造成物伤，若释放本技能击败敌方，回复6能量。"
+  },
+  {
+    "rank": 302,
     "tier": "B",
     "name": "牵连",
     "element": "恶",
@@ -5461,7 +5359,7 @@
     "desc": "造成魔伤，敌方每有1只力竭精灵，本次技能威力+30。"
   },
   {
-    "rank": 307,
+    "rank": 303,
     "tier": "B",
     "name": "龙之利爪",
     "element": "龙",
@@ -5480,7 +5378,7 @@
     "desc": "蓄力，造成物伤并吸血50%。"
   },
   {
-    "rank": 308,
+    "rank": 304,
     "tier": "B",
     "name": "撕咬",
     "element": "恶",
@@ -5498,42 +5396,41 @@
     "desc": "造成物伤，3连击，若自己的生命低于50%，本次技能连击数+2。"
   },
   {
-    "rank": 309,
-    "tier": "B",
-    "name": "乘胜追击",
-    "element": "普通",
-    "category": "物理",
-    "cost": 2,
-    "power": 40,
-    "score": 14.0,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 10.0,
-      "连击数+": 4,
-      "属性系数": 1.0
-    },
-    "desc": "造成物伤，1连击，每次使用后，本技能连击数永久+1。"
-  },
-  {
-    "rank": 310,
+    "rank": 305,
     "tier": "C",
-    "name": "见招拆招",
+    "name": "穿膛",
     "element": "普通",
     "category": "物理",
     "cost": 2,
-    "power": 55,
+    "power": 65,
     "score": 13.8,
-    "type_coef": 1.0,
+    "type_coef": 0.85,
     "is_pure_status": false,
     "points": {
-      "威力": 13.8,
-      "属性系数": 1.0
+      "威力": 16.2,
+      "属性系数": 0.85
     },
-    "desc": "造成物伤，若上回合使用状态技能，本次技能威力+50。"
+    "desc": "造成物伤，若敌方能量小于等于2，造成5倍伤害。"
   },
   {
-    "rank": 311,
+    "rank": 306,
+    "tier": "C",
+    "name": "当头棒喝",
+    "element": "普通",
+    "category": "物理",
+    "cost": 3,
+    "power": 80,
+    "score": 13.6,
+    "type_coef": 0.85,
+    "is_pure_status": false,
+    "points": {
+      "威力": 16.0,
+      "属性系数": 0.85
+    },
+    "desc": "造成物伤，若敌方本回合替换精灵，本次技能威力+150。"
+  },
+  {
+    "rank": 307,
     "tier": "C",
     "name": "咆哮",
     "element": "普通",
@@ -5541,7 +5438,7 @@
     "cost": 1,
     "power": 0,
     "score": 13.6,
-    "type_coef": 1.0,
+    "type_coef": 0.85,
     "is_pure_status": true,
     "points": {
       "敌物攻-130%": 20.6,
@@ -5551,7 +5448,7 @@
     "desc": "敌方获得物攻-130%。"
   },
   {
-    "rank": 312,
+    "rank": 308,
     "tier": "C",
     "name": "针刺射击",
     "element": "草",
@@ -5568,7 +5465,7 @@
     "desc": "造成物伤。"
   },
   {
-    "rank": 313,
+    "rank": 309,
     "tier": "C",
     "name": "筛管奔流",
     "element": "草",
@@ -5585,7 +5482,7 @@
     "desc": "造成物伤，自己生命大于80%时，本次技能威力+75。"
   },
   {
-    "rank": 314,
+    "rank": 310,
     "tier": "C",
     "name": "感电",
     "element": "电",
@@ -5602,24 +5499,7 @@
     "desc": "造成魔伤，每离场1次，本技能使用次数永久+1。"
   },
   {
-    "rank": 315,
-    "tier": "C",
-    "name": "垂死反击",
-    "element": "普通",
-    "category": "物理",
-    "cost": 4,
-    "power": 80,
-    "score": 13.3,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 13.3,
-      "属性系数": 1.0
-    },
-    "desc": "造成物伤，自己每失去5%生命，本次技能威力+5。"
-  },
-  {
-    "rank": 316,
+    "rank": 311,
     "tier": "C",
     "name": "孢子爆散",
     "element": "草",
@@ -5637,7 +5517,7 @@
     "desc": "造成物伤，1连击，每次使用后，本技能连击数永久+2。"
   },
   {
-    "rank": 317,
+    "rank": 312,
     "tier": "C",
     "name": "降灵",
     "element": "幽",
@@ -5645,7 +5525,7 @@
     "cost": 2,
     "power": 0,
     "score": 13,
-    "type_coef": 1.0,
+    "type_coef": 1.1,
     "is_pure_status": true,
     "points": {
       "降灵印记": 24,
@@ -5655,7 +5535,7 @@
     "desc": "敌方获得1层降灵印记。"
   },
   {
-    "rank": 318,
+    "rank": 313,
     "tier": "C",
     "name": "棘刺",
     "element": "普通",
@@ -5663,7 +5543,7 @@
     "cost": 2,
     "power": 0,
     "score": 13,
-    "type_coef": 1.0,
+    "type_coef": 0.85,
     "is_pure_status": true,
     "points": {
       "棘刺印记": 24,
@@ -5673,25 +5553,7 @@
     "desc": "敌方获得1层棘刺印记。"
   },
   {
-    "rank": 319,
-    "tier": "C",
-    "name": "后发制人",
-    "element": "普通",
-    "category": "物理",
-    "cost": 3,
-    "power": 140,
-    "score": 13.0,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 28.0,
-      "先手-1": -15,
-      "属性系数": 1.0
-    },
-    "desc": "造成物理伤害，先手-1。"
-  },
-  {
-    "rank": 320,
+    "rank": 314,
     "tier": "C",
     "name": "休息回复",
     "element": "普通",
@@ -5699,7 +5561,7 @@
     "cost": 2,
     "power": 0,
     "score": 13.0,
-    "type_coef": 1.0,
+    "type_coef": 0.85,
     "is_pure_status": true,
     "points": {
       "回血": 24.0,
@@ -5709,7 +5571,7 @@
     "desc": "自己回复30%生命。"
   },
   {
-    "rank": 321,
+    "rank": 315,
     "tier": "C",
     "name": "钧势",
     "element": "地",
@@ -5728,7 +5590,7 @@
     "desc": "自己获得物防+140%和速度-30。"
   },
   {
-    "rank": 322,
+    "rank": 316,
     "tier": "C",
     "name": "淬火",
     "element": "火",
@@ -5746,25 +5608,7 @@
     "desc": "减伤70%，应对攻击：下次攻击技能威力翻倍。"
   },
   {
-    "rank": 323,
-    "tier": "C",
-    "name": "能量炮",
-    "element": "普通",
-    "category": "魔法",
-    "cost": 3,
-    "power": 50,
-    "score": 13.0,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 10.0,
-      "2连击": 3,
-      "属性系数": 1.0
-    },
-    "desc": "造成魔伤，2连击。"
-  },
-  {
-    "rank": 324,
+    "rank": 317,
     "tier": "C",
     "name": "增程电池",
     "element": "电",
@@ -5782,7 +5626,7 @@
     "desc": "自己获得1层蓄电印记。"
   },
   {
-    "rank": 325,
+    "rank": 318,
     "tier": "C",
     "name": "超级糖果",
     "element": "萌",
@@ -5800,7 +5644,7 @@
     "desc": "造成物伤，自己获得萌化：本次技能威力+60。"
   },
   {
-    "rank": 326,
+    "rank": 319,
     "tier": "C",
     "name": "恶作剧",
     "element": "幽",
@@ -5808,7 +5652,7 @@
     "cost": 0,
     "power": 0,
     "score": 13,
-    "type_coef": 1.0,
+    "type_coef": 1.1,
     "is_pure_status": true,
     "points": {
       "烧能量": 12,
@@ -5818,7 +5662,7 @@
     "desc": "敌方失去3能量，应对防御：改为敌方失去6能量。"
   },
   {
-    "rank": 327,
+    "rank": 320,
     "tier": "C",
     "name": "聒噪",
     "element": "普通",
@@ -5826,7 +5670,7 @@
     "cost": 1,
     "power": 0,
     "score": 13,
-    "type_coef": 1.0,
+    "type_coef": 0.85,
     "is_pure_status": true,
     "points": {
       "敌加费": 6,
@@ -5837,7 +5681,7 @@
     "desc": "敌方获得全攻击技能能耗+3。"
   },
   {
-    "rank": 328,
+    "rank": 321,
     "tier": "C",
     "name": "疾风连袭",
     "element": "翼",
@@ -5855,7 +5699,25 @@
     "desc": "释放自己释放过的迅捷技能，其能耗之和的二分之一加至本技能能耗，每次使用后能耗+1。"
   },
   {
-    "rank": 329,
+    "rank": 322,
+    "tier": "C",
+    "name": "追打",
+    "element": "普通",
+    "category": "魔法",
+    "cost": 3,
+    "power": 65,
+    "score": 13.0,
+    "type_coef": 0.85,
+    "is_pure_status": false,
+    "points": {
+      "威力": 13.0,
+      "1连击": 2,
+      "属性系数": 0.85
+    },
+    "desc": "造成魔伤，1连击，应对状态：本技能变为3连击。"
+  },
+  {
+    "rank": 323,
     "tier": "C",
     "name": "打雪仗",
     "element": "冰",
@@ -5873,7 +5735,7 @@
     "desc": "造成魔伤，2连击。"
   },
   {
-    "rank": 330,
+    "rank": 324,
     "tier": "C",
     "name": "扇风",
     "element": "翼",
@@ -5890,25 +5752,7 @@
     "desc": "造成物伤，若先于敌方攻击，本次技能威力+50%。"
   },
   {
-    "rank": 331,
-    "tier": "C",
-    "name": "技巧打击",
-    "element": "武",
-    "category": "物理",
-    "cost": 2,
-    "power": 25,
-    "score": 12.6,
-    "type_coef": 0.9,
-    "is_pure_status": false,
-    "points": {
-      "威力": 6.2,
-      "威力×10": 7,
-      "属性系数": 0.9
-    },
-    "desc": "造成物伤，应对状态：本次技能威力变为10倍。"
-  },
-  {
-    "rank": 332,
+    "rank": 325,
     "tier": "C",
     "name": "叠势",
     "element": "武",
@@ -5926,7 +5770,25 @@
     "desc": "造成魔伤，2连击，每成功应对1次，本技能连击数永久+2。"
   },
   {
-    "rank": 333,
+    "rank": 326,
+    "tier": "C",
+    "name": "乘胜追击",
+    "element": "普通",
+    "category": "物理",
+    "cost": 2,
+    "power": 40,
+    "score": 12.5,
+    "type_coef": 0.85,
+    "is_pure_status": false,
+    "points": {
+      "威力": 10.0,
+      "连击数+": 4,
+      "属性系数": 0.85
+    },
+    "desc": "造成物伤，1连击，每次使用后，本技能连击数永久+1。"
+  },
+  {
+    "rank": 327,
     "tier": "C",
     "name": "双响炮",
     "element": "火",
@@ -5944,7 +5806,7 @@
     "desc": "造成物伤，2连击。"
   },
   {
-    "rank": 334,
+    "rank": 328,
     "tier": "C",
     "name": "破防",
     "element": "武",
@@ -5965,41 +5827,7 @@
     "desc": "敌方获得双防-130%，应对防御：额外使被应对技能冷却2回合。"
   },
   {
-    "rank": 335,
-    "tier": "C",
-    "name": "触底强击",
-    "element": "普通",
-    "category": "魔法",
-    "cost": 3,
-    "power": 60,
-    "score": 12.0,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 12.0,
-      "属性系数": 1.0
-    },
-    "desc": "造成魔伤，释放后若能量耗尽，本次攻击威力+100。"
-  },
-  {
-    "rank": 336,
-    "tier": "C",
-    "name": "气势一击",
-    "element": "普通",
-    "category": "物理",
-    "cost": 3,
-    "power": 60,
-    "score": 12.0,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 12.0,
-      "属性系数": 1.0
-    },
-    "desc": "造成物伤，若上回合应对成功，本次技能威力+240。"
-  },
-  {
-    "rank": 337,
+    "rank": 329,
     "tier": "C",
     "name": "鸣沙陷阱",
     "element": "地",
@@ -6016,7 +5844,7 @@
     "desc": "造成物伤，物防比敌方越高，本次技能威力越高。"
   },
   {
-    "rank": 338,
+    "rank": 330,
     "tier": "C",
     "name": "草虫冲击",
     "element": "虫",
@@ -6033,7 +5861,7 @@
     "desc": "造成物伤，若敌方本回合更换精灵，本次威力+50且无视敌方系别抵抗。"
   },
   {
-    "rank": 339,
+    "rank": 331,
     "tier": "C",
     "name": "黑手",
     "element": "恶",
@@ -6051,7 +5879,7 @@
     "desc": "造成魔伤，2连击。"
   },
   {
-    "rank": 340,
+    "rank": 332,
     "tier": "C",
     "name": "暗箱操作",
     "element": "恶",
@@ -6071,7 +5899,24 @@
     "desc": "自己获得双攻和双防-100%，应对防御：改为敌方-100%。"
   },
   {
-    "rank": 341,
+    "rank": 333,
+    "tier": "C",
+    "name": "见招拆招",
+    "element": "普通",
+    "category": "物理",
+    "cost": 2,
+    "power": 55,
+    "score": 11.7,
+    "type_coef": 0.85,
+    "is_pure_status": false,
+    "points": {
+      "威力": 13.8,
+      "属性系数": 0.85
+    },
+    "desc": "造成物伤，若上回合使用状态技能，本次技能威力+50。"
+  },
+  {
+    "rank": 334,
     "tier": "C",
     "name": "引燃",
     "element": "火",
@@ -6089,7 +5934,25 @@
     "desc": "敌方获得10层灼烧效果。"
   },
   {
-    "rank": 342,
+    "rank": 335,
+    "tier": "C",
+    "name": "能量炮",
+    "element": "普通",
+    "category": "魔法",
+    "cost": 3,
+    "power": 50,
+    "score": 11.5,
+    "type_coef": 0.85,
+    "is_pure_status": false,
+    "points": {
+      "威力": 10.0,
+      "2连击": 3,
+      "属性系数": 0.85
+    },
+    "desc": "造成魔伤，2连击。"
+  },
+  {
+    "rank": 336,
     "tier": "C",
     "name": "乘风",
     "element": "翼",
@@ -6107,7 +5970,43 @@
     "desc": "自己获得速度+120。"
   },
   {
-    "rank": 343,
+    "rank": 337,
+    "tier": "C",
+    "name": "垂死反击",
+    "element": "普通",
+    "category": "物理",
+    "cost": 4,
+    "power": 80,
+    "score": 11.3,
+    "type_coef": 0.85,
+    "is_pure_status": false,
+    "points": {
+      "威力": 13.3,
+      "属性系数": 0.85
+    },
+    "desc": "造成物伤，自己每失去5%生命，本次技能威力+5。"
+  },
+  {
+    "rank": 338,
+    "tier": "C",
+    "name": "引雷",
+    "element": "电",
+    "category": "魔法",
+    "cost": 3,
+    "power": 35,
+    "score": 11.3,
+    "type_coef": 0.9,
+    "is_pure_status": false,
+    "points": {
+      "威力": 7.0,
+      "迸发": 2,
+      "2连击": 3,
+      "属性系数": 0.9
+    },
+    "desc": "造成魔伤，2连击，迸发：本次技能威力+15。"
+  },
+  {
+    "rank": 339,
     "tier": "C",
     "name": "星轨裂变",
     "element": "幻",
@@ -6125,7 +6024,7 @@
     "desc": "敌方获得2层星陨。"
   },
   {
-    "rank": 344,
+    "rank": 340,
     "tier": "C",
     "name": "示弱",
     "element": "萌",
@@ -6144,7 +6043,7 @@
     "desc": "自己获得萌化：速度永久+150。"
   },
   {
-    "rank": 345,
+    "rank": 341,
     "tier": "C",
     "name": "超维投射",
     "element": "幻",
@@ -6162,7 +6061,7 @@
     "desc": "敌方获得4层星陨。"
   },
   {
-    "rank": 346,
+    "rank": 342,
     "tier": "C",
     "name": "过载回路",
     "element": "电",
@@ -6180,7 +6079,7 @@
     "desc": "自己返场，下回合所选技能使用次数+1。"
   },
   {
-    "rank": 347,
+    "rank": 343,
     "tier": "C",
     "name": "根吸收",
     "element": "草",
@@ -6199,7 +6098,7 @@
     "desc": "自己回复15%生命和4能量。"
   },
   {
-    "rank": 348,
+    "rank": 344,
     "tier": "C",
     "name": "反弹",
     "element": "萌",
@@ -6218,7 +6117,7 @@
     "desc": "将自己的萌化转移给敌方。"
   },
   {
-    "rank": 349,
+    "rank": 345,
     "tier": "C",
     "name": "飞断",
     "element": "虫",
@@ -6236,7 +6135,7 @@
     "desc": "造成物伤，获得1次奉献：威力+20。"
   },
   {
-    "rank": 350,
+    "rank": 346,
     "tier": "C",
     "name": "极限撕裂",
     "element": "恶",
@@ -6254,7 +6153,7 @@
     "desc": "造成物伤，若生命高于50%，使用后自己获得双攻-50%。"
   },
   {
-    "rank": 351,
+    "rank": 347,
     "tier": "C",
     "name": "石肤术",
     "element": "地",
@@ -6273,7 +6172,7 @@
     "desc": "自己获得物防+160%和魔防-60%。"
   },
   {
-    "rank": 352,
+    "rank": 348,
     "tier": "C",
     "name": "刺藤",
     "element": "草",
@@ -6291,7 +6190,7 @@
     "desc": "造成物伤，2连击。"
   },
   {
-    "rank": 353,
+    "rank": 349,
     "tier": "C",
     "name": "涌泉",
     "element": "水",
@@ -6309,7 +6208,7 @@
     "desc": "造成魔伤，本技能能耗每-1，威力+10。"
   },
   {
-    "rank": 354,
+    "rank": 350,
     "tier": "C",
     "name": "缠丝劲",
     "element": "武",
@@ -6327,7 +6226,41 @@
     "desc": "造成物伤，2连击。"
   },
   {
-    "rank": 355,
+    "rank": 351,
+    "tier": "C",
+    "name": "触底强击",
+    "element": "普通",
+    "category": "魔法",
+    "cost": 3,
+    "power": 60,
+    "score": 10.2,
+    "type_coef": 0.85,
+    "is_pure_status": false,
+    "points": {
+      "威力": 12.0,
+      "属性系数": 0.85
+    },
+    "desc": "造成魔伤，释放后若能量耗尽，本次攻击威力+100。"
+  },
+  {
+    "rank": 352,
+    "tier": "C",
+    "name": "气势一击",
+    "element": "普通",
+    "category": "物理",
+    "cost": 3,
+    "power": 60,
+    "score": 10.2,
+    "type_coef": 0.85,
+    "is_pure_status": false,
+    "points": {
+      "威力": 12.0,
+      "属性系数": 0.85
+    },
+    "desc": "造成物伤，若上回合应对成功，本次技能威力+240。"
+  },
+  {
+    "rank": 353,
     "tier": "C",
     "name": "种皮爆裂",
     "element": "草",
@@ -6345,7 +6278,7 @@
     "desc": "造成物伤，2连击。"
   },
   {
-    "rank": 356,
+    "rank": 354,
     "tier": "C",
     "name": "风隐",
     "element": "翼",
@@ -6364,7 +6297,7 @@
     "desc": "敌方和自己均脱离。先手-1。"
   },
   {
-    "rank": 357,
+    "rank": 355,
     "tier": "C",
     "name": "传感器",
     "element": "机械",
@@ -6382,7 +6315,25 @@
     "desc": "造成物伤，2连击。本技能位于1号或3号位时，连击数+1。传动1。"
   },
   {
-    "rank": 358,
+    "rank": 356,
+    "tier": "C",
+    "name": "啄击",
+    "element": "翼",
+    "category": "物理",
+    "cost": 0,
+    "power": 15,
+    "score": 9.8,
+    "type_coef": 0.9,
+    "is_pure_status": false,
+    "points": {
+      "威力": 7.5,
+      "2连击": 3,
+      "属性系数": 0.9
+    },
+    "desc": "造成物伤，2连击。"
+  },
+  {
+    "rank": 357,
     "tier": "C",
     "name": "虫群",
     "element": "虫",
@@ -6401,7 +6352,7 @@
     "desc": "造成物伤，1连击，本技能会受奉献影响。"
   },
   {
-    "rank": 359,
+    "rank": 358,
     "tier": "C",
     "name": "花炮",
     "element": "草",
@@ -6418,6 +6369,24 @@
       "打断风险": -3
     },
     "desc": "2连击，每次连击自己获得魔攻+50%。"
+  },
+  {
+    "rank": 359,
+    "tier": "C",
+    "name": "灵光",
+    "element": "幽",
+    "category": "魔法",
+    "cost": 3,
+    "power": 25,
+    "score": 9.5,
+    "type_coef": 1.1,
+    "is_pure_status": false,
+    "points": {
+      "威力": 5.0,
+      "连击数+": 4,
+      "属性系数": 1.1
+    },
+    "desc": "造成魔伤，3连击，若敌方本回合替换精灵，本次技能连击数翻倍。"
   },
   {
     "rank": 360,
@@ -6503,7 +6472,7 @@
     "cost": 2,
     "power": 0,
     "score": 9.0,
-    "type_coef": 1.0,
+    "type_coef": 0.85,
     "is_pure_status": true,
     "points": {
       "回血": 20.0,
@@ -6521,7 +6490,7 @@
     "cost": 2,
     "power": 0,
     "score": 9.0,
-    "type_coef": 1.0,
+    "type_coef": 0.85,
     "is_pure_status": true,
     "points": {
       "萌化(1层)": 20.0,
@@ -6532,42 +6501,6 @@
   },
   {
     "rank": 366,
-    "tier": "C",
-    "name": "旋转突击",
-    "element": "普通",
-    "category": "物理",
-    "cost": 3,
-    "power": 30,
-    "score": 9.0,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 6.0,
-      "3连击": 3,
-      "属性系数": 1.0
-    },
-    "desc": "造成物伤，3连击。"
-  },
-  {
-    "rank": 367,
-    "tier": "C",
-    "name": "连续爪击",
-    "element": "普通",
-    "category": "物理",
-    "cost": 2,
-    "power": 20,
-    "score": 9.0,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 5.0,
-      "连击数+": 4,
-      "属性系数": 1.0
-    },
-    "desc": "造成物伤，2连击，应对状态：本次连击数翻倍。"
-  },
-  {
-    "rank": 368,
     "tier": "C",
     "name": "徒长",
     "element": "草",
@@ -6585,7 +6518,7 @@
     "desc": "自己回复10能量。"
   },
   {
-    "rank": 369,
+    "rank": 367,
     "tier": "C",
     "name": "闪击",
     "element": "翼",
@@ -6602,7 +6535,7 @@
     "desc": "造成物伤，速度比敌方越高，本次技能威力越高。"
   },
   {
-    "rank": 370,
+    "rank": 368,
     "tier": "C",
     "name": "风起",
     "element": "翼",
@@ -6620,25 +6553,7 @@
     "desc": "自己获得1层风起印记。"
   },
   {
-    "rank": 371,
-    "tier": "C",
-    "name": "灵光",
-    "element": "幽",
-    "category": "魔法",
-    "cost": 3,
-    "power": 25,
-    "score": 9.0,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 5.0,
-      "连击数+": 4,
-      "属性系数": 1.0
-    },
-    "desc": "造成魔伤，3连击，若敌方本回合替换精灵，本次技能连击数翻倍。"
-  },
-  {
-    "rank": 372,
+    "rank": 369,
     "tier": "C",
     "name": "光之矛",
     "element": "光",
@@ -6656,7 +6571,7 @@
     "desc": "造成物伤，3连击。"
   },
   {
-    "rank": 373,
+    "rank": 370,
     "tier": "C",
     "name": "暴风眼",
     "element": "翼",
@@ -6674,7 +6589,25 @@
     "desc": "行动时连击数+100%。"
   },
   {
-    "rank": 374,
+    "rank": 371,
+    "tier": "C",
+    "name": "后发制人",
+    "element": "普通",
+    "category": "物理",
+    "cost": 3,
+    "power": 140,
+    "score": 8.8,
+    "type_coef": 0.85,
+    "is_pure_status": false,
+    "points": {
+      "威力": 28.0,
+      "先手-1": -15,
+      "属性系数": 0.85
+    },
+    "desc": "造成物理伤害，先手-1。"
+  },
+  {
+    "rank": 372,
     "tier": "C",
     "name": "反击拳",
     "element": "武",
@@ -6692,7 +6625,7 @@
     "desc": "造成物伤，2连击，若后手攻击，改为3连击。"
   },
   {
-    "rank": 375,
+    "rank": 373,
     "tier": "C",
     "name": "针状物",
     "element": "幻",
@@ -6710,7 +6643,7 @@
     "desc": "造成魔伤，3连击。"
   },
   {
-    "rank": 376,
+    "rank": 374,
     "tier": "C",
     "name": "散手",
     "element": "武",
@@ -6728,7 +6661,7 @@
     "desc": "造成物伤，2连击，应对状态：本技能改为6连击。"
   },
   {
-    "rank": 377,
+    "rank": 375,
     "tier": "C",
     "name": "折射",
     "element": "光",
@@ -6745,7 +6678,60 @@
     "desc": "造成魔伤，携带其他系别技能会给本技能带来不同效果。"
   },
   {
+    "rank": 376,
+    "tier": "C",
+    "name": "连续爪击",
+    "element": "普通",
+    "category": "物理",
+    "cost": 2,
+    "power": 20,
+    "score": 8.2,
+    "type_coef": 0.85,
+    "is_pure_status": false,
+    "points": {
+      "威力": 5.0,
+      "连击数+": 4,
+      "属性系数": 0.85
+    },
+    "desc": "造成物伤，2连击，应对状态：本次连击数翻倍。"
+  },
+  {
+    "rank": 377,
+    "tier": "C",
+    "name": "背袭",
+    "element": "幽",
+    "category": "魔法",
+    "cost": 2,
+    "power": 30,
+    "score": 8.2,
+    "type_coef": 1.1,
+    "is_pure_status": false,
+    "points": {
+      "威力": 7.5,
+      "属性系数": 1.1
+    },
+    "desc": "造成魔伤，若敌方能量等于0，造成20倍伤害。"
+  },
+  {
     "rank": 378,
+    "tier": "C",
+    "name": "旋转突击",
+    "element": "普通",
+    "category": "物理",
+    "cost": 3,
+    "power": 30,
+    "score": 8.1,
+    "type_coef": 0.85,
+    "is_pure_status": false,
+    "points": {
+      "威力": 6.0,
+      "3连击": 3,
+      "属性系数": 0.85
+    },
+    "desc": "造成物伤，3连击。"
+  },
+  {
+    "rank": 379,
     "tier": "C",
     "name": "水花四溅",
     "element": "水",
@@ -6763,7 +6749,7 @@
     "desc": "造成魔伤，4连击。"
   },
   {
-    "rank": 379,
+    "rank": 380,
     "tier": "C",
     "name": "伪造账单",
     "element": "恶",
@@ -6781,7 +6767,25 @@
     "desc": "若敌方本回合回复生命，改为失去2倍。先手+1。"
   },
   {
-    "rank": 380,
+    "rank": 381,
+    "tier": "C",
+    "name": "午夜噪音",
+    "element": "幽",
+    "category": "魔法",
+    "cost": 4,
+    "power": 20,
+    "score": 7.7,
+    "type_coef": 1.1,
+    "is_pure_status": false,
+    "points": {
+      "威力": 3.3,
+      "5连击": 4,
+      "属性系数": 1.1
+    },
+    "desc": "造成魔伤，5连击。"
+  },
+  {
+    "rank": 382,
     "tier": "C",
     "name": "疾风刺",
     "element": "翼",
@@ -6799,7 +6803,7 @@
     "desc": "造成物伤，1连击，若先于敌方攻击，改为3连击。"
   },
   {
-    "rank": 381,
+    "rank": 383,
     "tier": "C",
     "name": "天火",
     "element": "火",
@@ -6815,41 +6819,6 @@
       "打断风险": -3
     },
     "desc": "敌方获得10层灼烧，应对防御：改为获得30层。"
-  },
-  {
-    "rank": 382,
-    "tier": "C",
-    "name": "背袭",
-    "element": "幽",
-    "category": "魔法",
-    "cost": 2,
-    "power": 30,
-    "score": 7.5,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 7.5,
-      "属性系数": 1.0
-    },
-    "desc": "造成魔伤，若敌方能量等于0，造成20倍伤害。"
-  },
-  {
-    "rank": 383,
-    "tier": "C",
-    "name": "午夜噪音",
-    "element": "幽",
-    "category": "魔法",
-    "cost": 4,
-    "power": 20,
-    "score": 7.3,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 3.3,
-      "5连击": 4,
-      "属性系数": 1.0
-    },
-    "desc": "造成魔伤，5连击。"
   },
   {
     "rank": 384,
@@ -6878,7 +6847,7 @@
     "cost": 0,
     "power": 0,
     "score": 7,
-    "type_coef": 1.0,
+    "type_coef": 0.85,
     "is_pure_status": true,
     "points": {
       "敌加费": 6,
@@ -6896,7 +6865,7 @@
     "cost": 1,
     "power": 0,
     "score": 7.0,
-    "type_coef": 1.0,
+    "type_coef": 0.85,
     "is_pure_status": true,
     "points": {
       "速+70": 14.0,
@@ -6914,7 +6883,7 @@
     "cost": 1,
     "power": 0,
     "score": 7,
-    "type_coef": 1.0,
+    "type_coef": 0.85,
     "is_pure_status": true,
     "points": {
       "威力强化": 14,
@@ -6932,7 +6901,7 @@
     "cost": 0,
     "power": 0,
     "score": 7,
-    "type_coef": 1.0,
+    "type_coef": 0.85,
     "is_pure_status": true,
     "points": {
       "敌加费": 6,
@@ -7040,7 +7009,7 @@
     "cost": 1,
     "power": 0,
     "score": 6.5,
-    "type_coef": 1.0,
+    "type_coef": 0.85,
     "is_pure_status": true,
     "points": {
       "攻+30%": 10.5,
@@ -7127,24 +7096,6 @@
   {
     "rank": 399,
     "tier": "C",
-    "name": "魔能爆",
-    "element": "普通",
-    "category": "魔法",
-    "cost": 0,
-    "power": 1,
-    "score": 5.5,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 0.5,
-      "0费奖励": 5,
-      "属性系数": 1.0
-    },
-    "desc": "造成魔伤，释放时消耗所有能量，消耗越多，伤害越高。"
-  },
-  {
-    "rank": 400,
-    "tier": "C",
     "name": "山火",
     "element": "火",
     "category": "物理",
@@ -7161,7 +7112,7 @@
     "desc": "造成物伤，每使用1次其他火系技能，本技能威力永久翻倍。"
   },
   {
-    "rank": 401,
+    "rank": 400,
     "tier": "C",
     "name": "霜天",
     "element": "冰",
@@ -7180,7 +7131,7 @@
     "desc": "敌方获得3层冻结，且每有1层冻结获得全技能能耗+1。"
   },
   {
-    "rank": 402,
+    "rank": 401,
     "tier": "C",
     "name": "主场优势",
     "element": "普通",
@@ -7188,7 +7139,7 @@
     "cost": 3,
     "power": 0,
     "score": 5,
-    "type_coef": 1.0,
+    "type_coef": 0.85,
     "is_pure_status": true,
     "points": {
       "攻击印记": 20,
@@ -7198,7 +7149,7 @@
     "desc": "自己获得1层攻击印记。"
   },
   {
-    "rank": 403,
+    "rank": 402,
     "tier": "C",
     "name": "勾魂",
     "element": "幽",
@@ -7206,7 +7157,7 @@
     "cost": 1,
     "power": 0,
     "score": 5,
-    "type_coef": 1.0,
+    "type_coef": 1.1,
     "is_pure_status": true,
     "points": {
       "烧能量": 12,
@@ -7216,7 +7167,7 @@
     "desc": "偷取敌方3能量。"
   },
   {
-    "rank": 404,
+    "rank": 403,
     "tier": "C",
     "name": "疫病吐息",
     "element": "毒",
@@ -7234,7 +7185,7 @@
     "desc": "敌方获得1层中毒印记。"
   },
   {
-    "rank": 405,
+    "rank": 404,
     "tier": "C",
     "name": "富养化",
     "element": "草",
@@ -7252,7 +7203,7 @@
     "desc": "为场下每个精灵回复3能量。"
   },
   {
-    "rank": 406,
+    "rank": 405,
     "tier": "C",
     "name": "甜心续航",
     "element": "萌",
@@ -7270,7 +7221,7 @@
     "desc": "自己和敌方获得萌化：回复40%生命和4能量。"
   },
   {
-    "rank": 407,
+    "rank": 406,
     "tier": "C",
     "name": "霜冻",
     "element": "冰",
@@ -7288,7 +7239,7 @@
     "desc": "敌方获得魔防-100%。"
   },
   {
-    "rank": 408,
+    "rank": 407,
     "tier": "C",
     "name": "羽化加速",
     "element": "翼",
@@ -7307,7 +7258,7 @@
     "desc": "自己获得技能威力+20，迅捷。"
   },
   {
-    "rank": 409,
+    "rank": 408,
     "tier": "C",
     "name": "冰锋横扫",
     "element": "冰",
@@ -7324,7 +7275,7 @@
     "desc": "造成魔伤，本技能威力等于敌方精灵技能总能耗的10倍。"
   },
   {
-    "rank": 410,
+    "rank": 409,
     "tier": "C",
     "name": "洗礼",
     "element": "水",
@@ -7342,7 +7293,7 @@
     "desc": "驱散自己的减益，并获得全技能能耗-1。"
   },
   {
-    "rank": 411,
+    "rank": 410,
     "tier": "C",
     "name": "晒太阳",
     "element": "普通",
@@ -7350,7 +7301,7 @@
     "cost": 1,
     "power": 0,
     "score": 3,
-    "type_coef": 1.0,
+    "type_coef": 0.85,
     "is_pure_status": true,
     "points": {
       "清增益": 10,
@@ -7360,7 +7311,7 @@
     "desc": "驱散敌方所有增益。"
   },
   {
-    "rank": 412,
+    "rank": 411,
     "tier": "C",
     "name": "聚盐",
     "element": "草",
@@ -7380,7 +7331,7 @@
     "desc": "2连击，每次连击自己回复5%生命和1能量，使用后本技能连击数永久+1。"
   },
   {
-    "rank": 413,
+    "rank": 412,
     "tier": "C",
     "name": "生日蛋糕",
     "element": "萌",
@@ -7399,7 +7350,7 @@
     "desc": "驱散自己的减益，自己的增益翻倍。"
   },
   {
-    "rank": 414,
+    "rank": 413,
     "tier": "C",
     "name": "虫茧",
     "element": "虫",
@@ -7418,7 +7369,7 @@
     "desc": "自己回复20%生命，获得1次奉献：获得10%吸血。"
   },
   {
-    "rank": 415,
+    "rank": 414,
     "tier": "C",
     "name": "假寐",
     "element": "虫",
@@ -7437,7 +7388,7 @@
     "desc": "自己回复2能量，获得1次奉献：能耗-2。"
   },
   {
-    "rank": 416,
+    "rank": 415,
     "tier": "C",
     "name": "硬门",
     "element": "武",
@@ -7455,7 +7406,7 @@
     "desc": "应对攻击：打断被应对技能，并造成75威力物伤。"
   },
   {
-    "rank": 417,
+    "rank": 416,
     "tier": "C",
     "name": "锐利眼神",
     "element": "普通",
@@ -7463,7 +7414,7 @@
     "cost": 2,
     "power": 0,
     "score": 2.3,
-    "type_coef": 1.0,
+    "type_coef": 0.85,
     "is_pure_status": true,
     "points": {
       "敌魔防-120%": 13.3,
@@ -7473,7 +7424,7 @@
     "desc": "敌方获得物防和魔防-120%。"
   },
   {
-    "rank": 418,
+    "rank": 417,
     "tier": "C",
     "name": "盛开",
     "element": "草",
@@ -7491,7 +7442,7 @@
     "desc": "自己获得全技能威力+30，应对防御：改为全技能威力+70。"
   },
   {
-    "rank": 419,
+    "rank": 418,
     "tier": "C",
     "name": "复写",
     "element": "普通",
@@ -7499,7 +7450,7 @@
     "cost": 0,
     "power": 0,
     "score": 1,
-    "type_coef": 1.0,
+    "type_coef": 0.85,
     "is_pure_status": true,
     "points": {
       "0费基础分": 4,
@@ -7508,7 +7459,7 @@
     "desc": "每回合随机变成自己未携带的技能，且该技能能耗-2。"
   },
   {
-    "rank": 420,
+    "rank": 419,
     "tier": "C",
     "name": "借用",
     "element": "普通",
@@ -7516,7 +7467,7 @@
     "cost": 0,
     "power": 0,
     "score": 1,
-    "type_coef": 1.0,
+    "type_coef": 0.85,
     "is_pure_status": true,
     "points": {
       "0费基础分": 4,
@@ -7525,7 +7476,7 @@
     "desc": "每回合随机变成己方队伍中其他精灵的技能。"
   },
   {
-    "rank": 421,
+    "rank": 420,
     "tier": "C",
     "name": "热身运动",
     "element": "普通",
@@ -7533,7 +7484,7 @@
     "cost": 2,
     "power": 0,
     "score": 1,
-    "type_coef": 1.0,
+    "type_coef": 0.85,
     "is_pure_status": true,
     "points": {
       "连击数+": 12,
@@ -7543,7 +7494,7 @@
     "desc": "自己获得连击数+3。"
   },
   {
-    "rank": 422,
+    "rank": 421,
     "tier": "C",
     "name": "蓄势待发",
     "element": "地",
@@ -7559,6 +7510,23 @@
       "打断风险": -3
     },
     "desc": "自己获得1层蓄势印记。"
+  },
+  {
+    "rank": 422,
+    "tier": "C",
+    "name": "魔能爆",
+    "element": "普通",
+    "category": "魔法",
+    "cost": 0,
+    "power": 1,
+    "score": 0.4,
+    "type_coef": 0.85,
+    "is_pure_status": false,
+    "points": {
+      "威力": 0.5,
+      "属性系数": 0.85
+    },
+    "desc": "造成魔伤，释放时消耗所有能量，消耗越多，伤害越高。"
   },
   {
     "rank": 423,
@@ -7587,10 +7555,10 @@
     "cost": 3,
     "power": 0,
     "score": 0.0,
-    "type_coef": 1.0,
+    "type_coef": 0.85,
     "is_pure_status": true,
     "points": {
-      "属性系数": 1.0
+      "属性系数": 0.85
     },
     "desc": "造成物伤，敌方体重越低，威力越高。"
   },
@@ -7654,10 +7622,10 @@
     "cost": 3,
     "power": 0,
     "score": 0.0,
-    "type_coef": 1.0,
+    "type_coef": 0.85,
     "is_pure_status": true,
     "points": {
-      "属性系数": 1.0
+      "属性系数": 0.85
     },
     "desc": "造成物伤，敌方体重越高，本次技能威力越高。"
   },
@@ -7707,7 +7675,7 @@
     "cost": 1,
     "power": 0,
     "score": -1,
-    "type_coef": 1.0,
+    "type_coef": 0.85,
     "is_pure_status": true,
     "points": {
       "敌加费": 6,
@@ -7838,7 +7806,7 @@
     "type_coef": 1.1,
     "is_pure_status": true,
     "points": {
-      "威力×4": 0,
+      "威力×4": 0.0,
       "费用": -4,
       "打断风险": -3
     },
@@ -7890,7 +7858,7 @@
     "cost": 2,
     "power": 0,
     "score": -3,
-    "type_coef": 1.0,
+    "type_coef": 0.85,
     "is_pure_status": true,
     "points": {
       "敌加费": 6,
@@ -8136,7 +8104,7 @@
     "cost": 1,
     "power": 0,
     "score": -3,
-    "type_coef": 1.0,
+    "type_coef": 0.85,
     "is_pure_status": true,
     "points": {
       "费用": -4,
@@ -8183,25 +8151,6 @@
   {
     "rank": 458,
     "tier": "C",
-    "name": "彗星",
-    "element": "普通",
-    "category": "魔法",
-    "cost": 0,
-    "power": 120,
-    "score": -15.0,
-    "type_coef": 1.0,
-    "is_pure_status": false,
-    "points": {
-      "威力": 60.0,
-      "0费奖励": 5,
-      "自杀": -80,
-      "属性系数": 1.0
-    },
-    "desc": "造成魔伤，每失去5%生命，本次技能威力-10，使用后消耗全部生命。"
-  },
-  {
-    "rank": 459,
-    "tier": "C",
     "name": "怨力打击",
     "element": "龙",
     "category": "魔法",
@@ -8216,5 +8165,23 @@
       "属性系数": 1.0
     },
     "desc": "蓄力，造成魔伤，若蓄力期间受到攻击，本技能威力变为敌方技能威力的3倍。"
+  },
+  {
+    "rank": 459,
+    "tier": "C",
+    "name": "彗星",
+    "element": "普通",
+    "category": "魔法",
+    "cost": 0,
+    "power": 120,
+    "score": -29.0,
+    "type_coef": 0.85,
+    "is_pure_status": false,
+    "points": {
+      "威力": 60.0,
+      "自杀": -80,
+      "属性系数": 0.85
+    },
+    "desc": "造成魔伤，每失去5%生命，本次技能威力-10，使用后消耗全部生命。"
   }
 ]

@@ -908,11 +908,21 @@ def main():
         pass
 
     def _is_removed(name):
-        """检查精灵是否应被移除（支持短名匹配长名）"""
+        """检查精灵是否应被移除"""
         if name in removed_pets:
             return True
+        # 地区形态：若显式在boss_info中且未标记remove，保留
+        if "（" in name and name in boss_info and not boss_info[name].get('remove'):
+            return False
         base = name.split("（")[0] if "（" in name else name
-        return base in removed_pets
+        if base not in removed_pets:
+            return False
+        # 基底被移除，但地区形态有其他同基底非移除记录时，保留
+        if "（" in name:
+            for k, v in boss_info.items():
+                if k.split("（")[0] == base and not v.get('remove'):
+                    return False
+        return True
 
     # Score all pets (including boss base forms, without race boosting)
     pet_scores = {}
