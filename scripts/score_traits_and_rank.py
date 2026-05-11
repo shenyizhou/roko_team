@@ -78,8 +78,10 @@ def calc_combat_score(attrs, stats, rec_skills=None, trait_name=""):
             for t in targets:
                 atk_vs[atk_n][t] = float(ms)
 
-    # 属性联防面 (0~55)
-    defense_raw = 15.0
+    # 属性联防面 (0~100)
+    # 游戏meta: 每只精灵带1个防御技+状态技，输出技能少，学习面受限
+    # 弱点主要怕愿力但防不住 → 弱点扣分小，抵抗价值压倒弱点
+    defense_raw = 0
     for atk_t in atk_vs:
         best_m = 2.0
         for def_t in normalized:
@@ -87,10 +89,12 @@ def calc_combat_score(attrs, stats, rec_skills=None, trait_name=""):
             best_m = min(best_m, m)
         w = _atk_weight(atk_t)
         if best_m <= 0.5:
-            defense_raw += 3.5 * w   # 抵抗
+            defense_raw += 7 * w    # 抵抗 — 联防核心价值
+        elif best_m <= 1.0:
+            pass                      # 中立
         elif best_m >= 2.0:
-            defense_raw -= 3.0 * w   # 弱点
-    type_defense = max(defense_raw * 0.75, 0)
+            defense_raw -= 5 * w     # 弱点 — 扣分较小（愿力防不住）
+    type_defense = max(defense_raw, 0)  # 差属性=0分，不扣分
 
     # 属性打击面：精灵属性 + 携带技能的属性（技能打击面）
     offense_attrs = set(normalized)
@@ -100,15 +104,15 @@ def calc_combat_score(attrs, stats, rec_skills=None, trait_name=""):
             if power > 0:
                 offense_attrs.add(sk.get("element", "普通") if isinstance(sk, dict) else "普通")
     stab_se = set()
-    stab_immune = set()
+    stab_resist = set()
     for atk_t in offense_attrs:
         for def_t, m in atk_vs.get(atk_t, {}).items():
             if m >= 2:
                 stab_se.add(def_t)
-            elif m == 0:
-                stab_immune.add(def_t)
-    can_hit = 18 - len(stab_immune)
-    type_offense = max(can_hit * 1.6 + len(stab_se) * 1.2 - len(stab_immune) * 2.0 + 3, 0)
+            elif m <= 0.5:
+                stab_resist.add(def_t)
+    # 无免疫，所有属性均可命中，抵抗仅降低效率
+    type_offense = max(18 * 1.0 + len(stab_se) * 1.5 - len(stab_resist) * 1.0 + 3, 0)
 
     # 属性协同 (0~25)
     if len(normalized) == 2:
@@ -128,7 +132,7 @@ def calc_combat_score(attrs, stats, rec_skills=None, trait_name=""):
         for w in weak[t2]:
             if w in resist[t1]: covered.add(w)
             elif w in weak[t1]: dup.add(w)
-        type_synergy = len(covered) * 5.5 - len(dup) * 4.0
+        type_synergy = len(covered) * 7.0 - len(dup) * 5.0
     else:
         type_synergy = 3
 
@@ -175,7 +179,7 @@ def calc_combat_score(attrs, stats, rec_skills=None, trait_name=""):
     # 取物攻和特攻中更高的，代表精灵的最佳攻击能力
     atk_stat = max(phys_atk_score, spec_atk_score)
     # 攻击分 = 种族攻击 + 技能打击面
-    type_atk = type_offense * 0.45
+    type_atk = type_offense * 0.6
     attack_score = round(atk_stat + type_atk, 1)
 
     # 2. 防御能力: 基于伤害公式，拆分为物防/特防分（纯种族值）
@@ -189,7 +193,7 @@ def calc_combat_score(attrs, stats, rec_skills=None, trait_name=""):
     defense_score = round(phys_def_score + spec_def_score, 1)  # 纯种族防御分
 
     # 3a. 属性得分：联防面 + 协同（属性组合的抗性价值）
-    type_def = type_defense * 0.6
+    type_def = type_defense  # 不压缩，让好属性充分体现
     type_syn = max(type_synergy, 0)  # 协同不惩罚（弱协同=0分）
     attr_score = round(type_def + type_syn, 1)
 
@@ -251,7 +255,7 @@ TRAIT_SCORES = {
     "不朽": 200,       # 力竭3回合后复活 — 可预知第二条命
 
     # ── A+档：极强特性 (150-160) ──
-    "飓风": 150,       # 全技能迅捷，但被击败额外损失魔力
+    "飓风": -10,       # 被击败额外损失魔力（迅捷价值已融入技能得分）
     "付给恶魔的赎价": 160,  # 击杀多扣敌方魔力，进攻端极强
 
     # ── A档：强力特性 (100-140) ──
@@ -674,7 +678,7 @@ def swift_strike_score(other_skills, skill_scores, has_hurricane=False):
 
     # 释放的价值 = 迅捷技能总分 × 0.5 (每个仅释放1次，边际递减)
     total_swift_score = sum(
-        skill_scores.get(sk.get("name", ""), {}).get("score", 0)
+        skill_scores.get(sk.get("name", ""), 0)
         for sk in swift_skills
     )
     # 也计入威力贡献（buff技能power=0但有分数值）
@@ -689,23 +693,82 @@ def swift_strike_score(other_skills, skill_scores, has_hurricane=False):
     return round(value, 1), dyn_cost
 
 
+def _swift_bonus_for_skill(sk):
+    """计算技能获得迅捷后的加分（复刻 score_all_skills.py 的迅捷后置计算）"""
+    power = sk.get("power", 0)
+    cost = sk.get("cost", 0)
+    desc = sk.get("desc", "")
+    is_dynamic = power == 0 and ("造成物伤" in desc or "造成魔伤" in desc)
+    if power > 0 or is_dynamic:
+        pv = power_value(power, cost)
+        swift = 16 + pv * 0.4
+        swift = max(16, min(28, round(swift, 1)))
+    elif "减伤" in desc or ("减少" in desc and "伤害" in desc):
+        def_pct = _find_int(r"减伤(\d+)%", desc) or _find_int(r"减少(\d+)%", desc) or 50
+        dv = def_pct / 2.5
+        if def_pct >= 100:
+            dv += 25
+        if cost <= 1: coeff = 1.0
+        elif cost <= 2: coeff = 0.9
+        elif cost <= 3: coeff = 0.7
+        else: coeff = 0.5
+        dv = dv * coeff
+        swift = 18 + dv * 0.35
+        swift = max(18, min(26, round(swift, 1)))
+    else:
+        swift = 12
+        if "清增益" in desc: swift += 4
+        if "清减益" in desc: swift += 3
+        if any(kw in desc for kw in ['眩晕', '寄生', '萌化', '焚毁']): swift += 4
+        if "连击数" in desc: swift += 2
+        swift = max(12, min(18, swift))
+    return swift
+
+
 def score_pet(pet_name, pet_data, learnset_skills, rec_skills, skill_scores):
     """
     精灵综合评分 = 推荐技能总分 + 特性分 + 战斗能力分
     """
     # 技能分 (推荐配置) — 闪击/鸣沙陷阱按精灵数值动态计算
     skill_total = 0
+    swift_bonuses = {}  # {skill_name: swift_bonus} 用于输出展示
     attrs = pet_data.get("attrs", [])
     stats = pet_data.get("stats", {})
+    trait = pet_data.get("trait", {})
+    trait_name = trait.get("name", "")
+    has_hurricane = trait_name == "飓风"
+
+    per_skill_base = {}  # 记录每个技能的base分（用于输出）
     if rec_skills:
+        # 为动态威力技能构建修正后的技能分数字典（闪击等按精灵数值计算）
+        dynamic_skill_scores = dict(skill_scores)
         for sk in rec_skills:
             sk_name = sk["name"] if isinstance(sk, dict) else sk
-            dyn_score = dynamic_skill_score(sk_name, attrs, stats)
-            skill_total += dyn_score if dyn_score is not None else skill_scores.get(sk_name, 0)
+            dyn = dynamic_skill_score(sk_name, attrs, stats)
+            if dyn is not None:
+                dynamic_skill_scores[sk_name] = dyn
+
+        for sk in rec_skills:
+            sk_name = sk["name"] if isinstance(sk, dict) else sk
+            sk_desc = sk.get("desc", "") if isinstance(sk, dict) else ""
+            # 疾风连袭在飓风下重新计算（更多技能获得迅捷，使用动态技能分）
+            if sk_name == "疾风连袭" and has_hurricane:
+                other_skills = [s for s in rec_skills if (s["name"] if isinstance(s, dict) else s) != "疾风连袭"]
+                jf_score, _ = swift_strike_score(other_skills, dynamic_skill_scores, has_hurricane=True)
+                base_score = jf_score
+            else:
+                base_score = dynamic_skill_scores.get(sk_name, skill_scores.get(sk_name, 0))
+            per_skill_base[sk_name] = base_score
+            # 飓风特性：全技能获得迅捷，为没有迅捷的技能加分
+            swift_extra = 0
+            if has_hurricane and "迅捷" not in sk_desc:
+                swift_extra = _swift_bonus_for_skill(sk) if isinstance(sk, dict) else 0
+            skill_total += base_score + swift_extra
+            if swift_extra:
+                swift_bonuses[sk_name] = swift_extra
 
     # 特性分
-    trait = pet_data.get("trait", {})
-    trait_score, trait_pts = score_trait(trait.get("name", ""), trait.get("desc", ""))
+    trait_score, trait_pts = score_trait(trait_name, trait.get("desc", ""))
 
     # 属性×种族 综合战斗能力评分: 攻击能力 + 防御能力 + 速度线
     stats = dict(stats)  # copy to avoid modifying original
@@ -731,6 +794,9 @@ def score_pet(pet_name, pet_data, learnset_skills, rec_skills, skill_scores):
         "trait_desc": trait.get("desc", ""),
         "attrs": attrs,
         "stats": stats,
+        "swift_bonuses": swift_bonuses,  # 飓风特性为各技能加的迅捷分
+        "has_hurricane": has_hurricane,
+        "per_skill_base": per_skill_base,
     }
 
 
@@ -799,18 +865,37 @@ def main():
     except Exception:
         pass
 
+    def _is_removed(name):
+        """检查精灵是否应被移除（支持短名匹配长名）"""
+        if name in removed_pets:
+            return True
+        base = name.split("（")[0] if "（" in name else name
+        return base in removed_pets
+
     # Score all pets (including boss base forms, without race boosting)
     pet_scores = {}
     for name, pet in pets.items():
-        if name in removed_pets:
+        if _is_removed(name):
             continue
-        if name not in learnsets:
+        pet_skills = pet.get("skills", {})
+        pet_learnset = pet_skills.get("learnset", [])
+        pet_recommended = pet_skills.get("recommended", [])
+        if not pet_learnset and name not in learnsets:
             continue
         score, meta = score_pet(
-            name, pet, learnsets.get(name, []),
-            recommended.get(name, []), skill_scores
+            name, pet, pet_learnset or learnsets.get(name, []),
+            pet_recommended or recommended.get(name, []), skill_scores
         )
-        rec_skills = [sk["name"] for sk in recommended.get(name, [])]
+        rec_skills_full = pet_recommended or recommended.get(name, [])
+        rec_skills = [sk["name"] for sk in rec_skills_full]
+        # 每个技能的最终得分（含迅捷加分），使用score_pet计算的per_skill_base
+        per_skill_base = meta.get("per_skill_base", {})
+        skill_final_scores = {}
+        for sk in rec_skills_full:
+            sk_name = sk["name"]
+            base = per_skill_base.get(sk_name, dynamic_skill_score(sk_name, meta["attrs"], meta["stats"]) or skill_scores.get(sk_name, 0))
+            extra = meta.get("swift_bonuses", {}).get(sk_name, 0)
+            skill_final_scores[sk_name] = round(base + extra, 1)
         pet_scores[name] = {
             "id": name,
             "name": name,
@@ -825,6 +910,9 @@ def main():
             "combat_score": meta["combat_score"],
             "combat_detail": meta["combat_detail"],
             "recommended_skills": rec_skills,
+            "skill_final_scores": skill_final_scores,
+            "has_hurricane": meta.get("has_hurricane", False),
+            "swift_bonuses": meta.get("swift_bonuses", {}),
         }
 
     # Sort all by score
@@ -832,12 +920,17 @@ def main():
 
     # 去重：棋家族的黑子和白子完全一样，只保留一个（白子优先）
     # 格式: "棋契陛下（棋骑士-白子）" → base = "棋契陛下（棋骑士）"
+    # 只保留棋绮后形态，隐藏棋齐垒/棋骑士/棋祈督
+    QB_HIDDEN = {"棋齐垒", "棋骑士", "棋祈督"}
     seen = set()
     unique_ranked = []
     for p in ranked_all:
         name = p["name"]
         base_name = name.replace("-白子", "").replace("-黑子", "")
         if base_name in seen:
+            continue
+        # 隐藏非棋绮后的棋契陛下形态
+        if "棋契陛下" in name and any(h in name for h in QB_HIDDEN):
             continue
         seen.add(base_name)
         unique_ranked.append(p)
@@ -876,11 +969,21 @@ def main():
             cd = p.get('combat_detail', {})
             actual_spd = cd.get('actual_spd', 0)
             combat_str = _format_combat(cd, p['combat_score'], actual_spd)
-            sk_names = " · ".join(p.get("recommended_skills", [])[:4])
+            sf = p.get('skill_final_scores', {})
+            if sf:
+                sk_parts = [f"{sn}={sf[sn]:.0f}" if sn in sf else sn for sn in p.get("recommended_skills", [])[:4]]
+                sk_names = " · ".join(sk_parts)
+            else:
+                sk_names = " · ".join(p.get("recommended_skills", [])[:4])
             display_name = p['name'] + ("[首领]" if p['name'] in BOSS_NAMES else "")
+            trait_suffix = ""
+            if p.get('has_hurricane'):
+                sb = p.get('swift_bonuses', {})
+                sw = sum(sb.values())
+                trait_suffix = f" [迅捷+{sw:.0f}]"
             print(f"{i:>3}. {display_name:<16} {p['score']:>6.1f}  "
                   f"技能={p['skill_score']:.0f} [{sk_names}] {combat_str}  "
-                  f"【{p['trait_name']}={p['trait_score']:.0f}】{p['trait_desc'][:50]}")
+                  f"【{p['trait_name']}={p['trait_score']:.0f}{trait_suffix}】{p['trait_desc'][:50]}")
 
     # Print unified ranking (top 50)
     _print_ranking(ranked, "精灵综合排名 (技能 + 战斗能力[攻防速])", top_n=50)
@@ -1905,12 +2008,22 @@ def main():
             cd = p.get('combat_detail', {})
             actual_spd = cd.get('actual_spd', 0)
             combat_str = _format_combat(cd, p['combat_score'], actual_spd)
-            sk_names = " · ".join(p.get("recommended_skills", [])[:4])
+            sf = p.get('skill_final_scores', {})
+            if sf:
+                sk_parts = [f"{sn}={sf[sn]:.0f}" if sn in sf else sn for sn in p.get("recommended_skills", [])[:4]]
+                sk_names = " · ".join(sk_parts)
+            else:
+                sk_names = " · ".join(p.get("recommended_skills", [])[:4])
             display_name = p['name'] + ("[首领]" if p['name'] in BOSS_NAMES else "")
+            trait_suffix = ""
+            if p.get('has_hurricane'):
+                sb = p.get('swift_bonuses', {})
+                sw = sum(sb.values())
+                trait_suffix = f" [迅捷+{sw:.0f}]"
             out.append(
                 f"{idx:>3}. {display_name:<16} {p['score']:>6.1f}  "
                 f"技能={p['skill_score']:.0f} [{sk_names}] {combat_str}  "
-                f"【{p['trait_name']}={p['trait_score']:.0f}】{p['trait_desc'][:50]}"
+                f"【{p['trait_name']}={p['trait_score']:.0f}{trait_suffix}】{p['trait_desc'][:50]}"
             )
         return out
 

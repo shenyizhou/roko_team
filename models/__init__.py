@@ -109,6 +109,51 @@ def get_family_members() -> dict:
     return result
 
 
+@lru_cache(maxsize=1)
+def _get_region_base_map() -> dict:
+    """返回 {region_form_name: base_species_name} 映射
+    同一NO下的region形态应继承final形态的技能"""
+    items = _filter_index_items()
+    no_groups = {}
+    for item in items:
+        no = item["noText"]
+        if no not in no_groups:
+            no_groups[no] = {"final": [], "region": []}
+        tc = item.get("typeClass", "")
+        if tc == "region":
+            no_groups[no]["region"].append(item["name"])
+        elif tc == "final":
+            no_groups[no]["final"].append(item["name"])
+    result = {}
+    for no, group in no_groups.items():
+        if group["region"] and group["final"]:
+            base = group["final"][0]
+            for region_name in group["region"]:
+                result[region_name] = base
+    return result
+
+
+def _match_skills(name: str, skill_map: dict) -> list:
+    """按名称匹配技能数据, 兼容长短名(如 化蝶 vs 化蝶(奇丽花的样子))
+    region形态继承同NO下final形态的技能"""
+    if name in skill_map:
+        return skill_map[name]
+    base = name.split("（")[0] if "（" in name else name
+    if base in skill_map:
+        return skill_map[base]
+    # region形态 → 同NO的final形态继承技能
+    region_base_map = _get_region_base_map()
+    if name in region_base_map:
+        base_species = region_base_map[name]
+        if "（" in name:
+            suffix = "（" + name.split("（", 1)[1]
+            result = skill_map.get(base_species + suffix, [])
+            if result:
+                return result
+        return skill_map.get(base_species, [])
+    return []
+
+
 def get_all_pets_with_skills() -> dict:
     """返回所有最终形态精灵 + 技能数据"""
     pets = get_all_pets()
@@ -116,8 +161,8 @@ def get_all_pets_with_skills() -> dict:
     recommended = _load_recommended()
     for name, pet in pets.items():
         pet["skills"] = {
-            "learnset": learnsets.get(name, []),
-            "recommended": recommended.get(name, []),
+            "learnset": _match_skills(name, learnsets),
+            "recommended": _match_skills(name, recommended),
             "other": [],
         }
     return pets

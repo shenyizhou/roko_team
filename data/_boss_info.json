@@ -74,5 +74,25 @@
   "棋绮后（黑子）": {
     "bonus": 0,
     "remove": true
+  },
+  "蹦蹦草": {
+    "bonus": 0,
+    "remove": true
+  },
+  "冬羽雀": {
+    "bonus": 0,
+    "remove": true
+  },
+  "海盔虫": {
+    "bonus": 0,
+    "remove": true
+  },
+  "蹦蹦种子": {
+    "bonus": 0,
+    "remove": true
+  },
+  "雪绒鸟": {
+    "bonus": 0,
+    "remove": true
   }
 }
