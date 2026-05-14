@@ -1,168 +1,187 @@
 """
 洛克王国世界量化分析模型
 
-数据架构: 以 spirit_filter_index.json 为唯一基础数据源
+数据架构:
+- data/pets/*.json: 精灵详细数据（604个精灵，每个独立文件）
+- data/skills.csv: 技能库数据（486个技能）
 """
 import json
+import csv
 from pathlib import Path
 from functools import lru_cache
 
 DATA_DIR = Path(__file__).parent.parent / "data"
+PETS_DIR = DATA_DIR / "pets"
+SKILLS_CSV = DATA_DIR / "skills.csv"
 
 
-def _load_filter_index() -> dict:
-    with open(DATA_DIR / "spirit_filter_index.json", encoding="utf-8") as f:
-        return json.load(f)
+# ========== 精灵数据加载 ==========
 
+def _load_single_pet(pet_file: Path) -> dict:
+    """加载单个精灵JSON文件"""
+    with open(pet_file, encoding="utf-8") as f:
+        raw = json.load(f)
 
-@lru_cache(maxsize=1)
-def _filter_index_items() -> list:
-    return _load_filter_index()["items"]
+    # 统一字段映射到内部格式
+    attrs = [raw["element"]]
+    if raw.get("element2"):
+        attrs.append(raw["element2"])
 
-
-def _map_pet(item: dict) -> dict:
-    """将 spirit_filter_index 条目映射为 pets.json 兼容格式"""
     return {
-        "id": item["noText"],
-        "name": item["name"],
-        "noText": item["noText"],  # 家族编号，同一进化线的精灵共享
-        "type_class": item.get("typeClass", ""),
-        "attrs": item.get("attrs", []),
+        "id": raw.get("id", raw["name"]),
+        "name": raw["name"],
+        "noText": raw.get("noText", raw["name"]),  # 家族编号
+        "form": raw.get("form", ""),
+        "regionalFormName": raw.get("regionalFormName", ""),
+        "stage": raw.get("stage", ""),
+        "type_class": raw.get("stage", ""),  # 兼容旧字段
+        "attrs": attrs,
         "stats": {
-            "total": item.get("race", 0),
-            "hp": item.get("hp", 0),
-            "atk": item.get("atk", 0),
-            "matk": item.get("matk", 0),
-            "def": item.get("def", 0),
-            "mdef": item.get("mdef", 0),
-            "spd": item.get("spd", 0),
+            "hp": int(raw.get("hp") or 0),
+            "atk": int(raw.get("physicalAttack") or 0),
+            "matk": int(raw.get("magicAttack") or 0),
+            "def": int(raw.get("physicalDefense") or 0),
+            "mdef": int(raw.get("magicDefense") or 0),
+            "spd": int(raw.get("speed") or 0),
+            "total": sum([
+                int(raw.get("hp") or 0),
+                int(raw.get("physicalAttack") or 0),
+                int(raw.get("magicAttack") or 0),
+                int(raw.get("physicalDefense") or 0),
+                int(raw.get("magicDefense") or 0),
+                int(raw.get("speed") or 0),
+            ]),
         },
         "trait": {
-            "name": item.get("traitName", ""),
-            "desc": item.get("traitDesc", ""),
+            "name": raw.get("ability", ""),
+            "desc": raw.get("abilityDesc", ""),
         },
-        "skill_count": item.get("skillCount", 0),
+        "size": raw.get("size", ""),
+        "weight": raw.get("weight", ""),
+        "description": raw.get("description", ""),
+        # 技能相关
+        "skills_raw": {
+            "natural": raw.get("skills", []),
+            "bloodline": raw.get("bloodlineSkills", []),
+            "learnable": raw.get("learnableSkillStones", []),
+        },
     }
 
 
+@lru_cache(maxsize=1)
+def _all_pet_files() -> list[Path]:
+    """获取所有精灵文件路径"""
+    return list(PETS_DIR.glob("*.json"))
+
+
+@lru_cache(maxsize=1)
 def get_all_pets() -> dict:
-    """返回所有最终形态精灵，兼容原 pets_final.json 格式
-    包含 typeClass 为 final/region/boss 的精灵
-    """
-    items = _filter_index_items()
+    """返回所有精灵（兼容旧格式，按name为key）"""
     result = {}
-    for item in items:
-        if item.get("typeClass") in ("final", "region", "boss"):
-            result[item["name"]] = _map_pet(item)
+    for f in _all_pet_files():
+        pet = _load_single_pet(f)
+        result[pet["name"]] = pet
     return result
 
 
 def get_pet(name: str) -> dict | None:
-    """按名称获取单只精灵，兼容原格式"""
-    for item in _filter_index_items():
-        if item["name"] == name:
-            return _map_pet(item)
-    return None
-
-
-def get_pet_by_no(no_text: str) -> list[dict]:
-    """按 noText 获取所有形态"""
-    items = _filter_index_items()
-    return [_map_pet(item) for item in items if item["noText"] == no_text]
-
-
-@lru_cache(maxsize=1)
-def _load_learnsets() -> dict:
-    learnset_path = DATA_DIR / "pet_learnset.json"
-    if learnset_path.exists():
-        with open(learnset_path, encoding="utf-8") as f:
-            return json.load(f)
-    return {}
-
-
-@lru_cache(maxsize=1)
-def _load_recommended() -> dict:
-    recommended_path = DATA_DIR / "pet_recommended.json"
-    if recommended_path.exists():
-        with open(recommended_path, encoding="utf-8") as f:
-            return json.load(f)
-    return {}
+    """按名称获取单只精灵"""
+    pets = get_all_pets()
+    return pets.get(name)
 
 
 @lru_cache(maxsize=1)
 def get_family_map() -> dict:
     """返回 {精灵名称: noText} 的家族映射，同一noText = 同一进化线"""
-    items = _filter_index_items()
-    return {item["name"]: item["noText"] for item in items}
+    pets = get_all_pets()
+    return {name: pet["noText"] for name, pet in pets.items()}
 
 
 @lru_cache(maxsize=1)
 def get_family_members() -> dict:
     """返回 {noText: [精灵名称列表]} 的家族成员映射"""
-    items = _filter_index_items()
+    pets = get_all_pets()
     result = {}
-    for item in items:
-        no = item["noText"]
+    for name, pet in pets.items():
+        no = pet["noText"]
         if no not in result:
             result[no] = []
-        result[no].append(item["name"])
+        result[no].append(name)
     return result
 
+
+# ========== 技能数据加载 ==========
 
 @lru_cache(maxsize=1)
-def _get_region_base_map() -> dict:
-    """返回 {region_form_name: base_species_name} 映射
-    同一NO下的region形态应继承final形态的技能"""
-    items = _filter_index_items()
-    no_groups = {}
-    for item in items:
-        no = item["noText"]
-        if no not in no_groups:
-            no_groups[no] = {"final": [], "region": []}
-        tc = item.get("typeClass", "")
-        if tc == "region":
-            no_groups[no]["region"].append(item["name"])
-        elif tc == "final":
-            no_groups[no]["final"].append(item["name"])
-    result = {}
-    for no, group in no_groups.items():
-        if group["region"] and group["final"]:
-            base = group["final"][0]
-            for region_name in group["region"]:
-                result[region_name] = base
+def _load_skills_csv() -> dict:
+    """加载技能CSV并按名称索引"""
+    skills = {}
+    with open(SKILLS_CSV, encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            name = row["name"].strip()
+            # 处理空的power字段
+            power = row.get("power", "").strip()
+            try:
+                power_val = int(power) if power else 0
+            except (ValueError, TypeError):
+                power_val = 0
+
+            skills[name] = {
+                "name": name,
+                "element": row.get("element", ""),
+                "category": row.get("category", ""),
+                "cost": int(row.get("cost", 0) or 0),
+                "power": power_val,
+                "desc": row.get("effect", ""),
+            }
+    return skills
+
+
+def get_all_skills() -> dict:
+    """返回所有技能，按名称索引"""
+    return _load_skills_csv()
+
+
+def get_skill(name: str) -> dict | None:
+    """按名称获取单个技能"""
+    skills = _load_skills_csv()
+    return skills.get(name)
+
+
+# ========== 精灵技能组合（兼容旧接口）==========
+
+def _get_pet_skills(pet: dict) -> list[dict]:
+    """获取精灵的所有技能详情（天生+血脉+可学习）"""
+    all_skill_names = set()
+    all_skill_names.update(pet["skills_raw"]["natural"])
+    all_skill_names.update(pet["skills_raw"]["bloodline"])
+    all_skill_names.update(pet["skills_raw"]["learnable"])
+
+    skills = _load_skills_csv()
+    result = []
+    for name in all_skill_names:
+        if name in skills:
+            result.append(skills[name])
     return result
-
-
-def _match_skills(name: str, skill_map: dict) -> list:
-    """按名称匹配技能数据, 兼容长短名(如 化蝶 vs 化蝶(奇丽花的样子))
-    region形态继承同NO下final形态的技能"""
-    if name in skill_map:
-        return skill_map[name]
-    base = name.split("（")[0] if "（" in name else name
-    if base in skill_map:
-        return skill_map[base]
-    # region形态 → 同NO的final形态继承技能
-    region_base_map = _get_region_base_map()
-    if name in region_base_map:
-        base_species = region_base_map[name]
-        if "（" in name:
-            suffix = "（" + name.split("（", 1)[1]
-            result = skill_map.get(base_species + suffix, [])
-            if result:
-                return result
-        return skill_map.get(base_species, [])
-    return []
 
 
 def get_all_pets_with_skills() -> dict:
-    """返回所有最终形态精灵 + 技能数据"""
+    """返回所有精灵 + 完整技能数据（兼容旧接口）"""
     pets = get_all_pets()
-    learnsets = _load_learnsets()
-    recommended = _load_recommended()
+    result = {}
     for name, pet in pets.items():
-        pet["skills"] = {
-            "learnset": _match_skills(name, learnsets),
-            "recommended": _match_skills(name, recommended),
+        pet_with_skill = dict(pet)
+        all_skills = _get_pet_skills(pet)
+        # 区分learnset（天生+血脉）和 recommended（可学习技能石）
+        natural_names = set(pet["skills_raw"]["natural"])
+        bloodline_names = set(pet["skills_raw"]["bloodline"])
+        learn_names = natural_names | bloodline_names
+
+        pet_with_skill["skills"] = {
+            "learnset": [s for s in all_skills if s["name"] in learn_names],
+            "recommended": [s for s in all_skills if s["name"] in pet["skills_raw"]["learnable"]],
             "other": [],
         }
-    return pets
+        result[name] = pet_with_skill
+    return result

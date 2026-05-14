@@ -767,6 +767,8 @@ def score_pet(pet_name, pet_data, learnset_skills, rec_skills, skill_scores, spe
             if dyn is not None:
                 dynamic_skill_scores[sk_name] = dyn
 
+        # 计算所有技能的总分（含迅捷），取TOP 4技能（战斗只能带4个技能）
+        all_skill_scores = []
         for sk in rec_skills:
             sk_name = sk["name"] if isinstance(sk, dict) else sk
             sk_desc = sk.get("desc", "") if isinstance(sk, dict) else ""
@@ -782,9 +784,17 @@ def score_pet(pet_name, pet_data, learnset_skills, rec_skills, skill_scores, spe
             swift_extra = 0
             if has_hurricane and "迅捷" not in sk_desc:
                 swift_extra = _swift_bonus_for_skill(sk) if isinstance(sk, dict) else 0
-            skill_total += base_score + swift_extra
+            total_for_sk = base_score + swift_extra
+            all_skill_scores.append((sk, sk_name, base_score, swift_extra, total_for_sk))
             if swift_extra:
                 swift_bonuses[sk_name] = swift_extra
+
+        # 按总分排序，只取 TOP 4
+        all_skill_scores.sort(key=lambda x: -x[4])
+        top_skills = all_skill_scores[:4]
+        skill_total = sum(x[4] for x in top_skills)
+        # 更新推荐技能列表只保留 TOP 4
+        rec_skills = [x[0] for x in top_skills]
 
     # 特性分
     trait_score, trait_pts = score_trait(trait_name, trait.get("desc", ""))
@@ -803,6 +813,9 @@ def score_pet(pet_name, pet_data, learnset_skills, rec_skills, skill_scores, spe
     trait_effective = trait_score
     total = round(skill_total + trait_effective + attr_bonus, 1)
 
+    # 提取top技能的name
+    top_skill_names = [x[1] for x in top_skills] if rec_skills else []
+
     return total, {
         "skill_score": round(skill_total, 1),
         "trait_score": trait_score,
@@ -816,6 +829,7 @@ def score_pet(pet_name, pet_data, learnset_skills, rec_skills, skill_scores, spe
         "swift_bonuses": swift_bonuses,  # 飓风特性为各技能加的迅捷分
         "has_hurricane": has_hurricane,
         "per_skill_base": per_skill_base,
+        "top_skill_names": top_skill_names,  # 只返回TOP 4技能名
     }
 
 
@@ -839,11 +853,12 @@ def main():
 
     skill_scores = {s['name']: s['score'] for s in rankings}
 
-    # Load learnset and recommended skill data
-    with open(DATA_DIR / "pet_learnset.json") as f:
-        learnsets = json.load(f)
-    with open(DATA_DIR / "pet_recommended.json") as f:
-        recommended = json.load(f)
+    # Build learnset and recommended dicts from pet data
+    learnsets = {}
+    recommended = {}
+    for name, pet in pets.items():
+        learnsets[name] = pet.get("skills", {}).get("learnset", [])
+        recommended[name] = pet.get("skills", {}).get("recommended", [])
 
     # 计算全精灵速度百分位
     all_speeds = []
@@ -909,6 +924,19 @@ def main():
 
     def _is_removed(name):
         """检查精灵是否应被移除"""
+        if name not in pets:
+            return True
+        pet = pets[name]
+        stage = pet.get("stage", "")
+        # 自动移除非最终形态
+        if stage:
+            # 最终形态和首领进化保留
+            if "最终" in stage or "首领" in stage:
+                pass
+            else:
+                # 其他阶段（Ⅰ阶/Ⅱ阶/1/2等）全部移除
+                return True
+        # 手动配置的移除列表
         if name in removed_pets:
             return True
         # 地区形态：若显式在boss_info中且未标记remove，保留
@@ -951,15 +979,14 @@ def main():
             name, pet, pet_learnset or learnsets.get(name, []),
             pet_recommended or recommended.get(name, []), skill_scores, pct
         )
-        rec_skills_full = pet_recommended or recommended.get(name, [])
-        rec_skills = [sk["name"] for sk in rec_skills_full]
+        rec_skills = meta.get("top_skill_names", [])
         # 每个技能的最终得分（含迅捷加分），使用score_pet计算的per_skill_base
         per_skill_base = meta.get("per_skill_base", {})
+        swift_bonuses = meta.get("swift_bonuses", {})
         skill_final_scores = {}
-        for sk in rec_skills_full:
-            sk_name = sk["name"]
+        for sk_name in rec_skills:
             base = per_skill_base.get(sk_name, dynamic_skill_score(sk_name, meta["attrs"], meta["stats"]) or skill_scores.get(sk_name, 0))
-            extra = meta.get("swift_bonuses", {}).get(sk_name, 0)
+            extra = swift_bonuses.get(sk_name, 0)
             skill_final_scores[sk_name] = round(base + extra, 1)
         pet_scores[name] = {
             "id": name,
@@ -977,7 +1004,7 @@ def main():
             "recommended_skills": rec_skills,
             "skill_final_scores": skill_final_scores,
             "has_hurricane": meta.get("has_hurricane", False),
-            "swift_bonuses": meta.get("swift_bonuses", {}),
+            "swift_bonuses": swift_bonuses,
         }
 
     # Sort all by score

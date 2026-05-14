@@ -24,6 +24,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from models.attribute_matrix import AttributeMatrix
+from models import get_all_skills
 
 DATA_DIR = Path(__file__).parent.parent / "data"
 am = AttributeMatrix()
@@ -854,19 +855,7 @@ def score_skill(skill):
 
 
 def generate_rankings():
-    with open(DATA_DIR / "pet_learnset.json", encoding="utf-8") as f:
-        learnsets = json.load(f)
-    with open(DATA_DIR / "pet_recommended.json", encoding="utf-8") as f:
-        recommended = json.load(f)
-    skill_map = {}
-    for pname, skills in learnsets.items():
-        for sk in skills:
-            if sk["name"] not in skill_map:
-                skill_map[sk["name"]] = sk
-    for pname, skills in recommended.items():
-        for sk in skills:
-            if sk["name"] not in skill_map:
-                skill_map[sk["name"]] = sk
+    skill_map = get_all_skills()
     results = [(score_skill(sk)[0], score_skill(sk)[1]) for sk in skill_map.values()]
     results.sort(key=lambda x: -x[0])
     # 分离防御技能 (减伤类)
